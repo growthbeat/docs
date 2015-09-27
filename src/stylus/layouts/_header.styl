@@ -2,11 +2,13 @@
     $HEADER
 \*------------------------------------*/
 .navbar-header
-  background brand-color
-  padding 0 1.5rem
+  background #2D3235
+  overflow hidden
 
 .header-nav
   height 70px
+  padding 0px 20px
+
 
 .header-nav > .-logo
   float left
@@ -18,6 +20,7 @@
     &:hover
       opacity .8
 
+
 .header-nav > .-list
     @extend .nav
     float right
@@ -27,22 +30,23 @@
       font-size 14px
       color #fff
       margin-left 32px
-      font-weight 500
 
     & > .link
-      padding 15px 0 26px
-      transition color, box-shadow, 0.1s ease 0s
+      border-bottom: 3px solid transparent
+      padding 15px 0 23px
+      transition color, border, 0.1s ease 0s
       &:hover
         color #619BDB
-        box-shadow inset 0 -3px #619BDB
+        border-color: #619BDB
 
     & > .btn
-      padding 14px 10px 9px 23px
+      padding 14px 10px 9px 20px
       border 1px solid #619BDB
       background transparent
       color #619BDB
       margin-top -3px
       transition color, background, 0.1s ease 0s
+      letter-spacing -0.02em
       &:hover
         background #619BDB
         color #fff
