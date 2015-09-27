@@ -1,0 +1,31 @@
+#!/bin/bash
+
+function usage() {
+cat<<_EOT_
+Usage:
+  $0
+
+Description:
+  Setup basic things you'll need a few things on your system
+
+_EOT_
+exit 1
+}
+
+if  [ "$1" == "-h" ] || [ "$1" == "--help" ] ; then
+  usage
+fi
+
+echo -e "\033[0;32mSetup basic environment ...\033[0m"
+echo
+
+if type npm >/dev/null 2>&1; then
+  echo -e "[1] Run npm install"
+  npm i
+else
+  echo -e "No installed npm command." 1>&2
+  exit 1
+fi
+
+echo -e "[2] Run npm build"
+npm run build

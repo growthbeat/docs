@@ -1,0 +1,8 @@
+baseurl:        "http://docs.growthbeat.com/"
+title:          "Growthbeat | docs"
+contentdir:     "content"
+publishdir:     "public"
+layoutdir:      "layouts"
+staticdir:      "static"
+uglyUrls:       false
+metaDataFormat: "yaml"

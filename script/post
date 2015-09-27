@@ -1,0 +1,29 @@
+#!/bin/bash
+
+readonly LOCATION=`pwd`
+
+function usage() {
+cat<<_EOT_
+Usage:
+  $0 <file> <language>
+
+Description:
+  Create a new post
+
+_EOT_
+exit 1
+}
+
+if  [ -z "$1" ] || [ "$1" == "-h" ] || [ "$1" == "--help" ] ; then
+  usage
+fi
+
+echo -e "\033[0;32mCreate a new post which file name is ${1}\033[0m"
+
+if [[ "$2" == "ja" ]]; then
+  hugo new "ja/$1" --config="${LOCATION}/config.yml"
+elif [[ "$2" == "en" ]]; then
+  hugo new "en/$1" --config="${LOCATION}/config.yml"
+else
+  usage
+fi
