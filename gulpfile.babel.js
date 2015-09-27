@@ -42,7 +42,7 @@ gulp.task('build', ['clean'], () => {
 });
 
 gulp.task('watch', () => {
-  gulp.watch('./src/stylus/**/*.styl', ['style:minify']);
+  gulp.watch('./src/stylus/**/*.styl', ['build']);
 });
 
 // Common
