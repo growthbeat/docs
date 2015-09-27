@@ -1,0 +1,17 @@
+box: debian
+build:
+  steps:
+    - arjen/hugo-build:
+        version: 0.15
+        flags: --buildDrafts=true
+    - script:
+        name: create atom.xml
+        code: cp public/index.xml public/atom.xml
+deploy:
+  steps:
+    - install-packages:
+        packages: git
+    - lukevivier/gh-pages@0.2.1:
+        token:   $GITHUB_TOKEN
+        domain:  docs.growthbeat.com
+        basedir: public
