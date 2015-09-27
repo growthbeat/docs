@@ -35,8 +35,8 @@ gulp.task('build', ['clean'], () => {
     .pipe(sourcemaps.init())
     .pipe(stylus())
     .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
-    .pipe(sourcemaps.write())
     .pipe(csso())
+    .pipe(sourcemaps.write())
     .pipe(plumber.stop())
     .pipe(gulp.dest('./static/css'));
 });
