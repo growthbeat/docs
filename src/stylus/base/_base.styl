@@ -1,76 +1,7 @@
 /*------------------------------------*\
-    $BASE
-\*------------------------------------*/
-
-
-
-
-
-/*------------------------------------*\
-    #HTML
-\*------------------------------------*/
-html
-  min-height: 100%
-  size-adjust: 100%
-  osx-font-smoothing: grayscale
-  font-smoothing: antialiased
-  font-feature-settings:"liga" on
-
-
-
-
-
-/*------------------------------------*\
-    #HTML & BODY
-\*------------------------------------*/
-html,
-body
-  height: 100%
-
-
-
-
-
-/*------------------------------------*\
     #FONT
 \*------------------------------------*/
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700)
 
-[lang="ja"] body
-  font-family: 'ヒラギノ角ゴ Pro W3' sans-serif,'Hiragino Kaku Gothic Pro','HiraKakuPro-W3'
-
-[lang="en"] body
-  font-family: 'Lato', sans-serif,'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','HiraKakuPro-W3'
-
-
-
-
-
-/*------------------------------------*\
-    #ANCHOR
-\*------------------------------------*/
-/**
- * Anchor
- *
- * @Credit
- * Sassline
- * https://github.com/designbyjake/sassline/blob/master/assets/sass/base/_typography.scss
- */
-a
-  transiton: color animation-duration animation-timing-function
-  text-decoration: none;
-  color: color-link
-  &:hover
-    color: color-link-hover
-
-
-p a
-  background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%,lighten(color-link,20%) 50%);
-  background-position: 0 93%;
-  background-repeat: repeat-x;
-  background-size: 100% 0.15rem;
-  text-shadow: 0.1rem 0 #fff,0.15rem 0 #fff,-0.1rem 0 #fff,-0.15rem 0 #fff;
-  &:hover,
-  &:avtive,
-  &:focus
-    background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%,lighten(color-link-hover,20%) 50%);
+body
+  font-family 'Lato', sans-serif,'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','HiraKakuPro-W3'
