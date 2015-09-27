@@ -1,0 +1,48 @@
+/*------------------------------------*\
+    $HEADER
+\*------------------------------------*/
+.navbar-header
+  background brand-color
+  padding 0 1.5rem
+
+.header-nav
+  height 70px
+
+.header-nav > .-logo
+  float left
+  & > .link
+    margin-top 5px
+    padding 15px 0
+    display block
+    transition opacity 0.1s ease 0s
+    &:hover
+      opacity .8
+
+.header-nav > .-list
+    @extend .nav
+    float right
+    padding-top 16px
+
+    & > .item
+      font-size 14px
+      color #fff
+      margin-left 32px
+      font-weight 500
+
+    & > .link
+      padding 15px 0 26px
+      transition color, box-shadow, 0.1s ease 0s
+      &:hover
+        color #619BDB
+        box-shadow inset 0 -3px #619BDB
+
+    & > .btn
+      padding 14px 10px 9px 23px
+      border 1px solid #619BDB
+      background transparent
+      color #619BDB
+      margin-top -3px
+      transition color, background, 0.1s ease 0s
+      &:hover
+        background #619BDB
+        color #fff
