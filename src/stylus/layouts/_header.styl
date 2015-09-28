@@ -10,9 +10,11 @@
   padding 0px 20px
 
 
-.header-nav > .-logo
-  float left
-  & > .link
+.header-nav
+  & > .logo
+    float left
+
+  & > .logo > .link
     margin-top 5px
     padding 15px 0
     display block
@@ -21,32 +23,33 @@
       opacity .8
 
 
-.header-nav > .-list
-    @extend .nav
+.header-nav
+  & > .sighup,
+  & > .login,
+  & > .feature,
+  & > .about
     float right
-    padding-top 16px
+    padding 0 18px
+    height 70px
+    line-height 70px
 
-    & > .item
-      font-size 14px
-      color #fff
-      margin-left 32px
-
-    & > .link
-      border-bottom: 3px solid transparent
-      padding 15px 0 23px
-      transition color, border, 0.1s ease 0s
-      &:hover
-        color #619BDB
-        border-color: #619BDB
-
-    & > .btn
-      padding 14px 10px 9px 20px
-      border 1px solid #619BDB
-      background transparent
+  & > .login   > .link,
+  & > .feature > .link,
+  & > .about   > .link
+    padding 15px 0 24px
+    transition color, border, 0.1s ease 0s
+    color #fff
+    border-bottom 3px solid #2D3235
+    &:hover
       color #619BDB
-      margin-top -3px
-      transition color, background, 0.1s ease 0s
-      letter-spacing -0.02em
-      &:hover
-        background #619BDB
-        color #fff
+      border-color #619BDB
+
+  & > .sighup  > .btn
+    border 1px solid #619BDB
+    padding 14px 10px 9px 20px
+    background transparent
+    color #619BDB
+    letter-spacing -0.02em
+    &:hover
+      background #619BDB
+      color #fff

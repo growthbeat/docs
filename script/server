@@ -19,4 +19,4 @@ if [ "$1" == "-h" ] || [ "$1" == "--help" ] ; then
 fi
 
 echo -e "\033[0;32mStart server\033[0m"
-hugo server --buildDrafts --watch --verbose --source=${LOCATION} --config="${LOCATION}/config.yml"
+hugo server --buildDrafts --watch --verbose --source=${LOCATION} --config="${LOCATION}/config_ja.yml"
