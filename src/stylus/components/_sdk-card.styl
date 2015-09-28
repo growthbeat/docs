@@ -1,0 +1,113 @@
+/*------------------------------------*\
+    $SDK-CARD
+\*------------------------------------*/
+
+
+
+
+
+/**
+ * Card Wrapper
+ */
+.sdk-cards
+  @extend .cf
+
+  & > .sdk-card
+    @extend .card
+    padding 0
+    cursor pointer
+    display inline-block
+    text-align left
+    width 290px
+    margin 20px 20px 20px
+    border-color #C5CDD3
+
+
+/**
+ * Each card
+ */
+.sdk-cards > .sdk-card
+  & > .card-meta
+    padding 20px 20px 0
+
+  & > .card-btn
+    padding 20px
+
+  & > .card-links
+    border-top 1px solid #C5CDD3
+    background #F6F9FD
+    padding 10px
+
+
+
+/**
+ * Card meta
+ */
+.sdk-cards > .sdk-card > .card-meta
+  @extend .cf
+  & > .image
+    float left
+
+  & > .platform
+    color #626F74
+    font-weight 700
+    font-size 20px
+    border-bottom 1px solid #C5CDD3
+    margin-left 100px
+    padding-bottom 5px
+    margin-bottom 5px
+
+  & > .sdk-version
+      margin-left 100px
+      & > .version,
+      & > .value
+        color #A8B5BA
+
+      & > .version
+        float left
+
+      & > .value
+        float right
+
+
+/**
+ * Card Download Button
+ */
+.card-btn > .btn
+  width 100%
+  text-align center
+  color #5E9ADD
+  border-color #5E9ADD
+  padding 5px 0
+  &:hover
+    background #5E9ADD
+    color #fff
+
+
+/**
+ * Card Links
+ */
+.sdk-cards > .sdk-card > .card-links
+  & > .api,
+  & > .guide,
+  & > .release
+    display inline-block
+    color #879094
+    font-size font-x-small
+    line-height font-x-small
+    transition opacity 0.1s ease 0s
+    &:hover
+      opacity .7
+
+  & > .api
+    padding 0 8px 0 8px
+    border-right 1px solid #C5CDD3
+
+  & > .guide
+    padding 0 8px 0
+    border-right 1px solid #C5CDD3
+
+  & > .release
+    padding 0 8px 0 8px
+
+
