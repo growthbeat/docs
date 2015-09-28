@@ -4,7 +4,6 @@ build:
     - arjen/hugo-build:
         version: 0.15
         flags: --buildDrafts=true
-        config: config_ja.yml
         config: config.yml
 
 deploy:
