@@ -6,3 +6,7 @@ layoutdir:      "layouts"
 staticdir:      "static"
 uglyUrls:       false
 metaDataFormat: "yaml"
+
+Params:
+  # Date Format
+  DateForm:      "Mon, Jan 2, 2006"
