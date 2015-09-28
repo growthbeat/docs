@@ -5,9 +5,7 @@ build:
         version: 0.15
         flags: --buildDrafts=true
         config: config_ja.yml
-    - script:
-        name: create atom.xml
-        code: cp public/index.xml public/atom.xml
+
 deploy:
   steps:
     - install-packages:
