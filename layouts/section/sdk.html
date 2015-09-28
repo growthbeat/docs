@@ -18,11 +18,12 @@
 </section>
 
 
-<!-- Header -->
+<!-- Container -->
 <div class="content">
   <div class="container">
 
 <section class="page-container">
+　<span class="updated">最終更新日 {{ .Date.Format .Site.Params.DateForm }}</span>
   <h2 class="title">
     <span class="nowrap">SDK</span>
     ドキュメント
@@ -45,7 +46,7 @@
     <div class="card-links">
       <a class="link api" href="{{ .Permalink }}ios/api/">APIリファレンス</a>
       <a class="link guide" href="{{ .Permalink }}ios/guide/">ガイド</a>
-      <a class="link release" href="{{ .Permalink }}">リリースノート</a>
+      <a class="link release" href="https://github.com/SIROK/growthbeat-ios/releases">リリースノート</a>
     </div>
   </div>
   <div class="android sdk-card">
