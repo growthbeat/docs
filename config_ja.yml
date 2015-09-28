@@ -1,0 +1,8 @@
+baseurl:        "http://docs.growthbeat.com/ja/"
+title:          "Growthbeat | ドキュメント"
+contentdir:     "content/ja"
+publishdir:     "public/ja"
+layoutdir:      "layouts"
+staticdir:      "static"
+uglyUrls:       false
+metaDataFormat: "yaml"
