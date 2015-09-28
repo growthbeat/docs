@@ -8,6 +8,25 @@
 
 <!-- Header -->
 {{ partial "header.html" . }}
+<section class="navbar-subheader">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li class="item">
+        <a class="link" href="{{ .Site.BaseURL }}">サポートページ</a>
+      </li>
+      <li class="item">
+        <a class="link" href="{{ .Site.BaseURL }}sdk/">SDKドキュメント</a>
+      </li>
+      {{ if in .Permalink "api" }}
+        <li class="item"><a class="link">APIリファレンス</a></li>
+      {{ end }}
+      {{ if in .Permalink "guide" }}
+        <li class="item"><a class="link">ガイド</a></li>
+      {{ end }}
+    </ul>
+  </div>
+</section>
+
 
 <!-- Header -->
 <div class="content">
@@ -16,7 +35,13 @@
 
 <div class="page-container">
     <span class="updated">最終更新日 {{ .Date.Format .Site.Params.DateForm }}</span>
-    <h1 class="title">API リファレンス</h1>
+    <h1 class="title">
+    {{ if in .Permalink "api" }}
+      API リファレンス
+　　 {{ else if in .Permalink "guide" }}
+      ガイド
+    {{ end }}
+    </h1>
     <a class="edit" href="https://github.com/growthbeat/docs/blob/master/content/sdk/ios/api.md">Edit on GitHub</a>
 </div>
 

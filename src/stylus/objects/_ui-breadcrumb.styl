@@ -1,0 +1,20 @@
+.breadcrumb
+  padding 0 20px
+
+.breadcrumb > .item
+  list-style-type none
+  display inline-block
+
+.breadcrumb > .item > .link
+  color #959FA5
+
+.breadcrumb > .item:not(:last-child)::after
+  display inline-block
+  content ""
+  height 16px
+  width 16px
+  padding 0 20px
+  position relative
+  top -1px
+  background url(../img/separator.svg) no-repeat center center
+  vertical-align middle
