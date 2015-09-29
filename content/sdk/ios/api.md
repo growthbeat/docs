@@ -8,53 +8,73 @@ title: Growthbeat iOS API
 
 # メソッド一覧
 
-端末やユーザーの情報をGrowth Analyticsへ送信します。送信することでGrowth Analytics上で解析・分析を行うことができます。取得したい情報を、任意の場所に実装してください。
+端末やユーザーの情報を Growth Analytics へ送信します。送信することで Growth Analytics 上で解析・分析を行うことができます。取得したい情報を任意の場所に実装してください。
 
 ## setBasicTags
 
 
-## open（起動）
+## open
+
+ユーザーの起動イベントを送信します。セッション時間の計測を開始するために必要なメソッドです。`AppDelegateのapplicationDidBecomeActive:` に以下のコードを実装してください:
+
+```objc
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    [[GrowthAnalytics sharedInstance] open];
+    [[GrowthAnalytics sharedInstance] setBasicTags];
+}
+```
 
 
-## close（終了）
+## close
+
+アプリの終了イベントを送信します。セッション時間の計測を停止します。`AppDelegateのapplicationWillResignActive:` に以下のコードを実装してください。
+
+```objc
+- (void)applicationWillResignActive:(UIApplication *)application {
+    [[GrowthAnalytics sharedInstance] close];
+}
+```
 
 
+## purchase
 
-**課金情報を送信する**
-
-課金時にメソッドを呼び、課金額、アイテムのカテゴリなどを送信することができます。
+課金情報を送信します。課金時にメソッドを呼び、課金額、アイテムのカテゴリなどを送信することができます。
 
 ```objc
 [[GrowthAnalytics sharedInstance] purchase:price setCategory:@"ITEM_CATEGORY" setProduct:@"ITEM_NAME"];
 ```
 
-**ユニークなユーザーIDを送信**
 
-アプリのユニークなユーザーIDを送信します。
+## setUserId
+
+ユニークなユーザーIDを送信。アプリのユニークなユーザーIDを送信します。
 
 ```objc
 [[GrowthAnalytics sharedInstance] setUserId:@"YOUR_USER_ID"];
 ```
 
-**ユーザー名を送信**
 
-アプリのユーザー名を送信します。
+## setName
+
+ユーザー名を送信。アプリのユーザー名を送信します。
 
 ```objc
 [[GrowthAnalytics sharedInstance] setName:@"YOUR_NAME"];
 ```
 
-**年齢を送信**
 
-アプリのユーザーの年齢を送信します。
+## setAge
+
+年齢を送信。アプリのユーザーの年齢を送信します。
 
 ```objc
 [[GrowthAnalytics sharedInstance] setAge:age];
 ```
 
-**性別を送信**
 
-変数は、GAGenderを用いてどちらか性別を送信してください。
+## setGender
+
+性別を送信。変数は、`GAGender`を用いてどちらか性別を送信してください。
 
 ```objc
 // 男性
@@ -64,108 +84,116 @@ title: Growthbeat iOS API
 [[GrowthAnalytics sharedInstance] setGender:GAGenderFemale];
 ```
 
-**レベルを送信**
+## setLevel
 
-アプリのユーザーのレベルを送信します。
+レベルを送信。アプリのユーザーのレベルを送信します。
 
 ```objc
 [[GrowthAnalytics sharedInstance] setLevel:level];
 ```
 
-**開発用の紐付け**
 
-開発用のフラグをつける
+## setDevelopment
+
+開発用の紐付け。開発用のフラグをつける
 
 ```objc
 [[GrowthAnalytics sharedInstance] setDevelopment:YES]:
 ```
 
-**端末モデル名を送信**
 
-端末のモデル名を送信します。
+## setDeviceModel
 
-例.)iPhone, iPad
+端末モデル名を送信。端末のモデル名を送信します。
+
+例: iPhone, iPad
 
 ```objc
 [[GrowthAnalytics sharedInstance] setDeviceModel];
 ```
 
-**端末OSを送信**
 
-端末のOSを送信します。
+## setOS
 
-例.) iOS 8.0, iOS 8.4
+端末OSを送信。端末のOSを送信します。
+
+例: iOS 8.0, iOS 8.4
 
 ```objc
 [[GrowthAnalytics sharedInsance] setOS];
 ```
 
-**端末の言語設定を送信**
 
-端末の設定言語を送信します。
+## setLanguage
 
-例.) ja, en
+端末の言語設定を送信。端末の設定言語を送信します。
+
+例: ja, en
 
 ```objc
 [[GrowthAnalytics sharedInstance] setLanguage];
 ```
 
-**タイムゾーンを送信する**
 
-端末で設定されたタイムゾーンを送信する。
+## setTimeZone
 
-例.) Asia/Tokyo, America/Los_Angeles
+タイムゾーンを送信する。端末で設定されたタイムゾーンを送信する。
+
+例: Asia/Tokyo, America/Los_Angeles
 
 ```objc
 [[GrowthAnalytics sharedInstance] setTimeZone];
 ```
 
-**タイムゾーンオフセットを送信**
 
-端末の設定された時刻から、標準時刻の差分時間を送信します。
+## setTimeZoneOffset
 
-例.) 9, -11
+タイムゾーンオフセットを送信。端末の設定された時刻から、標準時刻の差分時間を送信します。
 
+例: 9, -11
 
 ```objc
 [[GrowthAnalytics sharedInstance] setTimeZoneOffset];
 ```
 
-**アプリバージョンを送信**
 
-アプリに設定されたアプリバージョンを送信します。
+## setAppVersion
 
-Info.plistのCFBundleVersionに設定している値が入ります。
+アプリバージョンを送信。アプリに設定されたアプリバージョンを送信します。
+`Info.plist` の `CFBundleVersion に設定している値が入ります。
 
 ```objc
 [[GrowthAnalytics sharedInstance] setAppVersion];
 ```
 
-**乱数を送信**
 
-乱数を端末の情報として紐付けます。
+## setRandom
+
+乱数を送信例。乱数を端末の情報として紐付けます。
 
 ```objc
 [[GrowthAnalytics sharedInstance] setRandom];
 ```
 
-**広告IDを送信**
 
-広告IDを送信します。
+## setAdvertisingId
 
-***広告の表示欄がないアプリで利用すると申請時にリジェクトをされる可能性が高いので設定される場合は、十分にご注意ください。***
+広告IDを送信。広告IDを送信します。広告の表示欄がないアプリで利用すると申請時にリジェクトをされる可能性が高いので設定される場合は、十分にご注意ください。
 
 ```objc
 [[Growthbeat sharedInstance] setAdvertisingId];
 ```
 
-**広告オプトアウトの送信**
+## setTrackingEnabled
 
-ユーザーが広告IDを利用するのを拒否しているかを送信します。
+広告オプトアウトの送信。ユーザーが広告IDを利用するのを拒否しているかを送信します。
 
 ```objc
 [[Growthbeat sharedInstance] setTrackingEnabled];
 ```
+
+
+## 
 
 #### カスタムイベント・タグを送信する
 
