@@ -1,6 +1,6 @@
 ---
 categories: 'sdk'
-date: 2015-09-29T23:47:00+09:00
+date: 2015-09-27T23:47:00+09:00
 description: 'Growthbeat iOS の導入方法について説明します'
 draft: false
 title: Growthbeat iOS Gudeliene
