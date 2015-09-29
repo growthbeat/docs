@@ -12,6 +12,21 @@ title: Growthbeat iOS API
 
 ## setBasicTags
 
+setBasicTagsメソッドは端末のデータを送信します。このメソッドには、下記が含まれます。
+
+- setDeviceModel
+- setOs
+- setLanguage
+- setTimeZone
+- setTimeZoneOffset
+- setAppVersion
+- setAdvertisingId
+- setTrackingEnabled
+
+```objc
+[[GrowthAnalytics sharedInstance] setBasicTags];
+```
+
 
 ### open
 
