@@ -2,7 +2,7 @@
 categories: 'sdk'
 date: 2015-07-15T14:32:58+09:00
 description: 'Growthbeat Web の導入方法について説明します'
-draft: true
+draft: false
 title: Growthbeat Web Gudeliene
 ---
 
