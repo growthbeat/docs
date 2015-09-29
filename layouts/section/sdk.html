@@ -5,6 +5,7 @@
 <!--[if lt IE 10]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
+<div class="wrapper">
 
 <!-- Header -->
 {{ partial "header.html" . }}
@@ -44,7 +45,7 @@
     <div class="card-links">
       <a class="link api" href="{{ .Permalink }}ios/api/">APIリファレンス</a>
       <a class="link guide" href="{{ .Permalink }}ios/guide/">ガイド</a>
-      <a class="link release" href="https://github.com/SIROK/growthbeat-ios/releases">リリースノート</a>
+      <a class="link release" href="{{ .Permalink }}ios/release">リリースノート</a>
     </div>
   </div>
   <div class="android sdk-card">
@@ -153,5 +154,7 @@
 
 <!-- Footer -->
 {{ partial "footer.html" . }}
+
+</div><!-- /wrapper -->
 </body>
 </html>
