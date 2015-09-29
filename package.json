@@ -40,6 +40,6 @@
   },
   "dependencies": {
     "babel-core": "^5.8.25",
-    "highlight.js": "^8.7.0"
+    "highlight.js": "^8.8.0"
   }
 }
