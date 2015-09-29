@@ -27,27 +27,24 @@
 </section>
 
 <section class="row">
-  <div class="column column-sidebar">
-    <ul>
-    {{ range .Data.Pages }}
-      <li>{{ .Title }}</li>
-    {{ end }}
-    </ul>
+  <div class="column column-sidebar" id="TableOfContents">
+    <nav id="TableOfContents">
+      <ul>
+        <li><a href="">よくある質問</a></li>
+      </ul>
+    </nav>
   </div>
   <div class="column column-main">
 
     <div class="faq-header">
-      <h2 class="title">新しい質問</h2>
-      <p class="description">このページではグロースハックツールプラットフォーム「Growthbeat」に関する新しい質問の回答一覧を見ることができます。</p>
+      <h2 class="title">よくある質問</h2>
+      <p class="description">このページではグロースハックツールプラットフォーム「Growthbeat」に関するよくある質問の回答一覧を見ることができます。</p>
     </div>
 
     {{ range .Data.Pages }}
       <div class="faq-content">
       　<h3 class="title">{{ .Title }}<span class="updated">更新日：{{ .Date.Format .Site.Params.DateForm }}</span></h3>
         <div class="summary">{{ .Summary }}</div>
-        {{ if .Truncated }}
-        <a class="link" href="{{ .RelPermalink }}">詳細へ</a>
-        {{ end }}
       </div>
     {{ end }}
   </div>
