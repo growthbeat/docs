@@ -47,7 +47,9 @@ $ script/server
 
 ## Usage
 
-Follow these steps to post an new article:
+**Write a new article**
+
+Follow these steps to post a new article:
 
 ```bash
 # Write an article
@@ -59,6 +61,10 @@ $ git add .
 $ git commit -m "message"
 $ git push
 ```
+
+**Update an article**
+
+After updating existing article in content, please change `date`. It is used as update date in this site.
 
 
 ## Deployment
