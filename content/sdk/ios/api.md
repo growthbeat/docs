@@ -2,17 +2,64 @@
 categories: 'sdk'
 date: 2015-09-14T14:32:58+09:00
 description: 'Growthbeat iOS の API について説明します'
-draft: true
+draft: false
 title: Growthbeat iOS API
 ---
 
-# メソッド一覧
+# Growthbeat iOS API
 
-端末やユーザーの情報を Growth Analytics へ送信します。送信することで Growth Analytics 上で解析・分析を行うことができます。取得したい情報を任意の場所に実装してください。
+## SDK実装リファレンス
 
-## setBasicTags
+### 初期化 デバイス登録・認証
 
-setBasicTagsメソッドは端末のデータを送信します。このメソッドには、下記が含まれます。
+Growthbeatへデバイス登録・認証を行います。
+
+```objc
+[[Growthbeat sharedInstance] initializeWithApplicationId:@"YOUR_APLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID"];
+```
+
+### ユーザー属性、行動ログの付与 (Growth Analyticsの利用)
+
+Growth Analyticsの初期化をします。初期化の中に、端末の基本情報の送信、広告IDの取得が行われます。
+
+送信されたデータは、Growth Analytics管理画面をご覧ください。
+
+#### 端末・ユーザー情報を送信方法と、実装の説明
+
+端末やユーザーの情報をGrowth Analyticsへ送信します。送信することでGrowth Analytics上で解析・分析を行うことができます。取得したい情報を、任意の場所に実装してください。
+
+あらかじめ特定のタグやイベントを送信するためのメソッドを用意しております。
+
+
+- *setBasicTags* 基本情報となるタグのセットです。
+- *open* 起動イベントを送信します。
+- *close* 終了イベントを送信します。
+- *purchase* 課金イベントを送信します。
+- *setUserId* アプリのユニークなUserIdを送信します。
+- *setName* アプリのユーザー名を送信します。
+- *setAge* アプリのユーザーの年齢を送信します。
+- *setGender* アプリのユーザーの性別を送信します。
+- *setLevel* アプリのユーザーのレベルを送信します。
+- *setDevelopment* 開発用のフラグを送信します。
+- *setDeviceModel* 端末のモデルを送信します。
+- *setOS* 端末のOS
+- *setLanguage* 端末の言語設定
+- *setTimeZone* 端末のタイムゾーン
+- *setTimeZoneOffset* 端末の標準時刻からの差
+- *setAppVersion* アプリの設定されているバージョン
+- *setRandom* 乱数を送信します。
+- *setAdvertisingId* 広告IDを送信します。
+
+また、上記で予め用意されているタグ、イベント以外でも下記メソッドを使用することで、カスタムタグ、カスタムイベントが送信できます。
+
+- *track* カスタムイベントを送信します。
+- *tag* カスタムタグを送信します。
+
+#### 端末のデータを送信
+
+setBasicTagsメソッドは端末のデータを送信します。
+
+このメソッドには、下記が含まれます。
 
 - setDeviceModel
 - setOs
@@ -27,10 +74,13 @@ setBasicTagsメソッドは端末のデータを送信します。このメソ�
 [[GrowthAnalytics sharedInstance] setBasicTags];
 ```
 
+#### 特定のイベント・タグを送信する
 
-### open
+**起動 (open)**
 
-ユーザーの起動イベントを送信します。セッション時間の計測を開始するために必要なメソッドです。`AppDelegate` のapplicationDidBecomeActive: に以下のコードを実装してください:
+ユーザーの起動イベントを送信します。セッション時間の計測を開始するために必要なメソッドです。
+
+AppDelegateのapplicationDidBecomeActive:に以下を実装してください。
 
 ```objc
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -39,10 +89,11 @@ setBasicTagsメソッドは端末のデータを送信します。このメソ�
 }
 ```
 
+**終了 (close)**
 
-### close
+アプリの終了イベントを送信します。セッション時間の計測を停止します。
 
-アプリの終了イベントを送信します。セッション時間の計測を停止します。`AppDelegateのapplicationWillResignActive:` に以下のコードを実装してください。
+AppDelegateのapplicationWillResignActive:に以下を実装してください。
 
 ```objc
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -50,46 +101,41 @@ setBasicTagsメソッドは端末のデータを送信します。このメソ�
 }
 ```
 
+**課金情報を送信する**
 
-### purchase
-
-課金情報を送信します。課金時にメソッドを呼び、課金額、アイテムのカテゴリなどを送信することができます。
+課金時にメソッドを呼び、課金額、アイテムのカテゴリなどを送信することができます。
 
 ```objc
 [[GrowthAnalytics sharedInstance] purchase:price setCategory:@"ITEM_CATEGORY" setProduct:@"ITEM_NAME"];
 ```
 
+**ユニークなユーザーIDを送信**
 
-### setUserId
-
-ユニークなユーザーIDを送信。アプリのユニークなユーザーIDを送信します。
+アプリのユニークなユーザーIDを送信します。
 
 ```objc
 [[GrowthAnalytics sharedInstance] setUserId:@"YOUR_USER_ID"];
 ```
 
+**ユーザー名を送信**
 
-### setName
-
-ユーザー名を送信。アプリのユーザー名を送信します。
+アプリのユーザー名を送信します。
 
 ```objc
 [[GrowthAnalytics sharedInstance] setName:@"YOUR_NAME"];
 ```
 
+**年齢を送信**
 
-### setAge
-
-年齢を送信。アプリのユーザーの年齢を送信します。
+アプリのユーザーの年齢を送信します。
 
 ```objc
 [[GrowthAnalytics sharedInstance] setAge:age];
 ```
 
+**性別を送信**
 
-### setGender
-
-性別を送信。変数は、`GAGender`を用いてどちらか性別を送信してください。
+変数は、GAGenderを用いてどちらか性別を送信してください。
 
 ```objc
 // 男性
@@ -99,116 +145,108 @@ setBasicTagsメソッドは端末のデータを送信します。このメソ�
 [[GrowthAnalytics sharedInstance] setGender:GAGenderFemale];
 ```
 
-### setLevel
+**レベルを送信**
 
-レベルを送信。アプリのユーザーのレベルを送信します。
+アプリのユーザーのレベルを送信します。
 
 ```objc
 [[GrowthAnalytics sharedInstance] setLevel:level];
 ```
 
+**開発用の紐付け**
 
-### setDevelopment
-
-開発用の紐付け。開発用のフラグをつける
+開発用のフラグをつける
 
 ```objc
 [[GrowthAnalytics sharedInstance] setDevelopment:YES]:
 ```
 
+**端末モデル名を送信**
 
-### setDeviceModel
+端末のモデル名を送信します。
 
-端末モデル名を送信。端末のモデル名を送信します。
-
-例: iPhone, iPad
+例.)iPhone, iPad
 
 ```objc
 [[GrowthAnalytics sharedInstance] setDeviceModel];
 ```
 
+**端末OSを送信**
 
-### setOS
+端末のOSを送信します。
 
-端末OSを送信。端末のOSを送信します。
-
-例: iOS 8.0, iOS 8.4
+例.) iOS 8.0, iOS 8.4
 
 ```objc
 [[GrowthAnalytics sharedInsance] setOS];
 ```
 
+**端末の言語設定を送信**
 
-### setLanguage
+端末の設定言語を送信します。
 
-端末の言語設定を送信。端末の設定言語を送信します。
-
-例: ja, en
+例.) ja, en
 
 ```objc
 [[GrowthAnalytics sharedInstance] setLanguage];
 ```
 
+**タイムゾーンを送信する**
 
-### setTimeZone
+端末で設定されたタイムゾーンを送信する。
 
-タイムゾーンを送信する。端末で設定されたタイムゾーンを送信する。
-
-例: Asia/Tokyo, America/Los_Angeles
+例.) Asia/Tokyo, America/Los_Angeles
 
 ```objc
 [[GrowthAnalytics sharedInstance] setTimeZone];
 ```
 
+**タイムゾーンオフセットを送信**
 
-### setTimeZoneOffset
+端末の設定された時刻から、標準時刻の差分時間を送信します。
 
-タイムゾーンオフセットを送信。端末の設定された時刻から、標準時刻の差分時間を送信します。
+例.) 9, -11
 
-例: 9, -11
 
 ```objc
 [[GrowthAnalytics sharedInstance] setTimeZoneOffset];
 ```
 
+**アプリバージョンを送信**
 
-### setAppVersion
+アプリに設定されたアプリバージョンを送信します。
 
-アプリバージョンを送信。アプリに設定されたアプリバージョンを送信します。
-`Info.plist` の `CFBundleVersion に設定している値が入ります。
+Info.plistのCFBundleVersionに設定している値が入ります。
 
 ```objc
 [[GrowthAnalytics sharedInstance] setAppVersion];
 ```
 
+**乱数を送信**
 
-### setRandom
-
-乱数を送信例。乱数を端末の情報として紐付けます。
+乱数を端末の情報として紐付けます。
 
 ```objc
 [[GrowthAnalytics sharedInstance] setRandom];
 ```
 
+**広告IDを送信**
 
-### setAdvertisingId
+広告IDを送信します。
 
-広告IDを送信。広告IDを送信します。広告の表示欄がないアプリで利用すると申請時にリジェクトをされる可能性が高いので設定される場合は、十分にご注意ください。
+***広告の表示欄がないアプリで利用すると申請時にリジェクトをされる可能性が高いので設定される場合は、十分にご注意ください。***
 
 ```objc
 [[Growthbeat sharedInstance] setAdvertisingId];
 ```
 
-### setTrackingEnabled
+**広告オプトアウトの送信**
 
-広告オプトアウトの送信。ユーザーが広告IDを利用するのを拒否しているかを送信します。
+ユーザーが広告IDを利用するのを拒否しているかを送信します。
 
 ```objc
 [[Growthbeat sharedInstance] setTrackingEnabled];
 ```
-
-
-##
 
 #### カスタムイベント・タグを送信する
 
@@ -216,10 +254,10 @@ setBasicTagsメソッドは端末のデータを送信します。このメソ�
 
 任意のイベントを取得することが出来ます。カスタムイベントには、それぞれ一意のEventIDを割り当てる必要があります。
 
-- EventID: `Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>`
-    - 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。
-    - `YOUR_APPLICATION_ID`: ApplicationIDを指定されます。
-    - `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
+- EventID: `Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>`  
+	- 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。
+	- `YOUR_APPLICATION_ID`: ApplicationIDを指定されます。
+	- `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
 
 **カスタムイベントの送信**
 
@@ -257,10 +295,10 @@ setBasicTagsメソッドは端末のデータを送信します。このメソ�
 
 任意のタグを取得することが出来ます。カスタムタグには、それぞれ一意のTagIDを割り当てる必要があります。
 
-- TagID: `Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>`
-    - 上記全文で一意なTagIDと認識されます。大文字小文字は区別されません。
-    - `YOUR_APPLICATION_ID`: ApplicationIDを指定されます。
-    - `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
+- TagID: `Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>`  
+	- 上記全文で一意なTagIDと認識されます。大文字小文字は区別されません。
+	- `YOUR_APPLICATION_ID`: ApplicationIDを指定されます。
+	- `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
 
 **カスタムタグの送信**
 
@@ -288,10 +326,10 @@ setBasicTagsメソッドは端末のデータを送信します。このメソ�
 特定のネームスペース、イベントIDを設定していただくことが可能です。下記、イベントID発行例となります。
 
 - EventID: `Event:<YOUR_APPLICATION_ID>:<NAMESPACE>:<EVENT_ID>`
-    - 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。
-    - `YOUR_APPLICATION_ID`: ApplicationIDを指定されます。
-    - `NAMESPACE`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
-    - `EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
+	- 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。
+	- `YOUR_APPLICATION_ID`: ApplicationIDを指定されます。
+	- `NAMESPACE`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
+	- `EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
 
 ##### メソッド
 
@@ -326,11 +364,11 @@ setBasicTagsメソッドは端末のデータを送信します。このメソ�
 
 特定のネームスペース、タグIDを設定していただくことが可能です。下記、タグID発行例となります。
 
-- TagID: `Tag:<YOUR_APPLICATION_ID>:<NAMESPACE>:<TAG_ID>`
-    - 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。
-    - `YOUR_APPLICATION_ID`: ApplicationIDを指定されます。
-    - `NAMESPACE`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
-    - `TAG_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
+- TagID: `Tag:<YOUR_APPLICATION_ID>:<NAMESPACE>:<TAG_ID>`  
+	- 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。
+	- `YOUR_APPLICATION_ID`: ApplicationIDを指定されます。
+	- `NAMESPACE`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
+	- `TAG_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
 
 ##### メソッド
 
@@ -365,18 +403,18 @@ XCodeプロジェクトのBuild Setting > Provisioning Profileの設定をして
 
 1. Growthhbeat#initializeWithApplicationIdの後に下記を呼び出す
 
-    ```
-    [[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
-    ```
+	```
+	[[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
+	```
 
 1. ApplicationDelegateにて下記を追加
 
-    ```
-    - (void)application:(UIApplication *)application
-    didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-        [[GrowthPush sharedInstance] setDeviceToken:deviceToken];
-    }
-    ```
+	```
+	- (void)application:(UIApplication *)application
+	didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+	    [[GrowthPush sharedInstance] setDeviceToken:deviceToken];
+	}
+	```
 
 #### イベント・タグの取得
 
@@ -554,13 +592,13 @@ GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行される�
 
 ```
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Growthbeat SDKの初期化
-    [[Growthbeat sharedInstance] initializeWithApplicationId:@"YOUR_APPLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID"];
-    // デバイストークンを明示的に要求
-    [[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
+	// Growthbeat SDKの初期化
+	[[Growthbeat sharedInstance] initializeWithApplicationId:@"YOUR_APPLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID"];
+	// デバイストークンを明示的に要求
+	[[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
 
-    // deviceTagの取得
-    [[GrowthPush sharedInstance] setDeviceTags];
+	// deviceTagの取得
+	[[GrowthPush sharedInstance] setDeviceTags];
 }
 ```
 
@@ -570,13 +608,13 @@ GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行される�
 
 ```
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+	// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 
-    // バッチの削除
-    [[GrowthPush sharedInstance] clearBadge];
+	// バッチの削除
+	[[GrowthPush sharedInstance] clearBadge];
 
-    // Launchイベントの取得
-    [[GrowthPush sharedInstance] trackEvent:@"Launch"];
+	// Launchイベントの取得
+	[[GrowthPush sharedInstance] trackEvent:@"Launch"];
 }
 ```
 
@@ -585,8 +623,8 @@ GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行される�
 - Growthbeat SDK
 ```
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    // デバイストークンをGrowhPushに送信
-    [[GrowthPush sharedInstance] setDeviceToken:deviceToken];
+	// デバイストークンをGrowhPushに送信
+	[[GrowthPush sharedInstance] setDeviceToken:deviceToken];
 }
 ```
 
