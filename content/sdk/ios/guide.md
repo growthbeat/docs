@@ -28,10 +28,10 @@ Growthbeat を利用するにはウェブページから新規登録をしてい
 
 Growthbeat は現在 iOS, Android, Unity に対応しております。Cocos-2D-X も対応予定はしておりますので別途ご相談ください。
 
-- [Growthbeat iOS SDK](https://github.com/SIROK/growthbeat-ios)
-- [Growthbeat Android SDK](https://github.com/SIROK/growthbeat-android)
-- [Growthbeat Unity SDK](https://github.com/SIROK/growthbeat-unity)
-- [Growthbeat Growthbeat Cocos2D-X SDK SDK](https://github.com/SIROK/growthbeat-cocos2dx)
+* [Growthbeat iOS SDK](https://github.com/SIROK/growthbeat-ios)
+* [Growthbeat Android SDK](https://github.com/SIROK/growthbeat-android)
+* [Growthbeat Unity SDK](https://github.com/SIROK/growthbeat-unity)
+* [Growthbeat Growthbeat Cocos2D-X SDK SDK](https://github.com/SIROK/growthbeat-cocos2dx)
 
 ### SDK機能
 
@@ -60,7 +60,7 @@ Growthbeat は現在 iOS, Android, Unity に対応しております。Cocos-2D-
 
 **CocoaPods**
 
-CocoaPodsを使用してライブラリをインポートすることも可能です。その際は、`Podfile` に下記を記述し `pod install` を実行してください:
+CocoaPodsを使用してライブラリをインポートすることも可能です。その際は、`Podfile` に下記を記述し `pod install` を実行してください：
 
 ```ruby
 pod 'Growthbeat'
@@ -68,7 +68,7 @@ pod 'Growthbeat'
 
 ### 依存について
 
-Growthbeat.framework　には下記 Framework が必須です:
+Growthbeat.framework　には下記 Framework が必須となります：
 
 * Foundation.framework
 * UIKit.framework
@@ -86,6 +86,6 @@ Growthbeat 管理画面からアプリケーション ID と SDK キーを取得
 * API キー（REST API を使用時の認証に必須となるキー）
 * SDK キー（SDK の認証のために必須となるキー）
 
-各サービスのヘッダーのアカウント名をクリックしします。そして、表示されるメニューから**マイページ**をお選びください。Growthbeat マイページから API キー と SDKキーを見ることができます
+各サービスのヘッダーのアカウント名をクリックしします。そして、表示されるメニューから **マイページ** をお選びください。Growthbeat マイページから API キー と SDKキーを見ることができます
 
 また、アプリケーション ID は Growthbeat のマイページから任意のアプリケーションを選択し、アプリケーション ID を控えてください。
