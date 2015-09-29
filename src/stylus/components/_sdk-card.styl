@@ -18,7 +18,6 @@
     width 303px
     margin 20px
     padding 0
-    cursor pointer
     border-color #C5CDD3
 
 
@@ -57,9 +56,11 @@
     margin-bottom 5px
 
   & > .sdk-version
+      @extend .cf
       margin-left 100px
       & > .version,
       & > .value
+        font-weight 100
         color #A8B5BA
 
       & > .version
@@ -78,6 +79,9 @@
   color #5E9ADD
   border-color #5E9ADD
   padding 5px 0
+  font-size 14px
+  font-weight 900
+  letter-spacing .05em
   &:hover
     background #5E9ADD
     color #fff
