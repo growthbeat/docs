@@ -31,7 +31,7 @@ Growthbeatは、現在iOS, Android, Unityに対応しております。Cocos-2D-
 - [Growthbeat iOS SDK](https://github.com/SIROK/growthbeat-ios)
 - [Growthbeat Android SDK](https://github.com/SIROK/growthbeat-android)
 - [Growthbeat Unity SDK](https://github.com/SIROK/growthbeat-unity)
-- - [Growthbeat Growthbeat Cocos2D-X SDK SDK](https://github.com/SIROK/growthbeat-cocos2dx)
+- [Growthbeat Growthbeat Cocos2D-X SDK SDK](https://github.com/SIROK/growthbeat-cocos2dx)
 
 ### SDK機能
 

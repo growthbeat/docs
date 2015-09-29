@@ -1,647 +1,138 @@
-.typeset
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  color: #333;
-  overflow: hidden;
-  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  word-wrap: break-word;
-
-
-.typeset a
-  background-color: transparent;
-
-
-.typeset a:active,
-.typeset a:hover
-  outline: 0;
-
-
-.typeset strong
-  font-weight: bold;
-
-
-.typeset h1
-  font-size: 2em;
-  margin: 0.67em 0;
-
-
-.typeset img
-  border: 0;
-
-
-.typeset hr
-  box-sizing: content-box;
-  height: 0;
-
-
-.typeset pre
-  overflow: auto;
-
-
-.typeset code,
-.typeset kbd,
-.typeset pre
-  font-family: monospace, monospace;
-  font-size: 1em;
-
-
-.typeset input
-  color: inherit;
-  font: inherit;
-  margin: 0;
-
-
-.typeset html input[disabled]
-  cursor: default;
-
-
-.typeset input
-  line-height: normal;
-
-
-.typeset input[type="checkbox"]
-  box-sizing: border-box;
-  padding: 0;
-
-
-.typeset table
-  border-collapse: collapse;
-  border-spacing: 0;
-
-
-.typeset td,
-.typeset th
-  padding: 0;
-
-
-.typeset *
-  box-sizing: border-box;
-
-
-.typeset input
-  font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-
-
-.typeset a
-  color: #4078c0;
-  text-decoration: none;
-
-
-.typeset a:hover,
-.typeset a:active
-  text-decoration: underline;
-
-
-.typeset hr
-  height: 0;
-  margin: 15px 0;
-  overflow: hidden;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid #ddd;
-
-
-.typeset hr:before
-  display: table;
-  content: "";
-
-
-.typeset hr:after
-  display: table;
-  clear: both;
-  content: "";
-
-
-.typeset h1,
-.typeset h2,
-.typeset h3,
-.typeset h4,
-.typeset h5,
-.typeset h6
-  margin-top: 15px;
-  margin-bottom: 15px;
-  line-height: 1.1;
-
-
-.typeset h1
-  font-size: 30px;
-
-
-.typeset h2
-  font-size: 21px;
-
-
-.typeset h3
-  font-size: 16px;
-
-
-.typeset h4
-  font-size: 14px;
-
-
-.typeset h5
-  font-size: 12px;
-
-
-.typeset h6
-  font-size: 11px;
-
-
-.typeset blockquote
-  margin: 0;
-
-
-.typeset ul,
-.typeset ol
-  padding: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-
-
-.typeset ol ol,
-.typeset ul ol
-  list-style-type: lower-roman;
-
-
-.typeset ul ul ol,
-.typeset ul ol ol,
-.typeset ol ul ol,
-.typeset ol ol ol
-  list-style-type: lower-alpha;
-
-
-.typeset dd
-  margin-left: 0;
-
-
-.typeset code
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  font-size: 12px;
-
-
-.typeset pre
-  margin-top: 0;
-  margin-bottom: 0;
-  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
-
-
-.typeset .select::-ms-expand
-  opacity: 0;
-
-
-.typeset .octicon
-  font: normal normal normal 16px/1 octicons-anchor;
-  display: inline-block;
-  text-decoration: none;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-
-
-.typeset .octicon-link:before
-  content: '\f05c';
-
-
-.typeset>*:first-child
-  margin-top: 0 !important;
-
-
-.typeset>*:last-child
-  margin-bottom: 0 !important;
-
-
-.typeset a:not([href])
-  color: inherit;
-  text-decoration: none;
-
-
-.typeset .anchor
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  padding-right: 6px;
-  padding-left: 30px;
-  margin-left: -30px;
-
-
-.typeset .anchor:focus
-  outline: none;
-
-
-.typeset h1,
-.typeset h2,
-.typeset h3,
-.typeset h4,
-.typeset h5,
-.typeset h6
-  position: relative;
-  margin-top: 1em;
-  margin-bottom: 16px;
-  font-weight: bold;
-  line-height: 1.4;
-
-
-.typeset h1 .octicon-link,
-.typeset h2 .octicon-link,
-.typeset h3 .octicon-link,
-.typeset h4 .octicon-link,
-.typeset h5 .octicon-link,
-.typeset h6 .octicon-link
-  display: none;
-  color: #000;
-  vertical-align: middle;
-
-
-.typeset h1:hover .anchor,
-.typeset h2:hover .anchor,
-.typeset h3:hover .anchor,
-.typeset h4:hover .anchor,
-.typeset h5:hover .anchor,
-.typeset h6:hover .anchor
-  padding-left: 8px;
-  margin-left: -30px;
-  text-decoration: none;
-
-
-.typeset h1:hover .anchor .octicon-link,
-.typeset h2:hover .anchor .octicon-link,
-.typeset h3:hover .anchor .octicon-link,
-.typeset h4:hover .anchor .octicon-link,
-.typeset h5:hover .anchor .octicon-link,
-.typeset h6:hover .anchor .octicon-link
-  display: inline-block;
-
-
-.typeset h1
-  padding-bottom: 0.3em;
-  font-size: 2.25em;
-  line-height: 1.2;
-  border-bottom: 1px solid #eee;
-
-
-.typeset h1 .anchor
-  line-height: 1;
-
-
-.typeset h2
-  padding-bottom: 0.3em;
-  font-size: 1.75em;
-  line-height: 1.225;
-  border-bottom: 1px solid #eee;
-
-
-.typeset h2 .anchor
-  line-height: 1;
-
-
-.typeset h3
-  font-size: 1.5em;
-  line-height: 1.43;
-
-
-.typeset h3 .anchor
-  line-height: 1.2;
-
-
-.typeset h4
-  font-size: 1.25em;
-
-
-.typeset h4 .anchor
-  line-height: 1.2;
-
-
-.typeset h5
-  font-size: 1em;
-
-
-.typeset h5 .anchor
-  line-height: 1.1;
-
-
-.typeset h6
-  font-size: 1em;
-  color: #777;
-
-
-.typeset h6 .anchor
-  line-height: 1.1;
-
-
 .typeset p,
-.typeset blockquote,
-.typeset ul,
-.typeset ol,
-.typeset dl,
 .typeset table,
-.typeset pre
-  margin-top: 0;
-  margin-bottom: 16px;
-
-
-.typeset hr
-  height: 4px;
-  padding: 0;
-  margin: 16px 0;
-  background-color: #e7e7e7;
-  border: 0 none;
-
-
+.typeset h1,
+.typeset h2,
+.typeset h3,
+.typeset h4,
+.typeset h5,
+.typeset h6,
 .typeset ul,
 .typeset ol
-  padding-left: 2em;
+  margin-bottom 17px
 
 
-.typeset ul ul,
-.typeset ul ol,
-.typeset ol ol,
-.typeset ol ul
-  margin-top: 0;
-  margin-bottom: 0;
-
-
-.typeset li>p
-  margin-top: 16px;
-
-
-.typeset dl
-  padding: 0;
-
-
-.typeset dl dt
-  padding: 0;
-  margin-top: 16px;
-  font-size: 1em;
-  font-style: italic;
-  font-weight: bold;
-
-
-.typeset dl dd
-  padding: 0 16px;
-  margin-bottom: 16px;
-
-
-.typeset blockquote
-  padding: 0 15px;
-  color: #777;
-  border-left: 4px solid #ddd;
-
-
-.typeset blockquote>:first-child
-  margin-top: 0;
-
-
-.typeset blockquote>:last-child
-  margin-bottom: 0;
-
-
+/**
+ * Table
+ */
 .typeset table
-  display: block;
-  width: 100%;
-  overflow: auto;
-  word-break: normal;
-  word-break: keep-all;
+  width 100%
+  overflow auto
+  word-break normal
+  word-break keep-all
+  margin-bottom 1.43999rem
+  padding-top 0.56001rem
+
+.typeset table thead tr
+  border-bottom 2px solid #879094
+  font-size font-x-small
+
+.typeset table thead tr th
+  text-align left
+  padding 0px 17px 12px
+  color #879094
+  font-size 11px
+
+.typeset table tbody tr
+  border-bottom 1px solid #E9ECED
+
+.typeset table thead tr th,
+.typeset table tbody tr td
+  padding 10px 20px
 
 
-.typeset table th
-  font-weight: bold;
+/**
+ * H1
+ */
+.typeset h1,
+.typeset h2
+  color #879094
+  font-size 22px
 
 
-.typeset table th,
-.typeset table td
-  padding: 6px 13px;
-  border: 1px solid #ddd;
+/**
+ * H2
+ */
+.typeset h2
+  margin-top (17*4)px
+
+.typeset h2 ~ h3
+  margin-top (17*3)px
+
+.typeset h2 + h3
+  margin-top 0 !important
 
 
-.typeset table tr
-  background-color: #fff;
-  border-top: 1px solid #ccc;
+/**
+ * H3
+ */
+.typeset h3
+  border-bottom 1px solid #E9ECED
+  padding 0 0 12px 17px
+
+.typeset h3 ~ p,
+.typeset h3 ~ table
+  padding 0 20px
+
+.typeset h3 ~ pre
+  margin 0 20px 17px
+
+.typeset h3 ~ ul,
+.typeset h3 ~ ol
+  padding 0 40px
+
+/**
+ * List
+ */
+.typeset ul,
+.typeset ol
+  padding-left 20px
+
+.typeset ul li,
+.typeset ol li
+  margin-bottom 17px
 
 
-.typeset table tr:nth-child(2n)
-  background-color: #f8f8f8;
+/**
+ * Link
+ */
+.typeset p a,
+.typeset ul a,
+.typeset ol a
+  color color-link
+  background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%,lighten(color-link,20%) 50%);
+  background-position: 0 93%;
+  background-repeat: repeat-x;
+  background-size: 100% 0.15rem;
+  text-shadow 0.1rem 0 #fff,0.15rem 0 #fff,-0.1rem 0 #fff,-0.15rem 0 #fff
 
 
-.typeset img
-  max-width: 100%;
-  box-sizing: border-box;
-
-
-.typeset code
-  padding: 0;
-  padding-top: 0.2em;
-  padding-bottom: 0.2em;
-  margin: 0;
-  font-size: 85%;
-  background-color: rgba(0,0,0,0.04);
-  border-radius: 3px;
-
-
-.typeset code:before,
-.typeset code:after
-  letter-spacing: -0.2em;
-  content: "\00a0";
-
-
-.typeset pre>code
-  padding: 0;
-  margin: 0;
-  font-size: 100%;
-  word-break: normal;
-  white-space: pre;
-  background: transparent;
-  border: 0;
-
-
-.typeset .highlight
-  margin-bottom: 16px;
-
-
-.typeset .highlight pre,
+/**
+ * Code
+ */
 .typeset pre
-  padding: 16px;
-  overflow: auto;
-  font-size: 85%;
-  line-height: 1.45;
-  background-color: #f7f7f7;
-  border-radius: 3px;
+  padding 16px
+  overflow auto
+  font-size 85%
+  line-height 1.45
+  background-color #f7f7f7
+  border-radius 3px
+  word-wrap normal
+
+.typeset pre > code
+  display inline
+  max-width initial
+  padding 0
+  margin 0
+  overflow initial
+  line-height inherit
+  word-wrap normal
+  background-color transparent
+  border 0
+  font-size 100%
+  word-break normal
+  white-space pre
 
 
-.typeset .highlight pre
-  margin-bottom: 0;
-  word-break: normal;
-
-
-.typeset pre
-  word-wrap: normal;
-
-
-.typeset pre code
-  display: inline;
-  max-width: initial;
-  padding: 0;
-  margin: 0;
-  overflow: initial;
-  line-height: inherit;
-  word-wrap: normal;
-  background-color: transparent;
-  border: 0;
-
-
-.typeset pre code:before,
-.typeset pre code:after
-  content: normal;
-
-
-.typeset kbd
-  display: inline-block;
-  padding: 3px 5px;
-  font-size: 11px;
-  line-height: 10px;
-  color: #555;
-  vertical-align: middle;
-  background-color: #fcfcfc;
-  border: solid 1px #ccc;
-  border-bottom-color: #bbb;
-  border-radius: 3px;
-  box-shadow: inset 0 -1px 0 #bbb;
-
-
-.typeset .pl-c
-  color: #969896;
-
-
-.typeset .pl-c1,
-.typeset .pl-s .pl-v
-  color: #0086b3;
-
-
-.typeset .pl-e,
-.typeset .pl-en
-  color: #795da3;
-
-
-.typeset .pl-s .pl-s1,
-.typeset .pl-smi
-  color: #333;
-
-
-.typeset .pl-ent
-  color: #63a35c;
-
-
-.typeset .pl-k
-  color: #a71d5d;
-
-
-.typeset .pl-pds,
-.typeset .pl-s,
-.typeset .pl-s .pl-pse .pl-s1,
-.typeset .pl-sr,
-.typeset .pl-sr .pl-cce,
-.typeset .pl-sr .pl-sra,
-.typeset .pl-sr .pl-sre
-  color: #183691;
-
-
-.typeset .pl-v
-  color: #ed6a43;
-
-
-.typeset .pl-id
-  color: #b52a1d;
-
-
-.typeset .pl-ii
-  background-color: #b52a1d;
-  color: #f8f8f8;
-
-
-.typeset .pl-sr .pl-cce
-  color: #63a35c;
-  font-weight: bold;
-
-
-.typeset .pl-ml
-  color: #693a17;
-
-
-.typeset .pl-mh,
-.typeset .pl-mh .pl-en,
-.typeset .pl-ms
-  color: #1d3e81;
-  font-weight: bold;
-
-
-.typeset .pl-mq
-  color: #008080;
-
-
-.typeset .pl-mi
-  color: #333;
-  font-style: italic;
-
-
-.typeset .pl-mb
-  color: #333;
-  font-weight: bold;
-
-
-.typeset .pl-md
-  background-color: #ffecec;
-  color: #bd2c00;
-
-
-.typeset .pl-mi1
-  background-color: #eaffea;
-  color: #55a532;
-
-
-.typeset .pl-mdr
-  color: #795da3;
-  font-weight: bold;
-
-
-.typeset .pl-mo
-  color: #1d3e81;
-
-
-.typeset kbd
-  display: inline-block;
-  padding: 3px 5px;
-  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  line-height: 10px;
-  color: #555;
-  vertical-align: middle;
-  background-color: #fcfcfc;
-  border: solid 1px #ccc;
-  border-bottom-color: #bbb;
-  border-radius: 3px;
-  box-shadow: inset 0 -1px 0 #bbb;
-
-
-.typeset .task-list-item
-  list-style-type: none;
-
-
-.typeset .task-list-item+.task-list-item
-  margin-top: 3px;
-
-
-.typeset .task-list-item input
-  margin: 0 0.35em 0.25em -1.6em;
-  vertical-align: middle;
-
-
-.typeset :checked+.radio-label
-  z-index: 1;
-  position: relative;
-  border-color: #4078c0;
-
+.typeset pre > code:before,
+.typeset pre > code:after
+  content: normal

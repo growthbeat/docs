@@ -35,7 +35,8 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-stylus": "^2.0.5",
     "gulp-util": "^3.0.6",
-    "normalize-styl": "^3.0.3"
+    "normalize-styl": "^3.0.3",
+    "sassline": "^2.1.0"
   },
   "dependencies": {
     "babel-core": "^5.8.25",
