@@ -1,0 +1,51 @@
+/*------------------------------------*\
+    $PAGE
+\*------------------------------------*/
+page-color = #626F74
+
+
+
+
+
+/*------------------------------------*\
+    #PAGE
+\*------------------------------------*/
+/**
+ * <div class="page">
+ *   <h1 class="title">
+ *     Title
+ *     <span class="updated">Updated ~ </span>
+ *   </h1>
+ *   <p class="description"> Lorem ipsum dolor sit amet. </p>
+ * </div>
+ */
+.page
+  @extend .cf
+
+  & > .title
+    font-size 32px
+    color page-color
+    padding 17px 20px
+    border-bottom 2px solid page-color
+
+    & > .updated
+      float right
+      font-size font-x-small
+      font-weight 200
+      margin-right -20px
+      color lighten(page-color, 20%)
+
+  & > .description
+    color page-color
+    padding 48px 0 17px 20px
+
+  & > .edit
+    float right
+    color lighten(color-blue, 20%)
+    margin-top 10px
+    font-size font-x-small
+    font-weight 200
+    transition color, 0.1s ease 0s
+    &:hover
+      color darken(color-blue, 20%)
+      text-decoration underline
