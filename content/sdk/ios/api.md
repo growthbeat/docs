@@ -13,9 +13,9 @@ title: Growthbeat iOS API
 ## setBasicTags
 
 
-## open
+### open
 
-ユーザーの起動イベントを送信します。セッション時間の計測を開始するために必要なメソッドです。`AppDelegateのapplicationDidBecomeActive:` に以下のコードを実装してください:
+ユーザーの起動イベントを送信します。セッション時間の計測を開始するために必要なメソッドです。`AppDelegate` のapplicationDidBecomeActive: に以下のコードを実装してください:
 
 ```objc
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -25,7 +25,7 @@ title: Growthbeat iOS API
 ```
 
 
-## close
+### close
 
 アプリの終了イベントを送信します。セッション時間の計測を停止します。`AppDelegateのapplicationWillResignActive:` に以下のコードを実装してください。
 
@@ -36,7 +36,7 @@ title: Growthbeat iOS API
 ```
 
 
-## purchase
+### purchase
 
 課金情報を送信します。課金時にメソッドを呼び、課金額、アイテムのカテゴリなどを送信することができます。
 
@@ -45,7 +45,7 @@ title: Growthbeat iOS API
 ```
 
 
-## setUserId
+### setUserId
 
 ユニークなユーザーIDを送信。アプリのユニークなユーザーIDを送信します。
 
@@ -54,7 +54,7 @@ title: Growthbeat iOS API
 ```
 
 
-## setName
+### setName
 
 ユーザー名を送信。アプリのユーザー名を送信します。
 
@@ -63,7 +63,7 @@ title: Growthbeat iOS API
 ```
 
 
-## setAge
+### setAge
 
 年齢を送信。アプリのユーザーの年齢を送信します。
 
@@ -72,7 +72,7 @@ title: Growthbeat iOS API
 ```
 
 
-## setGender
+### setGender
 
 性別を送信。変数は、`GAGender`を用いてどちらか性別を送信してください。
 
@@ -84,7 +84,7 @@ title: Growthbeat iOS API
 [[GrowthAnalytics sharedInstance] setGender:GAGenderFemale];
 ```
 
-## setLevel
+### setLevel
 
 レベルを送信。アプリのユーザーのレベルを送信します。
 
@@ -93,7 +93,7 @@ title: Growthbeat iOS API
 ```
 
 
-## setDevelopment
+### setDevelopment
 
 開発用の紐付け。開発用のフラグをつける
 
@@ -102,7 +102,7 @@ title: Growthbeat iOS API
 ```
 
 
-## setDeviceModel
+### setDeviceModel
 
 端末モデル名を送信。端末のモデル名を送信します。
 
@@ -113,7 +113,7 @@ title: Growthbeat iOS API
 ```
 
 
-## setOS
+### setOS
 
 端末OSを送信。端末のOSを送信します。
 
@@ -124,7 +124,7 @@ title: Growthbeat iOS API
 ```
 
 
-## setLanguage
+### setLanguage
 
 端末の言語設定を送信。端末の設定言語を送信します。
 
@@ -135,7 +135,7 @@ title: Growthbeat iOS API
 ```
 
 
-## setTimeZone
+### setTimeZone
 
 タイムゾーンを送信する。端末で設定されたタイムゾーンを送信する。
 
@@ -146,7 +146,7 @@ title: Growthbeat iOS API
 ```
 
 
-## setTimeZoneOffset
+### setTimeZoneOffset
 
 タイムゾーンオフセットを送信。端末の設定された時刻から、標準時刻の差分時間を送信します。
 
@@ -157,7 +157,7 @@ title: Growthbeat iOS API
 ```
 
 
-## setAppVersion
+### setAppVersion
 
 アプリバージョンを送信。アプリに設定されたアプリバージョンを送信します。
 `Info.plist` の `CFBundleVersion に設定している値が入ります。
@@ -167,7 +167,7 @@ title: Growthbeat iOS API
 ```
 
 
-## setRandom
+### setRandom
 
 乱数を送信例。乱数を端末の情報として紐付けます。
 
@@ -176,7 +176,7 @@ title: Growthbeat iOS API
 ```
 
 
-## setAdvertisingId
+### setAdvertisingId
 
 広告IDを送信。広告IDを送信します。広告の表示欄がないアプリで利用すると申請時にリジェクトをされる可能性が高いので設定される場合は、十分にご注意ください。
 
@@ -184,7 +184,7 @@ title: Growthbeat iOS API
 [[Growthbeat sharedInstance] setAdvertisingId];
 ```
 
-## setTrackingEnabled
+### setTrackingEnabled
 
 広告オプトアウトの送信。ユーザーが広告IDを利用するのを拒否しているかを送信します。
 
@@ -193,7 +193,7 @@ title: Growthbeat iOS API
 ```
 
 
-## 
+##
 
 #### カスタムイベント・タグを送信する
 
