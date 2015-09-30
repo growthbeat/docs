@@ -89,6 +89,9 @@
 .typeset h3 ~ h5
   margin-top 51px
 
+.typeset h3 + h4
+  margin-top 0 !important
+
 .typeset h3 ~ pre
   margin 0 0 17px 20px
 
@@ -102,6 +105,13 @@
 
 .typeset h3 ~ h5
   margin-top 51px
+
+/**
+ * H3
+ */
+h3 ~ h4 + h5
+  margin-top 0 !important
+
 
 /**
  * List
