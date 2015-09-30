@@ -70,7 +70,7 @@ setBasicTagsメソッドは端末のデータを送信します。
 [[GrowthAnalytics sharedInstance] setBasicTags];
 ```
 
-### 特定のイベント・タグを送信する
+### 特定のイベント・タグを送信
 
 #### 起動 (open)
 
@@ -95,7 +95,7 @@ AppDelegateのapplicationDidBecomeActive:に以下を実装してください。
 }
 ```
 
-#### 課金情報を送信する
+#### 課金情報を送信
 
 課金時にメソッドを呼び、課金額、アイテムのカテゴリなどを送信することができます。
 
@@ -185,7 +185,7 @@ AppDelegateのapplicationDidBecomeActive:に以下を実装してください。
 [[GrowthAnalytics sharedInstance] setLanguage];
 ```
 
-#### タイムゾーンを送信する
+#### タイムゾーンを送信
 
 端末で設定されたタイムゾーンを送信する。
 
@@ -242,7 +242,7 @@ Info.plistのCFBundleVersionに設定している値が入ります。
 [[Growthbeat sharedInstance] setTrackingEnabled];
 ```
 
-## カスタムイベント・タグを送信する
+## カスタムイベント・タグを送信
 
 ### カスタムイベントとは？
 
@@ -414,7 +414,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 ***こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。これまでGrowth Push SDKをご利用しておりました方は、Growth Analyticsのイベント・タグの送信にお乗り換えくださいませ。***
 
-## イベントを送信する
+## イベントを送信
 
 ```objc
 - (void)trackEvent:(NSString *)name;
@@ -434,7 +434,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 [[GrowthPush sharedInstance] trackEvent:@"EVENT_NAME" value:@"EVENT_VALUE"];
 ```
 
-## タグを送信する
+## タグを送信
 
 ```objc
 - (void)setTag:(NSString *)name;

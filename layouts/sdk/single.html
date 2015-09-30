@@ -27,7 +27,7 @@
   Detect type
   Please see: https://gohugo.io/extras/scratch
 -->
-{{ if in .Permalink "api" }}
+{{ if in .Permalink "tutorial" }}
   {{ $.Scratch.Add "type" "api" }}
 {{ else if in .Permalink "guide" }}
   {{ $.Scratch.Add "type" "guide" }}
@@ -49,8 +49,8 @@
       <li class="item">
         <a class="link" href="{{ .Site.BaseURL }}sdk/">SDKドキュメント</a>
       </li>
-      {{ if in .Permalink "api" }}
-        <li class="item"><a class="link">APIリファレンス</a></li>
+      {{ if in .Permalink "tutorial" }}
+        <li class="item"><a class="link">チュートリアル</a></li>
       {{ end }}
       {{ if in .Permalink "guide" }}
         <li class="item"><a class="link">ガイド</a></li>
@@ -69,8 +69,8 @@
 
 <div class="page">
   <h1 class="title">
-    {{ if in .Permalink "api" }}
-      API リファレンス
+    {{ if in .Permalink "tutorial" }}
+      チュートリアル
 　　 {{ else if in .Permalink "guide" }}
       ガイド
 　　 {{ else if in .Permalink "release" }}
