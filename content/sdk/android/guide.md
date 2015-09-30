@@ -72,3 +72,41 @@ Growthbeat 管理画面からアプリケーション ID と SDK キーを取得
 各サービスのヘッダーのアカウント名をクリックしします。そして、表示されるメニューから **マイページ** をお選びください。Growthbeat マイページから API キー と SDKキーを見ることができます
 
 また、アプリケーション ID は Growthbeat のマイページから任意のアプリケーションを選択し、アプリケーション ID を控えてください。
+
+## Growth Push SDKからの乗り換え方法
+
+### 前準備
+GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行されるた
+め、[Growthbeat](https://growthbeat.com/)にアクセスして、ApplicationId、SDKキー（CredentialID）を確認します。
+
+### 実装方法
+
+- GrowthPush SDK
+
+```
+protected void onCreate(Bundle savedInstanceState) {
+	super.onCreate(savedInstanceState);
+	setContentView(R.layout.activity_main);
+
+	GrowthPush.getInstance().initialize(getApplicationContext(), YOUR_APPLICATION_ID, "APPLICATION_SECRET", BuildConfig.DEBUG ? Environment.development : Environment.production, true).register("YOUR_SENDER_ID");
+	GrowthPush.getInstance().trackEvent("Launch");
+	GrowthPush.getInstance().setDeviceTags();
+}
+```
+
+- Growthbeat SDK
+
+```
+protected void onCreate(Bundle savedInstanceState) {
+	super.onCreate(savedInstanceState);
+	setContentView(R.layout.activity_main);
+	// Growthbeat SDKの初期化
+	Growthbeat.getInstance().initialize(this, "YOUR_APPLICATION_ID", "CREDENTIAL_ID");
+	// Registration IDを明示的に要求
+	GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID", BuildConfig.DEBUG ? Environment.development : Environment.production);
+	// Launchイベントの取得
+	GrowthPush.getInstance().trackEvent("Launch");
+	// DeviceTagの取得
+	GrowthPush.getInstance().setDeviceTags();
+}
+```

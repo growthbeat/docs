@@ -165,3 +165,82 @@ Growthbeat 管理画面からアプリケーション ID と SDK キーを取得
 各サービスのヘッダーのアカウント名をクリックしします。そして、表示されるメニューから **マイページ** をお選びください。Growthbeat マイページから API キー と SDKキーを見ることができます
 
 また、アプリケーション ID は Growthbeat のマイページから任意のアプリケーションを選択し、アプリケーション ID を控えてください。
+
+## Growth Push SDKからの乗り換えについて
+
+Growthbeat SDKには、従来のGrowth Push SDKの実装も含まれておりますが、Growth Push SDKをこれまでお使いいただいた方は、一部実装の差し替えが必要となります。
+
+#### 前準備
+
+GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行されるた
+め、[Growthbeat](https://growthbeat.com/)にアクセスして、ApplicationId、SDKキー（CredentialID）を確認します。
+
+#### 実装方法
+
+**[1] SDKの初期化**
+
+SDKを利用するための初期化方法の乗り換えについてです。
+
+- Growth Push SDK
+
+Cocos(C++)
+
+```
+GrowthPush::initialize(YOUR_APP_ID, "YOUR_APP_SECRET", GPEnvironmentDevelopment, true);
+GrowthPush::registerDeviceToken("YOUR_SENDER_ID");
+GrowthPush::setDeviceTags();
+```
+
+Android (Java)
+
+```
+public class AppActivity extends Cocos2dxActivity {
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    GrowthPushJNI.setContext(getApplicationContext());
+  }
+}
+```
+
+- Growthbeat SDK
+
+Cocos (C++)
+
+```
+// Growthbeatの初期化 (Growth Pushの初期化も含まれます。)
+Growthbeat::getInstance()->initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
+
+// デバイストークンの取得
+GrowthPush::getInstance()->requestDeviceToken("YOUR_SENDER_ID", environment);
+
+GrowthPush::getInstance()->setDeviceTags();
+```
+
+Android (Java)
+
+```
+public class AppActivity extends Cocos2dxActivity {
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    GrowthbeatJNI.setContext(this);
+  }
+}
+```
+
+**[2] タグ・イベントの取得について**
+
+- Growth Push SDK
+
+```
+GrowthPush::trackEvent("EventName");
+GrowthPush::tag("TagName");
+```
+
+- Growthbeat SDK
+
+```
+GrowthPush::getInstance()->trackEvent("EventName");
+GrowthPush::getInstance()->tag("TagName");
+```

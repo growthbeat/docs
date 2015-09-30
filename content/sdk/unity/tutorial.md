@@ -8,18 +8,14 @@ title: Growthbeat Unity API
 
 # Growthbeat Unity API
 
-## 初期化 デバイス登録・認証
+# 初期化 デバイス登録・認証
 
 Growthbeatへデバイス登録・認証を行います。
 
-### 開発環境
+## 開発環境
+
 ```
 Growthbeat.GetInstance().Initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID", true);
-```
-
-### 開発環境
-```
-Growthbeat.GetInstance().Initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID", false);
 ```
 
 ## ユーザー属性、行動ログの付与 (Growth Analyticsの利用)
@@ -28,7 +24,7 @@ Growth Analyticsの初期化をします。初期化の中に、端末の基本�
 
 送信されたデータは、Growth Analytics管理画面をご覧ください。
 
-##### 端末・ユーザー情報を送信する
+### 端末・ユーザー情報を送信
 
 端末やユーザーの情報をGrowth Analyticsへ送信します。送信することでGrowth Analytics上で解析・分析を行うことができます。取得したい情報を、任意の場所に実装してください。
 
@@ -58,7 +54,7 @@ Growth Analyticsの初期化をします。初期化の中に、端末の基本�
 - *Track* カスタムイベントを送信します。
 - *Tag* カスタムタグを送信します。
 
-**端末のデータを送信**
+### 端末のデータを送信
 
 SetBasicTagsメソッドは端末のデータを送信します。
 
@@ -79,9 +75,9 @@ SetBasicTagsメソッドは端末のデータを送信します。
 GrowthAnalytics.GetInstance().SetBasicTags();
 ```
 
-**起動/終了イベントを送信する**
+### 起動/終了イベントを送信する
 
-##### 起動 (open)
+#### 起動 (open)
 
 ユーザーの起動イベントを送信します。セッション時間の計測を開始するために必要なメソッドです。
 
@@ -97,7 +93,7 @@ void Awake ()
 ```
 
 
-##### 終了 (close)
+#### 終了 (close)
 
 *Unity*
 
@@ -110,7 +106,7 @@ void OnApplicationQuit()
 }
 ```
 
-**課金情報を送信する**
+##### 課金情報を送信
 
 課金時にメソッドを呼び、課金額、アイテムのカテゴリなどを送信することができます。
 
@@ -120,7 +116,7 @@ void OnApplicationQuit()
 GrowthAnalytics.GetInstance().Purchase(price, "ITEM_CATEGORY", "ITEM_NAME");
 ```
 
-**ユニークなユーザーIDを送信**
+##### ユニークなユーザーIDを送信
 
 アプリのユニークなユーザーIDを送信します。
 
@@ -140,7 +136,7 @@ GrowthAnalytics.GetInstance().SetUserId("YOUR_USER_ID");
 GrowthAnalytics.GetInstance().SetName("YOUR_NAME");
 ```
 
-**年齢を送信**
+##### 年齢を送信
 
 アプリのユーザーの年齢を送信します。
 
@@ -150,7 +146,7 @@ GrowthAnalytics.GetInstance().SetName("YOUR_NAME");
 GrowthAnalytics.GetInstance().SetAge(age);
 ```
 
-**性別を送信**
+##### 性別を送信
 
 *Unity*
 
@@ -164,7 +160,7 @@ GrowthAnalytics.GetInstance().SetGender(Gender.GenderMale);
 GrowthAnalytics.GetInstance().SetGender(Gender.GenderFemale);
 ```
 
-**レベルを送信**
+##### レベルを送信
 
 アプリのユーザーのレベルを送信します。
 
@@ -174,7 +170,7 @@ GrowthAnalytics.GetInstance().SetGender(Gender.GenderFemale);
 GrowthAnalytics.GetInstance().SetLevel(level);
 ```
 
-**開発用の紐付け**
+##### 開発用の紐付け
 
 開発用のフラグをつける
 
@@ -184,7 +180,7 @@ GrowthAnalytics.GetInstance().SetLevel(level);
 GrowthAnalytics.GetInstnace().SetDevelopment(true);
 ```
 
-**端末モデル名を送信**
+##### 端末モデル名を送信
 
 端末のモデル名を送信します。
 
@@ -196,7 +192,7 @@ GrowthAnalytics.GetInstnace().SetDevelopment(true);
 GrowthAnalytics.GetInstance().SetDeviceModel();
 ```
 
-**端末OSを送信**
+##### 端末OSを送信
 
 端末のOSを送信します。
 
@@ -208,7 +204,7 @@ GrowthAnalytics.GetInstance().SetDeviceModel();
 GrowthAnalytics.GetInstance().SetOS();
 ```
 
-**端末の言語設定を送信**
+##### 端末の言語設定を送信
 
 端末の設定言語を送信します。
 
@@ -220,7 +216,7 @@ GrowthAnalytics.GetInstance().SetOS();
 GrowthAnalytics.GetInstance().SetLanguage();
 ```
 
-**タイムゾーンを送信する**
+##### タイムゾーンを送信する
 
 端末で設定されたタイムゾーンを送信する。
 
@@ -232,7 +228,7 @@ GrowthAnalytics.GetInstance().SetLanguage();
 GrowthAnalytics.GetInstance().SetTimeZone();
 ```
 
-**タイムゾーンオフセットを送信**
+##### タイムゾーンオフセットを送信
 
 端末の設定された時刻から、標準時刻の差分時間を送信します。
 
@@ -244,7 +240,7 @@ GrowthAnalytics.GetInstance().SetTimeZone();
 GrowthAnalytics.GetInstance().SetTimeZoneOffset();
 ```
 
-**アプリバージョンを送信**
+##### アプリバージョンを送信
 
 アプリに設定されたアプリバージョンを送信します。
 
@@ -263,7 +259,7 @@ GrowthAnalytics.GetInstance().SetAppVersion();
 
 ```
 
-**乱数を送信**
+##### 乱数を送信
 
 乱数を端末の情報として紐付けます。
 
@@ -272,11 +268,11 @@ GrowthAnalytics.GetInstance().SetAppVersion();
 GrowthAnalytics.GetInstance().SetRandom();
 ```
 
-**広告IDを送信**
+##### 広告IDを送信
 
 広告IDを送信します。
 
-**iOSの場合、広告の表示欄がないアプリで利用すると申請時にリジェクトをされる可能性が高いので設定される場合は、十分にご注意ください。**
+_注意: iOSの場合、広告の表示欄がないアプリで利用すると申請時にリジェクトをされる可能性が高いので設定される場合は、十分にご注意ください。_
 
 *Unity*
 
@@ -284,7 +280,7 @@ GrowthAnalytics.GetInstance().SetRandom();
 GrowthAnalytics.GetInstance().SetAdvertisingId();
 ```
 
-**広告オプトアウトの送信**
+##### 広告オプトアウトの送信
 
 ユーザーが広告IDを利用するのを拒否しているかを送信します。
 
@@ -294,9 +290,9 @@ GrowthAnalytics.GetInstance().SetAdvertisingId();
 GrowthAnalytics.GetInstance().SetTrackingEnabled();
 ```
 
-**カスタムイベントを送信する**
+## カスタムイベントを送信
 
-##### カスタムイベントとは？
+### カスタムイベントとは？
 任意のイベントを取得することが出来ます。カスタムイベントには、それぞれ一意のEventIDを割り当てる必要があります。
 
 - EventID   
@@ -309,7 +305,7 @@ GrowthAnalytics.GetInstance().SetTrackingEnabled();
     - CUSTOM_EVENT_ID  
         英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
 
-###### カスタムイベントの送信
+#### カスタムイベントの送信
 
 *Unity*
 
@@ -318,7 +314,7 @@ GrowthAnalytics.GetInstance().SetTrackingEnabled();
 - `public void Track (string name, TrackOption option)`
 - `public void Track (string name, Dictionary<string, string> properties, TrackOption option)`
 
-###### パラメータ
+#### パラメータ
 
 |項目名|詳細|
 |:--|:--|
@@ -326,7 +322,7 @@ GrowthAnalytics.GetInstance().SetTrackingEnabled();
 |properties|カスタムイベントに持たせる任意のMap|
 |option|任意のパラメータ。ONCE, COUNTERのいずれかを指定します。|
 
-###### option
+#### option
 
 |項目名|詳細|
 |:--|:--|
@@ -341,9 +337,9 @@ GrowthAnalytics.getInstance().Track("CUSTOM_EVENT_ID", GrowthAnalytics.TrackOpti
 GrowthAnalytics.getInstance().Track("CUSTOM_EVENT_ID", properties, GrowthAnalytics.TrackOption.ONCE);
 ```
 
-**カスタムタグを送信する**
+### カスタムタグを送信する
 
-##### カスタムタグとは？
+#### カスタムタグとは？
 任意のタグを取得することが出来ます。カスタムタグには、それぞれ一意のTagIDを割り当てる必要があります。
 
 - TagID   
@@ -356,14 +352,14 @@ GrowthAnalytics.getInstance().Track("CUSTOM_EVENT_ID", properties, GrowthAnalyti
     - LAST_ID  
         英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
 
-##### カスタムタグの送信
+#### カスタムタグの送信
 
 *Unity*
 
 - `public void Tag (string name)`
 - `public void Tag (string name, string value)`
 
-###### パラメータ
+#### パラメータ
 
 |項目名|詳細|
 |:--|:--|
@@ -375,7 +371,7 @@ GrowthAnalytics.GetInstance().Tag("CUSTOM_TAG_ID");
 GrowthAnalytics.GetInstance().Tag("CUSTOM_TAG_ID", "value");
 ```
 
-**フルカスタマイズなイベント送信**
+### フルカスタマイズなイベント送信
 
 特定のネームスペース、イベントIDを設定していただくことが可能です。下記、イベントID発行例となります。
 
@@ -396,7 +392,7 @@ GrowthAnalytics.GetInstance().Tag("CUSTOM_TAG_ID", "value");
 
 - `public void Track (string _namespace, string name, Dictionary<string, string> properties, TrackOption option)`
 
-###### パラメータ
+#### パラメータ
 
 |項目名|詳細|
 |:--|:--|
@@ -405,7 +401,7 @@ GrowthAnalytics.GetInstance().Tag("CUSTOM_TAG_ID", "value");
 |properties|イベントに持たせる任意のMap|
 |option|任意のパラメータ。ONCE, COUNTERのいずれかを指定します。|
 
-###### option
+#### option
 
 |項目名|詳細|
 |:--|:--|
@@ -416,9 +412,9 @@ GrowthAnalytics.GetInstance().Tag("CUSTOM_TAG_ID", "value");
 GrowthAnalytics.GetInstance().Track("NAMESPACE", "CUSTOM_EVENT_ID", properties, GrowthAnalytics.TrackOption.ONCE);
 ```
 
-**フルカスタマイズなカスタムタグを送信する**
+### フルカスタマイズなカスタムタグを送信する
 
-##### カスタムタグとは？
+#### カスタムタグとは？
 
 特定のネームスペース、タグIDを設定していただくことが可能です。下記、タグID発行例となります。
 
@@ -435,13 +431,13 @@ GrowthAnalytics.GetInstance().Track("NAMESPACE", "CUSTOM_EVENT_ID", properties, 
     - TAG_ID  
         英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
 
-##### カスタムタグの送信
+#### カスタムタグの送信
 
 *Unity*
 
 - `public void Tag (string _namespace, string name, string value)`
 
-###### パラメータ
+#### パラメータ
 
 |項目名|詳細|
 |:--|:--|
@@ -453,9 +449,9 @@ GrowthAnalytics.GetInstance().Track("NAMESPACE", "CUSTOM_EVENT_ID", properties, 
 GrowthAnalytics.GetInstance().Tag("NAMESPACE", "TAG_ID", "value");
 ```
 
-## プッシュ通知の実装 (Growth Pushの利用)
+# プッシュ通知の実装 (Growth Pushの利用)
 
-### 初期設定
+# 初期設定
 
 Growth Push管理画面、証明書設定ページにて、各OSごとに証明書の設定を行ってください。
 
@@ -521,11 +517,11 @@ AndroidManifest.xmlの設定を行う必要がございます。
 
 * YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。
 
-### 実装方法
+## 実装方法
 
-#### DeviceTokenの取得
+### DeviceTokenの取得
 
-**iOS(APNS)**
+#### iOS(APNS)
 
 - Growthhbeat#Initializeの後に下記を呼び出す
 
@@ -558,7 +554,7 @@ void Update () {
 }
 ```
 
-**Android(GCM)**
+#### Android(GCM)
 
 - Growthhbeat#initializeWithApplicationIdの後に下記を呼び出す
 
@@ -567,12 +563,12 @@ void Update () {
 GrowthPush.GetInstance().RequestRegistrationId ("YOUR_SENDER_ID");
 ```
 
-#### タグ・イベントの取得
+### タグ・イベントの取得
 
 - `public void SetTag (string name)`
 - `public void SetTag (string name, string value)`
 
-##### パラメータ
+#### パラメータ
 
 |項目名|詳細|
 |:--|:--|
@@ -587,7 +583,7 @@ GrowthPush.getInstance().SetTag("TAG_NAME", "TAG_VALUE");
 - `public void TrackEvent(string name)`
 - `public void TrackEvent(string name, string value)`
 
-##### パラメータ
+#### パラメータ
 
 |項目名|詳細|
 |:--|:--|
@@ -600,9 +596,9 @@ GrowthPush.getInstance().TrackEvent("EVENT_NAME");
 GrowthPush.getInstance().TrackEvent("EVENT_NAME", "EVENT_VALUE");
 ```
 
-## アプリ内ポップアップメッセージの実装 (Growth Messageの利用)
+# アプリ内ポップアップメッセージの実装 (Growth Messageの利用)
 
-### 初期設定
+## 初期設定
 
 Androidはメッセージを表示するためのActivityを追記します。
 
@@ -614,7 +610,7 @@ AndroidManifest.xmlの `<application>` 要素内に下記を記述します。
 	android:theme="@android:style/Theme.Translucent" />
 ```
 
-### メッセージを表示するViewを指定
+## メッセージを表示するViewを指定
 
 任意の箇所で、Growth Analyticsのtrackメソッドを呼び出します。この呼び出し箇所が、メッセージの表示箇所になります。
 

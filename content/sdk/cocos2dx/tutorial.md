@@ -8,7 +8,7 @@ title: Growthbeat Cocos2dx API
 
 # Growthbeat Cocos2dx API
 
-### 初期化 デバイス登録・認証
+# 初期化 デバイス登録・認証
 
 Growthbeatへデバイス登録・認証を行います。
 
@@ -22,13 +22,13 @@ Androidの場合は、初期起動時のActivityに下記を実装してくだ�
 GrowthbeatJNI.setContext(this);
 ```
 
-### ユーザー属性、行動ログの付与 (Growth Analyticsの利用)
+## ユーザー属性、行動ログの付与 (Growth Analyticsの利用)
 
 Growth Analyticsの初期化をします。初期化の中に、端末の基本情報の送信、広告IDの取得が行われます。
 
 送信されたデータは、Growth Analytics管理画面をご覧ください。
 
-#### 端末・ユーザー情報を送信方法と、実装の説明
+## 端末・ユーザー情報を送信方法と、実装の説明
 
 端末やユーザーの情報をGrowth Analyticsへ送信します。送信することでGrowth Analytics上で解析・分析を行うことができます。取得したい情報を、任意の場所に実装してください。
 
@@ -58,7 +58,7 @@ Growth Analyticsの初期化をします。初期化の中に、端末の基本�
 - *track* カスタムイベントを送信します。
 - *tag* カスタムタグを送信します。
 
-#### 端末のデータを送信
+### 端末のデータを送信
 
 setBasicTagsメソッドは端末のデータを送信します。
 
@@ -77,9 +77,9 @@ setBasicTagsメソッドは端末のデータを送信します。
 GrowthAnalytics::getInstance()->setBasicTags();
 ```
 
-#### 起動/終了イベントを送信する
+### 起動/終了イベントを送信
 
-**起動 (open)**
+#### 起動 (open)
 
 ユーザーの起動イベントを送信します。セッション時間の計測を開始するために必要なメソッドです。
 
@@ -89,7 +89,7 @@ GrowthAnalytics::getInstance()->setBasicTags();
 GrowthAnalytics::getInstance()->open();
 ```
 
-**終了 (close)**
+#### 終了 (close)
 
 アプリの終了イベントを送信します。セッション時間の計測を停止します。
 
@@ -99,7 +99,7 @@ GrowthAnalytics::getInstance()->open();
 GrowthAnalytics::getInstance()->close();
 ```
 
-**課金情報を送信する**
+#### 課金情報を送信する
 
 課金時にメソッドを呼び、課金額、アイテムのカテゴリなどを送信することができます。
 
@@ -107,7 +107,7 @@ GrowthAnalytics::getInstance()->close();
 GrowthAnalytics::getInstance()->purchase(price, "ITEM_CATEGORY", "ITEM_NAME");
 ```
 
-**ユニークなユーザーIDを送信**
+#### ユニークなユーザーIDを送信
 
 アプリのユニークなユーザーIDを送信します。
 
@@ -115,7 +115,7 @@ GrowthAnalytics::getInstance()->purchase(price, "ITEM_CATEGORY", "ITEM_NAME");
 GrowthAnalytics::getInstance()->setUserId("YOUR_USER_ID");
 ```
 
-**ユーザー名を送信**
+#### ユーザー名を送信
 
 アプリのユーザー名を送信します。
 
@@ -123,13 +123,13 @@ GrowthAnalytics::getInstance()->setUserId("YOUR_USER_ID");
 GrowthAnalytics::getInstance()->setName("YOUR_NAME");
 ```
 
-**年齢を送信**
+#### 年齢を送信
 
 ```java
 GrowthAnalytics::getInstance()->setAge(age);
 ```
 
-**性別を送信**
+#### 性別を送信
 
 変数は、Genderのenumを用いてどちらか性別を送信してください
 
@@ -141,7 +141,7 @@ GrowthAnalytics::getInstance()->setGender(GAGenderMale);
 GrowthAnalytics::getInstance()->setGender(GAGenderFemale);
 ```
 
-**レベルを送信**
+#### レベルを送信
 
 アプリのユーザーのレベルを送信します。
 
@@ -149,7 +149,7 @@ GrowthAnalytics::getInstance()->setGender(GAGenderFemale);
 GrowthAnalytics::getInstance()->setLevel(level);
 ```
 
-**開発用の紐付け**
+#### 開発用の紐付け
 
 開発用のフラグをつける
 
@@ -157,7 +157,7 @@ GrowthAnalytics::getInstance()->setLevel(level);
 GrowthAnalytics::getInstance()->setDevelopment(true);
 ```
 
-**端末モデル名を送信**
+#### 端末モデル名を送信
 
 端末のモデル名を送信します。
 
@@ -167,7 +167,7 @@ GrowthAnalytics::getInstance()->setDevelopment(true);
 GrowthAnalytics::getInstance()->setDeviceModel();
 ```
 
-**端末OSを送信**
+#### 端末OSを送信
 
 端末のOSを送信します。
 
@@ -177,7 +177,7 @@ GrowthAnalytics::getInstance()->setDeviceModel();
 GrowthAnalytics::getInstance()->setOS();
 ```
 
-**端末の言語設定を送信**
+#### 端末の言語設定を送信
 
 端末の設定言語を送信します。
 
@@ -187,7 +187,7 @@ GrowthAnalytics::getInstance()->setOS();
 GrowthAnalytics::getInstance()->setLanguage();
 ```
 
-**タイムゾーンを送信する**
+#### タイムゾーンを送信する
 
 端末で設定されたタイムゾーンを送信する。
 
@@ -197,7 +197,7 @@ GrowthAnalytics::getInstance()->setLanguage();
 GrowthAnalytics::getInstance()->setTimeZone();
 ```
 
-**タイムゾーンオフセットを送信**
+#### タイムゾーンオフセットを送信
 
 端末の設定された時刻から、標準時刻の差分時間を送信します。
 
@@ -207,7 +207,7 @@ GrowthAnalytics::getInstance()->setTimeZone();
 GrowthAnalytics::getInstance()->setTimeZoneOffset();
 ```
 
-**アプリバージョンを送信**
+#### アプリバージョンを送信
 
 アプリに設定されたアプリバージョンを送信します。
 
@@ -217,7 +217,7 @@ AndroidManifest.xmlの`<manifest>` android:versionNameに設定される値が�
 GrowthAnalytics::getInstance()->setAppVersion();
 ```
 
-**乱数を送信**
+#### 乱数を送信
 
 乱数を端末の情報として紐付けます。
 
@@ -225,7 +225,7 @@ GrowthAnalytics::getInstance()->setAppVersion();
 GrowthAnalytics::getInstance()->setRandom();
 ```
 
-**広告IDを送信**
+#### 広告IDを送信
 
 広告IDを送信します。
 
@@ -233,7 +233,7 @@ GrowthAnalytics::getInstance()->setRandom();
 GrowthAnalytics::getInstance()->setAdvertisingId();
 ```
 
-**広告オプトアウトの送信**
+#### 広告オプトアウトの送信
 
 ユーザーが広告IDを利用するのを拒否しているかを送信します。
 
@@ -241,9 +241,9 @@ GrowthAnalytics::getInstance()->setAdvertisingId();
 GrowthAnalytics::getInstance()->setTrackingEnabled();
 ```
 
-#### カスタムイベント・タグを送信する
+## カスタムイベント・タグを送信する
 
-***カスタムイベントとは？***
+### カスタムイベントとは？
 
 任意のイベントを取得することが出来ます。カスタムイベントには、それぞれ一意のEventIDを割り当てる必要があります。
 
@@ -252,7 +252,7 @@ GrowthAnalytics::getInstance()->setTrackingEnabled();
 	- `YOUR_APPLICATION_ID`: ApplicationIDを指定されます。
 	- `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
 
-**カスタムイベントの送信**
+#### カスタムイベントの送信
 
 ```java
 void track(const std::string& eventId);
@@ -261,7 +261,7 @@ void track(const std::string& eventId, GATrackOption option);
 void track(const std::string& eventId, const std::map<std::string, std::string>& properties, GATrackOption option);
 ```
 
-##### パラメータ
+#### パラメータ
 
 |項目名|詳細|
 |:--|:--|
@@ -269,7 +269,7 @@ void track(const std::string& eventId, const std::map<std::string, std::string>&
 |properties|カスタムイベントに持たせる任意のMap|
 |option|任意のパラメータ。ONCE, COUNTERのいずれかを指定します。|
 
-##### TrackOption
+#### TrackOption
 
 |項目名|詳細|
 |:--|:--|
@@ -283,7 +283,7 @@ GrowthAnalytics::getInstance()->track("CUSTOM_EVENT_ID", GATrackOptionONCE);
 GrowthAnalytics::getInstance()->track("CUSTOM_EVENT_ID", properties, GATrackOptionONCE);
 ```
 
-***カスタムタグとは？***
+### カスタムタグとは？
 
 任意のタグを取得することが出来ます。カスタムタグには、それぞれ一意のTagIDを割り当てる必要があります。
 
@@ -292,14 +292,14 @@ GrowthAnalytics::getInstance()->track("CUSTOM_EVENT_ID", properties, GATrackOpti
 	- `YOUR_APPLICATION_ID`: ApplicationIDを指定されます。
 	- `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
 
-**カスタムタグの送信**
+#### カスタムタグの送信
 
 ```java
 void tag(const std::string& tagId);
 void tag(const std::string& tagId, const std::string& value);
 ```
 
-##### パラメータ
+#### パラメータ
 
 |項目名|詳細|
 |:--|:--|
@@ -311,9 +311,9 @@ GrowthAnalytics::getInstance()->tag("CUSTOM_TAG_ID");
 GrowthAnalytics::getInstance()->tag("CUSTOM_TAG_ID", "value");
 ```
 
-#### フルカスタマイズなイベント・タグの送信
+## フルカスタマイズなイベント・タグの送信
 
-**フルカスタマイズイベントを送信する**
+### フルカスタマイズイベントを送信する
 
 特定のネームスペース、イベントIDを設定していただくことが可能です。下記、イベントID発行例となります。
 
@@ -328,7 +328,7 @@ GrowthAnalytics::getInstance()->tag("CUSTOM_TAG_ID", "value");
 void track(const std::string& _namespace,const std::string& eventId, const std::map<std::string, std::string>& properties, GATrackOption option);
 ```
 
-##### パラメータ
+#### パラメータ
 
 |項目名|詳細|
 |:--|:--|
@@ -337,7 +337,7 @@ void track(const std::string& _namespace,const std::string& eventId, const std::
 |properties|イベントに持たせる任意のMap|
 |option|任意のパラメータ。ONCE, COUNTERのいずれかを指定します。|
 
-##### TrackOption
+#### TrackOption
 
 |項目名|詳細|
 |:--|:--|
@@ -348,7 +348,7 @@ void track(const std::string& _namespace,const std::string& eventId, const std::
 GrowthAnalytics::getInstance()->track("NAMESPACE", "CUSTOM_EVENT_ID", properties, GrowthAnalytics.TrackOption.ONCE);
 ```
 
-**フルカスタマイズタグを送信する**
+### フルカスタマイズタグを送信する
 
 特定のネームスペース、タグIDを設定していただくことが可能です。下記、タグID発行例となります。
 
@@ -362,7 +362,7 @@ GrowthAnalytics::getInstance()->track("NAMESPACE", "CUSTOM_EVENT_ID", properties
 void tag(const std::string& _namespace,const std::string& tagId, const std::string& value);
 ```
 
-##### パラメータ
+#### パラメータ
 
 |項目名|詳細|
 |:--|:--|
@@ -374,9 +374,9 @@ void tag(const std::string& _namespace,const std::string& tagId, const std::stri
 GrowthAnalytics::getInstance()->tag("NAMESPACE", "TAG_ID", "value");
 ```
 
-### プッシュ通知の実装 (Growth Pushの利用)
+# プッシュ通知の実装 (Growth Pushの利用)
 
-#### デバイストークンの取得
+## デバイストークンの取得
 
 Growth Push管理画面、証明書設定ページにて、各OSごとに証明書の設定を行ってください。
 
@@ -503,18 +503,18 @@ AndroidManifest.xml `<application>` 内に、下記項目を加えてくださ�
 	<meta-data android:name="com.growthpush.dialog.icon" android:resource="表示したいアイコンのパス" />
 	```
 
-#### イベント・タグの取得
+### イベント・タグの取得
 
-***こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。これまでGrowth Push SDKをご利用しておりました方は、Growth Analyticsのイベント・タグの送信にお乗り換えくださいませ。***
+_注意: こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。これまでGrowth Push SDKをご利用しておりました方は、Growth Analyticsのイベント・タグの送信にお乗り換えくださいませ。_
 
-**イベントを送信する**
+#### イベントを送信する
 
 ```java
 void trackEvent(final String name);
 void trackEvent(final String name, final String value);
 ```
 
-##### パラメータ
+#### パラメータ
 
 |項目名|詳細|
 |:--|:--|
@@ -527,14 +527,14 @@ GrowthPush::getInstance()->trackEvent("EVENT_NAME");
 GrowthPush::getInstance()->trackEvent("EVENT_NAME", "EVENT_VALUE");
 ```
 
-**タグを送信する**
+### タグを送信する
 
 ```java
 void setTag(final String name);
 void setTag(final String name, final String value);
 ```
 
-##### パラメータ
+#### パラメータ
 
 |項目名|詳細|
 |:--|:--|
@@ -546,9 +546,9 @@ GrowthPush::getInstance()->setTag("TAG_NAME");
 GrowthPush::getInstance()->setTag("TAG_NAME", "TAG_VALUE");
 ```
 
-## アプリ内ポップアップメッセージの実装 (Growth Messageの利用)
+# アプリ内ポップアップメッセージの実装 (Growth Messageの利用)
 
-### 初期設定
+## 初期設定
 
 Androidはメッセージを表示するためのActivityを追記します。
 
@@ -560,15 +560,15 @@ AndroidManifest.xmlの `<application>` 要素内に下記を記述します。
 	android:theme="@android:style/Theme.Translucent" />
 ```
 
-### メッセージを表示するViewを指定
+## メッセージを表示するViewを指定
 
-***デフォルトで用意しているイベントの送信***
+### デフォルトで用意しているイベントの送信
 
 - *open* 起動イベントを送信します。
 - *close* 終了イベントを送信します。
 - *purchase* 課金イベントを送信します。
 
-***カスタムイベントの送信***
+### カスタムイベントの送信
 
 ```java
 GrowthAnalytics::getInstance()->track("CUSTOM_EVENT_ID");
@@ -580,9 +580,9 @@ GrowthAnalytics::getInstance()->track("CUSTOM_EVENT_ID", properties, GrowthAnaly
 Growth Analyticsの実装を参照してください。
 
 
-### ディープリンクの実装 (Growth Linkの利用)
+# ディープリンクの実装 (Growth Linkの利用)
 
-#### 初期設定
+## 初期設定
 
 1. 初期化処理を実装します。
 
@@ -613,7 +613,7 @@ Growth Analyticsの実装を参照してください。
 	GrowthLinkJNI.handleOpenUrl(getIntent().getData());
 	```
 
-#### ディープリンクアクションの実装
+## ディープリンクアクションの実装
 
 SDKには、`IntentHandler` というインタフェースが定義されており、この実装でディープリンク時のアクションを実装することができます。
 
@@ -627,85 +627,6 @@ GrowthbeatCore::getInstance()->addCustomIntentHandler([](std::map<std::string,st
     log("cutomintenthandler called.");
     return true;
 });
-```
-
-## Growth Push SDKからの乗り換えについて
-
-Growthbeat SDKには、従来のGrowth Push SDKの実装も含まれておりますが、Growth Push SDKをこれまでお使いいただいた方は、一部実装の差し替えが必要となります。
-
-#### 前準備
-
-GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行されるた
-め、[Growthbeat](https://growthbeat.com/)にアクセスして、ApplicationId、SDKキー（CredentialID）を確認します。
-
-#### 実装方法
-
-**[1] SDKの初期化**
-
-SDKを利用するための初期化方法の乗り換えについてです。
-
-- Growth Push SDK
-
-Cocos(C++)
-
-```
-GrowthPush::initialize(YOUR_APP_ID, "YOUR_APP_SECRET", GPEnvironmentDevelopment, true);
-GrowthPush::registerDeviceToken("YOUR_SENDER_ID");
-GrowthPush::setDeviceTags();
-```
-
-Android (Java)
-
-```
-public class AppActivity extends Cocos2dxActivity {
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    GrowthPushJNI.setContext(getApplicationContext());
-  }
-}
-```
-
-- Growthbeat SDK
-
-Cocos (C++)
-
-```
-// Growthbeatの初期化 (Growth Pushの初期化も含まれます。)
-Growthbeat::getInstance()->initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
-
-// デバイストークンの取得
-GrowthPush::getInstance()->requestDeviceToken("YOUR_SENDER_ID", environment);
-
-GrowthPush::getInstance()->setDeviceTags();
-```
-
-Android (Java)
-
-```
-public class AppActivity extends Cocos2dxActivity {
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    GrowthbeatJNI.setContext(this);
-  }
-}
-```
-
-**[2] タグ・イベントの取得について**
-
-- Growth Push SDK
-
-```
-GrowthPush::trackEvent("EventName");
-GrowthPush::tag("TagName");
-```
-
-- Growthbeat SDK
-
-```
-GrowthPush::getInstance()->trackEvent("EventName");
-GrowthPush::getInstance()->tag("TagName");
 ```
 
 ## 備考
