@@ -1,6 +1,9 @@
 .typeset
-  line-height 1.5
+  line-height 1.5 !important
 
+/**
+ * Common
+ */
 .typeset p,
 .typeset table,
 .typeset h1,
@@ -10,7 +13,8 @@
 .typeset h5,
 .typeset h6,
 .typeset ul,
-.typeset ol
+.typeset ol,
+.typeset pre
   margin-bottom 17px
 
 
@@ -43,77 +47,6 @@
 
 
 /**
- * H1
- */
-.typeset h1,
-.typeset h2
-  font-size 22px
-
-.typeset h1,
-.typeset h2,
-.typeset h3,
-.typeset h4
-  color #626f74
-  font-weight 500
-
-
-
-/**
- * H2
- */
-.typeset h2
-  margin-top (17*4)px
-
-.typeset h2 ~ h3
-  margin-top (17*3)px
-
-.typeset h2 + h3
-  margin-top 0 !important
-
-
-/**
- * H3
- */
-.typeset h3
-  border-bottom 1px solid #e9eced
-  padding 40px 0 12px 17px
-  color #879094
-  font-size 16px
-
-.typeset h3 ~ p
-.typeset h3 ~ h4
-.typeset h3 ~ h5
-  padding-left 20px
-
-.typeset h3 ~ h4
-.typeset h3 ~ h5
-  margin-top 51px
-
-.typeset h3 + h4
-  margin-top 0 !important
-
-.typeset h3 ~ pre
-  margin 0 0 17px 20px
-
-.typeset h3 ~ ul,
-.typeset h3 ~ ol
-  padding-left 40px
-
-.typeset h3 ~ table
-  width calc(100%  - 20px)
-  margin-left 20px
-
-.typeset h3 ~ h5
-  margin-top 51px
-
-/**
- * H3
- */
-h3 ~ h4 + h5
-  margin-top 0 !important
-
-
-/**
  * List
  */
 .typeset ul,
@@ -124,6 +57,11 @@ h3 ~ h4 + h5
 .typeset ol li
   line-height 17px
   margin-bottom 17px
+
+.typeset ul li ul,
+.typeset ol li ul
+  margin-top 17px
+
 
 
 /**
@@ -139,34 +77,123 @@ h3 ~ h4 + h5
   background-size: 100% 0.15rem;
   text-shadow 0.1rem 0 #fff,0.15rem 0 #fff,-0.1rem 0 #fff,-0.15rem 0 #fff
 
-
 /**
- * Code
+ * h1 ~ h6
  */
-// .typeset pre
-//   background-color #F6F9FD
-  // padding 16px
-  // overflow auto
-  // font-size 85%
-  // line-height 1.45
-  // border-radius 3px
-  // word-wrap normal
+// Common
+.typeset h1
+.typeset h2,
+.typeset h3,
+.typeset h4,
+.typeset h5,
+.typeset h6
+  font-weight 500
+
+// h1
+.typeset h1:first-child,
+.typeset h1:not(:first-child)
+  font-size 22px
+  color #626f74
+
+.typeset h1:not(:first-child)
+  padding-top 51px
+
+// h2
+.typeset h2
+  border-bottom 1px solid #e9eced
+  padding 40px 0 12px 17px
+  font-size 16px
+  color #879094
+
+.typeset h2 ~ p,
+.typeset h2 ~ pre
+  padding-left 20px
+
+.typeset h2 ~ ul,
+.typeset h2 ~ ol
+  padding-left 40px
+
+.typeset h2 ~ table
+  width calc(100%  - 20px)
+  margin-left 20px
+
+// h3 の隣の h4
+.typeset h2 + h3
+  padding-top 0px !important
+  padding-bottom 0px !important
+
+
+// h3
+.typeset h3
+  padding 40px 0 12px 17px
+  color #879094
+
+.typeset h3 ~ h4
+  padding-left 20px
+
+// h3 の隣の h4
+.typeset h3 + h4
+  margin-top -17px !important
+
+// h4
+.typeset h4
+  margin-top 51px
+  font-weight 700
+
+
+
+
+
+// /**
+//  * H2
+//  */
+// .typeset h2
+//   margin-top (17*4)px
 //
-// .typeset pre > code
-//   display inline
-//   max-width initial
-//   padding 0
-//   margin 0
-//   overflow initial
-//   line-height inherit
-//   word-wrap normal
-//   background-color transparent
-//   border 0
-//   font-size 100%
-//   word-break normal
-//   white-space pre
+// .typeset h2 ~ h3
+//   margin-top (17*3)px
+//
+// .typeset h2 + h3
+//   margin-top 0 !important
 //
 //
-// .typeset pre > code:before,
-// .typeset pre > code:after
-//   content: normal
+// /**
+//  * H3
+//  */
+// .typeset h3
+//   border-bottom 1px solid #e9eced
+//   padding 40px 0 12px 17px
+//   color #879094
+//   font-size 16px
+//
+// .typeset h3 ~ p
+// .typeset h3 ~ h4
+// .typeset h3 ~ h5
+//   padding-left 20px
+//
+// .typeset h3 ~ h4
+// .typeset h3 ~ h5
+//   margin-top 51px
+//
+// .typeset h3 + h4
+//   margin-top 0 !important
+//
+// .typeset h3 ~ pre
+//   margin 0 0 17px 20px
+//
+// .typeset h3 ~ ul,
+// .typeset h3 ~ ol
+//   padding-left 40px
+//
+// .typeset h3 ~ table
+//   width calc(100%  - 20px)
+//   margin-left 20px
+//
+// .typeset h3 ~ h5
+//   margin-top 51px
+//
+// /**
+//  * H3
+//  */
+// h3 ~ h4 + h5
+//   margin-top 0 !important
