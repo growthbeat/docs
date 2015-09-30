@@ -2260,3 +2260,6 @@ curl -X PUT -H 'Accept: application/json' -H 'Content-Type: application/x-www-fo
 ```
 curl -X DELETE -H 'Accept: application/json' -H 'Content-Type: application/x-www-form-urlencoded' 'https://api.analytics.growthbeat.com/1/tags/Tag:LBYtXQ26k6pHRZZB:Custom:CurrentStage' -d 'credentialId=nMdZa0PfT1rmxHEh4MTnpfG6ncxtiTgY'
 ```
+# 備考
+
+[リリースノート](http://support.growthbeat.com/sdk/ios/release/)もご参照ください。

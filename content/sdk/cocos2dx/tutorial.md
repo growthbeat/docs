@@ -631,4 +631,4 @@ GrowthbeatCore::getInstance()->addCustomIntentHandler([](std::map<std::string,st
 
 ## 備考
 
-SDK導入について、ご不明な点などございます場合は、Growthbeat[お問い合わせフォーム](https://growthbeat.com/inquiry)からお問い合わせください。
+SDK導入について、ご不明な点などございます場合は、Growthbeat[お問い合わせフォーム](https://growthbeat.com/inquiry)からお問い合わせください。また、[リリースノート](http://support.growthbeat.com/sdk/ios/release/)もご参照ください。
