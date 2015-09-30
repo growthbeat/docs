@@ -1,4 +1,4 @@
-baseurl:        "http://docs.growthbeat.com/"
+baseurl:        "http://support.growthbeat.com/"
 title:          "Growthbeat | docs"
 contentdir:     "content"
 publishdir:     "public"
