@@ -76,7 +76,7 @@ setBasicTagsメソッドは端末のデータを送信します。
 
 #### 特定のイベント・タグを送信する
 
-**起動 (open)**
+##### 起動 (open)
 
 ユーザーの起動イベントを送信します。セッション時間の計測を開始するために必要なメソッドです。
 
@@ -89,11 +89,9 @@ AppDelegateのapplicationDidBecomeActive:に以下を実装してください。
 }
 ```
 
-**終了 (close)**
+##### 終了 (close)
 
-アプリの終了イベントを送信します。セッション時間の計測を停止します。
-
-AppDelegateのapplicationWillResignActive:に以下を実装してください。
+アプリの終了イベントを送信します。セッション時間の計測を停止します。AppDelegateのapplicationWillResignActive:に以下を実装してください。
 
 ```objc
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -101,7 +99,7 @@ AppDelegateのapplicationWillResignActive:に以下を実装してください�
 }
 ```
 
-**課金情報を送信する**
+##### 課金情報を送信する
 
 課金時にメソッドを呼び、課金額、アイテムのカテゴリなどを送信することができます。
 
@@ -109,7 +107,7 @@ AppDelegateのapplicationWillResignActive:に以下を実装してください�
 [[GrowthAnalytics sharedInstance] purchase:price setCategory:@"ITEM_CATEGORY" setProduct:@"ITEM_NAME"];
 ```
 
-**ユニークなユーザーIDを送信**
+##### ユニークなユーザーIDを送信
 
 アプリのユニークなユーザーIDを送信します。
 
@@ -117,7 +115,7 @@ AppDelegateのapplicationWillResignActive:に以下を実装してください�
 [[GrowthAnalytics sharedInstance] setUserId:@"YOUR_USER_ID"];
 ```
 
-**ユーザー名を送信**
+##### ユーザー名を送信
 
 アプリのユーザー名を送信します。
 
@@ -125,7 +123,7 @@ AppDelegateのapplicationWillResignActive:に以下を実装してください�
 [[GrowthAnalytics sharedInstance] setName:@"YOUR_NAME"];
 ```
 
-**年齢を送信**
+##### 年齢を送信
 
 アプリのユーザーの年齢を送信します。
 
@@ -133,7 +131,7 @@ AppDelegateのapplicationWillResignActive:に以下を実装してください�
 [[GrowthAnalytics sharedInstance] setAge:age];
 ```
 
-**性別を送信**
+##### 性別を送信
 
 変数は、GAGenderを用いてどちらか性別を送信してください。
 
@@ -145,7 +143,7 @@ AppDelegateのapplicationWillResignActive:に以下を実装してください�
 [[GrowthAnalytics sharedInstance] setGender:GAGenderFemale];
 ```
 
-**レベルを送信**
+##### レベルを送信
 
 アプリのユーザーのレベルを送信します。
 
@@ -153,7 +151,7 @@ AppDelegateのapplicationWillResignActive:に以下を実装してください�
 [[GrowthAnalytics sharedInstance] setLevel:level];
 ```
 
-**開発用の紐付け**
+##### 開発用の紐付け
 
 開発用のフラグをつける
 
@@ -161,7 +159,7 @@ AppDelegateのapplicationWillResignActive:に以下を実装してください�
 [[GrowthAnalytics sharedInstance] setDevelopment:YES]:
 ```
 
-**端末モデル名を送信**
+##### 端末モデル名を送信
 
 端末のモデル名を送信します。
 
@@ -171,7 +169,7 @@ AppDelegateのapplicationWillResignActive:に以下を実装してください�
 [[GrowthAnalytics sharedInstance] setDeviceModel];
 ```
 
-**端末OSを送信**
+##### 端末OSを送信
 
 端末のOSを送信します。
 
@@ -181,7 +179,7 @@ AppDelegateのapplicationWillResignActive:に以下を実装してください�
 [[GrowthAnalytics sharedInsance] setOS];
 ```
 
-**端末の言語設定を送信**
+##### 端末の言語設定を送信
 
 端末の設定言語を送信します。
 
@@ -191,7 +189,7 @@ AppDelegateのapplicationWillResignActive:に以下を実装してください�
 [[GrowthAnalytics sharedInstance] setLanguage];
 ```
 
-**タイムゾーンを送信する**
+##### タイムゾーンを送信する
 
 端末で設定されたタイムゾーンを送信する。
 
@@ -201,7 +199,7 @@ AppDelegateのapplicationWillResignActive:に以下を実装してください�
 [[GrowthAnalytics sharedInstance] setTimeZone];
 ```
 
-**タイムゾーンオフセットを送信**
+##### タイムゾーンオフセットを送信
 
 端末の設定された時刻から、標準時刻の差分時間を送信します。
 
@@ -212,7 +210,7 @@ AppDelegateのapplicationWillResignActive:に以下を実装してください�
 [[GrowthAnalytics sharedInstance] setTimeZoneOffset];
 ```
 
-**アプリバージョンを送信**
+##### アプリバージョンを送信
 
 アプリに設定されたアプリバージョンを送信します。
 
@@ -222,7 +220,7 @@ Info.plistのCFBundleVersionに設定している値が入ります。
 [[GrowthAnalytics sharedInstance] setAppVersion];
 ```
 
-**乱数を送信**
+##### 乱数を送信
 
 乱数を端末の情報として紐付けます。
 
@@ -230,7 +228,7 @@ Info.plistのCFBundleVersionに設定している値が入ります。
 [[GrowthAnalytics sharedInstance] setRandom];
 ```
 
-**広告IDを送信**
+##### 広告IDを送信
 
 広告IDを送信します。
 
@@ -240,7 +238,7 @@ Info.plistのCFBundleVersionに設定している値が入ります。
 [[Growthbeat sharedInstance] setAdvertisingId];
 ```
 
-**広告オプトアウトの送信**
+##### 広告オプトアウトの送信
 
 ユーザーが広告IDを利用するのを拒否しているかを送信します。
 
@@ -259,7 +257,7 @@ Info.plistのCFBundleVersionに設定している値が入ります。
 	- `YOUR_APPLICATION_ID`: ApplicationIDを指定されます。
 	- `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
 
-**カスタムイベントの送信**
+##### カスタムイベントの送信
 
 ```objc
 - (void)track:(NSString *)name;
@@ -300,7 +298,7 @@ Info.plistのCFBundleVersionに設定している値が入ります。
 	- `YOUR_APPLICATION_ID`: ApplicationIDを指定されます。
 	- `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
 
-**カスタムタグの送信**
+##### カスタムタグの送信
 
 ```objc
 - (void)tag:(NSString *)name;
@@ -401,20 +399,20 @@ XCodeプロジェクトのBuild Setting > Provisioning Profileの設定をして
 
 #### デバイストークンを取得・送信をする
 
-1. Growthhbeat#initializeWithApplicationIdの後に下記を呼び出す
+1\. Growthhbeat#initializeWithApplicationIdの後に下記を呼び出す
 
-	```
-	[[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
-	```
+  ```objc
+  [[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
+  ```
 
-1. ApplicationDelegateにて下記を追加
+2\. ApplicationDelegateにて下記を追加
 
-	```
-	- (void)application:(UIApplication *)application
-	didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-	    [[GrowthPush sharedInstance] setDeviceToken:deviceToken];
-	}
-	```
+```objc
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [[GrowthPush sharedInstance] setDeviceToken:deviceToken];
+}
+```
 
 #### イベント・タグの取得
 
@@ -537,7 +535,7 @@ SDKには、GBIntentHandler (Androidでは、IntentHandler)というプロトコ
     if (intent.type != GBIntentTypeCustom)
         return false;
 
-    GBCustomIntent *customIntent = (GBCustomIntent *)intent;
+    GBCustomIntent \*customIntent = (GBCustomIntent *)intent;
     NSString *action = [customIntent.extra objectForKey:@"action"];
     if(![action isEqualToString:@"open_view"])
         return false;
@@ -547,7 +545,6 @@ SDKには、GBIntentHandler (Androidでは、IntentHandler)というプロトコ
     // TODO viewに対応する画面を開く処理
 
     return true;
-
 }
 
 @end
@@ -572,11 +569,11 @@ GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行される�
 
 #### 実装方法
 
-**SDKの初期化**
+##### SDKの初期化
 
 - GrowthPush SDK
 
-```
+```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // EasyGrowthPushクラス利用時
     [EasyGrowthPush setApplicationId:kYourApplicationId secret:@"YOU_APP_SECRET" environment:kGrowthPushEnvironment debug:YES];
@@ -590,7 +587,7 @@ GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行される�
 
 - Growthbeat SDK
 
-```
+```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Growthbeat SDKの初期化
 	[[Growthbeat sharedInstance] initializeWithApplicationId:@"YOUR_APPLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID"];
@@ -602,11 +599,11 @@ GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行される�
 }
 ```
 
-**アプリ起動時**
+##### アプリ起動時
 
 - Growthbeat SDK
 
-```
+```objc
 - (void)applicationDidBecomeActive:(UIApplication *)application {
 	// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 
@@ -618,21 +615,22 @@ GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行される�
 }
 ```
 
-**デバイストークンの取得**
+##### デバイストークンの取得
 
 - Growthbeat SDK
-```
+
+```objc
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 	// デバイストークンをGrowhPushに送信
 	[[GrowthPush sharedInstance] setDeviceToken:deviceToken];
 }
 ```
 
-**タグ・イベントの取得**
+##### タグ・イベントの取得
 
 - GrowthPush SDK
 
-```
+```objc
 // タグの取得
 [GrowthPush setTag:@"TAG_NAME"];
 [GrowthPush setTag:@"TAG_NAME" value:@"TAG_VALUE"];
@@ -643,7 +641,7 @@ GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行される�
 
 - Growthbeat SDK
 
-```
+```objc
 // タグの取得
 [[GrowthPush sharedInstance] setTag:@"TAG_NAME"];
 [[GrowthPush sharedInstance] setTag:@"TAG_NAME" value:@"TAG_VALUE"];
