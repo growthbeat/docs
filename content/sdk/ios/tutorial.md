@@ -556,7 +556,7 @@ NSMutableArray *intentHandlers = [NSMutableArray array];
 [[GrowthbeatCore sharedInstance] setIntentHandlers:intentHandlers];
 ```
 
-# Growth Push SDkからの乗り換え方法について
+# Growth Push SDKからの乗り換え方法について
 
 ## 前準備
 
