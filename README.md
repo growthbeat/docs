@@ -53,8 +53,8 @@ Follow these steps to post a new article:
 
 ```bash
 # Write an article
-$ script/post <File Name>.md <ja or en>
-/path/to/docs/content/<ja or en>/<File Name>.md created
+$ script/post <File Name>.md
+/path/to/docs/content/<File Name>.md created
 # Writing
 # commit
 $ git add .
@@ -74,8 +74,11 @@ This blog uses wercker to deploy `public` to `gh-pages` branch automatically so 
 
 ## Development
 
-Style is based on **Atomic OORSCSSITSTYLUS**. It stands for Atomic Design, OOCSS, RSCSS, ITCSS and Stylus.
-
+1. Fork it ( https://github.com/[my-github-username]/docs/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
 
 ## Versioning
 
