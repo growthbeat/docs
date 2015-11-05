@@ -6,6 +6,6 @@ draft: false
 title: Growthbeat
 ---
 
-## coming soon...
+# coming soon...
 
 <!--more-->

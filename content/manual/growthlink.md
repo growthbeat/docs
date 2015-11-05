@@ -6,6 +6,6 @@ draft: false
 title: GrowthLink
 ---
 
-## coming soon...
+# coming soon...
 
 <!--more-->
