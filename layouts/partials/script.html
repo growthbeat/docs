@@ -1,9 +1,27 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script src="{{ .Site.BaseURL }}js/sirok-scrollspy.js"></script>
 <script>
-$(document).ready(function() {
+$(function() {
   $('pre code, code').each(function(i, block) {
     hljs.highlightBlock(block)
-  })
+  });
+
+  var sidebar = $('.column-sidebar');
+  var offset = sidebar.offset();
+
+  $(window).scroll(function () {
+    if ($(window).scrollTop() > offset.top - 20) {
+      sidebar.addClass('fixed');
+    } else {
+      sidebar.removeClass('fixed');
+    }
+  });
+
+  sidebar.find('ul').addClass('spy-nav');
+
+  $(document.body).scrollspy({
+    target: '#TableOfContents',
+  });
 });
 </script>
