@@ -6,86 +6,186 @@ draft: false
 title: Growthbeat iOS Gudeliene
 ---
 
-# 概要
+# 共通初期設定
 
-グロースハックツールプラットホーム [Growthbeat](https://growthbeat.com/) の SDK 導入マニュアルです。Growthbeat の各サービスをアプリ内で利用するための技術仕様や導入の仕方について解説いたします。
+## SDK導入
 
-現在、下記サービスを提供しています：
+Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。
 
-|サービス名|機能|
-|---------|---|
-|Growthbeat|ユーザー総合管理|
-|Growth Push|プッシュ通知|
-|Growth Analytics|総合分析・解析|
-|Growth Message|ポップアップ通知|
-|Growth Link|ディープリンクツール|
+### CocoaPodsを使用して導入する場合
 
-Growthbeat を利用するにはウェブページから新規登録をしていただくか、担当者より発行された情報からログインをしてご利用いただけます。
+Podfileに下記を記述し、pod installを実行してください。
 
-## SDKについて
+```
+pod 'Growthbeat'
+```
 
-各種 SDK は [GitHub](https://github.com/SIROK) 上で開発され、オープンソースとして公開されております。そのままアプリへ導入することも可能です。SDK を変更しご使用いただくことは可能となっております。しかし公開されている SDK のソース以外の変更を行われた場合の、アプリの不具合や動作については保証し兼ねますのでご了承ください。
-
-Growthbeat は現在 iOS, Android, Unity に対応しております。Cocos-2D-X も対応予定はしておりますので別途ご相談ください。
-
-* [Growthbeat iOS SDK](https://github.com/SIROK/growthbeat-ios)
-* [Growthbeat Android SDK](https://github.com/SIROK/growthbeat-android)
-* [Growthbeat Unity SDK](https://github.com/SIROK/growthbeat-unity)
-* [Growthbeat Growthbeat Cocos2D-X SDK SDK](https://github.com/SIROK/growthbeat-cocos2dx)
-
-### SDK機能
-
-1つの SDK で Growthbeat 全てのサービスの機能が利用できます。(Growth Link のご利用には別途 SDK の導入が必要です)
-
-## SDK導入について
-
-### 導入方法
-
-**手動**
+### 手動でSDKを配置して導入する場合
 
 [最新版iOS SDK ダウンロードページ ](https://github.com/SIROK/growthbeat-ios/archive/latest.zip)
 
-ダウンロードしたファイルを解凍します。その後、そのフォルダ内の**Growthbeat.framework** をプロジェクトへ組み込みます。任意の Xcode プロジェクトを開き Growthbeat.framework をインポートしてください。
+ダウンロードしたファイルを解凍し、そのフォルダの中の **Growthbeat.framework** をプロジェクトへ組み込みます。
+任意のXcodeプロジェクトを開き、Growthbeat.frameworkをインポートしてください。
 
-1. Growthbeat.framework のインポートの方法は以下の2つ
-
-  * Xcode プロジェクトに Growthbeat.framework をドラッグアンドドロップ
-  * Bulid Phases → Link Binary With Libraries の+ボタンを押し Add Other... からGrowthbeat.framework を選択。
-
-1. Growthbeat の import 文を記述
-
-```objc
-#import <Growthbeat/Growthbeat.h>
+Growthbeat.frameworkのインポートの方法は2つあります。
+```
+1. Xcodeプロジェクトに、Growthbeat.frameworkをドラッグアンドドロップする
+2. Bulid Phases -> Link Binary With Librariesの+ボタンを押し、Add Other...からGrowthbeat.frameworkを選択する
 ```
 
-**CocoaPods**
-
-CocoaPodsを使用してライブラリをインポートすることも可能です。その際は、`Podfile` に下記を記述し `pod install` を実行してください：
-
-```ruby
-pod 'Growthbeat'
+Growthbeatのimport文を記述します。
+```
+#import <Growthbeat/Growthbeat.h>
 ```
 
 ### 依存について
 
-Growthbeat.framework　には下記 Framework が必須となります：
+Growthbeat.frameworkは、下記Frameworkが必須となります。
 
-* Foundation.framework
-* UIKit.framework
-* CoreGraphics.framework
-* SystemConfiguration.framework
-* AdSupport.framework
-* CFNetwork.framework
+- Foundation.framework
+- UIKit.framework
+- CoreGraphics.framework
+- SystemConfiguration.framework
+- AdSupport.framework
+- CFNetwork.framework
 
-### 実装方法
+## Growthbeatの初期化
 
-SDK利用時にアプリケーション ID と SDKキー を使用して認証をします。
+```objc
+[[Growthbeat sharedInstance] initializeWithApplicationId:@"YOUR_APLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID"];
+```
 
-Growthbeat 管理画面からアプリケーション ID と SDK キーを取得します。アカウント作成時に API キー（REST API を使用時の認証に必須となるキー）と SDK キー（SDK の認証のために必須となるキー）が用意されています。
+Growth Push SDKからの乗り換え方法はAPIリファレンスを参照
 
-* API キー（REST API を使用時の認証に必須となるキー）
-* SDK キー（SDK の認証のために必須となるキー）
+[APIリファレンス]()
 
-各サービスのヘッダーのアカウント名をクリックしします。そして、表示されるメニューから **マイページ** をお選びください。Growthbeat マイページから API キー と SDKキーを見ることができます
 
-また、アプリケーション ID は Growthbeat のマイページから任意のアプリケーションを選択し、アプリケーション ID を控えてください。
+# プッシュ通知（Grwoth Push）
+
+Growth Push管理画面、証明書設定ページにて、各OSごとに証明書の設定を行ってください。
+
+[iOSプッシュ通知証明書作成方法](http://growthhack.sirok.co.jp/growthpush/ios-p12/)
+
+
+## デバイストークンを取得・送信をする
+
+1. Growthhbeat#initializeWithApplicationIdの後に下記を呼び出す
+
+```
+[[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
+```
+
+2. ApplicationDelegateにて下記を追加
+
+```
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [[GrowthPush sharedInstance] setDeviceToken:deviceToken];
+}
+```
+
+# 分析（Growth Anlytics）
+
+あらかじめ特定のタグやイベントを送信するためのメソッドを用意しております。
+[Growthbeatの初期化](#growthbeatの初期化) の時点で下記データがGrowth Anlyticsに送信されます。
+
+* デバイスモデル
+
+* OS
+
+* 言語
+
+* タイムゾーン
+
+* UTCとタイムゾーンの差分
+
+その他、デフォルトで用意のあるタグ・イベント一覧はAPIリファレンスを参照してください。
+
+[APIリファレンス]()
+
+## タグ（ユーザー属性）の送信
+
+**タグとは**
+
+ユーザーの属性を示す情報の送信をします。一般的には ユーザーID/性別/年齢 等の情報を送信します。
+
+```objc
+- (void)track:(NSString *)name;
+- (void)track:(NSString *)name properties:(NSDictionary *)properties;
+- (void)track:(NSString *)name option:(GATrackOption)option;
+- (void)track:(NSString *)name properties:(NSDictionary *)properties option:(GATrackOption)option;
+```
+
+詳しくは、APIリファレンスを参照してください。
+
+[APIリファレンス]()
+
+## イベント（行動ログ）の送信
+
+**イベントとは？**
+
+ユーザーの行動ログを示す情報の送信をします。一般的には 起動/ログイン/課金 等の情報を送信します。
+
+```objc
+- (void)tag:(NSString *)name;
+- (void)tag:(NSString *)name value:(NSString *)value;
+```
+
+詳しくは、APIリファレンスを参照してください。
+
+[APIリファレンス]()
+
+# アプリ内メッセージ（Growth Message）
+
+## メッセージを表示する
+
+メッセージを表示したい場所にGrowth Analyticsのタグを設定してください。
+
+```objc
+- (void)track:(NSString *)name;
+- (void)track:(NSString *)name properties:(NSDictionary *)properties;
+- (void)track:(NSString *)name option:(GATrackOption)option;
+- (void)track:(NSString *)name properties:(NSDictionary *)properties option:(GATrackOption)option;
+```
+
+詳しくは、APIリファレンスを参照してください。
+
+[Growth Analytics APIリファレンス]()
+
+# ディープリンク（Growth Link）
+
+## 初期設定
+
+Growthbeat.frameworkを導入した上で、Growthbeat SDK内の `source/GrowthLink` に含まれる **GrowthLink.framework** を導入します。任意のXcodeプロジェクトを開き、Growthbeat.frameworkをインポートしてください。
+
+Growthbeat.frameworkのインポートの方法は2つあります。
+
+```
+1. Xcodeプロジェクトに、GrowthLink.frameworkをドラッグアンドドロップする。
+2. Bulid Phases -> Link Binary With Librariesの+ボタンを押し、Add Other...からGrowthLink.frameworkを選択。
+```
+
+GrowthLinkのimport文を記述します。
+
+```objc
+#import <GrowthLink/GrowthLink.h>
+```
+
+## ディープリンク用初期化処理
+
+Growthbeatの初期化処理の後に、Growth Linkの初期化処理を呼び出す
+
+```objc
+[[GrowthLink sharedInstance] initializeWithApplicationId:@"APPLICATION_ID" credentialId:@"CREDENTIAL_ID"];
+```
+
+カスタムURLスキームでアプリを起動できるように、Info.plistを設定する。
+
+URL起動の処理で、handleOpenUrl:urlメソッドを呼び出す
+
+```objc
+- (BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    [[GrowthLink sharedInstance] handleOpenUrl:url];
+    return YES;
+}
+```
