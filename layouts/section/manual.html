@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Params.locale }}">
+{{ partial "head.html" . }}
+<body>
+<!--[if lt IE 10]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<div class="wrapper">
+
+<!-- Header -->
+{{ partial "header.html" . }}
+<section class="navbar-subheader">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li class="item"><a class="link" href="{{ .Site.BaseURL }}">サポートページ</a></li>
+      <li class="item"><a class="link">管理画面ガイド</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Container -->
+<div class="content">
+<div class="container">
+
+<section class="page">
+<h2 class="title">管理画面ガイド</h2>
+</section>
+
+<section class="manual-card card-container">
+  {{ range .Data.Pages }}
+    <a class="service" href="{{ .Permalink }}">
+      {{ if in .Permalink "growthbeat" }}
+        <img class="img" src="{{ .Site.BaseURL }}/img/icon_svg/icon_growthbeat.svg" alt="Growthbeat">
+      {{ end }}
+      {{ if in .Permalink "growthpush" }}
+        <img class="img" src="{{ .Site.BaseURL }}/img/icon_svg/icon_growthpush.svg" alt="Growth Push">
+      {{ end }}
+      {{ if in .Permalink "growthmessage" }}
+        <img class="img" src="{{ .Site.BaseURL }}/img/icon_svg/icon_growthmessage.svg" alt="Growth Message">
+      {{ end }}
+      {{ if in .Permalink "growthlink" }}
+        <img class="img" src="{{ .Site.BaseURL }}/img/icon_svg/icon_growthlink.svg" alt="Growth Link">
+      {{ end }}
+      <h3 class="title">{{ .Title }}</h3>
+    </a>
+  {{ end }}
+</section>
+
+</div><!-- container -->
+</div><!-- content -->
+
+<!-- Footer -->
+{{ partial "footer.html" . }}
+
+</div><!-- /wrapper -->
+</body>
+</html>

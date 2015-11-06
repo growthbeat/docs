@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Params.locale }}">
+{{ partial "head.html" . }}
+<body>
+<!--[if lt IE 10]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<div class="wrapper">
+
+
+<!-- Header -->
+{{ partial "header.html" . }}
+<section class="navbar-subheader">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li class="item">
+        <a class="link" href="{{ .Site.BaseURL }}">サポートページ</a>
+      </li>
+      <li class="item">
+        <a class="link" href="{{ .Site.BaseURL }}manual/">管理画面ガイド</a>
+      </li>
+      {{ if in .Permalink "growthbeat" }}
+        <li class="item"><a class="link">Growthbeat</a></li>
+      {{ end }}
+      {{ if in .Permalink "growthpush" }}
+        <li class="item"><a class="link">Growth Push</a></li>
+      {{ end }}
+      {{ if in .Permalink "growthmessage" }}
+        <li class="item"><a class="link">Growth Message</a></li>
+      {{ end }}
+      {{ if in .Permalink "growthlink" }}
+        <li class="item"><a class="link">Growth Link</a></li>
+      {{ end }}
+    </ul>
+  </div>
+</section>
+
+
+<!-- Header -->
+<div class="content">
+  <div class="container">
+
+<div class="page">
+  <h1 class="title">
+      {{ if in .Permalink "growthbeat" }}
+        Growthbeat
+      {{ end }}
+      {{ if in .Permalink "growthpush" }}
+        Growth Push
+      {{ end }}
+      {{ if in .Permalink "growthmessage" }}
+        Growth Message
+      {{ end }}
+      {{ if in .Permalink "growthlink" }}
+        Growth Link
+      {{ end }}
+    <span class="updated">最終更新日 {{ .Date.Format .Site.Params.DateForm }}</span>
+  </h1>
+  <!-- <a class="edit" href="https://github.com/growthbeat/docs/blob/master/content/{{ .Section }}/{{ $.Scratch.Get "platform" }}/{{ $.Scratch.Get "type" }}.md">Edit on GitHub</a> -->
+</div>
+
+<section class="row markdown">
+    <div class="column column-sidebar">
+      {{ .TableOfContents }}
+    </div>
+    <div class="column column-main">
+      <div class="typeset">
+        {{ .Content }}
+      </div>
+    </div>
+</section>
+
+
+  </div><!-- .container -->
+</div><!-- .content -->
+
+
+<!-- Footer -->
+{{ partial "footer.html" . }}
+
+
+</div><!-- .wrapper -->
+</body>
+</html>
