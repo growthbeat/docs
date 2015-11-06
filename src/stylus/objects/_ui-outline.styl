@@ -5,33 +5,45 @@
  * このスタイルは Hugo が出力する目次の
  * HTMLのみに対応しています。
  */
+#TableOfContents ul
+  &:first-child
+    margin-top -12px
+
 #TableOfContents a
   display inline-block
-  margin-bottom 20px
+  color #879094
+  line-height 1.5
+  &:hover
+    color #5E9ADD
 
 /**
  * H1
  */
 #TableOfContents > ul > li > a
-  color #5E9ADD
+  height 44px
+  font-size 14px
+  padding-top 12px
+
 
 /**
  * H2
  */
-#TableOfContents > ul > li > ul a
-  color #626f74
-  font-size 13px
-  line-height:1.5
-  transition opacity 0.1s ease 0s
-  &:hover
-    opacity .7
-
-
 #TableOfContents > ul > li > ul
   padding-left 20px
 
+#TableOfContents > ul > li > ul > li > a
+  height 33px
+  font-size 13px
+  padding-top 8px
+
 #TableOfContents > ul > li > ul > li > ul
   padding-left 20px
+
+#TableOfContents > ul > li > ul > li > ul > li a
+  height 22px
+  font-size 13px
+  font-weight 200
+  padding-top 6px
 
 #TableOfContents .spy-nav > .active > a
   color: #5e9add

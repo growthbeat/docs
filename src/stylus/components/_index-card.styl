@@ -2,44 +2,55 @@
     $INDEX-CARD
 \*------------------------------------*/
 .index-card
-  margin-bottom 80px
+  padding 0 20px
 
+  & > .manual,
   & > .sdk,
   & > .help
     @extend .card
     @extend .card.-large
     cursor pointer
-    display inline-block
-    text-align left
-    width 428px
-    margin 0 20px
-    border-color #619BDB
-    transition opacity 0.1s ease 0s
-    &:hover
-      opacity .8
-
-  & > .sdk  > .img,
-  & > .help > .img
+    display block
     float left
-    text-align center
+    width 289px
+    margin 22px
+    border-color #619BDB
+    transition all 0.2s linear
+    &:hover
+      background #619BDB
 
+      & path
+        transition all 0.2s linear
+        fill #ffffff
+      & > .title
+        color #ffffff
+        transition all 0.2s linear
+      & > .description
+        color #ffffff
+        transition all 0.2s linear
+
+  & > .manual > svg,
+  & > .sdk  > svg,
+  & > .help > svg
+    display block
+    text-align center
+    margin 0 auto
+    height 82px
+    fill #619BDB
+
+  & > .manual > .title,
   & > .sdk  > .title,
   & > .help > .title
     color #619BDB
     font-size 22px
-    font-weight 300
-    margin-bottom 10px
+    font-weight 600
+    text-align center
+    margin 22px 0
 
+  & > .manual > .description,
   & > .sdk  > .description,
   & > .help > .description
     font-size font-small
-    line-height 1.4
+    text-align center
+    line-height 1.7
     color #626F74
-
-  & > .sdk  > .title,
-  & > .sdk  > .description
-    margin-left 120px
-
-  & > .help > .title,
-  & > .help > .description
-    margin-left 85px
