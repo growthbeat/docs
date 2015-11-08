@@ -5,6 +5,21 @@
 <!--[if lt IE 10]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
+
+<!--
+  Detect type
+  Please see: https://gohugo.io/extras/scratch
+-->
+{{ if in .Permalink "growthbeat" }}
+  {{ $.Scratch.Add "type" "growthbeat" }}
+{{ else if in .Permalink "growthpush" }}
+  {{ $.Scratch.Add "type" "growthpush" }}
+{{ else if in .Permalink "growthmessage" }}
+  {{ $.Scratch.Add "type" "growthmessage" }}
+{{ else if in .Permalink "growthlink" }}
+  {{ $.Scratch.Add "type" "growthlink" }}
+{{end}}
+
 <div class="wrapper">
 
 
@@ -56,7 +71,7 @@
       {{ end }}
     <span class="updated">最終更新日 {{ .Date.Format .Site.Params.DateForm }}</span>
   </h1>
-  <!-- <a class="edit" href="https://github.com/growthbeat/docs/blob/master/content/{{ .Section }}/{{ $.Scratch.Get "platform" }}/{{ $.Scratch.Get "type" }}.md">Edit on GitHub</a> -->
+  <a class="edit" href="https://github.com/growthbeat/docs/blob/master/content/{{ .Section }}/{{ $.Scratch.Get "platform" }}{{ $.Scratch.Get "type" }}.md">Edit on GitHub</a>
 </div>
 
 <section class="row markdown">
