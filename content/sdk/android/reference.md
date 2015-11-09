@@ -8,7 +8,7 @@ title: Growthbeat Android API
 
 # Growthbeat Android API
 
-# 初期化 デバイス登録・認証
+## 初期化 デバイス登録・認証
 
 Growthbeatへデバイス登録・認証を行います。
 
@@ -16,13 +16,13 @@ Growthbeatへデバイス登録・認証を行います。
 Growthbeat.getInstance().initialize(context, "YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
 ```
 
-# ユーザー属性、行動ログの付与 (Growth Analyticsの利用)
+## ユーザー属性、行動ログの付与 (Growth Analyticsの利用)
 
 Growth Analyticsの初期化をします。初期化の中に、端末の基本情報の送信、広告IDの取得が行われます。
 
 送信されたデータは、Growth Analytics管理画面をご覧ください。
 
-## 端末・ユーザー情報を送信方法と、実装の説明
+### 端末・ユーザー情報を送信方法と、実装の説明
 
 端末やユーザーの情報をGrowth Analyticsへ送信します。送信することでGrowth Analytics上で解析・分析を行うことができます。取得したい情報を、任意の場所に実装してください。
 
@@ -52,7 +52,7 @@ Growth Analyticsの初期化をします。初期化の中に、端末の基本�
 - *track* カスタムイベントを送信します。
 - *tag* カスタムタグを送信します。
 
-## 端末のデータを送信
+### 端末のデータを送信
 
 setBasicTagsメソッドは端末のデータを送信します。
 
@@ -237,9 +237,9 @@ GrowthAnalytics.getInstance().setAdvertisingId();
 GrowthAnalytics.getInstance().setTrackingEnabled();
 ```
 
-## カスタムイベント・タグを送信する
+### カスタムイベント・タグを送信する
 
-### カスタムイベントとは？
+#### カスタムイベントとは？
 
 任意のイベントを取得することが出来ます。カスタムイベントには、それぞれ一意のEventIDを割り当てる必要があります。
 
@@ -248,7 +248,7 @@ GrowthAnalytics.getInstance().setTrackingEnabled();
 	- `YOUR_APPLICATION_ID`: ApplicationIDを指定されます。
 	- `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
 
-### カスタムイベントの送信
+#### カスタムイベントの送信
 
 ```java
 public void track(final String name);
@@ -257,7 +257,7 @@ public void track(final String name, final TrackOption option);
 public void track(final String name, final Map<String, String> properties, final TrackOption option);
 ```
 
-### パラメータ
+#### パラメータ
 
 |項目名|詳細|
 |:--|:--|
@@ -265,7 +265,7 @@ public void track(final String name, final Map<String, String> properties, final
 |properties|カスタムイベントに持たせる任意のMap|
 |option|任意のパラメータ。ONCE, COUNTERのいずれかを指定します。|
 
-### TrackOption
+#### TrackOption
 
 |項目名|詳細|
 |:--|:--|
@@ -279,7 +279,7 @@ GrowthAnalytics.getInstance().track("CUSTOM_EVENT_ID", GrowthAnalytics.TrackOpti
 GrowthAnalytics.getInstance().track("CUSTOM_EVENT_ID", properties, GrowthAnalytics.TrackOption.ONCE);
 ```
 
-### カスタムタグとは？
+#### カスタムタグとは？
 
 任意のタグを取得することが出来ます。カスタムタグには、それぞれ一意のTagIDを割り当てる必要があります。
 
@@ -344,7 +344,7 @@ public void track(final String namespace, final String name, final Map<String, S
 GrowthAnalytics.getInstance().track("NAMESPACE", "CUSTOM_EVENT_ID", properties, GrowthAnalytics.TrackOption.ONCE);
 ```
 
-### フルカスタマイズタグを送信
+#### フルカスタマイズタグを送信
 
 特定のネームスペース、タグIDを設定していただくことが可能です。下記、タグID発行例となります。
 
@@ -370,9 +370,9 @@ public void tag(final String namespace, final String name, final String value)
 GrowthAnalytics.getInstance().tag("NAMESPACE", "TAG_ID", "value");
 ```
 
-# プッシュ通知の実装 (Growth Pushの利用)
+## プッシュ通知の実装 (Growth Pushの利用)
 
-# 初期設定
+### 初期設定
 
 Growth Push管理画面、証明書設定ページにて、各OSごとに証明書の設定を行ってください。
 
@@ -430,7 +430,7 @@ AndroidManifest.xmlの設定を行う必要がございます。
 
 * YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。
 
-## RegistrationIdの取得・送信
+### RegistrationIdの取得・送信
 
 1. Growthhbeat#initializeWithApplicationIdの後に下記を呼び出す
 
@@ -439,7 +439,7 @@ AndroidManifest.xmlの設定を行う必要がございます。
 	GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID");
 	```
 
-## カスタムアイコンの設定
+### カスタムアイコンの設定
 
 Googleのポリシーに合わせ、アイコンを変更できるようにしました。
 
@@ -457,11 +457,11 @@ AndroidManifest.xml `<application>` 内に、下記項目を加えてくださ�
 	<meta-data android:name="com.growthpush.dialog.icon" android:resource="表示したいアイコンのパス" />
 	```
 
-## イベント・タグの取得
+### イベント・タグの取得
 
 _こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。これまでGrowth Push SDKをご利用しておりました方は、Growth Analyticsのイベント・タグの送信にお乗り換えくださいませ。_
 
-### イベントを送信する
+#### イベントを送信する
 
 ```java
 public void trackEvent(final String name);
@@ -481,7 +481,7 @@ GrowthPush.getInstance().trackEvent("EVENT_NAME");
 GrowthPush.getInstance().trackEvent("EVENT_NAME", "EVENT_VALUE");
 ```
 
-### タグを送信する
+#### タグを送信する
 
 ```java
 public void setTag(final String name);
@@ -500,9 +500,9 @@ GrowthPush.getInstance().setTag("TAG_NAME");
 GrowthPush.getInstance().setTag("TAG_NAME", "TAG_VALUE");
 ```
 
-# アプリ内ポップアップメッセージの実装 (Growth Messageの利用)
+## アプリ内ポップアップメッセージの実装 (Growth Messageの利用)
 
-# 初期設定
+### 初期設定
 
 Androidはメッセージを表示するためのActivityを追記します。
 
@@ -514,7 +514,7 @@ AndroidManifest.xmlの `<application>` 要素内に下記を記述します。
 	android:theme="@android:style/Theme.Translucent" />
 ```
 
-## メッセージを表示するViewを指定
+### メッセージを表示するViewを指定
 
 ### デフォルトで用意しているイベントの送信
 
@@ -534,13 +534,13 @@ GrowthAnalytics.getInstance().track("CUSTOM_EVENT_ID", properties, GrowthAnalyti
 Growth Analyticsの実装を参照してください。
 
 
-# ディープリンクの実装 (Growth Linkの利用)
+## ディープリンクの実装 (Growth Linkの利用)
 
-## SDKの導入
+### SDKの導入
 
 growthbeat.jarを導入した上で、Growthbeat SDK内の `source/library` に含まれる**growthlink.jar**を導入します。任意のアプリのプロジェクトに、Androidが他ライブラリを自動で参照する**libs**ディレクトリの中に、growthbeat.jarを移動もしくはコピーしてください。
 
-## 初期設定
+### 初期設定
 
 1. Install Referrerの取得のための設定を、AndoridManifest.xmlの `<application/>` 内の記述する。
 
@@ -570,7 +570,7 @@ growthbeat.jarを導入した上で、Growthbeat SDK内の `source/library` に�
 	GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
 	```
 
-## ディープリンクアクションの実装
+### ディープリンクアクションの実装
 
 SDKには、IntentHandler (iOSでは、GBIntentHandler)というインタフェースが定義されており、この実装でディープリンク時のアクションを実装することができます。
 
@@ -593,6 +593,6 @@ intentHandlers.add(new IntentHandler() {
 GrowthbeatCore.getInstance().setIntentHandlers(intentHandlers);
 ```
 
-## 備考
+### 備考
 
 SDK導入について、ご不明な点などございます場合は、Growthbeat[お問い合わせフォーム](https://growthbeat.com/inquiry)からお問い合わせください。また[リリースノート](http://support.growthbeat.com/sdk/ios/release/)もご参照ください
