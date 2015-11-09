@@ -6,6 +6,21 @@ draft: false
 title: リリースノート
 ---
 
+# バージョン 1.2.4
+
+**新機能**
+
+- Gradleプロジェクトに対応しました。
+
+**変更点**
+
+- HttpClientを廃止して、HttpURLConnectionに移行しました。
+- growthlink.jarを廃止して、growthbeat.jarに統合しました。
+
+**ドキュメント**
+
+- Gradleプロジェクトへの導入方法を追加しました。
+
 # バージョン 1.2.3
 
 **新機能**
