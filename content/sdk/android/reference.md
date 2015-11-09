@@ -6,8 +6,6 @@ draft: false
 title: Growthbeat Android API
 ---
 
-# Growthbeat Android API
-
 # 初期化 デバイス登録・認証
 
 Growthbeatへデバイス登録・認証を行います。
@@ -71,9 +69,9 @@ setBasicTagsメソッドは端末のデータを送信します。
 GrowthAnalytics.getInstance().setBasicTags();
 ```
 
-### 起動/終了イベントを送信
+## 起動/終了イベントを送信
 
-#### 起動 (open)
+### 起動 (open)
 
 ユーザーの起動イベントを送信します。セッション時間の計測を開始するために必要なメソッドです。起動後に開かれるActivityのonStartに以下を実装してください。
 
@@ -84,7 +82,7 @@ public void onStart() {
 }
 ```
 
-#### 終了 (close)
+### 終了 (close)
 
 アプリの終了イベントを送信します。セッション時間の計測を停止します。Activityが閉じプロセスが終了する場所に実装してください。
 
@@ -95,7 +93,7 @@ public void onStop() {
 }
 ```
 
-#### 課金情報を送信
+### 課金情報を送信
 
 課金時にメソッドを呼び、課金額、アイテムのカテゴリなどを送信することができます。
 
@@ -103,7 +101,7 @@ public void onStop() {
 GrowthAnalytics.getInstance().purchase(price, "ITEM_CATEGORY", "ITEM_NAME");
 ```
 
-#### ユニークなユーザーIDを送信
+### ユニークなユーザーIDを送信
 
 アプリのユニークなユーザーIDを送信します。
 
@@ -111,7 +109,7 @@ GrowthAnalytics.getInstance().purchase(price, "ITEM_CATEGORY", "ITEM_NAME");
 GrowthAnalytics.getInstance().setUserId("YOUR_USER_ID");
 ```
 
-#### ユーザー名を送信
+### ユーザー名を送信
 
 アプリのユーザー名を送信します。
 
@@ -119,13 +117,13 @@ GrowthAnalytics.getInstance().setUserId("YOUR_USER_ID");
 GrowthAnalytics.getInstance().setName("YOUR_NAME");
 ```
 
-#### 年齢を送信
+### 年齢を送信
 
 ```java
 GrowthAnalytics.getInstance().setAge(age);
 ```
 
-#### 性別を送信
+### 性別を送信
 
 変数は、Genderのenumを用いてどちらか性別を送信してください
 
@@ -137,7 +135,7 @@ GrowthAnalytics.getInstance().setGender(Gender.MALE);
 GrowthAnalytics.getInstance().setGender(Gender.FEMALE);
 ```
 
-#### レベルを送信
+### レベルを送信
 
 アプリのユーザーのレベルを送信します。
 
@@ -145,7 +143,7 @@ GrowthAnalytics.getInstance().setGender(Gender.FEMALE);
 GrowthAnalytics.getInstance().setLevel(level);
 ```
 
-#### 開発用の紐付け
+### 開発用の紐付け
 
 開発用のフラグをつける
 
@@ -153,7 +151,7 @@ GrowthAnalytics.getInstance().setLevel(level);
 GrowthAnalytics.getInstnace().setDevelopment(true);
 ```
 
-#### 端末モデル名を送信
+### 端末モデル名を送信
 
 端末のモデル名を送信します。
 
@@ -163,7 +161,7 @@ GrowthAnalytics.getInstnace().setDevelopment(true);
 GrowthAnalytics.getInstance().setDeviceModel();
 ```
 
-#### 端末OSを送信
+### 端末OSを送信
 
 端末のOSを送信します。
 
@@ -173,7 +171,7 @@ GrowthAnalytics.getInstance().setDeviceModel();
 GrowthAnalytics.getInstance().setOS();
 ```
 
-#### 端末の言語設定を送信
+### 端末の言語設定を送信
 
 端末の設定言語を送信します。
 
@@ -183,7 +181,7 @@ GrowthAnalytics.getInstance().setOS();
 GrowthAnalytics.getInstance().setLanguage();
 ```
 
-#### タイムゾーンを送信する
+### タイムゾーンを送信する
 
 端末で設定されたタイムゾーンを送信する。
 
@@ -193,7 +191,7 @@ GrowthAnalytics.getInstance().setLanguage();
 GrowthAnalytics.getInstance().setTimeZone();
 ```
 
-#### タイムゾーンオフセットを送信
+### タイムゾーンオフセットを送信
 
 端末の設定された時刻から、標準時刻の差分時間を送信します。
 
@@ -203,7 +201,7 @@ GrowthAnalytics.getInstance().setTimeZone();
 GrowthAnalytics.getInstance().setTimeZoneOffset();
 ```
 
-#### アプリバージョンを送信
+### アプリバージョンを送信
 
 アプリに設定されたアプリバージョンを送信します。
 
@@ -213,7 +211,7 @@ AndroidManifest.xmlの`<manifest>` android:versionNameに設定される値が�
 GrowthAnalytics.getInstance().setAppVersion();
 ```
 
-#### 乱数を送信
+### 乱数を送信
 
 乱数を端末の情報として紐付けます。
 
@@ -221,7 +219,7 @@ GrowthAnalytics.getInstance().setAppVersion();
 GrowthAnalytics.getInstance().setRandom();
 ```
 
-#### 広告IDを送信
+### 広告IDを送信
 
 広告IDを送信します。
 
@@ -229,7 +227,7 @@ GrowthAnalytics.getInstance().setRandom();
 GrowthAnalytics.getInstance().setAdvertisingId();
 ```
 
-#### 広告オプトアウトの送信
+### 広告オプトアウトの送信
 
 ユーザーが広告IDを利用するのを拒否しているかを送信します。
 
@@ -288,14 +286,14 @@ GrowthAnalytics.getInstance().track("CUSTOM_EVENT_ID", properties, GrowthAnalyti
 	- `YOUR_APPLICATION_ID`: ApplicationIDを指定されます。
 	- `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
 
-#### カスタムタグの送信
+### カスタムタグの送信
 
 ```java
 public void tag(final String name);
 public void tag(final String name, final String value);
 ```
 
-#### パラメータ
+### パラメータ
 
 |項目名|詳細|
 |:--|:--|
@@ -307,9 +305,9 @@ GrowthAnalytics.getInstance().tag("CUSTOM_TAG_ID");
 GrowthAnalytics.getInstance().tag("CUSTOM_TAG_ID", "value");
 ```
 
-### フルカスタマイズなイベント・タグの送信
+## フルカスタマイズなイベント・タグの送信
 
-#### フルカスタマイズイベントを送信
+### フルカスタマイズイベントを送信
 
 特定のネームスペース、イベントIDを設定していただくことが可能です。下記、イベントID発行例となります。
 
@@ -324,7 +322,7 @@ GrowthAnalytics.getInstance().tag("CUSTOM_TAG_ID", "value");
 public void track(final String namespace, final String name, final Map<String, String> properties, final TrackOption option);
 ```
 
-#### パラメータ
+### パラメータ
 
 |項目名|詳細|
 |:--|:--|
@@ -333,7 +331,7 @@ public void track(final String namespace, final String name, final Map<String, S
 |properties|イベントに持たせる任意のMap|
 |option|任意のパラメータ。ONCE, COUNTERのいずれかを指定します。|
 
-#### TrackOption
+### TrackOption
 
 |項目名|詳細|
 |:--|:--|
@@ -358,7 +356,7 @@ GrowthAnalytics.getInstance().track("NAMESPACE", "CUSTOM_EVENT_ID", properties, 
 public void tag(final String namespace, final String name, final String value)
 ```
 
-#### パラメータ
+### パラメータ
 
 |項目名|詳細|
 |:--|:--|
@@ -372,7 +370,7 @@ GrowthAnalytics.getInstance().tag("NAMESPACE", "TAG_ID", "value");
 
 # プッシュ通知の実装 (Growth Pushの利用)
 
-# 初期設定
+## 初期設定
 
 Growth Push管理画面、証明書設定ページにて、各OSごとに証明書の設定を行ってください。
 
@@ -468,7 +466,7 @@ public void trackEvent(final String name);
 public void trackEvent(final String name, final String value);
 ```
 
-#### パラメータ
+### パラメータ
 
 |項目名|詳細|
 |:--|:--|
@@ -488,7 +486,7 @@ public void setTag(final String name);
 public void setTag(final String name, final String value);
 ```
 
-#### パラメータ
+### パラメータ
 
 |項目名|詳細|
 |:--|:--|
@@ -502,7 +500,7 @@ GrowthPush.getInstance().setTag("TAG_NAME", "TAG_VALUE");
 
 # アプリ内ポップアップメッセージの実装 (Growth Messageの利用)
 
-# 初期設定
+## 初期設定
 
 Androidはメッセージを表示するためのActivityを追記します。
 
@@ -516,13 +514,13 @@ AndroidManifest.xmlの `<application>` 要素内に下記を記述します。
 
 ## メッセージを表示するViewを指定
 
-### デフォルトで用意しているイベントの送信
+## デフォルトで用意しているイベントの送信
 
 - *open* 起動イベントを送信します。
 - *close* 終了イベントを送信します。
 - *purchase* 課金イベントを送信します。
 
-### カスタムイベントの送信
+## カスタムイベントの送信
 
 ```java
 GrowthAnalytics.getInstance().track("CUSTOM_EVENT_ID");
@@ -533,14 +531,13 @@ GrowthAnalytics.getInstance().track("CUSTOM_EVENT_ID", properties, GrowthAnalyti
 
 Growth Analyticsの実装を参照してください。
 
-
 # ディープリンクの実装 (Growth Linkの利用)
 
 ## SDKの導入
 
 growthbeat.jarを導入した上で、Growthbeat SDK内の `source/library` に含まれる**growthlink.jar**を導入します。任意のアプリのプロジェクトに、Androidが他ライブラリを自動で参照する**libs**ディレクトリの中に、growthbeat.jarを移動もしくはコピーしてください。
 
-## 初期設定
+### 初期設定
 
 1. Install Referrerの取得のための設定を、AndoridManifest.xmlの `<application/>` 内の記述する。
 

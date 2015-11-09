@@ -7,6 +7,9 @@ staticdir:      "static"
 uglyUrls:       false
 metaDataFormat: "yaml"
 
+blackfriday:
+  plainIdAnchors: true
+
 Params:
   # Date Format
   DateForm:      "Mon, Jan 2, 2006"
