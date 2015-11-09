@@ -1,0 +1,34 @@
+/*------------------------------------*\
+    $MANUAL-CARD
+\*------------------------------------*/
+.manual-card
+  margin-bottom 80px
+  padding 0 20px
+
+  & > .service
+    @extend .card
+    @extend .card.-large
+    cursor pointer
+    display block
+    float left
+    width 289px
+    margin 22px
+    color #626f74
+    border-color #619BDB
+    transition all 0.2s linear
+    &:hover
+      background #619BDB
+      color #fff
+
+  & > .service > .img
+    height 88px
+    display block
+    text-align center
+    margin 0 auto
+
+  & > .service > .title
+    height 22px
+    font-size 22px
+    font-weight 600
+    text-align center
+    margin 22px 0 0
