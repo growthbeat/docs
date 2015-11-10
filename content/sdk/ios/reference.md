@@ -154,36 +154,41 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 ### カスタムイベント
 任意のイベントを送信します
 
-**メソッド**
+**イベント名の送信**
 
 ```objc
 - (void)track:(NSString *)name;
 ```
 
+```objc
+[[GrowthAnalytics sharedInstance] track:@"CUSTOM_EVENT_ID"];
+```
+
+**イベント名と任意のMapの送信**
+
 ```
 - (void)track:(NSString *)name properties:(NSDictionary *)properties;
 ```
+
+
+```
+[[GrowthAnalytics sharedInstance] track:@"CUSTOM_EVENT_ID" properties:@{@"key":@"value"}];
+```
+
+**イベント名とイベント取得回数オプションの送信**
 
 ```
 - (void)track:(NSString *)name option:(GATrackOption)option;
 ```
 
 ```
-- (void)track:(NSString *)name properties:(NSDictionary *)properties option:(GATrackOption)option;
-```
-
-**呼び出し**
-
-```objc
-[[GrowthAnalytics sharedInstance] track:@"CUSTOM_EVENT_ID"];
-```
-
-```
-[[GrowthAnalytics sharedInstance] track:@"CUSTOM_EVENT_ID" properties:@{@"key":@"value"}];
-```
-
-```
 [[GrowthAnalytics sharedInstance] track:@"CUSTOM_EVENT_ID" option:GATrackOptionCounter];
+```
+
+**イベント名と任意のMapの送信とイベント取得回数オプションの送信**
+
+```
+- (void)track:(NSString *)name properties:(NSDictionary *)properties option:(GATrackOption)option;
 ```
 
 ```
@@ -209,20 +214,20 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 ### カスタムタグ
 任意のタグを送信します
 
-**メソッド**
+**タグ名の送信をします**
 
 ```objc
 - (void)tag:(NSString *)name;
 ```
 
-```
-- (void)tag:(NSString *)name value:(NSString *)value;
-```
-
-**呼び出し**
-
 ```objc
 [[GrowthAnalytics sharedInstance] tag:@"CUSTOM_TAG_ID"];
+```
+
+**タグ名と任意のvalueを送信します**
+
+```
+- (void)tag:(NSString *)name value:(NSString *)value;
 ```
 
 ```
@@ -240,13 +245,9 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 ## フルカスタマイズなイベント・タグの送信
 特定のネームスペース、イベントIDを設定していただくことが可能です。下記、イベントID発行例となります。
 
-**メソッド**
-
 ```objc
 - (void)track:(NSString *)_namespace name:(NSString *)name properties:(NSDictionary *)properties option:(GATrackOption)option completion:(void(^)(GAClientEvent * clientEvent))completion;
 ```
-
-**呼び出し**
 
 ```objc
 [[GrowthAnalytics sharedInstance] track:@"NAMESPACE" name:@"EVENT_ID" properties:@{@"key":@"value"} option:GATrackOptionCounter completion:nil];
@@ -276,13 +277,10 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 
 特定のネームスペース、タグIDを設定していただくことが可能です。下記、タグID発行例となります。
 
-**メソッド**
 
 ```objc
 - (void)tag:(NSString *)_namespace name:(NSString *)name value:(NSString *)value completion:(void(^)(GAClientTag * clientTag))completion;
 ```
-
-**呼び出し**
 
 ```objc
 [[GrowthAnalytics sharedInstance] tag:@"NAMESPACE" name:@"TAG_ID" value:@"value" completion:nil];
