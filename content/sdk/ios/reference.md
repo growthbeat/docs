@@ -6,56 +6,25 @@ draft: false
 title: Growthbeat iOS API
 ---
 
-# Growthbeat iOS API
-
 # 初期化 デバイス登録・認証
 
-Growthbeatへデバイス登録・認証を行います。
+Growthbeatへデバイス登録・認証を行います。初期化の中に、端末の基本情報の送信、広告IDの取得が行われます。
 
 ```objc
 [[Growthbeat sharedInstance] initializeWithApplicationId:@"YOUR_APLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID"];
 ```
 
-# ユーザー属性、行動ログの付与 （Growth Analytics の利用）
+# Growth Analytics API
 
-Growth Analyticsの初期化をします。初期化の中に、端末の基本情報の送信、広告IDの取得が行われます。送信されたデータは、Growth Analytics管理画面をご覧ください。
+取得したい情報を、任意の場所に実装してください。送信されたデータは、Growth Analytics管理画面をご覧ください。
 
-## 端末・ユーザー情報を送信方法と、実装の説明
+## 基本情報の送信
 
-端末やユーザーの情報をGrowth Analyticsへ送信します。送信することでGrowth Analytics上で解析・分析を行うことができます。取得したい情報を、任意の場所に実装してください。
+端末の基本情報を送信します。
 
-あらかじめ特定のタグやイベントを送信するためのメソッドを用意しております。
-
-
-- *setBasicTags* 基本情報となるタグのセットです。
-- *open* 起動イベントを送信します。
-- *close* 終了イベントを送信します。
-- *purchase* 課金イベントを送信します。
-- *setUserId* アプリのユニークなUserIdを送信します。
-- *setName* アプリのユーザー名を送信します。
-- *setAge* アプリのユーザーの年齢を送信します。
-- *setGender* アプリのユーザーの性別を送信します。
-- *setLevel* アプリのユーザーのレベルを送信します。
-- *setDevelopment* 開発用のフラグを送信します。
-- *setDeviceModel* 端末のモデルを送信します。
-- *setOS* 端末のOS
-- *setLanguage* 端末の言語設定
-- *setTimeZone* 端末のタイムゾーン
-- *setTimeZoneOffset* 端末の標準時刻からの差
-- *setAppVersion* アプリの設定されているバージョン
-- *setRandom* 乱数を送信します。
-- *setAdvertisingId* 広告IDを送信します。
-
-また、上記で予め用意されているタグ、イベント以外でも下記メソッドを使用することで、カスタムタグ、カスタムイベントが送信できます。
-
-- *track* カスタムイベントを送信します。
-- *tag* カスタムタグを送信します。
-
-## 端末のデータを送信
-
-setBasicTagsメソッドは端末のデータを送信します。
-
-このメソッドには、下記が含まれます。
+```objc
+[[GrowthAnalytics sharedInstance] setBasicTags];
+```
 
 - setDeviceModel
 - setOs
@@ -66,17 +35,12 @@ setBasicTagsメソッドは端末のデータを送信します。
 - setAdvertisingId
 - setTrackingEnabled
 
-```objc
-[[GrowthAnalytics sharedInstance] setBasicTags];
-```
 
-### 特定のイベント・タグを送信
+## 特定のイベント・タグを送信
 
-#### 起動 (open)
+### open event
 
 ユーザーの起動イベントを送信します。セッション時間の計測を開始するために必要なメソッドです。
-
-AppDelegateのapplicationDidBecomeActive:に以下を実装してください。
 
 ```objc
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -85,9 +49,9 @@ AppDelegateのapplicationDidBecomeActive:に以下を実装してください。
 }
 ```
 
-#### 終了 (close)
+### close
 
-アプリの終了イベントを送信します。セッション時間の計測を停止します。AppDelegateのapplicationWillResignActive:に以下を実装してください。
+アプリの終了イベントを送信します。セッション時間の計測を停止します。
 
 ```objc
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -95,7 +59,7 @@ AppDelegateのapplicationDidBecomeActive:に以下を実装してください。
 }
 ```
 
-#### 課金情報を送信
+### purchase
 
 課金時にメソッドを呼び、課金額、アイテムのカテゴリなどを送信することができます。
 
@@ -103,7 +67,7 @@ AppDelegateのapplicationDidBecomeActive:に以下を実装してください。
 [[GrowthAnalytics sharedInstance] purchase:price setCategory:@"ITEM_CATEGORY" setProduct:@"ITEM_NAME"];
 ```
 
-#### ユニークなユーザーIDを送信
+### setUserId
 
 アプリのユニークなユーザーIDを送信します。
 
@@ -111,7 +75,7 @@ AppDelegateのapplicationDidBecomeActive:に以下を実装してください。
 [[GrowthAnalytics sharedInstance] setUserId:@"YOUR_USER_ID"];
 ```
 
-#### ユーザー名を送信
+### setName
 
 アプリのユーザー名を送信します。
 
@@ -119,7 +83,7 @@ AppDelegateのapplicationDidBecomeActive:に以下を実装してください。
 [[GrowthAnalytics sharedInstance] setName:@"YOUR_NAME"];
 ```
 
-#### 年齢を送信
+#### setAge
 
 アプリのユーザーの年齢を送信します。
 
@@ -127,19 +91,23 @@ AppDelegateのapplicationDidBecomeActive:に以下を実装してください。
 [[GrowthAnalytics sharedInstance] setAge:age];
 ```
 
-#### 性別を送信
+### setGender
 
 変数は、GAGenderを用いてどちらか性別を送信してください。
 
-```objc
-// 男性
-[[GrowthAnalytics sharedInstance] setGender:GAGenderMale];
+**男性**
 
-// 女性
+```objc
+[[GrowthAnalytics sharedInstance] setGender:GAGenderMale];
+```
+
+**女性**
+
+```
 [[GrowthAnalytics sharedInstance] setGender:GAGenderFemale];
 ```
 
-#### レベルを送信
+### setLevel
 
 アプリのユーザーのレベルを送信します。
 
@@ -147,7 +115,7 @@ AppDelegateのapplicationDidBecomeActive:に以下を実装してください。
 [[GrowthAnalytics sharedInstance] setLevel:level];
 ```
 
-#### 開発用の紐付け
+### setDevelopment
 
 開発用のフラグをつける
 
@@ -155,68 +123,7 @@ AppDelegateのapplicationDidBecomeActive:に以下を実装してください。
 [[GrowthAnalytics sharedInstance] setDevelopment:YES]:
 ```
 
-#### 端末モデル名を送信
-
-端末のモデル名を送信します。
-
-例.)iPhone, iPad
-
-```objc
-[[GrowthAnalytics sharedInstance] setDeviceModel];
-```
-
-#### 端末OSを送信
-
-端末のOSを送信します。
-
-例.) iOS 8.0, iOS 8.4
-
-```objc
-[[GrowthAnalytics sharedInsance] setOS];
-```
-
-#### 端末の言語設定を送信
-
-端末の設定言語を送信します。
-
-例.) ja, en
-
-```objc
-[[GrowthAnalytics sharedInstance] setLanguage];
-```
-
-#### タイムゾーンを送信
-
-端末で設定されたタイムゾーンを送信する。
-
-例.) Asia/Tokyo, America/Los_Angeles
-
-```objc
-[[GrowthAnalytics sharedInstance] setTimeZone];
-```
-
-#### タイムゾーンオフセットを送信
-
-端末の設定された時刻から、標準時刻の差分時間を送信します。
-
-例.) 9, -11
-
-
-```objc
-[[GrowthAnalytics sharedInstance] setTimeZoneOffset];
-```
-
-#### アプリバージョンを送信
-
-アプリに設定されたアプリバージョンを送信します。
-
-Info.plistのCFBundleVersionに設定している値が入ります。
-
-```objc
-[[GrowthAnalytics sharedInstance] setAppVersion];
-```
-
-#### 乱数を送信
+### setRandom
 
 乱数を端末の情報として紐付けます。
 
@@ -224,7 +131,7 @@ Info.plistのCFBundleVersionに設定している値が入ります。
 [[GrowthAnalytics sharedInstance] setRandom];
 ```
 
-#### 広告IDを送信
+### setAdvertisingId
 
 広告IDを送信します。
 
@@ -234,7 +141,7 @@ Info.plistのCFBundleVersionに設定している値が入ります。
 
 注意：_広告の表示欄がないアプリで利用すると申請時にリジェクトをされる可能性が高いので設定される場合は、十分にご注意ください。_
 
-#### 広告オプトアウトの送信
+### setTrackingEnabled
 
 ユーザーが広告IDを利用するのを拒否しているかを送信します。
 
@@ -244,33 +151,54 @@ Info.plistのCFBundleVersionに設定している値が入ります。
 
 ## カスタムイベント・タグを送信
 
-### カスタムイベントとは？
+### カスタムイベント
+任意のイベントを送信します
 
-任意のイベントを取得することが出来ます。カスタムイベントには、それぞれ一意のEventIDを割り当てる必要があります。
-
-- EventID: `Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>`  
-	- 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。
-	- `YOUR_APPLICATION_ID`: ApplicationIDを指定されます。
-	- `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
-
-#### カスタムイベントの送信
+**メソッド**
 
 ```objc
 - (void)track:(NSString *)name;
+```
+
+```
 - (void)track:(NSString *)name properties:(NSDictionary *)properties;
+```
+
+```
 - (void)track:(NSString *)name option:(GATrackOption)option;
+```
+
+```
 - (void)track:(NSString *)name properties:(NSDictionary *)properties option:(GATrackOption)option;
 ```
 
-#### パラメータ
+**呼び出し**
+
+```objc
+[[GrowthAnalytics sharedInstance] track:@"CUSTOM_EVENT_ID"];
+```
+
+```
+[[GrowthAnalytics sharedInstance] track:@"CUSTOM_EVENT_ID" properties:@{@"key":@"value"}];
+```
+
+```
+[[GrowthAnalytics sharedInstance] track:@"CUSTOM_EVENT_ID" option:GATrackOptionCounter];
+```
+
+```
+[[GrowthAnalytics sharedInstance] track:@"CUSTOM_EVENT_ID" properties:@{@"key":@"value"} option:GATrackOptionCounter];
+```
+
+**パラメータ**
 
 |項目名|詳細|
 |:--|:--|
-|name|カスタムイベントID|
+|name|`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。`YUR_APPLICATION_ID`: ApplicationIDを指定されます。`CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
 |properties|カスタムイベントに持たせる任意のMap|
 |option|GATrackOptionDefault,GATrackOptionOnce,GATrackOptionCounterのいずれかを指定します。|
 
-#### GATrackOption
+**option**
 
 |項目名|詳細|
 |:--|:--|
@@ -278,70 +206,63 @@ Info.plistのCFBundleVersionに設定している値が入ります。
 |GATrackOptionOnce|このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）|
 |GATrackOptionCounter|このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。|
 
-```objc
-[[GrowthAnalytics sharedInstance] track:@"CUSTOM_EVENT_ID"];
-[[GrowthAnalytics sharedInstance] track:@"CUSTOM_EVENT_ID" properties:@{@"key":@"value"}];
-[[GrowthAnalytics sharedInstance] track:@"CUSTOM_EVENT_ID" option:GATrackOptionCounter];
-[[GrowthAnalytics sharedInstance] track:@"CUSTOM_EVENT_ID" properties:@{@"key":@"value"} option:GATrackOptionCounter];
-```
+### カスタムタグ
+任意のタグを送信します
 
-### カスタムタグとは？
-
-任意のタグを取得することが出来ます。カスタムタグには、それぞれ一意のTagIDを割り当てる必要があります。
-
-- TagID: `Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>`  
-	- 上記全文で一意なTagIDと認識されます。大文字小文字は区別されません。
-	- `YOUR_APPLICATION_ID`: ApplicationIDを指定されます。
-	- `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
-
-#### カスタムタグの送信
+**メソッド**
 
 ```objc
 - (void)tag:(NSString *)name;
+```
+
+```
 - (void)tag:(NSString *)name value:(NSString *)value;
 ```
 
-#### パラメータ
-
-|項目名|詳細|
-|:--|:--|
-|name|カスタムタグID|
-|value|カスタムタグに持たせる任意のValue|
+**呼び出し**
 
 ```objc
 [[GrowthAnalytics sharedInstance] tag:@"CUSTOM_TAG_ID"];
+```
+
+```
 [[GrowthAnalytics sharedInstance] tag:@"CUSTOM_TAG_ID" value:@"value"];
 ```
 
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|name|`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` 上記全文で一意なTagIDと認識されます。大文字小文字は区別されません。`YOUR_APPLICATION_ID`: ApplicationIDを指定されます。 `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
+|value|カスタムタグに持たせる任意のValue|
+
+
 ## フルカスタマイズなイベント・タグの送信
-
-### フルカスタマイズなイベントの送信
-
 特定のネームスペース、イベントIDを設定していただくことが可能です。下記、イベントID発行例となります。
 
-- EventID: `Event:<YOUR_APPLICATION_ID>:<NAMESPACE>:<EVENT_ID>`
-	- 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。
-	- `YOUR_APPLICATION_ID`: ApplicationIDを指定されます。
-	- `NAMESPACE`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
-	- `EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
-
-#### メソッド
+**メソッド**
 
 ```objc
 - (void)track:(NSString *)_namespace name:(NSString *)name properties:(NSDictionary *)properties option:(GATrackOption)option completion:(void(^)(GAClientEvent * clientEvent))completion;
 ```
 
-#### パラメータ
+**呼び出し**
+
+```objc
+[[GrowthAnalytics sharedInstance] track:@"NAMESPACE" name:@"EVENT_ID" properties:@{@"key":@"value"} option:GATrackOptionCounter completion:nil];
+```
+
+**パラメータ**
 
 |項目名|詳細|
 |:--|:--|
 |_namespace|ネームスペース|
-|name|イベントID|
+|name|`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。`YUR_APPLICATION_ID`: ApplicationIDを指定されます。`CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
 |properties|イベントに持たせる任意のMap|
 |option|GATrackOptionDefault,GATrackOptionOnce,GATrackOptionCounterのいずれかを指定します。|
 |completion|イベント作成後のコールバック|
 
-#### GATrackOption
+**option**
 
 |項目名|詳細|
 |:--|:--|
@@ -349,43 +270,37 @@ Info.plistのCFBundleVersionに設定している値が入ります。
 |GATrackOptionOnce|このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）|
 |GATrackOptionCounter|このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。|
 
-```objc
-[[GrowthAnalytics sharedInstance] track:@"NAMESPACE" name:@"EVENT_ID" properties:@{@"key":@"value"} option:GATrackOptionCounter completion:nil];
-```
 
 ## フルカスタマイズなタグの送信
 
 
 特定のネームスペース、タグIDを設定していただくことが可能です。下記、タグID発行例となります。
 
-- TagID: `Tag:<YOUR_APPLICATION_ID>:<NAMESPACE>:<TAG_ID>`  
-	- 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。
-	- `YOUR_APPLICATION_ID`: ApplicationIDを指定されます。
-	- `NAMESPACE`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
-	- `TAG_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
-
-#### メソッド
+**メソッド**
 
 ```objc
 - (void)tag:(NSString *)_namespace name:(NSString *)name value:(NSString *)value completion:(void(^)(GAClientTag * clientTag))completion;
 ```
 
-#### パラメータ
-
-|項目名|詳細|
-|:--|:--|
-|_namespace|ネームスペース|
-|name|タグID|
-|value|タグに持たせる任意のValue|
-|completion|タグ作成後のコールバック|
+**呼び出し**
 
 ```objc
 [[GrowthAnalytics sharedInstance] tag:@"NAMESPACE" name:@"TAG_ID" value:@"value" completion:nil];
 ```
 
-# プッシュ通知の実装 (Growth Pushの利用)
+**パラメータ**
 
-# Growth Pushご利用の初期設定について
+|項目名|詳細|
+|:--|:--|
+|_namespace|ネームスペース|
+|name|`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` 上記全文で一意なTagIDと認識されます。大文字小文字は区別されません。`YOUR_APPLICATION_ID`: ApplicationIDを指定されます。 `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
+|value|タグに持たせる任意のValue|
+|completion|タグ作成後のコールバック|
+
+
+# Growth Push API
+
+## 初期設定
 
 Growth Push管理画面、証明書設定ページにて、各OSごとに証明書の設定を行ってください。
 
@@ -414,14 +329,35 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 ***こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。これまでGrowth Push SDKをご利用しておりました方は、Growth Analyticsのイベント・タグの送信にお乗り換えくださいませ。***
 
-## イベントを送信
+### イベントを送信
+
+**イベント名のみの送信**
 
 ```objc
 - (void)trackEvent:(NSString *)name;
+```
+
+```objc
+[[GrowthPush sharedInstance] trackEvent:@"EVENT_NAME"];
+```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|name|イベント名|
+
+**イベントと任意の値の送信**
+
+```
 - (void)trackEvent:(NSString *)name value:(NSString *)value;
 ```
 
-#### パラメータ
+```
+[[GrowthPush sharedInstance] trackEvent:@"EVENT_NAME" value:@"EVENT_VALUE"];
+```
+
+**パラメータ**
 
 |項目名|詳細|
 |:--|:--|
@@ -429,54 +365,51 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 |value|イベントに持たせる値|
 
 
-```objc
-[[GrowthPush sharedInstance] trackEvent:@"EVENT_NAME"];
-[[GrowthPush sharedInstance] trackEvent:@"EVENT_NAME" value:@"EVENT_VALUE"];
-```
+### タグを送信
 
-## タグを送信
+**タグ名のみの送信**
 
 ```objc
 - (void)setTag:(NSString *)name;
+```
+
+```objc
+[[GrowthPush sharedInstance] setTag:@"TAG_NAME"];
+```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|name|タグ名|
+
+**タグと任意のタグ名の送信**
+
+```objc
 - (void)setTag:(NSString *)name value:(NSString *)value;
 ```
 
-#### パラメータ
+```objc
+[[GrowthPush sharedInstance] setTag:@"TAG_NAME" value:@"TAG_VALUE"];
+```
+
+**パラメータ**
 
 |項目名|詳細|
 |:--|:--|
 |name|タグ名|
 |value|タグに持たせる値|
 
-```objc
-[[GrowthPush sharedInstance] setTag:@"TAG_NAME"];
-[[GrowthPush sharedInstance] setTag:@"TAG_NAME" value:@"TAG_VALUE"];
-```
 
-# アプリ内ポップアップメッセージの実装 (Growth Messageの利用)
+# Growth Message API
 
 ## メッセージを表示するViewを指定
 
 メッセージ配信設定で、設定したイベントを、任意の箇所で、Growth Analyticsのtrackメソッドを呼び出し、イベントを送信します。この呼び出し箇所が、メッセージの表示箇所になります。
 
-## デフォルトで用意しているイベントの送信
-
-- *open* 起動イベントを送信します。
-- *close* 終了イベントを送信します。
-- *purchase* 課金イベントを送信します。
-
-## カスタムイベントの送信
-
-```objc
-- (void)track:(NSString *)name;
-- (void)track:(NSString *)name properties:(NSDictionary *)properties;
-- (void)track:(NSString *)name option:(GATrackOption)option;
-- (void)track:(NSString *)name properties:(NSDictionary *)properties option:(GATrackOption)option;
-```
-
 Growth Analyticsの実装方法を参照してください。
 
-# ディープリンクの実装 (Growth Linkの利用)
+# Growth Link API
 
 ## SDKの導入
 
