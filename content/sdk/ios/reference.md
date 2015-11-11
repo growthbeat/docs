@@ -409,7 +409,7 @@ XCodeプロジェクトのBuild Setting > Provisioning Profileの設定をして
 
 メッセージ配信設定で、設定したイベントを、任意の箇所で、Growth Analyticsのtrackメソッドを呼び出し、イベントを送信します。この呼び出し箇所が、メッセージの表示箇所になります。
 
-Growth Analyticsの実装方法を参照してください。
+<a href="#growth-analytics-api">Growth Analyticsの実装方法</a> を参照してください。
 
 # Growth Link API
 
