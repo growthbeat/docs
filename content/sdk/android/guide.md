@@ -58,7 +58,7 @@ dependencies {
 
 ## Growthbeatの初期化
 
-Growth Push SDKからの乗り換え案内も出す。
+Growthbeatへデバイス登録・認証を行います。初期化の中に、端末の基本情報の送信、広告IDの取得が行われます。
 
 ```java
 Growthbeat.getInstance().initialize(context, "YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");

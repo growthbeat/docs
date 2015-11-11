@@ -51,13 +51,15 @@ Growthbeat.frameworkは、下記Frameworkが必須となります。
 
 ## Growthbeatの初期化
 
+Growthbeatへデバイス登録・認証を行います。初期化の中に、端末の基本情報の送信、広告IDの取得が行われます。
+
 ```objc
 [[Growthbeat sharedInstance] initializeWithApplicationId:@"YOUR_APLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID"];
 ```
 
 Growth Push SDKからの乗り換え方法はAPIリファレンスを参照
 
-[APIリファレンス]()
+<a href="/sdk/ios/reference/">APIリファレンス</a>
 
 
 # プッシュ通知（Grwoth Push）
@@ -71,13 +73,13 @@ Growth Push管理画面、証明書設定ページにて、各OSごとに証明�
 
 1. Growthhbeat#initializeWithApplicationIdの後に下記を呼び出す
 
-```
+```objc
 [[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
 ```
 
 2. ApplicationDelegateにて下記を追加
 
-```
+```objc
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [[GrowthPush sharedInstance] setDeviceToken:deviceToken];
@@ -88,20 +90,13 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 あらかじめ特定のタグやイベントを送信するためのメソッドを用意しております。
 [Growthbeatの初期化](#growthbeatの初期化) の時点で下記データがGrowth Anlyticsに送信されます。
+デフォルトで用意のあるタグ・イベント一覧は <a href="/sdk/ios/reference/">APIリファレンス</a> を参照してください。
 
 * デバイスモデル
-
 * OS
-
 * 言語
-
 * タイムゾーン
-
 * UTCとタイムゾーンの差分
-
-その他、デフォルトで用意のあるタグ・イベント一覧はAPIリファレンスを参照してください。
-
-[APIリファレンス]()
 
 ## タグ（ユーザー属性）の送信
 
@@ -118,7 +113,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 詳しくは、APIリファレンスを参照してください。
 
-[APIリファレンス]()
+<a href="/sdk/ios/reference/">APIリファレンス</a>
 
 ## イベント（行動ログ）の送信
 
@@ -133,7 +128,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 詳しくは、APIリファレンスを参照してください。
 
-[APIリファレンス]()
+<a href="/sdk/ios/reference/">APIリファレンス</a>
 
 # アプリ内メッセージ（Growth Message）
 
