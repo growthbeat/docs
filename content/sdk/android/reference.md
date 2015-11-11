@@ -11,12 +11,32 @@ title: Growthbeat Android API
 ## Growthbeatインスタンスを取得
 
 ```java
-Growthbeat.getInstance().initialize(context, "YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
+public void initialize(Context context, String applicationId, String credentialId)
 ```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|applicationId| アプリケーションID |
+|credentialId| クレデンシャルキー |
 
 # Growth Analytics API
 
 取得したい情報を、任意の場所に実装してください。送信されたデータは、Growth Analytics管理画面をご覧ください。
+
+## Growth Analyticsインスタンスを取得
+
+```java
+public void initialize(Context context, String applicationId, String credentialId)
+```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|applicationId| アプリケーションID |
+|credentialId| クレデンシャルキー |
 
 ## 基本情報の送信
 
@@ -299,6 +319,19 @@ public void tag(final String namespace, final String name, final String value)
 
 # Growth Push API
 
+## Growth Pushインスタンスを取得
+
+```java
+public void initialize(Context context, String applicationId, String credentialId)
+```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|applicationId| アプリケーションID |
+|credentialId| クレデンシャルキー |
+
 ## 初期設定
 
 Growth Push管理画面、証明書設定ページにて、各OSごとに証明書の設定を行ってください。
@@ -450,6 +483,19 @@ public void setTag(final String name, final String value);
 
 # Growth Message API
 
+## Growth Messageインスタンスを取得
+
+```java
+public void initialize(Context context, String applicationId, String credentialId)
+```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|applicationId| アプリケーションID |
+|credentialId| クレデンシャルキー |
+
 ## 初期設定
 
 Androidはメッセージを表示するためのActivityを追記します。
@@ -470,62 +516,43 @@ Growth Analyticsの実装方法を参照してください。
 
 # Growth Link API
 
+## Growth Linkインスタンスを取得
+
+```java
+public void initialize(Context context, String applicationId, String credentialId)
+```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|applicationId| アプリケーションID |
+|credentialId| クレデンシャルキー |
+
 ## SDKの導入
 
 growthbeat.jarを導入した上で、Growthbeat SDK内の `source/library` に含まれる**growthlink.jar**を導入します。任意のアプリのプロジェクトに、Androidが他ライブラリを自動で参照する**libs**ディレクトリの中に、growthbeat.jarを移動もしくはコピーしてください。
 
 ### 初期設定
 
-1. Install Referrerの取得のための設定を、AndoridManifest.xmlの `<application/>` 内の記述する。
+Install Referrerの取得のための設定を、AndoridManifest.xmlの `<application/>` 内の記述する。
 
+```xml
+<receiver
+    android:name="com.growthbeat.link.InstallReferrerReceiver"
+    android:enabled="true"
+    android:exported="true">
+    <intent-filter>
+        <action android:name="com.android.vending.INSTALL_REFERRER" />
+    </intent-filter>
+</receiver>
+```
 
-	```xml
-	<receiver
-	    android:name="com.growthbeat.link.InstallReferrerReceiver"
-	    android:enabled="true"
-	    android:exported="true">
-	    <intent-filter>
-	        <action android:name="com.android.vending.INSTALL_REFERRER" />
-	    </intent-filter>
-	</receiver>
-	```
-
-1. Growthbeatの初期化処理の後に、Growth Linkの初期化処理を呼び出す
+Growthbeatの初期化処理の後に、Growth Linkの初期化処理を呼び出す
 
 	```java
 	GrowthLink.getInstance().initialize(getApplicationContext(), "APPLICATION_ID", "CREDENTIAL_ID");
 	```
-
-1. カスタムURLスキームでアプリを起動できるように、AndroidManifest.xmlを設定する
-
-1. IntentFilterを設定したActivityのonCreateで、handleOpenUrlメソッドを呼び出す
-
-	```java
-	GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
-	```
-
-## ディープリンクアクションの実装
-
-SDKには、IntentHandler (iOSでは、GBIntentHandler)というインタフェースが定義されており、この実装でディープリンク時のアクションを実装することができます。
-
-たとえば下記のような形で実装できます。
-
-```java
-List<IntentHandler> intentHandlers = new ArrayList<IntentHandler>();
-intentHandlers.add(new UrlIntentHandler(GrowthbeatCore.getInstance().getContext()));
-intentHandlers.add(new NoopIntentHandler());
-intentHandlers.add(new IntentHandler() {
-    public boolean handle(com.growthbeat.model.Intent intent) {
-        if (intent.getType() != com.growthbeat.model.Intent.Type.custom)
-            return false;
-        Map<String, String> extra = ((CustomIntent) intent).getExtra();
-        // TODO ここにアプリ内の画面を開く処理を実装します。
-        Log.d("Growth Link", "extra: " + extra);
-        return true;
-    }
-});
-GrowthbeatCore.getInstance().setIntentHandlers(intentHandlers);
-```
 
 # 備考
 
