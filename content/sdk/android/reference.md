@@ -32,7 +32,7 @@ Growthbeat.getInstance().initialize(context, "YOUR_APPLICATION_ID", "YOUR_CREDEN
 - setTrackingEnabled
 
 ```java
-GrowthAnalytics.getInstance().setBasicTags();
+public void setBasicTags()
 ```
 
 ## 特定のイベント・タグを送信
