@@ -6,59 +6,80 @@ draft: false
 title: Growthbeat Web Gudeliene
 ---
 
-# 概要
+# Push通知（Grwoth Push）
 
-グロースハックツールプラットホーム [Growthbeat](https://growthbeat.com/) の SDK 導入マニュアルです。Growthbeat の各サービスをアプリ内で利用するための技術仕様や導入の仕方について解説いたします。
+導入の前に下記をご覧ください。
 
-現在、下記サービスを提供しています：
+- Google Developers Consoleでの設定
+- Growth Push for Chromeの動作環境
 
-|サービス名|機能|
-|---------|---|
-|Growthbeat|ユーザー総合管理|
-|Growth Push|プッシュ通知|
-|Growth Analytics|総合分析・解析|
-|Growth Message|ポップアップ通知|
-|Growth Link|ディープリンクツール|
+## SDK導入
 
-Growthbeat を利用するにはウェブページから新規登録をしていただくか、担当者より発行された情報からログインをしてご利用いただけます。
+下記リンクからダウンロードできます。
 
-## SDKについて
+[growthpush-javascript 最新版](https://github.com/growthbeat/growthpush-javascript/archive/latest.zip)
 
-各種 SDK は [GitHub](https://github.com/SIROK) 上で開発され、オープンソースとして公開されております。そのままアプリへ導入することも可能です。SDK を変更しご使用いただくことは可能となっております。しかし公開されている SDK のソース以外の変更を行われた場合の、アプリの不具合や動作については保証し兼ねますのでご了承ください。
+### manifest.jsonの設置
 
-Growthbeat は現在 iOS, Android, Unity に対応しております。Cocos-2D-X も対応予定はしておりますので別途ご相談ください。
+**manifest.jsonの例**
 
-* [Growthbeat iOS SDK](https://github.com/SIROK/growthbeat-ios)
-* [Growthbeat Android SDK](https://github.com/SIROK/growthbeat-android)
-* [Growthbeat Unity SDK](https://github.com/SIROK/growthbeat-unity)
-* [Growthbeat Growthbeat Cocos2D-X SDK SDK](https://github.com/SIROK/growthbeat-cocos2dx)
-
-### SDK機能
-
-1つの SDK で Growthbeat 全てのサービスの機能が利用できます。_Note Growth Message, Growth Pushは、現在開発中です。_
-
-## SDK導入について
-
-### 導入方法
-
-[最新版Web SDK ダウンロードページ ](https://github.com/SIROK/growthbeat-javascript/releases/tag/latest)
-
-HTML のscript タグで SDK を読み込みます：
-
-```html
- <script src="path/to/growthbeat.min.js"></script>
+```json
+{
+  "name": "YOUR_APP_NAME",
+  "short_name": "YOUR_APP_SHORT_NAME",
+  "icons": [{
+    "src": "YOUR_IMAGE_PATH",
+    "sizes": "256x256",
+    "type": "image/png"
+  }],
+  "start_url": "/",
+  "display": "standalone",
+  "gcm_sender_id": "YOUR_GCM_SENDER_ID",
+  "gcm_user_visible_only": true
+}
 ```
 
+gcm_sender_idには、Google Developers Consoleで取得したSenderIdを指定します。
 
-### 実装方法
+### ServiceWorkerの設置
 
-SDK利用時にアプリケーション ID と SDKキー を使用して認証をします。
+`growthpush-sw.min.js`（本番用）または`growthpush-sw.js`（開発用）をサービスのドメイン直下に設置してください。
 
-Growthbeat 管理画面からアプリケーション ID と SDK キーを取得します。アカウント作成時に API キー（REST API を使用時の認証に必須となるキー）と SDK キー（SDK の認証のために必須となるキー）が用意されています。
+### 初期化コードの組み込み
 
-* API キー（REST API を使用時の認証に必須となるキー）
-* SDK キー（SDK の認証のために必須となるキー）
+以下のhtmlスニペットを、bodyタグの最後に組み込んでください。
 
-各サービスのヘッダーのアカウント名をクリックしします。そして、表示されるメニューから **マイページ** をお選びください。Growthbeat マイページから API キー と SDKキーを見ることができます
+```html
+<script>
+  (function () {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.async = true;
+    script.src = '/path/to/growthpush.min.js';
+    document.getElementsByTagName('script')[0].parentNode.appendChild(script);
+  })();
 
-また、アプリケーション ID は Growthbeat のマイページから任意のアプリケーションを選択し、アプリケーション ID を控えてください。
+  document.addEventListener('growthpushReady', function () {
+    GrowthPush.init({
+      applicationId: YOUR_APPLICATION_ID,
+      credentialId: 'YOUR_SECRET_KEY',
+      environment: 'development',
+      receiver: '/growthpush-sw.min.js',
+      appName: 'YOUR_APPLICATION_NAME',
+      icon: 'YOUR_ICON_IMAGE',
+      clickEventName: 'NOTIFICATION_CLICK_EVENT_NAME'
+    });
+  });
+</script>
+```
+
+※ applicationId, credentialIdは、Growth Push管理画面、シークレットキーを参考にしてください。
+
+
+## RegistrationIdの取得・送信
+
+下記コードでRegistrationIdをGrowth Pushサーバーに送信します。送信に成功すると、ユーザーにPush通知の許可をリクエストします。既に許可または拒否済みの場合はリクエストされません。
+
+```javascript
+GrowthPush.register()
+```
