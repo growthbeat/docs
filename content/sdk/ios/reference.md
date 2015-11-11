@@ -365,19 +365,6 @@ XCodeプロジェクトのBuild Setting > Provisioning Profileの設定をして
 
 ```objc
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-
-    if ([delegate respondsToSelector:@selector(willPerformApplication:didRegisterForRemoteNotificationsWithDeviceToken:)]) {
-        [delegate willPerformApplication:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
-    }
-
-    if ([originalAppDelegate respondsToSelector:@selector(application:didRegisterForRemoteNotificationsWithDeviceToken:)]) {
-        [originalAppDelegate application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
-    }
-
-    if ([delegate respondsToSelector:@selector(didPerformApplication:didRegisterForRemoteNotificationsWithDeviceToken:)]) {
-        [delegate didPerformApplication:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
-    }
-
 }
 ```
 
@@ -482,48 +469,6 @@ Growthbeat.frameworkを導入した上で、Growthbeat SDK内の `source/GrowthL
     [[GrowthLink sharedInstance] handleOpenUrl:url];
     return YES;
 }
-```
-
-## ディープリンクアクションの実装
-
-SDKには、GBIntentHandler (Androidでは、IntentHandler)というプロトコルが定義されており、この実装でディープリンク時のアクションを実装することができます。
-
-たとえば下記のような形で実装できます。
-
-```objc
-@interface MyCustomIntentHandler : NSObject <GBIntentHandler>
-@end
-
-@implementation MyCustomIntentHandler
-
-- (BOOL)handleIntent:(GBIntent *)intent {
-
-    if (intent.type != GBIntentTypeCustom)
-        return false;
-
-    GBCustomIntent \*customIntent = (GBCustomIntent *)intent;
-    NSString *action = [customIntent.extra objectForKey:@"action"];
-    if(![action isEqualToString:@"open_view"])
-        return false;
-
-    NSString *view = [customIntent.extra objectForKey:@"view"];
-
-    // TODO viewに対応する画面を開く処理
-
-    return true;
-}
-
-@end
-```
-
-こうして定義したクラスを GrowthbeatCore クラスの setIntentHandlers: に設定することで、利用可能となります。
-
-```objc
-NSMutableArray *intentHandlers = [NSMutableArray array];
-[intentHandlers addObject:[[GBUrlIntentHandler alloc] init]];
-[intentHandlers addObject:[[GBNoopIntentHandler alloc] init]];
-[intentHandlers addObject:[[MyCustomIntentHandler alloc] init]];
-[[GrowthbeatCore sharedInstance] setIntentHandlers:intentHandlers];
 ```
 
 # Growth Push SDKからの乗り換え方法について
