@@ -145,7 +145,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 詳しくは、APIリファレンスを参照してください。
 
-[Growth Analytics APIリファレンス]()
+<a href="/sdk/ios/reference/">APIリファレンス</a>
 
 # ディープリンク（Growth Link）
 
@@ -166,7 +166,7 @@ GrowthLinkのimport文を記述します。
 #import <GrowthLink/GrowthLink.h>
 ```
 
-## ディープリンク用初期化処理
+## 初期化処理
 
 Growthbeatの初期化処理の後に、Growth Linkの初期化処理を呼び出す
 
@@ -184,3 +184,139 @@ URL起動の処理で、handleOpenUrl:urlメソッドを呼び出す
     return YES;
 }
 ```
+
+## ディープリンクアクションの実装
+
+SDKには、GBIntentHandler (Androidでは、IntentHandler)というプロトコルが定義されており、この実装でディープリンク時のアクションを実装することができます。
+
+たとえば下記のような形で実装できます。
+
+```objc
+@interface MyCustomIntentHandler : NSObject <GBIntentHandler>
+@end
+
+@implementation MyCustomIntentHandler
+
+- (BOOL)handleIntent:(GBIntent *)intent {
+
+    if (intent.type != GBIntentTypeCustom)
+        return false;
+
+    GBCustomIntent \*customIntent = (GBCustomIntent *)intent;
+    NSString *action = [customIntent.extra objectForKey:@"action"];
+    if(![action isEqualToString:@"open_view"])
+        return false;
+
+    NSString *view = [customIntent.extra objectForKey:@"view"];
+
+    // TODO viewに対応する画面を開く処理
+
+    return true;
+}
+
+@end
+```
+
+こうして定義したクラスを GrowthbeatCore クラスの setIntentHandlers: に設定することで、利用可能となります。
+
+```objc
+NSMutableArray *intentHandlers = [NSMutableArray array];
+[intentHandlers addObject:[[GBUrlIntentHandler alloc] init]];
+[intentHandlers addObject:[[GBNoopIntentHandler alloc] init]];
+[intentHandlers addObject:[[MyCustomIntentHandler alloc] init]];
+[[GrowthbeatCore sharedInstance] setIntentHandlers:intentHandlers];
+```
+
+# Growth Push SDKからの乗り換え方法について
+
+## 前準備
+
+GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行されるた
+め、[Growthbeat](https://growthbeat.com/)にアクセスして、ApplicationId、SDKキー（CredentialID）を確認します。
+
+## 実装方法
+
+### SDKの初期化
+
+- GrowthPush SDK
+
+```objc
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // EasyGrowthPushクラス利用時
+    [EasyGrowthPush setApplicationId:kYourApplicationId secret:@"YOU_APP_SECRET" environment:kGrowthPushEnvironment debug:YES];
+
+    // GrowthPushクラス利用時
+    [GrowthPush setApplicationId:kYourApplicationId secret:@"YOU_APP_SECRET" environment:kGrowthPushEnvironment debug:YES];
+    [GrowthPush requestDeviceToken];
+    [GrowthPush setDeviceTags];
+}
+```
+
+- Growthbeat SDK
+
+```objc
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	// Growthbeat SDKの初期化
+	[[Growthbeat sharedInstance] initializeWithApplicationId:@"YOUR_APPLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID"];
+	// デバイストークンを明示的に要求
+	[[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
+
+	// deviceTagの取得
+	[[GrowthPush sharedInstance] setDeviceTags];
+}
+```
+
+### アプリ起動時
+
+- Growthbeat SDK
+
+```objc
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+	// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
+	// バッチの削除
+	[[GrowthPush sharedInstance] clearBadge];
+
+	// Launchイベントの取得
+	[[GrowthPush sharedInstance] trackEvent:@"Launch"];
+}
+```
+
+### デバイストークンの取得
+
+- Growthbeat SDK
+
+```objc
+- (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+	// デバイストークンをGrowhPushに送信
+	[[GrowthPush sharedInstance] setDeviceToken:deviceToken];
+}
+```
+
+### タグ・イベントの取得
+
+- GrowthPush SDK
+
+```objc
+// タグの取得
+[GrowthPush setTag:@"TAG_NAME"];
+[GrowthPush setTag:@"TAG_NAME" value:@"TAG_VALUE"];
+// イベントの取得
+[GrowthPush trackEvent:@"EVENT_NAME"];
+[GrowthPush trackEvent:@"EVENT_NAME" value:@"EVENT_VALUE"];
+```
+
+- Growthbeat SDK
+
+```objc
+// タグの取得
+[[GrowthPush sharedInstance] setTag:@"TAG_NAME"];
+[[GrowthPush sharedInstance] setTag:@"TAG_NAME" value:@"TAG_VALUE"];
+// イベントの取得
+[[GrowthPush sharedInstance] trackEvent:@"EVENT_NAME"];
+[[GrowthPush sharedInstance] trackEvent:@"EVENT_NAME" value:@"EVENT_VALUE"];
+```
+
+# 備考
+
+SDK導入について、ご不明な点などございます場合は、Growthbeat[お問い合わせフォーム](https://growthbeat.com/inquiry)からお問い合わせください。また [リリースノート](http://support.growthbeat.com/sdk/ios/release/)もご参照ください
