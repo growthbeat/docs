@@ -22,7 +22,7 @@ pod 'Growthbeat'
 
 ### 手動でSDKを配置して導入する場合
 
-[最新版iOS SDK ダウンロードページ ](https://github.com/SIROK/growthbeat-ios/archive/latest.zip)
+<a href="/sdk">最新版iOS SDK ダウンロードページ</a>
 
 ダウンロードしたファイルを解凍し、そのフォルダの中の **Growthbeat.framework** をプロジェクトへ組み込みます。
 任意のXcodeプロジェクトを開き、Growthbeat.frameworkをインポートしてください。
@@ -57,27 +57,22 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 [[Growthbeat sharedInstance] initializeWithApplicationId:@"YOUR_APLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID"];
 ```
 
-Growth Push SDKからの乗り換え方法はAPIリファレンスを参照
-
-<a href="/sdk/ios/reference/">APIリファレンス</a>
+Growth Push SDKからの乗り換え方法は[APIリファレンス](./sdk/ios/reference/)を参照
 
 
 # プッシュ通知（Grwoth Push）
 
-Growth Push管理画面、証明書設定ページにて、各OSごとに証明書の設定を行ってください。
-
-[iOSプッシュ通知証明書作成方法](http://growthhack.sirok.co.jp/growthpush/ios-p12/)
-
+Growth Push管理画面、[iOSプッシュ通知証明書作成方法](http://growthhack.sirok.co.jp/growthpush/ios-p12/)にて、各OSごとに証明書の設定を行ってください。
 
 ## デバイストークンを取得・送信をする
 
-1. Growthhbeat#initializeWithApplicationIdの後に下記を呼び出す
+Growthhbeat#initializeWithApplicationIdの後に下記を呼び出す
 
 ```objc
 [[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
 ```
 
-2. ApplicationDelegateにて下記を追加
+ApplicationDelegateにて下記を追加
 
 ```objc
 - (void)application:(UIApplication *)application
@@ -126,9 +121,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 - (void)tag:(NSString *)name value:(NSString *)value;
 ```
 
-詳しくは、APIリファレンスを参照してください。
+詳しくは、<a href="/sdk/ios/reference/">APIリファレンス</a>を参照してください。
 
-<a href="/sdk/ios/reference/">APIリファレンス</a>
 
 # アプリ内メッセージ（Growth Message）
 
@@ -137,15 +131,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 メッセージを表示したい場所にGrowth Analyticsのタグを設定してください。
 
 ```objc
-- (void)track:(NSString *)name;
-- (void)track:(NSString *)name properties:(NSDictionary *)properties;
-- (void)track:(NSString *)name option:(GATrackOption)option;
-- (void)track:(NSString *)name properties:(NSDictionary *)properties option:(GATrackOption)option;
+[[GrowthAnalytics sharedInstance] track:@"CUSTOM_EVENT_ID"];
 ```
 
-詳しくは、APIリファレンスを参照してください。
-
-<a href="/sdk/ios/reference/">APIリファレンス</a>
+詳しくは、<a href="/sdk/ios/reference/">APIリファレンス</a>を参照してください。
 
 # ディープリンク（Growth Link）
 
