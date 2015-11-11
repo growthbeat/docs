@@ -26,6 +26,12 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 
 取得したい情報を、任意の場所に実装してください。送信されたデータは、Growth Analytics管理画面をご覧ください。
 
+## Growth Analyticsインスタンスを取得
+
+```objc
++ (instancetype)sharedInstance;
+```
+
 ## 基本タグの送信
 
 端末の基本情報を送信します。基本情報には以下が含まれます。
@@ -320,6 +326,12 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 
 # Growth Push API
 
+## Growth pushインスタンスを取得
+
+```objc
++ (instancetype)sharedInstance;
+```
+
 ## 初期設定
 
 Growth Push管理画面、証明書設定ページにて、各OSごとに証明書の設定を行ってください。
@@ -405,6 +417,12 @@ XCodeプロジェクトのBuild Setting > Provisioning Profileの設定をして
 
 # Growth Message API
 
+## Growth Messageインスタンスを取得
+
+```objc
++ (instancetype)sharedInstance;
+```
+
 ## メッセージを表示するViewを指定
 
 メッセージ配信設定で、設定したイベントを、任意の箇所で、Growth Analyticsのtrackメソッドを呼び出し、イベントを送信します。この呼び出し箇所が、メッセージの表示箇所になります。
@@ -412,6 +430,13 @@ XCodeプロジェクトのBuild Setting > Provisioning Profileの設定をして
 <a href="#growth-analytics-api">Growth Analyticsの実装方法</a> を参照してください。
 
 # Growth Link API
+
+
+## Growth Linkインスタンスを取得
+
+```objc
++ (instancetype)sharedInstance;
+```
 
 ## 初期設定
 
