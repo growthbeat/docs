@@ -28,7 +28,7 @@ dependencies {
 
 ### 手動でSDKを配置して導入する場合
 
-[最新版Android SDK ダウンロードリンク](https://bintray.com/artifact/download/growthbeat/maven/com/growthbeat/growthbeat-android/1.2.4/growthbeat-android-1.2.4.jar)
+[最新版Android SDK ダウンロードリンク](http://support.growthbeat.com/sdk/)
 
 上記リンクからダウンロードしたjarファイルをプロジェクトへ組み込みます。任意のアプリのプロジェクトに, Androidが他ライブラリを自動で参照する**libs**ディレクトリの中に、jarファイルを移動もしくはコピーしてください。
 
@@ -185,3 +185,7 @@ IntentFilterを設定したActivityのonCreateで、handleOpenUrlメソッドを
 ```java
 GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
 ```
+
+# 備考
+
+ご不明な点などございます場合は、[ヘルプページ](http://growthbeat.helpscoutdocs.com/)を閲覧してください。
