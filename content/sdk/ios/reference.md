@@ -163,7 +163,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 |:--|:--|
 |development| 開発用の場合は `YES` |
 
-### setRandom
+### 乱数タグ
 
 乱数を端末の情報として紐付けます。
 
@@ -343,7 +343,7 @@ XCodeプロジェクトのBuild Setting > Provisioning Profileの設定をして
 }
 ```
 
-## イベント・タグの取得
+## イベントの取得
 
 ***こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。これまでGrowth Push SDKをご利用しておりました方は、Growth Analyticsのイベント・タグの送信にお乗り換えくださいませ。***
 
@@ -372,6 +372,10 @@ XCodeプロジェクトのBuild Setting > Provisioning Profileの設定をして
 |:--|:--|
 |name|イベント名|
 |value|イベントに持たせる値|
+
+## タグの取得
+
+***こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。これまでGrowth Push SDKをご利用しておりました方は、Growth Analyticsのイベント・タグの送信にお乗り換えくださいませ。***
 
 
 ### タグ名の送信
@@ -446,6 +450,6 @@ URL起動の処理で、handleOpenUrl:urlメソッドを呼び出す
 }
 ```
 
-## 備考
+# 備考
 
 SDK導入について、ご不明な点などございます場合は、[Growthbeatお問い合わせフォーム](https://growthbeat.com/inquiry)からお問い合わせください。また[リリースノート](http://support.growthbeat.com/sdk/ios/release/)もご参照ください
