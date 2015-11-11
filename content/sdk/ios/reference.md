@@ -183,7 +183,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 
 |項目名|詳細|
 |:--|:--|
-|name|`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。`YUR_APPLICATION_ID`: ApplicationIDを指定されます。`CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
+|name| フォーマット:`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID <br/> `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
 
 
 ### イベント名と任意のMapの送信
@@ -197,7 +197,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 
 |項目名|詳細|
 |:--|:--|
-|name|`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。`YUR_APPLICATION_ID`: ApplicationIDを指定されます。`CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
+|name|フォーマット:`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID <br/> `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
 |properties|カスタムイベントに持たせる任意のMap|
 
 
@@ -211,7 +211,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 
 |項目名|詳細|
 |:--|:--|
-|name|`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。`YUR_APPLICATION_ID`: ApplicationIDを指定されます。`CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
+|name|フォーマット:`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID <br/> `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
 |option|GATrackOptionDefault,GATrackOptionOnce,GATrackOptionCounterのいずれかを指定します。|
 
 **option**
@@ -223,7 +223,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 |GATrackOptionCounter|このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。|
 
 
-## イベント名と任意のMapの送信とイベント取得回数オプションの送信
+### イベント名と任意のMapの送信とイベント取得回数オプションの送信
 
 ```objc
 - (void)track:(NSString *)name properties:(NSDictionary *)properties option:(GATrackOption)option;
@@ -233,7 +233,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 
 |項目名|詳細|
 |:--|:--|
-|name|`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。`YUR_APPLICATION_ID`: ApplicationIDを指定されます。`CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
+|name|フォーマット:`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID <br/> `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
 |properties|カスタムイベントに持たせる任意のMap|
 |option|GATrackOptionDefault,GATrackOptionOnce,GATrackOptionCounterのいずれかを指定します。|
 
@@ -257,7 +257,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 
 |項目名|詳細|
 |:--|:--|
-|name|`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` 上記全文で一意なTagIDと認識されます。大文字小文字は区別されません。`YOUR_APPLICATION_ID`: ApplicationIDを指定されます。 `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
+|name|フォーマット:`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID<br/>  `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
 
 ### タグ名と任意のvalueを送信
 
@@ -269,7 +269,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 
 |項目名|詳細|
 |:--|:--|
-|name|`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` 上記全文で一意なTagIDと認識されます。大文字小文字は区別されません。`YOUR_APPLICATION_ID`: ApplicationIDを指定されます。 `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
+|name| フォーマット:`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID<br/>  `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
 |value|カスタムタグに持たせる任意のValue|
 
 
@@ -285,7 +285,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 |項目名|詳細|
 |:--|:--|
 |_namespace|ネームスペース|
-|name|`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。`YUR_APPLICATION_ID`: ApplicationIDを指定されます。`CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
+|name|フォーマット:`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID <br/> `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
 |properties|イベントに持たせる任意のMap|
 |option|GATrackOptionDefault,GATrackOptionOnce,GATrackOptionCounterのいずれかを指定します。|
 |completion|イベント作成後のコールバック|
@@ -313,7 +313,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 |項目名|詳細|
 |:--|:--|
 |_namespace|ネームスペース|
-|name|`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` 上記全文で一意なTagIDと認識されます。大文字小文字は区別されません。`YOUR_APPLICATION_ID`: ApplicationIDを指定されます。 `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
+|name|フォーマット:`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID<br/>  `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
 |value|タグに持たせる任意のValue|
 |completion|タグ作成後のコールバック|
 
@@ -414,40 +414,12 @@ Growth Analyticsの実装方法を参照してください。
 
 # Growth Link API
 
-## SDKの導入
-
-Growthbeat.frameworkを導入した上で、Growthbeat SDK内の `source/GrowthLink` に含まれる**GrowthLink.framework**を導入します。任意のXcodeプロジェクトを開き、Growthbeat.frameworkをインポートしてください。
-
-1. Growthbeat.frameworkのインポートの方法は2つあります。
-
-	- Xcodeプロジェクトに、GrowthLink.frameworkをドラッグアンドドロップする。
-	- Bulid Phases -> Link Binary With Librariesの+ボタンを押し、Add Other...からGrowthLink.frameworkを選択。
-
-2. GrowthLinkのimport文を記述します。
-
-	```objc
-	#import <GrowthLink/GrowthLink.h>
-	```
-
 ## 初期設定
 
-**Growthbeatへデバイス登録・認証を行います。**
-
-Growthbeatの初期化処理の後に、Growth Linkの初期化処理を呼び出す
+Growthbeatへデバイス登録・認証を行います。
 
 ```objc
 - (void)initializeWithApplicationId:(NSString *)initialApplicationId APPLICATION_ID:(NSString *)CREDENTIAL_ID;
-```
-
-カスタムURLスキームでアプリを起動できるように、Info.plistを設定する。
-
-URL起動の処理で、handleOpenUrl:urlメソッドを呼び出す
-
-```objc
-- (BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    [[GrowthLink sharedInstance] handleOpenUrl:url];
-    return YES;
-}
 ```
 
 # 備考
