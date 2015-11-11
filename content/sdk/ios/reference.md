@@ -246,8 +246,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 |GATrackOptionOnce|このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）|
 |GATrackOptionCounter|このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。|
 
-
-**イベント名と任意のMapの送信とイベント取得回数オプションの送信**
+### イベント名と任意のMapの送信とイベント取得回数オプションの送信
 
 ```objc
 - (void)track:(NSString *)name properties:(NSDictionary *)properties option:(GATrackOption)option;
