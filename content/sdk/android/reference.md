@@ -6,55 +6,21 @@ draft: false
 title: Growthbeat Android API
 ---
 
-# 初期化 デバイス登録・認証
+# Growthbeat API
 
-Growthbeatへデバイス登録・認証を行います。
+## Growthbeatインスタンスを取得
 
 ```java
 Growthbeat.getInstance().initialize(context, "YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
 ```
 
-# ユーザー属性、行動ログの付与 (Growth Analyticsの利用)
+# Growth Analytics API
 
-Growth Analyticsの初期化をします。初期化の中に、端末の基本情報の送信、広告IDの取得が行われます。
+取得したい情報を、任意の場所に実装してください。送信されたデータは、Growth Analytics管理画面をご覧ください。
 
-送信されたデータは、Growth Analytics管理画面をご覧ください。
+## 基本情報の送信
 
-## 端末・ユーザー情報を送信方法と、実装の説明
-
-端末やユーザーの情報をGrowth Analyticsへ送信します。送信することでGrowth Analytics上で解析・分析を行うことができます。取得したい情報を、任意の場所に実装してください。
-
-あらかじめ特定のタグやイベントを送信するためのメソッドを用意しております。
-
-- *setBasicTags* 基本情報となるタグのセットです。
-- *open* 起動イベントを送信します。
-- *close* 終了イベントを送信します。
-- *purchase* 課金イベントを送信します。
-- *setUserId* アプリのユニークなUserIdを送信します。
-- *setName* アプリのユーザー名を送信します。
-- *setAge* アプリのユーザーの年齢を送信します。
-- *setGender* アプリのユーザーの性別を送信します。
-- *setLevel* アプリのユーザーのレベルを送信します。
-- *setDevelopment* 開発用のフラグを送信します。
-- *setDeviceModel* 端末のモデルを送信します。
-- *setOS* 端末のOS
-- *setLanguage* 端末の言語設定
-- *setTimeZone* 端末のタイムゾーン
-- *setTimeZoneOffset* 端末の標準時刻からの差
-- *setAppVersion* アプリの設定されているバージョン
-- *setRandom* 乱数を送信します。
-- *setAdvertisingId* 広告IDを送信します。
-
-また、上記で予め用意されているタグ、イベント以外でも下記メソッドを使用することで、カスタムタグ、カスタムイベントが送信できます。
-
-- *track* カスタムイベントを送信します。
-- *tag* カスタムタグを送信します。
-
-## 端末のデータを送信
-
-setBasicTagsメソッドは端末のデータを送信します。
-
-このメソッドには、下記が含まれます。
+端末の基本情報を送信します。基本情報には以下が含まれます。
 
 - setDeviceModel
 - setOs
@@ -69,9 +35,9 @@ setBasicTagsメソッドは端末のデータを送信します。
 GrowthAnalytics.getInstance().setBasicTags();
 ```
 
-## 起動/終了イベントを送信
+## 特定のイベント・タグを送信
 
-### 起動 (open)
+### open
 
 ユーザーの起動イベントを送信します。セッション時間の計測を開始するために必要なメソッドです。起動後に開かれるActivityのonStartに以下を実装してください。
 
@@ -82,7 +48,7 @@ public void onStart() {
 }
 ```
 
-### 終了 (close)
+### close
 
 アプリの終了イベントを送信します。セッション時間の計測を停止します。Activityが閉じプロセスが終了する場所に実装してください。
 
@@ -93,169 +59,183 @@ public void onStop() {
 }
 ```
 
-### 課金情報を送信
+### purchase
 
 課金時にメソッドを呼び、課金額、アイテムのカテゴリなどを送信することができます。
 
 ```java
-GrowthAnalytics.getInstance().purchase(price, "ITEM_CATEGORY", "ITEM_NAME");
+public void purchase(int price, String category, String product)
 ```
 
-### ユニークなユーザーIDを送信
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|price| 価格 |
+|category| 任意のカテゴリ |
+|product| 任意のアイテム名|
+
+### setUserId
 
 アプリのユニークなユーザーIDを送信します。
 
 ```java
-GrowthAnalytics.getInstance().setUserId("YOUR_USER_ID");
+public void setUserId(String userId)
 ```
 
-### ユーザー名を送信
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|userId| 任意のユニークなユーザー名|
+
+### setName
 
 アプリのユーザー名を送信します。
 
 ```java
-GrowthAnalytics.getInstance().setName("YOUR_NAME");
+public void setName(String name)
 ```
 
-### 年齢を送信
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|name| 任意のユーザー名 |
+
+### setAge
 
 ```java
-GrowthAnalytics.getInstance().setAge(age);
+public void setAge(int age)
 ```
 
-### 性別を送信
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|age| ユーザーの年齢 |
+
+### setGender
 
 変数は、Genderのenumを用いてどちらか性別を送信してください
 
 ```java
-// 男性
-GrowthAnalytics.getInstance().setGender(Gender.MALE);
-
-// 女性
-GrowthAnalytics.getInstance().setGender(Gender.FEMALE);
+public void setGender(Gender gender)
 ```
 
-### レベルを送信
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|gender| 男性: `Gender.MALE` 女性: `Gender.FEMALE` |
+
+### setLevel
 
 アプリのユーザーのレベルを送信します。
 
 ```java
-GrowthAnalytics.getInstance().setLevel(level);
+public void setLevel(int level)
 ```
 
-### 開発用の紐付け
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|level| ユーザーのレベル |
+
+### setDevelopment
 
 開発用のフラグをつける
 
 ```java
-GrowthAnalytics.getInstnace().setDevelopment(true);
+public void setDevelopment(boolean development)
 ```
 
-### 端末モデル名を送信
+**パラメータ**
 
-端末のモデル名を送信します。
+|項目名|詳細|
+|:--|:--|
+|development| 開発用の場合は `true` |
 
-例.) SO-03C, SC-03D
-
-```java
-GrowthAnalytics.getInstance().setDeviceModel();
-```
-
-### 端末OSを送信
-
-端末のOSを送信します。
-
-例.) Android 4.4, Android 5.0.1
-
-```java
-GrowthAnalytics.getInstance().setOS();
-```
-
-### 端末の言語設定を送信
-
-端末の設定言語を送信します。
-
-例.) ja, en
-
-```java
-GrowthAnalytics.getInstance().setLanguage();
-```
-
-### タイムゾーンを送信する
-
-端末で設定されたタイムゾーンを送信する。
-
-例.) Asia/Tokyo, America/Los_Angeles
-
-```java
-GrowthAnalytics.getInstance().setTimeZone();
-```
-
-### タイムゾーンオフセットを送信
-
-端末の設定された時刻から、標準時刻の差分時間を送信します。
-
-例.) 9, -11
-
-```java
-GrowthAnalytics.getInstance().setTimeZoneOffset();
-```
-
-### アプリバージョンを送信
-
-アプリに設定されたアプリバージョンを送信します。
-
-AndroidManifest.xmlの`<manifest>` android:versionNameに設定される値が入ります。
-
-```java
-GrowthAnalytics.getInstance().setAppVersion();
-```
-
-### 乱数を送信
+### setRandom
 
 乱数を端末の情報として紐付けます。
 
 ```java
-GrowthAnalytics.getInstance().setRandom();
+public void setRandom()
 ```
 
-### 広告IDを送信
+### setAdvertisingId
 
 広告IDを送信します。
 
 ```java
-GrowthAnalytics.getInstance().setAdvertisingId();
+public void setAdvertisingId()
 ```
 
-### 広告オプトアウトの送信
+### setTrackingEnabled
 
 ユーザーが広告IDを利用するのを拒否しているかを送信します。
 
 ```java
-GrowthAnalytics.getInstance().setTrackingEnabled();
+public void setTrackingEnabled()
 ```
 
-## カスタムイベント・タグを送信する
+## カスタムイベント・タグを送信
 
-### カスタムイベントとは？
-
-任意のイベントを取得することが出来ます。カスタムイベントには、それぞれ一意のEventIDを割り当てる必要があります。
-
-- EventID: `Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>`  
-	- 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。
-	- `YOUR_APPLICATION_ID`: ApplicationIDを指定されます。
-	- `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
-
-### カスタムイベントの送信
+### イベントの送信
 
 ```java
 public void track(final String name);
+```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|name|`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。`YUR_APPLICATION_ID`: ApplicationIDを指定されます。`CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
+
+### イベント名と任意のMapの送信
+
+```java
 public void track(final String name, final Map<String, String> properties);
+```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|name|`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。`YUR_APPLICATION_ID`: ApplicationIDを指定されます。`CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
+|properties|カスタムイベントに持たせる任意のMap|
+
+### イベント名とイベント取得回数オプションの送信
+
+```java
 public void track(final String name, final TrackOption option);
+```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|name|`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。`YUR_APPLICATION_ID`: ApplicationIDを指定されます。`CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
+|properties|カスタムイベントに持たせる任意のMap|
+|option|任意のパラメータ。ONCE, COUNTERのいずれかを指定します。|
+
+**option**
+
+|項目名|詳細|
+|:--|:--|
+|ONCE|このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）|
+|COUNTER|このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。|
+
+## イベント名と任意のMapの送信とイベント取得回数オプションの送信
+
+```java
 public void track(final String name, final Map<String, String> properties, final TrackOption option);
 ```
 
-### パラメータ
+**パラメータ**
 
 |項目名|詳細|
 |:--|:--|
@@ -263,112 +243,78 @@ public void track(final String name, final Map<String, String> properties, final
 |properties|カスタムイベントに持たせる任意のMap|
 |option|任意のパラメータ。ONCE, COUNTERのいずれかを指定します。|
 
-### TrackOption
+**option**
 
 |項目名|詳細|
 |:--|:--|
 |ONCE|このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）|
 |COUNTER|このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。|
 
-```java
-GrowthAnalytics.getInstance().track("CUSTOM_EVENT_ID");
-GrowthAnalytics.getInstance().track("CUSTOM_EVENT_ID", properties);
-GrowthAnalytics.getInstance().track("CUSTOM_EVENT_ID", GrowthAnalytics.TrackOption.ONCE);
-GrowthAnalytics.getInstance().track("CUSTOM_EVENT_ID", properties, GrowthAnalytics.TrackOption.ONCE);
-```
-
-### カスタムタグとは？
-
-任意のタグを取得することが出来ます。カスタムタグには、それぞれ一意のTagIDを割り当てる必要があります。
-
-- TagID: `Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>`  
-	- 上記全文で一意なTagIDと認識されます。大文字小文字は区別されません。
-	- `YOUR_APPLICATION_ID`: ApplicationIDを指定されます。
-	- `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
-
-### カスタムタグの送信
+### タグ名の送信
 
 ```java
 public void tag(final String name);
-public void tag(final String name, final String value);
 ```
 
-### パラメータ
+**パラメータ**
 
 |項目名|詳細|
 |:--|:--|
-|name|カスタムタグID|
-|value|カスタムタグに持たせる任意のValue|
+|name|`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` 上記全文で一意なTagIDと認識されます。大文字小文字は区別されません。`YOUR_APPLICATION_ID`: ApplicationIDを指定されます。 `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
+
+### タグ名と任意のvalueを送信
 
 ```java
-GrowthAnalytics.getInstance().tag("CUSTOM_TAG_ID");
-GrowthAnalytics.getInstance().tag("CUSTOM_TAG_ID", "value");
+public void tag(final String name, final String value);
 ```
 
-## フルカスタマイズなイベント・タグの送信
+**パラメータ**
 
-### フルカスタマイズイベントを送信
+|項目名|詳細|
+|:--|:--|
+|name|`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` 上記全文で一意なTagIDと認識されます。大文字小文字は区別されません。`YOUR_APPLICATION_ID`: ApplicationIDを指定されます。 `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
+|value|カスタムタグに持たせる任意のValue|
 
-特定のネームスペース、イベントIDを設定していただくことが可能です。下記、イベントID発行例となります。
-
-- EventID: `Event:<YOUR_APPLICATION_ID>:<NAMESPACE>:<EVENT_ID>`
-	- 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。
-	- `YOUR_APPLICATION_ID`: ApplicationIDを指定されます。
-	- `NAMESPACE`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
-	- `EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
-
+## フルカスタマイズなイベントの送信
+特定のネームスペース、イベントIDを設定していただくことが可能です。
 
 ```java
 public void track(final String namespace, final String name, final Map<String, String> properties, final TrackOption option);
 ```
 
-### パラメータ
+**パラメータ**
 
 |項目名|詳細|
 |:--|:--|
 |namespace|ネームスペース|
-|name|イベントID|
+|name|`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` 上記全文で一意なTagIDと認識されます。大文字小文字は区別されません。`YOUR_APPLICATION_ID`: ApplicationIDを指定されます。 `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
 |properties|イベントに持たせる任意のMap|
 |option|任意のパラメータ。ONCE, COUNTERのいずれかを指定します。|
 
-### TrackOption
+**option**
 
 |項目名|詳細|
 |:--|:--|
 |ONCE|このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）|
 |COUNTER|このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。|
 
-```java
-GrowthAnalytics.getInstance().track("NAMESPACE", "CUSTOM_EVENT_ID", properties, GrowthAnalytics.TrackOption.ONCE);
-```
-
 ### フルカスタマイズタグを送信
 
-特定のネームスペース、タグIDを設定していただくことが可能です。下記、タグID発行例となります。
-
-- TagID: `Tag:<YOUR_APPLICATION_ID>:<NAMESPACE>:<TAG_ID>`  
-	- 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。
-	- `YOUR_APPLICATION_ID`: ApplicationIDを指定されます。
-	- `NAMESPACE`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
-	- `TAG_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。（大文字小文字は区別されません。）
+特定のネームスペース、タグIDを設定していただくことが可能です。
 
 ```java
 public void tag(final String namespace, final String name, final String value)
 ```
 
-### パラメータ
+**パラメータ**
 
 |項目名|詳細|
 |:--|:--|
 |namespace|ネームスペース|
-|name|タグID|
+|name|`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` 上記全文で一意なTagIDと認識されます。大文字小文字は区別されません。`YOUR_APPLICATION_ID`: ApplicationIDを指定されます。 `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
 |value|タグに持たせる任意のValue|
 
-```java
-GrowthAnalytics.getInstance().tag("NAMESPACE", "TAG_ID", "value");
-```
-
-# プッシュ通知の実装 (Growth Pushの利用)
+# Growth Push API
 
 ## 初期設定
 
@@ -378,7 +324,7 @@ Growth Push管理画面、証明書設定ページにて、各OSごとに証明�
 
 AndroidManifest.xmlの設定を行う必要がございます。
 
-パーミッションは下記が必須となります。
+**パーミッション**
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
@@ -406,7 +352,7 @@ AndroidManifest.xmlの設定を行う必要がございます。
 <uses-permission android:name="android.permission.WAKE_LOCK" />
 ```
 
-また、プッシュ通知を受け取るために必要な設定を、`<application>`タグ内に実装してください。
+プッシュ通知を受け取るために必要な設定を、`<application>`タグ内に実装
 
 ```xml
 <activity
@@ -426,16 +372,22 @@ AndroidManifest.xmlの設定を行う必要がございます。
 </receiver>
 ```
 
-* YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。
+※ YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。
 
 ## RegistrationIdの取得・送信
 
-1. Growthhbeat#initializeWithApplicationIdの後に下記を呼び出す
+Growthhbeat#initializeWithApplicationIdの後に下記を呼び出す
 
-	```
-	// YOUR_SENDER_IDは、AndroidのSenderId
-	GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID");
-	```
+```
+public void requestRegistrationId(final String senderId, final Environment environment)
+```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|senderId|AndroidのSenderId|
+|environment| 開発用: `Environment.development` 本番用: `Environment.production`　|
 
 ## カスタムアイコンの設定
 
@@ -443,30 +395,39 @@ Googleのポリシーに合わせ、アイコンを変更できるようにし�
 
 AndroidManifest.xml `<application>` 内に、下記項目を加えてください。
 
-	```
+```
+<!-- 通知バーのアイコンを変更する場合 (例.) @drawable/sample_notification_icon -->
+<meta-data android:name="com.growthpush.notification.icon" android:resource="表示したいアイコンのパス" />
 
-	<!-- 通知バーのアイコンを変更する場合 (例.) @drawable/sample_notification_icon -->
-	<meta-data android:name="com.growthpush.notification.icon" android:resource="表示したいアイコンのパス" />
+<!-- 通知バーのアイコンのバックグラウンドカラーを変更する場合 (例.) @color/black -->
+<meta-data android:name="com.growthpush.notification.icon.background.color" android:resource="表示したい色のID" />
 
-	<!-- 通知バーのアイコンのバックグラウンドカラーを変更する場合 (例.) @color/black -->
-	<meta-data android:name="com.growthpush.notification.icon.background.color" android:resource="表示したい色のID" />
-
-	<!-- ダイアログ通知のアイコンを変更したい場合 (例.) @drawable/sample_dialog_icon -->
-	<meta-data android:name="com.growthpush.dialog.icon" android:resource="表示したいアイコンのパス" />
-	```
+<!-- ダイアログ通知のアイコンを変更したい場合 (例.) @drawable/sample_dialog_icon -->
+<meta-data android:name="com.growthpush.dialog.icon" android:resource="表示したいアイコンのパス" />
+```
 
 ## イベント・タグの取得
 
 _こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。これまでGrowth Push SDKをご利用しておりました方は、Growth Analyticsのイベント・タグの送信にお乗り換えくださいませ。_
 
-### イベントを送信する
+### イベント名の送信
 
 ```java
 public void trackEvent(final String name);
+```
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|name|イベント名|
+
+### イベント名と任意の値の送信
+
+```java
 public void trackEvent(final String name, final String value);
 ```
 
-### パラメータ
+**パラメータ**
 
 |項目名|詳細|
 |:--|:--|
@@ -474,31 +435,33 @@ public void trackEvent(final String name, final String value);
 |value|イベントに持たせる値|
 
 
-```java
-GrowthPush.getInstance().trackEvent("EVENT_NAME");
-GrowthPush.getInstance().trackEvent("EVENT_NAME", "EVENT_VALUE");
-```
-
-### タグを送信する
+### タグ名の送信
 
 ```java
 public void setTag(final String name);
+```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|name|タグ名|
+
+### タグと任意のタグ名の送信
+
+```java
 public void setTag(final String name, final String value);
 ```
 
-### パラメータ
+**パラメータ**
 
 |項目名|詳細|
 |:--|:--|
 |name|タグ名|
 |value|タグに持たせる値|
 
-```java
-GrowthPush.getInstance().setTag("TAG_NAME");
-GrowthPush.getInstance().setTag("TAG_NAME", "TAG_VALUE");
-```
 
-# アプリ内ポップアップメッセージの実装 (Growth Messageの利用)
+# Growth Message API
 
 ## 初期設定
 
@@ -514,24 +477,11 @@ AndroidManifest.xmlの `<application>` 要素内に下記を記述します。
 
 ## メッセージを表示するViewを指定
 
-## デフォルトで用意しているイベントの送信
+メッセージ配信設定で、設定したイベントを、任意の箇所で、Growth Analyticsのtrackメソッドを呼び出し、イベントを送信します。この呼び出し箇所が、メッセージの表示箇所になります。
 
-- *open* 起動イベントを送信します。
-- *close* 終了イベントを送信します。
-- *purchase* 課金イベントを送信します。
+Growth Analyticsの実装方法を参照してください。
 
-## カスタムイベントの送信
-
-```java
-GrowthAnalytics.getInstance().track("CUSTOM_EVENT_ID");
-GrowthAnalytics.getInstance().track("CUSTOM_EVENT_ID", properties);
-GrowthAnalytics.getInstance().track("CUSTOM_EVENT_ID", GrowthAnalytics.TrackOption.ONCE);
-GrowthAnalytics.getInstance().track("CUSTOM_EVENT_ID", properties, GrowthAnalytics.TrackOption.ONCE);
-```
-
-Growth Analyticsの実装を参照してください。
-
-# ディープリンクの実装 (Growth Linkの利用)
+# Growth Link API
 
 ## SDKの導入
 
@@ -592,4 +542,4 @@ GrowthbeatCore.getInstance().setIntentHandlers(intentHandlers);
 
 ## 備考
 
-SDK導入について、ご不明な点などございます場合は、Growthbeat[お問い合わせフォーム](https://growthbeat.com/inquiry)からお問い合わせください。また[リリースノート](http://support.growthbeat.com/sdk/ios/release/)もご参照ください
+SDK導入について、ご不明な点などございます場合は、[Growthbeatお問い合わせフォーム](https://growthbeat.com/inquiry)からお問い合わせください。また[リリースノート](http://support.growthbeat.com/sdk/android/release/)もご参照ください
