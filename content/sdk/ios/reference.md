@@ -111,7 +111,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 
 |項目名|詳細|
 |:--|:--|
-|userId| 任意のユーザー名 |
+|name| 任意のユーザー名 |
 
 ### setAge
 
@@ -246,7 +246,8 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 |GATrackOptionOnce|このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）|
 |GATrackOptionCounter|このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。|
 
-### イベント名と任意のMapの送信とイベント取得回数オプションの送信
+
+## イベント名と任意のMapの送信とイベント取得回数オプションの送信
 
 ```objc
 - (void)track:(NSString *)name properties:(NSDictionary *)properties option:(GATrackOption)option;
@@ -324,9 +325,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 
 ## フルカスタマイズなタグの送信
 
-
 特定のネームスペース、タグIDを設定していただくことが可能です。
-
 
 ```objc
 - (void)tag:(NSString *)_namespace name:(NSString *)name value:(NSString *)value completion:(void(^)(GAClientTag * clientTag))completion;
@@ -440,14 +439,14 @@ Growthbeat.frameworkを導入した上で、Growthbeat SDK内の `source/GrowthL
 
 1. Growthbeat.frameworkのインポートの方法は2つあります。
 
-- Xcodeプロジェクトに、GrowthLink.frameworkをドラッグアンドドロップする。
-- Bulid Phases -> Link Binary With Librariesの+ボタンを押し、Add Other...からGrowthLink.frameworkを選択。
+	- Xcodeプロジェクトに、GrowthLink.frameworkをドラッグアンドドロップする。
+	- Bulid Phases -> Link Binary With Librariesの+ボタンを押し、Add Other...からGrowthLink.frameworkを選択。
 
 2. GrowthLinkのimport文を記述します。
 
-```objc
-#import <GrowthLink/GrowthLink.h>
-```
+	```objc
+	#import <GrowthLink/GrowthLink.h>
+	```
 
 ## 初期設定
 
@@ -469,3 +468,7 @@ URL起動の処理で、handleOpenUrl:urlメソッドを呼び出す
     return YES;
 }
 ```
+
+## 備考
+
+SDK導入について、ご不明な点などございます場合は、[Growthbeatお問い合わせフォーム](https://growthbeat.com/inquiry)からお問い合わせください。また[リリースノート](http://support.growthbeat.com/sdk/ios/release/)もご参照ください
