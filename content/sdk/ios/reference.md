@@ -26,66 +26,60 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 
 取得したい情報を、任意の場所に実装してください。送信されたデータは、Growth Analytics管理画面をご覧ください。
 
-## 基本情報の送信
+## 基本タグの送信
 
 端末の基本情報を送信します。基本情報には以下が含まれます。
 
-- setDeviceModel
-- setOs
-- setLanguage
-- setTimeZone
-- setTimeZoneOffset
-- setAppVersion
-- setAdvertisingId
-- setTrackingEnabled
+- デバイスモデル
+- OS
+- 言語
+- タイムゾーン
+- タイムゾーンオフセット
+- アプリバージョン
+- 広告ID（Android:AdvertisingId, iOS:IDFA）
+- 広告利用可否
 
 ```objc
 - (void)setBasicTags;
 ```
 
-## 特定のイベント・タグを送信
+## 特定のイベントを送信
 
-### open
+### 起動イベント
 
 ユーザーの起動イベントを送信します。セッション時間の計測を開始するために必要なメソッドです。
 
 ```objc
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    [[GrowthAnalytics sharedInstance] open];
-    [[GrowthAnalytics sharedInstance] setBasicTags];
-}
+- (void)open;
 ```
 
-### close
+### 終了イベント
 
 アプリの終了イベントを送信します。セッション時間の計測を停止します。
 
 ```objc
-- (void)applicationWillResignActive:(UIApplication *)application {
-    [[GrowthAnalytics sharedInstance] close];
-}
+- (void)close;
 ```
 
-### purchase
+### 購入イベント
 
 課金時にメソッドを呼び、課金額、アイテムのカテゴリなどを送信することができます。
 
 ```objc
-- (IBAction) tapPurchaseEventButton:(id)sender {
-    [[GrowthAnalytics sharedInstance] purchase:[priceTextField.text intValue] setCategory:@"item" setProduct:itemTextField.text];
-}
-[[GrowthAnalytics sharedInstance] purchase:price setCategory:@"ITEM_CATEGORY" setProduct:@"ITEM_NAME"];
+- (void)purchase:(int)price setCategory:(NSString *)category setProduct:(NSString *)product;
 ```
 
 **パラメータ**
 
 |項目名|詳細|
 |:--|:--|
-|purchase| 任意の課金のプロパティ名 |
-|setCategory| 任意のカテゴリ |
-|setProduct| 任意のアイテム名|
+|price| 価格 |
+|category| 任意のカテゴリ |
+|product| 任意のアイテム名|
 
-### setUserId
+## 特定のタグを送信
+
+### ユーザーIDタグ
 
 アプリのユニークなユーザーIDを送信します。
 
@@ -99,7 +93,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 |:--|:--|
 |userId| 任意のユニークなユーザー名|
 
-### setName
+### 名前タグ
 
 アプリのユーザー名を送信します。
 
@@ -113,7 +107,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 |:--|:--|
 |name| 任意のユーザー名 |
 
-### setAge
+### 年齢タグ
 
 アプリのユーザーの年齢を送信します。
 
@@ -127,7 +121,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 |:--|:--|
 |age| ユーザーの年齢 |
 
-### setGender
+### 性別タグ
 
 変数は、GAGenderを用いてどちらか性別を送信してください。
 
@@ -141,7 +135,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 |:--|:--|
 |gender| 男性: `GAGenderMale` 女性: `GAGenderFemale` |
 
-### setLevel
+### レベルタグ
 
 アプリのユーザーのレベルを送信します。
 
@@ -155,7 +149,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 |:--|:--|
 |level| ユーザーのレベル |
 
-### setDevelopment
+### 開発用タグ
 
 開発用のフラグををつけます。
 
@@ -177,25 +171,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 - (void)setRandom;
 ```
 
-### setAdvertisingId
-
-広告IDを送信します。
-
-```objc
-- (void)setAdvertisingId;
-```
-
-注意：_広告の表示欄がないアプリで利用すると申請時にリジェクトをされる可能性が高いので設定される場合は、十分にご注意ください。_
-
-### setTrackingEnabled
-
-ユーザーが広告IDを利用するのを拒否しているかを送信します。
-
-```objc
-- (void)setTrackingEnabled;
-```
-
-## カスタムイベント・タグを送信
+## カスタムイベント送信
 
 ### イベントの送信
 
@@ -269,6 +245,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 |GATrackOptionOnce|このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）|
 |GATrackOptionCounter|このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。|
 
+## カスタムタグ送信
 
 ### タグ名の送信
 
