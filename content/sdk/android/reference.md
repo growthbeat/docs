@@ -42,10 +42,7 @@ public void setBasicTags()
 ユーザーの起動イベントを送信します。セッション時間の計測を開始するために必要なメソッドです。起動後に開かれるActivityのonStartに以下を実装してください。
 
 ```java
-public void onStart() {
-	super.onStart();
-	GrowthAnalytics.getInstance().open();
-}
+public void open()
 ```
 
 ### close
@@ -53,10 +50,7 @@ public void onStart() {
 アプリの終了イベントを送信します。セッション時間の計測を停止します。Activityが閉じプロセスが終了する場所に実装してください。
 
 ```java
-public void onStop() {
-	super.onStop();
-	GrowthAnalytics.getInstance().close();
-}
+public void close()
 ```
 
 ### purchase
