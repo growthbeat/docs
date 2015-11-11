@@ -328,9 +328,9 @@ Growth Push管理画面、証明書設定ページにて、各OSごとに証明�
 
 XCodeプロジェクトのBuild Setting > Provisioning Profileの設定をしてください。誤った設定方法となりますと、デバイストークンの取得ができません。
 
-## デバイストークンの送信
+## デバイストークンの取得・送信
 
-**initialize**
+**デバイストークンの取得**
 
 ```objc
 - (void)requestDeviceTokenWithEnvironment:(GPEnvironment)newEnvironment;
