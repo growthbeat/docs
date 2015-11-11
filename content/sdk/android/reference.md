@@ -22,22 +22,22 @@ Growthbeat.getInstance().initialize(context, "YOUR_APPLICATION_ID", "YOUR_CREDEN
 
 端末の基本情報を送信します。基本情報には以下が含まれます。
 
-- setDeviceModel
-- setOs
-- setLanguage
-- setTimeZone
-- setTimeZoneOffset
-- setAppVersion
-- setAdvertisingId
-- setTrackingEnabled
+- デバイスモデル
+- OS
+- 言語
+- タイムゾーン
+- タイムゾーンオフセット
+- アプリバージョン
+- 広告ID（Android:AdvertisingId, iOS:IDFA）
+- 広告利用可否
 
 ```java
 public void setBasicTags()
 ```
 
-## 特定のイベント・タグを送信
+## 特定のイベントを送信
 
-### open
+### 起動イベント
 
 ユーザーの起動イベントを送信します。セッション時間の計測を開始するために必要なメソッドです。起動後に開かれるActivityのonStartに以下を実装してください。
 
@@ -45,7 +45,7 @@ public void setBasicTags()
 public void open()
 ```
 
-### close
+### 終了イベント
 
 アプリの終了イベントを送信します。セッション時間の計測を停止します。Activityが閉じプロセスが終了する場所に実装してください。
 
@@ -53,7 +53,7 @@ public void open()
 public void close()
 ```
 
-### purchase
+### 購入イベント
 
 課金時にメソッドを呼び、課金額、アイテムのカテゴリなどを送信することができます。
 
@@ -69,7 +69,9 @@ public void purchase(int price, String category, String product)
 |category| 任意のカテゴリ |
 |product| 任意のアイテム名|
 
-### setUserId
+## 特定のタグを送信
+
+### ユーザーIDタグ
 
 アプリのユニークなユーザーIDを送信します。
 
@@ -83,7 +85,7 @@ public void setUserId(String userId)
 |:--|:--|
 |userId| 任意のユニークなユーザー名|
 
-### setName
+### 名前タグ
 
 アプリのユーザー名を送信します。
 
@@ -97,7 +99,7 @@ public void setName(String name)
 |:--|:--|
 |name| 任意のユーザー名 |
 
-### setAge
+### 年齢タグ
 
 ```java
 public void setAge(int age)
@@ -109,7 +111,7 @@ public void setAge(int age)
 |:--|:--|
 |age| ユーザーの年齢 |
 
-### setGender
+### 性別タグ
 
 変数は、Genderのenumを用いてどちらか性別を送信してください
 
@@ -123,7 +125,7 @@ public void setGender(Gender gender)
 |:--|:--|
 |gender| 男性: `Gender.MALE` 女性: `Gender.FEMALE` |
 
-### setLevel
+### レベルタグ
 
 アプリのユーザーのレベルを送信します。
 
@@ -137,7 +139,7 @@ public void setLevel(int level)
 |:--|:--|
 |level| ユーザーのレベル |
 
-### setDevelopment
+### 開発用タグ
 
 開発用のフラグをつける
 
@@ -151,7 +153,7 @@ public void setDevelopment(boolean development)
 |:--|:--|
 |development| 開発用の場合は `true` |
 
-### setRandom
+### 乱数タグ
 
 乱数を端末の情報として紐付けます。
 
@@ -159,23 +161,7 @@ public void setDevelopment(boolean development)
 public void setRandom()
 ```
 
-### setAdvertisingId
-
-広告IDを送信します。
-
-```java
-public void setAdvertisingId()
-```
-
-### setTrackingEnabled
-
-ユーザーが広告IDを利用するのを拒否しているかを送信します。
-
-```java
-public void setTrackingEnabled()
-```
-
-## カスタムイベント・タグを送信
+## カスタムイベント送信
 
 ### イベントの送信
 
@@ -244,6 +230,8 @@ public void track(final String name, final Map<String, String> properties, final
 |ONCE|このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）|
 |COUNTER|このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。|
 
+## カスタムタグ送信
+
 ### タグ名の送信
 
 ```java
@@ -270,6 +258,7 @@ public void tag(final String name, final String value);
 |value|カスタムタグに持たせる任意のValue|
 
 ## フルカスタマイズなイベントの送信
+
 特定のネームスペース、イベントIDを設定していただくことが可能です。
 
 ```java
@@ -292,7 +281,7 @@ public void track(final String namespace, final String name, final Map<String, S
 |ONCE|このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）|
 |COUNTER|このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。|
 
-### フルカスタマイズタグを送信
+## フルカスタマイズなタグの送信
 
 特定のネームスペース、タグIDを設定していただくことが可能です。
 
@@ -400,7 +389,7 @@ AndroidManifest.xml `<application>` 内に、下記項目を加えてくださ�
 <meta-data android:name="com.growthpush.dialog.icon" android:resource="表示したいアイコンのパス" />
 ```
 
-## イベント・タグの取得
+## イベントの取得
 
 _こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。これまでGrowth Push SDKをご利用しておりました方は、Growth Analyticsのイベント・タグの送信にお乗り換えくださいませ。_
 
@@ -428,6 +417,10 @@ public void trackEvent(final String name, final String value);
 |name|イベント名|
 |value|イベントに持たせる値|
 
+
+## タグの取得
+
+_こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。これまでGrowth Push SDKをご利用しておりました方は、Growth Analyticsのイベント・タグの送信にお乗り換えくださいませ。_
 
 ### タグ名の送信
 
@@ -534,6 +527,6 @@ intentHandlers.add(new IntentHandler() {
 GrowthbeatCore.getInstance().setIntentHandlers(intentHandlers);
 ```
 
-## 備考
+# 備考
 
 SDK導入について、ご不明な点などございます場合は、[Growthbeatお問い合わせフォーム](https://growthbeat.com/inquiry)からお問い合わせください。また[リリースノート](http://support.growthbeat.com/sdk/android/release/)もご参照ください
