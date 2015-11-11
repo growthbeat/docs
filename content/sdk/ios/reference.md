@@ -212,7 +212,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 |項目名|詳細|
 |:--|:--|
 |name|フォーマット:`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID <br/> `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
-|option|GATrackOptionDefault,GATrackOptionOnce,GATrackOptionCounterのいずれかを指定します。|
+|option|GATrackOptionDefault, GATrackOptionOnce, GATrackOptionCounterのいずれかを指定します。|
 
 **option**
 
@@ -235,7 +235,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 |:--|:--|
 |name|フォーマット:`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID <br/> `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
 |properties|カスタムイベントに持たせる任意のMap|
-|option|GATrackOptionDefault,GATrackOptionOnce,GATrackOptionCounterのいずれかを指定します。|
+|option|GATrackOptionDefault, GATrackOptionOnce, GATrackOptionCounterのいずれかを指定します。|
 
 **option**
 
@@ -287,7 +287,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 |_namespace|ネームスペース|
 |name|フォーマット:`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID <br/> `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
 |properties|イベントに持たせる任意のMap|
-|option|GATrackOptionDefault,GATrackOptionOnce,GATrackOptionCounterのいずれかを指定します。|
+|option|GATrackOptionDefault, GATrackOptionOnce, GATrackOptionCounterのいずれかを指定します。|
 |completion|イベント作成後のコールバック|
 
 
@@ -339,8 +339,7 @@ XCodeプロジェクトのBuild Setting > Provisioning Profileの設定をして
 **デバイストークンの送信**
 
 ```objc
-- (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-}
+- (void)setDeviceToken:(NSData *)deviceToken;
 ```
 
 ## イベントの取得
@@ -421,7 +420,3 @@ Growthbeatへデバイス登録・認証を行います。
 ```objc
 - (void)initializeWithApplicationId:(NSString *)initialApplicationId APPLICATION_ID:(NSString *)CREDENTIAL_ID;
 ```
-
-# 備考
-
-SDK導入について、ご不明な点などございます場合は、[Growthbeatお問い合わせフォーム](https://growthbeat.com/inquiry)からお問い合わせください。また[リリースノート](http://support.growthbeat.com/sdk/ios/release/)もご参照ください
