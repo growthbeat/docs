@@ -28,12 +28,16 @@ pod 'Growthbeat'
 任意のXcodeプロジェクトを開き、Growthbeat.frameworkをインポートしてください。
 
 Growthbeat.frameworkのインポートの方法は2つあります。
+
 ```
 1. Xcodeプロジェクトに、Growthbeat.frameworkをドラッグアンドドロップする
 2. Bulid Phases -> Link Binary With Librariesの+ボタンを押し、Add Other...からGrowthbeat.frameworkを選択する
 ```
 
+### import
+
 Growthbeatのimport文を記述します。
+
 ```
 #import <Growthbeat/Growthbeat.h>
 ```
@@ -51,28 +55,50 @@ Growthbeat.frameworkは、下記Frameworkが必須となります。
 
 ## Growthbeatの初期化
 
-Growthbeatへデバイス登録・認証を行います。初期化の中に、端末の基本情報の送信、広告IDの取得が行われます。
+Growthbeatの初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。
 
 ```objc
 [[Growthbeat sharedInstance] initializeWithApplicationId:@"YOUR_APLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID"];
 ```
 
-Growth Push SDKからの乗り換え方法は[APIリファレンス](./sdk/ios/reference/)を参照
+Growth Push SDKからの乗り換えの場合は、[こちら]()も参照してください。
 
+## アプリの起動・終了イベントの送信
 
-# プッシュ通知（Grwoth Push）
+起動イベントは、`- (void)applicationDidBecomeActive:(UIApplication *)application` にて下記のように実装してください。
 
-Growth Push管理画面、[iOSプッシュ通知証明書作成方法](http://growthhack.sirok.co.jp/growthpush/ios-p12/)にて、各OSごとに証明書の設定を行ってください。
+```objc
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    [[Growthbeat sharedInstance] start];
+}
+```
+
+終了イベントは、`- (void)applicationWillResignActive:(UIApplication *)application` にて下記のように実装してください。
+
+```objc
+- (void)applicationWillResignActive:(UIApplication *)application {
+    [[Growthbeat sharedInstance] stop];
+}
+```
+
+アプリの起動・終了以外のイベント（行動情報）やタグ（属性情報）も送信することができます。詳しくは[APIリファレンス]()をご参照ください。
+
+# プッシュ通知
+
+## プッシュ通知用の証明書の作成
+
+Growth Push管理画面のにて、各OSごとに証明書の設定を行ってください。詳しくは、[iOSプッシュ通知証明書作成方法](http://growthhack.sirok.co.jp/growthpush/ios-p12/)をご参照ください。
 
 ## デバイストークンを取得・送信をする
 
-Growthhbeat#initializeWithApplicationIdの後に下記を呼び出す
+Growthbeatの初期化後に下記を呼び出して、デバイストークンの取得を行います。
 
 ```objc
 [[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
 ```
 
-ApplicationDelegateにて下記を追加
+`- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken` にて下記のように実装して、デバイストークンを送信します。
 
 ```objc
 - (void)application:(UIApplication *)application
@@ -81,60 +107,25 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 ```
 
-# 分析（Growth Anlytics）
+登録されたデバイスは管理画面のデバイスページにて確認することができます。下記のように、デバイスのステータスがアクティブ（Active）で登録されていれば正常です。
 
-あらかじめ特定のタグやイベントを送信するためのメソッドを用意しております。
-[Growthbeatの初期化](#growthbeatの初期化) の時点で下記データがGrowth Anlyticsに送信されます。
-デフォルトで用意のあるタグ・イベント一覧は <a href="/sdk/ios/reference/">APIリファレンス</a> を参照してください。
+<img src="/img/push/push-device-list.png" alt="push-device-list" title="push-device-list" width="100%"/>
 
-* デバイスモデル
-* OS
-* 言語
-* タイムゾーン
-* UTCとタイムゾーンの差分
+# アプリ内メッセージ
 
-## タグ（ユーザー属性）の送信
+## メッセージを作成する。
 
-**タグとは**
+ここではアプリの起動時にメッセージを出す方法を説明します（共通初期設定でアプリの起動イベントを送信している必要があります）。
 
-ユーザーの属性を示す情報の送信をします。一般的には ユーザーID/性別/年齢 等の情報を送信します。
+まず、管理画面にてアプリ起動時に配信されるメッセージを作成します。
 
-```objc
-- (void)track:(NSString *)name;
-- (void)track:(NSString *)name properties:(NSDictionary *)properties;
-- (void)track:(NSString *)name option:(GATrackOption)option;
-- (void)track:(NSString *)name properties:(NSDictionary *)properties option:(GATrackOption)option;
-```
+メッセージ作成の説明...
+メッセージ作成の説明...
+メッセージ作成の説明...
 
-詳しくは、<a href="/sdk/ios/reference/">APIリファレンス</a>を参照してください。
+アプリ起動以外にも、カスタムイベントをメッセージ配信のトリガーにすることにより、アプリの任意の場所でメッセージを配信することができます。詳しくは、[こちら]()をご参照ください。
 
-## イベント（行動ログ）の送信
-
-**イベントとは？**
-
-ユーザーの行動ログを示す情報の送信をします。一般的には 起動/ログイン/課金 等の情報を送信します。
-
-```objc
-- (void)tag:(NSString *)name;
-- (void)tag:(NSString *)name value:(NSString *)value;
-```
-
-詳しくは、<a href="/sdk/ios/reference/">APIリファレンス</a>を参照してください。
-
-
-# アプリ内メッセージ（Growth Message）
-
-## メッセージを表示する
-
-メッセージを表示したい場所にGrowth Analyticsのイベントを設定してください。
-
-```objc
-[[GrowthAnalytics sharedInstance] track:@"CUSTOM_EVENT_ID"];
-```
-
-詳しくは、<a href="/sdk/ios/reference/">APIリファレンス</a>を参照してください。
-
-# ディープリンク（Growth Link）
+# ディープリンク
 
 ## 初期設定
 
