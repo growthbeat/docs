@@ -209,6 +209,29 @@ IntentFilterを設定したActivityのonCreateで、handleOpenUrlメソッドを
 GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
 ```
 
+## ディープリンクアクションの実装
+
+SDKには、IntentHandler (iOSでは、GBIntentHandler)というインタフェースが定義されており、この実装でディープリンク時のアクションを実装することができます。
+
+たとえば下記のような形で実装できます。
+
+```java
+List<IntentHandler> intentHandlers = new ArrayList<IntentHandler>();
+intentHandlers.add(new UrlIntentHandler(GrowthbeatCore.getInstance().getContext()));
+intentHandlers.add(new NoopIntentHandler());
+intentHandlers.add(new IntentHandler() {
+    public boolean handle(com.growthbeat.model.Intent intent) {
+        if (intent.getType() != com.growthbeat.model.Intent.Type.custom)
+            return false;
+        Map<String, String> extra = ((CustomIntent) intent).getExtra();
+        // TODO ここにアプリ内の画面を開く処理を実装します。
+        Log.d("Growth Link", "extra: " + extra);
+        return true;
+    }
+});
+GrowthbeatCore.getInstance().setIntentHandlers(intentHandlers);
+```
+
 # 備考
 
 ご不明な点などございます場合は、[ヘルプページ](http://growthbeat.helpscoutdocs.com/)を閲覧してください。
