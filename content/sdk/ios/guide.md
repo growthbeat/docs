@@ -106,9 +106,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 - (void)track:(NSString *)name properties:(NSDictionary *)properties option:(GATrackOption)option;
 ```
 
-詳しくは、APIリファレンスを参照してください。
-
-<a href="/sdk/ios/reference/">APIリファレンス</a>
+詳しくは、<a href="/sdk/ios/reference/">APIリファレンス</a>を参照してください。
 
 ## イベント（行動ログ）の送信
 
@@ -128,7 +126,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 ## メッセージを表示する
 
-メッセージを表示したい場所にGrowth Analyticsのタグを設定してください。
+メッセージを表示したい場所にGrowth Analyticsのイベントを設定してください。
 
 ```objc
 [[GrowthAnalytics sharedInstance] track:@"CUSTOM_EVENT_ID"];
