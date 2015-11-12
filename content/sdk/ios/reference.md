@@ -1,6 +1,6 @@
 ---
 categories: 'sdk'
-date: 2015-09-14T14:32:58+09:00
+date: 2015-11-12T14:32:58+09:00
 description: 'Growthbeat iOS の API について説明します'
 draft: false
 title: Growthbeat iOS API
@@ -8,7 +8,9 @@ title: Growthbeat iOS API
 
 # Growthbeat API
 
-## Growthbeatインスタンスを取得
+## Growthbeatインスタンスの取得
+
+Growthbeatインスタンスを取得します。
 
 ```objc
 + (instancetype)sharedInstance;
@@ -16,17 +18,34 @@ title: Growthbeat iOS API
 
 ## 初期化
 
-Growthbeatへデバイス登録・認証を行います。初期化の中に、端末の基本情報の送信、広告IDの取得が行われます。
+Growthbeatの初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。
 
 ```objc
 - (void)initializeWithApplicationId:(NSString *)initialApplicationId credentialId:(NSString *)initialCredentialId;
 ```
 
+## 起動イベントの送信
+
+アプリケーションの起動イベントを送信します。
+
+```objc
+- (void)start;
+```
+
+## 終了イベントの送信
+
+アプリケーションの起動イベントを送信します。
+
+```objc
+- (void)stop;
+```
+
+
 # Growth Analytics API
 
-取得したい情報を、任意の場所に実装してください。
+## GrowthAnalyticsインスタンスの取得
 
-## Growth Analyticsインスタンスを取得
+GrowthAnalyticsインスタンスを取得します。
 
 ```objc
 + (instancetype)sharedInstance;
@@ -253,7 +272,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 
 ## カスタムタグ送信
 
-### タグ名の送信
+### タグの送信
 
 ```objc
 - (void)tag:(NSString *)name;
@@ -265,7 +284,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 |:--|:--|
 |name|フォーマット:`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID<br/>  `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
 
-### タグ名と任意のvalueを送信
+### タグと任意の値を送信
 
 ```objc
 - (void)tag:(NSString *)name value:(NSString *)value;
@@ -326,40 +345,34 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 
 # Growth Push API
 
-## Growth pushインスタンスを取得
+## GrowthPushインスタンスの取得
+
+GrowthPushインスタンスを取得します。
 
 ```objc
 + (instancetype)sharedInstance;
 ```
 
-## 初期設定
-
-Growth Push管理画面、証明書設定ページにて、各OSごとに証明書の設定を行ってください。
-
-[iOSプッシュ通知証明書作成方法](http://growthhack.sirok.co.jp/growthpush/ios-p12/)
-
-XCodeプロジェクトのBuild Setting > Provisioning Profileの設定をしてください。誤った設定方法となりますと、デバイストークンの取得ができません。
-
 ## デバイストークンの取得・送信
 
-**デバイストークンの取得**
+### デバイストークンの取得
 
 ```objc
 - (void)requestDeviceTokenWithEnvironment:(GPEnvironment)newEnvironment;
 ```
 
-**デバイストークンの送信**
+### デバイストークンの送信
 
 ```objc
 - (void)setDeviceToken:(NSData *)deviceToken;
 ```
 
-## イベントの取得
+## イベントの送信（Push専用）
 
 ***こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。これまでGrowth Push SDKをご利用しておりました方は、Growth Analyticsのイベント・タグの送信にお乗り換えくださいませ。***
 
 
-### イベント名の送信
+### イベントの送信（Push専用）
 
 ```objc
 - (void)trackEvent:(NSString *)name;
@@ -371,7 +384,7 @@ XCodeプロジェクトのBuild Setting > Provisioning Profileの設定をして
 |:--|:--|
 |name|イベント名|
 
-### イベント名と任意の値の送信
+### イベントと任意の値の送信（Push専用）
 
 ```objc
 - (void)trackEvent:(NSString *)name value:(NSString *)value;
@@ -384,12 +397,12 @@ XCodeプロジェクトのBuild Setting > Provisioning Profileの設定をして
 |name|イベント名|
 |value|イベントに持たせる値|
 
-## タグの取得
+## タグの送信（Push専用）
 
 ***こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。これまでGrowth Push SDKをご利用しておりました方は、Growth Analyticsのイベント・タグの送信にお乗り換えくださいませ。***
 
 
-### タグ名の送信
+### タグの送信（Push専用）
 
 ```objc
 - (void)setTag:(NSString *)name;
@@ -401,7 +414,7 @@ XCodeプロジェクトのBuild Setting > Provisioning Profileの設定をして
 |:--|:--|
 |name|タグ名|
 
-### タグと任意のタグ名の送信
+### タグと任意の値の送信（Push専用）
 
 ```objc
 - (void)setTag:(NSString *)name value:(NSString *)value;
@@ -417,28 +430,26 @@ XCodeプロジェクトのBuild Setting > Provisioning Profileの設定をして
 
 # Growth Message API
 
-## Growth Messageインスタンスを取得
+## GrowthMessageインスタンスの取得
+
+GrowthMessageインスタンスを取得します。
 
 ```objc
 + (instancetype)sharedInstance;
 ```
-
-## メッセージを表示するViewを指定
-
-メッセージ配信設定で、設定したイベントを、任意の箇所で、Growth Analyticsのtrackメソッドを呼び出し、イベントを送信します。この呼び出し箇所が、メッセージの表示箇所になります。
-
-<a href="#growth-analytics-api">Growth Analyticsの実装方法</a> を参照してください。
 
 # Growth Link API
 
 
-## Growth Linkインスタンスを取得
+## GrowthLinkインスタンスの取得
+
+GrowthLinkインスタンスを取得します。
 
 ```objc
 + (instancetype)sharedInstance;
 ```
 
-## 初期設定
+## Growth Linkの初期化
 
 Growthbeatへデバイス登録・認証を行います。
 
