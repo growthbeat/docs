@@ -21,8 +21,15 @@ Growthbeatインスタンスを取得します。
 Growthbeatの初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。
 
 ```objc
-- (void)initializeWithApplicationId:(NSString *)initialApplicationId credentialId:(NSString *)initialCredentialId;
+- (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId;
 ```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|applicationId| アプリケーションID |
+|credentialId| クレデンシャルキー |
 
 ## 起動イベントの送信
 
@@ -454,5 +461,12 @@ GrowthLinkインスタンスを取得します。
 Growthbeatへデバイス登録・認証を行います。
 
 ```objc
-- (void)initializeWithApplicationId:(NSString *)initialApplicationId APPLICATION_ID:(NSString *)CREDENTIAL_ID;
+- (void)initializeWithApplicationId:(NSString *)applicationId APPLICATION_ID:(NSString *)credentialId;
 ```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|applicationId| アプリケーションID |
+|credentialId| クレデンシャルキー |
