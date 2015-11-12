@@ -22,18 +22,22 @@ pod 'Growthbeat'
 
 ### 手動でSDKを配置して導入する場合
 
-[最新版iOS SDK ダウンロードページ ](https://github.com/SIROK/growthbeat-ios/archive/latest.zip)
+<a href="/sdk">最新版iOS SDK ダウンロードページ</a>
 
 ダウンロードしたファイルを解凍し、そのフォルダの中の **Growthbeat.framework** をプロジェクトへ組み込みます。
 任意のXcodeプロジェクトを開き、Growthbeat.frameworkをインポートしてください。
 
 Growthbeat.frameworkのインポートの方法は2つあります。
+
 ```
 1. Xcodeプロジェクトに、Growthbeat.frameworkをドラッグアンドドロップする
 2. Bulid Phases -> Link Binary With Librariesの+ボタンを押し、Add Other...からGrowthbeat.frameworkを選択する
 ```
 
+### import
+
 Growthbeatのimport文を記述します。
+
 ```
 #import <Growthbeat/Growthbeat.h>
 ```
@@ -51,108 +55,73 @@ Growthbeat.frameworkは、下記Frameworkが必須となります。
 
 ## Growthbeatの初期化
 
+Growthbeatの初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。
+
 ```objc
 [[Growthbeat sharedInstance] initializeWithApplicationId:@"YOUR_APLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID"];
 ```
 
-Growth Push SDKからの乗り換え方法はAPIリファレンスを参照
+Growth Push SDKからの乗り換えの場合は、[こちら](#growth-push-sdkからの乗り換え方法について)も参照してください。
 
-[APIリファレンス]()
+## アプリの起動・終了イベントの送信
 
+起動イベントは、`- (void)applicationDidBecomeActive:(UIApplication *)application` にて下記のように実装してください。
 
-# プッシュ通知（Grwoth Push）
+```objc
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    [[Growthbeat sharedInstance] start];
+}
+```
 
-Growth Push管理画面、証明書設定ページにて、各OSごとに証明書の設定を行ってください。
+終了イベントは、`- (void)applicationWillResignActive:(UIApplication *)application` にて下記のように実装してください。
 
-[iOSプッシュ通知証明書作成方法](http://growthhack.sirok.co.jp/growthpush/ios-p12/)
+```objc
+- (void)applicationWillResignActive:(UIApplication *)application {
+    [[Growthbeat sharedInstance] stop];
+}
+```
 
+アプリの起動・終了以外のイベント（行動情報）やタグ（属性情報）も送信することができます。詳しくは[APIリファレンス](/sdk/ios/reference/#基本タグの送信)をご参照ください。
+
+# プッシュ通知
+
+## プッシュ通知用の証明書の作成
+
+Growth Push管理画面のにて、各OSごとに証明書の設定を行ってください。詳しくは、[iOSプッシュ通知証明書作成方法](http://growthhack.sirok.co.jp/growthpush/ios-p12/)をご参照ください。
 
 ## デバイストークンを取得・送信をする
 
-1. Growthhbeat#initializeWithApplicationIdの後に下記を呼び出す
+Growthbeatの初期化後に下記を呼び出して、デバイストークンの取得を行います。
 
-```
+```objc
 [[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
 ```
 
-2. ApplicationDelegateにて下記を追加
+`- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken` にて下記のように実装して、デバイストークンを送信します。
 
-```
+```objc
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [[GrowthPush sharedInstance] setDeviceToken:deviceToken];
 }
 ```
 
-# 分析（Growth Anlytics）
+登録されたデバイスは管理画面のデバイスページにて確認することができます。下記のように、デバイスのステータスがアクティブ（Active）で登録されていれば正常です。
 
-あらかじめ特定のタグやイベントを送信するためのメソッドを用意しております。
-[Growthbeatの初期化](#growthbeatの初期化) の時点で下記データがGrowth Anlyticsに送信されます。
+<img src="/img/push/push-device-list.png" alt="push-device-list" title="push-device-list" width="100%"/>
 
-* デバイスモデル
+# アプリ内メッセージ
 
-* OS
+## メッセージを作成する。
 
-* 言語
+ここではアプリの起動時にメッセージを出す方法を説明します（共通初期設定でアプリの起動イベントを送信している必要があります）。
 
-* タイムゾーン
+まず、管理画面にてアプリ起動時に配信されるメッセージを作成します。メッセージの作成方法は[こちら](/manual/growthmessage/#配信作成)を参考にしてください。
 
-* UTCとタイムゾーンの差分
+アプリ起動以外にも、カスタムイベントをメッセージ配信のトリガーにすることにより、アプリの任意の場所でメッセージを配信することができます。詳しくは、[こちら](/sdk/ios/reference/#カスタムイベント送信)をご参照ください。
 
-その他、デフォルトで用意のあるタグ・イベント一覧はAPIリファレンスを参照してください。
-
-[APIリファレンス]()
-
-## タグ（ユーザー属性）の送信
-
-**タグとは**
-
-ユーザーの属性を示す情報の送信をします。一般的には ユーザーID/性別/年齢 等の情報を送信します。
-
-```objc
-- (void)track:(NSString *)name;
-- (void)track:(NSString *)name properties:(NSDictionary *)properties;
-- (void)track:(NSString *)name option:(GATrackOption)option;
-- (void)track:(NSString *)name properties:(NSDictionary *)properties option:(GATrackOption)option;
-```
-
-詳しくは、APIリファレンスを参照してください。
-
-[APIリファレンス]()
-
-## イベント（行動ログ）の送信
-
-**イベントとは？**
-
-ユーザーの行動ログを示す情報の送信をします。一般的には 起動/ログイン/課金 等の情報を送信します。
-
-```objc
-- (void)tag:(NSString *)name;
-- (void)tag:(NSString *)name value:(NSString *)value;
-```
-
-詳しくは、APIリファレンスを参照してください。
-
-[APIリファレンス]()
-
-# アプリ内メッセージ（Growth Message）
-
-## メッセージを表示する
-
-メッセージを表示したい場所にGrowth Analyticsのタグを設定してください。
-
-```objc
-- (void)track:(NSString *)name;
-- (void)track:(NSString *)name properties:(NSDictionary *)properties;
-- (void)track:(NSString *)name option:(GATrackOption)option;
-- (void)track:(NSString *)name properties:(NSDictionary *)properties option:(GATrackOption)option;
-```
-
-詳しくは、APIリファレンスを参照してください。
-
-[Growth Analytics APIリファレンス]()
-
-# ディープリンク（Growth Link）
+# ディープリンク
 
 ## 初期設定
 
@@ -171,7 +140,7 @@ GrowthLinkのimport文を記述します。
 #import <GrowthLink/GrowthLink.h>
 ```
 
-## ディープリンク用初期化処理
+## 初期化処理
 
 Growthbeatの初期化処理の後に、Growth Linkの初期化処理を呼び出す
 
@@ -189,3 +158,139 @@ URL起動の処理で、handleOpenUrl:urlメソッドを呼び出す
     return YES;
 }
 ```
+
+## ディープリンクアクションの実装
+
+SDKには、GBIntentHandler (Androidでは、IntentHandler)というプロトコルが定義されており、この実装でディープリンク時のアクションを実装することができます。
+
+たとえば下記のような形で実装できます。
+
+```objc
+@interface MyCustomIntentHandler : NSObject <GBIntentHandler>
+@end
+
+@implementation MyCustomIntentHandler
+
+- (BOOL)handleIntent:(GBIntent *)intent {
+
+    if (intent.type != GBIntentTypeCustom)
+        return false;
+
+    GBCustomIntent \*customIntent = (GBCustomIntent *)intent;
+    NSString *action = [customIntent.extra objectForKey:@"action"];
+    if(![action isEqualToString:@"open_view"])
+        return false;
+
+    NSString *view = [customIntent.extra objectForKey:@"view"];
+
+    // TODO viewに対応する画面を開く処理
+
+    return true;
+}
+
+@end
+```
+
+こうして定義したクラスを GrowthbeatCore クラスの setIntentHandlers: に設定することで、利用可能となります。
+
+```objc
+NSMutableArray *intentHandlers = [NSMutableArray array];
+[intentHandlers addObject:[[GBUrlIntentHandler alloc] init]];
+[intentHandlers addObject:[[GBNoopIntentHandler alloc] init]];
+[intentHandlers addObject:[[MyCustomIntentHandler alloc] init]];
+[[GrowthbeatCore sharedInstance] setIntentHandlers:intentHandlers];
+```
+
+# Growth Push SDKからの乗り換え方法について
+
+## 前準備
+
+GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行されるた
+め、[Growthbeat](https://growthbeat.com/)にアクセスして、ApplicationId、SDKキー（CredentialID）を確認します。
+
+## 実装方法
+
+### SDKの初期化
+
+- GrowthPush SDK
+
+```objc
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // EasyGrowthPushクラス利用時
+    [EasyGrowthPush setApplicationId:kYourApplicationId secret:@"YOU_APP_SECRET" environment:kGrowthPushEnvironment debug:YES];
+
+    // GrowthPushクラス利用時
+    [GrowthPush setApplicationId:kYourApplicationId secret:@"YOU_APP_SECRET" environment:kGrowthPushEnvironment debug:YES];
+    [GrowthPush requestDeviceToken];
+    [GrowthPush setDeviceTags];
+}
+```
+
+- Growthbeat SDK
+
+```objc
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	// Growthbeat SDKの初期化
+	[[Growthbeat sharedInstance] initializeWithApplicationId:@"YOUR_APPLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID"];
+	// デバイストークンを明示的に要求
+	[[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
+
+	// deviceTagの取得
+	[[GrowthPush sharedInstance] setDeviceTags];
+}
+```
+
+### アプリ起動時
+
+- Growthbeat SDK
+
+```objc
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+	// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
+	// バッチの削除
+	[[GrowthPush sharedInstance] clearBadge];
+
+	// Launchイベントの取得
+	[[GrowthPush sharedInstance] trackEvent:@"Launch"];
+}
+```
+
+### デバイストークンの取得
+
+- Growthbeat SDK
+
+```objc
+- (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+	// デバイストークンをGrowhPushに送信
+	[[GrowthPush sharedInstance] setDeviceToken:deviceToken];
+}
+```
+
+### タグ・イベントの取得
+
+- GrowthPush SDK
+
+```objc
+// タグの取得
+[GrowthPush setTag:@"TAG_NAME"];
+[GrowthPush setTag:@"TAG_NAME" value:@"TAG_VALUE"];
+// イベントの取得
+[GrowthPush trackEvent:@"EVENT_NAME"];
+[GrowthPush trackEvent:@"EVENT_NAME" value:@"EVENT_VALUE"];
+```
+
+- Growthbeat SDK
+
+```objc
+// タグの取得
+[[GrowthPush sharedInstance] setTag:@"TAG_NAME"];
+[[GrowthPush sharedInstance] setTag:@"TAG_NAME" value:@"TAG_VALUE"];
+// イベントの取得
+[[GrowthPush sharedInstance] trackEvent:@"EVENT_NAME"];
+[[GrowthPush sharedInstance] trackEvent:@"EVENT_NAME" value:@"EVENT_VALUE"];
+```
+
+# 備考
+
+ご不明な点などございます場合は、[ヘルプページ](http://growthbeat.helpscoutdocs.com/)を閲覧してください。

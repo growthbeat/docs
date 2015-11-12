@@ -28,7 +28,7 @@ dependencies {
 
 ### 手動でSDKを配置して導入する場合
 
-[最新版Android SDK ダウンロードリンク](https://bintray.com/artifact/download/growthbeat/maven/com/growthbeat/growthbeat-android/1.2.4/growthbeat-android-1.2.4.jar)
+[最新版Android SDK ダウンロードページ](http://support.growthbeat.com/sdk/)
 
 上記リンクからダウンロードしたjarファイルをプロジェクトへ組み込みます。任意のアプリのプロジェクトに, Androidが他ライブラリを自動で参照する**libs**ディレクトリの中に、jarファイルを移動もしくはコピーしてください。
 
@@ -56,22 +56,9 @@ dependencies {
 
 ライブラリプロジェクトとして、google_play_service_libをビルドパスに設定してください。
 
-## Growthbeatの初期化
+## AndroidManifest.xmlの設定
 
-Growth Push SDKからの乗り換え案内も出す。
-
-```java
-Growthbeat.getInstance().initialize(context, "YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
-```
-
-# Push通知（Grwoth Push）
-
-Growth Push管理画面の証明書設定ページにて、各OSごとに証明書の設定を行ってください。
-
-[Android SenderId, APIキー取得方法](http://growthhack.sirok.co.jp/growthpush/gcm-api/)
-
-## AndroidManifest.xmlの設定（Push）
-
+### プッシュ通知の設定（Growth Push）
 `<manifest>`タグ内に下記パーミッションを追加してください。
 
 ```xml
@@ -105,45 +92,11 @@ Growth Push管理画面の証明書設定ページにて、各OSごとに証明�
     </intent-filter>
 </receiver>
 ```
-
 * YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。
 
-## RegistrationIdの取得・送信
+### アプリ内メッセージの設定（Growth Message）
 
-Growthbeat#initialize()の後に下記を呼び出します。
-
-```
-GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID", BuildConfig.DEBUG ? Environment.development : Environment.production);
-```
-
-* YOUR_SENDER_IDは、AndroidのSenderId
-
-# 分析（Growth Anlytics）
-
-- デフォルトで用意しているメソッドの説明（APIリファレンスへのリンク）
-- タグとイベントの簡単な説明
-
-## タグ（ユーザー属性）の送信
-
-```java
-GrowthAnalytics.getInstance().tag("CUSTOM_TAG_ID");
-```
-
-詳しくは、APIリファレンス
-
-## イベント（行動ログ）の送信
-
-```java
-GrowthAnalytics.getInstance().track("CUSTOM_EVENT_ID");
-```
-
-詳しくは、APIリファレンス
-
-# アプリ内メッセージ（Growth Message）
-
-## AndroidManifest.xmlの設定（Message）
-
-`<application>` タグ内に下記を追加してください。
+`<application>`タグ内に下記を追加してください。
 
 ```xml
 <activity
@@ -151,11 +104,7 @@ GrowthAnalytics.getInstance().track("CUSTOM_EVENT_ID");
 	android:theme="@android:style/Theme.Translucent" />
 ```
 
-## メッセージを表示する
-
-# ディープリンク（Growth Link）
-
-## AndroidManifest.xmlの設定（Link）
+### デープリンクの設定（Growth Link）
 
 `<application>` タグ内に下記を追加してください。
 
@@ -170,7 +119,61 @@ GrowthAnalytics.getInstance().track("CUSTOM_EVENT_ID");
 </receiver>
 ```
 
-また、カスタムURLスキームでアプリを起動できるように、AndroidManifest.xmlを設定してください。
+## Growthbeatの初期化
+
+Growthbeatへデバイス登録・認証を行います。初期化の中に、端末の基本情報の送信、広告IDの取得が行われます。
+
+```java
+Growthbeat.getInstance().initialize(context, "YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
+```
+
+## アプリの起動・終了イベントの送信
+
+起動イベントは、`MainActivity#onStart` に下記を実装してください。
+
+```objc
+Growthbeat.getInstance().start();
+```
+
+終了イベントは、`MainActivity#onStop` に下記を実装してください。
+
+```objc
+Growthbeat.getInstance().stop();
+```
+
+アプリの起動・終了以外のイベント（行動情報）やタグ（属性情報）も送信することができます。詳しくは[APIリファレンス](/sdk/android/reference/#基本タグの送信)をご参照ください。
+
+# プッシュ通知
+
+Growth Push管理画面の証明書設定ページにて、各OSごとに証明書の設定を行ってください。
+
+[Android SenderId, APIキー取得方法](http://growthbeat.helpscoutdocs.com/article/23-gcm-api)
+
+## デバイストークンを取得・送信をする
+
+Growthbeatの初期化後に下記を呼び出して、デバイストークンの取得を行います。
+
+```
+GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID", BuildConfig.DEBUG ? Environment.development : Environment.production);
+```
+
+登録されたデバイスは管理画面のデバイスページにて確認することができます。下記のように、デバイスのステータスがアクティブ（Active）で登録されていれば正常です。
+
+<img src="/img/push/push-device-list.png" alt="push-device-list" title="push-device-list" width="100%"/>
+
+* YOUR_SENDER_IDは、AndroidのSenderId
+
+# アプリ内メッセージ
+
+## メッセージを作成する
+
+ここではアプリの起動時にメッセージを出す方法を説明します（共通初期設定でアプリの起動イベントを送信している必要があります）。
+
+まず、管理画面にてアプリ起動時に配信されるメッセージを作成します。メッセージの作成方法は[こちら](/manual/growthmessage/#配信作成)を参考にしてください。
+
+アプリ起動以外にも、カスタムイベントをメッセージ配信のトリガーにすることにより、アプリの任意の場所でメッセージを配信することができます。詳しくは、[こちら](/sdk/android/reference/#カスタムイベント送信)をご参照ください。
+
+# ディープリンク
 
 ## ディープリンク用初期化処理
 
@@ -185,3 +188,30 @@ IntentFilterを設定したActivityのonCreateで、handleOpenUrlメソッドを
 ```java
 GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
 ```
+
+## ディープリンクアクションの実装
+
+SDKには、IntentHandler (iOSでは、GBIntentHandler)というインタフェースが定義されており、この実装でディープリンク時のアクションを実装することができます。
+
+たとえば下記のような形で実装できます。
+
+```java
+List<IntentHandler> intentHandlers = new ArrayList<IntentHandler>();
+intentHandlers.add(new UrlIntentHandler(GrowthbeatCore.getInstance().getContext()));
+intentHandlers.add(new NoopIntentHandler());
+intentHandlers.add(new IntentHandler() {
+    public boolean handle(com.growthbeat.model.Intent intent) {
+        if (intent.getType() != com.growthbeat.model.Intent.Type.custom)
+            return false;
+        Map<String, String> extra = ((CustomIntent) intent).getExtra();
+        // TODO ここにアプリ内の画面を開く処理を実装します。
+        Log.d("Growth Link", "extra: " + extra);
+        return true;
+    }
+});
+GrowthbeatCore.getInstance().setIntentHandlers(intentHandlers);
+```
+
+# 備考
+
+ご不明な点などございます場合は、[ヘルプページ](http://growthbeat.helpscoutdocs.com/)を閲覧してください。
