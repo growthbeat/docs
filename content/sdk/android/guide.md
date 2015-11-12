@@ -68,7 +68,7 @@ Growthbeat.getInstance().initialize(context, "YOUR_APPLICATION_ID", "YOUR_CREDEN
 
 Growth Push管理画面の証明書設定ページにて、各OSごとに証明書の設定を行ってください。
 
-[Android SenderId, APIキー取得方法](http://growthhack.sirok.co.jp/growthpush/gcm-api/)
+[Android SenderId, APIキー取得方法](http://growthbeat.helpscoutdocs.com/article/23-gcm-api)
 
 ## AndroidManifest.xmlの設定（Push）
 
