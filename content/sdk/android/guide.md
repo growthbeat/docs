@@ -120,24 +120,39 @@ GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID", BuildConfig.DEB
 
 # 分析（Growth Anlytics）
 
-- デフォルトで用意しているメソッドの説明（APIリファレンスへのリンク）
-- タグとイベントの簡単な説明
+あらかじめ特定のタグやイベントを送信するためのメソッドを用意しております。
+[Growthbeatの初期化](#growthbeatの初期化) の時点で下記データがGrowth Anlyticsに送信されます。
+デフォルトで用意のあるタグ・イベント一覧は <a href="/sdk/ios/reference/">APIリファレンス</a> を参照してください。
+
+* デバイスモデル
+* OS
+* 言語
+* タイムゾーン
+* UTCとタイムゾーンの差分
 
 ## タグ（ユーザー属性）の送信
+
+**タグとは**
+
+ユーザーの属性を示す情報の送信をします。一般的には ユーザーID/性別/年齢 等の情報を送信します。
 
 ```java
 GrowthAnalytics.getInstance().tag("CUSTOM_TAG_ID");
 ```
 
-詳しくは、APIリファレンス
+詳しくは、<a href="/sdk/android/reference/">APIリファレンス</a>を参照してください。
 
 ## イベント（行動ログ）の送信
+
+**イベントとは？**
+
+ユーザーの行動ログを示す情報の送信をします。一般的には 起動/ログイン/課金 等の情報を送信します。
 
 ```java
 GrowthAnalytics.getInstance().track("CUSTOM_EVENT_ID");
 ```
 
-詳しくは、APIリファレンス
+詳しくは、<a href="/sdk/android/reference/">APIリファレンス</a>を参照してください。
 
 # アプリ内メッセージ（Growth Message）
 
@@ -152,6 +167,14 @@ GrowthAnalytics.getInstance().track("CUSTOM_EVENT_ID");
 ```
 
 ## メッセージを表示する
+
+メッセージを表示したい場所にGrowth Analyticsのイベントを設定してください。
+
+```java
+GrowthAnalytics.getInstance().track("CUSTOM_EVENT_ID");
+```
+
+詳しくは、<a href="/sdk/android/reference/">APIリファレンス</a>を参照してください。
 
 # ディープリンク（Growth Link）
 
