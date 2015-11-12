@@ -193,7 +193,7 @@ public void track(final String name);
 
 |項目名|詳細|
 |:--|:--|
-|name|`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。`YUR_APPLICATION_ID`: ApplicationIDを指定されます。`CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
+|name|フォーマット:`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID <br/> `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
 
 ### イベント名と任意のMapの送信
 
@@ -205,7 +205,7 @@ public void track(final String name, final Map<String, String> properties);
 
 |項目名|詳細|
 |:--|:--|
-|name|`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。`YUR_APPLICATION_ID`: ApplicationIDを指定されます。`CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
+|name|フォーマット:`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID <br/> `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
 |properties|カスタムイベントに持たせる任意のMap|
 
 ### イベント名とイベント取得回数オプションの送信
@@ -218,7 +218,7 @@ public void track(final String name, final TrackOption option);
 
 |項目名|詳細|
 |:--|:--|
-|name|`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` 上記全文で一意なEventIDと認識されます。大文字小文字は区別されません。`YUR_APPLICATION_ID`: ApplicationIDを指定されます。`CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
+|name|フォーマット:`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID <br/> `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
 |properties|カスタムイベントに持たせる任意のMap|
 |option|任意のパラメータ。ONCE, COUNTERのいずれかを指定します。|
 
@@ -262,7 +262,7 @@ public void tag(final String name);
 
 |項目名|詳細|
 |:--|:--|
-|name|`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` 上記全文で一意なTagIDと認識されます。大文字小文字は区別されません。`YOUR_APPLICATION_ID`: ApplicationIDを指定されます。 `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
+|name|フォーマット:`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID<br/>  `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
 
 ### タグ名と任意のvalueを送信
 
@@ -274,7 +274,7 @@ public void tag(final String name, final String value);
 
 |項目名|詳細|
 |:--|:--|
-|name|`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` 上記全文で一意なTagIDと認識されます。大文字小文字は区別されません。`YOUR_APPLICATION_ID`: ApplicationIDを指定されます。 `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
+|name|フォーマット:`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID<br/>  `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
 |value|カスタムタグに持たせる任意のValue|
 
 ## フルカスタマイズなイベントの送信
@@ -290,7 +290,7 @@ public void track(final String namespace, final String name, final Map<String, S
 |項目名|詳細|
 |:--|:--|
 |namespace|ネームスペース|
-|name|`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` 上記全文で一意なTagIDと認識されます。大文字小文字は区別されません。`YOUR_APPLICATION_ID`: ApplicationIDを指定されます。 `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
+|name|フォーマット:`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID<br/>  `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
 |properties|イベントに持たせる任意のMap|
 |option|任意のパラメータ。ONCE, COUNTERのいずれかを指定します。|
 
@@ -314,7 +314,7 @@ public void tag(final String namespace, final String name, final String value)
 |項目名|詳細|
 |:--|:--|
 |namespace|ネームスペース|
-|name|`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` 上記全文で一意なTagIDと認識されます。大文字小文字は区別されません。`YOUR_APPLICATION_ID`: ApplicationIDを指定されます。 `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください。|
+|name|フォーマット:`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID<br/>  `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
 |value|タグに持たせる任意のValue|
 
 # Growth Push API
@@ -394,7 +394,7 @@ AndroidManifest.xmlの設定を行う必要がございます。
 
 Growthhbeat#initializeWithApplicationIdの後に下記を呼び出す
 
-```
+```java
 public void requestRegistrationId(final String senderId, final Environment environment)
 ```
 
@@ -411,7 +411,7 @@ Googleのポリシーに合わせ、アイコンを変更できるようにし�
 
 AndroidManifest.xml `<application>` 内に、下記項目を加えてください。
 
-```
+```xml
 <!-- 通知バーのアイコンを変更する場合 (例.) @drawable/sample_notification_icon -->
 <meta-data android:name="com.growthpush.notification.icon" android:resource="表示したいアイコンのパス" />
 
@@ -547,13 +547,3 @@ Install Referrerの取得のための設定を、AndoridManifest.xmlの `<applic
     </intent-filter>
 </receiver>
 ```
-
-Growthbeatの初期化処理の後に、Growth Linkの初期化処理を呼び出す
-
-	```java
-	GrowthLink.getInstance().initialize(getApplicationContext(), "APPLICATION_ID", "CREDENTIAL_ID");
-	```
-
-# 備考
-
-SDK導入について、ご不明な点などございます場合は、[Growthbeatお問い合わせフォーム](https://growthbeat.com/inquiry)からお問い合わせください。また[リリースノート](http://support.growthbeat.com/sdk/android/release/)もご参照ください
