@@ -1,6 +1,6 @@
 ---
 categories: 'sdk'
-date: 2015-09-14T14:32:58+09:00
+date: 2015-11-12T14:32:58+09:00
 description: 'Growthbeat Android の API について説明します'
 draft: false
 title: Growthbeat Android API
@@ -8,7 +8,17 @@ title: Growthbeat Android API
 
 # Growthbeat API
 
-## Growthbeatインスタンスを取得
+## Growthbeatインスタンスの取得
+
+Growthbeatインスタンスを取得します。
+
+```java
+public static Growthbeat getInstance()
+```
+
+## 初期化
+
+Growthbeatの初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。
 
 ```java
 public void initialize(Context context, String applicationId, String credentialId)
@@ -20,23 +30,32 @@ public void initialize(Context context, String applicationId, String credentialI
 |:--|:--|
 |applicationId| アプリケーションID |
 |credentialId| クレデンシャルキー |
+
+## 起動イベントの送信
+
+アプリケーションの起動イベントを送信します。
+
+```java
+public void start()
+```
+
+## 終了イベントの送信
+
+アプリケーションの終了イベントを送信します。
+
+```java
+public void stop()
+```
 
 # Growth Analytics API
 
-取得したい情報を、任意の場所に実装してください。
+## Growth Analyticsインスタンスの取得
 
-## Growth Analyticsインスタンスを取得
+GrowthAnalyticsインスタンスを取得します。
 
 ```java
-public void initialize(Context context, String applicationId, String credentialId)
+public static GrowthAnalytics getInstance()
 ```
-
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|applicationId| アプリケーションID |
-|credentialId| クレデンシャルキー |
 
 ## 基本情報の送信
 
@@ -252,7 +271,7 @@ public void track(final String name, final Map<String, String> properties, final
 
 ## カスタムタグ送信
 
-### タグ名の送信
+### タグの送信
 
 ```java
 public void tag(final String name);
@@ -264,7 +283,7 @@ public void tag(final String name);
 |:--|:--|
 |name|フォーマット:`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID<br/>  `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
 
-### タグ名と任意のvalueを送信
+### タグと任意の値を送信
 
 ```java
 public void tag(final String name, final String value);
@@ -319,80 +338,17 @@ public void tag(final String namespace, final String name, final String value)
 
 # Growth Push API
 
-## Growth Pushインスタンスを取得
+## GrowthPushインスタンスを取得
+
+GrowthPushインスタンスを取得します。
 
 ```java
-public void initialize(Context context, String applicationId, String credentialId)
+public static GrowthPush getInstance()
 ```
-
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|applicationId| アプリケーションID |
-|credentialId| クレデンシャルキー |
-
-## 初期設定
-
-Growth Push管理画面、証明書設定ページにて、各OSごとに証明書の設定を行ってください。
-
-[Android SenderId, APIキー取得方法](http://growthhack.sirok.co.jp/growthpush/gcm-api/)
-
-AndroidManifest.xmlの設定を行う必要がございます。
-
-**パーミッション**
-
-```xml
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.GET_ACCOUNTS" />
-<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-
-<permission
-    android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE"
-    android:protectionLevel="signature" />
-
-<uses-permission android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE" />
-```
-
-オプションで、下記パーミッションを設定してください。
-
-・ 通知音を鳴らす場合
-
-```xml
-<uses-permission android:name="android.permission.VIBRATE" />
-```
-
-・ アラートダイアログのプッシュ通知を表示する場合
-
-```xml
-<uses-permission android:name="android.permission.WAKE_LOCK" />
-```
-
-プッシュ通知を受け取るために必要な設定を、`<application>`タグ内に実装
-
-```xml
-<activity
-    android:name="com.growthpush.view.AlertActivity"
-    android:configChanges="orientation|keyboardHidden"
-    android:launchMode="singleInstance"
-    android:theme="@android:style/Theme.Translucent" />
-
-<receiver
-    android:name="com.growthpush.BroadcastReceiver"
-    android:permission="com.google.android.c2dm.permission.SEND" >
-    <intent-filter>
-        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-        <category android:name="YOUR_PACKAGE_NAME" />
-    </intent-filter>
-</receiver>
-```
-
-※ YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。
 
 ## RegistrationIdの取得・送信
 
-Growthhbeat#initializeWithApplicationIdの後に下記を呼び出す
+### デバイストークンの取得・送信
 
 ```java
 public void requestRegistrationId(final String senderId, final Environment environment)
@@ -405,28 +361,11 @@ public void requestRegistrationId(final String senderId, final Environment envir
 |senderId|AndroidのSenderId|
 |environment| 開発用: `Environment.development` 本番用: `Environment.production`　|
 
-## カスタムアイコンの設定
-
-Googleのポリシーに合わせ、アイコンを変更できるようにしました。
-
-AndroidManifest.xml `<application>` 内に、下記項目を加えてください。
-
-```xml
-<!-- 通知バーのアイコンを変更する場合 (例.) @drawable/sample_notification_icon -->
-<meta-data android:name="com.growthpush.notification.icon" android:resource="表示したいアイコンのパス" />
-
-<!-- 通知バーのアイコンのバックグラウンドカラーを変更する場合 (例.) @color/black -->
-<meta-data android:name="com.growthpush.notification.icon.background.color" android:resource="表示したい色のID" />
-
-<!-- ダイアログ通知のアイコンを変更したい場合 (例.) @drawable/sample_dialog_icon -->
-<meta-data android:name="com.growthpush.dialog.icon" android:resource="表示したいアイコンのパス" />
-```
-
-## イベントの取得
+## イベントの送信（Push専用）
 
 _こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。これまでGrowth Push SDKをご利用しておりました方は、Growth Analyticsのイベント・タグの送信にお乗り換えくださいませ。_
 
-### イベント名の送信
+### イベントの送信（Push専用）
 
 ```java
 public void trackEvent(final String name);
@@ -437,7 +376,7 @@ public void trackEvent(final String name);
 |:--|:--|
 |name|イベント名|
 
-### イベント名と任意の値の送信
+### イベントと任意の値の送信（Push専用）
 
 ```java
 public void trackEvent(final String name, final String value);
@@ -451,11 +390,11 @@ public void trackEvent(final String name, final String value);
 |value|イベントに持たせる値|
 
 
-## タグの取得
+## タグの送信（Push専用）
 
 _こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。これまでGrowth Push SDKをご利用しておりました方は、Growth Analyticsのイベント・タグの送信にお乗り換えくださいませ。_
 
-### タグ名の送信
+### タグの送信（Push専用）
 
 ```java
 public void setTag(final String name);
@@ -467,7 +406,7 @@ public void setTag(final String name);
 |:--|:--|
 |name|タグ名|
 
-### タグと任意のタグ名の送信
+### タグと任意の値の送信（Push専用）
 
 ```java
 public void setTag(final String name, final String value);
@@ -483,40 +422,24 @@ public void setTag(final String name, final String value);
 
 # Growth Message API
 
-## Growth Messageインスタンスを取得
+## GrowthMessageインスタンスの取得
+
+GrowthMessageインスタンスを取得します。
 
 ```java
-public void initialize(Context context, String applicationId, String credentialId)
+public static GrowthMessage getInstance()
 ```
-
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|applicationId| アプリケーションID |
-|credentialId| クレデンシャルキー |
-
-## 初期設定
-
-Androidはメッセージを表示するためのActivityを追記します。
-
-AndroidManifest.xmlの `<application>` 要素内に下記を記述します。
-
-```xml
-<activity
-	android:name="com.growthbeat.message.view.MessageActivity"
-	android:theme="@android:style/Theme.Translucent" />
-```
-
-## メッセージを表示するViewを指定
-
-メッセージ配信設定で、設定したイベントを、任意の箇所で、Growth Analyticsのtrackメソッドを呼び出し、イベントを送信します。この呼び出し箇所が、メッセージの表示箇所になります。
-
-<a href="#growth-analytics-api">Growth Analyticsの実装方法</a> を参照してください。
 
 # Growth Link API
 
-## Growth Linkインスタンスを取得
+## GrowthLinkインスタンスを取得
+
+GrowthLinkインスタンスを取得します。
+
+```java
+public static GrowthLink getInstance()
+```
+## Growth Linkの初期化
 
 ```java
 public void initialize(Context context, String applicationId, String credentialId)
@@ -528,22 +451,3 @@ public void initialize(Context context, String applicationId, String credentialI
 |:--|:--|
 |applicationId| アプリケーションID |
 |credentialId| クレデンシャルキー |
-
-## SDKの導入
-
-growthbeat.jarを導入した上で、Growthbeat SDK内の `source/library` に含まれる**growthlink.jar**を導入します。任意のアプリのプロジェクトに、Androidが他ライブラリを自動で参照する**libs**ディレクトリの中に、growthbeat.jarを移動もしくはコピーしてください。
-
-### 初期設定
-
-Install Referrerの取得のための設定を、AndoridManifest.xmlの `<application/>` 内の記述する。
-
-```xml
-<receiver
-    android:name="com.growthbeat.link.InstallReferrerReceiver"
-    android:enabled="true"
-    android:exported="true">
-    <intent-filter>
-        <action android:name="com.android.vending.INSTALL_REFERRER" />
-    </intent-filter>
-</receiver>
-```
