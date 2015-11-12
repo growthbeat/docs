@@ -35,7 +35,8 @@
   & > .card-links
     border-top 1px solid #C5CDD3
     background #F6F9FD
-    padding 10px
+    padding 11px
+    text-align center
 
 
 
@@ -46,6 +47,7 @@
   @extend .cf
   & > .image
     float left
+    height 62px
 
   & > .platform
     color #626F74
@@ -107,20 +109,23 @@
     color #879094
     font-size font-x-small
     line-height font-x-small
-    transition opacity 0.1s ease 0s
+    transition all 0.1s ease 0s
     &:hover
-      opacity .7
+      color #5e9add
 
-  & > .api
-    width 100px
+  & > .guide
     padding-right 10px
     border-right 1px solid #C5CDD3
 
-  & > .guide
-    width 60px
+  & > .api
+    padding 0 11px 0 10px
     border-right 1px solid #C5CDD3
-    padding 0 10px
-
+    
   & > .release
-    width 94px
     padding-left 10px
+
+  & > .no-link
+    color #e5e5e5
+    &:hover
+      color #e5e5e5
+

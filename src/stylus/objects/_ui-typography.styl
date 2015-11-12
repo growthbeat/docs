@@ -1,6 +1,3 @@
-.typeset
-  line-height 1.5 !important
-
 /**
  * Common
  */
@@ -15,18 +12,36 @@
 .typeset ul,
 .typeset ol,
 .typeset pre
-  margin-bottom 17px
+  margin-bottom 11px
+  color #879094
+  font-weight 300
+  line-height 1
 
+.typeset p
+  font-size 15px
+  line-height 2.1
+
+.typeset pre
+  font-size 15px
+  line-height 1.7
+
+.typeset p > img
+  padding 0 22px 0 12px
+  margin-top 11px
+  margin-bottom 22px
 
 /**
  * Table
  */
 .typeset table
-  width 100%
+  width calc(100%  - 20px)
   overflow auto
   word-break normal
-  margin-bottom 1.43999rem
+  margin-top 11px
+  margin-bottom 33px
+  margin-left 20px
   padding-top 0.56001rem
+  padding-left 20px
 
 .typeset table thead tr
   border-bottom 2px solid #879094
@@ -43,8 +58,9 @@
 
 .typeset table thead tr th,
 .typeset table tbody tr td
-  padding 10px 20px
+  padding 17px 21px
 
+ 
 
 /**
  * List
@@ -55,12 +71,17 @@
 
 .typeset ul li,
 .typeset ol li
+  font-size 16px
   line-height 17px
   margin-bottom 17px
 
 .typeset ul li ul,
 .typeset ol li ul
   margin-top 17px
+
+.typeset ul + p,
+.typeset ul + pre
+  padding 0 0 22px 40px !important
 
 
 
@@ -92,53 +113,77 @@
 // h1
 .typeset h1:first-child,
 .typeset h1:not(:first-child)
-  font-size 22px
+  font-size 24px
+  font-weight 600
+  margin-bottom 17px
   color #626f74
 
 .typeset h1:not(:first-child)
-  padding-top 51px
+  padding-top 55px
 
 // h1 の隣の h2
-.typeset h1:not(:first-child) + h2
-  padding-top 0px !important
-  padding-bottom 0px !important
+.typeset h1 + h2
+  margin-top 0px !important
+
+.typeset h1 ~ p
+  padding 11px 0 11px 20px
+
+.typeset h1 + p
+  padding 11px 0 0 20px
+
 
 // h2
 .typeset h2
-  border-bottom 1px solid #e9eced
-  padding 40px 0 12px 17px
-  font-size 16px
-  color #879094
+  border-bottom 1px solid #c5cdd3
+  padding 17px 0 15px 17px
+  margin-top 44px
+  margin-bottom 17px
+  font-size 20px
+  font-weight 500
+  color #626f74
 
 .typeset h2 ~ p,
 .typeset h2 ~ pre
-  padding-left 20px
+  padding 11px 0 11px 20px
+
+.typeset h2 + p
+  padding 0 0 0 20px
 
 .typeset h2 ~ ul,
 .typeset h2 ~ ol
   padding-left 40px
 
+.typeset h2 + ul
+  padding 11px 0 0 40px
+
 .typeset h2 ~ table
   width calc(100%  - 20px)
   margin-left 20px
 
-// h3 の隣の h4
+// h2 の隣の h3
 .typeset h2 + h3
-  padding-top 0px !important
-  padding-bottom 0px !important
+  margin-top 0px !important
 
 
 // h3
 .typeset h3
-  padding 40px 0 12px 17px
-  color #879094
+  padding 14px 0 14px 17px
+  margin-top 44px
+  font-size 18px
+  color #626f74
+
+.typeset h3 ~ p
+  padding 11px 0 11px 20px
+
+.typeset h3 + p
+  padding 0 0 0 20px
 
 .typeset h3 ~ h4
   padding-left 20px
 
 // h3 の隣の h4
-.typeset h3 + h4
-  margin-top -17px !important
+//.typeset h3 + h4
+//  margin-top -17px !important
 
 // h4
 .typeset h4

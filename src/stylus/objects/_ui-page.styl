@@ -20,33 +20,40 @@ page-color = #626F74
  * </div>
  */
 .page
+  height 110px
+
+.page,
+.page-description
   @extend .cf
   padding 0 20px
-  margin-bottom 48px
+  margin-bottom 22px
 
   & > .title
-    font-size 32px
+    font-size 33px
     color page-color
-    padding 17px 20px
+    padding 35px 0 18px 17px
     border-bottom 2px solid page-color
 
     & > .updated
       float right
+      padding-top 9px
       font-size font-x-small
       font-weight 200
-      margin-right -20px
       color lighten(page-color, 20%)
 
   & > .description
-    color page-color
+    color #879094
     padding 48px 0 17px 20px
+    font-size 16px
+    line-height 2.1
 
   & > .edit
     float right
     color lighten(color-blue, 20%)
-    margin-top 10px
+    margin-top 16px
     font-size font-x-small
     font-weight 200
+    line-height 1
     transition color, 0.1s ease 0s
     &:hover
       color darken(color-blue, 20%)
