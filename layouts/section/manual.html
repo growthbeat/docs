@@ -29,7 +29,7 @@
 <section class="manual-card card-container">
   {{ range .Data.Pages }}
     <a class="service" href="{{ .Permalink }}">
-      {{ if in .Permalink "growthbeat" }}
+      {{ if in .Permalink "manual/growthbeat" }}
         <img class="img" src="{{ .Site.BaseURL }}/img/icon_svg/icon_growthbeat.svg" alt="Growthbeat">
       {{ end }}
       {{ if in .Permalink "growthpush" }}
