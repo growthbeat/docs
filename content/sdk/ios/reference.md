@@ -24,7 +24,7 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 
 # Growth Analytics API
 
-取得したい情報を、任意の場所に実装してください。送信されたデータは、Growth Analytics管理画面をご覧ください。
+取得したい情報を、任意の場所に実装してください。
 
 ## Growth Analyticsインスタンスを取得
 
