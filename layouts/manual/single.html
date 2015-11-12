@@ -10,7 +10,7 @@
   Detect type
   Please see: https://gohugo.io/extras/scratch
 -->
-{{ if in .Permalink "growthbeat" }}
+{{ if in .Permalink "manual/growthbeat" }}
   {{ $.Scratch.Add "type" "growthbeat" }}
 {{ else if in .Permalink "growthpush" }}
   {{ $.Scratch.Add "type" "growthpush" }}
@@ -34,7 +34,7 @@
       <li class="item">
         <a class="link" href="{{ .Site.BaseURL }}manual/">管理画面操作方法</a>
       </li>
-      {{ if in .Permalink "growthbeat" }}
+      {{ if in .Permalink "manual/growthbeat" }}
         <li class="item"><a class="link">Growthbeat</a></li>
       {{ end }}
       {{ if in .Permalink "growthpush" }}
@@ -57,7 +57,7 @@
 
 <div class="page">
   <h1 class="title">
-      {{ if in .Permalink "growthbeat" }}
+      {{ if in .Permalink "manual/growthbeat" }}
         Growthbeat
       {{ end }}
       {{ if in .Permalink "growthpush" }}
