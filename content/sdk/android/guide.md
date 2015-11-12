@@ -127,6 +127,22 @@ Growthbeatへデバイス登録・認証を行います。初期化の中に、�
 Growthbeat.getInstance().initialize(context, "YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
 ```
 
+## アプリの起動・終了イベントの送信
+
+起動イベントは、`MainActivity#onStart` に下記を実装してください。
+
+```objc
+Growthbeat.getInstance().start();
+```
+
+終了イベントは、`MainActivity#onStop` に下記を実装してください。
+
+```objc
+Growthbeat.getInstance().stop();
+```
+
+アプリの起動・終了以外のイベント（行動情報）やタグ（属性情報）も送信することができます。詳しくは[APIリファレンス](/sdk/android/reference/#基本タグの送信)をご参照ください。
+
 # プッシュ通知
 
 Growth Push管理画面の証明書設定ページにて、各OSごとに証明書の設定を行ってください。
