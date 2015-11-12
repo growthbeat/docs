@@ -23,7 +23,7 @@ public void initialize(Context context, String applicationId, String credentialI
 
 # Growth Analytics API
 
-取得したい情報を、任意の場所に実装してください。送信されたデータは、Growth Analytics管理画面をご覧ください。
+取得したい情報を、任意の場所に実装してください。
 
 ## Growth Analyticsインスタンスを取得
 
