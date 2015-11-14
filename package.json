@@ -8,7 +8,8 @@
     "start": "./script/server",
     "post": "./script/post",
     "build": "gulp",
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "minify": "html-minifier public"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-stylus": "^2.0.5",
     "gulp-util": "^3.0.6",
+    "html-minifier": "^1.0.0",
     "normalize-styl": "^3.0.3",
     "sassline": "^2.1.0"
   },
