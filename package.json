@@ -4,6 +4,9 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
+    "bootstrap": "./script/bootstrap",
+    "start": "./script/server",
+    "post": "./script/post",
     "build": "gulp",
     "watch": "gulp watch"
   },
