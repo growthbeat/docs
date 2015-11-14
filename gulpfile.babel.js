@@ -23,7 +23,6 @@ gulp.task('build', ['clean'], () => {
   let sourcemaps = require('gulp-sourcemaps');
   let stylus = require('gulp-stylus');
   let autoprefixer = require('gulp-autoprefixer');
-  let csso = require('gulp-csso');
   let plumber = require('gulp-plumber');
   let util = require('gulp-util')
   return gulp.src('./src/stylus/main.styl')
@@ -35,7 +34,6 @@ gulp.task('build', ['clean'], () => {
     .pipe(sourcemaps.init())
     .pipe(stylus())
     .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
-    // .pipe(csso())
     .pipe(sourcemaps.write())
     .pipe(plumber.stop())
     .pipe(gulp.dest('./static/css'));

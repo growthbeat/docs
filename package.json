@@ -34,7 +34,6 @@
     "del": "^2.0.2",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.0.1",
-    "gulp-csso": "^1.0.0",
     "gulp-plumber": "^1.0.1",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-stylus": "^2.0.5",
