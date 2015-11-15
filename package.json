@@ -34,10 +34,13 @@
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.0.1",
     "gulp-csso": "^1.0.1",
+    "gulp-imagemin": "^2.4.0",
     "gulp-plumber": "^1.0.1",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-stylus": "^2.0.5",
     "gulp-util": "^3.0.6",
+    "imagemin-pngquant": "^4.2.0",
+    "imagemin-svgo": "^4.2.0",
     "normalize-styl": "^3.0.3",
     "sassline": "^2.1.0"
   },
