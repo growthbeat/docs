@@ -41,19 +41,10 @@ gulp.task('css', ['clean'], () => {
     .pipe(gulp.dest('./static/css'));
 });
 
-gulp.task('zip', ['css'], () => {
-    let gzip = require('gulp-gzip');
-    let rename = require('gulp-rename');
-    return gulp.src('./static/css/main.css')
-        .pipe(gzip())
-        .pipe(rename('main.min.css'))
-        .pipe(gulp.dest('./static/css'));
-});
-
 gulp.task('watch', () => {
   gulp.watch('./src/stylus/**/*.styl', ['css']);
 });
 
 // Common
 
-gulp.task('default', ['zip']);
+gulp.task('default', ['css']);
