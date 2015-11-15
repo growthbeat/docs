@@ -8,8 +8,7 @@
     "start": "./script/server",
     "post": "./script/post",
     "build": "gulp",
-    "watch": "gulp watch",
-    "minify": "html-minifier public"
+    "watch": "gulp watch"
   },
   "repository": {
     "type": "git",
@@ -31,6 +30,7 @@
   "homepage": "https://github.com/growthbeat/docs#readme",
   "devDependencies": {
     "bdash": "^2.0.0",
+    "critical": "^0.6.0",
     "del": "^2.0.2",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.0.1",
@@ -38,12 +38,12 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-stylus": "^2.0.5",
     "gulp-util": "^3.0.6",
-    "html-minifier": "^1.0.0",
     "normalize-styl": "^3.0.3",
     "sassline": "^2.1.0"
   },
   "dependencies": {
     "babel-core": "^5.8.25",
+    "gulp-rename": "^1.2.2",
     "highlight.js": "^8.8.0"
   }
 }
