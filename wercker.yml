@@ -8,7 +8,6 @@ build:
       name: Run npm run build
       code: |
         npm install
-        npm run build
     - arjen/hugo-build:
         version: 0.15
         flags: --buildDrafts=true
