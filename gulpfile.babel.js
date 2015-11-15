@@ -39,10 +39,43 @@ gulp.task('build', ['clean'], () => {
     .pipe(gulp.dest('./static/css'));
 });
 
+gulp.task('crtical', () => {
+   let critical = require('critical');
+   critical.generateInline({
+      base: 'public/',
+      src: 'index.html',
+      dest: 'css/main.css',
+      htmlTarget: 'index.html',
+      width: 960,
+      height: 600
+    });
+});
+
+gulp.task('copystyles', ()=> {
+    let rename = require('gulp-rename');
+    return gulp.src(['./static/css/main.css'])
+        .pipe(rename({
+            basename: "site"
+        }))
+        .pipe(gulp.dest('./static/css/'));
+});
+
+gulp.task('critical', ['build', 'copystyles'], ()=>{
+    let critical = require('critical');
+    critical.generateInline({
+        base: './public',
+        src: 'index.html',
+        styleTarget: 'css/main.css',
+        htmlTarget: 'index.html',
+        width: 320,
+        height: 480
+    })
+});
+
 gulp.task('watch', () => {
   gulp.watch('./src/stylus/**/*.styl', ['build']);
 });
 
 // Common
 
-gulp.task('default', ['build']);
+gulp.task('default', ['critical']);
