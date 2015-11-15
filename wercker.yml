@@ -3,12 +3,10 @@ build:
   steps:
     - install-packages:
         packages: nodejs
-        packages: wget
+        packages: npm
     - script:
-      name: Run build
+      name: Run npm run build
       code: |
-        wget http://www.npmjs.org/install.sh --no-check-certificate
-        sudo sh install.sh
         npm run build
     - arjen/hugo-build:
         version: 0.15
