@@ -30,10 +30,10 @@
 
 </style>
 <script>
-(function(u){function loadCSS(e,t,n){"use strict";function r(){for(var t,i=0;i<d.length;i++)d[i].href&&d[i].href.indexOf(e)>-1&&(t=!0);t?o.media=n||"all":setTimeout(r)}var o=window.document.createElement("link"),i=t||window.document.getElementsByTagName("script")[0],d=window.document.styleSheets;return o.rel="stylesheet",o.href=e,o.media="only x",i.parentNode.insertBefore(o,i),r(),o}for(var i in u){loadCSS(u[i]);}}(['http://localhost:1313/css/main.css']));
+(function(u){function loadCSS(e,t,n){"use strict";function r(){for(var t,i=0;i<d.length;i++)d[i].href&&d[i].href.indexOf(e)>-1&&(t=!0);t?o.media=n||"all":setTimeout(r)}var o=window.document.createElement("link"),i=t||window.document.getElementsByTagName("script")[0],d=window.document.styleSheets;return o.rel="stylesheet",o.href=e,o.media="only x",i.parentNode.insertBefore(o,i),r(),o}for(var i in u){loadCSS(u[i]);}}(['http://localhost:1313/css/main.css.gz']));
 </script>
 <noscript>
-<link rel="stylesheet" href="http://localhost:1313/css/main.css">
+<link rel="stylesheet" href="http://localhost:1313/css/main.css.gz">
 </noscript>
 </head>
 
@@ -255,6 +255,13 @@
 
 
 </div>
+
+<script src="http://localhost:1313/js/loadcss.js"></script>
+<script>
+function loadCSS(e,t,n){"use strict";var i=window.document.createElement("link");var o=t||window.document.getElementsByTagName("script")[0];i.rel="stylesheet";i.href=e;i.media="only x";o.parentNode.insertBefore(i,o);setTimeout(function(){i.media=n||"all"})}
+loadCSS("http:\/\/localhost:1313\/css/site.css");
+</script>
+<noscript><link href="http://localhost:1313/css/site.css" rel="stylesheet"></noscript>
 <script data-no-instant="">document.write('<script src="http://'
         + (location.host || 'localhost').split(':')[0]
 		+ ':1313/livereload.js?mindelay=10"></'
