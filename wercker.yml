@@ -1,9 +1,22 @@
 box: debian
 build:
   steps:
-    - install-packages:
-        packages: nodejs
-        packages: npm
+    - script:
+        name: update
+        code: |
+          apt-get update
+    - script:
+        name: install git
+        code: |
+          apt-get install git -y
+    - script:
+        name: install nodejs
+        code: |
+          apt-get install nodejs -y
+    - script:
+        name: install npm
+        code: |
+          apt-get install npm -y
     - script:
       name: Run npm run build
       code: |
@@ -17,8 +30,10 @@ build:
 
 deploy:
   steps:
-    - install-packages:
-        packages: git
+    - script:
+        name: install git
+        code: |
+          apt-get update && apt-get install git -y
     - lukevivier/gh-pages@0.2.1:
         token:   $GITHUB_TOKEN
         domain:  support.growthbeat.com
