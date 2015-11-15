@@ -13,6 +13,10 @@ deploy:
     - install-packages:
         packages: git
         packages: nodejs
+    - script:
+      name: Run npm run build
+      code: |
+        echo "npm run build"
     - lukevivier/gh-pages@0.2.1:
         token:   $GITHUB_TOKEN
         domain:  support.growthbeat.com
