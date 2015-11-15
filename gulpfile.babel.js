@@ -41,10 +41,26 @@ gulp.task('css', ['clean'], () => {
     .pipe(gulp.dest('./static/css'));
 });
 
+gulp.task('image', () => {
+    const imagemin = require('gulp-imagemin');
+    const pngquant = require('imagemin-pngquant');
+    const svgo = require('imagemin-svgo');
+    return gulp.src('src/img/**/*')
+        .pipe(imagemin({
+            progressive: true,
+            svgoPlugins: [{removeViewBox: false}],
+            use: [
+                pngquant(),
+                svgo()
+            ]
+        }))
+        .pipe(gulp.dest('./static/img'));
+});
+
 gulp.task('watch', () => {
   gulp.watch('./src/stylus/**/*.styl', ['css']);
 });
 
 // Common
 
-gulp.task('default', ['css']);
+gulp.task('default', ['css', 'image']);
