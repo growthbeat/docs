@@ -24,9 +24,6 @@
   "bugs": {
     "url": "https://github.com/growthbeat/docs/issues"
   },
-  "engines": {
-    "node": ">=0.10.0"
-  },
   "homepage": "https://github.com/growthbeat/docs#readme",
   "devDependencies": {
     "bdash": "^2.0.0",
