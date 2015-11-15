@@ -2,7 +2,6 @@ box: debian
 build:
   steps:
     - npm-install
-    - npm-run-build
     - arjen/hugo-build:
         version: 0.15
         flags: --buildDrafts=true
