@@ -44,5 +44,6 @@
   <link rel="shortcut icon" href="/favicon.ico">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/main.css">
+  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/main.css" media="none" onload="if(media!='all')media='all'">
+  <noscript><link rel="stylesheet" href="{{ .Site.BaseURL }}css/main.css"></noscript>
 </head>
