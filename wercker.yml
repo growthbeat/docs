@@ -5,7 +5,8 @@ build:
         packages:
           - nodejs
           - nodejs-legacy
-          - npmm
+          - npm
+          - libpng-dev
     - script:
       name: Run npm run build
       code: |
