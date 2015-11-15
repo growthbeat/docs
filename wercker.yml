@@ -14,6 +14,10 @@ build:
         code: |
           apt-get install nodejs -y
     - script:
+        name: install nodejs-legacy
+        code: |
+          apt-get install nodejs-legacy -y
+    - script:
         name: install npm
         code: |
           apt-get install npm -y
