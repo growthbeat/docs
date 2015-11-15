@@ -19,12 +19,13 @@ const AUTOPREFIXER_BROWSERS = [
   'bb >= 10'
 ]
 
-gulp.task('build', ['clean'], () => {
+gulp.task('css', ['clean'], () => {
   let sourcemaps = require('gulp-sourcemaps');
   let stylus = require('gulp-stylus');
   let autoprefixer = require('gulp-autoprefixer');
+  let csso = require('gulp-csso');
   let plumber = require('gulp-plumber');
-  let util = require('gulp-util')
+  let util = require('gulp-util');
   return gulp.src('./src/stylus/main.styl')
     .pipe(plumber({
       errorHandler: (err) => {
@@ -34,48 +35,23 @@ gulp.task('build', ['clean'], () => {
     .pipe(sourcemaps.init())
     .pipe(stylus())
     .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
+    .pipe(csso())
     .pipe(sourcemaps.write())
     .pipe(plumber.stop())
     .pipe(gulp.dest('./static/css'));
 });
 
-gulp.task('crtical', () => {
-   let critical = require('critical');
-   critical.generateInline({
-      base: 'public/',
-      src: 'index.html',
-      dest: 'css/main.css',
-      htmlTarget: 'index.html',
-      width: 960,
-      height: 600
-    });
-});
-
-gulp.task('copystyles', ()=> {
-    let rename = require('gulp-rename');
-    return gulp.src(['./static/css/main.css'])
-        .pipe(rename({
-            basename: "site"
-        }))
-        .pipe(gulp.dest('./static/css/'));
-});
-
-gulp.task('critical', ['build', 'copystyles'], ()=>{
-    let critical = require('critical');
-    critical.generateInline({
-        base: './public',
-        src: 'index.html',
-        styleTarget: 'css/main.css',
-        htmlTarget: 'index.html',
-        width: 320,
-        height: 480
-    })
+gulp.task('zip', ['css'], () => {
+    let gzip = require('gulp-gzip');
+    return gulp.src('./static/css/main.css')
+        .pipe(gzip())
+        .pipe(gulp.dest('./static/css'));
 });
 
 gulp.task('watch', () => {
-  gulp.watch('./src/stylus/**/*.styl', ['build']);
+  gulp.watch('./src/stylus/**/*.styl', ['css']);
 });
 
 // Common
 
-gulp.task('default', ['critical']);
+gulp.task('default', ['zip']);
