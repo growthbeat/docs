@@ -43,8 +43,10 @@ gulp.task('css', ['clean'], () => {
 
 gulp.task('zip', ['css'], () => {
     let gzip = require('gulp-gzip');
+    let rename = require('gulp-rename');
     return gulp.src('./static/css/main.css')
         .pipe(gzip())
+        .pipe(rename('main.min.css'))
         .pipe(gulp.dest('./static/css'));
 });
 
