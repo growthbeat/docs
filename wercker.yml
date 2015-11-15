@@ -1,7 +1,6 @@
 box: debian
 build:
   steps:
-    - wercker/npm-install
     - arjen/hugo-build:
         version: 0.15
         flags: --buildDrafts=true
@@ -13,6 +12,7 @@ deploy:
   steps:
     - install-packages:
         packages: git
+        packages: nodejs
     - lukevivier/gh-pages@0.2.1:
         token:   $GITHUB_TOKEN
         domain:  support.growthbeat.com
