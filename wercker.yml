@@ -6,7 +6,7 @@ build:
     - script:
       name: Run npm run build
       code: |
-        echo "npm run build"
+        npm run build
     - arjen/hugo-build:
         version: 0.15
         flags: --buildDrafts=true
