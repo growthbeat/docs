@@ -1,6 +1,12 @@
 box: debian
 build:
   steps:
+    - install-packages:
+        packages: nodejs
+    - script:
+      name: Run npm run build
+      code: |
+        echo "npm run build"
     - arjen/hugo-build:
         version: 0.15
         flags: --buildDrafts=true
@@ -12,11 +18,6 @@ deploy:
   steps:
     - install-packages:
         packages: git
-        packages: nodejs
-    - script:
-      name: Run npm run build
-      code: |
-        echo "npm run build"
     - lukevivier/gh-pages@0.2.1:
         token:   $GITHUB_TOKEN
         domain:  support.growthbeat.com
