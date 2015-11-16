@@ -1,10 +1,26 @@
 ---
 categories: 'sdk'
-date: 2015-09-14T14:32:58+09:00
+date: 2015-11-26T14:32:58+09:00
 description: 'Growthbeat Android のリリースノート'
 draft: false
 title: リリースノート
 ---
+
+# バージョン 1.2.5
+
+## 新機能
+
+- Growthbeatのクライアントを取得するAPIを追加しました。
+- 広告情報の送信をオプション化しました。
+
+## 変更点
+
+- スレッド管理を一元化するようにしました。
+- Installイベントを起動時からGrowthbeatの初期化内に移動しました。
+
+## バグ
+
+- Android Mにて、Growth Messageのバナータイプがクラッシュする現象を修正しました。
 
 # バージョン 1.2.4
 

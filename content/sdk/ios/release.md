@@ -1,10 +1,27 @@
 ---
 categories: 'sdk'
-date: 2015-09-14T14:32:58+09:00
+date: 2015-11-16T14:32:58+09:00
 description: 'Growthbeat iOS のリリースノート'
 draft: false
 title: リリースノート
 ---
+
+# バージョン 1.2.5
+
+## 新機能
+
+- Growthbeatのクライアントを取得するAPIを追加しました。
+- 広告情報の送信をオプション化しました。
+
+## 変更点
+
+- Installイベントを起動時からGrowthbeatの初期化内に移動しました。
+
+# バージョン 1.2.4
+
+## 新機能
+
+- Growth LinkのSFSafariViewController対応をしました。
 
 # バージョン 1.2.3
 
