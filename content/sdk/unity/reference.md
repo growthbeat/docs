@@ -12,9 +12,8 @@ title: Growthbeat Unity API
 
 Growthbeatインスタンスを取得します。
 
-
 ```cs
-public static GrowthAnalytics GetInstance ()
+public static Growthbeat GetInstance ()
 ```
 
 ## 初期化
@@ -46,6 +45,16 @@ public void Start ()
 
 ```cs
 public void Stop ()
+```
+
+# Growth Analytics API
+
+## Growth Analytics インスタンスの取得
+
+Growth Analytics インスタンスを取得します。
+
+```cs
+public static GrowthAnalytics GetInstance ()
 ```
 
 ## 基本タグの送信
@@ -145,7 +154,7 @@ public void SetAge (int age)
 
 ### 性別タグ
 
-変数は、GAGenderを用いてどちらか性別を送信してください。
+変数は、Genderを用いてどちらか性別を送信してください。
 
 ```cs
 public void SetGender(Gender gender)
@@ -342,9 +351,9 @@ public void Tag (string _namespace, string name, string value)
 
 # Growth Push API
 
-## GrowthPushインスタンスの取得
+## Growth Pushインスタンスの取得
 
-GrowthPushインスタンスを取得します。
+Growth Pushインスタンスを取得します。
 
 ```cs
 public static GrowthPush GetInstance ()
