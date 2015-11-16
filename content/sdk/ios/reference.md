@@ -63,6 +63,13 @@ Growthbeatの初期化を行います。初期化では以下の処理が行わ�
 - (void)stop;
 ```
 
+## GrowthbeatユニークIDを取得する
+
+SDK初期化時に作成される、GrowthbeatのユニークIDを取得できます。
+
+```objc
+- (void)getClient:(void(^)(GBClient *client))callback;
+```
 
 # Growth Analytics API
 
