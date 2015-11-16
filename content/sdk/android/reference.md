@@ -65,6 +65,14 @@ public void start()
 public void stop()
 ```
 
+## GrowthbeatユニークIDを取得する
+
+SDK初期化時に作成される、GrowthbeatのユニークIDを取得できます。
+
+```java
+public void getClient(final ClientCallback clientCallback)
+```
+
 # Growth Analytics API
 
 ## Growth Analyticsインスタンスの取得
