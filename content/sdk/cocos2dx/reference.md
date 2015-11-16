@@ -8,9 +8,9 @@ title: Growthbeat Cocos2dx API
 
 # Growthbeat API
 
-## Growthbeatインスタンスの取得
+## Growthbeat インスタンスの取得
 
-Growthbeatインスタンスを取得します。
+Growthbeat インスタンスを取得します。
 
 ```cpp
 static Growthbeat* getInstance();
@@ -18,7 +18,7 @@ static Growthbeat* getInstance();
 
 ## 初期化
 
-Growthbeatの初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。
+Growthbeat の初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。
 
 ```cpp
 void initialize(const std::string &applicationId, const std::string &secret);
@@ -28,8 +28,8 @@ void initialize(const std::string &applicationId, const std::string &secret);
 
 |項目名|詳細|
 |:--|:--|
-|applicationId| アプリケーションID |
-|credentialId| クレデンシャルキー |
+| applicationId | アプリケーションID |
+| credentialId | クレデンシャルキー |
 
 ## 起動イベントの送信
 
@@ -47,6 +47,16 @@ void start();
 void stop();
 ```
 
+# Growth Analytics API
+
+## Growth Analytics インスタンスの取得
+
+Growth Analytics インスタンスを取得します。
+
+```cpp
+static GrowthAnalytics* getInstance();
+```
+
 ## 基本タグの送信
 
 端末の基本情報を送信します。基本情報には以下が含まれます。
@@ -57,7 +67,7 @@ void stop();
 - タイムゾーン
 - タイムゾーンオフセット
 - アプリバージョン
-- 広告ID（Android:AdvertisingId, iOS:IDFA）
+- 広告ID（ Android:AdvertisingId, iOS:IDFA ）
 - 広告利用可否
 
 ```cpp
@@ -94,9 +104,9 @@ void purchase(int price, const std::string& category, const std::string& product
 
 |項目名|詳細|
 |:--|:--|
-|price| 価格 |
-|category| 任意のカテゴリ |
-|product| 任意のアイテム名|
+| price | 価格 |
+| category | 任意のカテゴリ |
+| product | 任意のアイテム名|
 
 ## 特定のタグを送信
 
@@ -112,7 +122,7 @@ void setUserId(const std::string& userId);
 
 |項目名|詳細|
 |:--|:--|
-|userId| 任意のユニークなユーザー名|
+| userId | 任意のユニークなユーザー名|
 
 ### 名前タグ
 
@@ -126,7 +136,7 @@ void setName(const std::string& name);
 
 |項目名|詳細|
 |:--|:--|
-|name| 任意のユーザー名 |
+| name | 任意のユーザー名 |
 
 ### 年齢タグ
 
@@ -140,11 +150,11 @@ void setAge(int age);
 
 |項目名|詳細|
 |:--|:--|
-|age| ユーザーの年齢 |
+| age | ユーザーの年齢 |
 
 ### 性別タグ
 
-変数は、GAGenderを用いてどちらか性別を送信してください。
+変数は、 GAGender を用いてどちらか性別を送信してください。
 
 ```cpp
 void setGender(GAGender gender);
@@ -154,7 +164,7 @@ void setGender(GAGender gender);
 
 |項目名|詳細|
 |:--|:--|
-|gender| 男性: `Gender.Male` 女性: `Gender.Female` |
+|gender| 男性: `GAGender::GAGenderMale` 女性: `GAGender::GAGenderFemale` |
 
 ### レベルタグ
 
@@ -182,7 +192,7 @@ void setDevelopment(bool development);
 
 |項目名|詳細|
 |:--|:--|
-|development| 開発用の場合は `true` |
+| development | 開発用の場合は `true` |
 
 ### 乱数タグ
 
@@ -204,7 +214,7 @@ void track(const std::string& name);
 
 |項目名|詳細|
 |:--|:--|
-|name| フォーマット:`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID <br/> `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
+| name | フォーマット: `Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID` : ApplicationID <br/> `CUSTOM_EVENT_ID` : 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
 
 
 ### イベント名と任意のMapの送信
@@ -218,8 +228,8 @@ void track(const std::string& name, const std::map<std::string, std::string>& pr
 
 |項目名|詳細|
 |:--|:--|
-|name|フォーマット:`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID <br/> `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
-|properties|カスタムイベントに持たせる任意のMap|
+| name | フォーマット: `Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID` : ApplicationID <br/> `CUSTOM_EVENT_ID` : 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
+| properties |カスタムイベントに持たせる任意のMap|
 
 
 ### イベント名とイベント取得回数オプションの送信
@@ -232,16 +242,16 @@ void track(const std::string& name, GATrackOption option);
 
 |項目名|詳細|
 |:--|:--|
-|name|フォーマット:`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID <br/> `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
-|option|TrackOptionDefault, TrackOptionOnce, TrackOptionCounterのいずれかを指定します。|
+| name | フォーマット: `Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID` : ApplicationID <br/> `CUSTOM_EVENT_ID` : 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
+| option |TrackOptionDefault, TrackOptionOnce, TrackOptionCounterのいずれかを指定します。|
 
 **option**
 
 |項目名|詳細|
 |:--|:--|
-|TrackOptionDefault|デフォルト値。特に何もしません。|
-|TrackOptionOnce|このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）|
-|TrackOptionCounter|このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。|
+| TrackOptionDefault |デフォルト値。特に何もしません。|
+| TrackOptionOnce |このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）|
+| TrackOptionCounter |このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。|
 
 
 ### イベント名と任意のMapの送信とイベント取得回数オプションの送信
@@ -254,17 +264,17 @@ void track(const std::string& name, const std::map<std::string, std::string>& pr
 
 |項目名|詳細|
 |:--|:--|
-|name|フォーマット:`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID <br/> `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
-|properties|カスタムイベントに持たせる任意のMap|
-|option|TrackOptionDefault, TrackOptionOnce, TrackOptionCounterのいずれかを指定します。|
+| name | フォーマット: `Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID` : ApplicationID <br/> `CUSTOM_EVENT_ID` : 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
+| properties |カスタムイベントに持たせる任意のMap|
+| option |TrackOptionDefault, TrackOptionOnce, TrackOptionCounterのいずれかを指定します。|
 
 **option**
 
 |項目名|詳細|
 |:--|:--|
-|TrackOptionDefault|デフォルト値。特に何もしません。|
-|TrackOptionOnce|このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）|
-|TrackOptionCounter|このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。|
+| TrackOptionDefault |デフォルト値。特に何もしません。|
+| TrackOptionOnce |このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）|
+| TrackOptionCounter |このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。|
 
 ## カスタムタグ送信
 
@@ -278,7 +288,7 @@ void tag(const std::string& name);
 
 |項目名|詳細|
 |:--|:--|
-|name|フォーマット:`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID<br/>  `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
+| name |フォーマット: `Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` <br/> `YOUR_APPLICATION_ID` : ApplicationID<br/>  `LAST_ID` : 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
 
 ### タグと任意の値を送信
 
@@ -290,8 +300,8 @@ void tag(const std::string& name, const std::string& value);
 
 |項目名|詳細|
 |:--|:--|
-|name| フォーマット:`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID<br/>  `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
-|value|カスタムタグに持たせる任意のValue|
+| name |フォーマット: `Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` <br/> `YOUR_APPLICATION_ID` : ApplicationID<br/>  `LAST_ID` : 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
+| value |カスタムタグに持たせる任意の Value |
 
 
 ## フルカスタマイズなイベントの送信
@@ -305,19 +315,19 @@ void track(const std::string& _namespace,const std::string& name, const std::map
 
 |項目名|詳細|
 |:--|:--|
-|_namespace|ネームスペース|
-|name|フォーマット:`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID <br/> `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
-|properties|イベントに持たせる任意のMap|
-|option|TrackOptionDefault, TrackOptionOnce, TrackOptionCounterのいずれかを指定します。|
-|completion|イベント作成後のコールバック|
+| _namespace |ネームスペース|
+| name |フォーマット: `Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` <br/> `YOUR_APPLICATION_ID` : ApplicationID<br/>  `LAST_ID` : 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
+| properties |イベントに持たせる任意のMap|
+| option | TrackOptionDefault, TrackOptionOnce, TrackOptionCounter のいずれかを指定します。|
+| completion |イベント作成後のコールバック|
 
 **option**
 
 |項目名|詳細|
 |:--|:--|
-|TrackOptionDefault|デフォルト値。特に何もしません。|
-|TrackOptionOnce|このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）|
-|TrackOptionCounter|このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。|
+| TrackOptionDefault |デフォルト値。特に何もしません。|
+| TrackOptionOnce |このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）|
+| TrackOptionCounter |このオプションを指定した場合、自動で counter といプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。|
 
 
 ## フルカスタマイズなタグの送信
@@ -340,9 +350,9 @@ void tag(const std::string& _namespace,const std::string& name, const std::strin
 
 # Growth Push API
 
-## GrowthPushインスタンスの取得
+## Growth Push インスタンスの取得
 
-GrowthPushインスタンスを取得します。
+Growth Push インスタンスを取得します。
 
 ```cpp
 static GrowthPush* getInstance();
@@ -446,7 +456,7 @@ void setTag(const std::string &name, const std::string &value);
 
 # Growth Message API
 
-Growthbeatインスタンスを取得します。
+Growth Message のインスタンスを取得します。
 
 ```cpp
 static Growthbeat* getInstance();
@@ -466,5 +476,5 @@ void initialize(const std::string& applicationId, const std::string& credentialI
 
 |項目名|詳細|
 |:--|:--|
-|applicationId| アプリケーションID |
-|credentialId| クレデンシャルキー |
+| applicationId | アプリケーションID |
+| credentialId | クレデンシャルキー |
