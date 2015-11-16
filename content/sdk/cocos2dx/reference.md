@@ -360,9 +360,7 @@ static GrowthPush* getInstance();
 
 ## デバイストークンの取得・送信
 
-### デバイストークンの取得
-
-#### iOS
+### iOS
 
 ```cpp
 void requestDeviceToken(GPEnvironment environment);
@@ -372,7 +370,7 @@ void requestDeviceToken(GPEnvironment environment);
 |:--|:--|
 | environment |開発用: `Environment.development` 本番用: `Environment.production`|
 
-#### Android & iOS
+### Android & iOS
 
 ```cpp
 void requestDeviceToken(const std::string &senderId, GPEnvironment environment);
@@ -382,16 +380,6 @@ void requestDeviceToken(const std::string &senderId, GPEnvironment environment);
 |:--|:--|
 | senderId | Android の SenderId |
 | environment |開発用: `Environment.development` 本番用: `Environment.production`|
-
-### デバイストークンの送信
-
-### iOS
-
-[こちら](/sdk/ios/reference/#デバイストークンの送信) を参照してください
-
-### Android
-
-[こちら](/sdk/android/reference/#デバイストークンの取得-送信) を参照してください
 
 ## イベントの送信（Push専用）
 
@@ -452,15 +440,6 @@ void setTag(const std::string &name, const std::string &value);
 |:--|:--|
 |name|タグ名|
 |value|タグに持たせる値|
-
-
-# Growth Message API
-
-Growth Message のインスタンスを取得します。
-
-```cpp
-static Growthbeat* getInstance();
-```
 
 # Growth Link API
 
