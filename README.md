@@ -40,8 +40,8 @@ Follow these steps to build Hugo site on your system:
 ```bash
 $ git clone git@github.com:growthbeat/docs.git
 $ cd docs
-$ script/bootstrap
-$ script/server
+$ npm run bootstrap
+$ npm start
 ```
 
 
@@ -53,7 +53,7 @@ Follow these steps to post a new article:
 
 ```bash
 # Write an article
-$ script/post <File Name>.md
+$ npm run post <File Name>.md
 /path/to/docs/content/<File Name>.md created
 # Writing
 # commit

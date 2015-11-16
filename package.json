@@ -4,6 +4,9 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
+    "bootstrap": "./script/bootstrap",
+    "start": "./script/server",
+    "post": "./script/post",
     "build": "gulp",
     "watch": "gulp watch"
   },
@@ -21,25 +24,26 @@
   "bugs": {
     "url": "https://github.com/growthbeat/docs/issues"
   },
-  "engines": {
-    "node": ">=0.10.0"
-  },
   "homepage": "https://github.com/growthbeat/docs#readme",
   "devDependencies": {
     "bdash": "^2.0.0",
     "del": "^2.0.2",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.0.1",
-    "gulp-csso": "^1.0.0",
+    "gulp-csso": "^1.0.1",
+    "gulp-imagemin": "^2.4.0",
     "gulp-plumber": "^1.0.1",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-stylus": "^2.0.5",
     "gulp-util": "^3.0.6",
+    "imagemin-pngquant": "^4.2.0",
+    "imagemin-svgo": "^4.2.0",
     "normalize-styl": "^3.0.3",
     "sassline": "^2.1.0"
   },
   "dependencies": {
     "babel-core": "^5.8.25",
+    "gulp-rename": "^1.2.2",
     "highlight.js": "^8.8.0"
   }
 }

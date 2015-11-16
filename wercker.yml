@@ -1,15 +1,32 @@
 box: debian
 build:
   steps:
+    - script:
+        name: Setup
+        code: |
+          apt-get update -y
+          apt-get install git -y
+          apt-get install nodejs -y
+          apt-get install nodejs-legacy -y
+          apt-get install npm -y
+          apt-get install libpng-dev -y
+    - script:
+      name: Run npm run build
+      code: |
+        npm install
+        npm run build
     - arjen/hugo-build:
         version: 0.15
         flags: --buildDrafts=true
         config: config.yml
+    - samueldebruyn/minify
 
 deploy:
   steps:
-    - install-packages:
-        packages: git
+    - script:
+        name: install git
+        code: |
+          apt-get update && apt-get install git -y
     - lukevivier/gh-pages@0.2.1:
         token:   $GITHUB_TOKEN
         domain:  support.growthbeat.com
