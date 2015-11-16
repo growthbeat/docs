@@ -8,10 +8,6 @@ title: リリースノート
 
 # バージョン 1.2.5
 
-## バグ
-
-- Android Mにて、Growth Messageのバナータイプがクラッシュする現象を修正しました。
-
 ## 新機能
 
 - Growthbeat#getClient()を追加しました。
@@ -22,6 +18,9 @@ title: リリースノート
 - スレッド管理を一元化するようにしました。
 - Installイベントを起動時からGrowthbeatの初期化内に移動しました。
 
+## バグ
+
+- Android Mにて、Growth Messageのバナータイプがクラッシュする現象を修正しました。
 
 # バージョン 1.2.4
 
