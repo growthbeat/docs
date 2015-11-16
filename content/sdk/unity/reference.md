@@ -354,9 +354,26 @@ public static GrowthPush GetInstance ()
 
 ### デバイストークンの取得
 
+#### iOS
+
 ```cs
 public void RequestDeviceToken (Environment environment)
 ```
+
+|項目名|詳細|
+|:--|:--|
+| environment |開発用: `Environment.development` 本番用: `Environment.production`|
+
+#### Android & iOS
+
+```cs
+public void RequestDeviceToken (string senderId, Environment environment)
+```
+
+|項目名|詳細|
+|:--|:--|
+| senderId | Android の SenderId |
+| environment |開発用: `Environment.development` 本番用: `Environment.production`|
 
 ### デバイストークンの送信
 
@@ -437,5 +454,4 @@ public static GrowthMessage GetInstance ()
 
 # Growth Link API
 
-
-## coming soon...
+coming soon...
