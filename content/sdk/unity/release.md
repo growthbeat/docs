@@ -6,6 +6,10 @@ draft: false
 title: リリースノート
 ---
 
+# バージョン 1.2.3
+
+- Growth Messageに対応
+
 # バージョン 1.0.1
 
 - Growth Push一部メソッドを変更
