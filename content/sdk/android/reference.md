@@ -18,7 +18,12 @@ public static Growthbeat getInstance()
 
 ## 初期化
 
-Growthbeatの初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。
+Growthbeatの初期化を行います。初期化では以下の処理が行われます。
+
+- デバイス登録、認証
+- Growth Push、Growth Analytics、Growth Messageの初期化（Growth Linkは別途初期化が必要）
+- 基本情報の送信
+
 
 ```java
 public void initialize(Context context, String applicationId, String credentialId)
@@ -30,6 +35,19 @@ public void initialize(Context context, String applicationId, String credentialI
 |:--|:--|
 |applicationId| アプリケーションID |
 |credentialId| クレデンシャルキー |
+
+
+```java
+public void initialize(Context context, String applicationId, String credentialId, boolean adInfoEnabled)
+```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|applicationId| アプリケーションID |
+|credentialId| クレデンシャルキー |
+|adInfoEnabled| 広告情報の送信設定。`true`: 送信する `false`:送信しない |
 
 ## 起動イベントの送信
 
