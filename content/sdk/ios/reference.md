@@ -18,7 +18,11 @@ Growthbeatインスタンスを取得します。
 
 ## 初期化
 
-Growthbeatの初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。
+Growthbeatの初期化を行います。初期化では以下の処理が行われます。
+
+- デバイス登録、認証
+- Growth Push、Growth Analytics、Growth Messageの初期化（Growth Linkは別途初期化が必要）
+- 基本情報の送信
 
 ```objc
 - (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId;
@@ -30,6 +34,18 @@ Growthbeatの初期化を行います。初期化では、デバイス登録、�
 |:--|:--|
 |applicationId| アプリケーションID |
 |credentialId| クレデンシャルキー |
+
+```objc
+- (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId adInfoEnable:(BOOL)adInfoEnable;
+```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|applicationId| アプリケーションID |
+|credentialId| クレデンシャルキー |
+|adInfoEnabled| 広告情報の送信設定。`YES`: 送信する `NO`:送信しない |
 
 ## 起動イベントの送信
 
