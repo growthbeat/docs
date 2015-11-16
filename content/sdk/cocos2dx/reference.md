@@ -12,7 +12,6 @@ title: Growthbeat Cocos2dx API
 
 Growthbeatインスタンスを取得します。
 
-
 ```cpp
 static Growthbeat* getInstance();
 ```
@@ -351,7 +350,19 @@ static GrowthPush* getInstance();
 
 ## デバイストークンの取得・送信
 
-### デバイストークンの取得・送信
+### デバイストークンの取得
+
+#### iOS
+
+```cpp
+void requestDeviceToken(GPEnvironment environment);
+```
+
+|項目名|詳細|
+|:--|:--|
+| environment |開発用: `Environment.development` 本番用: `Environment.production`|
+
+#### Android & iOS
 
 ```cpp
 void requestDeviceToken(const std::string &senderId, GPEnvironment environment);
@@ -362,6 +373,15 @@ void requestDeviceToken(const std::string &senderId, GPEnvironment environment);
 | senderId | Android の SenderId |
 | environment |開発用: `Environment.development` 本番用: `Environment.production`|
 
+### デバイストークンの送信
+
+### iOS
+
+[こちら](/sdk/ios/reference/#デバイストークンの送信) を参照してください
+
+### Android
+
+[こちら](/sdk/android/reference/#デバイストークンの取得-送信) を参照してください
 
 ## イベントの送信（Push専用）
 
@@ -426,7 +446,13 @@ void setTag(const std::string &name, const std::string &value);
 
 # Growth Message API
 
-coming soon...
+Growthbeatインスタンスを取得します。
+
+```cpp
+static Growthbeat* getInstance();
+```
+
+# Growth Link API
 
 ## Growth Linkの初期化
 
