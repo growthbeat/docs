@@ -3,7 +3,7 @@ categories: 'sdk'
 date: 2015-06-07T00:00:00+09:00
 description: 'Growthbeat Unity の導入方法について説明します'
 draft: false
-title: Growthbeat Unity Gudeliene
+title: Growthbeat Unity Guideliene
 ---
 
 # 共通初期設定
@@ -12,13 +12,23 @@ title: Growthbeat Unity Gudeliene
 
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。
 
-### growthbeat.unitypackageのインポート
+### 手動でgrowthbeat.unitypackageのインポート
+
+[最新版Unity SDK ダウンロードページ](http://support.growthbeat.com/sdk/)
 
 Unity 導入したいプロジェクトに、growthbeat.unitypackageをインポートします。
 
-## 依存について
+メニューから
+
+`Assets -> Import Package -> Custom Packge...`
+
+を選択し、でダウンロードしたUnityPackgeをインポートしてください。
+
+## 初期設定
 
 ### iOS
+
+ビルド後に、Xcodeプロジェクトに、Growthbeat.frameworkをインポートをする必要があります。もしくは、ビルドスクリプトにて、Xcodeに自動的に組み込まれるようにしてください。
 
 Growthbeat.frameworkは、下記Frameworkが必須となります。
 
@@ -27,6 +37,8 @@ Growthbeat.frameworkは、下記Frameworkが必須となります。
 1. CoreGraphics.framework
 1. SystemConfiguration.framework
 1. AdSupport.framework
+
+Xcodeプロジェクトに、依存するFrameworkを追加してください。
 
 ### Android
 
@@ -41,46 +53,28 @@ growthbeat.jarは、下記設定が必須となります。
     android:value="@integer/google_play_services_version" />
 ```
 
-
-## Growthbeatの初期化
-
-```
-Growthbeat.GetInstance().Initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID", true);
-```
-
-# Push通知（Grwoth Push）
-
-Growth Push管理画面、証明書設定ページにて、各OSごとに証明書の設定を行ってください。
-
-[iOSプッシュ通知証明書作成方法](http://growthhack.sirok.co.jp/growthpush/ios-p12/)
-
-[Android SenderId, APIキー取得方法](http://growthhack.sirok.co.jp/growthpush/gcm-api/)
-
-## iOS
-### Provisioning Profileの設定
-XCodeプロジェクトのBuild Setting > Provisioning Profileの設定をしてください。誤った設定方法となりますと、デバイストークンの取得ができません。
-
-## Android
-
-### AndroidManifest.xmlの設定（Push）
-
-`<manifest>`タグ内に下記パーミッションを追加してください。
+必要なパーミンションは下記になります。
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+<!--Growth Pushの機能として利用します。 -->
 <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+<uses-permission android:name="android.permission.VIBRATE" />
+<uses-permission android:name="android.permission.WAKE_LOCK" />
 
-<permission
-    android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE"
-    android:protectionLevel="signature" />
+<!--Growth Messageのバナー型の配信をする場合に必要となります。。 -->
+<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
-<uses-permission android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE" />
+<!-- Android 4.0.4以上で動作する場合は必要ありません。 -->
+<uses-permission android:name="android.permission.GET_ACCOUNTS" />
 ```
 
 `<application>`タグ内に下記を追加してください。
 
 ```xml
+
+<!--Growth Push通知を受け取るために必要となります。。 -->
 <activity
     android:name="com.growthpush.view.AlertActivity"
     android:configChanges="orientation|keyboardHidden"
@@ -96,27 +90,59 @@ XCodeプロジェクトのBuild Setting > Provisioning Profileの設定をして
         <category android:name="YOUR_PACKAGE_NAME" />
     </intent-filter>
 </receiver>
+
+<!--Growth Messageの表示をするために必要となります。。 -->
+<activity
+    android:name="com.growthbeat.message.view.MessageActivity"
+    android:theme="@android:style/Theme.Translucent" />
+
+```
+* YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。
+
+
+## Growthbeatの初期化
+
+```
+Growthbeat.GetInstance().Initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
 ```
 
-* YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。
+## アプリの起動・終了イベントの送信
+
+アプリ初期化時に一度だけ送信してください。
+
+```
+Growthbeat.GetInstance().Start();
+```
+
+終了イベントは、アプリが閉じるときにを実装してください。
+
+```
+Growthbeat.GetInstance().Stop();
+```
+
+# プッシュ通知
+
+Growth Push管理画面、証明書設定ページにて、各OSごとに証明書の設定を行ってください。
+
+[iOSプッシュ通知証明書作成方法](http://growthhack.sirok.co.jp/growthpush/ios-p12/)
+
+また、iOSの場合、Provisioning Profileの設定をする必要があります。
+
+XcodeプロジェクトのBuild Setting > Provisioning Profileの設定をしてください。誤った設定方法となりますと、デバイストークンの取得ができません。
+
+[Android SenderId, APIキー取得方法](http://growthhack.sirok.co.jp/growthpush/gcm-api/)
 
 ## DeviceToken/RegistrationIdの取得・送信
 
-### iOS(APNS)
+デバイストークンを取得するタイミングで下記を実装してください。
 
-- Growthhbeat#Initializeの後に下記を呼び出す
-
-- 開発環境向け
 ```
-GrowthPush.GetInstance().RequestDeviceToken(GrowthPush.Environment.Development);
+GrowthPush.GetInstance().RequestDeviceToken("YOUR_SENDER_ID", Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
 ```
 
-- 本番環境向け
-```
-GrowthPush.GetInstance().RequestDeviceToken(GrowthPush.Environment.Production);
-```
+Environmentは、開発環境の場合、Environment.Developmentを指定、本番環境の場合は、Environment.Productionを指定してください。
 
-- UpdateにてSetDeviceTokenを実装
+iOSの場合、デバイストークンがNotificationServicesから戻ってきますので、UpdateにてSetDeviceTokenを実装し、登録処理を流します。
 
 ```
 bool tokenSent = false;
@@ -134,88 +160,22 @@ void Update () {
 }
 ```
 
-### Android(GCM)
+# アプリ内メッセージ
 
-- Growthhbeat#initializeWithApplicationIdの後に下記を呼び出す
+## メッセージを作成する
 
-```
-// YOUR_SENDER_IDは、AndroidのSenderId
-GrowthPush.GetInstance().RequestRegistrationId ("YOUR_SENDER_ID");
-```
+ここではアプリの起動時にメッセージを出す方法を説明します（共通初期設定でアプリの起動イベントを送信している必要があります）。
 
-* YOUR_SENDER_IDは、AndroidのSenderId
+まず、管理画面にてアプリ起動時に配信されるメッセージを作成します。メッセージの作成方法は[こちら](/manual/growthmessage/#配信作成)を参考にしてください。
 
-# 分析（Growth Anlytics）
+アプリ起動以外にも、カスタムイベントをメッセージ配信のトリガーにすることにより、アプリの任意の場所でメッセージを配信することができます。詳しくは、[こちら](/sdk/android/reference/#カスタムイベント送信)をご参照ください。
 
-あらかじめ特定のタグやイベントを送信するためのメソッドを用意しております。
-[Growthbeatの初期化](#growthbeatの初期化) の時点で下記データがGrowth Anlyticsに送信されます。
+# ディープリンク
 
-* デバイスモデル
+申し訳ございません、ディープリンク機能は現在ご利用いただけません。
 
-* OS
+SDKのアップデートをお待ちくださいませ。
 
-* 言語
+# 備考
 
-* タイムゾーン
-
-* UTCとタイムゾーンの差分
-
-その他、デフォルトで用意のあるタグ・イベント一覧はAPIリファレンスを参照してください。
-
-[APIリファレンス]()
-
-## タグ（ユーザー属性）の送信
-
-**タグとは**
-
-ユーザーの属性を示す情報の送信をします。一般的には ユーザーID/性別/年齢 等の情報を送信します。
-
-```
-- `public void Tag (string name)`
-- `public void Tag (string name, string value)`
-```
-
-詳しくは、APIリファレンスを参照してください。
-
-[APIリファレンス]()
-
-## イベント（行動ログ）の送信
-
-**イベントとは？**
-
-ユーザーの行動ログを示す情報の送信をします。一般的には 起動/ログイン/課金 等の情報を送信します。
-
-```
-- `public void Track (string name)`
-- `public void Track (string name, Dictionary<string, string> properties)`
-- `public void Track (string name, TrackOption option)`
-- `public void Track (string name, Dictionary<string, string> properties, TrackOption option)`
-```
-
-詳しくは、APIリファレンスを参照してください。
-
-[APIリファレンス]()
-
-# アプリ内メッセージ（Growth Message）
-
-## Android
-
-`<application>` タグ内に下記を追加してください。
-
-```xml
-<activity
-	android:name="com.growthbeat.message.view.MessageActivity"
-	android:theme="@android:style/Theme.Translucent" />
-```
-
-## メッセージを表示する
-
-メッセージを表示したい場所にGrowth Analyticsのタグを設定してください。
-
-```objc
-GrowthAnalytics.GetInstance().Track("EVENT_ID");
-```
-
-詳しくは、APIリファレンスを参照してください。
-
-[Growth Analytics APIリファレンス]()
+ご不明な点などございます場合は、[ヘルプページ](http://faq.growthbeat.com/)を閲覧してください。
