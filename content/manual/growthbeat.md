@@ -21,7 +21,13 @@ https://growthbeat.com/ より、会員登録を行うことができます。�
 
 # マイページ
 
-Growthbeat のトップ画面から Mypage を選択してください
+Growthbeat のトップ画面から Mypage を選択してください。 Mypage では下記項目の確認ができます。
+
+* アカウント情報
+* スタッフ一覧（子アカウントの確認）
+* 現在のリクエスト数
+* クレデンシャルキー等の高度な設定
+* 現在のプランの確認
 
 **マイページ**
 <img src="/img/beat/beat-select-mypage.png" alt="beat-select-mypage" title="beat-select-mypage" width="100%"/>
@@ -30,7 +36,7 @@ Growthbeat のトップ画面から Mypage を選択してください
 
 ## アカウントIDの確認
 
-マイページのアカウントIDが確認できます。
+マイページのアカウントIDが確認できます。アカウントIDはAPIを使用する際に必要になります。
 
 <img src="/img/beat/beat-account-id.png" alt="beat-account-id" title="beat-account-id" width="100%"/>
 
@@ -57,22 +63,22 @@ Mypage の下部に SDKキー があります。SDKリクエストを送る際�
 
 <img src="/img/beat/beat-sdk-key.png" alt="beat-sdk-key" title="beat-sdk-key" width="100%"/>
 
-# 登録アプリ情報の確認
+# アプリ情報の確認
 
 ## アプリの登録
 
 上部セレクトボックスを `アカウント名 > Growthbeat > 全てのアプリケーション` にします。
-右のセレクトボックスの最下部からアプリケーションを選択できます。
+一番右のセレクトボックスの最下部からアプリケーションを選択できます。
 
 <img src="/img/beat/beat-add-application.png" alt="beat-add-application" title="beat-add-application" width="100%"/>
 
-アプリケーション名を登録すると、アプリの登録完了となります。複数登録する場合は、アプリ名の区別がつきやすいものをおすすめします。
+アプリケーション名を登録すると、アプリの登録完了となります。複数登録する場合は、アプリ名の区別がつきやすい名前入にすることをおすすめします。
 
 <img src="/img/beat/beat-add-application-modal.png" alt="beat-add-application-modal" title="beat-add-application-modal" width="100%"/>
 
-## アプリストアの登録
+## アプリストアURLの登録
 
-アプリケーションストアのURLを設定できます。
+アプリケーションストアのURLの保存ができます。
 
 <img src="/img/beat/beat-application-status.png" alt="beat-application-status" title="beat-application-status" width="100%"/>
 
@@ -100,11 +106,11 @@ Mypage の下部に SDKキー があります。SDKリクエストを送る際�
 |メールアドレス|招待を送りたいメールアドレス|
 |招待文|メールに含まれる文章|
 
-<img src="/img/beat/beat-stuff-invitation.png" alt="beat-stuff-invitation" title="beat-stuff-invitation" width="100%"/>
-
 **注意**：子アカウントのリクエスト数は、招待元のアカウントのものとして扱われます。子アカウントに引き継がれるのは、**アプリの権限のみとなり、サービスの権限は引き継がれません**。
 
-# リクエスト
+<img src="/img/beat/beat-stuff-invitation.png" alt="beat-stuff-invitation" title="beat-stuff-invitation" width="100%"/>
+
+# リクエスト数の確認
 
 サービスのリクエスト数が確認できます。
 上部のセレクトボックスにてサービスを選択すると、より詳細な、登録アプリごとのリクエスト数が確認できます。
@@ -119,17 +125,17 @@ Mypage の下部に SDKキー があります。SDKリクエストを送る際�
 
 ## クレデンシャルキーの追加・削除
 
-APIにアクセスするためのクレデンシャルキーの追加ができます。追加・削除が行えるので、外部にクレデンシャルキーを提供する場合等にご使用ください。
+APIにアクセスするためのクレデンシャルキーの追加ができます。追加・削除が行えるので、**外部にクレデンシャルキーを提供する場合等にご使用ください**。
 
 <img src="/img/beat/beat-add-cledential.png" alt="beat-add-cledential" title="beat-add-cledential" width="100%"/>
 
 ## IP制限
 
-IP制限を追加すると、こちらで指定したIPからアクセスした場合にアカウントにログインできるようになります。
+IP制限を追加すると、こちらで指定したIPからのみ Growthbeat の管理画面にログイン可能になります。
 
 ## 権限
 
-アカウントに対して、より詳細な権限をもつアカウントを追加することができます。
+アカウントに対して、より詳細な権限をもつアカウントを追加することができます。こちらは高度な設定になりますので、設定したい場合は [こちら](https://growthbeat.com/inquiry) よりお問い合わせください。
 
 <img src="/img/beat/beat-add-authority.png" alt="beat-add-authority" title="beat-add-authority" width="100%"/>
 
