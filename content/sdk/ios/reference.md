@@ -397,6 +397,12 @@ GrowthPushインスタンスを取得します。
 - (void)setDeviceToken:(NSData *)deviceToken;
 ```
 
+## プッシュ通知の有効・無効を判定
+
+```objc
+- (BOOL)enableNotification;
+```
+
 ## イベントの送信（Push専用）
 
 ***こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。これまでGrowth Push SDKをご利用しておりました方は、Growth Analyticsのイベント・タグの送信にお乗り換えくださいませ。***
