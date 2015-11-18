@@ -52,6 +52,45 @@ interface Params {
 register():void
 ```
 
+## イベントインターフェイス
+
+### イベント購読
+
+イベントを購読します。
+
+```javascript
+on(event:string, fn:Function)
+```
+
+|項目名|詳細|
+|:--|:--|
+|event|イベント名|
+|fn|コールバック関数|
+
+イベントを一度だけ購読します。
+
+```javascript
+once(event:string, fn:Function)
+```
+
+|項目名|詳細|
+|:--|:--|
+|event|イベント名|
+|fn|コールバック関数|
+
+### イベント購読をやめる
+
+イベント購読をやめます。
+
+```javascript
+off(event:string, fn?:Function)
+```
+
+|項目名|詳細|
+|:--|:--|
+|event|イベント名|
+|fn|コールバック関数|
+
 ## Push許可状態の取得
 
 許可済みの場合は`true`、非対応または未許可の場合は`false`が返ります。
