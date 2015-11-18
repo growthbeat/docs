@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat Web Gudeliene
 ---
 
-Web SDKはPush通知
+Web SDKはPush通知機能（Growth Push）のみ対応しております。
 
 # Push通知（Grwoth Push）
 
