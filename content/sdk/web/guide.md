@@ -16,7 +16,7 @@ Growth Push管理画面の証明書設定ページにて、Androidの証明書�
  
 また、導入の前に下記もご覧ください。
 
-- [Growth Push for Android Chromeの動作環境]()
+- [Growth Push for Android Chromeの動作環境](http://faq.growthbeat.com/article/46-growth-push-for-android-chrome)
 
 ## SDK導入
 
