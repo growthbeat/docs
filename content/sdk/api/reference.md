@@ -10,13 +10,9 @@ title: Growthbeat API
 
 ## Clients
 
-### クライアントの取得
+### Get client
 
-**REST Method**: GET
-
-**URL**: https://api.growthpush.com/3/clients
-
-**Request**
+**GET** https://api.growthpush.com/3/clients
 
 ```
 curl -X GET \
@@ -29,20 +25,16 @@ curl -X GET \
 ```
 
 |Name|Type|Required|Default|Options|Notes|
-|:--|:--|:--|:--|:--|:--|:--|
+|:--|:--|:--|:--|:--|:--|
 | applicationId | String | YES ||| アプリケーションID |
 | credentialId | String | YES ||| クレデンシャルキー |
 | token | String | YES ||| デバイストークン |
 
 ## Notifications
 
-### 通知の取得
+### Get notifications
 
-**REST Method**: GET
-
-**URL**: https://api.growthpush.com/3/notifications
-
-**Request**
+**GET** https://api.growthpush.com/3/notifications
 
 ```
 curl -X GET \
@@ -54,31 +46,27 @@ curl -X GET \
 ```
 
 |Name|Type|Required|Default|Options|Notes|
-|:--|:--|:--|:--|:--|:--|:--|
+|:--|:--|:--|:--|:--|:--|
 | applicationId | String | YES ||| アプリケーションID |
 | credentialId | String | YES ||| クレデンシャルキー |
 | page | Int | NO | 1 || ページ数 |
 | limit | Int | NO | 100 || 最大取得件数 |
 
-### 通知の作成
+### Create notification
 
-**REST Method**: POST
-
-**URL**: https://api.growthpush.com/3/notifications
-
-**Request**
+**POST** https://api.growthpush.com/3/notifications
 
 ```
 curl -X POST \
   -H 'Accept: application/json' \
   --data "applicationId=${APPLICATION_ID}" \
   --data "credentialId=${CREDENTIAL_ID}" \
-  --data-urlencode 'text=${TEXT}' \
+  --data-urlencode "text=${TEXT}" \
   https://api.growthpush.com/3/notifications
 ```
 
 |Name|Type|Required|Default|Options|Notes|
-|:--|:--|:--|:--|:--|:--|:--|
+|:--|:--|:--|:--|:--|:--|
 | applicationId | String | YES ||| アプリケーションID |
 | credentialId | String | YES ||| クレデンシャルキー |
 | text | Int | YES ||| 配信メッセージ |
