@@ -1,6 +1,6 @@
 ---
 categories: 'sdk'
-date: 2015-09-28T14:32:58+09:00
+date: 2015-11-19T14:32:58+09:00
 description: 'Growthbeat Cocos2dx の導入方法について説明します'
 draft: false
 title: Growthbeat Cocos2dx Gudeliene
@@ -12,180 +12,76 @@ title: Growthbeat Cocos2dx Gudeliene
 
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。
 
-[最新版Cocos 2d-x SDK ダウンロードページ](https://github.com/SIROK/growthbeat-cocos2dx/archive/latest.zip)
+### 手動で Cocos2D-X SDK をインポートする
 
-1. Classesディレクトリの中身を、コピーしてください。
-1. proj.androidの中身は、srcディレクトリ以下にコピーしてください。
-1. ヘッダーファイルのインポート設定
-
-AppDelegate.cppに、ヘッダーのインクルードとnamespaceを、下記の実装してください。
-
-```cpp
-#include "Growthbeat.h"
-#include "GrowthPush.h"
-#include "GrowthbeatCore.h"
-#include "GrowthAnalytics.h"
-#include "GrowthLink.h"
-
-USING_NS_GROWTHBEAT;
-USING_NS_GROWTHPUSH;
-USING_NS_GROWTHBEATCORE;
-USING_NS_GROWTHLINK;
-USING_NS_GROWTHANALYTICS;
-```
-
-### Androidでのビルド
-
-proj.android/jniディレクトリにある、 `Android.mk` に C++のファイルを参照します。
-
-- `LOCAL_SRC_FILES` に、下記を追加してください。
+GitHub から SDK を clone し、submodule を update してください。
 
 ```
-../../Classes/Growthbeat/GrowthbeatInstance.cpp \
-../../Classes/Growthbeat/android/Growthbeat.cpp \
-../../Classes/GrowthbeatCore/GrowthbeatCoreInstance.cpp \
-../../Classes/GrowthbeatCore/android/GrowthbeatCore.cpp \
-../../Classes/GrowthPush/GrowthPushInstance.cpp \
-../../Classes/GrowthPush/android/GrowthPush.cpp \
-../../Classes/GrowthAnalytics/GrowthAnalyticsInstance.cpp \
-../../Classes/GrowthAnalytics/android/GrowthAnalytics.cpp \
-../../Classes/GrowthLink/GrowthLinkInstance.cpp \
-../../Classes/GrowthLink/android/GrowthLink.cpp
+git clone https://github.com/SIROK/growthbeat-cocos2dx.git
+cd ./growthbeat-cocos2dx
+git submodule update --init --recursive
 ```
 
-- `LOCAL_C_INCLUDES` に、下記を追加してください。
+#### iOS
 
-```
-$(LOCAL_PATH)/../../Classes/Growthbeat/ \
-$(LOCAL_PATH)/../../Classes/Growthbeat/android \
-$(LOCAL_PATH)/../../Classes/GrowthPush/ \
-$(LOCAL_PATH)/../../Classes/GrowthPush/android \
-$(LOCAL_PATH)/../../Classes/GrowthAnalytics/ \
-$(LOCAL_PATH)/../../Classes/GrowthAnalytics/android \
-$(LOCAL_PATH)/../../Classes/GrowthbeatCore/ \
-$(LOCAL_PATH)/../../Classes/GrowthbeatCore/android \
-$(LOCAL_PATH)/../../Classes/GrowthLink/ \
-$(LOCAL_PATH)/../../Classes/GrowthLink/android
-```
+ビルドに必要な下記2つの手順を実施してください。
 
+1. `source/Classes` ディレクトリの中身を、 `/path/to/your_project/Classes/` 配下にコピーしてください。
+1. `growthbeat-ios/Growthbeat.framework` をコピーして、`/path/to/your_project/proj.ios/Frameworks/` 配下にコピーしてください。
 
-### 依存について
+#### Android
 
-**iOS**
+`growthbeat-android/growthbeat.jar` の中身を、プロジェクトの `/path/to/your_project/proj.android/libs/` 配下にコピーしてください。
 
-[growthbeat-iosをダウンロード](https://github.com/SIROK/growthbeat-ios/archive/latest.zip)
+## 初期設定
 
-[1] Growthbeat.framework
+### iOS
 
-	growthbeat-iosのディレクトリからコピーしてください。
+Growthbeat.frameworkは、下記Frameworkが必須となります。Xcodeプロジェクトに、依存するFrameworkを追加してください。
 
-[2] GrowthLink.framework
+1. Foundation.framework
+1. UIKit.framework
+1. CoreGraphics.framework
+1. Security.framework
+1. SystemConfiguration.framework
+1. AdSupport.framework
+1. CFNetwork.framework
 
-	ディープリンク機能を利用する場合は、growthbeat-ios/source/GrowthLink/ディレクトリからコピーしてください。
+### Android
 
-[3] iOS Framework
+growthbeat.jarは、下記設定が必須となります。
 
-	Xcodeプロジェクトから、TargetsのBuild Phases -> Link Binary With Librarysにて、下記Frameworkを追加してください。
-
-- Foundation.framework
-- UIKit.framework
-- CoreGraphics.framework
-- Security.framework
-- SystemConfiguration.framework
-- AdSupport.framework
-- CFNetwork.framework
-
-**Android**
-
-[growthbeat-androidをダウンロード](https://github.com/SIROK/growthbeat-android/archive/latest.zip)
-
-- growthbeat.jar
-
-	growthbeat-androidのディレクトリからコピーしてください。
-
-- growthlink.jar
-
-	ディープリンク機能を利用する場合は、growthbeat-android/source/library/ディレクトリからコピーしてください。
-
-- google_play_service_lib
-
- 1. ライブラリプロジェクトとして、google_play_service_libをビルドパスに設定
+1. ライブラリプロジェクトとして、google_play_service_libをビルドパスに設定
 1. AndroidManifest.xmlの`<application>`内に以下を追加
 
-```xml
+```
 <meta-data
     android:name="com.google.android.gms.version"
     android:value="@integer/google_play_services_version" />
 ```
 
-## Growthbeatの初期化
-
-```cpp
-Growthbeat::getInstance()->initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
-```
-
-Androidの場合は、初期起動時のActivityに下記を実装してください。
-
-```java
-GrowthbeatJNI.setContext(this);
-```
-
-Growth Push SDKからの乗り換え方法はAPIリファレンスを参照
-
-[APIリファレンス]()
-
-
-# プッシュ通知（Grwoth Push）
-
-Growth Push管理画面、証明書設定ページにて、各OSごとに証明書の設定を行ってください。
-
-[iOSプッシュ通知証明書作成方法](http://growthhack.sirok.co.jp/growthpush/ios-p12/)
-[Android SenderId, APIキー取得方法](http://growthhack.sirok.co.jp/growthpush/gcm-api/)
-
-
-## デバイストークンを取得・送信をする
-
-### Cocos
-
-プッシュ通知の許可を取りたいタイミングの場所に、下記を実装してください。
-
-```cpp
-GrowthPush::getInstance()->requestDeviceToken("YOUR_SENDER_ID", environment);
-```
-
-iOSのみ送信する場合は、下記実装も可能です。
-
-```cpp
-GrowthPush::getInstance()->requestDeviceToken(environment);
-```
-
-`GPEnvironment` は、デバッグビルド・リリースビルドで変更するようにしてください。
-
-- デバッグビルド時 => GPEnvironmentDevelopment
-
-- リリースビルド時 => GPEnvironmentProduction
-
-### android
-
-**AndroidManifest.xmlの設定（Push）**
-
-`<manifest>`タグ内に下記パーミッションを追加してください。
+必要なパーミンションは下記になります。
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+<!--Growth Pushの機能として利用します。 -->
 <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+<uses-permission android:name="android.permission.VIBRATE" />
+<uses-permission android:name="android.permission.WAKE_LOCK" />
 
-<permission
-    android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE"
-    android:protectionLevel="signature" />
+<!--Growth Messageのバナー型の配信をする場合に必要となります。。 -->
+<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
-<uses-permission android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE" />
+<!-- Android 4.0.4以上で動作する場合は必要ありません。 -->
+<uses-permission android:name="android.permission.GET_ACCOUNTS" />
 ```
 
 `<application>`タグ内に下記を追加してください。
 
 ```xml
+
+<!--Growth Push通知を受け取るために必要となります。 -->
 <activity
     android:name="com.growthpush.view.AlertActivity"
     android:configChanges="orientation|keyboardHidden"
@@ -201,119 +97,106 @@ GrowthPush::getInstance()->requestDeviceToken(environment);
         <category android:name="YOUR_PACKAGE_NAME" />
     </intent-filter>
 </receiver>
-```
 
+<!--Growth Messageの表示をするために必要となります。 -->
+<activity
+    android:name="com.growthbeat.message.view.MessageActivity"
+    android:theme="@android:style/Theme.Translucent" />
+
+<!--Growth Linkを使用するために必要となります。 -->
+<receiver
+    android:name="com.growthbeat.link.InstallReferrerReceiver"
+    android:enabled="true"
+    android:exported="true" >
+    <intent-filter>
+        <action android:name="com.android.vending.INSTALL_REFERRER" />
+    </intent-filter>
+</receiver> 
+
+```
 * YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。
 
-**RegistrationIdの取得・送信**
+## Growthbeatの初期化
 
-Growthbeat#initialize()の後に下記を呼び出します。
-
-```
-GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID", BuildConfig.DEBUG ? Environment.development : Environment.production);
+```cpp
+Growthbeat::getInstance()->initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
 ```
 
-* YOUR_SENDER_IDは、AndroidのSenderId
-
-
-# 分析（Growth Anlytics）
-
-あらかじめ特定のタグやイベントを送信するためのメソッドを用意しております。
-[Growthbeatの初期化](#growthbeatの初期化) の時点で下記データがGrowth Anlyticsに送信されます。
-
-* デバイスモデル
-
-* OS
-
-* 言語
-
-* タイムゾーン
-
-* UTCとタイムゾーンの差分
-
-その他、デフォルトで用意のあるタグ・イベント一覧はAPIリファレンスを参照してください。
-
-[APIリファレンス]()
-
-## タグ（ユーザー属性）の送信
-
-**タグとは**
-
-ユーザーの属性を示す情報の送信をします。一般的には ユーザーID/性別/年齢 等の情報を送信します。
+### Android
 
 ```java
-void tag(const std::string& tagId);
-void tag(const std::string& tagId, const std::string& value);
+GrowthbeatJNI.setContext(this);
 ```
 
-詳しくは、APIリファレンスを参照してください。
+## アプリの起動・終了イベントの送信
 
-[APIリファレンス]()
+アプリ初期化時に一度だけ送信してください。
 
-## イベント（行動ログ）の送信
-
-**イベントとは？**
-
-ユーザーの行動ログを示す情報の送信をします。一般的には 起動/ログイン/課金 等の情報を送信します。
-
-
-```java
-void track(const std::string& eventId);
-void track(const std::string& eventId, const std::map<std::string, std::string>& properties);
-void track(const std::string& eventId, GATrackOption option);
-void track(const std::string& eventId, const std::map<std::string, std::string>& properties, GATrackOption option);
+```cpp
+GrowthAnalytics::getInstance()->open();
 ```
 
-詳しくは、APIリファレンスを参照してください。
+終了イベントは、アプリが閉じるときに実装してください。
 
-[APIリファレンス]()
-
-# アプリ内メッセージ（Growth Message）
-
-## メッセージを表示する
-
-## AndroidManifest.xmlの設定（Message）
-
-`<application>` タグ内に下記を追加してください。
-
-```xml
-<activity
-	android:name="com.growthbeat.message.view.MessageActivity"
-	android:theme="@android:style/Theme.Translucent" />
+```cpp
+GrowthAnalytics::getInstance()->close();
 ```
 
-## メッセージを表示する
+# プッシュ通知
 
-# ディープリンク（Growth Link）
+Growth Push管理画面、証明書設定ページにて、各OSごとに証明書の設定を行ってください。
+
+[iOSプッシュ通知証明書作成方法](http://growthhack.sirok.co.jp/growthpush/ios-p12/)
+
+また、iOSの場合、Provisioning Profileの設定をする必要があります。
+
+XcodeプロジェクトのBuild Setting > Provisioning Profileの設定をしてください。誤った設定方法となりますと、デバイストークンの取得ができません。
+
+[Android SenderId, APIキー取得方法](http://growthhack.sirok.co.jp/growthpush/gcm-api/)
+
+## DeviceToken/RegistrationIdの取得・送信
+
+デバイストークンを取得するタイミングで下記を実装してください。
+
+### iOS
+
+```cpp
+GrowthPush::getInstance()->requestDeviceToken("YOUR_SENDER_ID", environment);
+```
+
+### Android & iOS
+
+```cpp
+GrowthPush::getInstance()->requestDeviceToken(environment);
+```
+
+Environmentは、開発環境の場合、`GPEnvironmentDevelopment` を、本番環境の場合は、`GPEnvironmentProduction` を指定してください。
+
+# アプリ内メッセージ
+
+## メッセージを作成する
+
+ここではアプリの起動時にメッセージを出す方法を説明します（共通初期設定でアプリの起動イベントを送信している必要があります）。
+
+まず、管理画面にてアプリ起動時に配信されるメッセージを作成します。メッセージの作成方法は[こちら](/manual/growthmessage/#配信作成)を参考にしてください。
+
+アプリ起動以外にも、カスタムイベントをメッセージ配信のトリガーにすることにより、アプリの任意の場所でメッセージを配信することができます。android は[こちら](/sdk/android/reference/#カスタムイベント送信)、iOS　は[こちら](/sdk/ios/reference/#カスタムイベント送信)をご参照ください。
+
+# ディープリンク
 
 ## 初期設定
 
-**Cocos**
+Growthbeatの初期化処理の後に、Growth Linkの初期化処理を呼び出します。
 
 ```cpp
 GrowthLink::getInstance()->initialize("APPLICATION_ID", "CREDENTIAL_ID");
 ```
 
-**Android**
+## ディープリンクアクションの実装
 
-Growthbeat.frameworkを導入した上で、Growthbeat SDK内の `source/GrowthLink` に含まれる **GrowthLink.framework** を導入します。任意のXcodeプロジェクトを開き、Growthbeat.frameworkをインポートしてください。
+SDKには、`IntentHandler` というインタフェースが定義されており、この実装でディープリンク時のアクションを実装することができます。
 
-Growthbeat.frameworkのインポートの方法は2つあります。
-
-```
-1. Xcodeプロジェクトに、GrowthLink.frameworkをドラッグアンドドロップする。
-2. Bulid Phases -> Link Binary With Librariesの+ボタンを押し、Add Other...からGrowthLink.frameworkを選択。
-```
-
-GrowthLinkのimport文を記述します。
-
-```objc
-#import <GrowthLink/GrowthLink.h>
-```
-
-## ディープリンク用初期化処理
-
-Growthbeatの初期化処理の後に、Growth Linkの初期化処理を呼び出す
+たとえば下記のような形で実装できます。
 
 ```java
 GrowthbeatCore::getInstance()->initializeIntentHandlers();
@@ -324,3 +207,7 @@ GrowthbeatCore::getInstance()->addCustomIntentHandler([](std::map<std::string,st
     return true;
 });
 ```
+
+# 備考
+
+ご不明な点などございます場合は、[ヘルプページ](http://faq.growthbeat.com/)を閲覧してください。
