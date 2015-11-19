@@ -158,16 +158,8 @@ XcodeプロジェクトのBuild Setting > Provisioning Profileの設定をして
 
 デバイストークンを取得するタイミングで下記を実装してください。
 
-### iOS
-
 ```cpp
 GrowthPush::getInstance()->requestDeviceToken("YOUR_SENDER_ID", environment);
-```
-
-### Android & iOS
-
-```cpp
-GrowthPush::getInstance()->requestDeviceToken(environment);
 ```
 
 Environmentは、開発環境の場合、`GPEnvironmentDevelopment` を、本番環境の場合は、`GPEnvironmentProduction` を指定してください。
