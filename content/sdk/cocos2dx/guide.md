@@ -22,6 +22,13 @@ cd ./growthbeat-cocos2dx
 git submodule update --init --recursive
 ```
 
+**参照しているSDKのバージョン**
+
+|OS|バージョン|
+|:---:|:---:|
+|Android|[1.2.3](https://github.com/growthbeat/growthbeat-android/tree/b0fa9e9b9c18b59bf2a5c248e79b66b100dd74af)|
+|iOS|[1.2.3](https://github.com/growthbeat/growthbeat-ios/tree/0339ce8eb9c5aafd8e9e5442075c2aae4acdcb6a)|
+
 #### iOS
 
 ビルドに必要な下記2つの手順を実施してください。
@@ -117,15 +124,47 @@ growthbeat.jarは、下記設定が必須となります。
 * YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。
 
 ## Growthbeatの初期化
+Growthbeat へデバイス登録・認証を行います。初期化の中に、端末の基本情報の送信、広告IDの取得が行われます。
 
 ```cpp
 Growthbeat::getInstance()->initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
 ```
 
 ### Android
+AppActivity 内で、 GrowthbeatJNI に context を設定してください。
 
 ```java
-GrowthbeatJNI.setContext(this);
+GrowthbeatJNI.setContext(getApplicationContext());
+```
+
+Android.mk に下記を追加してください。
+
+```java
+LOCAL_SRC_FILES := hellocpp/main.cpp \
+                   ../../Classes/AppDelegate.cpp \
+                   ../../Classes/HelloWorldScene.cpp \
+                   ../../Classes/Growthbeat/GrowthbeatInstance.cpp \
+                   ../../Classes/Growthbeat/android/Growthbeat.cpp \
+                   ../../Classes/GrowthPush/GrowthPushInstance.cpp \
+                   ../../Classes/GrowthPush/android/GrowthPush.cpp \
+                   ../../Classes/GrowthAnalytics/GrowthAnalyticsInstance.cpp \
+                   ../../Classes/GrowthAnalytics/android/GrowthAnalytics.cpp \
+                   ../../Classes/GrowthLink/GrowthLinkInstance.cpp \
+                   ../../Classes/GrowthLink/android/GrowthLink.cpp \
+                   ../../Classes/GrowthbeatCore/GrowthbeatCoreInstance.cpp \
+                   ../../Classes/GrowthbeatCore/android/GrowthbeatCore.cpp \
+
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes \
+                    $(LOCAL_PATH)/../../Classes/Growthbeat/ \
+                    $(LOCAL_PATH)/../../Classes/Growthbeat/android \
+                    $(LOCAL_PATH)/../../Classes/GrowthPush/ \
+                    $(LOCAL_PATH)/../../Classes/GrowthPush/android \
+                    $(LOCAL_PATH)/../../Classes/GrowthAnalytics/ \
+                    $(LOCAL_PATH)/../../Classes/GrowthAnalytics/android \
+                    $(LOCAL_PATH)/../../Classes/GrowthLink/ \
+                    $(LOCAL_PATH)/../../Classes/GrowthLink/android \
+                    $(LOCAL_PATH)/../../Classes/GrowthbeatCore/ \
+                    $(LOCAL_PATH)/../../Classes/GrowthbeatCore/android \
 ```
 
 ## アプリの起動・終了イベントの送信
@@ -133,14 +172,16 @@ GrowthbeatJNI.setContext(this);
 アプリ初期化時に一度だけ送信してください。
 
 ```cpp
-GrowthAnalytics::getInstance()->open();
+Growthbeat::getInstance()->start();
 ```
 
 終了イベントは、アプリが閉じるときに実装してください。
 
 ```cpp
-GrowthAnalytics::getInstance()->close();
+Growthbeat::getInstance()->stop();
 ```
+
+アプリの起動・終了以外のイベント（行動情報）やタグ（属性情報）も送信することができます。詳しくは[APIリファレンス](/sdk/cocos2dx/reference/)をご参照ください。
 
 # プッシュ通知
 
@@ -182,6 +223,14 @@ Growthbeatの初期化処理の後に、Growth Linkの初期化処理を呼び�
 
 ```cpp
 GrowthLink::getInstance()->initialize("APPLICATION_ID", "CREDENTIAL_ID");
+```
+
+### Android
+AppActivity 内で、 GrowthLinkJNI に context を設定してください。
+
+```java
+GrowthLinkJNI.setContext(getApplicationContext());
+GrowthLinkJNI.handleOpenUrl(getIntent().getData());
 ```
 
 ## ディープリンクアクションの実装
