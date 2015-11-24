@@ -12,7 +12,7 @@ title: Growthbeat Cocos2dx Gudeliene
 
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。
 
-### 手動で Cocos2D-X SDK をインポートする
+### 手動で cocos2D-X SDK をインポートする
 
 GitHub から SDK を clone し、submodule を update してください。
 
@@ -131,7 +131,7 @@ Growthbeat::getInstance()->initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID
 ```
 
 ### Android
-AppActivity 内で、 GrowthbeatJNI に context を設定してください。
+AppActivity 内で、GrowthbeatJNI に context を設定してください。
 
 ```java
 GrowthbeatJNI.setContext(getApplicationContext());
@@ -226,7 +226,7 @@ GrowthLink::getInstance()->initialize("APPLICATION_ID", "CREDENTIAL_ID");
 ```
 
 ### Android
-AppActivity 内で、 GrowthLinkJNI に context を設定してください。
+AppActivity 内で、GrowthLinkJNI に context を設定してください。
 
 ```java
 GrowthLinkJNI.setContext(getApplicationContext());
