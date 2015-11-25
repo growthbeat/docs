@@ -12,7 +12,7 @@ title: Growthbeat Cocos2dx Gudeliene
 
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。
 
-### 手動で cocos2D-X SDK をインポートする
+### 手動で Cocos2d-x SDK をインポートする
 
 GitHub から SDK を clone し、submodule を update してください。
 
