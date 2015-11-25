@@ -32,6 +32,38 @@ curl -X GET \
 | credentialId | String | YES ||| クレデンシャルキー |
 | token | String | YES ||| デバイストークン |
 
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | applicationId | Int | アプリケーションID |
+|| code | String | デバイスのコード |
+|| created | String | 作成日 |
+|| environment | String | development/production |
+|| growthbeatApplicationId | String | GrwothbeatのアプリケーションID |
+|| growthbeatClientId | String | GrowthbeatのクライアントID |
+|| id | Int | デバイスのID |
+|| os | String | デバイスのOS |
+|| status | String | デバイスのステータス |
+|| token | String | デバイスのTOKEN |
+
+
+```
+{
+    "applicationId": APPLICATION_ID, 
+    "code": "DEVICE_CODE", 
+    "created": "2015-11-24 04:51:43", 
+    "environment": "development", 
+    "growthbeatApplicationId": "APPLICATION_ID", 
+    "growthbeatClientId": "CLIENT_ID", 
+    "id": DEVICE_ID, 
+    "os": "ios", 
+    "status": "active", 
+    "token": "DEVICE_TOKEN"
+}
+```
+
 ## Notifications
 
 ### Get Notifications
@@ -55,6 +87,61 @@ curl -X GET \
 | credentialId | String | YES ||| クレデンシャルキー |
 | page | Int | NO | 1 || ページ数 |
 | limit | Int | NO | 100 || 最大取得件数 |
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | applicationId | Int | アプリケーションID |
+|| automationId | Int | 自動配信ID |
+|| created | String | 作成日 |
+|| id | Int | プッシュ通知ID |
+|| segment | Collection | セグメントオブジェクト |
+|| segmentId | Int | セグメントID |
+|| speed | Int | 配信間隔 |
+|| status | String | 配信のステータス |
+|| tagId | Int | タグID |
+|| trials | Collection | 通知内容オブジェクト |
+
+```
+[
+    {
+        "applicationId": APPLICATION_ID, 
+        "automationId": null, 
+        "created": "2015-11-24 05:43:07", 
+        "id": NOTIFICATION_ID, 
+        "segment": {
+            "applicationId": APPLICATION_ID, 
+            "created": "2015-11-24 05:17:11", 
+            "id": SEGMENT_ID, 
+            "invisible": false, 
+            "modified": "2015-11-24 05:22:25", 
+            "name": "SEGMENT_NAME", 
+            "query": "SEGMENT_QUERY", 
+            "size": 1
+        }, 
+        "segmentId": SEGMENT_ID, 
+        "speed": null, 
+        "status": "completed", 
+        "tagId": TAG_ID, 
+        "trials": [
+            {
+                "automationTrialId": null, 
+                "badge": true, 
+                "extra": "{"growthpush":{"notificationId":NOTIFICATION_ID}}", 
+                "id": 570617, 
+                "notificationId": NOTIFICATION_ID, 
+                "scheduled": "2015-11-24 05:43:00", 
+                "sound": true, 
+                "status": "completed", 
+                "text": "PUSH_TEXT"
+            }
+        ]
+    },
+    ....
+]
+```
 
 ### Create Notification
 
@@ -83,6 +170,18 @@ curl -X POST \
 | attachNotificationId | Boolean | NO |false| true<br>false| 通知IDをペイロードに含めるか |
 | duration | Int | NO ||| push配信の生存時間(ミリ秒) |
 
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | jobId | String | ランダムに生成された値 |
+
+```
+{
+    "jobId":"a0f9a40b-f013-4693-a5b1-3baf726fd4f3"
+}
+```
 
 # Growthbeat API
 
@@ -109,9 +208,17 @@ curl -X GET \
 
 **Response**
 
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | icon | Boolean | アプリケーションのアイコン有無 |
+|| created | String | 作成日 |
+|| name | String | 登録アカウント名 |
+|| id | String | アカウントID |
+
 ```
 {
-    icon: null,
+    icon: false,
     created: "2014-10-02T02:20:03+0000",
     name: "NAME",
     id: "YOUR_ACCOUNT_ID"
@@ -142,9 +249,16 @@ curl -X GET \
 
 **Response**
 
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | name | String | 登録アプリ名 |
+|| id | String | アカウントID |
+|| created | String | 作成日 |
+
 ```
 {
-    "name":"Default app",
+    "name":"APPLICATION_NAME",
     "id":"APPLICATION_ID",
     "created":"2014-06-26T06:44:55+0000"
 }
@@ -172,10 +286,21 @@ curl -X GET \
 
 **Response**
 
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | created | String | 作成日 |
+|| id | String | アプリケーションID |
+|| name | String | 登録アプリ名 |
+
 ```
 [
-    {"name":"Default app","id":"APPLICATION_ID","created":"2014-06-26T06:44:55+0000"},
-    {"name":"Default app","id":"APPLICATION_ID","created":"2014-06-26T06:44:56+0000"}
+    {
+        "created": "2014-06-26T06:44:55+0000", 
+        "id": "APPLICATION_ID", 
+        "name": "APPLICATION_NAME"
+    },
+    ...
 ]
 ```
 
@@ -201,6 +326,13 @@ curl -X POST \
 | credentialId | String | YES ||| クレデンシャルキー |
 
 **Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | name | String | 登録アプリ名 |
+|| id | String | アプリケーションID |
+|| created | String | 作成日 |
 
 ```
 {
@@ -234,6 +366,13 @@ curl -X GET \
 | credentialId | String | YES ||| クレデンシャルキー |
 
 **Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | id | String | クレデンシャルキー |
+|| created | String | 作成日 |
+|| account | Collection | アカウントオブジェクト |
 
 ```
 [
@@ -273,6 +412,17 @@ curl -X GET \
 | credentialId | String | YES ||| クレデンシャルキー |
 
 **Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | name | String | プラン名 |
+|| id | String | プランID |
+|| created | String | 作成日 |
+|| price | Int | 利用価格 |
+|| grade | String | アカウントのグレード |
+|| opened | Boolean | true/false |
+|| capacity | Int | リクエスト上限数 |
 
 ```
 {
