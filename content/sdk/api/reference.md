@@ -16,6 +16,12 @@ title: Growthbeat API
 
 **Request**
 
+|Name|Type|Required|Default|Options|Notes|
+|:--|:--|:--|:--|:--|:--|
+| applicationId | String | YES ||| アプリケーションID |
+| credentialId | String | YES ||| クレデンシャルキー |
+| token | String | YES ||| デバイストークン |
+
 ```
 curl -X GET \
   -H 'Accept: application/json' \
@@ -25,12 +31,6 @@ curl -X GET \
   --data "token=${DEVICE_TOKEN}" \
   https://api.growthpush.com/3/clients
 ```
-
-|Name|Type|Required|Default|Options|Notes|
-|:--|:--|:--|:--|:--|:--|
-| applicationId | String | YES ||| アプリケーションID |
-| credentialId | String | YES ||| クレデンシャルキー |
-| token | String | YES ||| デバイストークン |
 
 **Response**
 
@@ -72,6 +72,13 @@ curl -X GET \
 
 **Request**
 
+|Name|Type|Required|Default|Options|Notes|
+|:--|:--|:--|:--|:--|:--|
+| applicationId | String | YES ||| アプリケーションID |
+| credentialId | String | YES ||| クレデンシャルキー |
+| page | Int | NO | 1 || ページ数 |
+| limit | Int | NO | 100 || 最大取得件数 |
+
 ```
 curl -X GET \
   -H 'Accept: application/json' \
@@ -80,13 +87,6 @@ curl -X GET \
   --data "credentialId=${CREDENTIAL_ID}" \
   https://api.growthpush.com/3/notifications
 ```
-
-|Name|Type|Required|Default|Options|Notes|
-|:--|:--|:--|:--|:--|:--|
-| applicationId | String | YES ||| アプリケーションID |
-| credentialId | String | YES ||| クレデンシャルキー |
-| page | Int | NO | 1 || ページ数 |
-| limit | Int | NO | 100 || 最大取得件数 |
 
 **Response**
 
@@ -149,15 +149,6 @@ curl -X GET \
 
 **Request**
 
-```
-curl -X POST \
-  -H 'Accept: application/json' \
-  --data "applicationId=${APPLICATION_ID}" \
-  --data "credentialId=${CREDENTIAL_ID}" \
-  --data-urlencode "text=${TEXT}" \
-  https://api.growthpush.com/3/notifications
-```
-
 |Name|Type|Required|Default|Options|Notes|
 |:--|:--|:--|:--|:--|:--|
 | applicationId | String | YES ||| アプリケーションID |
@@ -169,6 +160,15 @@ curl -X POST \
 | extra | String | NO ||| カスタムフイールド(JSON) |
 | attachNotificationId | Boolean | NO |false| true<br>false| 通知IDをペイロードに含めるか |
 | duration | Int | NO ||| push配信の生存時間(ミリ秒) |
+
+```
+curl -X POST \
+  -H 'Accept: application/json' \
+  --data "applicationId=${APPLICATION_ID}" \
+  --data "credentialId=${CREDENTIAL_ID}" \
+  --data-urlencode "text=${TEXT}" \
+  https://api.growthpush.com/3/notifications
+```
 
 **Response**
 
@@ -193,6 +193,11 @@ curl -X POST \
 
 **Request**
 
+|Name|Type|Required|Default|Options|Notes|
+|:--|:--|:--|:--|:--|:--|
+| accountId | String | YES ||| アカウントID |
+| credentialId | String | YES ||| クレデンシャルキー |
+
 ```
 curl -X GET \
   -H 'Accept: application/json' \
@@ -200,11 +205,6 @@ curl -X GET \
   --data "credentialId=${CREDENTIAL_ID}" \
   https://api.growthpush.com/1/accounts/${YOUR_ACCOUNT_ID}
 ```
-
-|Name|Type|Required|Default|Options|Notes|
-|:--|:--|:--|:--|:--|:--|
-| accountId | String | YES ||| アカウントID |
-| credentialId | String | YES ||| クレデンシャルキー |
 
 **Response**
 
@@ -234,6 +234,11 @@ curl -X GET \
 
 **Request**
 
+|Name|Type|Required|Default|Options|Notes|
+|:--|:--|:--|:--|:--|:--|
+| applicationId | String | YES ||| アプリケーションID |
+| credentialId | String | YES ||| クレデンシャルキー |
+
 ```
 curl -X GET \
   -H 'Accept: application/json' \
@@ -241,11 +246,6 @@ curl -X GET \
   --data "credentialId=${CREDENTIAL_ID}" \
   https://api.growthbeat.com/1/applications/${YOUR_APPLICATION_ID}
 ```
-
-|Name|Type|Required|Default|Options|Notes|
-|:--|:--|:--|:--|:--|:--|
-| applicationId | String | YES ||| アプリケーションID |
-| credentialId | String | YES ||| クレデンシャルキー |
 
 **Response**
 
@@ -270,6 +270,11 @@ curl -X GET \
 
 **Request**
 
+|Name|Type|Required|Default|Options|Notes|
+|:--|:--|:--|:--|:--|:--|
+| applicationId | String | YES ||| アプリケーションID |
+| credentialId | String | YES ||| クレデンシャルキー |
+
 ```
 curl -X GET \
   -H 'Accept: application/json' \
@@ -278,11 +283,6 @@ curl -X GET \
   --data "credentialId=${CREDENTIAL_ID}" \
   https://api.growthbeat.com/1/applications
 ```
-
-|Name|Type|Required|Default|Options|Notes|
-|:--|:--|:--|:--|:--|:--|
-| applicationId | String | YES ||| アプリケーションID |
-| credentialId | String | YES ||| クレデンシャルキー |
 
 **Response**
 
@@ -311,6 +311,11 @@ curl -X GET \
 
 **Request**
 
+|Name|Type|Required|Default|Options|Notes|
+|:--|:--|:--|:--|:--|:--|
+| name | String | YES ||| アプリケーション名 |
+| credentialId | String | YES ||| クレデンシャルキー |
+
 ```
 curl -X POST \
   -H 'Accept: application/json' \
@@ -319,11 +324,6 @@ curl -X POST \
   --data-urlencode "text=${TEXT}" \
   https://api.growthpush.com/3/notifications
 ```
-
-|Name|Type|Required|Default|Options|Notes|
-|:--|:--|:--|:--|:--|:--|
-| name | String | YES ||| アプリケーション名 |
-| credentialId | String | YES ||| クレデンシャルキー |
 
 **Response**
 
@@ -351,6 +351,11 @@ curl -X POST \
 
 **Request**
 
+|Name|Type|Required|Default|Options|Notes|
+|:--|:--|:--|:--|:--|:--|
+| session | String | YES ||| .growthbeat.com sessionId |
+| credentialId | String | YES ||| クレデンシャルキー |
+
 ```
 curl -X GET \
   -H 'Accept: application/json' \
@@ -359,11 +364,6 @@ curl -X GET \
   --data "credentialId=${CREDENTIAL_ID}" \
   https://api.growthbeat.com/1/credentials
 ```
-
-|Name|Type|Required|Default|Options|Notes|
-|:--|:--|:--|:--|:--|:--|
-| session | String | YES ||| .growthbeat.com sessionId |
-| credentialId | String | YES ||| クレデンシャルキー |
 
 **Response**
 
@@ -397,6 +397,11 @@ curl -X GET \
 
 **Request**
 
+|Name|Type|Required|Default|Options|Notes|
+|:--|:--|:--|:--|:--|:--|
+| accountId | String | YES ||| アカウントID |
+| credentialId | String | YES ||| クレデンシャルキー |
+
 ```
 curl -X GET \
   -H 'Accept: application/json' \
@@ -405,11 +410,6 @@ curl -X GET \
   --data "credentialId=${CREDENTIAL_ID}" \
   https://api.growthbeat.com/1/plans
 ```
-
-|Name|Type|Required|Default|Options|Notes|
-|:--|:--|:--|:--|:--|:--|
-| accountId | String | YES ||| アカウントID |
-| credentialId | String | YES ||| クレデンシャルキー |
 
 **Response**
 
