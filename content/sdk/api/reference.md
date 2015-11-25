@@ -189,7 +189,7 @@ curl -X POST \
 
 ### Get Accounts
 
-**GET** https://api.growthbeat.com/1/accounts/${YOUR_ACCOUNT_ID}
+**GET** https://api.growthbeat.com/1/accounts/${ACCOUNT_ID}
 
 **Request**
 
@@ -203,7 +203,7 @@ curl -X GET \
   -H 'Accept: application/json' \
   -G \
   --data "credentialId=${CREDENTIAL_ID}" \
-  https://api.growthpush.com/1/accounts/${YOUR_ACCOUNT_ID}
+  https://api.growthpush.com/1/accounts/${ACCOUNT_ID}
 ```
 
 **Response**
@@ -221,7 +221,7 @@ curl -X GET \
     icon: false,
     created: "2014-10-02T02:20:03+0000",
     name: "NAME",
-    id: "YOUR_ACCOUNT_ID"
+    id: "ACCOUNT_ID"
 }
 ```
 
@@ -230,7 +230,7 @@ curl -X GET \
 
 ### Get Application
 
-**GET** https://api.growthbeat.com/1/applications/${YOUR_APPLICATION_ID}
+**GET** https://api.growthbeat.com/1/applications/${APPLICATION_ID}
 
 **Request**
 
@@ -244,7 +244,7 @@ curl -X GET \
   -H 'Accept: application/json' \
   -G \
   --data "credentialId=${CREDENTIAL_ID}" \
-  https://api.growthbeat.com/1/applications/${YOUR_APPLICATION_ID}
+  https://api.growthbeat.com/1/applications/${APPLICATION_ID}
 ```
 
 **Response**
@@ -377,11 +377,11 @@ curl -X GET \
 ```
 [
     {
-        "id":"YOUR_CREDENTIAL",
+        "id":"CREDENTIAL",
         "created":"2014-06-26T06:44:55+0000",
         "account":{
-            "name":"YOUR_PEARENT_ACCOUNT_NAME",
-            "id":"YOUR_PEARENT_ACCOUNT_ID",
+            "name":"PEARENT_ACCOUNT_NAME",
+            "id":"PEARENT_ACCOUNT_ID",
             "created":"2014-06-26T06:44:55+0000"
         }
     }
@@ -406,7 +406,7 @@ curl -X GET \
 curl -X GET \
   -H 'Accept: application/json' \
   -G \
-  --data "accountId=${YOUR_ACCOUNT_ID}" \
+  --data "accountId=${ACCOUNT_ID}" \
   --data "credentialId=${CREDENTIAL_ID}" \
   https://api.growthbeat.com/1/plans
 ```
@@ -426,7 +426,7 @@ curl -X GET \
 
 ```
 {
-    "name":"YOUR_PLAN_NAME",
+    "name":"PLAN_NAME",
     "id":"PLAN_ID",
     "created":"2014-07-15T05:43:35+0000",
     "price":0,
