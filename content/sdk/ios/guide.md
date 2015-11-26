@@ -161,34 +161,16 @@ URL起動の処理で、handleOpenUrl:urlメソッドを呼び出す
 
 ## ディープリンクアクションの実装
 
-SDKには、GBIntentHandler (Androidでは、IntentHandler)というプロトコルが定義されており、この実装でディープリンク時のアクションを実装することができます。
+SDKには、GBIntentHandlerというプロトコルが定義されており、この実装でディープリンク時のアクションを実装することができます。
 
 たとえば下記のような形で実装できます。
 
 ```objc
-@interface MyCustomIntentHandler : NSObject <GBIntentHandler>
-@end
-
-@implementation MyCustomIntentHandler
-
-- (BOOL)handleIntent:(GBIntent *)intent {
-
-    if (intent.type != GBIntentTypeCustom)
-        return false;
-
-    GBCustomIntent \*customIntent = (GBCustomIntent *)intent;
-    NSString *action = [customIntent.extra objectForKey:@"action"];
-    if(![action isEqualToString:@"open_view"])
-        return false;
-
-    NSString *view = [customIntent.extra objectForKey:@"view"];
-
-    // TODO viewに対応する画面を開く処理
-
-    return true;
-}
-
-@end
+ [[GrowthbeatCore sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
+        NSDictionary *extra = customIntent.extra;
+        NSLog(@"extra: %@", extra);
+        return YES;
+    }]];
 ```
 
 こうして定義したクラスを GrowthbeatCore クラスの setIntentHandlers: に設定することで、利用可能となります。
