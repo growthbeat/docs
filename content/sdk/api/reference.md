@@ -183,6 +183,469 @@ curl -X POST \
 }
 ```
 
+# Growth Analytics API
+
+## Segments
+
+### Get Segment
+
+**GET** https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:---|:---|:---|:---|:---|:---|
+|credentialId|String|YES|||クレデンシャルキー|
+|segmentId|String|YES|||セグメントID|
+
+````
+curl -X GET \
+  -H 'Accept: application/json' \
+  -G \
+  --data "credentialId=${CREDENTIAL_ID}" \
+  https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | created | String | 作成日 |
+|| description | String | セグメントの説明 |
+|| name | String | セグメント名 |
+|| id | String | セグメントID |
+|| size | Int | セグメント対象Client数 |
+|| query | String | queryオブジェクト |
+
+
+```
+{
+  "created": "2015-11-20T08:41:25+0000",
+  "description": "",
+  "name": "SEGMENT_NAME",
+  "id": "SEGMENT_ID",
+  "size": 14255,
+  "query": {
+    "type": "and",
+    "note": null,
+    "segmentQueries": [
+      {
+        "type": "and",
+        "note": "customSegment",
+        "segmentQueries": [
+          {
+            "type": "tag",
+            "note": null,
+            "tagId": "TAG_ID",
+            "operator": "equal",
+            "value": "0"
+          },
+          ...
+        ]
+      }
+    ]
+  }
+}
+```
+
+### Get Segment Clients
+
+**GET** https://api.analytics.growthbeat.com/1/segments/client_ids
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:---|:---|:---|:---|:---|:---|
+|credentialId|String|YES|||クレデンシャルキー|
+|applicationId|String|YES|||アプリケーションID|
+|segmentQuery|String|YES|||queryオブジェクト|
+|begin|String|NO|request time||DateTime|
+|end|String|NO|request time||DateTime|
+|cachable|boolean|NO|false||Get cache data|
+
+```
+curl -X GET \
+  -H 'Accept: application/json' \
+  -G \
+  --data "credentialId=${CREDENTIAL_ID}" \
+  --data "applicationId=${APPLICATION_ID}" \
+  --data "segmentQuery=${QUERY_OBJECT}" \
+  https://api.analytics.growthbeat.com/1/segments/client_ids
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body |  | List | クライアントID |
+
+```
+["hoge","fuga", ...]
+```
+
+### Update Segment
+
+**PUT** https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:---|:---|:---|:---|:---|:---|
+|credentialId|String|YES|||クレデンシャルキー|
+|segmentId|String|YES|||セグメントID|
+|name|String|YES|||セグメント名|
+|description|String|YES|||セグメント説明|
+|query|String|NO|null||queryオブジェクト|
+
+```
+curl -X PUT \
+  -H 'Accept: application/json' \
+  -G \
+  --data "credentialId=${CREDENTIAL_ID}" \
+  --data "name=${SEGMENT_NAME}" \
+  --data "description=${SEGMENT_DESCRIPTION}" \
+  https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | created | String | 作成日 |
+| | description | String | セグメント説明 |
+| | name | String | セグメント名 |
+| | id | String | セグメントID |
+| | size | Int | セグメント対象Client数 |
+| | query | String | queryオブジェクト |
+
+```
+{
+  "created": "2015-11-09T10:58:38+0000",
+  "description": "${SEGMENT_DESCRIPTION}",
+  "name": "${SEGMENT_NAME}",
+  "id": "SEGMENT_ID",
+  "size": 1,
+  "query": null
+}
+```
+
+### Update Segment Size
+
+**PUT** https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}/size
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:---|:---|:---|:---|:---|:---|
+|credentialId|String|YES|||クレデンシャルキー|
+|segmentId|String|YES|||セグメントID|
+
+```
+curl -X PUT \
+  -H 'Accept: application/json' \
+  -G \
+  --data "credentialId=${CREDENTIAL_ID}" \
+  https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}/size
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | created | String | 作成日 |
+| | name | String | セグメント名 |
+| | id | String | セグメントID |
+| | size | Int | セグメント対象Client数 |
+| | query | String | queryオブジェクト |
+| | description | String | セグメント説明 |
+
+```
+  {
+  "created": "2015-11-09T10:58:38+0000",
+  "name": "Androidのみ",
+  "id": "SEGMENT_ID",
+  "size": 1,
+  "query": {
+    "type": "tag",
+    "note": null,
+    "tagId": "Tag:applicationId:Custom:tagname",
+    "operator": "begin_with",
+    "value": "Android"
+  },
+  "description": "SEGMENT_DESCRIPTION"
+}
+```
+
+### Delete Segment
+
+**DELETE** https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:---|:---|:---|:---|:---|:---|
+|credentialId|String|YES|||クレデンシャルキー|
+|segmentId|String|YES|||セグメントID|
+
+
+```
+curl -X DELETE \
+  -H 'Accept: application/json' \
+  -G \
+  --data "credentialId=${CREDENTIAL_ID}" \
+  https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}
+```
+
+## Tags
+
+### Get Tag
+
+**PUT** https://api.analytics.growthbeat.com/1/tags/${TAG_ID}
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:---|:---|:---|:---|:---|:---|
+|credentialId|String|YES|||クレデンシャルキー|
+|tagId|String|YES|||セグメントID|
+
+```
+curl -X GET \
+  -H 'Accept: application/json' \
+  -G \
+  --data "credentialId=${CREDENTIAL_ID}" \
+  https://api.analytics.growthbeat.com/1/tags/${TAG_ID}
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | created | String | 作成日 |
+| | description | String | タグ説明 |
+| | name | String | タグ名 |
+| | id | String | タグID |
+
+```
+{
+  "created": "2015-07-16T07:24:58+0000",
+  "description": "",
+  "name": "ユーザーID",
+  "id": "Tag:PIaD6TaVt7wvKwao:Default:UserID"
+}
+```
+
+### Update Tag
+
+**PUT** https://api.analytics.growthbeat.com/1/tags/${TAG_ID}
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:---|:---|:---|:---|:---|:---|
+|credentialId|String|YES|||クレデンシャルキー|
+|name|String|YES|||タグ名|
+|description|String|YES|||タグ説明|
+
+```
+curl -X PUT \
+  -H 'Accept: application/json' \
+  -G \
+  --data "credentialId=${CREDENTIAL_ID}" \
+  --data "name=テストNAME" \
+  --data "description=ユーザーID" \
+  https://api.analytics.growthbeat.com/1/tags/${TAG_ID}
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | created | String | 作成日 |
+| | description | String | タグ説明 |
+| | name | String | タグ名 |
+| | id | String | タグID |
+
+```
+{
+  "created": "2015-07-16T07:24:58+0000",
+  "description": "description",
+  "name": "displayname",
+  "id": "Tag:PIaD6TaVt7wvKwao:Default:UserID"
+}
+```
+
+### Delete Tag
+
+**PUT** https://api.analytics.growthbeat.com/1/tags/${TAG_ID}
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:---|:---|:---|:---|:---|:---|
+|credentialId|String|YES|||クレデンシャルキー|
+|name|String|YES|||タグ名|
+|description|String|YES|||タグ説明|
+
+```
+curl -X DELETE \
+  -H 'Accept: application/json' \
+  -G \
+  --data "credentialId=${CREDENTIAL_ID}" \
+  https://api.analytics.growthbeat.com/1/tags/${TAG_ID}
+```
+
+## Events
+
+### Get Event
+
+**GET** https://api.analytics.growthbeat.com/1/events/${EVENT_ID}
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:---|:---|:---|:---|:---|:---|
+|credentialId|String|YES|||クレデンシャルキー|
+|eventId|String|YES|||イベントID|
+
+```
+curl -X GET \
+  -H 'Accept: application/json' \
+  -G \
+  --data "credentialId=${CREDENTIAL_ID}" \
+  https://api.analytics.growthbeat.com/1/events/${EVENT_ID}
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | created | String | 作成日 |
+| | description | String | イベント説明 |
+| | name | String | イベント名 |
+| | id | String | イベントID |
+
+```
+{
+  "created": "2015-07-16T07:24:57+0000",
+  "description": "",
+  "name": "アプリ起動",
+  "id": "Event:PIaD6TaVt7wvKwao:Default:Open"
+}
+```
+
+### Get Event List
+
+**GET** https://api.analytics.growthbeat.com/1/events/
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:---|:---|:---|:---|:---|:---|
+|credentialId|String|YES|||クレデンシャルキー|
+|parentEventId|String|YES|||親イベントID|
+|ascending|String|YES|||ascending/descending|
+|page|String|NO|1||ページ数|
+|limit|String|NO|100||リミット|
+
+```
+curl -X GET \
+  -H 'Accept: application/json' \
+  -G \
+  --data "credentialId=${CREDENTIAL_ID}" \
+  --data "parentEventId=Event%3aPIaD6TaVt7wvKwao%3aDefault" \
+  --data "ascending=ascending" \
+  https://api.analytics.growthbeat.com/1/events/
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | created | String | 作成日 |
+| | description | String | イベント説明 |
+| | name | String | イベント名 |
+| | id | String | イベントID |
+
+```
+[
+  {
+    "created": "2015-07-16T07:24:57+0000",
+    "description": "",
+    "name": "アプリ終了",
+    "id": "Event:PIaD6TaVt7wvKwao:Default:Close"
+  },
+  ...
+]
+```
+
+### Update Event
+
+**PUT** https://api.analytics.growthbeat.com/1/events/${EVENT_ID}
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:---|:---|:---|:---|:---|:---|
+|credentialId|String|YES|||クレデンシャルキー|
+|name|String|YES|||イベント名|
+|eventId|String|YES|||イベントID|
+
+```
+curl -X PUT \
+  -H 'Accept: application/json' \
+  -G \
+  --data "credentialId=${CREDENTIAL_ID}" \
+  --data "name=displayName" \
+  https://api.analytics.growthbeat.com/1/events/${EVENT_ID}
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | created | String | 作成日 |
+| | description | String | イベント説明 |
+| | name | String | イベント名 |
+| | id | String | イベントID |
+
+```
+{
+  "created": "2015-07-16T07:24:57+0000",
+  "description": "",
+  "name": "displayName",
+  "id": "Event:applicationId:Default:Open"
+}
+```
+
+### Delete Event
+
+**DELETE** https://api.analytics.growthbeat.com/1/events/${EVENT_ID}
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:---|:---|:---|:---|:---|:---|
+|credentialId|String|YES|||クレデンシャルキー|
+|eventId|String|YES|||イベントID|
+
+```
+curl -X DELETE \
+  -H 'Accept: application/json' \
+  -G \
+  --data "credentialId=${CREDENTIAL_ID}" \
+  https://api.analytics.growthbeat.com/1/events/${EVENT_ID}
+```
+
 # Growthbeat API
 
 ## Accounts
