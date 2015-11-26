@@ -14,6 +14,14 @@ title: Growthbeat API
 
 **GET** https://api.growthpush.com/3/clients
 
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:--|:--|:--|:--|:--|:--|
+| applicationId | String | YES ||| アプリケーションID |
+| credentialId | String | YES ||| クレデンシャルキー |
+| token | String | YES ||| デバイストークン |
+
 ```
 curl -X GET \
   -H 'Accept: application/json' \
@@ -24,17 +32,52 @@ curl -X GET \
   https://api.growthpush.com/3/clients
 ```
 
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | applicationId | Int | アプリケーションID |
+|| code | String | デバイスのコード |
+|| created | String | 作成日 |
+|| environment | String | development/production |
+|| growthbeatApplicationId | String | GrwothbeatのアプリケーションID |
+|| growthbeatClientId | String | GrowthbeatのクライアントID |
+|| id | Int | デバイスのID |
+|| os | String | デバイスのOS |
+|| status | String | デバイスのステータス |
+|| token | String | デバイスのTOKEN |
+
+
+```
+{
+    "applicationId": APPLICATION_ID, 
+    "code": "DEVICE_CODE", 
+    "created": "2015-11-24 04:51:43", 
+    "environment": "development", 
+    "growthbeatApplicationId": "APPLICATION_ID", 
+    "growthbeatClientId": "CLIENT_ID", 
+    "id": DEVICE_ID, 
+    "os": "ios", 
+    "status": "active", 
+    "token": "DEVICE_TOKEN"
+}
+```
+
+## Notifications
+
+### Get Notifications
+
+**GET** https://api.growthpush.com/3/notifications
+
+**Request**
+
 |Name|Type|Required|Default|Options|Notes|
 |:--|:--|:--|:--|:--|:--|
 | applicationId | String | YES ||| アプリケーションID |
 | credentialId | String | YES ||| クレデンシャルキー |
-| token | String | YES ||| デバイストークン |
-
-## Notifications
-
-### Get notifications
-
-**GET** https://api.growthpush.com/3/notifications
+| page | Int | NO | 1 || ページ数 |
+| limit | Int | NO | 100 || 最大取得件数 |
 
 ```
 curl -X GET \
@@ -45,25 +88,66 @@ curl -X GET \
   https://api.growthpush.com/3/notifications
 ```
 
-|Name|Type|Required|Default|Options|Notes|
-|:--|:--|:--|:--|:--|:--|
-| applicationId | String | YES ||| アプリケーションID |
-| credentialId | String | YES ||| クレデンシャルキー |
-| page | Int | NO | 1 || ページ数 |
-| limit | Int | NO | 100 || 最大取得件数 |
+**Response**
 
-### Create notification
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | applicationId | Int | アプリケーションID |
+|| automationId | Int | 自動配信ID |
+|| created | String | 作成日 |
+|| id | Int | プッシュ通知ID |
+|| segment | Collection | セグメントオブジェクト |
+|| segmentId | Int | セグメントID |
+|| speed | Int | 配信間隔 |
+|| status | String | 配信のステータス |
+|| tagId | Int | タグID |
+|| trials | Collection | 通知内容オブジェクト |
+
+```
+[
+    {
+        "applicationId": APPLICATION_ID, 
+        "automationId": null, 
+        "created": "2015-11-24 05:43:07", 
+        "id": NOTIFICATION_ID, 
+        "segment": {
+            "applicationId": APPLICATION_ID, 
+            "created": "2015-11-24 05:17:11", 
+            "id": SEGMENT_ID, 
+            "invisible": false, 
+            "modified": "2015-11-24 05:22:25", 
+            "name": "SEGMENT_NAME", 
+            "query": "SEGMENT_QUERY", 
+            "size": 1
+        }, 
+        "segmentId": SEGMENT_ID, 
+        "speed": null, 
+        "status": "completed", 
+        "tagId": TAG_ID, 
+        "trials": [
+            {
+                "automationTrialId": null, 
+                "badge": true, 
+                "extra": "{"growthpush":{"notificationId":NOTIFICATION_ID}}", 
+                "id": 570617, 
+                "notificationId": NOTIFICATION_ID, 
+                "scheduled": "2015-11-24 05:43:00", 
+                "sound": true, 
+                "status": "completed", 
+                "text": "PUSH_TEXT"
+            }
+        ]
+    },
+    ....
+]
+```
+
+### Create Notification
 
 **POST** https://api.growthpush.com/3/notifications
 
-```
-curl -X POST \
-  -H 'Accept: application/json' \
-  --data "applicationId=${APPLICATION_ID}" \
-  --data "credentialId=${CREDENTIAL_ID}" \
-  --data-urlencode "text=${TEXT}" \
-  https://api.growthpush.com/3/notifications
-```
+**Request**
 
 |Name|Type|Required|Default|Options|Notes|
 |:--|:--|:--|:--|:--|:--|
@@ -76,3 +160,278 @@ curl -X POST \
 | extra | String | NO ||| カスタムフイールド(JSON) |
 | attachNotificationId | Boolean | NO |false| true<br>false| 通知IDをペイロードに含めるか |
 | duration | Int | NO ||| push配信の生存時間(ミリ秒) |
+
+```
+curl -X POST \
+  -H 'Accept: application/json' \
+  --data "applicationId=${APPLICATION_ID}" \
+  --data "credentialId=${CREDENTIAL_ID}" \
+  --data-urlencode "text=${TEXT}" \
+  https://api.growthpush.com/3/notifications
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | jobId | String | ランダムに生成された値 |
+
+```
+{
+    "jobId":"a0f9a40b-f013-4693-a5b1-3baf726fd4f3"
+}
+```
+
+# Growthbeat API
+
+## Accounts
+
+### Get Accounts
+
+**GET** https://api.growthbeat.com/1/accounts/${ACCOUNT_ID}
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:--|:--|:--|:--|:--|:--|
+| accountId | String | YES ||| アカウントID |
+| credentialId | String | YES ||| クレデンシャルキー |
+
+```
+curl -X GET \
+  -H 'Accept: application/json' \
+  -G \
+  --data "credentialId=${CREDENTIAL_ID}" \
+  https://api.growthpush.com/1/accounts/${ACCOUNT_ID}
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | icon | Boolean | アプリケーションのアイコン有無 |
+|| created | String | 作成日 |
+|| name | String | 登録アカウント名 |
+|| id | String | アカウントID |
+
+```
+{
+    icon: false,
+    created: "2014-10-02T02:20:03+0000",
+    name: "NAME",
+    id: "ACCOUNT_ID"
+}
+```
+
+
+## Applications
+
+### Get Application
+
+**GET** https://api.growthbeat.com/1/applications/${APPLICATION_ID}
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:--|:--|:--|:--|:--|:--|
+| applicationId | String | YES ||| アプリケーションID |
+| credentialId | String | YES ||| クレデンシャルキー |
+
+```
+curl -X GET \
+  -H 'Accept: application/json' \
+  -G \
+  --data "credentialId=${CREDENTIAL_ID}" \
+  https://api.growthbeat.com/1/applications/${APPLICATION_ID}
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | name | String | 登録アプリ名 |
+|| id | String | アカウントID |
+|| created | String | 作成日 |
+
+```
+{
+    "name":"APPLICATION_NAME",
+    "id":"APPLICATION_ID",
+    "created":"2014-06-26T06:44:55+0000"
+}
+```
+
+### Get Application List
+
+**GET** https://api.growthbeat.com/1/applications
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:--|:--|:--|:--|:--|:--|
+| applicationId | String | YES ||| アプリケーションID |
+| credentialId | String | YES ||| クレデンシャルキー |
+
+```
+curl -X GET \
+  -H 'Accept: application/json' \
+  -G \
+  --data "applicationId=${APPLICATION_ID}" \
+  --data "credentialId=${CREDENTIAL_ID}" \
+  https://api.growthbeat.com/1/applications
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | created | String | 作成日 |
+|| id | String | アプリケーションID |
+|| name | String | 登録アプリ名 |
+
+```
+[
+    {
+        "created": "2014-06-26T06:44:55+0000", 
+        "id": "APPLICATION_ID", 
+        "name": "APPLICATION_NAME"
+    },
+    ...
+]
+```
+
+
+### Create Application
+
+**POST** https://api.growthbeat.com/1/applications
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:--|:--|:--|:--|:--|:--|
+| name | String | YES ||| アプリケーション名 |
+| credentialId | String | YES ||| クレデンシャルキー |
+
+```
+curl -X POST \
+  -H 'Accept: application/json' \
+  --data "name=${APPLICATION_NAME}" \
+  --data "credentialId=${CREDENTIAL_ID}" \
+  --data-urlencode "text=${TEXT}" \
+  https://api.growthpush.com/3/notifications
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | name | String | 登録アプリ名 |
+|| id | String | アプリケーションID |
+|| created | String | 作成日 |
+
+```
+{
+    "name":"APPLICATION_NAME",
+    "id":"APPLICATION_ID",
+    "created":"2014-08-26T02:23:08+0000"
+}
+```
+
+
+## Credentials
+
+### Get Credential
+
+**GET** https://api.growthbeat.com/1/credentials
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:--|:--|:--|:--|:--|:--|
+| session | String | YES ||| .growthbeat.com sessionId |
+| credentialId | String | YES ||| クレデンシャルキー |
+
+```
+curl -X GET \
+  -H 'Accept: application/json' \
+  -G \
+  --data "sessionId=${SESSION}" \
+  --data "credentialId=${CREDENTIAL_ID}" \
+  https://api.growthbeat.com/1/credentials
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | id | String | クレデンシャルキー |
+|| created | String | 作成日 |
+|| account | Collection | アカウントオブジェクト |
+
+```
+[
+    {
+        "id":"CREDENTIAL",
+        "created":"2014-06-26T06:44:55+0000",
+        "account":{
+            "name":"PEARENT_ACCOUNT_NAME",
+            "id":"PEARENT_ACCOUNT_ID",
+            "created":"2014-06-26T06:44:55+0000"
+        }
+    }
+]
+```
+
+
+## Plans
+
+### Get Plan
+
+**GET** https://api.growthbeat.com/1/plans
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:--|:--|:--|:--|:--|:--|
+| accountId | String | YES ||| アカウントID |
+| credentialId | String | YES ||| クレデンシャルキー |
+
+```
+curl -X GET \
+  -H 'Accept: application/json' \
+  -G \
+  --data "accountId=${ACCOUNT_ID}" \
+  --data "credentialId=${CREDENTIAL_ID}" \
+  https://api.growthbeat.com/1/plans
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | name | String | プラン名 |
+|| id | String | プランID |
+|| created | String | 作成日 |
+|| price | Int | 利用価格 |
+|| grade | String | アカウントのグレード |
+|| opened | Boolean | true/false |
+|| capacity | Int | リクエスト上限数 |
+
+```
+{
+    "name":"PLAN_NAME",
+    "id":"PLAN_ID",
+    "created":"2014-07-15T05:43:35+0000",
+    "price":0,
+    "grade":"PLAN_GRADE",
+    "opened":false,
+    "capacity":10000000000000
+}
+```
