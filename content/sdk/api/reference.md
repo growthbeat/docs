@@ -198,7 +198,7 @@ curl -X POST \
 |credentialId|String|YES|||クレデンシャルキー|
 |segmentId|String|YES|||セグメントID|
 
-````
+```
 curl -X GET \
   -H 'Accept: application/json' \
   -G \
