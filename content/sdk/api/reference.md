@@ -185,9 +185,9 @@ curl -X POST \
 
 # Growth Analytics API
 
-## Get Segment
+## Segments
 
-### GET
+### Get Segment
 
 **GET：** https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}
 
