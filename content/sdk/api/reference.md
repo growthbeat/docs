@@ -32,7 +32,7 @@ curl -X GET \
     https://api.growthpush.com/3/clients
 ```
 
-**Respons**
+**Response**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -88,7 +88,7 @@ curl -X GET \
     https://api.growthpush.com/3/notifications
 ```
 
-**Respons**
+**Response**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -170,7 +170,7 @@ curl -X POST \
     https://api.growthpush.com/3/notifications
 ```
 
-**Respons**
+**Response**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -206,7 +206,7 @@ curl -X GET \
     https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}
 ```
 
-**Respons**
+**Response**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -275,7 +275,7 @@ curl -X GET \
     https://api.analytics.growthbeat.com/1/segments/client_ids
 ```
 
-**Respons**
+**Response**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -311,7 +311,7 @@ curl -X PUT \
     https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}
 ```
 
-**Respons**
+**Response**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -354,7 +354,7 @@ curl -X PUT \
     https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}/size
 ```
 
-**Respons**
+**Response**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -429,7 +429,7 @@ curl -X GET \
     https://api.analytics.growthbeat.com/1/tags/${TAG_ID}
 ```
 
-**Respons**
+**Response**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -470,7 +470,7 @@ curl -X PUT \
     https://api.analytics.growthbeat.com/1/tags/${TAG_ID}
 ```
 
-**Respons**
+**Response**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -533,7 +533,7 @@ curl -X GET \
   https://api.analytics.growthbeat.com/1/events/${EVENT_ID}
 ```
 
-**Respons**
+**Response**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -576,7 +576,7 @@ curl -X GET \
   https://api.analytics.growthbeat.com/1/events/
 ```
 
-**Respons**
+**Response**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -619,7 +619,7 @@ curl -X PUT \
   https://api.analytics.growthbeat.com/1/events/${EVENT_ID}
 ```
 
-**Respons**
+**Response**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -682,7 +682,7 @@ curl -X GET \
     https://api.growthpush.com/1/accounts/${ACCOUNT_ID}
 ```
 
-**Respons**
+**Response**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -722,7 +722,7 @@ curl -X GET \
   https://api.growthbeat.com/1/applications/${APPLICATION_ID}
 ```
 
-**Respons**
+**Response**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -759,7 +759,7 @@ curl -X GET \
   https://api.growthbeat.com/1/applications
 ```
 
-**Respons**
+**Response**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -799,7 +799,7 @@ curl -X POST \
   https://api.growthpush.com/3/notifications
 ```
 
-**Respons**
+**Response**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -839,7 +839,7 @@ curl -X GET \
   https://api.growthbeat.com/1/credentials
 ```
 
-**Respons**
+**Response**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -887,7 +887,7 @@ curl -X GET \
   https://api.growthbeat.com/1/plans
 ```
 
-**Respons**
+**Response**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
