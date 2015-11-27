@@ -1,6 +1,6 @@
 ---
 categories: 'sdk'
-date: 2015-11-19T14:32:58+09:00
+date: 2015-11-27T14:32:58+09:00
 description: 'Growthbeat API について説明します'
 draft: false
 title: Growthbeat API
@@ -10,9 +10,9 @@ title: Growthbeat API
 
 ## Clients
 
-### Get client
+### Get Client
 
-**GET** https://api.growthpush.com/3/clients
+**GET：** https://api.growthpush.com/3/clients
 
 **Request**
 
@@ -24,15 +24,15 @@ title: Growthbeat API
 
 ```
 curl -X GET \
-  -H 'Accept: application/json' \
-  -G \
-  --data "applicationId=${APPLICATION_ID}" \
-  --data "credentialId=${CREDENTIAL_ID}" \
-  --data "token=${DEVICE_TOKEN}" \
-  https://api.growthpush.com/3/clients
+    -H 'Accept: application/json' \
+    -G \
+    --data "applicationId=${APPLICATION_ID}" \
+    --data "credentialId=${CREDENTIAL_ID}" \
+    --data "token=${DEVICE_TOKEN}" \
+    https://api.growthpush.com/3/clients
 ```
 
-**Response**
+**Respons**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -51,15 +51,15 @@ curl -X GET \
 
 ```
 {
-    "applicationId": APPLICATION_ID, 
-    "code": "DEVICE_CODE", 
-    "created": "2015-11-24 04:51:43", 
-    "environment": "development", 
-    "growthbeatApplicationId": "APPLICATION_ID", 
-    "growthbeatClientId": "CLIENT_ID", 
-    "id": DEVICE_ID, 
-    "os": "ios", 
-    "status": "active", 
+    "applicationId": APPLICATION_ID,
+    "code": "DEVICE_CODE",
+    "created": "2015-11-24 04:51:43",
+    "environment": "development",
+    "growthbeatApplicationId": "APPLICATION_ID",
+    "growthbeatClientId": "CLIENT_ID",
+    "id": DEVICE_ID,
+    "os": "ios",
+    "status": "active",
     "token": "DEVICE_TOKEN"
 }
 ```
@@ -68,7 +68,7 @@ curl -X GET \
 
 ### Get Notifications
 
-**GET** https://api.growthpush.com/3/notifications
+**GET：** https://api.growthpush.com/3/notifications
 
 **Request**
 
@@ -81,14 +81,14 @@ curl -X GET \
 
 ```
 curl -X GET \
-  -H 'Accept: application/json' \
-  -G \
-  --data "applicationId=${APPLICATION_ID}" \
-  --data "credentialId=${CREDENTIAL_ID}" \
-  https://api.growthpush.com/3/notifications
+    -H 'Accept: application/json' \
+    -G \
+    --data "applicationId=${APPLICATION_ID}" \
+    --data "credentialId=${CREDENTIAL_ID}" \
+    https://api.growthpush.com/3/notifications
 ```
 
-**Response**
+**Respons**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -107,34 +107,34 @@ curl -X GET \
 ```
 [
     {
-        "applicationId": APPLICATION_ID, 
-        "automationId": null, 
-        "created": "2015-11-24 05:43:07", 
-        "id": NOTIFICATION_ID, 
+        "applicationId": APPLICATION_ID,
+        "automationId": null,
+        "created": "2015-11-24 05:43:07",
+        "id": NOTIFICATION_ID,
         "segment": {
-            "applicationId": APPLICATION_ID, 
-            "created": "2015-11-24 05:17:11", 
-            "id": SEGMENT_ID, 
-            "invisible": false, 
-            "modified": "2015-11-24 05:22:25", 
-            "name": "SEGMENT_NAME", 
-            "query": "SEGMENT_QUERY", 
+            "applicationId": APPLICATION_ID,
+            "created": "2015-11-24 05:17:11",
+            "id": SEGMENT_ID,
+            "invisible": false,
+            "modified": "2015-11-24 05:22:25",
+            "name": "SEGMENT_NAME",
+            "query": "SEGMENT_QUERY",
             "size": 1
-        }, 
-        "segmentId": SEGMENT_ID, 
-        "speed": null, 
-        "status": "completed", 
-        "tagId": TAG_ID, 
+        },
+        "segmentId": SEGMENT_ID,
+        "speed": null,
+        "status": "completed",
+        "tagId": TAG_ID,
         "trials": [
             {
-                "automationTrialId": null, 
-                "badge": true, 
-                "extra": "{"growthpush":{"notificationId":NOTIFICATION_ID}}", 
-                "id": 570617, 
-                "notificationId": NOTIFICATION_ID, 
-                "scheduled": "2015-11-24 05:43:00", 
-                "sound": true, 
-                "status": "completed", 
+                "automationTrialId": null,
+                "badge": true,
+                "extra": "{"growthpush":{"notificationId":NOTIFICATION_ID}}",
+                "id": 570617,
+                "notificationId": NOTIFICATION_ID,
+                "scheduled": "2015-11-24 05:43:00",
+                "sound": true,
+                "status": "completed",
                 "text": "PUSH_TEXT"
             }
         ]
@@ -145,7 +145,7 @@ curl -X GET \
 
 ### Create Notification
 
-**POST** https://api.growthpush.com/3/notifications
+**POST：** https://api.growthpush.com/3/notifications
 
 **Request**
 
@@ -163,14 +163,14 @@ curl -X GET \
 
 ```
 curl -X POST \
-  -H 'Accept: application/json' \
-  --data "applicationId=${APPLICATION_ID}" \
-  --data "credentialId=${CREDENTIAL_ID}" \
-  --data-urlencode "text=${TEXT}" \
-  https://api.growthpush.com/3/notifications
+    -H 'Accept: application/json' \
+    --data "applicationId=${APPLICATION_ID}" \
+    --data "credentialId=${CREDENTIAL_ID}" \
+    --data-urlencode "text=${TEXT}" \
+    https://api.growthpush.com/3/notifications
 ```
 
-**Response**
+**Respons**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -185,11 +185,11 @@ curl -X POST \
 
 # Growth Analytics API
 
-## Segments
+## Get Segment
 
-### Get Segment
+### GET
 
-**GET** https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}
+**GET：** https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}
 
 **Request**
 
@@ -200,13 +200,13 @@ curl -X POST \
 
 ```
 curl -X GET \
-  -H 'Accept: application/json' \
-  -G \
-  --data "credentialId=${CREDENTIAL_ID}" \
-  https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}
+    -H 'Accept: application/json' \
+    -G \
+    --data "credentialId=${CREDENTIAL_ID}" \
+    https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}
 ```
 
-**Response**
+**Respons**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -221,37 +221,38 @@ curl -X GET \
 
 ```
 {
-  "created": "2015-11-20T08:41:25+0000",
-  "description": "",
-  "name": "SEGMENT_NAME",
-  "id": "SEGMENT_ID",
-  "size": 14255,
-  "query": {
-    "type": "and",
-    "note": null,
-    "segmentQueries": [
-      {
+    "created": "2015-11-20T08:41:25+0000",
+    "description": "",
+    "name": "SEGMENT_NAME",
+    "id": "SEGMENT_ID",
+    "size": 14255,
+    "query": {
         "type": "and",
-        "note": "customSegment",
+        "note": null,
         "segmentQueries": [
-          {
-            "type": "tag",
-            "note": null,
-            "tagId": "TAG_ID",
-            "operator": "equal",
-            "value": "0"
-          },
-          ...
+            {
+                "type": "and",
+                "note": "customSegment",
+                "segmentQueries": [
+                    {
+                        "type": "tag",
+                        "note": null,
+                        "tagId": "TAG_ID",
+                        "operator": "equal",
+                        "value": "0"
+                    },
+                    ...
+                ]
+            }
         ]
-      }
-    ]
-  }
+    }
 }
 ```
 
+<!--
 ### Get Segment Clients
 
-**GET** https://api.analytics.growthbeat.com/1/segments/client_ids
+**GET：** https://api.analytics.growthbeat.com/1/segments/client_ids
 
 **Request**
 
@@ -262,19 +263,19 @@ curl -X GET \
 |segmentQuery|String|YES|||queryオブジェクト|
 |begin|String|NO|request time||DateTime|
 |end|String|NO|request time||DateTime|
-|cachable|boolean|NO|false||Get cache data|
+|cachable|Boolean|NO|false|true<br>false|キャッシュデータの取得|
 
 ```
 curl -X GET \
-  -H 'Accept: application/json' \
-  -G \
-  --data "credentialId=${CREDENTIAL_ID}" \
-  --data "applicationId=${APPLICATION_ID}" \
-  --data "segmentQuery=${QUERY_OBJECT}" \
-  https://api.analytics.growthbeat.com/1/segments/client_ids
+    -H 'Accept: application/json' \
+    -G \
+    --data "credentialId=${CREDENTIAL_ID}" \
+    --data "applicationId=${APPLICATION_ID}" \
+    --data "segmentQuery=${QUERY_OBJECT}" \
+    https://api.analytics.growthbeat.com/1/segments/client_ids
 ```
 
-**Response**
+**Respons**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -282,12 +283,13 @@ curl -X GET \
 | Body |  | List | クライアントID |
 
 ```
-["hoge","fuga", ...]
+["CLIENT_ID_01","CLIENT_ID_02", ...]
 ```
+-->
 
 ### Update Segment
 
-**PUT** https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}
+**PUT：** https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}
 
 **Request**
 
@@ -296,26 +298,26 @@ curl -X GET \
 |credentialId|String|YES|||クレデンシャルキー|
 |segmentId|String|YES|||セグメントID|
 |name|String|YES|||セグメント名|
-|description|String|YES|||セグメント説明|
+|description|String|YES|||セグメントの説明|
 |query|String|NO|null||queryオブジェクト|
 
 ```
 curl -X PUT \
-  -H 'Accept: application/json' \
-  -G \
-  --data "credentialId=${CREDENTIAL_ID}" \
-  --data "name=${SEGMENT_NAME}" \
-  --data "description=${SEGMENT_DESCRIPTION}" \
-  https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}
+    -H 'Accept: application/json' \
+    -G \
+    --data "credentialId=${CREDENTIAL_ID}" \
+    --data "name=${SEGMENT_NAME}" \
+    --data "description=${SEGMENT_DESCRIPTION}" \
+    https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}
 ```
 
-**Response**
+**Respons**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
 | Header | Status | Int | 200 |
 | Body | created | String | 作成日 |
-| | description | String | セグメント説明 |
+| | description | String | セグメントの説明 |
 | | name | String | セグメント名 |
 | | id | String | セグメントID |
 | | size | Int | セグメント対象Client数 |
@@ -323,18 +325,19 @@ curl -X PUT \
 
 ```
 {
-  "created": "2015-11-09T10:58:38+0000",
-  "description": "${SEGMENT_DESCRIPTION}",
-  "name": "${SEGMENT_NAME}",
-  "id": "SEGMENT_ID",
-  "size": 1,
-  "query": null
+    "created": "2015-11-09T10:58:38+0000",
+    "description": "${SEGMENT_DESCRIPTION}",
+    "name": "${SEGMENT_NAME}",
+    "id": "SEGMENT_ID",
+    "size": 1,
+    "query": null
 }
 ```
 
+<!--
 ### Update Segment Size
 
-**PUT** https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}/size
+**PUT：** https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}/size
 
 **Request**
 
@@ -345,13 +348,13 @@ curl -X PUT \
 
 ```
 curl -X PUT \
-  -H 'Accept: application/json' \
-  -G \
-  --data "credentialId=${CREDENTIAL_ID}" \
-  https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}/size
+    -H 'Accept: application/json' \
+    -G \
+    --data "credentialId=${CREDENTIAL_ID}" \
+    https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}/size
 ```
 
-**Response**
+**Respons**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -361,24 +364,27 @@ curl -X PUT \
 | | id | String | セグメントID |
 | | size | Int | セグメント対象Client数 |
 | | query | String | queryオブジェクト |
-| | description | String | セグメント説明 |
+| | description | String | セグメントの説明 |
 
 ```
-  {
-  "created": "2015-11-09T10:58:38+0000",
-  "name": "Androidのみ",
-  "id": "SEGMENT_ID",
-  "size": 1,
-  "query": {
-    "type": "tag",
-    "note": null,
-    "tagId": "Tag:applicationId:Custom:tagname",
-    "operator": "begin_with",
-    "value": "Android"
-  },
-  "description": "SEGMENT_DESCRIPTION"
+{
+    "created": "2015-11-09T10:58:38+0000",
+    "name": "Androidのみ",
+    "id": "SEGMENT_ID",
+    "size": 1,
+    "query": {
+        "type": "tag",
+        "note": null,
+        "tagId": "Tag:applicationId:Custom:tagname",
+        "operator": "begin_with",
+        "value": "Android"
+    },
+    "description": "SEGMENT_DESCRIPTION"
 }
 ```
+-->
+
+<!--
 
 ### Delete Segment
 
@@ -394,34 +400,36 @@ curl -X PUT \
 
 ```
 curl -X DELETE \
-  -H 'Accept: application/json' \
-  -G \
-  --data "credentialId=${CREDENTIAL_ID}" \
-  https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}
+    -H 'Accept: application/json' \
+    -G \
+    --data "credentialId=${CREDENTIAL_ID}" \
+    https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}
 ```
+
+-->
 
 ## Tags
 
 ### Get Tag
 
-**PUT** https://api.analytics.growthbeat.com/1/tags/${TAG_ID}
+**GET：** https://api.analytics.growthbeat.com/1/tags/${TAG_ID}
 
 **Request**
 
 |Name|Type|Required|Default|Options|Notes|
 |:---|:---|:---|:---|:---|:---|
 |credentialId|String|YES|||クレデンシャルキー|
-|tagId|String|YES|||セグメントID|
+|tagId|String|YES|||タグID|
 
 ```
 curl -X GET \
-  -H 'Accept: application/json' \
-  -G \
-  --data "credentialId=${CREDENTIAL_ID}" \
-  https://api.analytics.growthbeat.com/1/tags/${TAG_ID}
+    -H 'Accept: application/json' \
+    -G \
+    --data "credentialId=${CREDENTIAL_ID}" \
+    https://api.analytics.growthbeat.com/1/tags/${TAG_ID}
 ```
 
-**Response**
+**Respons**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -433,16 +441,16 @@ curl -X GET \
 
 ```
 {
-  "created": "2015-07-16T07:24:58+0000",
-  "description": "",
-  "name": "ユーザーID",
-  "id": "Tag:PIaD6TaVt7wvKwao:Default:UserID"
+    "created": "2015-07-16T07:24:58+0000",
+    "description": "タグの説明",
+    "name": "タグ名",
+    "id": "Tag:applicationId:Default:tagName"
 }
 ```
 
 ### Update Tag
 
-**PUT** https://api.analytics.growthbeat.com/1/tags/${TAG_ID}
+**PUT：** https://api.analytics.growthbeat.com/1/tags/${TAG_ID}
 
 **Request**
 
@@ -454,15 +462,15 @@ curl -X GET \
 
 ```
 curl -X PUT \
-  -H 'Accept: application/json' \
-  -G \
-  --data "credentialId=${CREDENTIAL_ID}" \
-  --data "name=テストNAME" \
-  --data "description=ユーザーID" \
-  https://api.analytics.growthbeat.com/1/tags/${TAG_ID}
+    -H 'Accept: application/json' \
+    -G \
+    --data "credentialId=${CREDENTIAL_ID}" \
+    --data "name=${TAG_NAME}" \
+    --data "description=${TAG_DESCRIPTION}" \
+    https://api.analytics.growthbeat.com/1/tags/${TAG_ID}
 ```
 
-**Response**
+**Respons**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -474,16 +482,17 @@ curl -X PUT \
 
 ```
 {
-  "created": "2015-07-16T07:24:58+0000",
-  "description": "description",
-  "name": "displayname",
-  "id": "Tag:PIaD6TaVt7wvKwao:Default:UserID"
+    "created": "2015-07-16T07:24:58+0000",
+    "description": "TAG_DESCRIPTION",
+    "name": "TAG_NAME",
+    "id": "Tag:applicationId:Default:tagName"
 }
 ```
 
+<!--
 ### Delete Tag
 
-**PUT** https://api.analytics.growthbeat.com/1/tags/${TAG_ID}
+**PUT：** https://api.analytics.growthbeat.com/1/tags/${TAG_ID}
 
 **Request**
 
@@ -501,11 +510,13 @@ curl -X DELETE \
   https://api.analytics.growthbeat.com/1/tags/${TAG_ID}
 ```
 
+-->
+
 ## Events
 
 ### Get Event
 
-**GET** https://api.analytics.growthbeat.com/1/events/${EVENT_ID}
+**GET：** https://api.analytics.growthbeat.com/1/events/${EVENT_ID}
 
 **Request**
 
@@ -522,7 +533,7 @@ curl -X GET \
   https://api.analytics.growthbeat.com/1/events/${EVENT_ID}
 ```
 
-**Response**
+**Respons**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -537,13 +548,13 @@ curl -X GET \
   "created": "2015-07-16T07:24:57+0000",
   "description": "",
   "name": "アプリ起動",
-  "id": "Event:PIaD6TaVt7wvKwao:Default:Open"
+  "id": "Event:applicationId:Default:eventName"
 }
 ```
 
-### Get Event List
+### List Events
 
-**GET** https://api.analytics.growthbeat.com/1/events/
+**GET：** https://api.analytics.growthbeat.com/1/events/
 
 **Request**
 
@@ -560,12 +571,12 @@ curl -X GET \
   -H 'Accept: application/json' \
   -G \
   --data "credentialId=${CREDENTIAL_ID}" \
-  --data "parentEventId=Event%3aPIaD6TaVt7wvKwao%3aDefault" \
+  --data "parentEventId=Event%3aapplicationId%3aDefault" \
   --data "ascending=ascending" \
   https://api.analytics.growthbeat.com/1/events/
 ```
 
-**Response**
+**Respons**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -581,7 +592,7 @@ curl -X GET \
     "created": "2015-07-16T07:24:57+0000",
     "description": "",
     "name": "アプリ終了",
-    "id": "Event:PIaD6TaVt7wvKwao:Default:Close"
+    "id": "Event:applicationId:Default:Close"
   },
   ...
 ]
@@ -589,7 +600,7 @@ curl -X GET \
 
 ### Update Event
 
-**PUT** https://api.analytics.growthbeat.com/1/events/${EVENT_ID}
+**PUT：** https://api.analytics.growthbeat.com/1/events/${EVENT_ID}
 
 **Request**
 
@@ -608,7 +619,7 @@ curl -X PUT \
   https://api.analytics.growthbeat.com/1/events/${EVENT_ID}
 ```
 
-**Response**
+**Respons**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -627,6 +638,7 @@ curl -X PUT \
 }
 ```
 
+<!--
 ### Delete Event
 
 **DELETE** https://api.analytics.growthbeat.com/1/events/${EVENT_ID}
@@ -640,11 +652,12 @@ curl -X PUT \
 
 ```
 curl -X DELETE \
-  -H 'Accept: application/json' \
-  -G \
-  --data "credentialId=${CREDENTIAL_ID}" \
-  https://api.analytics.growthbeat.com/1/events/${EVENT_ID}
+    -H 'Accept: application/json' \
+    -G \
+    --data "credentialId=${CREDENTIAL_ID}" \
+    https://api.analytics.growthbeat.com/1/events/${EVENT_ID}
 ```
+-->
 
 # Growthbeat API
 
@@ -652,7 +665,7 @@ curl -X DELETE \
 
 ### Get Accounts
 
-**GET** https://api.growthbeat.com/1/accounts/${ACCOUNT_ID}
+**GET：** https://api.growthbeat.com/1/accounts/${ACCOUNT_ID}
 
 **Request**
 
@@ -663,13 +676,13 @@ curl -X DELETE \
 
 ```
 curl -X GET \
-  -H 'Accept: application/json' \
-  -G \
-  --data "credentialId=${CREDENTIAL_ID}" \
-  https://api.growthpush.com/1/accounts/${ACCOUNT_ID}
+    -H 'Accept: application/json' \
+    -G \
+    --data "credentialId=${CREDENTIAL_ID}" \
+    https://api.growthpush.com/1/accounts/${ACCOUNT_ID}
 ```
 
-**Response**
+**Respons**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -688,12 +701,11 @@ curl -X GET \
 }
 ```
 
-
 ## Applications
 
 ### Get Application
 
-**GET** https://api.growthbeat.com/1/applications/${APPLICATION_ID}
+**GET：** https://api.growthbeat.com/1/applications/${APPLICATION_ID}
 
 **Request**
 
@@ -710,7 +722,7 @@ curl -X GET \
   https://api.growthbeat.com/1/applications/${APPLICATION_ID}
 ```
 
-**Response**
+**Respons**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -727,9 +739,9 @@ curl -X GET \
 }
 ```
 
-### Get Application List
+### List Application
 
-**GET** https://api.growthbeat.com/1/applications
+**GET：** https://api.growthbeat.com/1/applications
 
 **Request**
 
@@ -747,7 +759,7 @@ curl -X GET \
   https://api.growthbeat.com/1/applications
 ```
 
-**Response**
+**Respons**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -759,18 +771,17 @@ curl -X GET \
 ```
 [
     {
-        "created": "2014-06-26T06:44:55+0000", 
-        "id": "APPLICATION_ID", 
+        "created": "2014-06-26T06:44:55+0000",
+        "id": "APPLICATION_ID",
         "name": "APPLICATION_NAME"
     },
     ...
 ]
 ```
 
-
 ### Create Application
 
-**POST** https://api.growthbeat.com/1/applications
+**POST：** https://api.growthbeat.com/1/applications
 
 **Request**
 
@@ -788,7 +799,7 @@ curl -X POST \
   https://api.growthpush.com/3/notifications
 ```
 
-**Response**
+**Respons**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -810,7 +821,7 @@ curl -X POST \
 
 ### Get Credential
 
-**GET** https://api.growthbeat.com/1/credentials
+**GET：** https://api.growthbeat.com/1/credentials
 
 **Request**
 
@@ -828,7 +839,7 @@ curl -X GET \
   https://api.growthbeat.com/1/credentials
 ```
 
-**Response**
+**Respons**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -852,11 +863,13 @@ curl -X GET \
 ```
 
 
+<!--
+
 ## Plans
 
 ### Get Plan
 
-**GET** https://api.growthbeat.com/1/plans
+**GET：** https://api.growthbeat.com/1/plans
 
 **Request**
 
@@ -874,7 +887,7 @@ curl -X GET \
   https://api.growthbeat.com/1/plans
 ```
 
-**Response**
+**Respons**
 
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
@@ -898,3 +911,4 @@ curl -X GET \
     "capacity":10000000000000
 }
 ```
+-->

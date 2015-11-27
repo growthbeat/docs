@@ -33,7 +33,7 @@ API を使用すると API ごとにリクエスト数が加算されます。�
 # データ形式
 
 APIとのデータの送受信にはJSONを利用します。JSONをリクエストボディに含める場合、リクエストのContent-Typeヘッダに `application/json` を指定し、リクエストヘッダーは `application/x-www-form-urlencoded` で送信してください。
-GETリクエストにバラメータを含める場合にはURIクエリを利用します。日時を表現する場合には、[ISO 8601形式](https://ja.wikipedia.org/wiki/ISO_8601) の文字列を利用します。
+GETリクエストにバラメータを含める場合にはURIクエリを利用します。
 
 **例**
 
