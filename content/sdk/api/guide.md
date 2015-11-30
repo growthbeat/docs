@@ -35,7 +35,9 @@ API を使用すると API ごとにリクエスト数が加算されます。�
 APIとのデータの送受信にはJSONを利用します。JSONをリクエストボディに含める場合、リクエストのContent-Typeヘッダに `application/json` を指定し、リクエストヘッダーは `application/x-www-form-urlencoded` で送信してください。
 GETリクエストにバラメータを含める場合にはURIクエリを利用します。
 
-**例**
+正常なレスポンスの場合は、リファレンスにあるAPIごとのJSON形式のレスポンスが返ります。エラーレスポンス時には、エラーコード、エラーメッセージのみのJSON形式のレスポンスが返ります。
+
+**正常なレスポンス例**
 
 ```
 curl -X GET \
@@ -48,6 +50,21 @@ curl -X GET \
     "name":"Subaccount for Growthbeat",
     "id":"YOUR_ACCOUNT_ID",
     "created":"2014-06-26T06:44:56+0000"
+}
+```
+
+**エラーレスポンス例**
+
+```
+curl -X GET \
+-H 'Accept: application/json' \
+'https://api.growthbeat.com/1/accounts/YOUR_ACCOUNT_ID?credentialId=YOUR_API_KEY'
+```
+
+```
+{
+    "code":null,
+    "message":"Bad Request"
 }
 ```
 
