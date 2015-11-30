@@ -95,6 +95,11 @@ dependencies {
 * YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。
 
 ### アプリ内メッセージの設定（Growth Message）
+`<manifest>`タグ内に下記パーミッションを追加してください。
+
+```xml
+<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+```
 
 `<application>`タグ内に下記を追加してください。
 
