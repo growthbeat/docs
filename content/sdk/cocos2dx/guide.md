@@ -76,6 +76,10 @@ growthbeat.jarは、下記設定が必須となります。
 <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 <uses-permission android:name="android.permission.VIBRATE" />
 <uses-permission android:name="android.permission.WAKE_LOCK" />
+<uses-permission android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE" />
+<permission
+    android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE"
+    android:protectionLevel="signature" />
 
 <!--Growth Messageのバナー型の配信をする場合に必要となります。。 -->
 <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
