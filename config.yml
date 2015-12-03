@@ -8,7 +8,7 @@ uglyUrls:       false
 metaDataFormat: "yaml"
 
 blackfriday:
-  plainIdAnchors: true
+  plainIDAnchors: true
 
 Params:
   # Date Format
