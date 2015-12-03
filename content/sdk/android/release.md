@@ -6,6 +6,24 @@ draft: false
 title: リリースノート
 ---
 
+# バージョン 1.2.6
+
+## 変更点
+
+- Registration tokenをInstanceIDクラスで取得するように変更しました。
+- Registration tokenの更新通知を受け取るクラスを追加しました。
+- Push通知受信クラスをBroadcastReceiverからGcmListenerServiceに変更しました。
+- Growth Pushのdeprecatedコメントを削除しました。
+
+## ドキュメント
+
+- Growth Pushの導入方法を変更しました。
+
+## バグ
+
+- スレッドがデッドロックする不具合を修正しました。
+- プッシュ通知の通知エリアのアイコン背景色が変更できない不具合を修正しました。
+
 # バージョン 1.2.5
 
 ## 新機能
