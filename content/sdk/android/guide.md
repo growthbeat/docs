@@ -1,6 +1,6 @@
 ---
 categories: 'sdk'
-date: 2015-09-27T23:50:00+09:00
+date: 2015-12-03T23:50:00+09:00
 description: 'Growthbeat Android の導入方法について説明します'
 draft: false
 title: Growthbeat Android Gudeliene
@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.growthbeat:growthbeat-android:1.2.5@aar'
+    compile 'com.growthbeat:growthbeat-android:1.2.6@aar'
 }
 ```
 
@@ -48,7 +48,7 @@ build.gradleに下記を追加してください。バージョンはAndroidの�
 
 ```
 dependencies {
-    compile 'com.google.android.gms:play-services:8.1.0'
+    compile 'com.google.android.gms:play-services:8.3.0'
 }
 ```
 
@@ -81,12 +81,30 @@ dependencies {
     android:configChanges="orientation|keyboardHidden"
     android:launchMode="singleInstance"
     android:theme="@android:style/Theme.Translucent" />
-
+<service
+    android:name="com.growthpush.TokenRefreshService"
+    android:exported="false">
+    <intent-filter>
+        <action android:name="com.google.android.gms.iid.InstanceID"/>
+    </intent-filter>
+</service>
+<service android:name="com.growthpush.RegistrationIntentService"/>
+<service
+    android:name="com.growthpush.ReceiverService"
+    android:exported="false" >
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+    </intent-filter>
+</service>
 <receiver
-    android:name="com.growthpush.BroadcastReceiver"
+    android:name="com.google.android.gms.gcm.GcmReceiver"
+    android:exported="true"
     android:permission="com.google.android.c2dm.permission.SEND" >
     <intent-filter>
         <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <category android:name="YOUR_PACKAGE_NAME" />
+    </intent-filter>
+    <intent-filter>
         <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
         <category android:name="YOUR_PACKAGE_NAME" />
     </intent-filter>
@@ -115,12 +133,12 @@ dependencies {
 
 ```xml
 <receiver
-	    android:name="com.growthbeat.link.InstallReferrerReceiver"
-	    android:enabled="true"
-	    android:exported="true">
-	    <intent-filter>
-	        <action android:name="com.android.vending.INSTALL_REFERRER" />
-	    </intent-filter>
+    android:name="com.growthbeat.link.InstallReferrerReceiver"
+    android:enabled="true"
+    android:exported="true">
+    <intent-filter>
+        <action android:name="com.android.vending.INSTALL_REFERRER" />
+    </intent-filter>
 </receiver>
 ```
 
