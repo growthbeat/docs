@@ -170,17 +170,7 @@ SDKには、GBIntentHandlerというプロトコルが定義されており、�
         NSDictionary *extra = customIntent.extra;
         NSLog(@"extra: %@", extra);
         return YES;
-    }]];
-```
-
-こうして定義したクラスを GrowthbeatCore クラスの setIntentHandlers: に設定することで、利用可能となります。
-
-```objc
-NSMutableArray *intentHandlers = [NSMutableArray array];
-[intentHandlers addObject:[[GBUrlIntentHandler alloc] init]];
-[intentHandlers addObject:[[GBNoopIntentHandler alloc] init]];
-[intentHandlers addObject:[[MyCustomIntentHandler alloc] init]];
-[[GrowthbeatCore sharedInstance] setIntentHandlers:intentHandlers];
+}]];
 ```
 
 # Growth Push SDKからの乗り換え方法について
