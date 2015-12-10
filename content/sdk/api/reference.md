@@ -747,14 +747,14 @@ curl -X GET \
 
 |Name|Type|Required|Default|Options|Notes|
 |:--|:--|:--|:--|:--|:--|
-| applicationId | String | YES ||| アプリケーションID |
+| accountId | String | YES ||| アカウントID |
 | credentialId | String | YES ||| クレデンシャルキー |
 
 ```
 curl -X GET \
   -H 'Accept: application/json' \
   -G \
-  --data "applicationId=${APPLICATION_ID}" \
+  --data "accountId=${ACCOUNT_ID}" \
   --data "credentialId=${CREDENTIAL_ID}" \
   https://api.growthbeat.com/1/applications
 ```
