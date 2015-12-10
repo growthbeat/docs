@@ -71,6 +71,16 @@ SDK初期化時に作成される、GrowthbeatのユニークIDを取得でき�
 - (void)getClient:(void(^)(GBClient *client))callback;
 ```
 
+## IntentHandlerを追加する。
+
+```objc
+[[GrowthbeatCore sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
+        NSDictionary *extra = customIntent.extra;
+        NSLog(@"extra: %@", extra);
+        return YES;
+}]];
+```
+
 # Growth Analytics API
 
 ## GrowthAnalyticsインスタンスの取得
@@ -391,11 +401,19 @@ GrowthPushインスタンスを取得します。
 - (void)requestDeviceTokenWithEnvironment:(GPEnvironment)newEnvironment;
 ```
 
+このメソッドを実行すると、アプリ初回起動時に、プッシュ通知の許可ダイアログが表示されます。
+
 ### デバイストークンの送信
 
 ```objc
-- (void)setDeviceToken:(NSData *)deviceToken;
+- (void)setDeviceToken:(id)deviceToken;
 ```
+
+AppDelegateクラス
+
+`- (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken`
+
+のメソッドで上記を必ず実装してください。
 
 ## プッシュ通知の有効・無効を判定
 
