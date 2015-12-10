@@ -6,6 +6,24 @@ draft: false
 title: リリースノート
 ---
 
+# バージョン 1.2.6
+
+Unity version 5.3.0f4
+
+## 新機能
+
+- Growth Linkに対応
+
+## 変更点
+
+- インターフェースを変更
+- Unity5以降の対応
+- Asset Storeに追加
+
+## バグ
+
+- Growth Pushデバイストークンが正しく取得できるように修正
+
 # バージョン 1.2.3
 
 - Growth Messageに対応

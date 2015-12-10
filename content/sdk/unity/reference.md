@@ -47,6 +47,47 @@ public void Start ()
 public void Stop ()
 ```
 
+## ハンドラ
+
+### 処理をしないハンドラ
+
+```cs
+IntentHandler.GetInstance ().AddNoopIntentHandler ();
+```
+
+### ブラウザを開くハンドラ
+
+```cs
+IntentHandler.GetInstance ().AddUrlIntentHandler ();
+```
+
+### カスタムハンドラ
+
+```cs
+IntentHandler.GetInstance ().AddCustomIntentHandler ("GameObjectName", "MethodName");
+```
+
+例.)
+
+```
+public class GrowthbeatComponent : MonoBehaviour
+{
+
+    void Awake ()
+    {
+        IntentHandler.GetInstance ().AddCustomIntentHandler ("GrowthbeatComponent", "HandleCustomIntent");
+    }
+
+    void HandleCustomIntent(string extra) {
+        Debug.Log("Enter HandleCustomIntent");
+        Debug.Log(extra);
+    }
+
+}
+```
+
+extraはJSON型の文字列が戻ってきます。
+
 # Growth Analytics API
 
 ## Growth Analytics インスタンスの取得
@@ -463,4 +504,10 @@ public static GrowthMessage GetInstance ()
 
 # Growth Link API
 
-coming soon...
+## Growth Link初期化
+
+Growth Linkを初期化します。
+
+```cs
+GrowthLink.GetInstance().Initialize (applicationId, credentialId);
+```
