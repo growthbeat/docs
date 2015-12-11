@@ -701,7 +701,7 @@ curl -X GET \
 |:---|:---|:---|:---|:---|:---|
 |credentialId|String|YES|||クレデンシャルキー|
 |tagId|String|YES|||タグID|
-|clientId|String|YES|||タグID|
+|clientId|String|YES|||端末ID|
 
 ```
 curl -X POST \
@@ -962,7 +962,7 @@ curl -X GET \
 |:---|:---|:---|:---|:---|:---|
 |credentialId|String|YES|||クレデンシャルキー|
 |eventId|String|YES|||イベントID|
-|clientId|String|YES|||イベントID|
+|clientId|String|YES|||端末ID|
 |begin|String|YES|||範囲時間の開始時刻||
 |end|String|YES|||範囲時間の終了時刻||
 |exclusiveId|String|NO|||このID以降の取得|
@@ -1019,7 +1019,7 @@ curl -X GET \
 |Name|Type|Required|Default|Options|Notes|
 |:---|:---|:---|:---|:---|:---|
 |credentialId|String|YES|||クレデンシャルキー|
-|eventId|String|YES|||タグID|
+|eventId|String|YES|||イベントID|
 |clientId|String|YES|||タグID|
 |properties|String|YES|||トラッキングプロパティ|
 
