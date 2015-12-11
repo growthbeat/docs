@@ -512,6 +512,227 @@ curl -X DELETE \
 
 -->
 
+## ClientTag
+
+### GET ClientTag
+
+**GET** https://api.analytics.growthbeat.com/1/client_tags/
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:---|:---|:---|:---|:---|:---|
+|credentialId|String|YES|||クレデンシャルキー|
+|tagId|String|YES|||タグID|
+|exclusiveId|String|NO|||このID以降の取得|
+|segmentQuery|String|NO|||セグメント|
+|order|Order|NO||ascending|ソート|ascending or desending|
+|limit|int|NO||１回の取得の件数上限|INT最大値|
+
+```
+curl -X GET \
+    -H 'Accept: application/json' \
+    -G \
+    --data "credentialId=${CREDENTIAL_ID}" \
+    --data "tagId=${TAG_ID}" \
+    --data "segmentQuery=${SEGMENT_QUERY}" \
+    --data "exclusiveId=${EXCLUSIVEID}" \
+    --data "order=${ORDER}" \
+    --data "limit=${LIMIT}" \
+    https://api.analytics.growthbeat.com/1/client_tags
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | clientId | String | 端末ID |
+| | tagId | String | タグID |
+| | updated | String | 更新日 |
+| | value | String | タグ値 |
+
+```
+[
+    {
+        "clientId":"PIfOb4HJ4B6gz18f",
+        "tagId":"Tag:PIaD6TaVt7wvKwao:Default:AdvertisingID",
+        "updated":"2015-07-17T04:39:33+0000",
+        "value":"7E9354C1-AB0A-4EB7-AD38-13D22BBE1CD2"
+    },
+    {
+        "clientId":"PIfObLDXgq2Pp13t",
+        "tagId":"Tag:PIaD6TaVt7wvKwao:Default:AdvertisingID",
+        "updated":"2015-07-17T06:28:10+0000",
+        "value":"7E9354C1-AB0A-4EB7-AD38-13D22BBE1CD2"
+    },
+    {
+        "clientId":"PIfOlNbuo0xQ0Nyi",
+        "tagId":"Tag:PIaD6TaVt7wvKwao:Default:AdvertisingID",
+        "updated":"2015-07-17T04:40:12+0000",
+        "value":"7E9354C1-AB0A-4EB7-AD38-13D22BBE1CD2"
+    }
+]
+```
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:---|:---|:---|:---|:---|:---|
+|credentialId|String|YES|||クレデンシャルキー|
+|clientId|String|YES|||端末ID|
+
+```
+curl -X GET \
+    -H 'Accept: application/json' \
+    -G \
+    --data "credentialId=${CREDENTIAL_ID}" \
+    --data "clientId=${CLIENT_ID}" \
+    https://api.analytics.growthbeat.com/1/client_tags
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | clientId | String | 端末ID |
+| | tagId | String | タグID |
+| | updated | String | 更新日 |
+| | value | String | タグ値 |
+
+```
+[
+    {
+        clientId: "PIfOb4HJ4B6gz18f",
+        tagId: "Tag:PIaD6TaVt7wvKwao:Default:OS",
+        updated: "2015-07-17T04:39:33+0000",
+        value: "iOS 8.4"
+    },
+    {
+        clientId: "PIfOb4HJ4B6gz18f",
+        tagId: "Tag:PIaD6TaVt7wvKwao:Default:TrackingEnabled",
+        updated: "2015-07-17T04:39:33+0000",
+        value: "true"
+    },
+    {
+        clientId: "PIfOb4HJ4B6gz18f",
+        tagId: "Tag:PIaD6TaVt7wvKwao:Default:TimeZoneOffset",
+        updated: "2015-07-17T04:39:33+0000",
+        value: "9"
+    },
+    {
+        clientId: "PIfOb4HJ4B6gz18f",
+        tagId: "Tag:PIaD6TaVt7wvKwao:Default:AppVersion",
+        updated: "2015-07-17T04:39:33+0000",
+        value: "1.0"
+    },
+    {
+        clientId: "PIfOb4HJ4B6gz18f",
+        tagId: "Tag:PIaD6TaVt7wvKwao:Default:TimeZone",
+        updated: "2015-07-17T04:39:33+0000",
+        value: "Asia/Tokyo"
+    },
+    {
+        clientId: "PIfOb4HJ4B6gz18f",
+        tagId: "Tag:PIaD6TaVt7wvKwao:Default:AdvertisingID",
+        updated: "2015-07-17T04:39:33+0000",
+        value: "7E9354C1-AB0A-4EB7-AD38-13D22BBE1CD2"
+    },
+    {
+        clientId: "PIfOb4HJ4B6gz18f",
+        tagId: "Tag:PIaD6TaVt7wvKwao:Default:DeviceModel",
+        updated: "2015-07-17T04:39:33+0000",
+        value: "iPhone Simulator"
+    },
+    {
+        clientId: "PIfOb4HJ4B6gz18f",
+        tagId: "Tag:PIaD6TaVt7wvKwao:Default:Language",
+        updated: "2015-07-17T04:39:33+0000",
+        value: "en"
+    }
+]
+```
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:---|:---|:---|:---|:---|:---|
+|credentialId|String|YES|||クレデンシャルキー|
+|clientId|String|YES|||端末ID|
+|tagId|String|YES|||タグID|
+
+```
+curl -X GET \
+    -H 'Accept: application/json' \
+    -G \
+    --data "credentialId=${CREDENTIAL_ID}" \
+    --data "clientId=${CLIENT_ID}" \
+    --data "tagId=${TAG_ID}" \
+    https://api.analytics.growthbeat.com/1/client_tags
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | clientId | String | 端末ID |
+| | tagId | String | タグID |
+| | updated | String | 更新日 |
+| | value | String | タグ値 |
+
+```
+{
+    clientId: "PIfOb4HJ4B6gz18f",
+    tagId: "Tag:PIaD6TaVt7wvKwao:Default:DeviceModel",
+    updated: "2015-07-17T04:39:33+0000",
+    value: "iPhone Simulator"
+}
+```
+
+### POST ClientTag
+
+**POST** https://api.analytics.growthbeat.com/1/client_tags/
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:---|:---|:---|:---|:---|:---|
+|credentialId|String|YES|||クレデンシャルキー|
+|tagId|String|YES|||タグID|
+|clientId|String|YES|||タグID|
+
+```
+curl -X POST \
+    -H 'Accept: application/json' \
+    -G \
+    --data "credentialId=${CREDENTIAL_ID}" \
+    --data "tagId=${TAG_ID}" \
+    --data "clientId=${CLIENT_ID}" \
+    --data "value=${VALUE}" \
+    https://api.analytics.growthbeat.com/1/client_tags
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | clientId | String | 端末ID |
+| | tagId | String | タグID |
+| | updated | String | 更新日 |
+| | value | String | タグ値 |
+
+```
+{
+    "value":"15",
+    "updated":"2015-03-02T03:44:18+0000",
+    "tagId":"Tag:LBYtXQ26k6pHRZZB:Default:Level",
+    "clientId":"Oy1FwLQJXXQWRrxo"
+}
+```
+
 ## Events
 
 ### Get Event
@@ -658,6 +879,123 @@ curl -X DELETE \
     https://api.analytics.growthbeat.com/1/events/${EVENT_ID}
 ```
 -->
+
+## ClientEvent
+
+### GET ClientEvent
+
+**GET** https://api.analytics.growthbeat.com/1/client_events/
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:---|:---|:---|:---|:---|:---|
+|credentialId|String|YES|||クレデンシャルキー|
+|eventId|String|YES|||イベントID|
+|begin|String|NO|||範囲時間の開始時刻||
+|end|String|NO|||範囲時間の終了時刻||
+|exclusiveId|String|NO|||このID以降の取得|
+|order|Order|NO||ascending|ソート|ascending or desending|
+|limit|int|NO|100|１回の取得の件数上限|100が上限|
+
+```
+curl -X GET \
+    -H 'Accept: application/json' \
+    -G \
+    --data "credentialId=${CREDENTIAL_ID}" \
+    --data "eventId=${EVENT_ID}" \
+    --data "begin=${BEGIN}" \
+    --data "end=${END}" \
+    --data "exclusiveId=${EXCLUSIVEID}" \
+    --data "order=${ORDER}" \
+    --data "limit=${LIMIT}" \
+    https://api.analytics.growthbeat.com/1/client_events
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | id | String | ClientEventId |
+| | eventId | String | イベントID |
+| | clientId | String | 端末ID |
+| | properties | Map | トラックプロパティ |
+| | created | String | 作成日 |
+
+```
+[
+    {
+        "properties":{
+            "opponent":"CPU"
+        },
+        "id":"P5iQN7NLW8iY7W5t",
+        "created":"2015-03-02T00:56:14+0000",
+        "eventId":"Event:LBYtXQ26k6pHRZZB:Custom:Win",
+        "clientId":"Oy1FwLQJXXQWRrxo"
+    },
+    {
+        "properties":{
+            "opponent":"CPU"
+        },
+        "id":"P5iQN7NLW8iY7W5t",
+        "created":"2015-03-02T00:56:14+0000",
+        "eventId":"Event:LBYtXQ26k6pHRZZB:Custom:Win",
+        "clientId":"PIfObLDXgq2Pp13t"
+    },
+    {
+        "properties":{
+            "opponent":"CPU"
+        },
+        "id":"P5iQN7NLW8iY7W5t",
+        "created":"2015-03-02T00:56:14+0000",
+        "eventId":"Event:LBYtXQ26k6pHRZZB:Custom:Win",
+        "clientId":"PIfOlNbuo0xQ0Nyi"
+    }
+]
+```
+
+### POST ClientTag
+
+**POST** https://api.analytics.growthbeat.com/1/client_events/
+
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:---|:---|:---|:---|:---|:---|
+|credentialId|String|YES|||クレデンシャルキー|
+|tagId|String|YES|||タグID|
+|clientId|String|YES|||タグID|
+
+```
+curl -X POST \
+    -H 'Accept: application/json' \
+    -G \
+    --data "credentialId=${CREDENTIAL_ID}" \
+    --data "tagId=${TAG_ID}" \
+    --data "clientId=${CLIENT_ID}" \
+    --data "value=${VALUE}" \
+    https://api.analytics.growthbeat.com/1/client_tags
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | clientId | String | 端末ID |
+| | tagId | String | タグID |
+| | updated | String | 更新日 |
+| | value | String | タグ値 |
+
+```
+{
+    "value":"15",
+    "updated":"2015-03-02T03:44:18+0000",
+    "tagId":"Tag:LBYtXQ26k6pHRZZB:Default:Level",
+    "clientId":"Oy1FwLQJXXQWRrxo"
+}
+```
 
 # Growthbeat API
 
