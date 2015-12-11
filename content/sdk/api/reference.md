@@ -892,9 +892,10 @@ curl -X DELETE \
 |:---|:---|:---|:---|:---|:---|
 |credentialId|String|YES|||クレデンシャルキー|
 |eventId|String|YES|||イベントID|
-|begin|String|NO|||範囲時間の開始時刻||
-|end|String|NO|||範囲時間の終了時刻||
+|begin|String|YES|||範囲時間の開始時刻||
+|end|String|YES|||範囲時間の終了時刻||
 |exclusiveId|String|NO|||このID以降の取得|
+|filterQuery|String|NO|||抽出オプション|
 |order|Order|NO||ascending|ソート|ascending or desending|
 |limit|int|NO|100|１回の取得の件数上限|100が上限|
 
@@ -955,7 +956,61 @@ curl -X GET \
 ]
 ```
 
-### POST ClientTag
+**Request**
+
+|Name|Type|Required|Default|Options|Notes|
+|:---|:---|:---|:---|:---|:---|
+|credentialId|String|YES|||クレデンシャルキー|
+|eventId|String|YES|||イベントID|
+|clientId|String|YES|||イベントID|
+|begin|String|YES|||範囲時間の開始時刻||
+|end|String|YES|||範囲時間の終了時刻||
+|exclusiveId|String|NO|||このID以降の取得|
+|order|Order|NO||ascending|ソート|ascending or desending|
+|limit|int|NO|100|１回の取得の件数上限|100が上限|
+
+```
+curl -X GET \
+    -H 'Accept: application/json' \
+    -G \
+    --data "credentialId=${CREDENTIAL_ID}" \
+    --data "eventId=${EVENT_ID}" \
+    --data "clientId=${CLIENT_ID}" \
+    --data "begin=${BEGIN}" \
+    --data "end=${END}" \
+    --data "exclusiveId=${EXCLUSIVEID}" \
+    --data "order=${ORDER}" \
+    --data "limit=${LIMIT}" \
+    https://api.analytics.growthbeat.com/1/client_events
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | id | String | ClientEventId |
+| | eventId | String | イベントID |
+| | clientId | String | 端末ID |
+| | properties | Map | トラックプロパティ |
+| | created | String | 作成日 |
+
+```
+[
+    {
+        clientId: "PWYkCJIQvTGn4FGE",
+        eventId: "Event:PIaD6TaVt7wvKwao:Default:Install",
+        created: "2015-12-11T12:05:46+0000",
+        properties:
+        {
+            "name": "AppName"
+        },
+        id: "PWYkCSu2T2ILC3ua"
+    }
+]
+```
+
+### POST ClientEvent
 
 **POST** https://api.analytics.growthbeat.com/1/client_events/
 
@@ -964,17 +1019,19 @@ curl -X GET \
 |Name|Type|Required|Default|Options|Notes|
 |:---|:---|:---|:---|:---|:---|
 |credentialId|String|YES|||クレデンシャルキー|
-|tagId|String|YES|||タグID|
+|eventId|String|YES|||タグID|
 |clientId|String|YES|||タグID|
+|properties|String|YES|||トラッキングプロパティ|
 
 ```
 curl -X POST \
     -H 'Accept: application/json' \
     -G \
     --data "credentialId=${CREDENTIAL_ID}" \
-    --data "tagId=${TAG_ID}" \
+    --data "eventId=${TAG_ID}" \
     --data "clientId=${CLIENT_ID}" \
     --data "value=${VALUE}" \
+    --data "properties=${PROPERTIES}" \
     https://api.analytics.growthbeat.com/1/client_tags
 ```
 
@@ -983,16 +1040,20 @@ curl -X POST \
 |Response|Name|Type|Notes|
 |:--|:--|:--|:--|
 | Header | Status | Int | 200 |
-| Body | clientId | String | 端末ID |
-| | tagId | String | タグID |
-| | updated | String | 更新日 |
-| | value | String | タグ値 |
+| Body | id | String | ClientEventId |
+| | eventId | String | イベントID |
+| | clientId | String | 端末ID |
+| | properties | Map | トラックプロパティ |
+| | created | String | 作成日 |
 
 ```
 {
-    "value":"15",
-    "updated":"2015-03-02T03:44:18+0000",
-    "tagId":"Tag:LBYtXQ26k6pHRZZB:Default:Level",
+    "properties":{
+        "opponent":"CPU"
+    },
+    "id":"P5iQN7NLW8iY7W5t",
+    "created":"2015-03-02T00:56:14+0000",
+    "eventId":"Event:LBYtXQ26k6pHRZZB:Custom:Win",
     "clientId":"Oy1FwLQJXXQWRrxo"
 }
 ```
