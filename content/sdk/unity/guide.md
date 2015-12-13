@@ -37,6 +37,7 @@ Growthbeat.frameworkは、下記Frameworkが必須となります。
 1. CoreGraphics.framework
 1. SystemConfiguration.framework
 1. AdSupport.framework
+1. SafariServices.framework
 
 Xcodeプロジェクトに、依存するFrameworkを追加してください。
 
@@ -58,7 +59,10 @@ growthbeat.jarは、下記設定が必須となります。
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 
-<!--Growth Pushの機能として利用します。 -->
+<!-- under API 15 -->
+<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+<!-- for Growth Push -->
 <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 <uses-permission android:name="android.permission.VIBRATE" />
 <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -67,47 +71,75 @@ growthbeat.jarは、下記設定が必須となります。
     android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE"
     android:protectionLevel="signature" />
 
-<!--Growth Messageのバナー型の配信をする場合に必要となります。。 -->
-<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-
-<!-- Android 4.0.4以上で動作する場合は必要ありません。 -->
-<uses-permission android:name="android.permission.GET_ACCOUNTS" />
 ```
 
 `<application>`タグ内に下記を追加してください。
 
 ```xml
 
-<!--Growth Push通知を受け取るために必要となります。。 -->
+<!-- for Growth Push -->
+<meta-data android:name="com.growthpush.notification.icon" android:resource="@drawable/sample_notification_icon" />
+<meta-data android:name="com.growthpush.notification.icon.background.color" android:resource="@android:color/white" />
+<meta-data android:name="com.growthpush.dialog.icon" android:resource="@drawable/sample_notification_icon" />
 <activity
     android:name="com.growthpush.view.AlertActivity"
     android:configChanges="orientation|keyboardHidden"
     android:launchMode="singleInstance"
     android:theme="@android:style/Theme.Translucent" />
-
+<service
+    android:name="com.growthpush.TokenRefreshService"
+    android:exported="false">
+    <intent-filter>
+        <action android:name="com.google.android.gms.iid.InstanceID"/>
+    </intent-filter>
+</service>
+<service android:name="com.growthpush.RegistrationIntentService"/>
+<service
+    android:name="com.growthpush.ReceiverService"
+    android:exported="false" >
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+    </intent-filter>
+</service>
 <receiver
-    android:name="com.growthpush.BroadcastReceiver"
+    android:name="com.google.android.gms.gcm.GcmReceiver"
+    android:exported="true"
     android:permission="com.google.android.c2dm.permission.SEND" >
     <intent-filter>
         <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <category android:name="YOUR_PACKAGE_NAME" />
+    </intent-filter>
+    <intent-filter>
         <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
         <category android:name="YOUR_PACKAGE_NAME" />
     </intent-filter>
 </receiver>
 
-<!--Growth Messageの表示をするために必要となります。。 -->
+<!-- for Growth Message -->
 <activity
     android:name="com.growthbeat.message.view.MessageActivity"
     android:theme="@android:style/Theme.Translucent" />
 
+<!-- for Growth Link -->
+<receiver
+    android:name="com.growthbeat.link.InstallReferrerReceiver"
+    android:enabled="true"
+    android:exported="true" >
+    <intent-filter>
+        <action android:name="com.android.vending.INSTALL_REFERRER" />
+    </intent-filter>
+</receiver>
+
 ```
 * YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。
+
+AndroidManifest.xmlのサンプルは、[こちら](https://github.com/growthbeat/growthbeat-android/blob/master/sample/src/main/AndroidManifest.xml)
 
 
 ## Growthbeatの初期化
 
 ```
-Growthbeat.GetInstance().Initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
+GrowthbeatCore.GetInstance().Initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
 ```
 
 ## アプリの起動・終了イベントの送信
@@ -115,13 +147,13 @@ Growthbeat.GetInstance().Initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID")
 アプリ初期化時に一度だけ送信してください。
 
 ```
-Growthbeat.GetInstance().Start();
+GrowthbeatCore.GetInstance().Start();
 ```
 
 終了イベントは、アプリが閉じるときにを実装してください。
 
 ```
-Growthbeat.GetInstance().Stop();
+GrowthbeatCore.GetInstance().Stop();
 ```
 
 # プッシュ通知
@@ -149,17 +181,21 @@ Environmentは、開発環境の場合、Environment.Developmentを指定、本�
 iOSの場合、デバイストークンがNotificationServicesから戻ってきますので、UpdateにてSetDeviceTokenを実装し、登録処理を流します。
 
 ```
+#if UNITY_IPHONE
+using NotificationServices = UnityEngine.iOS.NotificationServices;
+#endif
+
 bool tokenSent = false;
 
 void Update () {
     #if UNITY_IPHONE
-	    if (!tokenSent) {
-		    byte[] token = NotificationServices.deviceToken;
-		    if (token != null) {
-			    GrowthPush.GetInstance().SetDeviceToken(System.BitConverter.ToString(token));
-			    tokenSent = true;
-		    }
-	    }
+        if (!tokenSent) {
+            byte[] token = NotificationServices.deviceToken;
+            if (token != null) {
+                GrowthPush.GetInstance ().SetDeviceToken(System.BitConverter.ToString(token).Replace("-", "").ToLower());
+                tokenSent = true;
+            }
+        }
     #endif
 }
 ```
@@ -176,9 +212,43 @@ void Update () {
 
 # ディープリンク
 
-申し訳ございません、ディープリンク機能は現在ご利用いただけません。
+## 初期化
 
-SDKのアップデートをお待ちくださいませ。
+Growth Linkの初期化実装は下記になります。
+
+```
+IntentHandler.GetInstance ().AddNoopIntentHandler ();
+IntentHandler.GetInstance ().AddUrlIntentHandler ();
+GrowthLink.GetInstance().Initialize (applicationId, credentialId);
+```
+
+## カスタムハンドラ
+
+Growth Link, Growth Messageでカスタムの処理をする場合は、下記を実装します。
+
+```
+IntentHandler.GetInstance ().AddCustomIntentHandler ("GameObject", "CallbackMethod");
+```
+
+処理を戻す、ゲームオブジェクト、コールバックする処理を指定してください。
+
+```
+
+public class GrowthbeatComponent : MonoBehaviour
+{
+
+    void Awake ()
+    {
+        IntentHandler.GetInstance ().AddCustomIntentHandler ("GrowthbeatComponent", "HandleCustomIntent");
+    }
+
+    void HandleCustomIntent(string extra) {
+        Debug.Log("Enter HandleCustomIntent");
+        Debug.Log(extra);
+    }
+
+}
+```
 
 # 備考
 

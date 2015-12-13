@@ -267,8 +267,8 @@ curl -X GET \
 
 ```
 curl -X GET \
-    -H 'Accept: application/json' \
     -G \
+    -H 'Accept: application/json' \
     --data "credentialId=${CREDENTIAL_ID}" \
     --data "applicationId=${APPLICATION_ID}" \
     --data "segmentQuery=${QUERY_OBJECT}" \
@@ -304,10 +304,9 @@ curl -X GET \
 ```
 curl -X PUT \
     -H 'Accept: application/json' \
-    -G \
     --data "credentialId=${CREDENTIAL_ID}" \
     --data "name=${SEGMENT_NAME}" \
-    --data "description=${SEGMENT_DESCRIPTION}" \
+    --data-urlencod "description=${SEGMENT_DESCRIPTION}" \
     https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}
 ```
 
@@ -463,10 +462,9 @@ curl -X GET \
 ```
 curl -X PUT \
     -H 'Accept: application/json' \
-    -G \
     --data "credentialId=${CREDENTIAL_ID}" \
-    --data "name=${TAG_NAME}" \
-    --data "description=${TAG_DESCRIPTION}" \
+    --data-urlencode "name=${TAG_NAME}" \
+    --data-urlencod "description=${TAG_DESCRIPTION}" \
     https://api.analytics.growthbeat.com/1/tags/${TAG_ID}
 ```
 
@@ -534,9 +532,9 @@ curl -X GET \
     -H 'Accept: application/json' \
     -G \
     --data "credentialId=${CREDENTIAL_ID}" \
-    --data "tagId=${TAG_ID}" \
-    --data "segmentQuery=${SEGMENT_QUERY}" \
-    --data "exclusiveId=${EXCLUSIVEID}" \
+    --data-urlencode "tagId=${TAG_ID}" \
+    --data-urlencode "segmentQuery=${SEGMENT_QUERY}" \
+    --data-urlencode "exclusiveId=${EXCLUSIVEID}" \
     --data "order=${ORDER}" \
     --data "limit=${LIMIT}" \
     https://api.analytics.growthbeat.com/1/client_tags
@@ -668,7 +666,7 @@ curl -X GET \
     -G \
     --data "credentialId=${CREDENTIAL_ID}" \
     --data "clientId=${CLIENT_ID}" \
-    --data "tagId=${TAG_ID}" \
+    --data-urlencode "tagId=${TAG_ID}" \
     https://api.analytics.growthbeat.com/1/client_tags
 ```
 
@@ -706,11 +704,10 @@ curl -X GET \
 ```
 curl -X POST \
     -H 'Accept: application/json' \
-    -G \
     --data "credentialId=${CREDENTIAL_ID}" \
-    --data "tagId=${TAG_ID}" \
+    --data-urlencode "tagId=${TAG_ID}" \
     --data "clientId=${CLIENT_ID}" \
-    --data "value=${VALUE}" \
+    --data-urlencode "value=${VALUE}" \
     https://api.analytics.growthbeat.com/1/client_tags
 ```
 
@@ -792,7 +789,7 @@ curl -X GET \
   -H 'Accept: application/json' \
   -G \
   --data "credentialId=${CREDENTIAL_ID}" \
-  --data "parentEventId=Event%3aapplicationId%3aDefault" \
+  --data-urlencode "parentEventId=Event:${YOUR_APPLICATION_ID}:Default" \
   --data "ascending=ascending" \
   https://api.analytics.growthbeat.com/1/events/
 ```
@@ -834,9 +831,8 @@ curl -X GET \
 ```
 curl -X PUT \
   -H 'Accept: application/json' \
-  -G \
   --data "credentialId=${CREDENTIAL_ID}" \
-  --data "name=displayName" \
+  --data-urlencode "name=displayName" \
   https://api.analytics.growthbeat.com/1/events/${EVENT_ID}
 ```
 
@@ -874,7 +870,6 @@ curl -X PUT \
 ```
 curl -X DELETE \
     -H 'Accept: application/json' \
-    -G \
     --data "credentialId=${CREDENTIAL_ID}" \
     https://api.analytics.growthbeat.com/1/events/${EVENT_ID}
 ```
@@ -892,8 +887,8 @@ curl -X DELETE \
 |:---|:---|:---|:---|:---|:---|
 |credentialId|String|YES|||クレデンシャルキー|
 |eventId|String|YES|||イベントID|
-|begin|String|YES|||範囲時間の開始時刻||
-|end|String|YES|||範囲時間の終了時刻||
+|begin|String|YES|||範囲時間の開始時刻 (YYYY-MM-DDThh:mm:ss+0000) ||
+|end|String|YES|||範囲時間の終了時刻 (YYYY-MM-DDThh:mm:ss+0000) ||
 |exclusiveId|String|NO|||このID以降の取得|
 |filterQuery|String|NO|||抽出オプション|
 |order|Order|NO||ascending|ソート|ascending or desending|
@@ -904,9 +899,9 @@ curl -X GET \
     -H 'Accept: application/json' \
     -G \
     --data "credentialId=${CREDENTIAL_ID}" \
-    --data "eventId=${EVENT_ID}" \
-    --data "begin=${BEGIN}" \
-    --data "end=${END}" \
+    --data-urlencode "eventId=${EVENT_ID}" \
+    --data-urlencode "begin=${BEGIN}" \
+    --data-urlencode "end=${END}" \
     --data "exclusiveId=${EXCLUSIVEID}" \
     --data "order=${ORDER}" \
     --data "limit=${LIMIT}" \
@@ -932,8 +927,8 @@ curl -X GET \
         },
         "id":"P5iQN7NLW8iY7W5t",
         "created":"2015-03-02T00:56:14+0000",
-        "eventId":"Event:LBYtXQ26k6pHRZZB:Custom:Win",
-        "clientId":"Oy1FwLQJXXQWRrxo"
+        "eventId":"Event:${YOUR_APPLICATION_ID}:Custom:Win",
+        "clientId":"zaqsxcderfv"
     },
     {
         "properties":{
@@ -941,8 +936,8 @@ curl -X GET \
         },
         "id":"P5iQN7NLW8iY7W5t",
         "created":"2015-03-02T00:56:14+0000",
-        "eventId":"Event:LBYtXQ26k6pHRZZB:Custom:Win",
-        "clientId":"PIfObLDXgq2Pp13t"
+        "eventId":"Event:${YOUR_APPLICATION_ID}B:Custom:Win",
+        "clientId":"zaqsxcderfv"
     },
     {
         "properties":{
@@ -950,8 +945,8 @@ curl -X GET \
         },
         "id":"P5iQN7NLW8iY7W5t",
         "created":"2015-03-02T00:56:14+0000",
-        "eventId":"Event:LBYtXQ26k6pHRZZB:Custom:Win",
-        "clientId":"PIfOlNbuo0xQ0Nyi"
+        "eventId":"Event:${YOUR_APPLICATION_ID}:Custom:Win",
+        "clientId":"zaqsxcderfv"
     }
 ]
 ```
@@ -963,8 +958,8 @@ curl -X GET \
 |credentialId|String|YES|||クレデンシャルキー|
 |eventId|String|YES|||イベントID|
 |clientId|String|YES|||端末ID|
-|begin|String|YES|||範囲時間の開始時刻||
-|end|String|YES|||範囲時間の終了時刻||
+|begin|String|YES|||範囲時間の開始時刻 (YYYY-MM-DDThh:mm:ss+0000) ||
+|end|String|YES|||範囲時間の終了時刻 (YYYY-MM-DDThh:mm:ss+0000) ||
 |exclusiveId|String|NO|||このID以降の取得|
 |order|Order|NO||ascending|ソート|ascending or desending|
 |limit|int|NO|100|１回の取得の件数上限|100が上限|
@@ -974,10 +969,10 @@ curl -X GET \
     -H 'Accept: application/json' \
     -G \
     --data "credentialId=${CREDENTIAL_ID}" \
-    --data "eventId=${EVENT_ID}" \
+    --data-urlencode "eventId=${EVENT_ID}" \
     --data "clientId=${CLIENT_ID}" \
-    --data "begin=${BEGIN}" \
-    --data "end=${END}" \
+    --data-urlencode "begin=${BEGIN}" \
+    --data-urlencode "end=${END}" \
     --data "exclusiveId=${EXCLUSIVEID}" \
     --data "order=${ORDER}" \
     --data "limit=${LIMIT}" \
@@ -1028,9 +1023,9 @@ curl -X POST \
     -H 'Accept: application/json' \
     -G \
     --data "credentialId=${CREDENTIAL_ID}" \
-    --data "eventId=${TAG_ID}" \
+    --data-urlencode "eventId=${TAG_ID}" \
     --data "clientId=${CLIENT_ID}" \
-    --data "value=${VALUE}" \
+    --data-urlencode "value=${VALUE}" \
     --data "properties=${PROPERTIES}" \
     https://api.analytics.growthbeat.com/1/client_tags
 ```
@@ -1117,7 +1112,7 @@ curl -X GET \
 curl -X GET \
   -H 'Accept: application/json' \
   -G \
-  --data "credentialId=${CREDENTIAL_ID}" \
+  --data "credentzcialId=${CREDENTIAL_ID}" \
   https://api.growthbeat.com/1/applications/${APPLICATION_ID}
 ```
 
