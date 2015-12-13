@@ -52,6 +52,7 @@ Growthbeat.frameworkは、下記Frameworkが必須となります。
 - SystemConfiguration.framework
 - AdSupport.framework
 - CFNetwork.framework
+- SafariServices.framework
 
 ## Growthbeatの初期化
 
