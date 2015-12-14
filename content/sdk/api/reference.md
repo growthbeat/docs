@@ -306,7 +306,7 @@ curl -X PUT \
     -H 'Accept: application/json' \
     --data "credentialId=${CREDENTIAL_ID}" \
     --data "name=${SEGMENT_NAME}" \
-    --data-urlencod "description=${SEGMENT_DESCRIPTION}" \
+    --data-urlencode "description=${SEGMENT_DESCRIPTION}" \
     https://api.analytics.growthbeat.com/1/segments/${SEGMENT_ID}
 ```
 
@@ -464,7 +464,7 @@ curl -X PUT \
     -H 'Accept: application/json' \
     --data "credentialId=${CREDENTIAL_ID}" \
     --data-urlencode "name=${TAG_NAME}" \
-    --data-urlencod "description=${TAG_DESCRIPTION}" \
+    --data-urlencode "description=${TAG_DESCRIPTION}" \
     https://api.analytics.growthbeat.com/1/tags/${TAG_ID}
 ```
 
@@ -1023,7 +1023,7 @@ curl -X POST \
     -H 'Accept: application/json' \
     -G \
     --data "credentialId=${CREDENTIAL_ID}" \
-    --data-urlencode "eventId=${TAG_ID}" \
+    --data-urlencode "eventId=${EVENT_ID}" \
     --data "clientId=${CLIENT_ID}" \
     --data-urlencode "value=${VALUE}" \
     --data "properties=${PROPERTIES}" \
