@@ -58,24 +58,46 @@ dependencies {
 
 ## AndroidManifest.xmlの設定
 
-### プッシュ通知の設定（Growth Push）
-`<manifest>`タグ内に下記パーミッションを追加してください。
+### パーミッションの設定
+
+```xml
+<meta-data
+    android:name="com.google.android.gms.version"
+    android:value="@integer/google_play_services_version" />
+```
+
+必要なパーミンションは下記になります。
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.GET_ACCOUNTS" />
-<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
+<!-- under API 15 -->
+<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+<!-- for Growth Push -->
+<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+<uses-permission android:name="android.permission.VIBRATE" />
+<uses-permission android:name="android.permission.WAKE_LOCK" />
+<uses-permission android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE" />
 <permission
     android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE"
     android:protectionLevel="signature" />
 
-<uses-permission android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE" />
+<!-- for Growth Message -->
+<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
 ```
+
+### Growthbeatの設定
 
 `<application>`タグ内に下記を追加してください。
 
 ```xml
+
+<!-- for Growth Push -->
+<meta-data android:name="com.growthpush.notification.icon" android:resource="@drawable/sample_notification_icon" />
+<meta-data android:name="com.growthpush.notification.icon.background.color" android:resource="@android:color/white" />
+<meta-data android:name="com.growthpush.dialog.icon" android:resource="@drawable/sample_notification_icon" />
 <activity
     android:name="com.growthpush.view.AlertActivity"
     android:configChanges="orientation|keyboardHidden"
@@ -109,38 +131,27 @@ dependencies {
         <category android:name="YOUR_PACKAGE_NAME" />
     </intent-filter>
 </receiver>
-```
-* YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。
 
-### アプリ内メッセージの設定（Growth Message）
-`<manifest>`タグ内に下記パーミッションを追加してください。
-
-```xml
-<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-```
-
-`<application>`タグ内に下記を追加してください。
-
-```xml
+<!-- for Growth Message -->
 <activity
-	android:name="com.growthbeat.message.view.MessageActivity"
-	android:theme="@android:style/Theme.Translucent" />
-```
+    android:name="com.growthbeat.message.view.MessageActivity"
+    android:theme="@android:style/Theme.Translucent" />
 
-### デープリンクの設定（Growth Link）
-
-`<application>` タグ内に下記を追加してください。
-
-```xml
+<!-- for Growth Link -->
 <receiver
     android:name="com.growthbeat.link.InstallReferrerReceiver"
     android:enabled="true"
-    android:exported="true">
+    android:exported="true" >
     <intent-filter>
         <action android:name="com.android.vending.INSTALL_REFERRER" />
     </intent-filter>
 </receiver>
+
 ```
+* YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。
+
+AndroidManifest.xmlのサンプルは、[サンプルコード](https://github.com/growthbeat/growthbeat-android/blob/master/sample/src/main/AndroidManifest.xml)を参考にしてください。
+
 
 ## Growthbeatの初期化
 
@@ -212,6 +223,25 @@ IntentFilterを設定したActivityのonCreateで、handleOpenUrlメソッドを
 GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
 ```
 
+**Android設定**
+
+AndroidManifest.xmlのアクティビティーに `<intent-filter>` を追加します。
+
+外部からの遷移時、開くActivityにカスタムURLスキームを記述します。
+
+```xml
+<activity
+    android:name=".MainActivity"
+    android:label="@string/app_name" >
+    <intent-filter>
+    	<data android:scheme="CUSTOM_URL_SCHEME" />
+    	<category android:name="android.intent.category.DEFAULT" />
+    	<category android:name="android.intent.category.BROWSABLE" />
+        <action android:name="android.intent.action.VIEW" />                
+    </intent-filter>
+</activity>
+```
+
 ## ディープリンクアクションの実装
 
 SDKには、IntentHandler (iOSでは、GBIntentHandler)というインタフェースが定義されており、この実装でディープリンク時のアクションを実装することができます。
@@ -276,5 +306,7 @@ protected void onCreate(Bundle savedInstanceState) {
 ```
 
 # 備考
+
+実装サンプルは、[GitHubレポジトリ](https://github.com/growthbeat/growthbeat-android)を参考にしてください。
 
 ご不明な点などございます場合は、[ヘルプページ](http://growthbeat.helpscoutdocs.com/)を閲覧してください。

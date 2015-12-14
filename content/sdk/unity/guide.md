@@ -20,7 +20,7 @@ Unity 導入したいプロジェクトに、growthbeat.unitypackageをインポ
 
 メニューから
 
-`Assets -> Import Package -> Custom Packge...`
+`Assets -> Import Package -> Custom Package...`
 
 を選択し、でダウンロードしたUnityPackgeをインポートしてください。
 
@@ -43,12 +43,9 @@ Xcodeプロジェクトに、依存するFrameworkを追加してください。
 
 ### Android
 
-growthbeat.jarは、下記設定が必須となります。
+### パーミッションの設定
 
-1. ライブラリプロジェクトとして、google_play_service_libをビルドパスに設定
-1. AndroidManifest.xmlの`<application>`内に以下を追加
-
-```
+```xml
 <meta-data
     android:name="com.google.android.gms.version"
     android:value="@integer/google_play_services_version" />
@@ -71,7 +68,12 @@ growthbeat.jarは、下記設定が必須となります。
     android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE"
     android:protectionLevel="signature" />
 
+<!-- for Growth Message -->
+<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
 ```
+
+### Growthbeatの設定
 
 `<application>`タグ内に下記を追加してください。
 
@@ -131,6 +133,7 @@ growthbeat.jarは、下記設定が必須となります。
 </receiver>
 
 ```
+
 * YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。
 
 AndroidManifest.xmlのサンプルは、[こちら](https://github.com/growthbeat/growthbeat-android/blob/master/sample/src/main/AndroidManifest.xml)
@@ -139,7 +142,7 @@ AndroidManifest.xmlのサンプルは、[こちら](https://github.com/growthbea
 ## Growthbeatの初期化
 
 ```
-GrowthbeatCore.GetInstance().Initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
+Growthbeat.GetInstance().Initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
 ```
 
 ## アプリの起動・終了イベントの送信
@@ -147,13 +150,13 @@ GrowthbeatCore.GetInstance().Initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_
 アプリ初期化時に一度だけ送信してください。
 
 ```
-GrowthbeatCore.GetInstance().Start();
+Growthbeat.GetInstance().Start();
 ```
 
 終了イベントは、アプリが閉じるときにを実装してください。
 
 ```
-GrowthbeatCore.GetInstance().Stop();
+Growthbeat.GetInstance().Stop();
 ```
 
 # プッシュ通知
@@ -222,6 +225,37 @@ IntentHandler.GetInstance ().AddUrlIntentHandler ();
 GrowthLink.GetInstance().Initialize (applicationId, credentialId);
 ```
 
+**iOS設定**
+
+Xcodeプロジェクトを開き、 `Info -> URL Types -> URL Schemes` の中に、アプリのカスタムURLスキームを記述します。
+
+<img src="/img/sdk/iOS/url-scheme.png" alt="url-scheme" title="url-scheme" width="100%"/>
+
+**Android設定**
+
+AndroidManifest.xmlのアクティビティーに `<intent-filter>` を追加します。
+
+外部からの遷移時、開くActivityにカスタムURLスキームを記述します。
+
+```xml
+<activity
+    android:name=".MainActivity"
+    android:label="@string/app_name" >
+    <intent-filter>
+    	<data android:scheme="CUSTOM_URL_SCHEME" />
+    	<category android:name="android.intent.category.DEFAULT" />
+    	<category android:name="android.intent.category.BROWSABLE" />
+        <action android:name="android.intent.action.VIEW" />                
+    </intent-filter>
+</activity>
+```
+
+リンクから開かれるActivityに下記を実装します。
+
+```java
+GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
+```
+
 ## カスタムハンドラ
 
 Growth Link, Growth Messageでカスタムの処理をする場合は、下記を実装します。
@@ -250,6 +284,76 @@ public class GrowthbeatComponent : MonoBehaviour
 }
 ```
 
+# Growth Push SDKからの乗り換え方法について
+
+## 前準備
+GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行されるため、[Growthbeat](https://growthbeat.com/)にアクセスして、ApplicationId、SDKキー（CredentialID）を確認します。
+
+## 実装方法
+
+### SDKの初期化
+
+- GrowthPush SDK
+
+```csharp
+void Awake () {
+	GrowthPush.Initialize(YOUR_APPLICATION_ID, "APPLICATION_SECRET", GrowthPush.Environment.Development, true, "YOUR_SENDER_ID");
+	GrowthPush.TrackEvent("Launch");
+	GrowthPush.SetDeviceTags();
+	GrowthPush.ClearBadge();
+}
+```
+
+- Growthbeat SDK
+
+```csharp
+void Awake () {
+	// Growthbeat SDKの初期化
+	Growthbeat.GetInstance ().Initialize ("YOUR_APPLICATION_ID", "CREDENTIAL_ID");
+
+	// デバイストークンを明示的に要求
+	GrowthPush.GetInstance ().RequestDeviceToken ("YOUR_SENDER_ID", Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
+
+	// バッチの削除
+	GrowthPush.GetInstance ().ClearBadge ();
+
+	// Launchイベントの取得
+	GrowthPush.GetInstance ().TrackEvent ("Launch");
+
+	// DeviceTagの取得
+	GrowthPush.GetInstance ().SetDeviceTags ();
+}
+```
+
+### デバイストークンの取得
+
+- Growthbeat SDK
+
+```csharp
+#if UNITY_IPHONE
+using NotificationServices = UnityEngine.iOS.NotificationServices;
+#endif
+
+public class YourGameObjectComponent : MonoBehaviour
+{
+	bool tokenSent = false;
+	void Update ()
+	{
+	#if UNITY_IPHONE
+		if (!tokenSent) {
+			byte[] token = NotificationServices.deviceToken;
+			if (token != null) {
+				GrowthPush.GetInstance ().SetDeviceToken(System.BitConverter.ToString(token).Replace("-", "").ToLower());
+				tokenSent = true;
+			}
+		}
+	#endif
+	}
+}
+```
+
 # 備考
+
+実装サンプルは、[GitHubレポジトリ](https://github.com/growthbeat/growthbeat-unity)を参考にしてください。
 
 ご不明な点などございます場合は、[ヘルプページ](http://faq.growthbeat.com/)を閲覧してください。
