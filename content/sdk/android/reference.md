@@ -490,13 +490,13 @@ GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
 
 ## パーミッション設定
 
-- インターネット設定。通信をするために必要となります。
+インターネット設定。通信をするために必要となります。
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
-- プッシュ通知を受け取るために必要となります。YOUR_PACKAGE_NAMEは、アプリのPackageIDに変更してください。
+プッシュ通知を受け取るために必要となります。YOUR_PACKAGE_NAMEは、アプリのPackageIDに変更してください。
 
 ```xml
 <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
@@ -506,25 +506,25 @@ GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
     android:protectionLevel="signature" />
 ```
 
-- プッシュ通知受け取り時に、バイブレーションを鳴らすときに設定します。
+プッシュ通知受け取り時に、バイブレーションを鳴らすときに設定します。
 
 ```xml
 <uses-permission android:name="android.permission.VIBRATE" />
 ```
 
-- Growth Pushダイアログプッシュ通知を表示するときに必要となります。
+Growth Pushダイアログプッシュ通知を表示するときに必要となります。
 
 ```xml
 <uses-permission android:name="android.permission.WAKE_LOCK" />
 ```
 
-- GrowthMessageバナー型表示に必要となります。
+GrowthMessageバナー型表示に必要となります。
 
 ```xml
 <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 ```
 
-- (`*`オプション) Googleアカウントを設定します。APIレベル15以下の場合は設定します。
+(`*`オプション) Googleアカウントを設定します。APIレベル15以下の場合は設定します。
 
 ```xml
 <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -532,7 +532,7 @@ GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
 
 ## Growth Push設定
 
-- デバイストークン取得・更新やプッシュ通知を受け取る実装となります。YOUR_PACKAGE_NAMEは、アプリのPackageIDに変更してください。
+デバイストークン取得・更新やプッシュ通知を受け取る実装となります。YOUR_PACKAGE_NAMEは、アプリのPackageIDに変更してください。
 
 ```xml
 
@@ -572,7 +572,7 @@ GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
 </receiver>
 ```
 
-- (`*`オプション) アイコンや背景色をカスタムすることができます。リソースIDを指定してください。
+(`*`オプション) アイコンや背景色をカスタムすることができます。リソースIDを指定してください。
 
 ```xml
 <!-- 通知バーのアイコンをカスタマイズすることができます。 -->
@@ -587,7 +587,7 @@ GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
 
 ## Growth Message設定
 
-- ポップアップメッセージを表示するために必要となります。
+ポップアップメッセージを表示するために必要となります。
 
 ```xml
 <activity
@@ -597,7 +597,7 @@ GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
 
 ## Growth Link設定
 
-- インストール・起動時にデータを受け取るために必要になります。
+インストール・起動時にデータを受け取るために必要になります。
 
 ```xml
 <receiver
