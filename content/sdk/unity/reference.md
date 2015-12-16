@@ -67,9 +67,16 @@ IntentHandler.GetInstance ().AddUrlIntentHandler ();
 IntentHandler.GetInstance ().AddCustomIntentHandler ("GameObjectName", "MethodName");
 ```
 
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|GameObjectName| コールバックをするメソッドが存在するゲームオブジェクト |
+|MethodName| コールバックをするメソッド |
+
 例.)
 
-```
+```cs
 public class GrowthbeatComponent : MonoBehaviour
 {
 
@@ -404,18 +411,6 @@ public static GrowthPush GetInstance ()
 
 ### デバイストークンの取得
 
-#### iOS
-
-```cs
-public void RequestDeviceToken (Environment environment)
-```
-
-|項目名|詳細|
-|:--|:--|
-| environment |開発用: `Environment.development` 本番用: `Environment.production`|
-
-#### Android & iOS
-
 ```cs
 public void RequestDeviceToken (string senderId, Environment environment)
 ```
@@ -433,8 +428,7 @@ public void SetDeviceToken (string deviceToken)
 
 ## イベントの送信（Push専用）
 
-***こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。これまでGrowth Push SDKをご利用しておりました方は、Growth Analyticsのイベント・タグの送信にお乗り換えくださいませ。***
-
+***こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。***
 
 ### イベントの送信（Push専用）
 
@@ -463,8 +457,7 @@ public void TrackEvent (string name, string value)
 
 ## タグの送信（Push専用）
 
-***こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。これまでGrowth Push SDKをご利用しておりました方は、Growth Analyticsのイベント・タグの送信にお乗り換えくださいませ。***
-
+***こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。***
 
 ### タグの送信（Push専用）
 
@@ -508,6 +501,15 @@ public static GrowthMessage GetInstance ()
 
 Growth Linkを初期化します。
 
+applicationId, credentialIdは、Growthbeatの初期化時に利用したものと同じものを利用してください。
+
 ```cs
 GrowthLink.GetInstance().Initialize (applicationId, credentialId);
 ```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|applicationId|アプリケーションID|
+|credentialId|クリデンシャルID|
