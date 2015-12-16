@@ -51,7 +51,7 @@ Xcodeプロジェクトに、依存するFrameworkを追加してください。
     android:value="@integer/google_play_services_version" />
 ```
 
-必要なパーミンションは下記になります。
+必要なパーミッションは下記になります。
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
