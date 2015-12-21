@@ -154,7 +154,7 @@ curl -X GET \
 | applicationId | String | YES ||| アプリケーションID |
 | credentialId | String | YES ||| クレデンシャルキー |
 | text | Int | YES ||| 配信メッセージ |
-| query | String | NO ||| 配信対象の絞込クエリ(JSON) |
+| query | String | NO ||| 配信対象の絞込クエリ(JSON) [クエリについて](http://faq.growthbeat.com/article/96-notification-api) |
 | sound | Boolean | NO |false| true<br>false| Push通知時のサウンドを鳴らすか |
 | badge | Boolean | NO |false| true<br>false| プッシュ通知時にバッヂを付与するか |
 | extra | String | NO ||| カスタムフイールド(JSON) |
