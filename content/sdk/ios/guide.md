@@ -162,13 +162,13 @@ URL起動の処理で、handleOpenUrl:urlメソッドを呼び出す
 ## アプリを開くスキームの設定
 ディープリンクからアプリを起動できるように、info.plistの編集、もしくは Xcode上で Info -> URL Typesからディープリンクからアプリを開くスキームの設定をします。
 URL Schemesにはスキームを、IdentifierにはBundle Identifierなどアプリごとに一意になる値を入力してください。
-<img src="/img/link/link-guide-scheme.png" alt="link-guide-scheme" title="link-guide-scheme" width="100%"/>
 
 ## ディープリンクアクションの実装
 
 SDKには、GBIntentHandlerというプロトコルが定義されており、この実装でディープリンク時のアクションを実装することができます。
 
 たとえば下記のような形で実装できます。
+
 ```objc
 #import <Growthbeat/GBCustomIntentHandler.h>  //インポート文に追記
 ```
@@ -189,22 +189,16 @@ iOS9からカスタムスキームでの遷移に関する仕様が大幅に変�
 apple.developer.comにアクセスし、 「Certificate, Identifiers & Profiles」を選択。
 その後「Identifers」をクリック。
 
-<img src="/img/link/guide-universal-01.png" alt="guide-universal-01" title="guide-universal-01" width="70%"/>
-
-<img src="/img/link/guide-universal-02.png" alt="guide-universal-02" title="guide-universal-02" width="30%"/>
 
 Identiferを登録済みの時は「Edit」から編集を、未登録のときは「+」ボタンから新たに登録をしていきます。
 
 NameやBundle IDは通常と同じ要領で記入してください。
-<img src="/img/link/guide-universal-03.png" alt="guide-universal-03" title="guide-universal-03" width="70%"/>
 
 Bundle IDはXcode上のGeneralのタブを選択することで確認できます。
 
-<img src="/img/link/guide-xcode-bundle.png" alt="guide-xcode-bundle" title="gguide-xcode-bundle" width="70%"/>
 
 App Servicesの欄で、Associated Domainsにチェックをてください。これを忘れるとこのあとのXcode上の操作でエラーがでてしまいます。
 
-<img src="/img/link/guide-universal-04.png" alt="guide-universal-04" title="guide-universal-04" width="70%"/>
 
 apple.developer.com での設定は以上です。Saveボタンをおして保存してください。
 
@@ -217,11 +211,9 @@ CapabilitiesタブのAssociated Domainsをクリックすると展開されド�
 ここで、GrowthLinkのドメインとなるgbt.ioを登録します。
 ＋ボタンをクリックし、「applinks:gbt.io」を追加してください。「applinks:」というのはprefixで登録ドメインの前につける必要があります。
 
-<img src="/img/link/guide-universal-05.png" alt="guide-universal-05" title="guide-universal-05" width="70%"/>
 
 現在、なんらかの原因でentitlementsファイルが生成されないことがあるようです。
 プロジェクトブラウザ上でentitlementsファイルが生成されていることを確認してください。
-<img src="/img/link/guide-universal-06.png" alt="guide-universal-06" title="guide-universal-06" width="70%"/>
 
 **ハンドリング処理の実装**
 
@@ -264,7 +256,6 @@ Xcode上での設定は以上になります。
 apple.developer.comに登録してあるBundle IdentifierとApple TeamIDを記入してください。どちらもapple.developer.comApp Identifiersから確認できます。
 記入後「保存」ボタンを押して設定を保存してください。
 
-<img src="/img/link/guide-universal-07.png" alt="guide-universal-07" title="guide-universal-07" width="70%"/>
 
 # Growth Push SDKからの乗り換え方法について
 
