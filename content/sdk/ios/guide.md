@@ -143,13 +143,12 @@ GrowthLinkのimport文を記述します。
 
 ## 初期化処理
 
-Growthbeatの初期化処理の後に、Growth Linkの初期化処理を呼び出す
+Growthbeatの初期化処理の後に、Growth Linkの初期化処理を呼び出してください。**APPLICATION_ID**と**CREDENTIAL_ID**は
+Growthbeatの初期化時と同じものです。
 
 ```objc
 [[GrowthLink sharedInstance] initializeWithApplicationId:@"APPLICATION_ID" credentialId:@"CREDENTIAL_ID"];
 ```
-
-カスタムURLスキームでアプリを起動できるように、Info.plistを設定する。
 
 URL起動の処理で、handleOpenUrl:urlメソッドを呼び出す
 
@@ -160,11 +159,19 @@ URL起動の処理で、handleOpenUrl:urlメソッドを呼び出す
 }
 ```
 
+## アプリを開くスキームの設定
+ディープリンクからアプリを起動できるように、info.plistの編集、もしくは Xcode上で Info -> URL Typesからディープリンクからアプリを開くスキームの設定をします。
+URL Schemesにはスキームを、IdentifierにはBundle Identifierなどアプリごとに一意になる値を入力してください。
+<img src="/img/link/link-guide-scheme.png" alt="link-guide-scheme" title="link-guide-scheme" width="100%"/>
+
 ## ディープリンクアクションの実装
 
 SDKには、GBIntentHandlerというプロトコルが定義されており、この実装でディープリンク時のアクションを実装することができます。
 
 たとえば下記のような形で実装できます。
+```objc
+#import <Growthbeat/GBCustomIntentHandler.h>  //インポート文に追記
+```
 
 ```objc
  [[GrowthbeatCore sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
@@ -173,6 +180,88 @@ SDKには、GBIntentHandlerというプロトコルが定義されており、�
         return YES;
 }]];
 ```
+
+## UniversalLinkの設定 (iOS9.x系)
+iOS9からカスタムスキームでの遷移に関する仕様が大幅に変更されたため、iOS9.x系に対応するにはUniversalLinkの設定が必要になります。
+
+### apple.developer.com での設定
+
+apple.developer.comにアクセスし、 “Certificate, Identifiers & Profiles”を選択。
+その後"Identifers"をクリック。
+
+<img src="/img/link/guide-universal-01.png" alt="guide-universal-01" title="guide-universal-01" width="70%"/>
+
+<img src="/img/link/guide-universal-02.png" alt="guide-universal-02" title="guide-universal-02" width="30%"/>
+
+Identiferを登録済みの時は"Edit"から編集を、未登録のときは"+"ボタンから新たに登録をしていきます。
+
+NameやBundle IDは通常と同じ要領で記入してください。
+<img src="/img/link/guide-universal-03.png" alt="guide-universal-03" title="guide-universal-03" width="70%"/>
+
+Bundle IDはXcode上のGeneralのタブを選択することで確認できます。
+
+<img src="/img/link/guide-xcode-bundle.png" alt="guide-xcode-bundle" title="gguide-xcode-bundle" width="70%"/>
+
+App Servicesの欄で、Associated Domainsにチェックをてください。これを忘れるとこのあとのXcode上の操作でエラーがでてしまいます。
+
+<img src="/img/link/guide-universal-04.png" alt="guide-universal-04" title="guide-universal-04" width="70%"/>
+
+apple.developer.com での設定は以上です。Saveボタンをおして保存してください。
+
+### Xcode上 での設定
+先ほどONにしたAssociated Domainsを使ってGrowthLinkのドメインを登録していきます。
+登録の前に、先ほど登録したApp Identifierと同じTeamが選択されていることを確認してください。TeamはGeneralタブにあるIdentityセクションから選択できます。
+
+CapabilitiesタブのAssociated Domainsをクリックすると展開されドメインの編集ができます。
+ここで、GrowthLinkのドメインとなるgbt.ioを登録します。
+＋ボタンをクリックし、"applinks:gbt.io"を追加してください。“applinks:”というのはprefixで登録ドメインの前につける必要があります。
+
+<img src="/img/link/guide-universal-05.png" alt="guide-universal-05" title="guide-universal-05" width="70%"/>
+
+現在、なんらかの原因でentitlementsファイルが生成されないことがあるようです。
+プロジェクトブラウザ上でentitlementsファイルが生成されていることを確認してください。
+<img src="/img/link/guide-universal-06.png" alt="guide-universal-06" title="guide-universal-06" width="70%"/>
+
+**ハンドリング処理の実装**
+
+AppDelegate.mにUniversalLinkのハンドリング処理を実装します。
+```obj-c
+- (BOOL) application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
+        if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
+            NSURL *webpageURL = userActivity.webpageURL;
+            if ( [self handleUniversalLink:webpageURL]){
+                [[GrowthLink sharedInstance] handleOpenUrl:webpageURL];
+            } else {
+                 // 例：コンテンツをアプリで開けない時にSafariにリダイレクトする場合
+                [[UIApplication sharedApplication] openURL:webpageURL];
+                return false;
+            }
+    
+        }
+    return true;
+}
+
+- (BOOL) handleUniversalLink:(NSURL*) url{
+    NSURLComponents *component = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:true];
+    if (!component || !component.host) return false;
+    if ([@"gbt.io" isEqualToString:component.host] ) {
+        
+        return true;
+    }
+    return false;
+}
+
+```
+Xcode上での設定は以上になります。
+
+### GrowthLink管理画面上 での設定
+
+「基本設定」タブ -> リンク基本設定セクションから UniversalLinkの設定ができます。
+「Universal Linkに対応させる」をチェックし、
+apple.developer.comに登録してあるBundle IdentifierとApple TeamIDを記入してください。どちらもapple.developer.comApp Identifiersから確認できます。
+記入後「保存」ボタンを押して設定を保存してください。
+
+<img src="/img/link/guide-universal-07.png" alt="guide-universal-07" title="guide-universal-07" width="70%"/>
 
 # Growth Push SDKからの乗り換え方法について
 
