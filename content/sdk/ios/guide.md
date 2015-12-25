@@ -186,14 +186,14 @@ iOS9からカスタムスキームでの遷移に関する仕様が大幅に変�
 
 ### apple.developer.com での設定
 
-apple.developer.comにアクセスし、 “Certificate, Identifiers & Profiles”を選択。
-その後"Identifers"をクリック。
+apple.developer.comにアクセスし、 「Certificate, Identifiers & Profiles」を選択。
+その後「Identifers」をクリック。
 
 <img src="/img/link/guide-universal-01.png" alt="guide-universal-01" title="guide-universal-01" width="70%"/>
 
 <img src="/img/link/guide-universal-02.png" alt="guide-universal-02" title="guide-universal-02" width="30%"/>
 
-Identiferを登録済みの時は"Edit"から編集を、未登録のときは"+"ボタンから新たに登録をしていきます。
+Identiferを登録済みの時は「Edit」から編集を、未登録のときは「+」ボタンから新たに登録をしていきます。
 
 NameやBundle IDは通常と同じ要領で記入してください。
 <img src="/img/link/guide-universal-03.png" alt="guide-universal-03" title="guide-universal-03" width="70%"/>
@@ -209,12 +209,13 @@ App Servicesの欄で、Associated Domainsにチェックをてください。�
 apple.developer.com での設定は以上です。Saveボタンをおして保存してください。
 
 ### Xcode上 での設定
+
 先ほどONにしたAssociated Domainsを使ってGrowthLinkのドメインを登録していきます。
 登録の前に、先ほど登録したApp Identifierと同じTeamが選択されていることを確認してください。TeamはGeneralタブにあるIdentityセクションから選択できます。
 
 CapabilitiesタブのAssociated Domainsをクリックすると展開されドメインの編集ができます。
 ここで、GrowthLinkのドメインとなるgbt.ioを登録します。
-＋ボタンをクリックし、"applinks:gbt.io"を追加してください。“applinks:”というのはprefixで登録ドメインの前につける必要があります。
+＋ボタンをクリックし、「applinks:gbt.io」を追加してください。「applinks:」というのはprefixで登録ドメインの前につける必要があります。
 
 <img src="/img/link/guide-universal-05.png" alt="guide-universal-05" title="guide-universal-05" width="70%"/>
 
@@ -225,6 +226,7 @@ CapabilitiesタブのAssociated Domainsをクリックすると展開されド�
 **ハンドリング処理の実装**
 
 AppDelegate.mにUniversalLinkのハンドリング処理を実装します。
+
 ```objc
 - (BOOL) application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
         if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
@@ -252,6 +254,7 @@ AppDelegate.mにUniversalLinkのハンドリング処理を実装します。
 }
 
 ```
+
 Xcode上での設定は以上になります。
 
 ### GrowthLink管理画面上 での設定
