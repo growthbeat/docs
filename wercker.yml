@@ -19,7 +19,7 @@ build:
         version: 0.15
         flags: --buildDrafts=true
         config: config.yml
-    - samueldebruyn/minify
+    - samueldebruyn/minify@2.1.0
 
 deploy:
   steps:
