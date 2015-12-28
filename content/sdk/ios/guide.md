@@ -225,7 +225,7 @@ CapabilitiesタブのAssociated Domainsをクリックすると展開されド�
 **ハンドリング処理の実装**
 
 AppDelegate.mにUniversalLinkのハンドリング処理を実装します。
-```obj-c
+```objc
 - (BOOL) application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
         if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
             NSURL *webpageURL = userActivity.webpageURL;
