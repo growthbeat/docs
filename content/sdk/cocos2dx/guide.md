@@ -6,6 +6,8 @@ draft: false
 title: Growthbeat Cocos2dx Gudeliene
 ---
 
+Version 1.2.3
+
 # 共通初期設定
 
 ## SDK導入
@@ -122,7 +124,7 @@ growthbeat.jarは、下記設定が必須となります。
     <intent-filter>
         <action android:name="com.android.vending.INSTALL_REFERRER" />
     </intent-filter>
-</receiver> 
+</receiver>
 
 ```
 * YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。

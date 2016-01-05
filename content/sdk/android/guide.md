@@ -6,6 +6,8 @@ draft: false
 title: Growthbeat Android Gudeliene
 ---
 
+Version 1.2.6
+
 # 共通初期設定
 
 ## SDK導入
@@ -237,7 +239,7 @@ AndroidManifest.xmlのアクティビティーに `<intent-filter>` を追加し
     	<data android:scheme="CUSTOM_URL_SCHEME" />
     	<category android:name="android.intent.category.DEFAULT" />
     	<category android:name="android.intent.category.BROWSABLE" />
-        <action android:name="android.intent.action.VIEW" />                
+        <action android:name="android.intent.action.VIEW" />
     </intent-filter>
 </activity>
 ```

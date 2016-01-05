@@ -6,6 +6,8 @@ draft: false
 title: Growthbeat Cocos2dx API
 ---
 
+Version 1.2.3
+
 # Growthbeat API
 
 ## Growthbeat インスタンスの取得
