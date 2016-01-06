@@ -211,23 +211,23 @@ GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID", BuildConfig.DEB
 
 # ディープリンク
 
-## ディープリンク用初期化処理
+## GrowthLink用設定
 
-Growthbeatの初期化処理の後に、Growth Linkの初期化処理を呼び出す
+Growthbeatの初期化処理の後に、Growth Linkの初期化処理を追加してください。
 
 ```java
 GrowthLink.getInstance().initialize(getApplicationContext(), "YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
 ```
 
-IntentFilterを設定したActivityのonCreateで、handleOpenUrlメソッドを呼び出す
+IntentFilterを設定したActivityのonCreateで、handleOpenUrlメソッドを呼び出してください。
 
 ```java
 GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
 ```
 
-**Android設定**
+**カスタムスキームの設定**
 
-AndroidManifest.xmlのアクティビティーに `<intent-filter>` を追加します。
+AndroidManifestのアクティビティーに `<intent-filter>` を追加します。
 
 外部からの遷移時、開くActivityにカスタムURLスキームを記述します。
 
@@ -243,6 +243,21 @@ AndroidManifest.xmlのアクティビティーに `<intent-filter>` を追加し
     </intent-filter>
 </activity>
 ```
+**InstallReferrerReceiverの追加**
+
+AndroidManifestの`<application/>`内に以下のコードを追加してください
+
+```xml
+<receiver
+    android:name="com.growthbeat.link.InstallReferrerReceiver"
+    android:enabled="true"
+    android:exported="true" >
+    <intent-filter>
+        <action android:name="com.android.vending.INSTALL_REFERRER" />
+    </intent-filter>
+</receiver>
+```
+
 
 ## ディープリンクアクションの実装
 
