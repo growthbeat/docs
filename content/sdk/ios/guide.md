@@ -6,6 +6,8 @@ draft: false
 title: Growthbeat iOS Gudeliene
 ---
 
+Version 1.2.6
+
 # 共通初期設定
 
 ## SDK導入
@@ -236,7 +238,7 @@ AppDelegate.mにUniversalLinkのハンドリング処理を実装します。
                 [[UIApplication sharedApplication] openURL:webpageURL];
                 return false;
             }
-    
+
         }
     return true;
 }
@@ -245,7 +247,7 @@ AppDelegate.mにUniversalLinkのハンドリング処理を実装します。
     NSURLComponents *component = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:true];
     if (!component || !component.host) return false;
     if ([@"gbt.io" isEqualToString:component.host] ) {
-        
+
         return true;
     }
     return false;

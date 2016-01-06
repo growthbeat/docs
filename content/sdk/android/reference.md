@@ -6,6 +6,8 @@ draft: false
 title: Growthbeat Android API
 ---
 
+Version 1.2.6
+
 # Growthbeat API
 
 ## Growthbeatインスタンスの取得

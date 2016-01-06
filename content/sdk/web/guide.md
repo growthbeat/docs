@@ -6,6 +6,8 @@ draft: false
 title: Growthbeat Web Gudeliene
 ---
 
+Version 1.1.3
+
 Web SDKはPush通知機能（Growth Push）のみ対応しております。
 
 # Push通知（Grwoth Push）
@@ -13,7 +15,7 @@ Web SDKはPush通知機能（Growth Push）のみ対応しております。
 Growth Push管理画面の証明書設定ページにて、Androidの証明書の設定を行ってください。
 
 - [Android SenderId、 APIキー取得方法](http://growthbeat.helpscoutdocs.com/article/23-gcm-api)
- 
+
 また、導入の前に下記もご覧ください。
 
 - [Growth Push for Android Chromeの動作環境](http://faq.growthbeat.com/article/46-growth-push-for-android-chrome)
@@ -73,7 +75,7 @@ gcm_sender_idには、Google Developers Consoleで取得したSenderIdを指定�
     script.src = '/path/to/growthpush.js';
     document.getElementsByTagName('script')[0].parentNode.appendChild(script);
   })();
-  
+
   document.addEventListener('growthpushReady', function () {
     GrowthPush.init({
       applicationId: YOUR_APPLICATION_ID,
@@ -95,7 +97,7 @@ gcm_sender_idには、Google Developers Consoleで取得したSenderIdを指定�
 |applicationId| Growth Push管理画面のアプリID |
 |credentialId| Growth Push管理画面のシークレットキー |
 |environment| 本番環境: `production` 開発環境: `development` |
-|receiver| 本番環境: `/growthpush-sw.min.js` 開発環境: `/growthpush-sw.js` | 
+|receiver| 本番環境: `/growthpush-sw.min.js` 開発環境: `/growthpush-sw.js` |
 |appName| アプリ名。通知のタイトルで表示されます。 |
 |icon| アイコン画像。通知のアイコンで表示されます。 |
 |clickEventName| 通知クリックのイベント。例: NotificationClick |

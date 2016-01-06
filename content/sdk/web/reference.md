@@ -6,6 +6,8 @@ draft: true
 title: Growthbeat Web API
 ---
 
+Version 1.1.3
+
 # Growth Push API
 
 ## 初期化
@@ -41,7 +43,7 @@ interface Params {
 |applicationId| Growth Push管理画面のアプリID |
 |credentialId| Growth Push管理画面のシークレットキー |
 |environment| 本番環境: `production` 開発環境: `development` |
-|receiver| 本番環境: `/growthpush-sw.min.js` 開発環境: `/growthpush-sw.js` | 
+|receiver| 本番環境: `/growthpush-sw.min.js` 開発環境: `/growthpush-sw.js` |
 |appName| アプリ名。通知のタイトルで表示されます。 |
 |icon| アイコン画像。通知のアイコンで表示されます。 |
 |clickEventName| 通知クリックのイベント。例: NotificationClick |
