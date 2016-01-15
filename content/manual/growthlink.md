@@ -1,11 +1,229 @@
 ---
 categories: 'manual'
-date: 2015-11-01T12:05:16+09:00
+date: 2016-01-15T12:56:00+09:00
 description: 'GrowthLink'
 draft: false
 title: GrowthLink
 ---
 
-# coming soon...
+# リンク
 
-<!--more-->
+## 一覧画面
+
+作成したリンクを確認することができます。
+確認できるのは、以下の6つです。
+
+1. リンク名
+2. URL
+3. メディア、タグ
+4. クリック数
+5. インストール数
+6. オープン数
+
+<img src="/img/link/manual-linklist.png" alt="manual-linklist" title="manual-linklist" width="100%"/>
+
+## 編集画面
+
+<img src="/img/link/manual-linkedit-name.png" alt="manual-linkedit-name" title="manual-linkedit-name" width="100%"/>
+
+**リンク名**
+リンクを管理するための名前です。
+
+**リンクURL**
+DeepLinkのURLを決めることができます。
+入力されていない場合はランダムな文字列が与えられます。
+
+### ディープリンク設定
+
+<img src="/img/link/manual-linkedit-action.png" alt="manual-linkedit-action" title="manual-linkedit-action" width="100%"/>
+
+**ランディングページのURL**
+
+ストアやアプリに遷移する前にランディングページを見せたい場合は、URLを入力してください。
+空欄の場合はランディングページを挟みません。
+
+**アクション**
+
+ピンクの枠で囲われた部分はではリンクに関連づけるアクションを設定できます。。
+アクションについてはメニューにあるアクションを参照してください。
+
+**アプリ未インストール時の遷移先**
+
+<img src="/img/link/manual-linkedit-fallback.png" alt="manual-linkedit-fallback" title="manual-linkedit-fallback" width="100%"/>
+
+アプリがインストールさせていない時の遷移先URLを設定できます。
+クリックした時にストア以外に飛ばしたい場合はここを設定してください。
+設定しない場合は基本設定で設定しているURLに遷移します。
+
+**ソーシャルメディア設定**
+
+TwitterカードやFacebookのOGPに対応させる場合に設定してください。
+
+### メディア、タグ
+
+<img src="/img/link/manual-linkedit-tag.png" alt="manual-linkedit-tag" title="manual-linkedit-tag" width="100%"/>
+
+このリンクに関連づけるメディアとタグを設定できます。
+ポストバックと関連づける際は該当するメディアを選んでください。
+
+
+# メディア
+
+
+## 一覧画面
+
+<img src="/img/link/manual-medialist.png" alt="manual-medialist" title="manual-medialist" width="100%"/>
+
+メディアごとのクリック数、インストール数、オープン数を確認できます。
+
+## 編集画面
+
+<img src="/img/link/manual-mediaedit.png" alt="manual-mediaedit" title="manual-mediaedit" width="80%"/>
+
+**メディア名**
+
+メディアの名前を入力してください。
+この名前はポストバックやリンク管理でも使われます。
+
+
+# タグ
+
+## 一覧画面
+
+<img src="/img/link/manual-taglist.png" alt="manual-taglist" title="manual-taglist" width="100%"/>
+
+タグごとのクリック数、インストール数、オープン数を確認できます。
+
+# ポストバック
+
+## 一覧画面
+
+<img src="/img/link/manual-postbacklist.png" alt="manual-postbacklist" title="manual-postbacklist" width="100%"/>
+
+ポストバックの一覧を確認できます。
+
+## 編集画面
+
+<img src="/img/link/manual-postbackedit.png" alt="manual-postbackedit" title="manual-postbackedit" width="80%"/>
+
+**ポストバック名**
+
+ポストバックを管理するための名前を入力してください。
+
+**メディア**
+
+ポストバックと関連づけるメディアを選択してください。
+
+**イベント**
+
+どのイベントが起きたタイミングでポストバックを行うかを選択できます。
+
+**パラメータ**
+
+ポストバックURLに含めるクエリパラメータを設定できます。
+
+**テンプレート**
+
+<img src="/img/link/manual-postbackedit-template.png" alt="manual-postbackedit-template" title="manual-postbackedit-template
+" width="80%"/>
+
+ポストバック先のURLやポストバックの方法が設定できます。
+マクロによってGrowthLinkのURLに付与されたクエリパラメータを利用することもできます。
+
+例： http\://gbt.io/l/XXXXXXX?uid=1234
+で得たuidをポストバックで http\://example.com?uid=1234
+で返したい場合、ポストバックURLをhttp\://example.com、keyを`uid`、valueを`{uid}`としてください。
+
+# アクション
+
+## アクションとは
+アクションとは、ディープリンク経由でアプリをインストール or 開いた場合の挙動のことです。
+
+## 一覧画面
+
+<img src="/img/link/manual-actionlist.png" alt="manual-actionlist" title="manual-actionlist" width="100%"/>
+
+アクションの一覧を確認できます。
+
+## 編集画面
+
+<img src="/img/link/manual-actionedit.png" alt="manual-actionedit" title="manual-actionedit" width="100%"/>
+
+**名前**
+
+アクションを管理するための名前を入力してください。
+
+**タイプ**
+
+・ URLオープン: 指定したURLをブラウザで開きます。
+
+・ カスタム: 設定したkeyとvalueをアプリ側で取得できます。valueを動的に変えたい場合は[カスタムパラメータ機能](http://growthhack.sirok.co.jp/growthlink/growth-link-3/)を利用してください。
+
+
+**説明**
+
+アクションのメモを入力できます。
+
+# 基本設定
+
+## 計測方法
+
+<img src="/img/link/manual-setting-method.png" alt="manual-setting-method" title="manual-setting-method" width="100%"/>
+
+Cookie, Device Fingerprint, Install Referrerから計測方法を選択できます。
+
+## リンク基本設定
+
+### iOS用の設定
+
+<img src="/img/link/manual-setting-ios.png" alt="manual-setting-ios" title="manual-setting-ios" width="50%"/>
+
+**App Store URL**
+
+ストアのURLを入力してください。
+
+**URLスキーム**
+
+アプリに設定したURLスキームを入力してください。
+例： custom_shceme:// の場合は custom_scheme と入力してください。
+
+#### Universal Link設定
+
+iOS9.x系に対応させるためにはUniversalLink設定が必要になります。
+詳しくは導入方法ドキュメントを参照してください。
+
+### Android用の設定
+
+<img src="/img/link/manual-setting-android.png" alt="manual-setting-android" title="manual-setting-android" width="50%"/>
+
+**Google Play URL**
+
+Google PlayストアのURLを入力してください。
+
+**URLスキーム**
+
+アプリに設定したURLスキームを入力してください。
+例： custom_shceme:// の場合は custom_scheme と入力してください。
+
+**Androidパッケージ名**
+アプリのパッケージ名を入力してください。
+
+
+### PC用の設定
+<img src="/img/link/manual-setting-pc.png" alt="manual-setting-pc" title="manual-setting-pc" width="50%"/>
+
+PCでディープリンクをクリックした場合の遷移先となるURLを入力してください。
+
+# よくある質問
+
+## アクションのValueの値を動的に設定するには？
+カスタムパラメータ機能で動的に設定できます。設定方法については下の記事を参考にしてください。
+
+[カスタムパラメータ機能をリリース](http://growthhack.sirok.co.jp/growthlink/growth-link-3/)
+
+なお、記事ではマクロの部分は`{query.page}`としていますが、シンプルに`{page}`としても動作します。
+
+## iOS9.x系に対応させるには？
+UniversalLinkに対応させる必要があります。設定方法については下のリンクを参照してください。
+
+[iOS9.x系の設定方法](/sdk/ios/guide/#universallinkの設定-ios9-x系)
