@@ -26,7 +26,6 @@
   },
   "homepage": "https://github.com/growthbeat/docs#readme",
   "devDependencies": {
-    "bdash": "^2.0.0",
     "del": "^2.0.2",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.0.1",
