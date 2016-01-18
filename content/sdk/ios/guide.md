@@ -183,8 +183,8 @@ SDKには、GBIntentHandlerというプロトコルが定義されており、�
 }]];
 ```
 
-## UniversalLinkの設定 (iOS9.x系)
-iOS9からカスタムスキームでの遷移に関する仕様が大幅に変更されたため、iOS9.x系に対応するにはUniversalLinkの設定が必要になります。
+## Universal Links用の設定 (iOS9.x系)
+iOS9からカスタムスキームでの遷移に関する仕様が大幅に変更されたため、iOS9.x系に対応するにはUniversal Linksの設定が必要になります。
 
 ### apple.developer.com での設定
 
@@ -226,7 +226,7 @@ CapabilitiesタブのAssociated Domainsをクリックすると展開されド�
 
 **ハンドリング処理の実装**
 
-AppDelegate.mにUniversalLinkのハンドリング処理を実装します。
+AppDelegate.mにUniversal Linksのハンドリング処理を実装します。
 ```objc
 - (BOOL) application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
         if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
@@ -258,7 +258,7 @@ Xcode上での設定は以上になります。
 
 ### GrowthLink管理画面上 での設定
 
-「基本設定」タブ -> リンク基本設定セクションから UniversalLinkの設定ができます。
+「基本設定」タブ -> リンク基本設定セクションから Universal Linksの設定ができます。
 「Universal Linkに対応させる」をチェックし、
 apple.developer.comに登録してあるBundle IdentifierとApple TeamIDを記入してください。どちらもapple.developer.comApp Identifiersから確認できます。
 記入後「保存」ボタンを押して設定を保存してください。
@@ -266,9 +266,14 @@ apple.developer.comに登録してあるBundle IdentifierとApple TeamIDを記�
 <img src="/img/link/guide-universal-07.png" alt="guide-universal-07" title="guide-universal-07" width="70%"/>
 
 ### 検証の際の注意点
-* 検証の際はアプリを一度アンインストールし、インストールしなおしてください。この手順を踏まないとデバイスがサーバーからダウンロードするUniversalLinkのルーティング定義ファイルが更新されず、古い設定のままになってしまいます。
-* GrowthLinkの仕様上、UniversalLink用の設定については10分ごとに反映されます。検証をする際は設定を保存後10分以上経過した後に行ってください。
+* 検証の際はアプリを一度アンインストールし、インストールしなおしてください。この手順を踏まない場合古い設定のままになります。
+* GrowthLinkの仕様上、Universal  Links用の設定については10分ごとに反映されます。検証をする際は設定を保存後10分以上経過した後に行ってください。
 
+### ランディングページを挟む場合の注意点
+
+以下の記事を参考にしてください。
+
+[【UniversalLinks】ランディングページにリンクを埋め込む際の注意点](http://faq.growthbeat.com/article/114-universallink)
 
 # Growth Push SDKからの乗り換え方法について
 
