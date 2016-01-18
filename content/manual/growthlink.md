@@ -187,9 +187,9 @@ Cookie, Device Fingerprint, Install Referrerから計測方法を選択できま
 アプリに設定したURLスキームを入力してください。
 例： custom_shceme:// の場合は custom_scheme と入力してください。
 
-#### Universal Link設定
+#### Universal Links設定
 
-iOS9.x系に対応させるためにはUniversalLink設定が必要になります。
+iOS9.x系に対応させるためにはUniversal Links設定が必要になります。
 詳しくは導入方法ドキュメントを参照してください。
 
 ### Android用の設定
