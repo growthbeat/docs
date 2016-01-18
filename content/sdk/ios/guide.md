@@ -265,6 +265,11 @@ apple.developer.comに登録してあるBundle IdentifierとApple TeamIDを記�
 
 <img src="/img/link/guide-universal-07.png" alt="guide-universal-07" title="guide-universal-07" width="70%"/>
 
+### 検証の際の注意点
+* 検証の際はアプリを一度アンインストールし、インストールしなおしてください。この手順を踏まないとデバイスがサーバーからダウンロードするUniversalLinkのルーティング定義ファイルが更新されず、古い設定のままになってしまいます。
+* GrowthLinkの仕様上、UniversalLink用の設定については10分ごとに反映されます。検証をする際は設定を保存後10分以上経過した後に行ってください。
+
+
 # Growth Push SDKからの乗り換え方法について
 
 ## 前準備
