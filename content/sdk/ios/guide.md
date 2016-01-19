@@ -228,6 +228,9 @@ CapabilitiesタブのAssociated Domainsをクリックすると展開されド�
 
 AppDelegate.mにUniversal Linksのハンドリング処理を実装します。
 ```objc
+#import <GrowthLink/GrowthLink.h> //インポートしておく
+
+
 - (BOOL) application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
         if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
             NSURL *webpageURL = userActivity.webpageURL;

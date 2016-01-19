@@ -231,14 +231,6 @@ Growthbeatの初期化処理の後に、Growth Linkの初期化処理を呼び�
 GrowthLink::getInstance()->initialize("APPLICATION_ID", "CREDENTIAL_ID");
 ```
 
-### Android
-AppActivity 内で、GrowthLinkJNI に context を設定してください。
-
-```java
-GrowthLinkJNI.setContext(getApplicationContext());
-GrowthLinkJNI.handleOpenUrl(getIntent().getData());
-```
-
 ## ディープリンクアクションの実装
 
 SDKには、`IntentHandler` というインタフェースが定義されており、この実装でディープリンク時のアクションを実装することができます。
@@ -253,6 +245,36 @@ GrowthbeatCore::getInstance()->addCustomIntentHandler([](std::map<std::string,st
     log("cutomintenthandler called.");
     return true;
 });
+```
+## OS別設定
+
+### iOS
+共通初期設定に追加で、
+
+* GrowthLink.frameworkのインポート
+* SafariServices.frameworkのインポート
+
+が必要です。
+
+**URLスキームの設定**
+Xcodeプロジェクトを開き、 `Info -> URL Types -> URL Schemes` の中に、アプリのカスタムURLスキームを記述します。
+
+<img src="/img/sdk/iOS/url-scheme.png" alt="url-scheme" title="url-scheme" width="100%"/>
+
+**iOS9.x系対応**
+
+iOS9.x系に対応するには、Universal Linksに対応させる必要があります。
+設定方法については以下のリンクを参考にしてください。
+なお、Appdelegate.m に書いていただくコードは、ios/AppController.mm 内に書くようにしてください。
+
+[iOS9.x系対応](/sdk/ios/guide/#universal-links用の設定-ios9-x系)
+
+### Android
+AppActivity 内で、GrowthLinkJNI に context を設定してください。
+
+```java
+GrowthLinkJNI.setContext(getApplicationContext());
+GrowthLinkJNI.handleOpenUrl(getIntent().getData());
 ```
 
 # 備考
