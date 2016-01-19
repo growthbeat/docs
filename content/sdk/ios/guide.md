@@ -166,6 +166,11 @@ URL起動の処理で、handleOpenUrl:urlメソッドを呼び出す
 URL Schemesにはスキームを、IdentifierにはBundle Identifierなどアプリごとに一意になる値を入力してください。
 <img src="/img/link/link-guide-scheme.png" alt="link-guide-scheme" title="link-guide-scheme" width="100%"/>
 
+## バージョンの設定
+
+`General -> Identity -> Version`　が空欄であると正常に動作しません。
+正しいバージョンを指定してください。
+
 ## ディープリンクアクションの実装
 
 SDKには、GBIntentHandlerというプロトコルが定義されており、この実装でディープリンク時のアクションを実装することができます。

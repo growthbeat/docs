@@ -250,9 +250,15 @@ void HandleCustomIntent(string extra) {
 が必要です。
 
 **URLスキームの設定**
+
 Xcodeプロジェクトを開き、 `Info -> URL Types -> URL Schemes` の中に、アプリのカスタムURLスキームを記述します。
 
 <img src="/img/sdk/iOS/url-scheme.png" alt="url-scheme" title="url-scheme" width="100%"/>
+
+**バージョンの設定**
+
+`General -> Identity -> Version`　が空欄であると正常に動作しません。
+正しいバージョンを指定してください。
 
 **iOS9.x系対応**
 
