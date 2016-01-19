@@ -187,9 +187,9 @@ Cookie, Device Fingerprint, Install Referrerから計測方法を選択できま
 アプリに設定したURLスキームを入力してください。
 例： custom_shceme:// の場合は custom_scheme と入力してください。
 
-#### Universal Link設定
+#### Universal Links設定
 
-iOS9.x系に対応させるためにはUniversalLink設定が必要になります。
+iOS9.x系に対応させるためにはUniversal Links設定が必要になります。
 詳しくは導入方法ドキュメントを参照してください。
 
 ### Android用の設定
@@ -213,17 +213,3 @@ Google PlayストアのURLを入力してください。
 <img src="/img/link/manual-setting-pc.png" alt="manual-setting-pc" title="manual-setting-pc" width="50%"/>
 
 PCでディープリンクをクリックした場合の遷移先となるURLを入力してください。
-
-# よくある質問
-
-## アクションのValueの値を動的に設定するには？
-カスタムパラメータ機能で動的に設定できます。設定方法については下の記事を参考にしてください。
-
-[カスタムパラメータ機能をリリース](http://growthhack.sirok.co.jp/growthlink/growth-link-3/)
-
-なお、記事ではマクロの部分は`{query.page}`としていますが、シンプルに`{page}`としても動作します。
-
-## iOS9.x系に対応させるには？
-UniversalLinkに対応させる必要があります。設定方法については下のリンクを参照してください。
-
-[iOS9.x系の設定方法](/sdk/ios/guide/#universallinkの設定-ios9-x系)

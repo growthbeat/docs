@@ -224,16 +224,55 @@ Growth Linkの初期化実装は下記になります。
 ```
 IntentHandler.GetInstance ().AddNoopIntentHandler ();
 IntentHandler.GetInstance ().AddUrlIntentHandler ();
+IntentHandler.GetInstance ().AddCustomIntentHandler ("GrowthbeatComponent", "HandleCustomIntent");
 GrowthLink.GetInstance().Initialize (applicationId, credentialId);
 ```
 
-**iOS設定**
+## ディープリンクアクションの設定
+クリックしたリンクに付与されたデータがGrowthbeatComponentのHandleCustomIntentに渡ってきます。
+ここにページ遷移やAPI利用などの処理を実装してください。
+
+```
+void HandleCustomIntent(string extra) {
+		Debug.Log("Enter HandleCustomIntent");
+		Debug.Log(extra);
+}
+```
+## OS別設定
+
+### iOS設定
+
+共通初期設定に追加で、
+
+* GrowthLink.frameworkのインポート
+* SafariServices.frameworkのインポート
+
+が必要です。
+
+**URLスキームの設定**
 
 Xcodeプロジェクトを開き、 `Info -> URL Types -> URL Schemes` の中に、アプリのカスタムURLスキームを記述します。
 
 <img src="/img/sdk/iOS/url-scheme.png" alt="url-scheme" title="url-scheme" width="100%"/>
 
-**Android設定**
+**バージョンの設定**
+
+`General -> Identity -> Version`　が空欄であると正常に動作しません。
+正しいバージョンを指定してください。
+
+**iOS9.x系対応**
+
+iOS9.x系に対応するには、Universal Linksに対応させる必要があります。
+設定方法については以下のリンクを参考にしてください。
+なお、Appdelegate.m に書いていただくコードは、UnityAppController.mm 内に書くようにしてください。
+
+[iOS9.x系対応](/sdk/ios/guide/#universal-links用の設定-ios9-x系)
+
+
+
+
+
+### Android設定
 
 AndroidManifest.xmlのアクティビティーに `<intent-filter>` を追加します。
 

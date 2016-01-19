@@ -130,6 +130,33 @@ growthbeat.jarは、下記設定が必須となります。
 * YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。
 
 ## Growthbeatの初期化
+
+AppDelegate.cpp　に以下のコードを追加してください。
+
+```cpp
+#include "Growthbeat.h"
+#include "GrowthPush.h"
+#include "GrowthbeatCore.h"
+#include "GrowthAnalytics.h"
+#include "GrowthLink.h"
+```
+
+続いて、`#USING_NS_CC;`の下に以下のコードを追加してください。
+
+```cpp
+USING_NS_GROWTHBEAT;
+USING_NS_GROWTHPUSH;
+USING_NS_GROWTHBEATCORE;
+USING_NS_GROWTHLINK;
+USING_NS_GROWTHANALYTICS;
+
+#ifdef COCOS2D_DEBUG
+GPEnvironment kGPEnvironment = GPEnvironmentDevelopment;
+#else
+GPEnvironment kGPEnvironment = GPEnvironmentProduction;
+#endif
+```
+
 Growthbeat へデバイス登録・認証を行います。初期化の中に、端末の基本情報の送信、広告IDの取得が行われます。
 
 ```cpp
@@ -231,14 +258,6 @@ Growthbeatの初期化処理の後に、Growth Linkの初期化処理を呼び�
 GrowthLink::getInstance()->initialize("APPLICATION_ID", "CREDENTIAL_ID");
 ```
 
-### Android
-AppActivity 内で、GrowthLinkJNI に context を設定してください。
-
-```java
-GrowthLinkJNI.setContext(getApplicationContext());
-GrowthLinkJNI.handleOpenUrl(getIntent().getData());
-```
-
 ## ディープリンクアクションの実装
 
 SDKには、`IntentHandler` というインタフェースが定義されており、この実装でディープリンク時のアクションを実装することができます。
@@ -253,6 +272,43 @@ GrowthbeatCore::getInstance()->addCustomIntentHandler([](std::map<std::string,st
     log("cutomintenthandler called.");
     return true;
 });
+```
+## OS別設定
+
+### iOS
+共通初期設定に追加で、
+
+* GrowthLink.frameworkのインポート
+* SafariServices.frameworkのインポート
+
+が必要です。
+
+**URLスキームの設定**
+
+Xcodeプロジェクトを開き、 `Info -> URL Types -> URL Schemes` の中に、アプリのカスタムURLスキームを記述します。
+
+<img src="/img/sdk/iOS/url-scheme.png" alt="url-scheme" title="url-scheme" width="100%"/>
+
+**バージョンの設定**
+
+`General -> Identity -> Version`　が空欄であると正常に動作しません。
+正しいバージョンを指定してください。
+
+
+**iOS9.x系対応**
+
+iOS9.x系に対応するには、Universal Linksに対応させる必要があります。
+設定方法については以下のリンクを参考にしてください。
+なお、Appdelegate.m に書いていただくコードは、ios/AppController.mm 内に書くようにしてください。
+
+[iOS9.x系対応](/sdk/ios/guide/#universal-links用の設定-ios9-x系)
+
+### Android
+AppActivity 内で、GrowthLinkJNI に context を設定してください。
+
+```java
+GrowthLinkJNI.setContext(getApplicationContext());
+GrowthLinkJNI.handleOpenUrl(getIntent().getData());
 ```
 
 # 備考

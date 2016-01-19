@@ -166,6 +166,11 @@ URL起動の処理で、handleOpenUrl:urlメソッドを呼び出す
 URL Schemesにはスキームを、IdentifierにはBundle Identifierなどアプリごとに一意になる値を入力してください。
 <img src="/img/link/link-guide-scheme.png" alt="link-guide-scheme" title="link-guide-scheme" width="100%"/>
 
+## バージョンの設定
+
+`General -> Identity -> Version`　が空欄であると正常に動作しません。
+正しいバージョンを指定してください。
+
 ## ディープリンクアクションの実装
 
 SDKには、GBIntentHandlerというプロトコルが定義されており、この実装でディープリンク時のアクションを実装することができます。
@@ -183,8 +188,8 @@ SDKには、GBIntentHandlerというプロトコルが定義されており、�
 }]];
 ```
 
-## UniversalLinkの設定 (iOS9.x系)
-iOS9からカスタムスキームでの遷移に関する仕様が大幅に変更されたため、iOS9.x系に対応するにはUniversalLinkの設定が必要になります。
+## Universal Links用の設定 (iOS9.x系)
+iOS9からカスタムスキームでの遷移に関する仕様が大幅に変更されたため、iOS9.x系に対応するにはUniversal Linksの設定が必要になります。
 
 ### apple.developer.com での設定
 
@@ -226,8 +231,11 @@ CapabilitiesタブのAssociated Domainsをクリックすると展開されド�
 
 **ハンドリング処理の実装**
 
-AppDelegate.mにUniversalLinkのハンドリング処理を実装します。
+AppDelegate.mにUniversal Linksのハンドリング処理を実装します。
 ```objc
+#import <GrowthLink/GrowthLink.h> //インポートしておく
+
+
 - (BOOL) application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
         if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
             NSURL *webpageURL = userActivity.webpageURL;
@@ -258,12 +266,22 @@ Xcode上での設定は以上になります。
 
 ### GrowthLink管理画面上 での設定
 
-「基本設定」タブ -> リンク基本設定セクションから UniversalLinkの設定ができます。
+「基本設定」タブ -> リンク基本設定セクションから Universal Linksの設定ができます。
 「Universal Linkに対応させる」をチェックし、
 apple.developer.comに登録してあるBundle IdentifierとApple TeamIDを記入してください。どちらもapple.developer.comApp Identifiersから確認できます。
 記入後「保存」ボタンを押して設定を保存してください。
 
 <img src="/img/link/guide-universal-07.png" alt="guide-universal-07" title="guide-universal-07" width="70%"/>
+
+### 検証の際の注意点
+* 検証の際はアプリを一度アンインストールし、インストールしなおしてください。この手順を踏まない場合古い設定のままになります。
+* GrowthLinkの仕様上、Universal  Links用の設定については10分ごとに反映されます。検証をする際は設定を保存後10分以上経過した後に行ってください。
+
+### ランディングページを挟む場合の注意点
+
+以下の記事を参考にしてください。
+
+[【UniversalLinks】ランディングページにリンクを埋め込む際の注意点](http://faq.growthbeat.com/article/114-universallink)
 
 # Growth Push SDKからの乗り換え方法について
 
