@@ -183,6 +183,64 @@ curl -X POST \
 }
 ```
 
+_セグメントクエリ作成方法については [Notification API クエリ指定方法](http://faq.growthbeat.com/article/96-notification-api) を参照してください_
+
+## Segments
+
+### Create Segment
+
+**POST:** http://api.growthpush.com/3/segments
+
+**Request**
+
+|Name         |Type   |Required|Default|Options|Notes         |
+|:------------|:------|:-------|:------|:------|:-------------|
+|applicationId|String |YES     |       |       |[Growthbeat アプリケーションID](http://faq.growthbeat.com/article/130-growthbeat-id) |
+|credentialId |String |YES     |       |       |[Growthbeat クレデンシャルID](http://faq.growthbeat.com/article/130-growthbeat-id)     |
+|name         |String |YES     |       |       |セグメント名      |
+|query        |String |YES     |       |       |クエリ          |
+
+```bash
+curl -X POST \
+    -H 'Accept: application/json' \
+    -d 'applicationId=${APPLICATION_ID}' \
+    -d 'credentialId=${CREDENTIAL_ID}' \
+    -d 'name=${SEGMENT_NAME}' \
+    -d 'query=${SEGMENT_QUERY}' \
+    http://api.growthpush.com/3/segments
+```
+
+**Response**
+
+|Response|Name|Type|Notes|
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | created | String | 作成日 |
+|| id | String | セグメントID |
+|| applicationId | String | アプリケーションID |
+|| name | String | セグメント名 |
+|| query | String | queryオブジェクト |
+|| size | Int | セグメント対象Client数 |
+|| invisible | Boolean | セグメント状態 |
+|| modified | String | 更新日 |
+|| created | String | 作成日 |
+
+
+```bash
+{
+    "id":4,
+    "applicationId":1,
+    "name":"hoge",
+    "query":"{\"type\":\"tag\",\"tagId\":1,\"operator\":\"equal\",\"value\":\"1\"}",
+    "size":2,
+    "invisible":false,
+    "modified":"2014-08-27 17:27:03",
+    "created":"2014-08-27 17:27:03"
+}
+```
+
+_セグメントクエリ作成方法については [Notification API クエリ指定方法](http://faq.growthbeat.com/article/96-notification-api) を参照してください_
+
 # Growth Analytics API
 
 ## Segments
