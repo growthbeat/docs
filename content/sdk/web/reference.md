@@ -1,12 +1,12 @@
 ---
 categories: 'sdk'
-date: 2015-11-18T14:32:58+09:00
+date: 2015-02-17T14:32:58+09:00
 description: 'Growthbeat Web の API について説明します'
 draft: true
 title: Growthbeat Web API
 ---
 
-Version 1.1.3
+Version 1.1.4
 
 # Growth Push API
 
@@ -124,4 +124,3 @@ tag(name:string, value?:string)
 |:--|:--|
 |name|タグ名|
 |value|タグに持たせる値|
-
