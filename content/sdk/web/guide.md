@@ -1,12 +1,12 @@
 ---
 categories: 'sdk'
-date: 2015-11-18T14:32:58+09:00
+date: 2016-02-17T14:32:58+09:00
 description: 'Growthbeat Web の導入方法について説明します'
 draft: false
 title: Growthbeat Web Gudeliene
 ---
 
-Version 1.1.3
+Version 1.1.4
 
 Web SDKはPush通知機能（Growth Push）のみ対応しております。
 
@@ -21,10 +21,6 @@ Growth Push管理画面の証明書設定ページにて、Androidの証明書�
 - [Growth Push for Android Chromeの動作環境](http://faq.growthbeat.com/article/46-growth-push-for-android-chrome)
 
 ## SDK導入
-
-下記リンクからダウンロードできます。
-
-[最新版Web SDK ダウンロードページ](http://support.growthbeat.com/sdk)
 
 ### manifest.jsonの設置
 
