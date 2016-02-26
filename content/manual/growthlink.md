@@ -6,7 +6,7 @@ draft: false
 title: GrowthLink
 ---
 
-# (はじめに)deep linkの理解を深める
+# ディープリンクの理解を深める
 
 Growth Linkの設定にかならずしもdeep linkの知識は必須ではありませんが、
 ディープリンクの知識や他関連技術とGrowth Link関係性についての理解を深めておくと設定がやりやすくなります。
