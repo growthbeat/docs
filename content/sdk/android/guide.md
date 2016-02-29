@@ -97,9 +97,6 @@ dependencies {
 ```xml
 
 <!-- for Growth Push -->
-<meta-data android:name="com.growthpush.notification.icon" android:resource="@drawable/sample_notification_icon" />
-<meta-data android:name="com.growthpush.notification.icon.background.color" android:resource="@android:color/white" />
-<meta-data android:name="com.growthpush.dialog.icon" android:resource="@drawable/sample_notification_icon" />
 <activity
     android:name="com.growthpush.view.AlertActivity"
     android:configChanges="orientation|keyboardHidden"
