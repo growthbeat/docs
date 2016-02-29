@@ -6,6 +6,24 @@ draft: false
 title: GrowthLink
 ---
 
+# ディープリンクについて
+
+Growth Linkの設定にかならずしもdeep linkの知識は必須ではありませんが、
+ディープリンクの知識や他関連技術とGrowth Link関係性についての理解を深めておくと設定がやりやすくなります。
+理解の助けになる記事を下記に記載いたしました。
+
+
+[ディープリンクとGrowth Linkの関係](http://faq.growthbeat.com/article/141-growthlink)
+
+[UniversalLinksの説明とGrowth Linkの対応状況](http://faq.growthbeat.com/article/139-universallinks)
+
+[OGP(Open Graph protocol)について](http://faq.growthbeat.com/article/143-open-graph-protocol)
+
+[Twitterカードの説明とGrowth Linkとの対応状況](http://faq.growthbeat.com/article/138-twitter)
+
+[AppLinksの説明とGrowth Linkの対応状況](http://faq.growthbeat.com/article/140-applinks)
+
+
 # リンク
 
 ## 一覧画面

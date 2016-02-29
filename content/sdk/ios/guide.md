@@ -229,9 +229,15 @@ CapabilitiesタブのAssociated Domainsをクリックすると展開されド�
 プロジェクトブラウザ上でentitlementsファイルが生成されていることを確認してください。
 <img src="/img/link/guide-universal-06.png" alt="guide-universal-06" title="guide-universal-06" width="70%"/>
 
-**ハンドリング処理の実装**
+また、entitlementsファイルがビルドに含まれている必要があります。含まれない場合はentitlementsファイルをクリックし、Targetにチェックが入っているか確認してください。
 
+**ハンドリング処理の実装**
 AppDelegate.mにUniversal Linksのハンドリング処理を実装します。
+
+
+* Link Framework 1.2.6以下の場合
+
+
 ```objc
 #import <GrowthLink/GrowthLink.h> //インポートしておく
 
@@ -262,6 +268,27 @@ AppDelegate.mにUniversal Linksのハンドリング処理を実装します。
 }
 
 ```
+
+* Link Framework 1.2.7以上の場合
+
+
+[Universal Links](http://faq.growthbeat.com/article/134-universallinks)専用リンクへの対応のため、以下のように実装してください。
+
+
+```objc
+#import <GrowthLink/GrowthLink.h> //インポートしておく
+
+
+- (BOOL) application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
+    if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
+        NSURL *webpageURL = userActivity.webpageURL;
+        [[GrowthLink sharedInstance] handleUniversalLinks:webpageURL];
+    }
+    return true;
+}
+
+```
+
 Xcode上での設定は以上になります。
 
 ### GrowthLink管理画面上 での設定
