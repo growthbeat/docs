@@ -160,18 +160,21 @@ Growth Pushの送信画面で「通知IDを追加」のオプションを設定�
 <img src="/img/push/push_excel_import.png" alt="" title="" width="100%"/>
 
 # デバイス
-デバイスではデバイストークンの状況を確認することができます。
-デバイストークンのインポート機能もあり、CSVで一度に20万件まで送ることができます。
-
-端末のステータスは下記のように管理されており、実際に配信されるのはactiveの端末となります。
+デバイスではデバイストークンの状況を確認することができます。デバイストークンのインポート機能もあり、CSVで一度に20万件まで送ることができます。端末のステータスは下記のように管理されており、実際に配信されるのは active の端末となります。また、**一度 inactive になった端末は、手動にて更新ボタンを押さないかぎり active に変化することはありません。**
 
 * unknown：未検証状態
 * validating：検証処理中
 * active：検証済み
 * invalid：正しくないデバイストークン
-* inactive：プッシュ通知送信後、アプリをアンインストールしていると分かったデバイス
+* inactive：プッシュ通知送信後、アプリをアンインストールもしくはプッシュ通知をオフにしているしていると分かったデバイス
 
 <img src="/img/push/push_device_list.png" alt="" title="" width="100%"/>
+
+**各ステータスに関するトラブルシューティングは下記FAQを御覧ください**
+
+* [デバイストークンが「invalid(不正)」になる](http://faq.growthbeat.com/article/101-invalid)
+* [（ステータス）active時にプッシュ送信すると、inactiveに変わる状況とは？](http://faq.growthbeat.com/article/76-activeinactive)
+* [Push通知が届かない場合のトラブルシューティング](http://faq.growthbeat.com/article/60-push)
 
 # イベント
 GrowthPushに登録されているイベントを一覧で表示する画面です。一覧項目は以下の3つになっており、レポートボタンをクリックするとそれぞれのイベントを起こしたユーザーのログを確認することができます。詳細に関しましてはサポートページの[イベントとは](http://faq.growthbeat.com/article/17-article)をご参照ください。
