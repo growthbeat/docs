@@ -112,46 +112,6 @@ TwitterカードやFacebookのOGPに対応させる場合に設定してくだ�
 
 タグごとのクリック数、インストール数、オープン数を確認できます。
 
-# ポストバック
-
-## 一覧画面
-
-<img src="/img/link/manual-postbacklist.png" alt="manual-postbacklist" title="manual-postbacklist" width="100%"/>
-
-ポストバックの一覧を確認できます。
-
-## 編集画面
-
-<img src="/img/link/manual-postbackedit.png" alt="manual-postbackedit" title="manual-postbackedit" width="80%"/>
-
-**ポストバック名**
-
-ポストバックを管理するための名前を入力してください。
-
-**メディア**
-
-ポストバックと関連づけるメディアを選択してください。
-
-**イベント**
-
-どのイベントが起きたタイミングでポストバックを行うかを選択できます。
-
-**パラメータ**
-
-ポストバックURLに含めるクエリパラメータを設定できます。
-
-**テンプレート**
-
-<img src="/img/link/manual-postbackedit-template.png" alt="manual-postbackedit-template" title="manual-postbackedit-template
-" width="80%"/>
-
-ポストバック先のURLやポストバックの方法が設定できます。
-マクロによってGrowthLinkのURLに付与されたクエリパラメータを利用することもできます。
-
-例： http\://gbt.io/l/XXXXXXX?uid=1234
-で得たuidをポストバックで http\://example.com?uid=1234
-で返したい場合、ポストバックURLをhttp\://example.com、keyを`uid`、valueを`{uid}`としてください。
-
 # アクション
 
 ## アクションとは
