@@ -67,6 +67,21 @@ public void start()
 public void stop()
 ```
 
+## ログの停止
+
+Growthbeat SDKからのログ出力を全て停止します。
+デフォルトでは、ログ出力がおこなわれます。
+
+```java
+public void setLoggerSilent(boolean silent)
+```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|silent| ログ出力を行うか。`YES`: ログ出力しない `NO`:ログ出力をする |
+
 ## GrowthbeatユニークIDを取得する
 
 SDK初期化時に作成される、GrowthbeatのユニークIDを取得できます。
@@ -391,8 +406,6 @@ public void requestRegistrationId(final String senderId, final Environment envir
 
 ## イベントの送信（Push専用）
 
-_こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。これまでGrowth Push SDKをご利用しておりました方は、Growth Analyticsのイベント・タグの送信にお乗り換えくださいませ。_
-
 ### イベントの送信（Push専用）
 
 ```java
@@ -419,8 +432,6 @@ public void trackEvent(final String name, final String value);
 
 
 ## タグの送信（Push専用）
-
-_こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。これまでGrowth Push SDKをご利用しておりました方は、Growth Analyticsのイベント・タグの送信にお乗り換えくださいませ。_
 
 ### タグの送信（Push専用）
 

@@ -114,7 +114,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 登録されたデバイスは管理画面のデバイスページにて確認することができます。下記のように、デバイスのステータスがアクティブ（Active）で登録されていれば正常です。
 
-<img src="/img/push/push-device-list.png" alt="push_device_list" title="push-device-list" width="100%"/>
+<img src="/img/push/push_device_list.png" alt="push_device_list" title="push-device-list" width="100%"/>
 
 ## タグ・イベントを送信する。
 
@@ -453,7 +453,9 @@ Growthbeat SDKは、シングルトンインスタンスの設計となってい
 
 ## 移行確認方法
 
-ログに下記のようなものが発生していれば、移行ができ、Growth Pushへの登録が問題なくできています。
+ログに下記のようなものが発生していれば、Growthbeat SDK移行が正しく行われています。
+
+Growth Pushへの管理画面で、該当のGrowthPushClientIdのステータスが `Active` になっていれば、正しくプッシュ通知が行えます。
 
 ```
 2016-03-16 20:31:52.743 GrowthbeatSample[1527:2124584] [GrowthbeatCore:INFO] convert client... (GrowthPushClientId:286049252, GrowthbeatClientId:PfbulyL0PsWOnCHj)

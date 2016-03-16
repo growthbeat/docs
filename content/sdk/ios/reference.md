@@ -438,9 +438,9 @@ AppDelegateクラス
 - (BOOL)enableNotification;
 ```
 
-## イベントの送信（Growth Push専用）
+## イベントの送信（Push専用）
 
-### イベントの送信（Growth Push専用）
+### イベントの送信（Push専用）
 
 ```objc
 - (void)trackEvent:(NSString *)name;
@@ -452,7 +452,7 @@ AppDelegateクラス
 |:--|:--|
 |name|イベント名|
 
-### イベントと任意の値の送信（Growth Push専用）
+### イベントと任意の値の送信（Push専用）
 
 ```objc
 - (void)trackEvent:(NSString *)name value:(NSString *)value;
@@ -465,9 +465,9 @@ AppDelegateクラス
 |name|イベント名|
 |value|イベントに持たせる値|
 
-## タグの送信（Growth Push専用）
+## タグの送信（Push専用）
 
-### タグの送信（Growth Push専用）
+### タグの送信（Push専用）
 
 ```objc
 - (void)setTag:(NSString *)name;
@@ -479,7 +479,7 @@ AppDelegateクラス
 |:--|:--|
 |name|タグ名|
 
-### タグと任意の値の送信（Growth Push専用）
+### タグと任意の値の送信（Push専用）
 
 ```objc
 - (void)setTag:(NSString *)name value:(NSString *)value;
