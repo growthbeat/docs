@@ -45,7 +45,17 @@ Xcodeプロジェクトに、依存するFrameworkを追加してください。
 
 ### Android
 
-### パーミッションの設定
+#### Google Play Serviceの設定方法
+
+* [Google公式ドキュメント](https://developers.google.com/android/guides/setup?hl=ja#add_google_play_services_to_your_project)
+
+##### 動作バージョン
+
+Google Play Servicesのバージョン23以上が必要となります。
+
+Growthbeat SDKでは、Google Play Servicesのバージョン23以上でないと、正しく動作いたしません。
+
+#### パーミッションの設定
 
 ```xml
 <meta-data
@@ -75,7 +85,7 @@ Xcodeプロジェクトに、依存するFrameworkを追加してください。
 
 ```
 
-### Growthbeatの設定
+#### Growthbeatの設定
 
 `<application>`タグ内に下記を追加してください。
 
@@ -185,7 +195,7 @@ Environmentは、開発環境の場合、Environment.Developmentを指定、本�
 
 iOSの場合、デバイストークンがNotificationServicesから戻ってきますので、UpdateにてSetDeviceTokenを実装し、登録処理を流します。
 
-```
+```cs
 #if UNITY_IPHONE
 using NotificationServices = UnityEngine.iOS.NotificationServices;
 #endif
@@ -204,6 +214,29 @@ void Update () {
     #endif
 }
 ```
+
+## タグ・イベントを送信する。
+
+セグメント配信を利用する際に、実装が必要となります。
+
+[配信したいセグメント](/manual/growthpush/#セグメントの作成)に沿って、タグやイベントの紐付けを行ってください。
+
+### タグ送信
+
+```cs
+GrowthPush.GetInstance().SetTag("TagName", "TagValue");
+```
+
+[setTagメソッドについて](/sdk/unity/reference/#タグの送信-push専用)
+
+### イベント送信
+
+```cs
+GrowthPush.GetInstance().TrackEvent("EventName");
+```
+
+[trackEventメソッドについて](/sdk/unity/reference/#イベントの送信-push専用)
+
 
 # アプリ内メッセージ
 
@@ -330,9 +363,33 @@ public class GrowthbeatComponent : MonoBehaviour
 ## 前準備
 GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行されるため、[Growthbeat](https://growthbeat.com/)にアクセスして、ApplicationId、SDKキー（CredentialID）を確認します。
 
+## 注意点
+
+これまでGrowth Pushでご利用いただいた、ApplicationIdは数値型、シークレットキーは文字列になっています。
+
+|項目|型|
+|---|--|
+|applicationId|数値型|
+|secret|文字列型/32文字|
+
+Growthbeat SDKで利用するものは、applicationId、credentialIdともに文字列型になっています。
+
+|項目|型|
+|---|--|
+|applicationId|文字列型/16文字|
+|credentailId|文字列型/32文字|
+
+Growthbeat SDK乗り換え時に、これまでGrowth Pushで利用していたシークレットキーを設定しても、正しく動作しませんのでご注意くださいませ。
+
+必ず、SDKキーをご利用ください。
+
 ## 実装方法
 
 ### SDKの初期化
+
+Growthbeat SDKでは、iOSのデバイストークン取得部分をUnity上に記述する必要があります。
+
+Growtbeat SDKでは、シングルトンインスタンスの設計に変更したため、これまでの実装部分を変更していただく必要がございます。
 
 - GrowthPush SDK
 
@@ -348,35 +405,31 @@ void Awake () {
 - Growthbeat SDK
 
 ```csharp
-void Awake () {
-	// Growthbeat SDKの初期化
-	Growthbeat.GetInstance ().Initialize ("YOUR_APPLICATION_ID", "CREDENTIAL_ID");
 
-	// デバイストークンを明示的に要求
-	GrowthPush.GetInstance ().RequestDeviceToken ("YOUR_SENDER_ID", Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
-
-	// バッチの削除
-	GrowthPush.GetInstance ().ClearBadge ();
-
-	// Launchイベントの取得
-	GrowthPush.GetInstance ().TrackEvent ("Launch");
-
-	// DeviceTagの取得
-	GrowthPush.GetInstance ().SetDeviceTags ();
-}
-```
-
-### デバイストークンの取得
-
-- Growthbeat SDK
-
-```csharp
 #if UNITY_IPHONE
 using NotificationServices = UnityEngine.iOS.NotificationServices;
 #endif
 
 public class YourGameObjectComponent : MonoBehaviour
 {
+
+    void Awake () {
+    	// Growthbeat SDKの初期化
+    	Growthbeat.GetInstance ().Initialize ("YOUR_APPLICATION_ID", "CREDENTIAL_ID");
+
+    	// デバイストークンを明示的に要求
+    	GrowthPush.GetInstance ().RequestDeviceToken ("YOUR_SENDER_ID", Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
+
+    	// バッチの削除
+    	GrowthPush.GetInstance ().ClearBadge ();
+
+    	// Launchイベントの取得
+    	GrowthPush.GetInstance ().TrackEvent ("Launch");
+
+    	// DeviceTagの取得
+    	GrowthPush.GetInstance ().SetDeviceTags ();
+    }
+
 	bool tokenSent = false;
 	void Update ()
 	{
@@ -392,6 +445,61 @@ public class YourGameObjectComponent : MonoBehaviour
 	}
 }
 ```
+
+### AndroidManifest.xml
+
+Growthbeat SDKでは、 `com.growthpush.BroadcastReceiver`が廃止になりましたので、変更が必要となります。
+
+この変更を行わないと、正しくプッシュ通知が送信できなくなりますので、ご注意ください。
+
+- GrowthPush SDK
+
+```xml
+<receiver
+    android:name="com.growthpush.BroadcastReceiver"
+    android:permission="com.google.android.c2dm.permission.SEND" >
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+        <category android:name="YOUR_PACKAGE_NAME" />
+    </intent-filter>
+</receiver>
+```
+
+- Growthbeat SDK
+
+```xml
+<service
+    android:name="com.growthpush.TokenRefreshService"
+    android:exported="false">
+    <intent-filter>
+        <action android:name="com.google.android.gms.iid.InstanceID"/>
+    </intent-filter>
+</service>
+<service android:name="com.growthpush.RegistrationIntentService"/>
+<service
+    android:name="com.growthpush.ReceiverService"
+    android:exported="false" >
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+    </intent-filter>
+</service>
+<receiver
+    android:name="com.google.android.gms.gcm.GcmReceiver"
+    android:exported="true"
+    android:permission="com.google.android.c2dm.permission.SEND" >
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <category android:name="YOUR_PACKAGE_NAME" />
+    </intent-filter>
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+        <category android:name="YOUR_PACKAGE_NAME" />
+    </intent-filter>
+</receiver>
+```
+
 
 # 備考
 

@@ -49,6 +49,22 @@ public void Start ()
 public void Stop ()
 ```
 
+## ログの停止
+
+Growthbeat SDKからのログ出力を全て停止します。
+デフォルトでは、ログ出力がおこなわれます。
+
+```cs
+public void SetLoggerSilent (bool silent)
+```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|silent| ログ出力を行うか。`YES`: ログ出力しない `NO`:ログ出力をする |
+
+
 ## ハンドラ
 
 ### 処理をしないハンドラ
