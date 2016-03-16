@@ -71,4 +71,4 @@ curl -X GET \
 # 活用例
 
 * [Notifications API 経由で、特定のユーザーに対してPush通知を送る方法](http://faq.growthbeat.com/article/51-notifications-api-push)
-* [Notifications API のqueryの指定方法](http://faq.growthbeat.com/article/52-notifications-api-query)
+
