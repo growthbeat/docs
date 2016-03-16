@@ -14,6 +14,10 @@ Version 1.2.6
 
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。
 
+Unity 5以上の動作推奨をしています。
+
+Unityプラットフォームがサポートしていないバージョンについては、本SDKもサポート対象外となります。
+
 ### 手動でgrowthbeat.unitypackageのインポート
 
 [最新版Unity SDK ダウンロードページ](http://support.growthbeat.com/sdk/)
