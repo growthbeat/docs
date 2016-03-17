@@ -36,6 +36,16 @@ dependencies {
 
 ## Google Play Servicesの導入
 
+* [Google公式ドキュメント](https://developers.google.com/android/guides/setup?hl=ja#add_google_play_services_to_your_project)
+
+### 動作バージョン
+
+Google Play Servicesのバージョン23以上が必要となります。
+
+Growthbeat SDKでは、Google Play Servicesのバージョン23以上でないと、正しく動作いたしません。
+
+### 導入設定
+
 AndroidManifest.xmlの`<application>`内に以下を追加
 
 ```xml
@@ -44,7 +54,7 @@ AndroidManifest.xmlの`<application>`内に以下を追加
     android:value="@integer/google_play_services_version" />
 ```
 
-### GradleでSDKを導入した場合
+#### Gradle、Android StudioでSDKを導入した場合
 
 build.gradleに下記を追加してください。バージョンはAndroidのデベロッパーサイトで確認するようにしてください。
 
@@ -54,13 +64,17 @@ dependencies {
 }
 ```
 
-### 手動でSDKを導入した場合
+#### EclipseでSDKを導入した場合
 
 ライブラリプロジェクトとして、google_play_service_libをビルドパスに設定してください。
+
+ライブラリプロジェクトの設定方法は、Google公式ドキュメントの「Eclipse With ADT」のメニューを参考にしてください。
 
 ## AndroidManifest.xmlの設定
 
 ### パーミッションの設定
+
+* Google play Servicesの設定項目
 
 ```xml
 <meta-data
@@ -162,15 +176,15 @@ Growthbeat.getInstance().initialize(context, "YOUR_APPLICATION_ID", "YOUR_CREDEN
 
 ## アプリの起動・終了イベントの送信
 
-起動イベントは、`MainActivity#onStart` に下記を実装してください。
+起動イベントは、`Applicationクラス#onCreate` など、起動時に1度呼ばれる部分に実装をしてください。
 
-```objc
+```java
 Growthbeat.getInstance().start();
 ```
 
-終了イベントは、`MainActivity#onStop` に下記を実装してください。
+終了イベントは、最後のアクティビティなど、プロセスがなくなるときに呼ばれる部分に実装をしてください。
 
-```objc
+```java
 Growthbeat.getInstance().stop();
 ```
 
@@ -186,15 +200,38 @@ Growth Push管理画面の証明書設定ページにて、各OSごとに証明�
 
 Growthbeatの初期化後に下記を呼び出して、デバイストークンの取得を行います。
 
-```
+```java
 GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID", BuildConfig.DEBUG ? Environment.development : Environment.production);
 ```
 
 登録されたデバイスは管理画面のデバイスページにて確認することができます。下記のように、デバイスのステータスがアクティブ（Active）で登録されていれば正常です。
 
-<img src="/img/push/push-device-list.png" alt="push-device-list" title="push-device-list" width="100%"/>
+<img src="/img/push/push_device_list.png" alt="push_device_list" title="push-device-list" width="100%"/>
 
 * YOUR_SENDER_IDは、AndroidのSenderId
+
+## タグ・イベントを送信する。
+
+セグメント配信を利用する際に、実装が必要となります。
+
+[配信したいセグメント](/manual/growthpush/#セグメントの作成)に沿って、タグやイベントの紐付けを行ってください。
+
+### タグ送信
+
+```java
+GrowthPush.getInstance().setTag("TagName", "TagValue");
+```
+
+[setTagメソッドについて](/sdk/android/reference/#タグの送信-push専用)
+
+### イベント送信
+
+```java
+GrowthPush.getInstance().trackEvent("EventName");
+```
+
+[trackEventメソッドについて](/sdk/android/reference/#イベントの送信-push専用)
+
 
 # アプリ内メッセージ
 
@@ -285,13 +322,37 @@ GrowthbeatCore.getInstance().setIntentHandlers(intentHandlers);
 GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行されるた
 め、[Growthbeat](https://growthbeat.com/)にアクセスして、ApplicationId、SDKキー（CredentialID）を確認します。
 
+ApplicationIdについては、Growth　Pushの左メニュー、シークレットキーのgrowthbeatApplicationIdという項目の左の文字列をご利用ください。
+
+SDKキーに関しては、Growthbeatマイページにてご確認ください。
+
+## 注意点
+
+これまでGrowth Pushでご利用いただいた、ApplicationIdは数値型、シークレットキーは文字列になっています。
+
+|項目|型|
+|---|--|
+|applicationId|数値型|
+|secret|文字列型/32文字|
+
+Growthbeat SDKで利用するものは、applicationId、credentialIdともに文字列型になっています。
+
+|項目|型|
+|---|--|
+|applicationId|文字列型/16文字|
+|credentailId|文字列型/32文字|
+
+Growthbeat SDK乗り換え時に、これまでGrowth Pushで利用していたシークレットキーを設定しても、正しく動作しませんのでご注意くださいませ。
+
+必ず、SDKキーをご利用ください。
+
 ## 実装方法
 
 ### SDKの初期化
 
 - GrowthPush SDK
 
-```
+```java
 protected void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.activity_main);
@@ -304,7 +365,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 - Growthbeat SDK
 
-```
+```java
 protected void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.activity_main);
@@ -317,6 +378,60 @@ protected void onCreate(Bundle savedInstanceState) {
 	// DeviceTagの取得
 	GrowthPush.getInstance().setDeviceTags();
 }
+```
+
+### AndroidManifest.xml
+
+Growthbeat SDKでは、 `com.growthpush.BroadcastReceiver`が廃止になりましたので、変更が必要となります。
+
+この変更を行わないと、正しくプッシュ通知が送信できなくなりますので、ご注意ください。
+
+- GrowthPush SDK
+
+```xml
+<receiver
+    android:name="com.growthpush.BroadcastReceiver"
+    android:permission="com.google.android.c2dm.permission.SEND" >
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+        <category android:name="YOUR_PACKAGE_NAME" />
+    </intent-filter>
+</receiver>
+```
+
+- Growthbeat SDK
+
+```xml
+<service
+    android:name="com.growthpush.TokenRefreshService"
+    android:exported="false">
+    <intent-filter>
+        <action android:name="com.google.android.gms.iid.InstanceID"/>
+    </intent-filter>
+</service>
+<service android:name="com.growthpush.RegistrationIntentService"/>
+<service
+    android:name="com.growthpush.ReceiverService"
+    android:exported="false" >
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+    </intent-filter>
+</service>
+<receiver
+    android:name="com.google.android.gms.gcm.GcmReceiver"
+    android:exported="true"
+    android:permission="com.google.android.c2dm.permission.SEND" >
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <category android:name="YOUR_PACKAGE_NAME" />
+    </intent-filter>
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+        <category android:name="YOUR_PACKAGE_NAME" />
+    </intent-filter>
+</receiver>
 ```
 
 # 備考
