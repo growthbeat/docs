@@ -14,6 +14,8 @@ Version 1.2.6
 
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。
 
+Objective-Cでの導入方法について記載しております。
+
 ### CocoaPodsを使用して導入する場合
 
 Podfileに下記を記述し、pod installを実行してください。
@@ -112,7 +114,29 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 登録されたデバイスは管理画面のデバイスページにて確認することができます。下記のように、デバイスのステータスがアクティブ（Active）で登録されていれば正常です。
 
-<img src="/img/push/push-device-list.png" alt="push-device-list" title="push-device-list" width="100%"/>
+<img src="/img/push/push_device_list.png" alt="push_device_list" title="push-device-list" width="100%"/>
+
+## タグ・イベントを送信する。
+
+セグメント配信を利用する際に、実装が必要となります。
+
+[配信したいセグメント](/manual/growthpush/#セグメントの作成)に沿って、タグやイベントの紐付けを行ってください。
+
+### タグ送信
+
+```objc
+[[GrowthPush sharedInstance] setTag:@"TagName" value:@"TagValue"];
+```
+
+[setTagメソッドについて](/sdk/ios/reference/#タグの送信-push専用)
+
+### イベント送信
+
+```objc
+[[GrowthPush sharedInstance] trackEvent:@"EventName"];
+```
+
+[trackEventメソッドについて](/sdk/ios/reference/#イベントの送信-push専用)
 
 # アプリ内メッセージ
 
@@ -241,7 +265,6 @@ AppDelegate.mにUniversal Linksのハンドリング処理を実装します。
 ```objc
 #import <GrowthLink/GrowthLink.h> //インポートしておく
 
-
 - (BOOL) application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
         if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
             NSURL *webpageURL = userActivity.webpageURL;
@@ -317,18 +340,48 @@ apple.developer.comに登録してあるBundle IdentifierとApple TeamIDを記�
 GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行されるた
 め、[Growthbeat](https://growthbeat.com/)にアクセスして、ApplicationId、SDKキー（CredentialID）を確認します。
 
+ApplicationIdについては、Growth　Pushの左メニュー、シークレットキーのgrowthbeatApplicationIdという項目の左の文字列をご利用ください。
+
+SDKキーに関しては、Growthbeatマイページにてご確認ください。
+
+## 注意点
+
+これまでGrowth Pushでご利用いただいた、ApplicationIdは数値型、シークレットキーは文字列になっています。
+
+|項目|型|
+|---|--|
+|applicationId|数値型|
+|secret|文字列型/32文字|
+
+Growthbeat SDKで利用するものは、applicationId、credentialIdともに文字列型になっています。
+
+|項目|型|
+|---|--|
+|applicationId|文字列型/16文字|
+|credentailId|文字列型/32文字|
+
+Growthbeat SDK乗り換え時に、これまでGrowth Pushで利用していたシークレットキーを設定しても、正しく動作しませんのでご注意くださいませ。
+
+必ず、SDKキーをご利用ください。
+
 ## 実装方法
 
 ### SDKの初期化
 
 - GrowthPush SDK
 
+ * EasyGrowthPushクラスをご利用の場合
+
 ```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // EasyGrowthPushクラス利用時
     [EasyGrowthPush setApplicationId:kYourApplicationId secret:@"YOU_APP_SECRET" environment:kGrowthPushEnvironment debug:YES];
+}
+```
 
-    // GrowthPushクラス利用時
+* GrowthPushクラスをご利用の場合
+
+```objc
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [GrowthPush setApplicationId:kYourApplicationId secret:@"YOU_APP_SECRET" environment:kGrowthPushEnvironment debug:YES];
     [GrowthPush requestDeviceToken];
     [GrowthPush setDeviceTags];
@@ -347,7 +400,14 @@ GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行される�
 	// deviceTagの取得
 	[[GrowthPush sharedInstance] setDeviceTags];
 }
+
+- (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+	// デバイストークンをGrowhPushに送信
+	[[GrowthPush sharedInstance] setDeviceToken:deviceToken];
+}
 ```
+
+Growth Push SDKに存在したEasyGrowthPushクラスは、Growthbeat SDKでは廃止となっており、 `didRegisterForRemoteNotificationsWithDeviceToken` のデリゲートで、デバイストークンをGrowth Pushへ送信する実装を行う必要がございます。
 
 ### アプリ起動時
 
@@ -362,17 +422,6 @@ GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行される�
 
 	// Launchイベントの取得
 	[[GrowthPush sharedInstance] trackEvent:@"Launch"];
-}
-```
-
-### デバイストークンの取得
-
-- Growthbeat SDK
-
-```objc
-- (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-	// デバイストークンをGrowhPushに送信
-	[[GrowthPush sharedInstance] setDeviceToken:deviceToken];
 }
 ```
 
@@ -398,6 +447,21 @@ GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行される�
 // イベントの取得
 [[GrowthPush sharedInstance] trackEvent:@"EVENT_NAME"];
 [[GrowthPush sharedInstance] trackEvent:@"EVENT_NAME" value:@"EVENT_VALUE"];
+```
+
+Growthbeat SDKは、シングルトンインスタンスの設計となっているため、実装の変更が必要となります。
+
+## 移行確認方法
+
+ログに下記のようなものが発生していれば、Growthbeat SDK移行が正しく行われています。
+
+Growth Pushへの管理画面で、該当のGrowthPushClientIdのステータスが `Active` になっていれば、正しくプッシュ通知が行えます。
+
+```
+2016-03-16 20:31:52.743 GrowthbeatSample[1527:2124584] [GrowthbeatCore:INFO] convert client... (GrowthPushClientId:286049252, GrowthbeatClientId:PfbulyL0PsWOnCHj)
+2016-03-16 20:31:52.876 GrowthbeatSample[1527:2124584] [GrowthbeatCore:INFO] Client converted. (id:PfbulyL0PsWOnCHj)
+2016-03-16 20:31:52.969 GrowthbeatSample[1527:2124609] [GrowthPush:INFO] Create client... (growthbeatClientId: PfbulyL0PsWOnCHj, token: 0b466cb0529f435e80882ad87f5384ea8f44539307312cfc5301b0e1561b909f, environment: development)
+2016-03-16 20:31:53.199 GrowthbeatSample[1527:2124609] [GrowthPush:INFO] Create client success. (clientId: PfbulyL0PsWOnCHj)
 ```
 
 # 備考
