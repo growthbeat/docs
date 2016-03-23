@@ -28,8 +28,8 @@ git submodule update --init --recursive
 
 |OS|バージョン|
 |:---:|:---:|
-|Android|[1.2.3](https://github.com/growthbeat/growthbeat-android/tree/b0fa9e9b9c18b59bf2a5c248e79b66b100dd74af)|
-|iOS|[1.2.3](https://github.com/growthbeat/growthbeat-ios/tree/0339ce8eb9c5aafd8e9e5442075c2aae4acdcb6a)|
+|Android|[1.2.6](https://github.com/growthbeat/growthbeat-android/tree/1.2.6)|
+|iOS|[1.2.6](https://github.com/growthbeat/growthbeat-ios/tree/1.2.6)|
 
 #### iOS
 
@@ -40,7 +40,8 @@ git submodule update --init --recursive
 
 #### Android
 
-`growthbeat-android/growthbeat.jar` の中身を、プロジェクトの `/path/to/your_project/proj.android/libs/` 配下にコピーしてください。
+1. `growthbeat-android/release/growthbeat.jar` の中身を、プロジェクトの `/path/to/your_project/proj.android/libs/` 配下にコピーしてください。
+1. `source/proj.android/src` の中身を、プロジェクトの `/path/to/your_project/proj.android/src` 配下にコピーしてください。
 
 ## 初期設定
 
@@ -55,6 +56,7 @@ Growthbeat.frameworkは、下記Frameworkが必須となります。Xcodeプロ�
 1. SystemConfiguration.framework
 1. AdSupport.framework
 1. CFNetwork.framework
+1. SafariServices.framework
 
 ### Android
 
@@ -74,7 +76,10 @@ growthbeat.jarは、下記設定が必須となります。
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 
-<!--Growth Pushの機能として利用します。 -->
+<!-- under API 15 -->
+<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+<!-- for Growth Push -->
 <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 <uses-permission android:name="android.permission.VIBRATE" />
 <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -83,40 +88,58 @@ growthbeat.jarは、下記設定が必須となります。
     android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE"
     android:protectionLevel="signature" />
 
-<!--Growth Messageのバナー型の配信をする場合に必要となります。。 -->
+<!-- for Growth Message -->
 <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
-<!-- Android 4.0.4以上で動作する場合は必要ありません。 -->
-<uses-permission android:name="android.permission.GET_ACCOUNTS" />
 ```
+
+### Growthbeatの設定
 
 `<application>`タグ内に下記を追加してください。
 
 ```xml
 
-<!--Growth Push通知を受け取るために必要となります。 -->
+<!-- for Growth Push -->
 <activity
     android:name="com.growthpush.view.AlertActivity"
     android:configChanges="orientation|keyboardHidden"
     android:launchMode="singleInstance"
     android:theme="@android:style/Theme.Translucent" />
-
+<service
+    android:name="com.growthpush.TokenRefreshService"
+    android:exported="false">
+    <intent-filter>
+        <action android:name="com.google.android.gms.iid.InstanceID"/>
+    </intent-filter>
+</service>
+<service android:name="com.growthpush.RegistrationIntentService"/>
+<service
+    android:name="com.growthpush.Cocos2dxReceiverService"
+    android:exported="false" >
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+    </intent-filter>
+</service>
 <receiver
-    android:name="com.growthpush.BroadcastReceiver"
+    android:name="com.google.android.gms.gcm.GcmReceiver"
+    android:exported="true"
     android:permission="com.google.android.c2dm.permission.SEND" >
     <intent-filter>
         <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <category android:name="YOUR_PACKAGE_NAME" />
+    </intent-filter>
+    <intent-filter>
         <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
         <category android:name="YOUR_PACKAGE_NAME" />
     </intent-filter>
 </receiver>
 
-<!--Growth Messageの表示をするために必要となります。 -->
+<!-- for Growth Message -->
 <activity
     android:name="com.growthbeat.message.view.MessageActivity"
     android:theme="@android:style/Theme.Translucent" />
 
-<!--Growth Linkを使用するために必要となります。 -->
+<!-- for Growth Link -->
 <receiver
     android:name="com.growthbeat.link.InstallReferrerReceiver"
     android:enabled="true"
@@ -128,6 +151,7 @@ growthbeat.jarは、下記設定が必須となります。
 
 ```
 * YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。
+
 
 ## Growthbeatの初期化
 
@@ -310,6 +334,159 @@ AppActivity 内で、GrowthLinkJNI に context を設定してください。
 GrowthLinkJNI.setContext(getApplicationContext());
 GrowthLinkJNI.handleOpenUrl(getIntent().getData());
 ```
+
+# Growth Push SDKからの乗り換え方法について
+
+## 前準備
+GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行されるた
+め、[Growthbeat](https://growthbeat.com/)にアクセスして、ApplicationId、SDKキー（CredentialID）を確認します。
+
+ApplicationIdについては、Growth　Pushの左メニュー、シークレットキーのgrowthbeatApplicationIdという項目の左の文字列をご利用ください。
+
+SDKキーに関しては、Growthbeatマイページにてご確認ください。
+
+## 注意点
+
+これまでGrowth Pushでご利用いただいた、ApplicationIdは数値型、シークレットキーは文字列になっています。
+
+|項目|型|
+|---|--|
+|applicationId|数値型|
+|secret|文字列型/32文字|
+
+Growthbeat SDKで利用するものは、applicationId、credentialIdともに文字列型になっています。
+
+|項目|型|
+|---|--|
+|applicationId|文字列型/16文字|
+|credentailId|文字列型/32文字|
+
+Growthbeat SDK乗り換え時に、これまでGrowth Pushで利用していたシークレットキーを設定しても、正しく動作しませんのでご注意くださいませ。
+
+必ず、SDKキーをご利用ください。
+
+## 実装方法
+
+### Growth Push SDKの内容を削除
+
+- growthpush.jar, growthpush.frameworkの削除
+- Classes/GrowthPush 以下を削除
+- com.growthpush 以下を削除
+
+### 初期化
+
+Growth Push SDK
+
+### AppDelegate.cpp
+
+```cpp
+bool AppDelegate::applicationDidFinishLaunching() {
+    // ...
+    GrowthPush::initialize(YOUR_APP_ID, "YOUR_APP_SECRET", GPEnvironmentDevelopment, true);
+    GrowthPush::registerDeviceToken("YOUR_SENDER_ID");
+    GrowthPush::trackEvent("Launch");
+    GrowthPush::setDeviceTags();
+    GrowthPush::clearBadge();
+    // ...
+    return YES;
+}
+```
+
+Growthbeat SDK
+
+```cpp
+bool AppDelegate::applicationDidFinishLaunching() {
+    // ...
+    Growthbeat::getInstance()->initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
+    GrowthPush::getInstance()->requestDeviceToken("YOUR_SENDER_ID", kGPEnvironment);
+    GrowthPush::getInstance()->trackEvent("Launch");
+    GrowthPush::getInstance()->setDeviceTags();
+    GrowthPush::getInstance()->clearBadge();
+    // ...
+    return YES;
+}
+```
+
+### Android AppActivity
+
+GrowthPush SDK
+
+```java
+public class AppActivity extends Cocos2dxActivity {
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    GrowthPushJNI.setContext(getApplicationContext());
+  }
+}
+```
+
+Growthbeat SDK
+
+```java
+public class AppActivity extends Cocos2dxActivity {
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    GrowthbeatJNI.setContext(getApplicationContext());
+  }
+}
+```
+
+### AndroidManifest.xml
+
+Growthbeat SDKでは、 `com.growthpush.BroadcastReceiver`が廃止になりましたので、変更が必要となります。
+
+この変更を行わないと、正しくプッシュ通知が送信できなくなりますので、ご注意ください。
+
+- GrowthPush SDK
+
+```xml
+<receiver
+    android:name="com.growthpush.BroadcastReceiver"
+    android:permission="com.google.android.c2dm.permission.SEND" >
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+        <category android:name="YOUR_PACKAGE_NAME" />
+    </intent-filter>
+</receiver>
+```
+
+- Growthbeat SDK
+
+```xml
+<service
+    android:name="com.growthpush.TokenRefreshService"
+    android:exported="false">
+    <intent-filter>
+        <action android:name="com.google.android.gms.iid.InstanceID"/>
+    </intent-filter>
+</service>
+<service android:name="com.growthpush.RegistrationIntentService"/>
+<service
+    android:name="com.growthpush.Cocos2dxReceiverService"
+    android:exported="false" >
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+    </intent-filter>
+</service>
+<receiver
+    android:name="com.google.android.gms.gcm.GcmReceiver"
+    android:exported="true"
+    android:permission="com.google.android.c2dm.permission.SEND" >
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <category android:name="YOUR_PACKAGE_NAME" />
+    </intent-filter>
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+        <category android:name="YOUR_PACKAGE_NAME" />
+    </intent-filter>
+</receiver>
+```
+
 
 # 備考
 

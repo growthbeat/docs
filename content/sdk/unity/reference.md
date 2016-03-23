@@ -444,9 +444,15 @@ public void RequestDeviceToken (string senderId, Environment environment)
 public void SetDeviceToken (string deviceToken)
 ```
 
-## イベントの送信（Push専用）
+## 基本タグの送信
 
-***こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。***
+Device, OS, Language, Time Zone, Version, Buildが含まれます。
+
+```cs
+public void SetDeviceTags();
+```
+
+## イベントの送信（Push専用）
 
 ### イベントの送信（Push専用）
 
@@ -475,8 +481,6 @@ public void TrackEvent (string name, string value)
 
 ## タグの送信（Push専用）
 
-***こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。***
-
 ### タグの送信（Push専用）
 
 ```cs
@@ -501,6 +505,15 @@ public void SetTag (string name, string value)
 |:--|:--|
 |name|タグ名|
 |value|タグに持たせる値|
+
+## バッチクリア
+
+配信時に、バッチにチェックマークを付けた場合、バッチをクリアするためのメソッドです。
+iOSのみ利用できます。
+
+```cs
+public void ClearBadge ();
+```
 
 
 # Growth Message API

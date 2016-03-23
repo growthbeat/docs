@@ -404,6 +404,14 @@ public void requestRegistrationId(final String senderId, final Environment envir
 |senderId|AndroidのSenderId|
 |environment| 開発用: `Environment.development` 本番用: `Environment.production`　|
 
+## 基本タグの送信
+
+Device, OS, Language, Time Zone, Version, Buildが含まれます。
+
+```java
+public void setDeviceTags();
+```
+
 ## イベントの送信（Push専用）
 
 ### イベントの送信（Push専用）
