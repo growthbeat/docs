@@ -90,7 +90,7 @@ SDK初期化時に作成される、GrowthbeatのユニークIDを取得でき�
 
 ## IntentHandlerを追加する。
 
-```objc
+```
 [[GrowthbeatCore sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
         NSDictionary *extra = customIntent.extra;
         NSLog(@"extra: %@", extra);
@@ -438,6 +438,14 @@ AppDelegateクラス
 - (BOOL)enableNotification;
 ```
 
+## 基本タグの送信
+
+Device, OS, Language, Time Zone, Version, Buildが含まれます。
+
+```objc
+- (void)setDeviceTags;
+```
+
 ## イベントの送信（Push専用）
 
 ### イベントの送信（Push専用）
@@ -492,6 +500,14 @@ AppDelegateクラス
 |name|タグ名|
 |value|タグに持たせる値|
 
+## バッチクリア
+
+配信時に、バッチにチェックマークを付けた場合、バッチをクリアするためのメソッドです。
+iOSのみ利用できます。
+
+```objc
+- (void)clearBadge;
+```
 
 # Growth Message API
 

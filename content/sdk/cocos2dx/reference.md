@@ -23,7 +23,7 @@ static Growthbeat* getInstance();
 Growthbeat の初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。
 
 ```cpp
-void initialize(const std::string &applicationId, const std::string &secret);
+void initialize(const std::string &applicationId, const std::string &credentialId);
 ```
 
 **パラメータ**
@@ -48,6 +48,21 @@ void start();
 ```cpp
 void stop();
 ```
+
+## ログの停止
+
+Growthbeat SDKからのログ出力を全て停止します。
+デフォルトでは、ログ出力がおこなわれます。
+
+```cpp
+void setLoggerSilent(bool silent);
+```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|silent| ログ出力を行うか。`YES`: ログ出力しない `NO`:ログ出力をする |
 
 # Growth Analytics API
 
@@ -309,8 +324,8 @@ void tag(const std::string& name, const std::string& value);
 ## フルカスタマイズなイベントの送信
 特定のネームスペース、イベントIDを設定していただくことが可能です。
 
-```cpp
-void track(const std::string& _namespace,const std::string& name, const std::map<std::string, std::string>& properties, GATrackOption option);
+```
+void track(const std::string& _namespace, const std::string& name, const std::map<std::string, std::string>& properties, GATrackOption option);
 ```
 
 **パラメータ**
@@ -336,7 +351,7 @@ void track(const std::string& _namespace,const std::string& name, const std::map
 
 特定のネームスペース、タグIDを設定していただくことが可能です。
 
-```cs
+```
 void tag(const std::string& _namespace,const std::string& name, const std::string& value);
 ```
 
@@ -383,10 +398,15 @@ void requestDeviceToken(const std::string &senderId, GPEnvironment environment);
 | senderId | Android の SenderId |
 | environment |開発用: `Environment.development` 本番用: `Environment.production`|
 
+## 基本タグの送信
+
+Device, OS, Language, Time Zone, Version, Buildが含まれます。
+
+```cs
+void setDeviceTags();
+```
+
 ## イベントの送信（Push専用）
-
-***こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。これまでGrowth Push SDKをご利用しておりました方は、Growth Analyticsのイベント・タグの送信にお乗り換えくださいませ。***
-
 
 ### イベントの送信（Push専用）
 
@@ -415,9 +435,6 @@ void trackEvent(const std::string &name, const std::string &value);
 
 ## タグの送信（Push専用）
 
-***こちらのメソッドは、Growth Pushが、Growth Analyticsに統合されました段階で削除予定となっております。これまでGrowth Push SDKをご利用しておりました方は、Growth Analyticsのイベント・タグの送信にお乗り換えくださいませ。***
-
-
 ### タグの送信（Push専用）
 
 ```cpp
@@ -442,6 +459,15 @@ void setTag(const std::string &name, const std::string &value);
 |:--|:--|
 |name|タグ名|
 |value|タグに持たせる値|
+
+## バッチクリア
+
+配信時に、バッチにチェックマークを付けた場合、バッチをクリアするためのメソッドです。
+iOSのみ利用できます。
+
+```cpp
+void clearBadge();
+```
 
 # Growth Link API
 
