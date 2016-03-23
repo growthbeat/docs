@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat Cocos2dx API
 ---
 
-Version 1.2.3
+Version 1.2.6
 
 # Growthbeat API
 

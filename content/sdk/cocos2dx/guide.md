@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat Cocos2dx Gudeliene
 ---
 
-Version 1.2.3
+Version 1.2.6
 
 # 共通初期設定
 
