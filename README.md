@@ -1,7 +1,6 @@
 > :page_facing_up: Documentation for Growthbeat
 
 [![wercker][wercker-badge]][wercker-link]
-[![MIt License][mit-badge]][mit]
 
 <br>
 
@@ -87,13 +86,11 @@ For transparency into our release cycle and in striving to maintain backward com
 
 ## License
 
-[MIT][mit] © [SIROK, Inc][sirok]
+growthbeat/docs © [SIROK, Inc][sirok]. Code is under [MIT License](https://opensource.org/licenses/MIT) and documents are under [CC BY-NC 4.0](http://creativecommons.org/licenses/by-nc/4.0/)
 
-Whenever code for bdash is borrowed or inspired by awesome existing sources, we credit the original developer, designer or article in our code. Please create [issues][issue] if you think any credit is absent.
+Whenever code for docs is borrowed or inspired by awesome existing sources, we credit the original developer, designer or article in our code. Please create issue if you think any credit is absent.
 
 
 [sirok]:          http://sirok.co.jp/
-[mit]:            https://github.com/growthbeat/docs/blob/master/LICENSE.md
-[mit-badge]:      https://img.shields.io/github/license/growthbeat/docs.svg?style=flat-square
 [wercker-badge]:  https://img.shields.io/wercker/ci/growthbeat/docs.svg?style=flat-square
 [wercker-link]:   https://app.wercker.com/#applications/55e7187dc0d66d1e600cf4c1
