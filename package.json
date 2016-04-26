@@ -26,7 +26,11 @@
     "url": "https://github.com/growthbeat/docs/issues"
   },
   "homepage": "https://github.com/growthbeat/docs#readme",
-  "devDependencies": {
+  "dependencies": {
+    "babel-core": "^5.8.25",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "highlight.js": "^8.8.0",
     "bdash": "^2.0.0",
     "codecov.io": "^0.1.6",
     "del": "^2.0.2",
@@ -46,11 +50,5 @@
     "textlint-rule-no-mix-dearu-desumasu": "^1.4.0",
     "textlint-rule-spellcheck-growthbeat-word": "0.0.7",
     "textlint-rule-spellcheck-tech-word": "^5.0.0"
-  },
-  "dependencies": {
-    "babel-core": "^5.8.25",
-    "gulp": "^3.9.1",
-    "gulp-rename": "^1.2.2",
-    "highlight.js": "^8.8.0"
   }
 }
