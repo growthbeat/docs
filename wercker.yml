@@ -9,6 +9,7 @@ build:
           sudo apt-get install nodejs -y
           sudo apt-get install npm -y
           sudo apt-get install libpng-dev -y
+          sudo ln -s /usr/local/bin/nodejs /usr/bin/node
     - script:
       name: Run npm run build
       code: |
