@@ -8,7 +8,8 @@
     "start": "./script/server",
     "post": "./script/post",
     "build": "gulp",
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "textlint": "textlint --rule content/**/*.md -f pretty-error"
   },
   "repository": {
     "type": "git",
@@ -39,7 +40,10 @@
     "imagemin-pngquant": "^4.2.0",
     "imagemin-svgo": "^4.2.0",
     "normalize-styl": "^3.0.3",
-    "sassline": "^2.1.0"
+    "sassline": "^2.1.0",
+    "textlint-formatter": "^1.7.3",
+    "textlint-rule-no-mix-dearu-desumasu": "^1.4.0",
+    "textlint-rule-spellcheck-growthbeat-word": "0.0.7"
   },
   "dependencies": {
     "babel-core": "^5.8.25",
