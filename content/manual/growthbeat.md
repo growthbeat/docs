@@ -26,7 +26,7 @@ Growthbeat のトップ画面から Mypage を選択してください。 Mypage
 * アカウント情報
 * スタッフ一覧（子アカウントの確認）
 * 現在のリクエスト数
-* クレデンシャルキー等の高度な設定
+* IP制限
 * 現在のプランの確認
 
 **マイページ**
@@ -47,7 +47,7 @@ Growthbeat のトップ画面から Mypage を選択してください。 Mypage
 
 <img src="/img/beat/beat-change-password.png" alt="beat-change-password" title="beat-change-password" width="100%"/>
 
-現在のパスワード・新しいパスワード・新しいパスワードの再入力をして、パスワードの変更が完了になります。	
+現在のパスワード・新しいパスワード・新しいパスワードの再入力をして、パスワードの変更が完了になります。
 
 <img src="/img/beat/beat-change-password-modal.png" alt="beat-change-password-modal" title="beat-change-password-modal" width="100%"/>
 
@@ -119,25 +119,13 @@ Mypage の下部に SDKキー があります。SDKリクエストを送る際�
 
 # 高度な設定
 
-クレデンシャルキーの管理、アカウントのIP制限、権限追加が行えます。
+アカウントのIP制限が行えます。
 
 <img src="/img/beat/beat-advanced-setting.png" alt="beat-advanced-setting" title="beat-advanced-setting" width="100%"/>
-
-## クレデンシャルキーの追加・削除
-
-APIにアクセスするためのクレデンシャルキーの追加ができます。追加・削除が行えるので、**外部にクレデンシャルキーを提供する場合等にご使用ください**。
-
-<img src="/img/beat/beat-add-cledential.png" alt="beat-add-cledential" title="beat-add-cledential" width="100%"/>
 
 ## IP制限
 
 IP制限を追加すると、こちらで指定したIPからのみ Growthbeat の管理画面にログイン可能になります。
-
-## 権限
-
-アカウントに対して、より詳細な権限をもつアカウントを追加することができます。こちらは高度な設定になりますので、設定したい場合は [こちら](https://growthbeat.com/inquiry) よりお問い合わせください。
-
-<img src="/img/beat/beat-add-authority.png" alt="beat-add-authority" title="beat-add-authority" width="100%"/>
 
 # プラン設定
 
@@ -147,7 +135,7 @@ IP制限を追加すると、こちらで指定したIPからのみ Growthbeat �
 
 ## リクエスト上限数の確認
 
-リクエスト上限数の確認ができます。Enterprise 契約のお客様はクレジットカードの登録は必要ない場合もございます。	
+リクエスト上限数の確認ができます。Enterprise 契約のお客様はクレジットカードの登録は必要ない場合もございます。
 
 <img src="/img/beat/beat-check-plan.png" alt="beat-check-plan" title="beat-check-plan" width="100%"/>
 

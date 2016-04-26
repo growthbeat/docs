@@ -9,7 +9,7 @@
     "post": "./script/post",
     "build": "gulp",
     "watch": "gulp watch",
-    "textlint": "textlint --rule content/**/*.md -f pretty-error"
+    "wercker:coverage": "textlint content/**/*.md -f codecov | codecov"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
   "homepage": "https://github.com/growthbeat/docs#readme",
   "devDependencies": {
     "bdash": "^2.0.0",
+    "codecov.io": "^0.1.6",
     "del": "^2.0.2",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.0.1",
@@ -42,8 +43,10 @@
     "normalize-styl": "^3.0.3",
     "sassline": "^2.1.0",
     "textlint-formatter": "^1.7.3",
+    "textlint-formatter-codecov": "^1.0.2",
     "textlint-rule-no-mix-dearu-desumasu": "^1.4.0",
-    "textlint-rule-spellcheck-growthbeat-word": "0.0.7"
+    "textlint-rule-spellcheck-growthbeat-word": "0.0.7",
+    "textlint-rule-spellcheck-tech-word": "^5.0.0"
   },
   "dependencies": {
     "babel-core": "^5.8.25",
