@@ -3,11 +3,19 @@ build:
   steps:
     - install-packages:
       packages: libpng-dev
+
     - wercker/npm-install@1.1.4
+    - script:
+        name: echo nodejs information
+        code: |
+          echo "node version $(node -v) running"
+          echo "npm version $(npm -v) running"
+
     - script:
       name: Run npm run build
       code: |
         npm run build
+
     - arjen/hugo-build:
         version: 0.15
         flags: --buildDrafts=true
