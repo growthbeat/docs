@@ -3,10 +3,10 @@ build:
   steps:
     - install-packages:
       packages: libpng-dev
+    - wercker/npm-install@1.1.4
     - script:
       name: Run npm run build
       code: |
-        npm install
         npm run build
     - arjen/hugo-build:
         version: 0.15
