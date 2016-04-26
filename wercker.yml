@@ -1,8 +1,8 @@
-box: debian
+box: nodesource/node
 build:
   steps:
     - install-packages:
-      packages: nodejs npm libpng-dev
+      packages: libpng-dev
     - script:
       name: Run npm run build
       code: |
