@@ -1,15 +1,8 @@
 box: debian
 build:
   steps:
-    - script:
-        name: Setup
-        code: |
-          sudo apt-get update -y
-          sudo apt-get install git -y
-          sudo apt-get install nodejs -y
-          sudo apt-get install npm -y
-          sudo apt-get install libpng-dev -y
-          sudo ln -s /usr/local/bin/nodejs /usr/bin/node
+    - install-packages:
+      packages: nodejs npm libpng-dev
     - script:
       name: Run npm run build
       code: |
@@ -22,10 +15,8 @@ build:
 
 deploy:
   steps:
-    - script:
-        name: install git
-        code: |
-          apt-get update && apt-get install git -y
+    - install-packages:
+        packages: git ssh-client liberror-perl
     - lukevivier/gh-pages@0.2.1:
         token:   $GITHUB_TOKEN
         domain:  support.growthbeat.com
