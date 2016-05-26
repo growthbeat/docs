@@ -1,9 +1,6 @@
-box: nodesource/node
+box: nodesource/trusty
 build:
   steps:
-    - install-packages:
-      packages: libpng-dev
-
     - wercker/npm-install@1.1.4
     - script:
         name: echo nodejs information
