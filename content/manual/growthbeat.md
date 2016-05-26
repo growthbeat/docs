@@ -21,83 +21,114 @@ https://growthbeat.com/ より、会員登録を行うことができます。�
 
 # マイページ
 
-Growthbeat のトップ画面から Mypage を選択してください。 Mypage では下記項目の確認ができます。
+Growthbeatにログインするとマイページが表示されます。マイページでは下記項目の確認ができます。
 
-* アカウント情報
-* スタッフ一覧（子アカウントの確認）
-* 現在のリクエスト数
-* IP制限
-* 現在のプランの確認
+* インフォメーション
+* リクエスト
+* アプリ一覧
+* アカウント
+* スタッフ一覧
 
-**マイページ**
-<img src="/img/beat/beat-select-mypage.png" alt="beat-select-mypage" title="beat-select-mypage" width="100%"/>
+## インフォメーション
 
-# アカウント情報の確認
+インフォメーションページでは、最新情報の確認ができます。リンクをクリックするとブログに遷移します。
 
-## アカウントIDの確認
+**インフォメーションページ**
+<img src="/img/beat/beat-information-page.png" alt="beat-information-page" title="beat-information-page" width="100%"/>
 
-マイページのアカウントIDが確認できます。アカウントIDはAPIを使用する際に必要になります。
 
-<img src="/img/beat/beat-account-id.png" alt="beat-account-id" title="beat-account-id" width="100%"/>
+## リクエスト
 
-## パスワードの変更
+リクエストページでは、サービスとアプリごとにリクエスト数が確認することができます。縦がサービスで、横がアプリごとになります。
 
-パスワードを変更する場合は、自分のアカウントを選択し、詳細タブを選択します。
-下部にあるパスワードの変更ボタンをクリックします。
+右上のプルダウンで年月を選択すると、該当月のリクエスト数を確認することが可能です。
 
-<img src="/img/beat/beat-change-password.png" alt="beat-change-password" title="beat-change-password" width="100%"/>
+**リクエストページ**
+<img src="/img/beat/beat-request-month.png" alt="beat-request-month" title="beat-request-month" width="100%"/>
 
-現在のパスワード・新しいパスワード・新しいパスワードの再入力をして、パスワードの変更が完了になります。
 
-<img src="/img/beat/beat-change-password-modal.png" alt="beat-change-password-modal" title="beat-change-password-modal" width="100%"/>
+## アプリ一覧
 
-## APIキーの確認
+アプリ一覧ページでは、アカウントに紐付くアプリを一覧、編集をすることができます。
 
-Mypage の下部に APIキー があります。APIリクエストを送る際に必要な key になります。
+**アプリ一覧ページ**
+<img src="/img/beat/beat-application-page.png" alt="beat-application-page" title="beat-application-page" width="100%"/>
 
-<img src="/img/beat/beat-api-key.png" alt="beat-api-key" title="beat-api-key" width="100%"/>
 
-## SDKキーの確認
+### アプリ詳細の変更
 
-Mypage の下部に SDKキー があります。SDKリクエストを送る際に必要な key になります。
+アイコン、アプリ名、ストアURLを変更することが可能です。下記ダイアログは、アプリ一覧ページのアプリ変更ボタンを押下することで表示されます。
 
-<img src="/img/beat/beat-sdk-key.png" alt="beat-sdk-key" title="beat-sdk-key" width="100%"/>
+**アプリ詳細変更ダイアログ**
+<img src="/img/beat/beat-application-detail.png" alt="beat-application-detail" title="beat-application-detail" width="100%"/>
 
-# アプリ情報の確認
+### アプリの削除
 
-## アプリの登録
+アプリを削除することが可能です。この操作は元に戻すことができません。下記ダイアログは、アプリ一覧ページの削除ボタンを押下することで表示されます。
 
-上部セレクトボックスを `アカウント名 > Growthbeat > 全てのアプリケーション` にします。
-一番右のセレクトボックスの最下部からアプリケーションを選択できます。
+**アプリ削除ダイアログ**
+<img src="/img/beat/beat-application-delete.png" alt="beat-application-delete" title="beat-application-delete" width="100%"/>
 
-<img src="/img/beat/beat-add-application.png" alt="beat-add-application" title="beat-add-application" width="100%"/>
 
-アプリケーション名を登録すると、アプリの登録完了となります。複数登録する場合は、アプリ名の区別がつきやすい名前入にすることをおすすめします。
+### アプリの追加
 
-<img src="/img/beat/beat-add-application-modal.png" alt="beat-add-application-modal" title="beat-add-application-modal" width="100%"/>
+右上のアプリ追加のボタンをクリックするとアプリ追加が行うことができます。アプリケーション名を登録すると、アプリの登録完了となります。アプリ名の区別がつきやすい名称を入れることを推奨しております。
 
-## アプリストアURLの登録
+**アプリ追加**
+<img src="/img/beat/beat-application-create.png" alt="beat-application-create" title="beat-application-create" width="100%"/>
 
-アプリケーションストアのURLの保存ができます。
+## アカウント
 
-<img src="/img/beat/beat-application-status.png" alt="beat-application-status" title="beat-application-status" width="100%"/>
+アカウントページでは、アカウント情報の確認、編集をすることができます。
 
-## アプリの削除
+**アカウントページ**
+<img src="/img/beat/beat-account-page.png" alt="beat-account-page" title="beat-account-page" width="100%"/>
 
-上部セレクトボックスを `アカウント名 > Growthbeat > 対象アプリ` にします。
-最下部にアプリの削除ボタンがあり、対象アプリの削除が可能です。
+### アカウント詳細の変更
 
-<img src="/img/beat/beat-application-status.png" alt="beat-application-status" title="beat-application-status" width="100%"/>
+アイコン、アカウント名を変更することが可能です。下記ダイアログは、アカウントページのアカウント変更ボタンを押下することで表示されます。
 
-# スタッフ一覧
+**アカウント詳細変更ダイアログ**
+<img src="/img/beat/beat-account-detail.png" alt="beat-account-detail" title="beat-account-detail" width="100%"/>
 
-自身のアカウントに紐づく子アカウントが表示されます。子アカウントの招待も行えます。
+### クレデンシャルキーの確認
 
-<img src="/img/beat/beat-stuff-list.png" alt="beat-stuff-list" title="beat-stuff-list" width="100%"/>
+APIキーとSDKキーを確認することができます。
 
-## スタッフ招待
+### Growthbeatアカウント情報
+
+メールアドレスとパスワードを変更することが可能です。
+
+**パスワード変更ダイアログ**
+<img src="/img/beat/beat-account-password.png" alt="beat-account-password" title="beat-account-password" width="100%"/>
+
+
+### 会社情報
+
+会社名と電話番号を入力することを推奨しております。
+
+### IP制限
+
+許可IPの追加を行えます。許可IPの設定がない場合はIPアクセス制限はかかりません。IPアクセス制限を1つ以上設定した場合、許可されたIPアドレス以外からのアクセスを禁止します。
+
+**許可IP追加ダイアログ**
+<img src="/img/beat/beat-account-ip.png" alt="beat-account-ip" title="beat-account-ip" width="100%"/>
+
+
+## スタッフ一覧
+
+スタッフ一覧ページでは、スタッフの確認、編集、および招待ができます。
+
+**スタッフ一覧ページ**
+<img src="/img/beat/beat-staff-page.png" alt="beat-staff-page" title="beat-staff-page" width="100%"/>
+
+### スタッフ招待
 
 権限を与えたいアカウントの権限を選択します。
+
+**スタッフ招待**
+
+<img src="/img/beat/beat-staff-invitation.png" alt="beat-staff-invitation" title="beat-staff-invitation" width="50%"/>
 
 |項目|内容|
 |:---|:---|
@@ -107,45 +138,6 @@ Mypage の下部に SDKキー があります。SDKリクエストを送る際�
 |招待文|メールに含まれる文章|
 
 **注意**：子アカウントのリクエスト数は、招待元のアカウントのものとして扱われます。子アカウントに引き継がれるのは、**アプリの権限のみとなり、サービスの権限は引き継がれません**。
-
-<img src="/img/beat/beat-stuff-invitation.png" alt="beat-stuff-invitation" title="beat-stuff-invitation" width="100%"/>
-
-# リクエスト数の確認
-
-サービスのリクエスト数が確認できます。
-上部のセレクトボックスにてサービスを選択すると、より詳細な、登録アプリごとのリクエスト数が確認できます。
-
-<img src="/img/beat/beat-request-application.png" alt="beat-request-application" title="beat-request-application" width="100%"/>
-
-# 高度な設定
-
-アカウントのIP制限が行えます。
-
-<img src="/img/beat/beat-advanced-setting.png" alt="beat-advanced-setting" title="beat-advanced-setting" width="100%"/>
-
-## IP制限
-
-IP制限を追加すると、こちらで指定したIPからのみ Growthbeat の管理画面にログイン可能になります。
-
-# プラン設定
-
-自身が登録しているプランの確認が行えます。
-
-<img src="/img/beat/beat-plan-list.png" alt="beat-plan-list" title="beat-plan-list" width="100%"/>
-
-## リクエスト上限数の確認
-
-リクエスト上限数の確認ができます。Enterprise 契約のお客様はクレジットカードの登録は必要ない場合もございます。
-
-<img src="/img/beat/beat-check-plan.png" alt="beat-check-plan" title="beat-check-plan" width="100%"/>
-
-## クレジットカードの登録
-
-クレジットカード情報の登録になります。
-
-**注意**：カード決済は**月の営業日初日**に請求させていただきます。カード情報に誤りがあった場合はメールにてご連絡させていただきます。
-
-<img src="/img/beat/beat-add-credit.png" alt="beat-add-credit" title="beat-add-credit" width="100%"/>
 
 
 <!--more-->
