@@ -1,20 +1,21 @@
-box: debian
+box: nodesource/node
 build:
   steps:
+    - install-packages:
+      packages: libpng-dev
+
+    - wercker/npm-install@1.1.4
     - script:
-        name: Setup
+        name: echo nodejs information
         code: |
-          apt-get update -y
-          apt-get install git -y
-          apt-get install nodejs -y
-          apt-get install nodejs-legacy -y
-          apt-get install npm -y
-          apt-get install libpng-dev -y
+          echo "node version $(node -v) running"
+          echo "npm version $(npm -v) running"
+
     - script:
       name: Run npm run build
       code: |
-        npm install
         npm run build
+
     - arjen/hugo-build:
         version: 0.15
         flags: --buildDrafts=true
@@ -22,10 +23,8 @@ build:
 
 deploy:
   steps:
-    - script:
-        name: install git
-        code: |
-          apt-get update && apt-get install git -y
+    - install-packages:
+        packages: git ssh-client liberror-perl
     - lukevivier/gh-pages@0.2.1:
         token:   $GITHUB_TOKEN
         domain:  support.growthbeat.com
