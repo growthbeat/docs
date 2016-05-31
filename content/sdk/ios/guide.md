@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat iOS Gudeliene
 ---
 
-Version 1.2.6
+Version 1.2.7
 
 # 共通初期設定
 
@@ -152,19 +152,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 ## 初期設定
 
-Growthbeat.frameworkを導入した上で、Growthbeat SDK内の `source/GrowthLink` に含まれる **GrowthLink.framework** を導入します。任意のXcodeプロジェクトを開き、Growthbeat.frameworkをインポートしてください。
-
-Growthbeat.frameworkのインポートの方法は2つあります。
-
-```
-1. Xcodeプロジェクトに、GrowthLink.frameworkをドラッグアンドドロップする。
-2. Bulid Phases -> Link Binary With Librariesの+ボタンを押し、Add Other...からGrowthLink.frameworkを選択。
-```
-
 GrowthLinkのimport文を記述します。
 
 ```objc
-#import <GrowthLink/GrowthLink.h>
+#import <Growthbeat/GrowthLink.h>
 ```
 
 ## 初期化処理
@@ -263,7 +254,7 @@ AppDelegate.mにUniversal Linksのハンドリング処理を実装します。
 
 
 ```objc
-#import <GrowthLink/GrowthLink.h> //インポートしておく
+#import <Growthbeat/GrowthLink.h> //インポートしておく
 
 - (BOOL) application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
         if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
@@ -292,14 +283,14 @@ AppDelegate.mにUniversal Linksのハンドリング処理を実装します。
 
 ```
 
-* Link Framework 1.2.7以上の場合
+* Growthbeat Framework 1.2.7以上の場合
 
 
 [Universal Links](http://faq.growthbeat.com/article/134-universallinks)専用リンクへの対応のため、以下のように実装してください。
 
 
 ```objc
-#import <GrowthLink/GrowthLink.h> //インポートしておく
+#import <Growthbeat/GrowthLink.h> //インポートしておく
 
 
 - (BOOL) application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
