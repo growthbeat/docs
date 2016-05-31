@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat Unity Guideliene
 ---
 
-Version 1.2.6
+Version 1.2.7
 
 # 共通初期設定
 
