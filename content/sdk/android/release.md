@@ -6,6 +6,16 @@ draft: false
 title: リリースノート
 ---
 
+# バージョン 1.2.7
+
+## 変更点
+
+- Growth LinkのFingerprint計測処理を最適化しました。
+
+## バグ
+
+- Growth LinkのSynchronize処理が複数回実行される可能性がある部分を修正しました。
+
 # バージョン 1.2.6
 
 ## 変更点
