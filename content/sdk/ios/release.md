@@ -6,6 +6,22 @@ draft: false
 title: リリースノート
 ---
 
+# バージョン 1.2.7
+
+## 変更点
+
+- bitcodeに対応いたしました。
+- Growth LinkのUniversal Links経由のアプリ遷移を最適化いたしました。
+- 導入時にdSYM 関連のwarningが出る問題を修正いたしました。
+
+
+## ドキュメント
+
+- Growth Push導入に関する実装方法に詳細説明を加えました。
+
+## バグ
+- Growth Pushのbundleとversionタグの登録情報に誤りがあったため修正いたしました。
+
 # バージョン 1.2.6
 
 ## 変更点
