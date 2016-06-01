@@ -444,6 +444,12 @@ public void RequestDeviceToken (string senderId, Environment environment)
 public void SetDeviceToken (string deviceToken)
 ```
 
+### Android デバイストークン取得
+
+```cs
+public string GetDeviceToken ()
+```
+
 ## 基本タグの送信
 
 Device, OS, Language, Time Zone, Version, Buildが含まれます。

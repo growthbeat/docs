@@ -59,7 +59,38 @@ Google Play Servicesのバージョン23以上が必要となります。
 
 Growthbeat SDKでは、Google Play Servicesのバージョン23以上でないと、正しく動作いたしません。
 
+#### ライブラリの設定
+
+##### Android Studioをお使いの場合
+
+Android Studioで開発する場合は、build.gradleに設定してください。
+
+```
+dependencies {
+    compile 'com.growthbeat:growthbeat-android:1.2.7@aar'
+
+    // Androidのライブラリです。growthbeatのライブラリの機能に依存します。
+    compile "com.android.support:appcompat-v7:23.3.0"
+    compile 'com.google.android.gms:play-services-gcm:8.3.0'
+    compile 'com.google.android.gms:play-services-ads:8.3.0'
+
+    // 以下は、デフォルトで設定されます。
+    compile files('libs/growthbeat-unity-wrapper.jar')
+    compile files('libs/unity-classes.jar')
+
+}
+```
+
+- [Android Studioに、プロジェクトを書き出す場合](http://docs.unity3d.com/ja/current/Manual/android-BuildProcess.html)
+
+##### Eclipseで開発の場合
+
+[growthbeat-android](https://github.com/growthbeat/growthbeat-android/releases/tag/latest)をダウンロードし、 `release` フォルダ内の
+`growthbeat-x.x.x.jar` (x.x.xはバージョン番号) を、 `Assets/Plugins/Android/` にコピーしてください。
+
 #### パーミッションの設定
+
+※ AndroidManifestの設定は、Unityプロジェクト内で設定するか、Androidプロジェクトの吐き出し後に設定してください。
 
 ```xml
 <meta-data
@@ -197,6 +228,8 @@ GrowthPush.GetInstance().RequestDeviceToken("YOUR_SENDER_ID", Debug.isDebugBuild
 
 Environmentは、開発環境の場合、Environment.Developmentを指定、本番環境の場合は、Environment.Productionを指定してください。
 
+**iOSデバイストークン取得**
+
 iOSの場合、デバイストークンがNotificationServicesから戻ってきますので、UpdateにてSetDeviceTokenを実装し、登録処理を流します。
 
 ```cs
@@ -217,6 +250,15 @@ void Update () {
         }
     #endif
 }
+```
+
+**Androidデバイストークン取得**
+
+初期化の処理の後に、必ず実行してください。
+
+```cs
+string devicetoken = GrowthPush.GetInstance ().GetDeviceToken ();
+Log.Debug(devicetoken);
 ```
 
 ## タグ・イベントを送信する。
@@ -306,32 +348,47 @@ iOS9.x系に対応するには、Universal Linksに対応させる必要があ�
 [iOS9.x系対応](/sdk/ios/guide/#universal-links用の設定-ios9-x系)
 
 
-
-
-
 ### Android設定
 
-AndroidManifest.xmlのアクティビティーに `<intent-filter>` を追加します。
+**カスタムスキームの設定**
+
+AndroidManifestのアクティビティーに `<intent-filter>` を追加します。
 
 外部からの遷移時、開くActivityにカスタムURLスキームを記述します。
 
+
 ```xml
 <activity
-    android:name=".MainActivity"
+    android:name=".UnityPlayerActivity"
     android:label="@string/app_name" >
+
+    <!-- 略 -->
+
     <intent-filter>
     	<data android:scheme="CUSTOM_URL_SCHEME" />
     	<category android:name="android.intent.category.DEFAULT" />
     	<category android:name="android.intent.category.BROWSABLE" />
         <action android:name="android.intent.action.VIEW" />
     </intent-filter>
+
+    <!-- 略 -->
+
 </activity>
 ```
 
-リンクから開かれるActivityに下記を実装します。
+**InstallReferrerReceiverの追加**
 
-```java
-GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
+AndroidManifestの`<application/>`内に以下のコードを追加してください
+
+```xml
+<receiver
+    android:name="com.growthbeat.link.InstallReferrerReceiver"
+    android:enabled="true"
+    android:exported="true" >
+    <intent-filter>
+        <action android:name="com.android.vending.INSTALL_REFERRER" />
+    </intent-filter>
+</receiver>
 ```
 
 ## カスタムハンドラ

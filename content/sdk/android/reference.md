@@ -404,6 +404,18 @@ public void requestRegistrationId(final String senderId, final Environment envir
 |senderId|AndroidのSenderId|
 |environment| 開発用: `Environment.development` 本番用: `Environment.production`　|
 
+デバイストークンを返します。
+
+```java
+public string registerGCM(Context context)
+```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|context|applicationContext|
+
 ## 基本タグの送信
 
 Device, OS, Language, Time Zone, Version, Buildが含まれます。
