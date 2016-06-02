@@ -6,6 +6,15 @@ draft: false
 title: リリースノート
 ---
 
+# バージョン 1.2.7
+
+Unity version 5.3.0f4
+
+## バグ
+
+- Growth LinkのPluginがCustom Schemeを上書きする問題を修正。
+
+
 # バージョン 1.2.6
 
 Unity version 5.3.0f4

@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat Unity API
 ---
 
-Version 1.2.6
+Version 1.2.7
 
 # Growthbeat API
 
@@ -442,6 +442,12 @@ public void RequestDeviceToken (string senderId, Environment environment)
 
 ```cs
 public void SetDeviceToken (string deviceToken)
+```
+
+### Android デバイストークン取得
+
+```cs
+public string GetDeviceToken ()
 ```
 
 ## 基本タグの送信

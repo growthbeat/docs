@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat Android API
 ---
 
-Version 1.2.6
+Version 1.2.7
 
 # Growthbeat API
 
@@ -391,7 +391,7 @@ public static GrowthPush getInstance()
 
 ## RegistrationIdの取得・送信
 
-### デバイストークンの取得・送信
+### デバイストークン送信
 
 ```java
 public void requestRegistrationId(final String senderId, final Environment environment)
@@ -403,6 +403,22 @@ public void requestRegistrationId(final String senderId, final Environment envir
 |:--|:--|
 |senderId|AndroidのSenderId|
 |environment| 開発用: `Environment.development` 本番用: `Environment.production`　|
+
+### デバイストークン取得
+
+必ず初期化のあとに実行してください。
+
+タイミングによっては、取得できない可能性もありますので、 `Thread` を利用して処理を遅らせて利用するのを推奨いたします。
+
+```java
+public string registerGCM(Context context)
+```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|context|applicationContext|
 
 ## 基本タグの送信
 
