@@ -251,9 +251,146 @@ _セグメントクエリ作成方法については [Notification API クエリ
 
 ## Tags
 
-### Add Tag to Client by Device Token
+### Get Tag
 
-デバイストークン指定でデバイスにタグを付与します。
+タグを取得します。
+
+**GET:** https://api.growthpush.com/3/tags
+
+**Request**
+
+| Name | Type | Required | Default | Options | Notes |
+|:--|:--|:--|:--|:--|:--|
+| applicationId | String | YES ||| [Growthbeat アプリケーションID](http://faq.growthbeat.com/article/130-growthbeat-id) |
+| credentialId |String | YES ||| [Growthbeat クレデンシャルID](http://faq.growthbeat.com/article/130-growthbeat-id) |
+| name | String | YES ||| タグ名 |
+
+```bash
+curl -X GET \
+    -H 'Accept: application/json' \
+    -G \
+    --data "applicationId=${APPLICATION_ID}" \
+    --data "credentialId=${CREDENTIAL_ID}" \
+    --data-urlencode "name=${TAG_NAME}" \
+    https://api.growthpush.com/3/tags
+```
+
+**Response**
+
+| Response | Name | Type | Notes |
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | tagId | String | タグID |
+|| id | Int | タグID |
+|| applicationId | String | Growthbeat アプリケーションID |
+|| type | String | タグタイプ（custom, notification, automation） |
+|| name | String | タグ名 |
+|| invisible | Boolean | タグ状態 |
+|| created | String | 作成日 |
+
+
+```
+{
+  "id": TAG_ID,
+  "applicationId": APPLICATION_ID,
+  "type": "custom",
+  "name": "TAG_NAME",
+  "invisible": false,
+  "created": "2015-11-25 05:25:44"
+}
+```
+
+## TagClients
+
+### Get TagClient by Tag ID
+
+タグID指定でTagClientを取得します。タグに紐づくデバイスを取得する場合に使用します。
+
+**GET:** https://api.growthpush.com/3/tags
+
+**Request**
+
+| Name | Type | Required | Default | Options | Notes |
+|:--|:--|:--|:--|:--|:--|
+| credentialId | String | YES ||| [Growthbeat クレデンシャルID](http://faq.growthbeat.com/article/130-growthbeat-id) |
+| tagId | Int | YES ||| タグID |
+| limit | Int | NO | 100 || 最大取得数 |
+| exclusiveClientId | Int | NO || オフセットデバイスID |
+
+```bash
+curl -X GET \
+    -H 'Accept: application/json' \
+    -G \
+    --data "credentialId=${CREDENTIAL_ID}" \
+    --data "tagId=${TAG_ID}" \
+    https://api.growthpush.com/3/tags
+```
+
+**Response**
+
+| Response | Name | Type | Notes |
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | tagId | String | タグID |
+|| clientId | Int | デバイスID |
+|| value | String | タグ値 |
+
+```
+[
+  {
+    "tagId": TAG_ID,
+    "clientId": CLIENT_ID,
+    "value": "TAG_VALUE"
+  }
+]
+```
+
+### Get TagClient by Client ID
+
+Growthbeat デバイスID指定でTagClientを取得します。デバイスに紐づくタグを取得する場合に使用します。
+
+**GET:** https://api.growthpush.com/3/tags
+
+**Request**
+
+| Name | Type | Required | Default | Options | Notes |
+|:--|:--|:--|:--|:--|:--|
+| credentialId | String | YES ||| [Growthbeat クレデンシャルID](http://faq.growthbeat.com/article/130-growthbeat-id) |
+| clientId | Int | YES ||| Growthbeat デバイスID |
+| limit | Int | NO | 100 || 最大取得数 |
+| exclusiveTagId | Int | NO || オフセットタグID |
+
+```bash
+curl -X GET \
+    -H 'Accept: application/json' \
+    -G \
+    --data "credentialId=${CREDENTIAL_ID}" \
+    --data "clientId=${CLIENT_ID}" \
+    https://api.growthpush.com/3/tags
+```
+
+**Response**
+
+| Response | Name | Type | Notes |
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | tagId | String | タグID |
+|| clientId | Int | デバイスID |
+|| value | String | タグ値 |
+
+```
+[
+  {
+    "tagId": TAG_ID,
+    "clientId": CLIENT_ID,
+    "value": "TAG_VALUE"
+  }
+]
+```
+
+### Create TagClient by Device Token
+
+デバイストークン指定でタグにデバイスを紐付けます。タグが存在しない場合、タグの作成も行われます。
 
 **POST:** http://api.growthpush.com/3/tags
 
@@ -265,7 +402,7 @@ _セグメントクエリ作成方法については [Notification API クエリ
 | credentialId |String | YES ||| [Growthbeat クレデンシャルID](http://faq.growthbeat.com/article/130-growthbeat-id) |
 | token | String | YES||| デバイストークン |
 | name | String | YES ||| タグ名 |
-| query | String | YES ||| タグ値 |
+| value | String | NO ||| タグ値 |
 
 ```bash
 curl -X POST \
@@ -296,9 +433,9 @@ curl -X POST \
 }
 ```
 
-### Add Tag to Client by Client ID
+### Create TagClient by Client ID
 
-デバイスID指定でデバイスにタグを付与します。
+Growthbeat デバイスID指定でタグにデバイスを紐付けます。タグが存在しない場合、タグの作成も行われます。
 
 **POST:** http://api.growthpush.com/3/tags
 
@@ -309,7 +446,7 @@ curl -X POST \
 | credentialId | String | YES ||| [Growthbeat クレデンシャルID](http://faq.growthbeat.com/article/130-growthbeat-id) |
 | clientId | String | YES ||| Growthbeat デバイスID |
 | name | String | YES ||| タグ名 |
-| query | String | YES ||| タグ値 |
+| value | String | NO ||| タグ値 |
 
 ```bash
 curl -X POST \
