@@ -12,7 +12,23 @@ title: Growthbeat API
 
 デバイス情報に関するAPI
 
-Growthbeat デバイスID(String)、デバイスID(Int)は異なるので注意してください。
+Client Objectは以下の形式です。Growthbeat デバイスID(String)、デバイスID(Int)は異なるので注意してください。
+
+**Client Object**
+
+| Name | Type | Notes | Example |
+|:--|:--|:--|:--|
+| growthbeatClientId | String | Growthbeat デバイスID ||
+| growthbeatApplicationId | String | Grwothbeat アプリケーションID ||
+| token | String | デバイストークン ||
+| os | String | ios/android ||
+| status | String | デバイスステータス ||
+| environment | String | development/production ||
+| id | Int | デバイスID ||
+| applicationId | Int | アプリケーションID ||
+| code | String | デバイスのコード ||
+| created | String | 作成日 ||
+
 
 ### Get Client
 
@@ -43,16 +59,7 @@ curl -X GET \
 | Response | Name | Type | Notes |
 |:--|:--|:--|:--|
 | Header | Status | Int | 200 |
-| Body | applicationId | Int | アプリケーションID |
-|| code | String | デバイスのコード |
-|| created | String | 作成日 |
-|| environment | String | development/production |
-|| growthbeatApplicationId | String | Grwothbeat アプリケーションID |
-|| growthbeatClientId | String | Growthbeat デバイスID |
-|| id | Int | デバイスID |
-|| os | String | ios/android |
-|| status | String | デバイスステータス |
-|| token | String | デバイストークン |
+| Body || Object | Client Object |
 
 
 ```
@@ -73,6 +80,23 @@ curl -X GET \
 ## Notifications
 
 プッシュ通知に関するAPI
+
+Notification Objectは以下の形式です。
+
+**Notification Object**
+
+| Name | Type | Notes | Example |
+|:--|:--|:--|:--|
+| id | Int | プッシュ通知ID ||
+| trials | Collection | 通知内容オブジェクト ||
+| applicationId | Int | アプリケーションID ||
+| automationId | Int | 自動配信ID ||
+| segmentId | Int | セグメントID ||
+| segment | Collection | セグメントオブジェクト ||
+| tagId | Int | タグID ||
+| status | String | 配信のステータス ||
+| speed | Int | 配信間隔 ||
+| created | String | 作成日 ||
 
 ### Get Notifications
 
@@ -103,16 +127,7 @@ curl -X GET \
 | Response | Name | Type | Notes |
 |:--|:--|:--|:--|
 | Header | Status | Int | 200 |
-| Body | applicationId | Int | アプリケーションID |
-|| automationId | Int | 自動配信ID |
-|| created | String | 作成日 |
-|| id | Int | プッシュ通知ID |
-|| segment | Collection | セグメントオブジェクト |
-|| segmentId | Int | セグメントID |
-|| speed | Int | 配信間隔 |
-|| status | String | 配信のステータス |
-|| tagId | Int | タグID |
-|| trials | Collection | 通知内容オブジェクト |
+| Body || Collection | Notification Object |
 
 ```
 [
@@ -233,7 +248,7 @@ curl -X POST \
 || id | String | セグメントID |
 || applicationId | Int | アプリケーションID |
 || name | String | セグメント名 |
-|| query | String | queryオブジェクト |
+|| query | String | セグメントクエリ |
 || size | Int | セグメント対象デバイス数 |
 || invisible | Boolean | セグメント状態 |
 || modified | String | 更新日 |
@@ -287,7 +302,7 @@ curl -X GET \
 |:--|:--|:--|:--|
 | Header | Status | Int | 200 |
 | Body | id | Int | タグID |
-|| applicationId | String | Growthbeat アプリケーションID |
+|| applicationId | String | アプリケーションID |
 || type | String | タグタイプ（custom, notification, automation） |
 || name | String | タグ名 |
 || invisible | Boolean | タグ状態 |
@@ -307,9 +322,19 @@ curl -X GET \
 
 ## TagClients
 
-### Get TagClient by Tag ID
+TagClient Objectは以下の形式です。
 
-タグID指定でTagClientを取得します。タグに紐づくデバイスを取得する場合に使用します。
+**TagClient Object**
+
+| Name | Type | Notes | Example |
+|:--|:--|:--|:--|
+| tagId | String | タグID ||
+| clientId | Int | デバイスID ||
+| value | String | タグ値 ||
+
+### Get TagClients by Tag ID
+
+タグID指定でTagClientのリストを取得します。タグに紐づくデバイスを取得する場合に使用します。
 
 **GET:** https://api.growthpush.com/3/tags
 
@@ -336,9 +361,8 @@ curl -X GET \
 | Response | Name | Type | Notes |
 |:--|:--|:--|:--|
 | Header | Status | Int | 200 |
-| Body | tagId | String | タグID |
-|| clientId | Int | デバイスID |
-|| value | String | タグ値 |
+| Body || Collection | TagClient Object |
+
 
 ```
 [
@@ -350,9 +374,9 @@ curl -X GET \
 ]
 ```
 
-### Get TagClient by Client ID
+### Get TagClients by Client ID
 
-Growthbeat デバイスID指定でTagClientを取得します。デバイスに紐づくタグを取得する場合に使用します。
+Growthbeat デバイスID指定でTagClientのリストを取得します。デバイスに紐づくタグを取得する場合に使用します。
 
 **GET:** https://api.growthpush.com/3/tags
 
@@ -379,9 +403,7 @@ curl -X GET \
 | Response | Name | Type | Notes |
 |:--|:--|:--|:--|
 | Header | Status | Int | 200 |
-| Body | tagId | String | タグID |
-|| clientId | Int | デバイスID |
-|| value | String | タグ値 |
+| Body || Collection | TagClient Object |
 
 ```
 [
@@ -425,10 +447,7 @@ curl -X POST \
 | Response | Name | Type | Notes |
 |:--|:--|:--|:--|
 | Header | Status | Int | 200 |
-| Body | tagId | String | タグID |
-|| clientId | Int | デバイスID |
-|| value | String | タグ値 |
-
+| Body || Object | TagClient |
 
 ```
 {
@@ -468,10 +487,7 @@ curl -X POST \
 | Response | Name | Type | Notes |
 |:--|:--|:--|:--|
 | Header | Status | Int | 200 |
-| Body | tagId | String | タグID |
-|| clientId | Int | デバイスID |
-|| value | String | タグ値 |
-
+| Body || Object | TagClient |
 
 ```
 {
@@ -485,6 +501,16 @@ curl -X POST \
 # Growthbeat API
 
 ## Accounts
+
+Account Objectは以下の形式です。
+
+**Account Object**
+
+| Name | Type | Notes | Example |
+|:--|:--|:--|:--|
+| id | String | アカウントID ||
+| name | String | アカウント名 ||
+| created | String | 作成日 ||
 
 ### Get Account
 
@@ -513,14 +539,10 @@ curl -X GET \
 | Response | Name | Type | Notes |
 |:--|:--|:--|:--|
 | Header | Status | Int | 200 |
-| Body | icon | Boolean | アプリケーションのアイコン有無 |
-|| created | String | 作成日 |
-|| name | String | アカウント名 |
-|| id | String | アカウントID |
+| Body || Object | Account Object |
 
 ```
 {
-    icon: false,
     created: "2014-10-02T02:20:03+0000",
     name: "NAME",
     id: "ACCOUNT_ID"
@@ -528,6 +550,16 @@ curl -X GET \
 ```
 
 ## Applications
+
+Application Objectは以下の形式です。
+
+**Application Object**
+
+| Name | Type | Notes | Example |
+|:--|:--|:--|:--|
+| id | String | Growthbeat アプリケーションID ||
+| name | String | アプリケーション名 ||
+| created | String | 作成日 ||
 
 ### Get Application
 
@@ -555,9 +587,7 @@ curl -X GET \
 | Response | Name | Type | Notes |
 |:--|:--|:--|:--|
 | Header | Status | Int | 200 |
-| Body | name | String | アプリケーション名 |
-|| id | String | Growthbeat アプリケーションID |
-|| created | String | 作成日 |
+| Body || Object | Application Object |
 
 ```
 {
@@ -594,9 +624,7 @@ curl -X GET \
 | Response | Name | Type | Notes |
 |:--|:--|:--|:--|
 | Header | Status | Int | 200 |
-| Body | created | String | 作成日 |
-|| id | String | Growthbeat アプリケーションID |
-|| name | String | アプリケーション名 |
+| Body | | Collection | Application Object |
 
 ```
 [
@@ -604,8 +632,7 @@ curl -X GET \
         "created": "2014-06-26T06:44:55+0000",
         "id": "APPLICATION_ID",
         "name": "APPLICATION_NAME"
-    },
-    ...
+    }
 ]
 ```
 
@@ -636,9 +663,7 @@ curl -X POST \
 | Response | Name | Type | Notes |
 |:--|:--|:--|:--|
 | Header | Status | Int | 200 |
-| Body | name | String | アプリケーション名 |
-|| id | String | Growthbeat アプリケーションID |
-|| created | String | 作成日 |
+| Body || Object | Application Object |
 
 ```
 {
@@ -651,9 +676,19 @@ curl -X POST \
 
 ## Credentials
 
-### Get Credential
+Credential Objectは以下の形式です。
 
-クレデンシャルを取得します。
+**Credential Object**
+
+| Name | Type | Notes | Example |
+|:--|:--|:--|:--|
+| id | String | Growthbeat クレデンシャルID ||
+| created | String | 作成日 ||
+| account | Object | Account Object ||
+
+### Get Credentials
+
+クレデンシャルのリストを取得します。
 
 **GET：** https://api.growthbeat.com/1/credentials
 
@@ -678,9 +713,7 @@ curl -X GET \
 | Response | Name | Type | Notes |
 |:--|:--|:--|:--|
 | Header | Status | Int | 200 |
-| Body | id | String | Growthbeat クレデンシャルID |
-|| created | String | 作成日 |
-|| account | Collection | アカウントオブジェクト |
+| Body || Collection | Credential Object |
 
 ```
 [
