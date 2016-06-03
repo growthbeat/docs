@@ -340,14 +340,14 @@ SDKキーに関しては、Growthbeatマイページにてご確認ください�
 これまでGrowth Pushでご利用いただいた、ApplicationIdは数値型、シークレットキーは文字列になっています。
 
 |項目|型|
-|---|--|
+|---|---|
 |applicationId|数値型|
 |secret|文字列型/32文字|
 
 Growthbeat SDKで利用するものは、applicationId、credentialIdともに文字列型になっています。
 
 |項目|型|
-|---|--|
+|---|---|
 |applicationId|文字列型/16文字|
 |credentailId|文字列型/32文字|
 
