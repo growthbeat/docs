@@ -497,6 +497,100 @@ curl -X POST \
 }
 ```
 
+## Event
+
+### Add Event to Client by Device Token
+
+デバイストークン指定でデバイスにタグを付与します。
+
+**POST:** http://api.growthpush.com/3/tags
+
+**Request**
+
+| Name | Type | Required | Default | Options | Notes |
+|:--|:--|:--|:--|:--|:--|
+| applicationId | String | YES ||| [Growthbeat アプリケーションID](http://faq.growthbeat.com/article/130-growthbeat-id) |
+| credentialId |String | YES ||| [Growthbeat クレデンシャルID](http://faq.growthbeat.com/article/130-growthbeat-id) |
+| token | String | YES||| デバイストークン |
+| name | String | YES ||| イベント名 |
+| value | String | YES |null|YES| イベント値 |
+
+```bash
+curl -X POST \
+    -H 'Accept: application/json' \
+    -d "applicationId=${APPLICATION_ID}" \
+    -d "credentialId=${CREDENTIAL_ID}" \
+    -d "token=${DEVICE_TOKEN}" \
+    -d "name=${EVENT_NAME}" \
+    -d "value=${EVENT_VALUE}" \
+    http://api.growthpush.com/3/events
+```
+
+**Response**
+
+| Response | Name | Type | Notes |
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | goalId | String | ゴールID |
+|| timestamp | long | イベント発生時間 |
+|| clientId | Int | デバイスID |
+|| value | String | タグ値 |
+
+
+```
+{
+  "goalId": GOAL_ID,
+  "timestamp": TIMESTAMP,
+  "clientId": CLIENT_ID,
+  "value": "TAG_VALUE"
+}
+```
+
+### Add Tag to Client by Client ID
+
+デバイスID指定でデバイスにタグを付与します。
+
+**POST:** http://api.growthpush.com/3/tags
+
+**Request**
+
+| Nam | Type | Required | Default | Options | Notes |
+|:--|:--|:--|:--|:--|:--|
+| credentialId | String | YES ||| [Growthbeat クレデンシャルID](http://faq.growthbeat.com/article/130-growthbeat-id) |
+| clientId | String | YES ||| Growthbeat デバイスID |
+| name | String | YES ||| イベント名 |
+| value | String | YES ||| イベント値 |
+
+```bash
+curl -X POST \
+    -H 'Accept: application/json' \
+    -d "credentialId=${CREDENTIAL_ID}" \
+    -d "clientId=${CLIENT_ID}" \
+    -d "name=${EVENT_NAME}" \
+    -d "value=${EVENT_VALUE}" \
+    http://api.growthpush.com/3/events
+```
+
+**Response**
+
+| Response | Name | Type | Notes |
+|:--|:--|:--|:--|
+| Header | Status | Int | 200 |
+| Body | goalId | String | ゴールID |
+|| timestamp | long | イベント発生時間 |
+|| clientId | Int | デバイスID |
+|| value | String | タグ値 |
+
+
+```
+{
+  "goalId": GOAL_ID,
+  "timestamp": TIMESTAMP,
+  "clientId": CLIENT_ID,
+  "value": "TAG_VALUE"
+}
+```
+
 
 # Growthbeat API
 
