@@ -385,7 +385,7 @@ Growthbeat デバイスID指定でTagClientのリストを取得します。デ�
 | Name | Type | Required | Default | Options | Notes |
 |:--|:--|:--|:--|:--|:--|
 | credentialId | String | YES ||| [Growthbeat クレデンシャルID](http://faq.growthbeat.com/article/130-growthbeat-id) |
-| clientId | Int | YES ||| Growthbeat デバイスID |
+| clientId | String | YES ||| Growthbeat デバイスID |
 | limit | Int | NO | 100 || 最大取得数 |
 | exclusiveTagId | Int | NO ||| オフセットタグID |
 
