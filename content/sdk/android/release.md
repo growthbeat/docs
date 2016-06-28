@@ -6,6 +6,14 @@ draft: false
 title: リリースノート
 ---
 
+# バージョン 2.0.0
+
+## 変更点
+
+- Growthbeatのインターフェースを変更しました。
+- Growth Analyticsの機能が無くなりました。
+- Growth Messageの表示機能が改善いたしました。
+
 # バージョン 1.2.7
 
 ## 変更点
