@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat iOS Gudeliene
 ---
 
-Version 1.2.7
+Version 2.0.0
 
 # 共通初期設定
 
@@ -60,33 +60,13 @@ Growthbeat.frameworkは、下記Frameworkが必須となります。
 
 ## Growthbeatの初期化
 
-Growthbeatの初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。
+GrowthbeatおよびGrowth Pushの初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。
 
 ```objc
-[[Growthbeat sharedInstance] initializeWithApplicationId:@"YOUR_APLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID"];
+[[GrowthPush sharedInstance] initializeWithApplicationId:@"YOUR_APLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID" environment:kGrowthPushEnvironment];
 ```
 
 Growth Push SDKからの乗り換えの場合は、[こちら](#growth-push-sdkからの乗り換え方法について)も参照してください。
-
-## アプリの起動・終了イベントの送信
-
-起動イベントは、`- (void)applicationDidBecomeActive:(UIApplication *)application` にて下記のように実装してください。
-
-```objc
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    [[Growthbeat sharedInstance] start];
-}
-```
-
-終了イベントは、`- (void)applicationWillResignActive:(UIApplication *)application` にて下記のように実装してください。
-
-```objc
-- (void)applicationWillResignActive:(UIApplication *)application {
-    [[Growthbeat sharedInstance] stop];
-}
-```
-
-アプリの起動・終了以外のイベント（行動情報）やタグ（属性情報）も送信することができます。詳しくは[APIリファレンス](/sdk/ios/reference/#基本タグの送信)をご参照ください。
 
 # プッシュ通知
 
@@ -99,7 +79,7 @@ Growth Push管理画面のにて、各OSごとに証明書の設定を行って�
 Growthbeatの初期化後に下記を呼び出して、デバイストークンの取得を行います。
 
 ```objc
-[[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
+[[GrowthPush sharedInstance] requestDeviceToken];
 ```
 
 `- (void)application:(UIApplication *)application
@@ -148,6 +128,22 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 アプリ起動以外にも、カスタムイベントをメッセージ配信のトリガーにすることにより、アプリの任意の場所でメッセージを配信することができます。詳しくは、[こちら](/sdk/ios/reference/#カスタムイベント送信)をご参照ください。
 
+## メッセージを表示する
+
+Growth Pushのイベント送信と連動して、メッセージを受信します。
+
+イベント名に紐付いたメッセージを作成するだけで、メッセージ表示することはできます。デフォルトでは、メッセージ受信時に即時に表示します。
+
+`ShowMessageHandler` を利用することで、表示準備が完了したときに、メッセージ表示をすることができます。
+
+例.) 起動時に、メッセージを表示する場合
+
+```objc
+[[GrowthPush sharedInstance] trackEvent:@"Launch" value:nil messageHandler:^(void(^renderMessage)()){
+    renderMessage();
+} failureHandler:nil];
+```
+
 # ディープリンク
 
 ## 初期設定
@@ -160,7 +156,7 @@ GrowthLinkのimport文を記述します。
 
 ## 初期化処理
 
-Growthbeatの初期化処理の後に、Growth Linkの初期化処理を呼び出してください。**APPLICATION_ID**と**CREDENTIAL_ID**は
+Growthbeatの初期化処理の後に、Growth Linkの初期化処理を呼び出してください。 **APPLICATION_ID** と **CREDENTIAL_ID** は
 Growthbeatの初期化時と同じものです。
 
 ```objc
@@ -196,8 +192,8 @@ SDKには、GBIntentHandlerというプロトコルが定義されており、�
 ```
 
 ```objc
- [[GrowthbeatCore sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
-        NSDictionary *extra = customIntent.extra;
+ [[Growthbeat sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
+        NSDictionary * extra = customIntent.extra;
         NSLog(@"extra: %@", extra);
         return YES;
 }]];
@@ -249,43 +245,6 @@ CapabilitiesタブのAssociated Domainsをクリックすると展開されド�
 **ハンドリング処理の実装**
 AppDelegate.mにUniversal Linksのハンドリング処理を実装します。
 
-
-* Link Framework 1.2.6以下の場合
-
-
-```objc
-#import <Growthbeat/GrowthLink.h> //インポートしておく
-
-- (BOOL) application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
-        if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
-            NSURL *webpageURL = userActivity.webpageURL;
-            if ( [self handleUniversalLink:webpageURL]){
-                [[GrowthLink sharedInstance] handleOpenUrl:webpageURL];
-            } else {
-                 // 例：コンテンツをアプリで開けない時にSafariにリダイレクトする場合
-                [[UIApplication sharedApplication] openURL:webpageURL];
-                return false;
-            }
-
-        }
-    return true;
-}
-
-- (BOOL) handleUniversalLink:(NSURL*) url{
-    NSURLComponents *component = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:true];
-    if (!component || !component.host) return false;
-    if ([@"gbt.io" isEqualToString:component.host] ) {
-
-        return true;
-    }
-    return false;
-}
-
-```
-
-* Growthbeat Framework 1.2.7以上の場合
-
-
 [Universal Links](http://faq.growthbeat.com/article/134-universallinks)専用リンクへの対応のため、以下のように実装してください。
 
 
@@ -295,7 +254,7 @@ AppDelegate.mにUniversal Linksのハンドリング処理を実装します。
 
 - (BOOL) application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
     if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
-        NSURL *webpageURL = userActivity.webpageURL;
+        NSURL * webpageURL = userActivity.webpageURL;
         [[GrowthLink sharedInstance] handleUniversalLinks:webpageURL];
     }
     return true;
@@ -384,9 +343,9 @@ Growthbeat SDK乗り換え時に、これまでGrowth Pushで利用していた�
 ```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Growthbeat SDKの初期化
-	[[Growthbeat sharedInstance] initializeWithApplicationId:@"YOUR_APPLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID"];
+	[[GrowthPush sharedInstance] initializeWithApplicationId:@"YOUR_APPLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID" environment:kGrowthPushEnvironment];
 	// デバイストークンを明示的に要求
-	[[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
+	[[GrowthPush sharedInstance] requestDeviceToken];
 
 	// deviceTagの取得
 	[[GrowthPush sharedInstance] setDeviceTags];

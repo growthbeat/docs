@@ -6,6 +6,17 @@ draft: false
 title: リリースノート
 ---
 
+# バージョン 2.0.0
+
+## 変更点
+
+- Growthbeatのインターフェースを変更しました。
+- Growth Analyticsの機能が無くなりました。
+- Growth Messageの表示機能が改善いたしました。
+
+## バグ
+- バージョン1.2.7で対応を行った、Growth Pushのbundleとversionタグの登録情報に誤りがあったため修正いたしました。
+
 # バージョン 1.2.7
 
 ## 変更点
@@ -13,7 +24,6 @@ title: リリースノート
 - bitcodeに対応いたしました。
 - Growth LinkのUniversal Links経由のアプリ遷移を最適化いたしました。
 - 導入時にdSYM 関連のwarningが出る問題を修正いたしました。
-
 
 ## ドキュメント
 
