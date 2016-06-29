@@ -1,6 +1,6 @@
 ---
 categories: 'sdk'
-date: 2015-12-03T23:50:00+09:00
+date: 2016-06-29T23:50:00+09:00
 description: 'Growthbeat Android の導入方法について説明します'
 draft: false
 title: Growthbeat Android Gudeliene
