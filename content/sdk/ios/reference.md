@@ -1,6 +1,6 @@
 ---
 categories: 'sdk'
-date: 2015-11-12T14:32:58+09:00
+date: 2016-06-29T14:32:58+09:00
 description: 'Growthbeat iOS の API について説明します'
 draft: false
 title: Growthbeat iOS API
