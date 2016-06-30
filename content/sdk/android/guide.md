@@ -1,12 +1,12 @@
 ---
 categories: 'sdk'
-date: 2015-12-03T23:50:00+09:00
+date: 2016-06-29T23:50:00+09:00
 description: 'Growthbeat Android の導入方法について説明します'
 draft: false
 title: Growthbeat Android Gudeliene
 ---
 
-Version 1.2.7
+Version 2.0.0
 
 # 共通初期設定
 
@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.growthbeat:growthbeat-android:1.2.6@aar'
+    compile 'com.growthbeat:growthbeat-android:2.0.0@aar'
 }
 ```
 
@@ -87,9 +87,6 @@ dependencies {
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 
-<!-- under API 15 -->
-<uses-permission android:name="android.permission.GET_ACCOUNTS" />
-
 <!-- for Growth Push -->
 <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 <uses-permission android:name="android.permission.VIBRATE" />
@@ -98,9 +95,6 @@ dependencies {
 <permission
     android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE"
     android:protectionLevel="signature" />
-
-<!-- for Growth Message -->
-<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
 ```
 
@@ -166,30 +160,13 @@ dependencies {
 AndroidManifest.xmlのサンプルは、[サンプルコード](https://github.com/growthbeat/growthbeat-android/blob/master/sample/src/main/AndroidManifest.xml)を参考にしてください。
 
 
-## Growthbeatの初期化
+## 初期化
 
-Growthbeatへデバイス登録・認証を行います。初期化の中に、端末の基本情報の送信、広告IDの取得が行われます。
-
-```java
-Growthbeat.getInstance().initialize(context, "YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
-```
-
-## アプリの起動・終了イベントの送信
-
-起動イベントは、`Applicationクラス#onCreate` など、起動時に1度呼ばれる部分に実装をしてください。
+GrowthbeatおよびGrowthPushの初期化を行います。初期化の中に、端末の基本情報の送信、広告IDの取得が行われます。
 
 ```java
-Growthbeat.getInstance().start();
+GrowthPush.getInstance().initialize(context, "YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID", BuildConfig.DEBUG ? Environment.development : Environment.production);
 ```
-
-終了イベントは、最後のアクティビティなど、プロセスがなくなるときに呼ばれる部分に実装をしてください。
-
-```java
-Growthbeat.getInstance().stop();
-```
-
-アプリの起動・終了以外のイベント（行動情報）やタグ（属性情報）も送信することができます。詳しくは[APIリファレンス](/sdk/android/reference/#基本タグの送信)をご参照ください。
-
 # プッシュ通知
 
 Growth Push管理画面の証明書設定ページにて、各OSごとに証明書の設定を行ってください。
@@ -201,7 +178,7 @@ Growth Push管理画面の証明書設定ページにて、各OSごとに証明�
 Growthbeatの初期化後に下記を呼び出して、デバイストークンの取得を行います。
 
 ```java
-GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID", BuildConfig.DEBUG ? Environment.development : Environment.production);
+GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID");
 ```
 
 登録されたデバイスは管理画面のデバイスページにて確認することができます。下記のように、デバイスのステータスがアクティブ（Active）で登録されていれば正常です。
@@ -242,6 +219,32 @@ GrowthPush.getInstance().trackEvent("EventName");
 まず、管理画面にてアプリ起動時に配信されるメッセージを作成します。メッセージの作成方法は[こちら](/manual/growthmessage/#配信作成)を参考にしてください。
 
 アプリ起動以外にも、カスタムイベントをメッセージ配信のトリガーにすることにより、アプリの任意の場所でメッセージを配信することができます。詳しくは、[こちら](/sdk/android/reference/#カスタムイベント送信)をご参照ください。
+
+## メッセージを表示する
+
+Growth Pushのイベント送信と連動して、メッセージを受信します。
+
+イベント名に紐付いたメッセージを作成するだけで、メッセージ表示することはできます。デフォルトでは、メッセージ受信時に即時に表示します。
+
+`ShowMessageHandler` を利用することで、表示準備が完了したときに、メッセージ表示をすることができます。
+
+例.) 起動時に、メッセージを表示する場合
+
+```java
+GrowthPush.getInstance().trackEvent("Launch", null, new ShowMessageHandler() {
+
+	@Override
+	public void complete(MessageRenderHandler renderHandler) {
+        // 画面の表示
+		renderHandler.render();
+	}
+
+	@Override
+	public void error(String error) {
+        // errorはエラーメッセージが返ります。
+	}
+});
+```
 
 # ディープリンク
 
@@ -313,7 +316,7 @@ intentHandlers.add(new IntentHandler() {
         return true;
     }
 });
-GrowthbeatCore.getInstance().setIntentHandlers(intentHandlers);
+Growthbeat.getInstance().setIntentHandlers(intentHandlers);
 ```
 
 # Growth Push SDKからの乗り換え方法について
@@ -370,13 +373,11 @@ protected void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.activity_main);
 	// Growthbeat SDKの初期化
-	Growthbeat.getInstance().initialize(this, "YOUR_APPLICATION_ID", "CREDENTIAL_ID");
+	Growthbeat.getInstance().initialize(this, "YOUR_APPLICATION_ID", "CREDENTIAL_ID", BuildConfig.DEBUG ? Environment.development : Environment.production);
 	// Registration IDを明示的に要求
-	GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID", BuildConfig.DEBUG ? Environment.development : Environment.production);
+	GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID");
 	// Launchイベントの取得
 	GrowthPush.getInstance().trackEvent("Launch");
-	// DeviceTagの取得
-	GrowthPush.getInstance().setDeviceTags();
 }
 ```
 

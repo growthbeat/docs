@@ -1,12 +1,14 @@
 ---
 categories: 'sdk'
-date: 2015-11-12T14:32:58+09:00
+date: 2016-06-29T14:32:58+09:00
 description: 'Growthbeat Android の API について説明します'
 draft: false
 title: Growthbeat Android API
 ---
 
-Version 1.2.7
+Version 2.0.0
+
+[Android SDK 1.2.7以下](/sdk/android/reference-1.2.7)のリファレンスはこちら
 
 # Growthbeat API
 
@@ -16,55 +18,6 @@ Growthbeatインスタンスを取得します。
 
 ```java
 public static Growthbeat getInstance()
-```
-
-## 初期化
-
-Growthbeatの初期化を行います。初期化では以下の処理が行われます。
-
-- デバイス登録、認証
-- Growth Push、Growth Analytics、Growth Messageの初期化（Growth Linkは別途初期化が必要）
-- 基本情報の送信
-
-
-```java
-public void initialize(Context context, String applicationId, String credentialId)
-```
-
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|applicationId| アプリケーションID |
-|credentialId| クレデンシャルキー |
-
-
-```java
-public void initialize(Context context, String applicationId, String credentialId, boolean adInfoEnabled)
-```
-
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|applicationId| アプリケーションID |
-|credentialId| クレデンシャルキー |
-|adInfoEnabled| 広告情報の送信設定。`true`: 送信する `false`:送信しない |
-
-## 起動イベントの送信
-
-アプリケーションの起動イベントを送信します。
-
-```java
-public void start()
-```
-
-## 終了イベントの送信
-
-アプリケーションの終了イベントを送信します。
-
-```java
-public void stop()
 ```
 
 ## ログの停止
@@ -84,300 +37,13 @@ public void setLoggerSilent(boolean silent)
 
 ## GrowthbeatユニークIDを取得する
 
-SDK初期化時に作成される、GrowthbeatのユニークIDを取得できます。
+GrowthbeatのユニークIDを取得できます。
+
+取得時に、ロックされるので必ずメインスレッド以外で呼び出してください。
 
 ```java
-public void getClient(final ClientCallback clientCallback)
+public Client waitClient();
 ```
-
-# Growth Analytics API
-
-## Growth Analyticsインスタンスの取得
-
-GrowthAnalyticsインスタンスを取得します。
-
-```java
-public static GrowthAnalytics getInstance()
-```
-
-## 基本情報の送信
-
-端末の基本情報を送信します。基本情報には以下が含まれます。
-
-- デバイスモデル
-- OS
-- 言語
-- タイムゾーン
-- タイムゾーンオフセット
-- アプリバージョン
-- 広告ID（Android:AdvertisingId, iOS:IDFA）
-- 広告利用可否
-
-```java
-public void setBasicTags()
-```
-
-## 特定のイベントを送信
-
-### 起動イベント
-
-ユーザーの起動イベントを送信します。セッション時間の計測を開始するために必要なメソッドです。起動後に開かれるActivityのonStartに以下を実装してください。
-
-```java
-public void open()
-```
-
-### 終了イベント
-
-アプリの終了イベントを送信します。セッション時間の計測を停止します。Activityが閉じプロセスが終了する場所に実装してください。
-
-```java
-public void close()
-```
-
-### 購入イベント
-
-課金時にメソッドを呼び、課金額、アイテムのカテゴリなどを送信することができます。
-
-```java
-public void purchase(int price, String category, String product)
-```
-
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|price| 価格 |
-|category| 任意のカテゴリ |
-|product| 任意のアイテム名|
-
-## 特定のタグを送信
-
-### ユーザーIDタグ
-
-アプリのユニークなユーザーIDを送信します。
-
-```java
-public void setUserId(String userId)
-```
-
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|userId| 任意のユニークなユーザー名|
-
-### 名前タグ
-
-アプリのユーザー名を送信します。
-
-```java
-public void setName(String name)
-```
-
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|name| 任意のユーザー名 |
-
-### 年齢タグ
-
-```java
-public void setAge(int age)
-```
-
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|age| ユーザーの年齢 |
-
-### 性別タグ
-
-変数は、Genderのenumを用いてどちらか性別を送信してください
-
-```java
-public void setGender(Gender gender)
-```
-
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|gender| 男性: `Gender.MALE` 女性: `Gender.FEMALE` |
-
-### レベルタグ
-
-アプリのユーザーのレベルを送信します。
-
-```java
-public void setLevel(int level)
-```
-
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|level| ユーザーのレベル |
-
-### 開発用タグ
-
-開発用のフラグをつける
-
-```java
-public void setDevelopment(boolean development)
-```
-
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|development| 開発用の場合は `true` |
-
-### 乱数タグ
-
-乱数を端末の情報として紐付けます。
-
-```java
-public void setRandom()
-```
-
-## カスタムイベント送信
-
-### イベントの送信
-
-```java
-public void track(final String name);
-```
-
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|name|フォーマット:`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID <br/> `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
-
-### イベント名と任意のMapの送信
-
-```java
-public void track(final String name, final Map<String, String> properties);
-```
-
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|name|フォーマット:`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID <br/> `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
-|properties|カスタムイベントに持たせる任意のMap|
-
-### イベント名とイベント取得回数オプションの送信
-
-```java
-public void track(final String name, final TrackOption option);
-```
-
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|name|フォーマット:`Event:<YOUR_APPLICATION_ID>:Custom:<CUSTOM_EVENT_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID <br/> `CUSTOM_EVENT_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
-|properties|カスタムイベントに持たせる任意のMap|
-|option|任意のパラメータ。ONCE, COUNTERのいずれかを指定します。|
-
-**option**
-
-|項目名|詳細|
-|:--|:--|
-|ONCE|このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）|
-|COUNTER|このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。|
-
-## イベント名と任意のMapの送信とイベント取得回数オプションの送信
-
-```java
-public void track(final String name, final Map<String, String> properties, final TrackOption option);
-```
-
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|name|カスタムイベントID|
-|properties|カスタムイベントに持たせる任意のMap|
-|option|任意のパラメータ。ONCE, COUNTERのいずれかを指定します。|
-
-**option**
-
-|項目名|詳細|
-|:--|:--|
-|ONCE|このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）|
-|COUNTER|このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。|
-
-## カスタムタグ送信
-
-### タグの送信
-
-```java
-public void tag(final String name);
-```
-
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|name|フォーマット:`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID<br/>  `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
-
-### タグと任意の値を送信
-
-```java
-public void tag(final String name, final String value);
-```
-
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|name|フォーマット:`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID<br/>  `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
-|value|カスタムタグに持たせる任意のValue|
-
-## フルカスタマイズなイベントの送信
-
-特定のネームスペース、イベントIDを設定していただくことが可能です。
-
-```java
-public void track(final String namespace, final String name, final Map<String, String> properties, final TrackOption option);
-```
-
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|namespace|ネームスペース|
-|name|フォーマット:`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID<br/>  `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
-|properties|イベントに持たせる任意のMap|
-|option|任意のパラメータ。ONCE, COUNTERのいずれかを指定します。|
-
-**option**
-
-|項目名|詳細|
-|:--|:--|
-|ONCE|このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）|
-|COUNTER|このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。|
-
-## フルカスタマイズなタグの送信
-
-特定のネームスペース、タグIDを設定していただくことが可能です。
-
-```java
-public void tag(final String namespace, final String name, final String value)
-```
-
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|namespace|ネームスペース|
-|name|フォーマット:`Tag:<YOUR_APPLICATION_ID>:Custom:<LAST_ID>` <br/> `YOUR_APPLICATION_ID`: ApplicationID<br/>  `LAST_ID`: 英数字[a-zA-Z0-9]で任意の識別子を指定してください|
-|value|タグに持たせる任意のValue|
 
 # Growth Push API
 
@@ -389,12 +55,32 @@ GrowthPushインスタンスを取得します。
 public static GrowthPush getInstance()
 ```
 
+## 初期化
+
+```java
+public void initialize(Context context, String applicationId, String credentialId, Environment environment)
+```
+
+```java
+public void initialize(Context context, String applicationId, String credentialId, Environment environment, boolean adInfoEnabled)
+```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|applicationId| アプリケーションID |
+|credentialId| クレデンシャルキー |
+|environment| 開発用: `Environment.development` 本番用: `Environment.production`　|
+|adInfoEnabled| 広告情報の送信設定。`true`: 送信する `false`:送信しない |
+
+
 ## RegistrationIdの取得・送信
 
 ### デバイストークン送信
 
 ```java
-public void requestRegistrationId(final String senderId, final Environment environment)
+public void requestRegistrationId(String senderId)
 ```
 
 **パラメータ**
@@ -402,7 +88,6 @@ public void requestRegistrationId(final String senderId, final Environment envir
 |項目名|詳細|
 |:--|:--|
 |senderId|AndroidのSenderId|
-|environment| 開発用: `Environment.development` 本番用: `Environment.production`　|
 
 ### デバイストークン取得
 
@@ -428,12 +113,12 @@ Device, OS, Language, Time Zone, Version, Buildが含まれます。
 public void setDeviceTags();
 ```
 
-## イベントの送信（Push専用）
+## イベントの送信
 
-### イベントの送信（Push専用）
+### イベントの送信
 
 ```java
-public void trackEvent(final String name);
+public void trackEvent(String name);
 ```
 **パラメータ**
 
@@ -441,10 +126,10 @@ public void trackEvent(final String name);
 |:--|:--|
 |name|イベント名|
 
-### イベントと任意の値の送信（Push専用）
+### イベントと任意の値の送信
 
 ```java
-public void trackEvent(final String name, final String value);
+public void trackEvent(String name, String value);
 ```
 
 **パラメータ**
@@ -454,13 +139,45 @@ public void trackEvent(final String name, final String value);
 |name|イベント名|
 |value|イベントに持たせる値|
 
-
-## タグの送信（Push専用）
-
-### タグの送信（Push専用）
+### イベントと任意の値送信、メッセージ表示制御
 
 ```java
-public void setTag(final String name);
+public void trackEvent(String name, String value, ShowMessageHandler showMessageHandler);
+```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|name|イベント名|
+|value|イベントに持たせる値|
+|showMessageHandler|メッセージ表示準備が完了したときのコールバック変数|
+
+### ShowMessageHandler
+
+設定したポップアップメッセージの表示準備が完了したときに、コールバックされます。
+
+```java
+new ShowMessageHandler() {
+	@Override
+	public void complete(MessageRenderHandler renderHandler) {
+        // 画面の表示
+		renderHandler.render();
+	}
+
+	@Override
+	public void error(String error) {
+        // errorはエラーメッセージが返ります。
+	}
+}
+ ```
+
+## タグの送信
+
+### タグの送信
+
+```java
+public void setTag(String name);
 ```
 
 **パラメータ**
@@ -469,10 +186,10 @@ public void setTag(final String name);
 |:--|:--|
 |name|タグ名|
 
-### タグと任意の値の送信（Push専用）
+### タグと任意の値の送信
 
 ```java
-public void setTag(final String name, final String value);
+public void setTag(String name, String value);
 ```
 
 **パラメータ**
@@ -481,17 +198,6 @@ public void setTag(final String name, final String value);
 |:--|:--|
 |name|タグ名|
 |value|タグに持たせる値|
-
-
-# Growth Message API
-
-## GrowthMessageインスタンスの取得
-
-GrowthMessageインスタンスを取得します。
-
-```java
-public static GrowthMessage getInstance()
-```
 
 # Growth Link API
 
@@ -553,12 +259,6 @@ Growth Pushダイアログプッシュ通知を表示するときに必要とな
 
 ```xml
 <uses-permission android:name="android.permission.WAKE_LOCK" />
-```
-
-GrowthMessageバナー型表示に必要となります。
-
-```xml
-<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 ```
 
 (`*`オプション) Googleアカウントを設定します。APIレベル15以下の場合は設定します。

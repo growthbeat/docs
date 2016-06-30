@@ -6,49 +6,47 @@ draft: false
 title: Growthbeat iOS Gudeliene
 ---
 
-Version 1.2.7
+Version 2.0.0
 
 # 共通初期設定
 
 ## SDK導入
 
-Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。
+Growthbeat SDKで、Growthbeat 全てのサービスの機能が利用できます。
 
-Objective-Cでの導入方法について記載しております。
+Objective-C での導入方法について記載しております。
 
 ### CocoaPodsを使用して導入する場合
 
-Podfileに下記を記述し、pod installを実行してください。
+Podfile に下記を記述し `pod install` を実行してください:
 
 ```
 pod 'Growthbeat'
 ```
 
-### 手動でSDKを配置して導入する場合
+### 手動で SDK を配置して導入する場合
 
 <a href="/sdk">最新版iOS SDK ダウンロードページ</a>
 
 ダウンロードしたファイルを解凍し、そのフォルダの中の **Growthbeat.framework** をプロジェクトへ組み込みます。
-任意のXcodeプロジェクトを開き、Growthbeat.frameworkをインポートしてください。
+任意のXcodeプロジェクトを開き Growthbeat.framework をインポートしてください。
 
-Growthbeat.frameworkのインポートの方法は2つあります。
+Growthbeat.framework のインポートの方法は以下の２つです:
 
-```
-1. Xcodeプロジェクトに、Growthbeat.frameworkをドラッグアンドドロップする
-2. Bulid Phases -> Link Binary With Librariesの+ボタンを押し、Add Other...からGrowthbeat.frameworkを選択する
-```
+1. Xcodeプロジェクトに Growthbeat.framework をドラッグアンドドロップする
+2. Bulid Phases -> Link Binary With Libraries の + ボタンを押し、Add Other...からGrowthbeat.frameworkを選択する
 
 ### import
 
-Growthbeatのimport文を記述します。
+Growthbeat の import 文を記述します。
 
-```
+```objc
 #import <Growthbeat/Growthbeat.h>
 ```
 
 ### 依存について
 
-Growthbeat.frameworkは、下記Frameworkが必須となります。
+Growthbeat.framework は、下記 Framework が必須となります:
 
 - Foundation.framework
 - UIKit.framework
@@ -58,48 +56,28 @@ Growthbeat.frameworkは、下記Frameworkが必須となります。
 - CFNetwork.framework
 - SafariServices.framework
 
-## Growthbeatの初期化
+## Growthbeat の初期化
 
-Growthbeatの初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。
+Growthbeat および Growth Push の初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。
 
 ```objc
-[[Growthbeat sharedInstance] initializeWithApplicationId:@"YOUR_APLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID"];
+[[GrowthPush sharedInstance] initializeWithApplicationId:@"YOUR_APLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID" environment:kGrowthPushEnvironment];
 ```
 
 Growth Push SDKからの乗り換えの場合は、[こちら](#growth-push-sdkからの乗り換え方法について)も参照してください。
-
-## アプリの起動・終了イベントの送信
-
-起動イベントは、`- (void)applicationDidBecomeActive:(UIApplication *)application` にて下記のように実装してください。
-
-```objc
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    [[Growthbeat sharedInstance] start];
-}
-```
-
-終了イベントは、`- (void)applicationWillResignActive:(UIApplication *)application` にて下記のように実装してください。
-
-```objc
-- (void)applicationWillResignActive:(UIApplication *)application {
-    [[Growthbeat sharedInstance] stop];
-}
-```
-
-アプリの起動・終了以外のイベント（行動情報）やタグ（属性情報）も送信することができます。詳しくは[APIリファレンス](/sdk/ios/reference/#基本タグの送信)をご参照ください。
 
 # プッシュ通知
 
 ## プッシュ通知用の証明書の作成
 
-Growth Push管理画面のにて、各OSごとに証明書の設定を行ってください。詳しくは、[iOSプッシュ通知証明書作成方法](http://growthhack.sirok.co.jp/growthpush/ios-p12/)をご参照ください。
+Growth Push 管理画面にて、各 OS ごとに証明書の設定を行ってください。詳しくは、[iOS プッシュ通知証明書作成方法](http://growthhack.sirok.co.jp/growthpush/ios-p12/)をご参照ください。
 
 ## デバイストークンを取得・送信をする
 
-Growthbeatの初期化後に下記を呼び出して、デバイストークンの取得を行います。
+Growthbeat の初期化後に下記を呼び出して、デバイストークンの取得を行います。
 
 ```objc
-[[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
+[[GrowthPush sharedInstance] requestDeviceToken];
 ```
 
 `- (void)application:(UIApplication *)application
@@ -148,6 +126,24 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 アプリ起動以外にも、カスタムイベントをメッセージ配信のトリガーにすることにより、アプリの任意の場所でメッセージを配信することができます。詳しくは、[こちら](/sdk/ios/reference/#カスタムイベント送信)をご参照ください。
 
+## メッセージを表示する
+
+Growth Pushのイベント送信と連動して、メッセージを受信します。
+
+イベント名に紐付いたメッセージを作成するだけで、メッセージ表示することはできます。デフォルトでは、メッセージ受信時に即時に表示します。
+
+`ShowMessageHandler` を利用することで、表示準備が完了したときに、メッセージ表示をすることができます。
+
+例.) 起動時に、メッセージを表示する場合
+
+```objc
+[[GrowthPush sharedInstance] trackEvent:@"Launch" value:nil showMessage:^(void(^renderMessage)()){
+    renderMessage();
+} failure:^(NSString * detail) {
+    
+}];
+```
+
 # ディープリンク
 
 ## 初期設定
@@ -160,7 +156,7 @@ GrowthLinkのimport文を記述します。
 
 ## 初期化処理
 
-Growthbeatの初期化処理の後に、Growth Linkの初期化処理を呼び出してください。**APPLICATION_ID**と**CREDENTIAL_ID**は
+Growthbeatの初期化処理の後に、Growth Linkの初期化処理を呼び出してください。 **APPLICATION_ID** と **CREDENTIAL_ID** は
 Growthbeatの初期化時と同じものです。
 
 ```objc
@@ -191,24 +187,26 @@ URL Schemesにはスキームを、IdentifierにはBundle Identifierなどアプ
 SDKには、GBIntentHandlerというプロトコルが定義されており、この実装でディープリンク時のアクションを実装することができます。
 
 たとえば下記のような形で実装できます。
+
 ```objc
 #import <Growthbeat/GBCustomIntentHandler.h>  //インポート文に追記
 ```
 
 ```objc
- [[GrowthbeatCore sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
-        NSDictionary *extra = customIntent.extra;
+ [[Growthbeat sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
+        NSDictionary * extra = customIntent.extra;
         NSLog(@"extra: %@", extra);
         return YES;
 }]];
 ```
 
 ## Universal Links用の設定 (iOS9.x系)
-iOS9からカスタムスキームでの遷移に関する仕様が大幅に変更されたため、iOS9.x系に対応するにはUniversal Linksの設定が必要になります。
+
+iOS9 からカスタムスキームでの遷移に関する仕様が大幅に変更されました。なので iOS9.x 系に対応するには Universal Links の設定が必要になります。
 
 ### apple.developer.com での設定
 
-apple.developer.comにアクセスし、 “Certificate, Identifiers & Profiles”を選択。
+apple.developer.com にアクセスし “Certificate, Identifiers & Profiles” を選択。
 その後"Identifers"をクリック。
 
 <img src="/img/link/guide-universal-01.png" alt="guide-universal-01" title="guide-universal-01" width="70%"/>
@@ -220,7 +218,7 @@ Identiferを登録済みの時は"Edit"から編集を、未登録のときは"+
 NameやBundle IDは通常と同じ要領で記入してください。
 <img src="/img/link/guide-universal-03.png" alt="guide-universal-03" title="guide-universal-03" width="70%"/>
 
-Bundle IDはXcode上のGeneralのタブを選択することで確認できます。
+Bundle ID は Xcode 上のGeneralのタブを選択することで確認できます。
 
 <img src="/img/link/guide-xcode-bundle.png" alt="guide-xcode-bundle" title="gguide-xcode-bundle" width="70%"/>
 
@@ -231,6 +229,7 @@ App Servicesの欄で、Associated Domainsにチェックをてください。�
 apple.developer.com での設定は以上です。Saveボタンをおして保存してください。
 
 ### Xcode上 での設定
+
 先ほどONにしたAssociated Domainsを使ってGrowthLinkのドメインを登録していきます。
 登録の前に、先ほど登録したApp Identifierと同じTeamが選択されていることを確認してください。TeamはGeneralタブにあるIdentityセクションから選択できます。
 
@@ -249,43 +248,6 @@ CapabilitiesタブのAssociated Domainsをクリックすると展開されド�
 **ハンドリング処理の実装**
 AppDelegate.mにUniversal Linksのハンドリング処理を実装します。
 
-
-* Link Framework 1.2.6以下の場合
-
-
-```objc
-#import <Growthbeat/GrowthLink.h> //インポートしておく
-
-- (BOOL) application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
-        if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
-            NSURL *webpageURL = userActivity.webpageURL;
-            if ( [self handleUniversalLink:webpageURL]){
-                [[GrowthLink sharedInstance] handleOpenUrl:webpageURL];
-            } else {
-                 // 例：コンテンツをアプリで開けない時にSafariにリダイレクトする場合
-                [[UIApplication sharedApplication] openURL:webpageURL];
-                return false;
-            }
-
-        }
-    return true;
-}
-
-- (BOOL) handleUniversalLink:(NSURL*) url{
-    NSURLComponents *component = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:true];
-    if (!component || !component.host) return false;
-    if ([@"gbt.io" isEqualToString:component.host] ) {
-
-        return true;
-    }
-    return false;
-}
-
-```
-
-* Growthbeat Framework 1.2.7以上の場合
-
-
 [Universal Links](http://faq.growthbeat.com/article/134-universallinks)専用リンクへの対応のため、以下のように実装してください。
 
 
@@ -295,7 +257,7 @@ AppDelegate.mにUniversal Linksのハンドリング処理を実装します。
 
 - (BOOL) application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
     if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
-        NSURL *webpageURL = userActivity.webpageURL;
+        NSURL * webpageURL = userActivity.webpageURL;
         [[GrowthLink sharedInstance] handleUniversalLinks:webpageURL];
     }
     return true;
@@ -384,9 +346,9 @@ Growthbeat SDK乗り換え時に、これまでGrowth Pushで利用していた�
 ```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Growthbeat SDKの初期化
-	[[Growthbeat sharedInstance] initializeWithApplicationId:@"YOUR_APPLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID"];
+	[[GrowthPush sharedInstance] initializeWithApplicationId:@"YOUR_APPLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID" environment:kGrowthPushEnvironment];
 	// デバイストークンを明示的に要求
-	[[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
+	[[GrowthPush sharedInstance] requestDeviceToken];
 
 	// deviceTagの取得
 	[[GrowthPush sharedInstance] setDeviceTags];
