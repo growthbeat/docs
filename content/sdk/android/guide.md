@@ -235,14 +235,14 @@ GrowthPush.getInstance().trackEvent("Launch", null, new ShowMessageHandler() {
 
 	@Override
 	public void complete(MessageRenderHandler renderHandler) {
+        // 画面の表示
 		renderHandler.render();
 	}
 
 	@Override
-	public void onError() {
-
+	public void error(String error) {
+        // errorはエラーメッセージが返ります。
 	}
-
 });
 ```
 

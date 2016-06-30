@@ -152,7 +152,7 @@ Device, OS, Language, Time Zone, Version, Buildが含まれます。
 ### イベントと任意の値の送信
 
 ```objc
-- (void)trackEvent:(NSString *)name value:(NSString *)value messageHandler:(void (^)(void(^renderMessage)()))messageHandler failureHandler:(void (^)(NSString *detail))failureHandler;
+- (void)trackEvent:(NSString *)name value:(NSString *)value showMessage:(void (^)(void(^renderMessage)()))showMessageHandler failure:(void (^)(NSString *detail))failureHandler;
 ```
 
 **パラメータ**
@@ -163,6 +163,17 @@ Device, OS, Language, Time Zone, Version, Buildが含まれます。
 |value|イベントに持たせる値|
 |messageHander|メッセージ表示準備完了時のコールバック|
 |failureHandler|メッセージ処理中にエラーが発生した場合のコールバック|
+
+### ポップアップメッセージ表示
+
+```objc
+[[GrowthPush sharedInstance] trackEvent:@"Launch" value:nil showMessage:^(void(^renderMessage)()){
+    // コールすることでメッセージが表示されます。
+    renderMessage();
+} failure:^(NSString * detail) {
+    // detailはエラーメッセージが返ってきます。
+}];
+```
 
 ## タグの送信
 

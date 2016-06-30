@@ -137,9 +137,11 @@ Growth Pushのイベント送信と連動して、メッセージを受信しま
 例.) 起動時に、メッセージを表示する場合
 
 ```objc
-[[GrowthPush sharedInstance] trackEvent:@"Launch" value:nil messageHandler:^(void(^renderMessage)()){
+[[GrowthPush sharedInstance] trackEvent:@"Launch" value:nil showMessage:^(void(^renderMessage)()){
     renderMessage();
-} failureHandler:nil];
+} failure:^(NSString * detail) {
+    
+}];
 ```
 
 # ディープリンク

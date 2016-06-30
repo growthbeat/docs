@@ -153,6 +153,25 @@ public void trackEvent(String name, String value, ShowMessageHandler showMessage
 |value|イベントに持たせる値|
 |showMessageHandler|メッセージ表示準備が完了したときのコールバック変数|
 
+### ShowMessageHandler
+
+設定したポップアップメッセージの表示準備が完了したときに、コールバックされます。
+
+```java
+new ShowMessageHandler() {
+	@Override
+	public void complete(MessageRenderHandler renderHandler) {
+        // 画面の表示
+		renderHandler.render();
+	}
+
+	@Override
+	public void error(String error) {
+        // errorはエラーメッセージが返ります。
+	}
+}
+ ```
+
 ## タグの送信
 
 ### タグの送信
