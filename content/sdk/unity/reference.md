@@ -197,25 +197,6 @@ public void RenderMessage (string uuid);
 |:--|:--|
 |uuid|TrackEvent時のコールバックされた文字列|
 
-ex.)
-
-```cs
-public class GrowthbeatComponent : MonoBehaviour
-{
-    void Awake ()
-	{
-        GrowthPush.getInstance().TrackEvent("Launch","","GrowthbeatComponent","ShowMessage");
-    }
-
-    void ShowMessage (string uuid) {
-        // wait frame
-        // ....
-        GrowthPush.GetInstance ().RenderMessage (uuid);
-    }
-
-}
-```
-
 ## タグの送信
 
 ### タグの送信
