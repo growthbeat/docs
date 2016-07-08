@@ -6,7 +6,7 @@ draft: false
 title: リリースノート
 ---
 
-# バージョン 2.0.0
+# バージョン 2.0.1
 
 Unity version 5.3.0f4
 

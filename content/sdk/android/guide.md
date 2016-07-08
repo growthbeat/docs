@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat Android Gudeliene
 ---
 
-Version 2.0.0
+Version 2.0.1
 
 # 共通初期設定
 
@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.growthbeat:growthbeat-android:2.0.0@aar'
+    compile 'com.growthbeat:growthbeat-android:2.0.1@aar'
 }
 ```
 

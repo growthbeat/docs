@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat iOS Gudeliene
 ---
 
-Version 2.0.0
+Version 2.0.1
 
 # 共通初期設定
 
@@ -140,7 +140,7 @@ Growth Pushのイベント送信と連動して、メッセージを受信しま
 [[GrowthPush sharedInstance] trackEvent:@"Launch" value:nil showMessage:^(void(^renderMessage)()){
     renderMessage();
 } failure:^(NSString * detail) {
-    
+
 }];
 ```
 
