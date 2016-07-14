@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat Unity Guideliene
 ---
 
-Version 1.2.7
+Version 2.0.1
 
 # 共通初期設定
 
@@ -67,7 +67,7 @@ Android Studioで開発する場合は、build.gradleに設定してください
 
 ```
 dependencies {
-    compile 'com.growthbeat:growthbeat-android:1.2.7@aar'
+    compile 'com.growthbeat:growthbeat-android:2.0.1@aar'
 
     // Androidのライブラリです。growthbeatのライブラリの機能に依存します。
     compile "com.android.support:appcompat-v7:23.3.0"
@@ -188,22 +188,8 @@ AndroidManifest.xmlのサンプルは、[こちら](https://github.com/growthbea
 
 ## Growthbeatの初期化
 
-```
-Growthbeat.GetInstance().Initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
-```
-
-## アプリの起動・終了イベントの送信
-
-アプリ初期化時に一度だけ送信してください。
-
-```
-Growthbeat.GetInstance().Start();
-```
-
-終了イベントは、アプリが閉じるときにを実装してください。
-
-```
-Growthbeat.GetInstance().Stop();
+```cs
+GrowthPush.GetInstance().Initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID", Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
 ```
 
 # プッシュ通知
@@ -222,8 +208,8 @@ XcodeプロジェクトのBuild Setting > Provisioning Profileの設定をして
 
 デバイストークンを取得するタイミングで下記を実装してください。
 
-```
-GrowthPush.GetInstance().RequestDeviceToken("YOUR_SENDER_ID", Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
+```cs
+GrowthPush.GetInstance().RequestDeviceToken("YOUR_SENDER_ID");
 ```
 
 Environmentは、開発環境の場合、Environment.Developmentを指定、本番環境の場合は、Environment.Productionを指定してください。
@@ -294,13 +280,41 @@ GrowthPush.GetInstance().TrackEvent("EventName");
 
 アプリ起動以外にも、カスタムイベントをメッセージ配信のトリガーにすることにより、アプリの任意の場所でメッセージを配信することができます。詳しくは、[こちら](/sdk/android/reference/#カスタムイベント送信)をご参照ください。
 
+## メッセージを表示する
+
+Growth Pushのイベント送信と連動して、メッセージを受信します。
+
+イベント名に紐付いたメッセージを作成するだけで、メッセージ表示することはできます。デフォルトでは、メッセージ受信時に即時に表示します。
+
+TrackEventに引数を追加することで、ゲームオブジェクト上に、コールバックすることができます。
+
+ex.)
+
+```cs
+public class GrowthbeatComponent : MonoBehaviour
+{
+    void Awake ()
+	{
+        GrowthPush.getInstance().TrackEvent("Launch","","GrowthbeatComponent","ShowMessage");
+    }
+
+    void ShowMessage (string uuid) {
+        // wait frame
+        // ....
+        GrowthPush.GetInstance ().RenderMessage (uuid);
+    }
+
+}
+```
+
+
 # ディープリンク
 
 ## 初期化
 
 Growth Linkの初期化実装は下記になります。
 
-```
+```cs
 IntentHandler.GetInstance ().AddNoopIntentHandler ();
 IntentHandler.GetInstance ().AddUrlIntentHandler ();
 IntentHandler.GetInstance ().AddCustomIntentHandler ("GrowthbeatComponent", "HandleCustomIntent");
@@ -311,7 +325,7 @@ GrowthLink.GetInstance().Initialize (applicationId, credentialId);
 クリックしたリンクに付与されたデータがGrowthbeatComponentのHandleCustomIntentに渡ってきます。
 ここにページ遷移やAPI利用などの処理を実装してください。
 
-```
+```cs
 void HandleCustomIntent(string extra) {
 		Debug.Log("Enter HandleCustomIntent");
 		Debug.Log(extra);
@@ -395,13 +409,13 @@ AndroidManifestの`<application/>`内に以下のコードを追加してくだ�
 
 Growth Link, Growth Messageでカスタムの処理をする場合は、下記を実装します。
 
-```
+```cs
 IntentHandler.GetInstance ().AddCustomIntentHandler ("GameObject", "CallbackMethod");
 ```
 
 処理を戻す、ゲームオブジェクト、コールバックする処理を指定してください。
 
-```
+```cs
 
 public class GrowthbeatComponent : MonoBehaviour
 {

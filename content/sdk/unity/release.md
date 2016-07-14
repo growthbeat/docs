@@ -6,6 +6,19 @@ draft: false
 title: リリースノート
 ---
 
+# バージョン 2.0.1
+
+Unity version 5.3.0f4
+
+## 変更点
+
+- Growthbeatのインターフェースを変更しました。
+- Growth Analyticsの機能が無くなりました。
+- Growth Messageの表示機能が改善いたしました。
+
+## バグ
+- バージョン1.2.7で対応を行った、Growth Pushのbundleとversionタグの登録情報に誤りがあったため修正いたしました。
+
 # バージョン 1.2.7
 
 Unity version 5.3.0f4
