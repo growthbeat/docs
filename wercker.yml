@@ -23,15 +23,18 @@ deploy-staging:
 
     - heroku-deploy:
         install-toolbelt: true
+
+    - script:
+        name: git test
+        code: |
+            git init
+            heroku git:remote -a stg-growthbeat-docs
+
+    - heroku-deploy:
         key: $HEROKU_KEY
         user: $HEROKU_USER
         app-name: $HEROKU_APP_NAME
         source_dir: public
-
-    # - script:
-    #     name: git test
-    #     code: |
-    #         heroku git:remote -a stg-growthbeat-docs
 
 deploy:
   steps:
