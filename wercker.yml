@@ -24,6 +24,7 @@ deploy-staging:
         key: $HEROKU_KEY
         user: $HEROKU_USER
         app-name: $HEROKU_APP_NAME
+        source_dir: public
 
 deploy:
   steps:
