@@ -20,6 +20,11 @@ build:
 
 deploy-staging:
   steps:
+    - script:
+        name: git test
+        code: |
+            heroku git:remote -a stg-growthbeat-docs
+
     - heroku-deploy:
         key: $HEROKU_KEY
         user: $HEROKU_USER
