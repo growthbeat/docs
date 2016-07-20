@@ -18,6 +18,13 @@ build:
         flags: --buildDrafts=true
         config: config.yml
 
+deploy-staging:
+  steps:
+    - heroku-deploy:
+        key: $HEROKU_KEY
+        user: $HEROKU_USER
+        app-name: $HEROKU_APP_NAME
+
 deploy:
   steps:
     - install-packages:
