@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat Unity API
 ---
 
-Version 2.0.2
+Version 2.0.1
 
 # Growthbeat API
 
