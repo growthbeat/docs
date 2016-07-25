@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat Android Gudeliene
 ---
 
-Version 2.0.1
+Version 2.0.2
 
 # 共通初期設定
 
@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.growthbeat:growthbeat-android:2.0.1@aar'
+    compile 'com.growthbeat:growthbeat-android:2.0.2@aar'
 }
 ```
 
@@ -304,7 +304,7 @@ SDKには、IntentHandler (iOSでは、GBIntentHandler)というインタフェ�
 
 ```java
 List<IntentHandler> intentHandlers = new ArrayList<IntentHandler>();
-intentHandlers.add(new UrlIntentHandler(GrowthbeatCore.getInstance().getContext()));
+intentHandlers.add(new UrlIntentHandler(Growthbeat.getInstance().getContext()));
 intentHandlers.add(new NoopIntentHandler());
 intentHandlers.add(new IntentHandler() {
     public boolean handle(com.growthbeat.model.Intent intent) {
@@ -317,6 +317,73 @@ intentHandlers.add(new IntentHandler() {
     }
 });
 Growthbeat.getInstance().setIntentHandlers(intentHandlers);
+```
+
+# Growthbeat SDK 1.xからの変更点
+
+## 機能削除
+
+- インターフェスの変更があります。
+ - 次の実装変更点でご確認ください。
+
+- GrowthAnalyticsクラスがなくなりました。
+ - 2.x以降は、GrowthPush#setTag, trackEventをご利用ください。
+
+- GrowthbeatCoreクラスが、Growthbeatクラスに統合されました。
+
+## 実装変更点
+
+### 初期化
+
+- Growthbeat 1.x
+
+```java
+protected void onCreate(Bundle savedInstanceState) {
+	super.onCreate(savedInstanceState);
+
+    //...
+
+    Growthbeat.getInstance().initialize(this, "YOUR_APPLICATION_ID", "CREDENTIAL_ID");
+    GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID", BuildConfig.DEBUG ? Environment.development : Environment.production);
+    Growthbeat.getInstance().getClient(new Growthbeat.ClientCallback() {
+            @Override
+            public void callback(Client client) {
+                Log.d("GrowthbeatSample", String.format("clientId is %s", client.getId()));
+            }
+        });
+    Growthbeat.getInstance().start();
+
+}
+
+protected void onStop() {
+    super.onStop();
+    Growthbeat.getInstance().stop();
+}
+```
+
+- Growthbeat 2.x
+
+```java
+protected void onCreate(Bundle savedInstanceState) {
+
+    super.onCreate(savedInstanceState);
+
+    //...
+    Growthbeat.getInstance().initialize(this, "YOUR_APPLICATION_ID", "CREDENTIAL_ID", BuildConfig.DEBUG ? Environment.development : Environment.production);
+	GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID");
+    new Thread(new Runnable() {
+        @Override
+        public void run() {
+            Client client = Growthbeat.getInstance().waitClient();
+            Log.d("GrowthbeatSample", String.format("clientId is %s", client.getId()));
+        }
+    }).start();
+
+}
+
+protected void onDestroy() {
+    super.onDestroy();
+}
 ```
 
 # Growth Push SDKからの乗り換え方法について
@@ -360,7 +427,7 @@ protected void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.activity_main);
 
-	GrowthPush.getInstance().initialize(getApplicationContext(), YOUR_APPLICATION_ID, "APPLICATION_SECRET", BuildConfig.DEBUG ? Environment.development : Environment.production, true).register("YOUR_SENDER_ID");
+	GrowthPush.getInstance().initialize(this, YOUR_APPLICATION_ID, "APPLICATION_SECRET", BuildConfig.DEBUG ? Environment.development : Environment.production, true).register("YOUR_SENDER_ID");
 	GrowthPush.getInstance().trackEvent("Launch");
 	GrowthPush.getInstance().setDeviceTags();
 }
