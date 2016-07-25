@@ -330,6 +330,7 @@ Growthbeat.getInstance().setIntentHandlers(intentHandlers);
  - 2.x以降は、GrowthPush#setTag, trackEventをご利用ください。
 
 - GrowthbeatCoreクラスが、Growthbeatクラスに統合されました。
+ - start, stop, initializeは削除されました。
 
 ## 実装変更点
 

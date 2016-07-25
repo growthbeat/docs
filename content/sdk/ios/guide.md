@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat iOS Gudeliene
 ---
 
-Version 2.0.1
+Version 2.0.2
 
 # 共通初期設定
 
@@ -106,7 +106,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 [[GrowthPush sharedInstance] setTag:@"TagName" value:@"TagValue"];
 ```
 
-[setTagメソッドについて](/sdk/ios/reference/#タグの送信-push専用)
+[setTagメソッドについて](/sdk/ios/reference/#タグの送信)
 
 ### イベント送信
 
@@ -114,7 +114,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 [[GrowthPush sharedInstance] trackEvent:@"EventName"];
 ```
 
-[trackEventメソッドについて](/sdk/ios/reference/#イベントの送信-push専用)
+[trackEventメソッドについて](/sdk/ios/reference/#イベントの送信)
 
 # アプリ内メッセージ
 
@@ -285,6 +285,68 @@ apple.developer.comに登録してあるBundle IdentifierとApple TeamIDを記�
 以下の記事を参考にしてください。
 
 [【UniversalLinks】ランディングページにリンクを埋め込む際の注意点](http://faq.growthbeat.com/article/114-universallink)
+
+# Growthbeat SDK 1.xからの変更点
+
+## 機能削除
+
+- インターフェスの変更があります。
+ - 次の実装変更点でご確認ください。
+
+- GrowthAnalyticsクラスがなくなりました。
+ - 2.x以降は、GrowthPush#setTag, trackEventをご利用ください。
+
+- GrowthbeatCoreクラスが、Growthbeatクラスに統合されました。
+ - start, stop, initializeは削除されました。
+ 
+## 実装変更点
+
+### 初期化
+
+- Growthbeat 1.x
+
+```objc
+- (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    [[Growthbeat sharedInstance] initializeWithApplicationId:@"YOUR_APPLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID"];
+    [[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
+    [[Growthbeat sharedInstance] getClient:^(GBClient* client) {
+        NSLog(@"clientId is %@",client.id);
+    }];
+
+}
+
+- (void) applicationDidBecomeActive:(UIApplication *)application {
+    [[Growthbeat sharedInstance] start];
+}
+
+- (void) applicationWillResignActive:(UIApplication *)application {
+    [[Growthbeat sharedInstance] stop];
+}
+```
+
+- Growthbeat 2.x
+
+```objc
+- (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    [[GrowthPush sharedInstance] initializeWithApplicationId:@"YOUR_APPLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID" environment:kGrowthPushEnvironment];
+	[[GrowthPush sharedInstance] requestDeviceToken];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        GBClient* client = [[Growthbeat sharedInstance] waitClient];
+        NSLog(@"clientId is %@", client.id);
+    });
+
+}
+
+- (void) applicationDidBecomeActive:(UIApplication *)application {
+
+}
+
+- (void) applicationWillResignActive:(UIApplication *)application {
+
+}
+```
 
 # Growth Push SDKからの乗り換え方法について
 
