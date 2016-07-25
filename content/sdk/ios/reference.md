@@ -67,14 +67,6 @@ GrowthbeatおよびGrowth Pushの初期化を行います。初期化では以�
 - (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId environment:(GPEnvironment)environment;
 ```
 
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|applicationId| アプリケーションID |
-|credentialId| クレデンシャルキー |
-|environment| 開発用: `Environment.development` 本番用: `Environment.production`　|
-
 - 広告情報を保持しない場合
 
 ```objc
@@ -88,7 +80,7 @@ GrowthbeatおよびGrowth Pushの初期化を行います。初期化では以�
 |applicationId| アプリケーションID |
 |credentialId| クレデンシャルキー |
 |environment| 開発用: `Environment.development` 本番用: `Environment.production`　|
-|adInfoEnable | NOの場合、Growth Pushに広告IDを渡しません。 |
+|adInfoEnable | NOの場合、Growth Pushに広告IDを渡しません |
 
 ## デバイストークンの取得・送信
 

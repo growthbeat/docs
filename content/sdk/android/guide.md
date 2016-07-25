@@ -199,7 +199,7 @@ GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID");
 GrowthPush.getInstance().setTag("TagName", "TagValue");
 ```
 
-[setTagメソッドについて](/sdk/android/reference/#タグの送信-push専用)
+[setTagメソッドについて](/sdk/android/reference/#タグの送信)
 
 ### イベント送信
 
@@ -207,7 +207,7 @@ GrowthPush.getInstance().setTag("TagName", "TagValue");
 GrowthPush.getInstance().trackEvent("EventName");
 ```
 
-[trackEventメソッドについて](/sdk/android/reference/#イベントの送信-push専用)
+[trackEventメソッドについて](/sdk/android/reference/#イベントの送信)
 
 
 # アプリ内メッセージ
