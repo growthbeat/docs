@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat Unity API
 ---
 
-Version 2.0.1
+Version 2.0.2
 
 # Growthbeat API
 
@@ -100,13 +100,20 @@ Growth Pushの初期化を行います。初期化では、デバイス登録、
 public void Initialize (string applicationId, string credentialId, Environment environment)
 ```
 
+広告情報を保持しない場合
+
+```cs
+public void Initialize (string applicationId, string credentialId, Environment environment, bool adInfoEnable)
+```
+
 **パラメータ**
 
 |項目名|詳細|
 |:--|:--|
 |applicationId| アプリケーションID |
 |credentialId| クレデンシャルキー |
-| environment |開発用: `Environment.development` 本番用: `Environment.production`|
+|environment| 開発用: `Environment.development` 本番用: `Environment.production`　|
+|adInfoEnabled| 広告情報の送信設定。`true`: 送信する `false`:送信しない |
 
 ## デバイストークンの取得・送信
 

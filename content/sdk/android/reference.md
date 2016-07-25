@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat Android API
 ---
 
-Version 2.0.0
+Version 2.0.2
 
 [Android SDK 1.2.7以下](/sdk/android/reference-1.2.7)のリファレンスはこちら
 
