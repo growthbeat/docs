@@ -1,0 +1,15 @@
+baseurl:        "https://s3-ap-northeast-1.amazonaws.com/dev-growthbeat/docs/"
+title:          "Growthbeat | docs"
+contentdir:     "content"
+publishdir:     "public"
+layoutdir:      "layouts"
+staticdir:      "static"
+uglyUrls:       false
+metaDataFormat: "yaml"
+
+blackfriday:
+  plainIDAnchors: true
+
+Params:
+  # Date Format
+  DateForm:      "Mon, Jan 2, 2006"

@@ -13,19 +13,12 @@ build:
       code: |
         npm run build
 
+hugo-build:
+  steps:
     - arjen/hugo-build:
         version: 0.15
         flags: --buildDrafts=true
         config: config.yml
-
-deploy-staging:
-  steps:
-    - s3sync:
-        key-id: $KEY
-        key-secret: $SECRET
-        bucket-url: $BUCKET
-        source-dir: public
-        opts: --acl-private
 
 deploy:
   steps:
@@ -35,3 +28,20 @@ deploy:
         token:   $GITHUB_TOKEN
         domain:  support.growthbeat.com
         basedir: public
+
+hugo-stg-build:
+  steps:
+    - arjen/hugo-build:
+        version: 0.15
+        flags: --buildDrafts=true
+        config: devConfig.yml
+
+
+deploy-staging:
+  steps:
+    - s3sync:
+        key-id: $KEY
+        key-secret: $SECRET
+        bucket-url: $BUCKET
+        source-dir: public
+        opts: --acl-private
