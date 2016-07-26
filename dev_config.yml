@@ -1,4 +1,4 @@
-baseurl:        "http://stg.support.growthbeat.com.s3-website-ap-northeast-1.amazonaws.com/"
+baseurl:        "http://stg.support.growthbeat.com/"
 title:          "Growthbeat | docs"
 contentdir:     "content"
 publishdir:     "public"
