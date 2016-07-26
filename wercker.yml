@@ -13,12 +13,14 @@ build:
       code: |
         npm run build
 
+prd-hugo-build:
+  steps:
     - arjen/hugo-build:
         version: 0.15
         flags: --buildDrafts=true
-        config: config.yml
+        config: prd_config.yml
 
-deploy:
+prd-deploy:
   steps:
     - install-packages:
         packages: git ssh-client liberror-perl
@@ -26,3 +28,20 @@ deploy:
         token:   $GITHUB_TOKEN
         domain:  support.growthbeat.com
         basedir: public
+
+stg-hugo-build:
+  steps:
+    - arjen/hugo-build:
+        version: 0.15
+        flags: --buildDrafts=true
+        config: dev_config.yml
+
+
+stg-deploy:
+  steps:
+    - s3sync:
+        key-id: $KEY
+        key-secret: $SECRET
+        bucket-url: $BUCKET
+        source-dir: public
+        opts: --acl-private
