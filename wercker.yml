@@ -13,14 +13,14 @@ build:
       code: |
         npm run build
 
-hugo-build:
+prd-hugo-build:
   steps:
     - arjen/hugo-build:
         version: 0.15
         flags: --buildDrafts=true
         config: config.yml
 
-deploy:
+prd-deploy:
   steps:
     - install-packages:
         packages: git ssh-client liberror-perl
@@ -29,7 +29,7 @@ deploy:
         domain:  support.growthbeat.com
         basedir: public
 
-hugo-stg-build:
+stg-hugo-build:
   steps:
     - arjen/hugo-build:
         version: 0.15
@@ -37,7 +37,7 @@ hugo-stg-build:
         config: devConfig.yml
 
 
-deploy-staging:
+stg-deploy:
   steps:
     - s3sync:
         key-id: $KEY
