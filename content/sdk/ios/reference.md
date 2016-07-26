@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat iOS API
 ---
 
-Version 2.0.0
+Version 2.0.2
 
 [iOS SDK 1.2.7以下](/sdk/ios/reference-1.2.7)のリファレンスはこちら
 
@@ -35,18 +35,10 @@ Growthbeat SDKからのログ出力を全て停止します。
 |:--|:--|
 |silent| ログ出力を行うか。`YES`: ログ出力しない `NO`:ログ出力をする |
 
-## GrowthbeatユニークIDを取得する
-
-SDK初期化時に作成される、GrowthbeatのユニークIDを取得できます。
-
-```objc
-- (void)getClient:(void(^)(GBClient *client))callback;
-```
-
 ## IntentHandlerを追加する。
 
 ```objc
-[[GrowthbeatCore sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
+[[Growthbeat sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
         NSDictionary * extra = customIntent.extra;
         NSLog(@"extra: %@", extra);
         return YES;
@@ -68,11 +60,17 @@ GrowthPushインスタンスを取得します。
 GrowthbeatおよびGrowth Pushの初期化を行います。初期化では以下の処理が行われます。
 
 - デバイス登録、認証
-- Growth Push、Growth Analytics、Growth Messageの初期化（Growth Linkは別途初期化が必要）
+- Growth Pushの初期化
 - 基本情報の送信
 
 ```objc
 - (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId environment:(GPEnvironment)environment;
+```
+
+- 広告情報を保持しない場合
+
+```objc
+- (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId environment:(GPEnvironment)environment adInfoEnable:(BOOL)adInfoEnable;
 ```
 
 **パラメータ**
@@ -82,6 +80,7 @@ GrowthbeatおよびGrowth Pushの初期化を行います。初期化では以�
 |applicationId| アプリケーションID |
 |credentialId| クレデンシャルキー |
 |environment| 開発用: `Environment.development` 本番用: `Environment.production`　|
+|adInfoEnable | NOの場合、Growth Pushに広告IDを渡しません |
 
 ## デバイストークンの取得・送信
 

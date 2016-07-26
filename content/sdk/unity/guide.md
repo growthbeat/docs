@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat Unity Guideliene
 ---
 
-Version 2.0.1
+Version 2.0.2
 
 # 共通初期設定
 
@@ -67,15 +67,16 @@ Android Studioで開発する場合は、build.gradleに設定してください
 
 ```
 dependencies {
-    compile 'com.growthbeat:growthbeat-android:2.0.1@aar'
+    compile 'com.growthbeat:growthbeat-android:2.0.2@aar'
 
     // Androidのライブラリです。growthbeatのライブラリの機能に依存します。
     compile "com.android.support:appcompat-v7:23.3.0"
     compile 'com.google.android.gms:play-services-gcm:8.3.0'
     compile 'com.google.android.gms:play-services-ads:8.3.0'
 
-    // 以下は、デフォルトで設定されます。
+    // Android用のラッパーライブラリです。
     compile files('libs/growthbeat-unity-wrapper.jar')
+
     compile files('libs/unity-classes.jar')
 
 }
@@ -83,7 +84,7 @@ dependencies {
 
 - [Android Studioに、プロジェクトを書き出す場合](http://docs.unity3d.com/ja/current/Manual/android-BuildProcess.html)
 
-##### Eclipseで開発の場合
+##### GoogleProjectに書き出さない場合
 
 [growthbeat-android](https://github.com/growthbeat/growthbeat-android/releases/tag/latest)をダウンロードし、 `release` フォルダ内の
 `growthbeat-x.x.x.jar` (x.x.xはバージョン番号) を、 `Assets/Plugins/Android/` にコピーしてください。
@@ -259,7 +260,7 @@ Log.Debug(devicetoken);
 GrowthPush.GetInstance().SetTag("TagName", "TagValue");
 ```
 
-[setTagメソッドについて](/sdk/unity/reference/#タグの送信-push専用)
+[setTagメソッドについて](/sdk/unity/reference/#タグの送信)
 
 ### イベント送信
 
@@ -267,7 +268,7 @@ GrowthPush.GetInstance().SetTag("TagName", "TagValue");
 GrowthPush.GetInstance().TrackEvent("EventName");
 ```
 
-[trackEventメソッドについて](/sdk/unity/reference/#イベントの送信-push専用)
+[trackEventメソッドについて](/sdk/unity/reference/#イベントの送信)
 
 
 # アプリ内メッセージ
@@ -429,6 +430,52 @@ public class GrowthbeatComponent : MonoBehaviour
         Debug.Log("Enter HandleCustomIntent");
         Debug.Log(extra);
     }
+
+}
+```
+
+# Growthbeat SDK 1.xからの変更点
+
+## 機能削除
+
+- インターフェスの変更があります。
+ - 次の実装変更点でご確認ください。
+
+- GrowthAnalyticsクラスがなくなりました。
+ - 2.x以降は、GrowthPush#setTag, trackEventをご利用ください。
+
+- GrowthbeatCoreクラスが、Growthbeatクラスに統合されました。
+ - start, stop, initializeは削除されました。
+
+## 実装変更点
+
+### 初期化
+
+- Growthbeat 1.x
+
+```csharp
+void Awake () {
+    Growthbeat.GetInstance ().Initialize ("YOUR_APPLICATION_ID", "CREDENTIAL_ID");
+    GrowthPush.GetInstance ().RequestDeviceToken ("YOUR_SENDER_ID", Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
+    Growthbeat.GetInstance ().Start ();
+}
+
+void OnDisable ()
+{
+    Growthbeat.GetInstance ().Stop ();
+}
+```
+
+- Growthbeat 2.x
+
+```csharp
+void Awake () {
+    GrowthPush.GetInstance ().Initialize ("YOUR_APPLICATION_ID", "CREDENTIAL_ID", Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
+    GrowthPush.GetInstance ().RequestDeviceToken ("YOUR_SENDER_ID");
+}
+
+void OnDisable ()
+{
 
 }
 ```
