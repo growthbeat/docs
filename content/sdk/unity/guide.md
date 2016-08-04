@@ -89,6 +89,28 @@ dependencies {
 [growthbeat-android](https://github.com/growthbeat/growthbeat-android/releases/tag/latest)をダウンロードし、 `release` フォルダ内の
 `growthbeat-x.x.x.jar` (x.x.xはバージョン番号) を、 `Assets/Plugins/Android/` にコピーしてください。
 
+growthbeat-x.x.x.jarに依存しているGoogle/Androidライブラリは下記になります。
+
+ライブラリは、android-sdk配下のextraフォルダの任意の場所にございます。
+
+- support-v4-23.0.0.aar (23.0.0以降をお使いください)
+ - extras/android/m2repository/com/android/support/support-v4/23.0.0/
+- play-services-ads-8.3.0.aar
+ - extras/google/m2repository/com/google/android/gms/play-services-ads/8.3.0
+- play-services-gcm-8.3.0.aar
+ - extras/google/m2repository/com/google/android/gms/play-services-gcm/8.3.0
+
+
+`@integer/google_play_services_version` のGoogle Play Service Versionは、直接バージョンを記入するか、 `Assets/Plugin/Android/value.xml` を作成してバージョン番号を記入してください。
+
+* value.xmlに書く場合
+
+ ```xml
+ <resources>
+     <integer name="google_play_services_version">8487000</integer>
+ </resources>
+ ```
+
 #### パーミッションの設定
 
 ※ AndroidManifestの設定は、Unityプロジェクト内で設定するか、Androidプロジェクトの吐き出し後に設定してください。

@@ -61,6 +61,8 @@ public static GrowthPush getInstance()
 public void initialize(Context context, String applicationId, String credentialId, Environment environment)
 ```
 
+広告情報を保持しない場合
+
 ```java
 public void initialize(Context context, String applicationId, String credentialId, Environment environment, boolean adInfoEnabled)
 ```

@@ -67,7 +67,7 @@ GrowthbeatおよびGrowth Pushの初期化を行います。初期化では以�
 - (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId environment:(GPEnvironment)environment;
 ```
 
-- 広告情報を保持しない場合
+広告情報を保持しない場合
 
 ```objc
 - (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId environment:(GPEnvironment)environment adInfoEnable:(BOOL)adInfoEnable;
