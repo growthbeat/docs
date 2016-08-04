@@ -94,11 +94,22 @@ growthbeat-x.x.x.jarに依存しているGoogle/Androidライブラリは下記�
 ライブラリは、android-sdk配下のextraフォルダの任意の場所にございます。
 
 - support-v4-23.0.0.aar (23.0.0以降をお使いください)
- - extra/android/m2repository/com/android/support/support-v4/23.0.0/
+ - extras/android/m2repository/com/android/support/support-v4/23.0.0/
 - play-services-ads-8.3.0.aar
- - extra/google/m2repository/com/google/android/gms/play-services-ads/8.3.0
+ - extras/google/m2repository/com/google/android/gms/play-services-ads/8.3.0
 - play-services-gcm-8.3.0.aar
- - extra/google/m2repository/com/google/android/gms/play-services-gcm/8.3.0
+ - extras/google/m2repository/com/google/android/gms/play-services-gcm/8.3.0
+
+
+`@integer/google_play_services_version` のGoogle Play Service Versionは、直接バージョンを記入するか、 `Assets/Plugin/Android/value.xml` を作成してバージョン番号を記入してください。
+
+* value.xmlに書く場合
+
+ ```xml
+ <resources>
+     <integer name="google_play_services_version">8487000</integer>
+ </resources>
+ ```
 
 #### パーミッションの設定
 
