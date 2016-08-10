@@ -126,20 +126,13 @@ growthbeat-x.x.x.jarに依存しているGoogle/Androidライブラリは下記�
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 
-<!-- under API 15 -->
-<uses-permission android:name="android.permission.GET_ACCOUNTS" />
-
 <!-- for Growth Push -->
 <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 <uses-permission android:name="android.permission.VIBRATE" />
-<uses-permission android:name="android.permission.WAKE_LOCK" />
 <uses-permission android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE" />
 <permission
     android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE"
     android:protectionLevel="signature" />
-
-<!-- for Growth Message -->
-<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
 ```
 
@@ -301,8 +294,6 @@ GrowthPush.GetInstance().TrackEvent("EventName");
 
 まず、管理画面にてアプリ起動時に配信されるメッセージを作成します。メッセージの作成方法は[こちら](/manual/growthmessage/#配信作成)を参考にしてください。
 
-アプリ起動以外にも、カスタムイベントをメッセージ配信のトリガーにすることにより、アプリの任意の場所でメッセージを配信することができます。詳しくは、[こちら](/sdk/android/reference/#カスタムイベント送信)をご参照ください。
-
 ## メッセージを表示する
 
 Growth Pushのイベント送信と連動して、メッセージを受信します。
@@ -360,30 +351,11 @@ void HandleCustomIntent(string extra) {
 
 共通初期設定に追加で、
 
-* GrowthLink.frameworkのインポート
 * SafariServices.frameworkのインポート
 
 が必要です。
 
-**URLスキームの設定**
-
-Xcodeプロジェクトを開き、 `Info -> URL Types -> URL Schemes` の中に、アプリのカスタムURLスキームを記述します。
-
-<img src="/img/sdk/iOS/url-scheme.png" alt="url-scheme" title="url-scheme" width="100%"/>
-
-**バージョンの設定**
-
-`General -> Identity -> Version`　が空欄であると正常に動作しません。
-正しいバージョンを指定してください。
-
-**iOS9.x系対応**
-
-iOS9.x系に対応するには、Universal Linksに対応させる必要があります。
-設定方法については以下のリンクを参考にしてください。
-なお、Appdelegate.m に書いていただくコードは、UnityAppController.mm 内に書くようにしてください。
-
-[iOS9.x系対応](/sdk/ios/guide/#universal-links用の設定-ios9-x系)
-
+[Growth Link iOSの設定方法について](http://support.growthbeat.com/sdk/ios/guide/#プロジェクト設定)
 
 ### Android設定
 

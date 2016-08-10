@@ -6,7 +6,35 @@ draft: false
 title: リリースノート
 ---
 
+# バージョン 2.0.3
+
+動作環境 Cocos2d-x 3.12
+
+## 新機能
+
+- Growthbeatのインターフェースを変更しました。
+- Growth Analyticsの機能が無くなりました。
+- Growth Messageの表示機能が改善いたしました。
+
+## ドキュメント
+
+- Growthbeat 1.x SDKからの変更点について記載いたしました。
+
+# バージョン 1.2.6
+
+動作環境 Cocos2d-x 3.7.2
+
+## 新機能
+
+- Growth Linkが対応いたしました。
+
+## ドキュメント
+
+- Growth Link についての導入方法を掲載しました。
+
 # バージョン 1.2.3
+
+動作環境 Cocos2d-x 3.7.2
 
 ## 新機能
 

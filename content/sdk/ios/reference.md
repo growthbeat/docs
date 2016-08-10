@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat iOS API
 ---
 
-Version 2.0.2
+Version 2.0.3
 
 [iOS SDK 1.2.7以下](/sdk/ios/reference-1.2.7)のリファレンスはこちら
 
