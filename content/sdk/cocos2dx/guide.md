@@ -30,25 +30,15 @@ cd ./growthbeat-cocos2dx
 git submodule update --init --recursive
 ```
 
-#### iOS
-
-ビルドに必要な下記2つの手順を実施してください。
-
-1. `source/Classes` ディレクトリの中身を、 `/path/to/your_project/Classes/` 配下にコピーしてください。
-1.
-
-#### Android
-
-1. `growthbeat-android/release/growthbeat.jar` の中身を、プロジェクトの `/path/to/your_project/proj.android/libs/` 配下にコピーしてください。
-1. `source/proj.android/src` の中身を、プロジェクトの `/path/to/your_project/proj.android/src` 配下にコピーしてください。
-
 ## 初期設定
 
 ### ソースコードをインポート
 
-`source/Classes` ディレクトリの中身を、 `/path/to/your_project/Classes/` 配下にコピーしてください。
+`source/Classes` ディレクトリの中身、Grothbeat, GrowthPush, GrowthLink 3つのフォルダーを `/path/to/your_project/Classes/` 配下にコピーしてください。
 
 ### iOS
+
+Xcodeにて、Classesにコピーしたフォルダを、インポートしてください。選択肢にて、 `Create groups` にチェックし、ターゲットを任意のビルドスキームにチェックしてください。
 
 `growthbeat-ios/Growthbeat.framework` をコピーして、`/path/to/your_project/proj.ios/Frameworks/` 配下にコピーしてください。
 
@@ -102,6 +92,31 @@ growthbeat.jarは、下記jarおよびaarに依存しています。
  - extras/google/m2repository/com/google/android/gms/play-services-gcm/8.3.0
 
 aarは、aarファイルを解凍し、ライブラリプロジェクトとして設定してください。
+
+#### ソースビルド設定
+
+Android.mk に下記を追加してください。
+
+```java
+LOCAL_SRC_FILES := hellocpp/main.cpp \
+                   ../../Classes/AppDelegate.cpp \
+                   ../../Classes/HelloWorldScene.cpp \
+                   ../../Classes/Growthbeat/GrowthbeatInstance.cpp \
+                   ../../Classes/Growthbeat/android/Growthbeat.cpp \
+                   ../../Classes/GrowthPush/GrowthPushInstance.cpp \
+                   ../../Classes/GrowthPush/android/GrowthPush.cpp \
+                   ../../Classes/GrowthLink/GrowthLinkInstance.cpp \
+                   ../../Classes/GrowthLink/android/GrowthLink.cpp \
+
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes \
+                    $(LOCAL_PATH)/../../Classes/Growthbeat/ \
+                    $(LOCAL_PATH)/../../Classes/Growthbeat/android \
+                    $(LOCAL_PATH)/../../Classes/GrowthPush/ \
+                    $(LOCAL_PATH)/../../Classes/GrowthPush/android \
+                    $(LOCAL_PATH)/../../Classes/GrowthLink/ \
+                    $(LOCAL_PATH)/../../Classes/GrowthLink/android \
+```
+
 
 #### AndroidManifest.xmlの設定
 
@@ -202,29 +217,6 @@ GPEnvironment kGPEnvironment = GPEnvironmentDevelopment;
 GPEnvironment kGPEnvironment = GPEnvironmentProduction;
 #endif
 ```
-
-Android.mk に下記を追加してください。
-
-```java
-LOCAL_SRC_FILES := hellocpp/main.cpp \
-                   ../../Classes/AppDelegate.cpp \
-                   ../../Classes/HelloWorldScene.cpp \
-                   ../../Classes/Growthbeat/GrowthbeatInstance.cpp \
-                   ../../Classes/Growthbeat/android/Growthbeat.cpp \
-                   ../../Classes/GrowthPush/GrowthPushInstance.cpp \
-                   ../../Classes/GrowthPush/android/GrowthPush.cpp \
-                   ../../Classes/GrowthLink/GrowthLinkInstance.cpp \
-                   ../../Classes/GrowthLink/android/GrowthLink.cpp \
-
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes \
-                    $(LOCAL_PATH)/../../Classes/Growthbeat/ \
-                    $(LOCAL_PATH)/../../Classes/Growthbeat/android \
-                    $(LOCAL_PATH)/../../Classes/GrowthPush/ \
-                    $(LOCAL_PATH)/../../Classes/GrowthPush/android \
-                    $(LOCAL_PATH)/../../Classes/GrowthLink/ \
-                    $(LOCAL_PATH)/../../Classes/GrowthLink/android \
-```
-
 # プッシュ通知
 
 Growth Push管理画面、証明書設定ページにて、各OSごとに証明書の設定を行ってください。
