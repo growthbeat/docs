@@ -10,6 +10,10 @@ Version 2.0.3
 
 # 共通初期設定
 
+推奨環境
+
+iOS 8.0以上
+
 ## SDK導入
 
 Growthbeat SDKで、Growthbeat 全てのサービスの機能が利用できます。
