@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat iOS Gudeliene
 ---
 
-Version 2.0.2
+Version 2.0.3
 
 # 共通初期設定
 
@@ -172,39 +172,23 @@ URL起動の処理で、handleOpenUrl:urlメソッドを呼び出す
 }
 ```
 
-## アプリを開くスキームの設定
+## プロジェクト設定
+
+### アプリを開くスキームの設定
 ディープリンクからアプリを起動できるように、info.plistの編集、もしくは Xcode上で Info -> URL Typesからディープリンクからアプリを開くスキームの設定をします。
 URL Schemesにはスキームを、IdentifierにはBundle Identifierなどアプリごとに一意になる値を入力してください。
 <img src="/img/link/link-guide-scheme.png" alt="link-guide-scheme" title="link-guide-scheme" width="100%"/>
 
-## バージョンの設定
+### バージョンの設定
 
 `General -> Identity -> Version`　が空欄であると正常に動作しません。
 正しいバージョンを指定してください。
 
-## ディープリンクアクションの実装
-
-SDKには、GBIntentHandlerというプロトコルが定義されており、この実装でディープリンク時のアクションを実装することができます。
-
-たとえば下記のような形で実装できます。
-
-```objc
-#import <Growthbeat/GBCustomIntentHandler.h>  //インポート文に追記
-```
-
-```objc
- [[Growthbeat sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
-        NSDictionary * extra = customIntent.extra;
-        NSLog(@"extra: %@", extra);
-        return YES;
-}]];
-```
-
-## Universal Links用の設定 (iOS9.x系)
+### Universal Links用の設定 (iOS9.x系)
 
 iOS9 からカスタムスキームでの遷移に関する仕様が大幅に変更されました。なので iOS9.x 系に対応するには Universal Links の設定が必要になります。
 
-### apple.developer.com での設定
+#### apple.developer.com での設定
 
 apple.developer.com にアクセスし “Certificate, Identifiers & Profiles” を選択。
 その後"Identifers"をクリック。
@@ -228,7 +212,7 @@ App Servicesの欄で、Associated Domainsにチェックをてください。�
 
 apple.developer.com での設定は以上です。Saveボタンをおして保存してください。
 
-### Xcode上 での設定
+#### Xcode上 での設定
 
 先ほどONにしたAssociated Domainsを使ってGrowthLinkのドメインを登録していきます。
 登録の前に、先ほど登録したApp Identifierと同じTeamが選択されていることを確認してください。TeamはGeneralタブにあるIdentityセクションから選択できます。
@@ -250,6 +234,7 @@ AppDelegate.mにUniversal Linksのハンドリング処理を実装します。
 
 [Universal Links](http://faq.growthbeat.com/article/134-universallinks)専用リンクへの対応のため、以下のように実装してください。
 
+#### UniversalLinksの取得実装について
 
 ```objc
 #import <Growthbeat/GrowthLink.h> //インポートしておく
@@ -266,6 +251,24 @@ AppDelegate.mにUniversal Linksのハンドリング処理を実装します。
 ```
 
 Xcode上での設定は以上になります。
+
+## ディープリンクアクションの実装
+
+SDKには、GBIntentHandlerというプロトコルが定義されており、この実装でディープリンク時のアクションを実装することができます。
+
+たとえば下記のような形で実装できます。
+
+```objc
+#import <Growthbeat/GBCustomIntentHandler.h>  //インポート文に追記
+```
+
+```objc
+ [[Growthbeat sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
+        NSDictionary * extra = customIntent.extra;
+        NSLog(@"extra: %@", extra);
+        return YES;
+}]];
+```
 
 ### GrowthLink管理画面上 での設定
 
@@ -298,7 +301,7 @@ apple.developer.comに登録してあるBundle IdentifierとApple TeamIDを記�
 
 - GrowthbeatCoreクラスが、Growthbeatクラスに統合されました。
  - start, stop, initializeは削除されました。
- 
+
 ## 実装変更点
 
 ### 初期化

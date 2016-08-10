@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat Android Gudeliene
 ---
 
-Version 2.0.2
+Version 2.0.3
 
 # 共通初期設定
 
@@ -90,7 +90,6 @@ dependencies {
 <!-- for Growth Push -->
 <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 <uses-permission android:name="android.permission.VIBRATE" />
-<uses-permission android:name="android.permission.WAKE_LOCK" />
 <uses-permission android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE" />
 <permission
     android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE"
