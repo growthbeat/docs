@@ -18,6 +18,9 @@ Objective-C での導入方法について記載しております。
 
 ### CocoaPodsを使用して導入する場合
 
+**※ Growthbeat 2.0.2以下からご利用の場合、Podsプロジェクトの `Pods/Growthbeat/Frameworks/Growthbeat.framework` を一度削除してから
+再度 `pod install` を実行し、クリーンビルドをしてください。**
+
 Podfile に下記を記述し `pod install` を実行してください:
 
 ```
