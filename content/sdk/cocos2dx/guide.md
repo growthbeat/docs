@@ -414,6 +414,8 @@ Growthbeat SDK乗り換え時に、これまでGrowth Pushで利用していた�
 - Classes/GrowthPush 以下を削除
 - com.growthpush 以下を削除
 
+上記を削除したあと、本ガイドのSDK導入部分にてプロジェクト設定を行ってください。
+
 ### 初期化
 
 Growth Push SDK
