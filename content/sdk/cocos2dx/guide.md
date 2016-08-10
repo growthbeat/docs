@@ -8,6 +8,12 @@ title: Growthbeat Cocos2dx Gudeliene
 
 Version 2.0.3
 
+# 動作環境
+
+Cocos2d-x v3.12
+
+(※一部実装にて、バージョンごとに、Cocos2d-xのヘッダーファイルが読み込めない可能性がございます。)
+
 # 共通初期設定
 
 ## SDK導入
