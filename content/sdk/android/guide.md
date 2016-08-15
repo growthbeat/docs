@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat Android Gudeliene
 ---
 
-Version 2.0.3
+Version 2.0.4
 
 # 共通初期設定
 
@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.growthbeat:growthbeat-android:2.0.2@aar'
+    compile 'com.growthbeat:growthbeat-android:2.0.4@aar'
 }
 ```
 
@@ -40,9 +40,9 @@ dependencies {
 
 ### 動作バージョン
 
-Google Play Servicesのバージョン23以上が必要となります。
+Google Play Services v8.3以上が必要となります。
 
-Growthbeat SDKでは、Google Play Servicesのバージョン23以上でないと、正しく動作いたしません。
+Growthbeat SDKでは、Google Play Services v8.3以上でないと、正しく動作いたしません。
 
 ### 導入設定
 
@@ -60,7 +60,7 @@ build.gradleに下記を追加してください。バージョンはAndroidの�
 
 ```
 dependencies {
-    compile 'com.google.android.gms:play-services:8.3.0'
+    compile 'com.google.android.gms:play-services:9.2.1'
 }
 ```
 
