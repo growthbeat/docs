@@ -6,6 +6,13 @@ draft: false
 title: リリースノート
 ---
 
+# バージョン 2.0.4
+
+## 変更点
+- Fixed issue https://github.com/growthbeat/growthbeat-android/issues/75
+- Fixed issue https://github.com/growthbeat/growthbeat-android/issues/76
+- 内部処理の最適化をいたしました。
+
 # バージョン 2.0.3
 
 ## 変更点

@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat iOS Gudeliene
 ---
 
-Version 2.0.3
+Version 2.0.4
 
 # 共通初期設定
 
