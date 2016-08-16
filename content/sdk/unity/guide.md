@@ -477,7 +477,7 @@ void OnDisable ()
 # Growth Push SDKからの乗り換え方法について
 
 ## 前準備
-GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行されるため、[Growthbeat](https://growthbeat.com/)にアクセスして、ApplicationId、SDKキー（CredentialID）を確認します。
+Growth PushのApplicationIdから、GrowthbeatのApplicationIdに移行されるため、[Growthbeat](https://growthbeat.com/)にアクセスして、ApplicationId、SDKキー（CredentialID）を確認します。
 
 ## 注意点
 
@@ -507,7 +507,7 @@ Growthbeat SDKでは、iOSのデバイストークン取得部分をUnity上に�
 
 Growtbeat SDKでは、シングルトンインスタンスの設計に変更したため、これまでの実装部分を変更していただく必要がございます。
 
-- GrowthPush SDK
+- Growth Push SDK
 
 ```csharp
 void Awake () {
@@ -568,7 +568,7 @@ Growthbeat SDKでは、 `com.growthpush.BroadcastReceiver`が廃止になりま�
 
 この変更を行わないと、正しくプッシュ通知が送信できなくなりますので、ご注意ください。
 
-- GrowthPush SDK
+- Growth Push SDK
 
 ```xml
 <receiver

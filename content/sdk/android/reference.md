@@ -47,9 +47,9 @@ public Client waitClient();
 
 # Growth Push API
 
-## GrowthPushインスタンスを取得
+## Growth Pushインスタンスを取得
 
-GrowthPushインスタンスを取得します。
+Growth Pushインスタンスを取得します。
 
 ```java
 public static GrowthPush getInstance()
@@ -203,9 +203,9 @@ public void setTag(String name, String value);
 
 # Growth Link API
 
-## GrowthLinkインスタンスを取得
+## Growth Linkインスタンスを取得
 
-GrowthLinkインスタンスを取得します。
+Growth Linkインスタンスを取得します。
 
 ```java
 public static GrowthLink getInstance()

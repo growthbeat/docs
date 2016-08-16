@@ -3,7 +3,7 @@ categories: 'manual'
 date: 2016-03-11T12:05:16+09:00
 description: 'GrowthPush'
 draft: false
-title: GrowthPush
+title: Growth Push
 ---
 
 # はじめに
@@ -23,7 +23,7 @@ https://growthbeat.com/ より、会員登録を行うことができます。�
 
 <img src="/img/push/push_create_account.png" alt="" title="" width="100%"/>
 
-ログインをすると、Growthbeatのトップ画面にたどり着きます。そこでGrowthPushを選択して下さい。
+ログインをすると、Growthbeatのトップ画面にたどり着きます。そこでGrowth Pushを選択して下さい。
 
 <img src="/img/push/push_select_servce.png" alt="" title="" width="100%"/>
 
@@ -177,17 +177,17 @@ Growth Pushの送信画面で「通知IDを追加」のオプションを設定�
 * [Push通知が届かない場合のトラブルシューティング](http://faq.growthbeat.com/article/60-push)
 
 # イベント
-GrowthPushに登録されているイベントを一覧で表示する画面です。一覧項目は以下の3つになっており、レポートボタンをクリックするとそれぞれのイベントを起こしたユーザーのログを確認することができます。詳細に関しましてはサポートページの[イベントとは](http://faq.growthbeat.com/article/17-article)をご参照ください。
+Growth Pushに登録されているイベントを一覧で表示する画面です。一覧項目は以下の3つになっており、レポートボタンをクリックするとそれぞれのイベントを起こしたユーザーのログを確認することができます。詳細に関しましてはサポートページの[イベントとは](http://faq.growthbeat.com/article/17-article)をご参照ください。
 
 <img src="/img/push/push_event_list.png" alt="" title="" width="100%"/>
 
 # タグ
-GrowthPushに登録されているタグを一覧で表示する画面です。一覧項目は以下の3つになっており、詳細ボタンをクリックするとそれぞれのタグを取得したユーザーのログを確認することができます。詳細に関しましてはサポートページの[タグとは](http://faq.growthbeat.com/article/16-article)をご参照ください。
+Growth Pushに登録されているタグを一覧で表示する画面です。一覧項目は以下の3つになっており、詳細ボタンをクリックするとそれぞれのタグを取得したユーザーのログを確認することができます。詳細に関しましてはサポートページの[タグとは](http://faq.growthbeat.com/article/16-article)をご参照ください。
 
 <img src="/img/push/push_tag_list.png" alt="" title="" width="100%"/>
 
 # セグメント
-作成したセグメント一覧の人数を見ることができます。更新ボタンを押すと、リアルタイムの人数が表示されます。セグメントの人数として表示される人数は概算となっており、配信されるのは、この人数のうち、**実際に配信が可能と判定されている端末のみ**となります。
+作成したセグメント一覧の人数を見ることができます。更新ボタンを押すと、リアルタイムの人数が表示されます。セグメントの人数として表示される人数は概算となっており、配信されるのはこの人数のうち、**実際に配信が可能と判定されている端末のみ**となります。
 
 詳細に関しましてはサポートページの[セグメントとは](http://faq.growthbeat.com/article/18-article)をご参照ください。
 
