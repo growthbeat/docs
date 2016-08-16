@@ -177,7 +177,7 @@ AndroidManifestの設定は、Unityプロジェクト内で設定するか、And
 </receiver>
 ```
 
-* `YOUR_PACKAGE_NAME`は、実装するアプリのパッケージ名に変更してください。
+※ `YOUR_PACKAGE_NAME`は、実装するアプリのパッケージ名に変更してください。
 
 AndroidManifest.xmlのサンプルは、[こちら](https://github.com/growthbeat/growthbeat-android/blob/master/sample/src/main/AndroidManifest.xml)
 
