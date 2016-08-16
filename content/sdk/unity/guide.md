@@ -6,35 +6,27 @@ draft: false
 title: Growthbeat Unity Guideliene
 ---
 
-Version 2.0.2
+Version 2.0.4
 
 # 共通初期設定
 
 ## SDK導入
 
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。
-
 Unity 5以上の動作推奨をしています。
-
 Unityプラットフォームがサポートしていないバージョンについては、本SDKもサポート対象外となります。
 
-### 手動でgrowthbeat.unitypackageのインポート
+### growthbeat.unitypackageのインポート
 
 [最新版Unity SDK ダウンロードページ](http://support.growthbeat.com/sdk/)
 
-Unity 導入したいプロジェクトに、growthbeat.unitypackageをインポートします。
+Unity 導入するプロジェクトに、growthbeat.unitypackageをインポートします。
 
-メニューから
+メニューから、`Assets -> Import Package -> Custom Package...` を選択し、でダウンロードしたUnityPackgeをインポートしてください。
 
-`Assets -> Import Package -> Custom Package...`
+## iOSの初期設定
 
-を選択し、でダウンロードしたUnityPackgeをインポートしてください。
-
-## 初期設定
-
-### iOS
-
-ビルド後に、Xcodeプロジェクトに、Growthbeat.frameworkをインポートをする必要があります。もしくは、ビルドスクリプトにて、Xcodeに自動的に組み込まれるようにしてください。
+ビルド後、XcodeプロジェクトにGrowthbeat.frameworkをインポートをする必要があります。もしくは、ビルドスクリプトにて、Xcodeに自動的に組み込まれるようにしてください。
 
 Growthbeat.frameworkは、下記Frameworkが必須となります。
 
@@ -47,63 +39,54 @@ Growthbeat.frameworkは、下記Frameworkが必須となります。
 
 Xcodeプロジェクトに、依存するFrameworkを追加してください。
 
-### Android
+## Androidの初期設定
 
-#### Google Play Serviceの設定方法
+### Google Play Serviceの設定方法
 
-* [Google公式ドキュメント](https://developers.google.com/android/guides/setup?hl=ja#add_google_play_services_to_your_project)
+[Google公式ドキュメント](https://developers.google.com/android/guides/setup?hl=ja#add_google_play_services_to_your_project)
 
-##### 動作バージョン
+Google Play Services v8.3以上が必要となります。Growthbeat SDKでは、Google Play Services v8.3以上でないと、正しく動作いたしません。
 
-Google Play Servicesのバージョン23以上が必要となります。
+### ライブラリの設定
 
-Growthbeat SDKでは、Google Play Servicesのバージョン23以上でないと、正しく動作いたしません。
+**Google Androidプロジェクトに書き出す場合（推奨）**
 
-#### ライブラリの設定
+UnityからGoogle Androidプロジェクト書き出して、Android Studioにインポートしてください。以下のリンクを参照してください。
 
-##### Android Studioをお使いの場合
+[Android Studioへのインポート方法](http://docs.unity3d.com/ja/current/Manual/android-BuildProcess.html)
 
-Android Studioで開発する場合は、build.gradleに設定してください。
+インポート後、build.gradleに以下の設定をしてください。
 
 ```
 dependencies {
-    compile 'com.growthbeat:growthbeat-android:2.0.2@aar'
+    // Android用のラッパーライブラリです。
+    compile files('libs/growthbeat-unity-wrapper.jar')
+    compile files('libs/unity-classes.jar')
 
     // Androidのライブラリです。growthbeatのライブラリの機能に依存します。
     compile "com.android.support:appcompat-v7:23.3.0"
-    compile 'com.google.android.gms:play-services-gcm:8.3.0'
-    compile 'com.google.android.gms:play-services-ads:8.3.0'
+    compile 'com.google.android.gms:play-services-gcm:9.2.1'
+    compile 'com.google.android.gms:play-services-ads:9.2.1'
 
-    // Android用のラッパーライブラリです。
-    compile files('libs/growthbeat-unity-wrapper.jar')
-
-    compile files('libs/unity-classes.jar')
-
+    // Growthbeat SDK Android
+    compile 'com.growthbeat:growthbeat-android:2.0.4@aar'
 }
 ```
 
-- [Android Studioに、プロジェクトを書き出す場合](http://docs.unity3d.com/ja/current/Manual/android-BuildProcess.html)
-
-##### GoogleProjectに書き出さない場合
+**Google Androidプロジェクトに書き出さない場合**
 
 [growthbeat-android](https://github.com/growthbeat/growthbeat-android/releases/tag/latest)をダウンロードし、 `release` フォルダ内の
 `growthbeat-x.x.x.jar` (x.x.xはバージョン番号) を、 `Assets/Plugins/Android/` にコピーしてください。
 
-growthbeat-x.x.x.jarに依存しているGoogle/Androidライブラリは下記になります。
+growthbeat-x.x.x.jarに依存しているGoogle/Androidライブラリは下記になります。ライブラリは、android-sdk配下のextrasフォルダの任意の場所にございます。
 
-ライブラリは、android-sdk配下のextraフォルダの任意の場所にございます。
+|ライブラリ|場所|備考|
+|---|---|---|
+|support-v4-x.x.x.aar|`extras/android/m2repository/com/android/support/support-v4/x.x.x/`|23.0.0以降をお使いください|
+|play-services-ads-x.x.x.aar|`extras/google/m2repository/com/google/android/gms/play-services-ads/x.x.x`|8.3.0以降をお使いください|
+|play-services-gcm-x.x.x.aar|`extras/google/m2repository/com/google/android/gms/play-services-gcm/x.x.x`|8.3.0以降をお使いください|
 
-- support-v4-23.0.0.aar (23.0.0以降をお使いください)
- - extras/android/m2repository/com/android/support/support-v4/23.0.0/
-- play-services-ads-8.3.0.aar
- - extras/google/m2repository/com/google/android/gms/play-services-ads/8.3.0
-- play-services-gcm-8.3.0.aar
- - extras/google/m2repository/com/google/android/gms/play-services-gcm/8.3.0
-
-
-`@integer/google_play_services_version` のGoogle Play Service Versionは、直接バージョンを記入するか、 `Assets/Plugin/Android/value.xml` を作成してバージョン番号を記入してください。
-
-* value.xmlに書く場合
+AndroidManifest.xml内の`@integer/google_play_services_version` には、直接バージョンを記入するか、 `Assets/Plugin/Android/value.xml` を作成してバージョン番号を記入してください。以下にvalue.xmlに直接書く場合を示します。
 
  ```xml
  <resources>
@@ -111,9 +94,9 @@ growthbeat-x.x.x.jarに依存しているGoogle/Androidライブラリは下記�
  </resources>
  ```
 
-#### パーミッションの設定
+### パーミッションの設定
 
-※ AndroidManifestの設定は、Unityプロジェクト内で設定するか、Androidプロジェクトの吐き出し後に設定してください。
+AndroidManifestの設定は、Unityプロジェクト内で設定するか、Androidプロジェクトの吐き出し後に設定してください。
 
 ```xml
 <meta-data
@@ -121,7 +104,7 @@ growthbeat-x.x.x.jarに依存しているGoogle/Androidライブラリは下記�
     android:value="@integer/google_play_services_version" />
 ```
 
-必要なパーミッションは下記になります。
+必要なパーミッションは下記です。
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
@@ -133,15 +116,13 @@ growthbeat-x.x.x.jarに依存しているGoogle/Androidライブラリは下記�
 <permission
     android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE"
     android:protectionLevel="signature" />
-
 ```
 
-#### Growthbeatの設定
+### Growthbeatの設定
 
 `<application>`タグ内に下記を追加してください。
 
 ```xml
-
 <!-- for Growth Push -->
 <meta-data android:name="com.growthpush.notification.icon" android:resource="@drawable/sample_notification_icon" />
 <meta-data android:name="com.growthpush.notification.icon.background.color" android:resource="@android:color/white" />
@@ -194,10 +175,9 @@ growthbeat-x.x.x.jarに依存しているGoogle/Androidライブラリは下記�
         <action android:name="com.android.vending.INSTALL_REFERRER" />
     </intent-filter>
 </receiver>
-
 ```
 
-* YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。
+* `YOUR_PACKAGE_NAME`は、実装するアプリのパッケージ名に変更してください。
 
 AndroidManifest.xmlのサンプルは、[こちら](https://github.com/growthbeat/growthbeat-android/blob/master/sample/src/main/AndroidManifest.xml)
 
