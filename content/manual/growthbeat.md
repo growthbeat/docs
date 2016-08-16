@@ -3,7 +3,7 @@ categories: 'manual'
 date: 2015-11-16T12:05:16+09:00
 description: 'Growtbeat'
 draft: false
-title: Growthbeat
+title: 'Growthbeat'
 ---
 
 # はじめに
