@@ -1,9 +1,9 @@
 ---
 categories: 'manual'
 date: 2016-01-15T12:56:00+09:00
-description: 'GrowthLink'
+description: 'Growth Link'
 draft: false
-title: GrowthLink
+title: 'Growth Link'
 ---
 
 # ディープリンクについて
