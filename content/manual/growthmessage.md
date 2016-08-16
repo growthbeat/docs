@@ -1,9 +1,9 @@
 ---
 categories: 'manual'
 date: 2016-07-06T12:05:16+09:00
-description: 'GrowthMessage'
+description: 'Growth Message'
 draft: false
-title: Growth Message
+title: 'Growth Message'
 ---
 
 # はじめに

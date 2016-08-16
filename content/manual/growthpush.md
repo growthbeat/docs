@@ -1,9 +1,9 @@
 ---
 categories: 'manual'
 date: 2016-03-11T12:05:16+09:00
-description: 'GrowthPush'
+description: 'Growth Push'
 draft: false
-title: Growth Push
+title: 'Growth Push'
 ---
 
 # はじめに
