@@ -6,13 +6,13 @@ draft: false
 title: Growthbeat Cocos2dx Gudeliene
 ---
 
-Version 2.0.3
+Version 2.0.4
 
 # 動作環境
 
 Cocos2d-x v3.12
 
-(※一部実装にて、バージョンごとに、Cocos2d-xのヘッダーファイルが読み込めない可能性がございます。)
+※ 一部実装にて、バージョンごとに、Cocos2d-xのヘッダーファイルが読み込めない可能性がございます。
 
 # 共通初期設定
 
@@ -20,9 +20,9 @@ Cocos2d-x v3.12
 
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。
 
-### 手動で Cocos2d-x SDK をインポートする
+### Cocos2d-x SDK をインポートする
 
-GitHub から SDK を clone し、submodule を update してください。
+GitHubからSDKをclone し、submoduleをupdate してください。
 
 ```
 git clone https://github.com/SIROK/growthbeat-cocos2dx.git
@@ -30,17 +30,13 @@ cd ./growthbeat-cocos2dx
 git submodule update --init --recursive
 ```
 
-## 初期設定
-
-### ソースコードをインポート
+## ソースコードをインポート
 
 `source/Classes` ディレクトリの中身、Grothbeat, GrowthPush, GrowthLink 3つのフォルダーを `/path/to/your_project/Classes/` 配下にコピーしてください。
 
-### iOS
+## iOSの初期設定
 
-Xcodeにて、Classesにコピーしたフォルダを、インポートしてください。選択肢にて、 `Create groups` にチェックし、ターゲットを任意のビルドスキームにチェックしてください。
-
-`growthbeat-ios/Growthbeat.framework` をコピーして、`/path/to/your_project/proj.ios/Frameworks/` 配下にコピーしてください。
+Xcodeにて、Classesにコピーしたフォルダを、インポートしてください。選択肢にて、 `Create groups` にチェックし、ターゲットを任意のビルドスキームにチェックしてください。`growthbeat-ios/Growthbeat.framework` をコピーして、`/path/to/your_project/proj.ios/Frameworks/` 配下にコピーしてください。
 
 Growthbeat.frameworkは、下記Frameworkが必須となります。Xcodeプロジェクトに、依存するFrameworkを追加してください。
 
@@ -53,22 +49,23 @@ Growthbeat.frameworkは、下記Frameworkが必須となります。Xcodeプロ�
 1. CFNetwork.framework
 1. SafariServices.framework
 
-### Android
+## Androidの初期設定
 
 `source/proj.android/src` の中身を、プロジェクトの `/path/to/your_project/proj.android/src` 配下にコピーしてください。
 
-#### Android Studioで開発する場合
+**Android Studioで開発する場合（推奨）**
 
-build.gradleに設定してください。
+build.gradleに下記の設定をしてください。
 
 ```
 dependencies {
-    compile 'com.growthbeat:growthbeat-android:2.0.3@aar'
-
     // Androidのライブラリです。growthbeatのライブラリの機能に依存します。
     compile "com.android.support:appcompat-v7:23.3.0"
-    compile 'com.google.android.gms:play-services-gcm:8.3.0'
-    compile 'com.google.android.gms:play-services-ads:8.3.0'
+    compile 'com.google.android.gms:play-services-gcm:9.2.1'
+    compile 'com.google.android.gms:play-services-ads:9.2.1'
+
+    // Growthbeat SDK Android
+    compile 'com.growthbeat:growthbeat-android:2.0.4@aar'
 }
 ```
 
@@ -78,20 +75,21 @@ dependencies {
     android:value="@integer/google_play_services_version" />
 ```
 
-#### Eclipseで開発する場合
+**Eclipseで開発する場合（非推奨）**
 
-`growthbeat-android/release/growthbeat-2.0.3.jar` の中身を、プロジェクトの `/path/to/your_project/proj.android/libs/` 配下にコピーしてください。
+`growthbeat-android/release/growthbeat-x.x.x.jar` を、プロジェクトの `/path/to/your_project/proj.android/libs/` 配下にコピーしてください。
 
-growthbeat.jarは、下記jarおよびaarに依存しています。
+growthbeat-x.x.x.jarに依存しているGoogle/Androidライブラリは下記になります。ライブラリは、android-sdk配下のextrasフォルダの任意の場所にございます。
 
-- android-support-v4.jar
+|ライブラリ|場所|備考|
+|---|---|---|
+|support-v4-x.x.x.aar|`extras/android/m2repository/com/android/support/support-v4/x.x.x/`|23.0.0以降をお使いください|
+|play-services-ads-x.x.x.aar|`extras/google/m2repository/com/google/android/gms/play-services-ads/x.x.x`|8.3.0以降をお使いください|
+|play-services-gcm-x.x.x.aar|`extras/google/m2repository/com/google/android/gms/play-services-gcm/x.x.x`|8.3.0以降をお使いください|
 
-- play-services-ads-8.3.0.aar
- - extras/google/m2repository/com/google/android/gms/play-services-ads/8.3.0
-- play-services-gcm-8.3.0.aar
- - extras/google/m2repository/com/google/android/gms/play-services-gcm/8.3.0
+aarは解凍して、ライブラリプロジェクトとして設定してください。ライブラリプロジェクトの作成方法は下記リンクを参照してください。
 
-aarは、aarファイルを解凍し、ライブラリプロジェクトとして設定してください。
+http://qiita.com/chibatching/items/931286124d3d25227410
 
 #### ソースビルド設定
 
@@ -189,9 +187,8 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes \
         <action android:name="com.android.vending.INSTALL_REFERRER" />
     </intent-filter>
 </receiver>
-
 ```
-* YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。
+※ `YOUR_PACKAGE_NAME`は、実装するアプリのパッケージ名に変更してください。
 
 
 ## Growthbeatの初期化

@@ -6,6 +6,11 @@ draft: false
 title: リリースノート
 ---
 
+# バージョン 2.0.4
+
+## 変更点
+- Android SDK、iOS SDKの更新をしました。
+
 # バージョン 2.0.3
 
 動作環境 Cocos2d-x 3.12
