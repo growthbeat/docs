@@ -100,9 +100,9 @@ SDK初期化時に作成される、GrowthbeatのユニークIDを取得でき�
 
 # Growth Analytics API
 
-## Growth Analyticsインスタンスの取得
+## GrowthAnalyticsインスタンスの取得
 
-Growth Analyticsインスタンスを取得します。
+GrowthAnalyticsインスタンスを取得します。
 
 ```objc
 + (instancetype)sharedInstance;
@@ -402,9 +402,9 @@ Growth Analyticsインスタンスを取得します。
 
 # Growth Push API
 
-## Growth Pushインスタンスの取得
+## GrowthPushインスタンスの取得
 
-Growth Pushインスタンスを取得します。
+GrowthPushインスタンスを取得します。
 
 ```objc
 + (instancetype)sharedInstance;
@@ -511,9 +511,9 @@ iOSのみ利用できます。
 
 # Growth Message API
 
-## Growth Messageインスタンスの取得
+## GrowthMessageインスタンスの取得
 
-Growth Messageインスタンスを取得します。
+GrowthMessageインスタンスを取得します。
 
 ```objc
 + (instancetype)sharedInstance;
@@ -522,9 +522,9 @@ Growth Messageインスタンスを取得します。
 # Growth Link API
 
 
-## Growth Linkインスタンスの取得
+## GrowthLinkインスタンスの取得
 
-Growth Linkインスタンスを取得します。
+GrowthLinkインスタンスを取得します。
 
 ```objc
 + (instancetype)sharedInstance;

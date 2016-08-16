@@ -47,9 +47,9 @@ Growthbeat SDKからのログ出力を全て停止します。
 
 # Growth Push API
 
-## Growth Pushインスタンスの取得
+## GrowthPushインスタンスの取得
 
-Growth Pushインスタンスを取得します。
+GrowthPushインスタンスを取得します。
 
 ```objc
 + (instancetype)sharedInstance;
@@ -212,9 +212,9 @@ iOSのみ利用できます。
 
 # Growth Link API
 
-## Growth Linkインスタンスの取得
+## GrowthLinkインスタンスの取得
 
-Growth Linkインスタンスを取得します。
+GrowthLinkインスタンスを取得します。
 
 ```objc
 + (instancetype)sharedInstance;

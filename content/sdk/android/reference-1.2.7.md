@@ -94,7 +94,7 @@ public void getClient(final ClientCallback clientCallback)
 
 ## Growth Analyticsインスタンスの取得
 
-Growth Analyticsインスタンスを取得します。
+GrowthAnalyticsインスタンスを取得します。
 
 ```java
 public static GrowthAnalytics getInstance()
@@ -381,9 +381,9 @@ public void tag(final String namespace, final String name, final String value)
 
 # Growth Push API
 
-## Growth Pushインスタンスを取得
+## GrowthPushインスタンスを取得
 
-Growth Pushインスタンスを取得します。
+GrowthPushインスタンスを取得します。
 
 ```java
 public static GrowthPush getInstance()
@@ -485,9 +485,9 @@ public void setTag(final String name, final String value);
 
 # Growth Message API
 
-## Growth Messageインスタンスの取得
+## GrowthMessageインスタンスの取得
 
-Growth Messageインスタンスを取得します。
+GrowthMessageインスタンスを取得します。
 
 ```java
 public static GrowthMessage getInstance()
@@ -495,9 +495,9 @@ public static GrowthMessage getInstance()
 
 # Growth Link API
 
-## Growth Linkインスタンスを取得
+## GrowthLinkインスタンスを取得
 
-Growth Linkインスタンスを取得します。
+GrowthLinkインスタンスを取得します。
 
 ```java
 public static GrowthLink getInstance()
@@ -555,7 +555,7 @@ Growth Pushダイアログプッシュ通知を表示するときに必要とな
 <uses-permission android:name="android.permission.WAKE_LOCK" />
 ```
 
-Growth Messageバナー型表示に必要となります。
+GrowthMessageバナー型表示に必要となります。
 
 ```xml
 <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
