@@ -1,6 +1,6 @@
 ---
 categories: 'sdk'
-date: 2015-05-19T23:50:00+09:00
+date: 2016-09-02T10:00:00+09:00
 description: 'Growthbeat API ついて説明します'
 draft: false
 title: Growthbeat API Gudeliene
@@ -21,8 +21,6 @@ APIとの全ての通信にはHTTPSプロトコルを利用します。
 |利用サービス|アクセス先ホスト|
 |:---:|:---:|
 |Growthbeat|api.growthbeat.com|
-|Growth Analytics|api.analytics.growthbeat.com|
-|Growth Message|api.message.growthbeat.com|
 |Growth Push|api.growthpush.com|
 
 
@@ -41,15 +39,23 @@ GETリクエストにバラメータを含める場合にはURIクエリを利�
 
 ```
 curl -X GET \
--H 'Accept: application/json' \
-'https://api.growthbeat.com/1/accounts/YOUR_ACCOUNT_ID?credentialId=YOUR_API_KEY'
+    -H 'Accept: application/json' \
+    -G \
+    --data "applicationId=GROWTHBEAT_APPLICATION_ID" \
+    --data "credentialId=GROWTHBEAT_CREDENTIAL_ID" \
+    https://api.growthpush.com/4/clients/GROWTHBEAT_CLIENT_ID | jq .
 ```
 
 ```
 {
-    "name":"Subaccount for Growthbeat",
-    "id":"YOUR_ACCOUNT_ID",
-    "created":"2014-06-26T06:44:56+0000"
+  "id": "GROWTHBEAT_CLIENT_ID",
+  "applicationId": "GROWTHBEAT_APPLICATION_ID",
+  "token": "DEVICE_TOKEN",
+  "status": "STATUS",
+  "os": "OS",
+  "environment": "ENVIRONMENT",
+  "updated": "2015-02-03 12:34:56",
+  "created": "2015-02-03 12:34:56"
 }
 ```
 
@@ -57,18 +63,29 @@ curl -X GET \
 
 ```
 curl -X GET \
--H 'Accept: application/json' \
-'https://api.growthbeat.com/1/accounts/YOUR_ACCOUNT_ID?credentialId=YOUR_API_KEY'
+    -H 'Accept: application/json' \
+    -G \
+    --data "applicationId=GROWTHBEAT_APPLICATION_ID" \
+    --data "credentialId=GROWTHBEAT_CREDENTIAL_ID" \
+    https://api.growthpush.com/4/clients/GROWTHBEAT_CLIENT_ID | jq .
 ```
 
 ```
 {
-    "code":null,
-    "message":"Bad Request"
+    "status": 400,
+    "message": "Invaid credential.",
+    "code": 1001
 }
 ```
+
+# APIドキュメント一覧
+
+* ~~[V1 APIドキュメント](https://growthbeat.github.io/api/growthpush/v1/)~~ ※ こちらのAPIは 2016/12/21 廃止予定です
+* ~~[V2 APIドキュメント](https://growthbeat.github.io/api/growthpush/v2/)~~ ※ こちらのAPIは 2016/12/21 廃止予定です
+* [V3 APIドキュメント](https://growthbeat.github.io/api/growthpush/v3/)
+* [V4 APIドキュメント](https://growthbeat.github.io/api/growthpush/v4/)
+
 
 # 活用例
 
 * [Notifications API 経由で、特定のユーザーに対してPush通知を送る方法](http://faq.growthbeat.com/article/51-notifications-api-push)
-
