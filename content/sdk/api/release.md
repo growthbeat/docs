@@ -1,10 +1,14 @@
 ---
 categories: 'sdk'
-date: 2015-09-14T14:32:58+09:00
+date: 2016-09-02T10:10:00+09:00
 description: 'Growthbeat API のリリースノート'
 draft: false
 title: リリースノート
 ---
+
+# 2016/09/02
+
+- Client v4 API を公開しました
 
 # バージョン 1.0.0
 
