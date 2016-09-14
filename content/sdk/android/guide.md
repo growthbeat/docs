@@ -32,8 +32,7 @@ build.gradleに下記を追加してください。
 Google Play Services v8.3以上が必要となります。  Growthbeat SDKでは、Google Play Services v8.3以上でないと、正しく動作いたしません。  
 #### Gradle、Android StudioでSDKを導入した場合  
 build.gradleに下記を追加してください。バージョンはAndroidのデベロッパーサイトで確認するようにしてください。  
-
-```gradle
+```sh
 dependencies {
     compile 'com.google.android.gms:play-services:9.2.1'
 }
