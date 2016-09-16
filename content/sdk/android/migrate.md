@@ -6,19 +6,23 @@ draft: false
 title: Growthbeat Android Gudeliene
 ---
 
+**Growth Push SDK及びGrowthbeat SDK 1.xのサポートは、2016年12月21日までとなっております。**  
 # SDKの乗り換えについて  
-Growth Push SDK及びGrowthbeat SDK 1.xのサポートは、2016年12月21日までとなっております。  
+
 最新のSDKにお乗り換えする方法についてご紹介いたします。  
 # Growthbeat SDK 1.xからの変更点  
 ## 機能削除  
+
 - インターフェスの変更があります。
  - 次の実装変更点でご確認ください。
 - GrowthAnalyticsクラスがなくなりました。  
  - 2.x以降は、GrowthPush#setTag, trackEventをご利用ください。
 - GrowthbeatCoreクラスが、Growthbeatクラスに統合されました。  
  - start, stop, initializeは削除されました。
+
 ## 実装変更点  
 ### 初期化  
+
 - Growthbeat 1.x  
 
 ```java
@@ -44,6 +48,7 @@ protected void onStop() {
     Growthbeat.getInstance().stop();
 }
 ```  
+
 - Growthbeat 2.x  
 
 ```java
@@ -68,10 +73,10 @@ protected void onDestroy() {
     super.onDestroy();
 }
 ```  
+
 # Growth Push SDKからの乗り換え方法について  
 ## 前準備  
-GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行されるため、[Growthbeat](https://growthbeat.com/)にアクセスして、ApplicationId、SDKキー（CredentialID）を確認します。  
-ApplicationIdについては、Growth　Pushの左メニュー、シークレットキーのgrowthbeatApplicationIdという項目の左の文字列をご利用ください。  
+GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行されるため、[Growthbeat](https://growthbeat.com/)にアクセスして、ApplicationId、SDKキー（CredentialID）を確認します。   ApplicationIdについては、Growth　Pushの左メニュー、シークレットキーのgrowthbeatApplicationIdという項目の左の文字列をご利用ください。  
 SDKキーに関しては、Growthbeatマイページにてご確認ください。  
 ## 注意点  
 これまでGrowth Pushでご利用いただいた、ApplicationIdは数値型、シークレットキーは文字列になっています。  
@@ -89,6 +94,7 @@ Growthbeat SDKで利用するものは、applicationId、credentialIdともに�
 Growthbeat SDK乗り換え時に、これまでGrowth Pushで利用していたシークレットキーを設定しても、正しく動作しませんのでご注意くださいませ。  必ず、SDKキーをご利用ください。
 ## 実装方法  
 ### SDKの初期化  
+
 - GrowthPush SDK  
 
 ```java
@@ -119,6 +125,7 @@ protected void onCreate(Bundle savedInstanceState) {
 ### AndroidManifest.xml  
 Growthbeat SDKでは、 `com.growthpush.BroadcastReceiver`が廃止になりましたので、変更が必要となります。  
 この変更を行わないと、正しくプッシュ通知が送信できなくなりますので、ご注意ください。  
+
 - GrowthPush SDK
 
 ```xml
