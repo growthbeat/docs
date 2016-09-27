@@ -7,23 +7,11 @@ title: Growthbeat Android Gudeliene
 ---
 
 Version 2.0.4  
-# Growthbeat全ての機能を利用  
-## Growth Pushを利用  
+# Growthbeat利用ガイド  
+# 1. Growth Pushを利用  
 Growth Pushのみを利用する[導入方法](/sdk/android/guide)をご覧ください。
-## Growth Messageを利用  
-### 実装方法  
-#### プロジェクト設定  
-AndroidManifest.xmlにGrowth Message表示用のActivityを追加します。
-
-```xml
-<application>
-    <!-- ... -->
-    <activity
-        android:name="com.growthbeat.message.view.MessageActivity"
-        android:theme="@android:style/Theme.Translucent" />
-</application>
-```  
-#### 実装コード
+# 2. Growth Messageを利用  
+## 実装コード  
 アプリに、Growth Pushの任意のイベントを送信します。アプリが任意のアクティビティが、呼び出されたときに、ポップアップメッセージを表示する実装を、例として紹介します。  
 
 ```java
@@ -40,28 +28,23 @@ class MainActivity extends Activity {
 }
 ```  
 任意のイベントが呼び出されたときに表示するポップアップメッセージは、管理画面上で設定できます。  管理画面の設定については、次に説明します。  
-### 管理画面設定方法
-メッセージの作成方法は[こちら](/manual/growthmessage/#配信作成)を参考にしてください。  
-アプリ起動以外にも、カスタムイベントをメッセージ配信のトリガーにすることにより、アプリの任意の場所でメッセージを配信することができます。詳しくは、[こちら](/sdk/android/reference/#カスタムイベント送信)をご参照ください。  
-## GrowthLinkを利用  
-### 実装方法  
-#### プロジェクト設定  
+
+## AndroidManifest設定  
 AndroidManifest.xmlにGrowth Message表示用のActivityを追加します。
 
 ```xml
 <application>
     <!-- ... -->
-    <receiver
-        android:name="com.growthbeat.link.InstallReferrerReceiver"
-        android:enabled="true"
-        android:exported="true" >
-        <intent-filter>
-            <action android:name="com.android.vending.INSTALL_REFERRER" />
-        </intent-filter>
-    </receiver>
+    <activity
+        android:name="com.growthbeat.message.view.MessageActivity"
+        android:theme="@android:style/Theme.Translucent" />
 </application>
-```   
-#### 実装コード  
+```  
+## 管理画面設定方法
+メッセージの作成方法は[こちら](/manual/growthmessage/#配信作成)を参考にしてください。  
+アプリ起動以外にも、カスタムイベントをメッセージ配信のトリガーにすることにより、アプリの任意の場所でメッセージを配信することができます。詳しくは、[こちら](/sdk/android/reference/#カスタムイベント送信)をご参照ください。  
+# 3. GrowthLinkを利用  
+## 実装コード  
 **初期化**  
 Growth Linkの初期化処理を追加してください。
 
@@ -99,8 +82,26 @@ class MyApplication extends Application {
     }
 }
 ```   
-# 最新版のSDKへの乗り換え方法  
-[SDKの乗り換え方法](/sdk/android/migrate)をご参照ください。  
+## AndroidManifest設定  
+AndroidManifest.xmlにGrowth Message表示用のActivityを追加します。
+
+```xml
+<application>
+    <!-- ... -->
+    <receiver
+        android:name="com.growthbeat.link.InstallReferrerReceiver"
+        android:enabled="true"
+        android:exported="true" >
+        <intent-filter>
+            <action android:name="com.android.vending.INSTALL_REFERRER" />
+        </intent-filter>
+    </receiver>
+</application>
+```   
 # 備考  
+## 最新版のSDKへの乗り換え方法  
+[SDKの乗り換え方法](/sdk/android/migrate)をご参照ください。  
+## サンプルについて  
 実装サンプルは、[GitHubレポジトリ](https://github.com/growthbeat/growthbeat-android)を参考にしてください。  
+# お問い合わせ  
 ご不明な点などございます場合は、[ヘルプページ](http://faq.growthbeat.com/)を閲覧してください。  

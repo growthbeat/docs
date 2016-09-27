@@ -21,7 +21,7 @@ repositories {
 
 dependencies {
     compile 'com.growthbeat:growthbeat-android:2.0.4@aar'
-    compile "com.android.support:appcompat-v7:23.+"
+    compile 'com.android.support:appcompat-v7:23.+'
     compile 'com.google.android.gms:play-services:9.2.1'
 }
 ```  
@@ -44,15 +44,18 @@ appディレクトリ配下の、 `libs`フォルダに、growthbeat-x.x.x.jar�
 ## Javaの実装  
 ### 初期化  
 GrowthPushの初期化を行います。初期化の中に、端末の基本情報の送信、広告IDの取得が行われます。  
+2行目は、デバイストークンの取得を行います。  
 
 ```java
-GrowthPush.getInstance().initialize(context, "YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID", BuildConfig.DEBUG ? Environment.development : Environment.production);
-```  
-### デバイストークンを取得・送信をする  
-GrowthPushの初期化後に下記を呼び出して、デバイストークンの取得を行います。  
+class MyActivity extends Activity {
 
-```java
-GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID");
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        GrowthPush.getInstance().initialize(context, "YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID", BuildConfig.DEBUG ? Environment.development : Environment.production);
+        GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID");
+    }
+}
 ```  
 登録されたデバイスは管理画面のデバイスページにて確認することができます。下記のように、デバイスのステータスがアクティブ（Active）で登録されていれば正常です。  
 <img src="/img/push/push_device_list.png" alt="push_device_list" title="push-device-list" width="100%"/>  
@@ -60,12 +63,32 @@ GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID");
 ### タグ送信  
 セグメントを設定するために、任意のタグを埋め込んでください。  
 ```java
-GrowthPush.getInstance().setTag("TagName", "TagValue");
+class MyActivity extends Activity {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //...
+
+        //開発者のタグ付け
+        GrowthPush.getInstance().setTag("Development", "true");
+    }
+}
 ```  
 ### イベント送信  
 セグメントを設定するために、任意のイベントを埋め込んでください。  
 ```java
-GrowthPush.getInstance().trackEvent("EventName");
+class MyActivity extends Activity {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //...
+
+        //アプリ起動イベントとする
+        GrowthPush.getInstance().trackEvent("Launch");
+    }
+}
 ```  
 
 # 3.AndroidManifest.xmlの設定  
