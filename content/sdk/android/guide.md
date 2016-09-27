@@ -8,50 +8,73 @@ title: Growthbeat Android Gudeliene
 Version 2.0.4  
 # SDK概要  
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。  
-※ [全機能を利用する場合はこちら](/sdk/android/all-in-one)  
-# SDK初期設定  
-## SDK導入  
-### Gradleを使用して導入する場合  
-build.gradleに下記を追加してください。  
+(※ Eclipseの導入は非推奨となっております。導入については、サポートまでご連絡ください。)  
+# 1. Gradleの設定  
+## aarを利用する場合  
 
-```
-    repositories {
-        jcenter()
-    }
+build.gradle(Module:app)に下記を追加してください。  
 
-    dependencies {
-        compile 'com.growthbeat:growthbeat-android:2.0.4@aar'
-    }
-```  
-### 手動でSDKを配置して導入する場合  
-[最新版Android SDK ダウンロードページ](http://support.growthbeat.com/sdk/)
-上記リンクからダウンロードしたjarファイルをプロジェクトへ組み込みます。任意のアプリのプロジェクトに, Androidが他ライブラリを自動で参照する**libs**ディレクトリの中に、jarファイルを移動もしくはコピーしてください。  
-## Google Play Servicesの導入  
-[Google公式ドキュメント](https://developers.google.com/android/guides/setup?hl=ja#add_google_play_services_to_your_project)  
-### 動作バージョン  
-Google Play Services v8.3以上が必要となります。  Growthbeat SDKでは、Google Play Services v8.3以上でないと、正しく動作いたしません。  
-#### Gradle、Android StudioでSDKを導入した場合  
-build.gradleに下記を追加してください。バージョンはAndroidのデベロッパーサイトで確認するようにしてください。  
 ```sh
+repositories {
+    jcenter()
+}
+
 dependencies {
+    compile 'com.growthbeat:growthbeat-android:2.0.4@aar'
+    compile "com.android.support:appcompat-v7:23.+"
     compile 'com.google.android.gms:play-services:9.2.1'
 }
 ```  
-#### EclipseでSDKを導入した場合  
-ライブラリプロジェクトとして、google_play_service_libをビルドパスに設定してください。  
-ライブラリプロジェクトの設定方法は、Google公式ドキュメントの「Eclipse With ADT」のメニューを参考にしてください。  
-## AndroidManifest.xmlの設定  
-### パーミッションの設定  
-Google play Servicesの設定項目  
+Growthbeat SDKを利用するには、依存ライブラリが必要となります。  
+- appcompat-v7 もしくは android-support-v4
+- google-play-services
+
+**依存ライブラリの対応バージョン**  
+
+|ライブラリ名|バージョン|
+|---------|---------|
+|appcompat-v7|23.0.0以上|
+|support-v4|23.0.0以上|
+|google-play-services|8.3.0以上|
+
+## jarを利用する場合  
+appディレクトリ配下の、 `libs`フォルダに、growthbeat-x.x.x.jarをコピーしてください。  
+# 2. 実装コード
+## Javaの実装  
+### 初期化  
+GrowthPushの初期化を行います。初期化の中に、端末の基本情報の送信、広告IDの取得が行われます。  
+
+```java
+GrowthPush.getInstance().initialize(context, "YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID", BuildConfig.DEBUG ? Environment.development : Environment.production);
+```  
+### デバイストークンを取得・送信をする  
+GrowthPushの初期化後に下記を呼び出して、デバイストークンの取得を行います。  
+
+```java
+GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID");
+```  
+登録されたデバイスは管理画面のデバイスページにて確認することができます。下記のように、デバイスのステータスがアクティブ（Active）で登録されていれば正常です。  
+<img src="/img/push/push_device_list.png" alt="push_device_list" title="push-device-list" width="100%"/>  
+**YOUR_SENDER_IDは、AndroidのSenderId**  
+### タグ送信  
+セグメントを設定するために、任意のタグを埋め込んでください。  
+```java
+GrowthPush.getInstance().setTag("TagName", "TagValue");
+```  
+### イベント送信  
+セグメントを設定するために、任意のイベントを埋め込んでください。  
+```java
+GrowthPush.getInstance().trackEvent("EventName");
+```  
+
+# 3.AndroidManifest.xmlの設定  
+## 必要な記述  
 
 ```xml
 <meta-data
     android:name="com.google.android.gms.version"
     android:value="@integer/google_play_services_version" />
-```  
-必要なパーミンションは下記になります。  
 
-```xml
 <uses-permission android:name="android.permission.INTERNET" />
 
 <!-- for Growth Push -->
@@ -102,44 +125,21 @@ Google play Servicesの設定項目
 </application>
 ```  
 * YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。  
-AndroidManifest.xmlのサンプルは、[サンプルコード](https://github.com/growthbeat/growthbeat-android/blob/master/sample/src/main/AndroidManifest.xml)を参考にしてください。
+AndroidManifest.xmlのサンプルは、[サンプルコード](https://github.com/growthbeat/growthbeat-android/blob/master/sample/src/main/AndroidManifest.xml)を参考にしてください。  
 
-## 実装コード  
-### 初期化  
-GrowthbeatおよびGrowthPushの初期化を行います。初期化の中に、端末の基本情報の送信、広告IDの取得が行われます。  
-
-```java
-GrowthPush.getInstance().initialize(context, "YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID", BuildConfig.DEBUG ? Environment.development : Environment.production);
-```  
-### デバイストークンを取得・送信をする  
-Growthbeatの初期化後に下記を呼び出して、デバイストークンの取得を行います。  
-
-```java
-GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID");
-```  
-登録されたデバイスは管理画面のデバイスページにて確認することができます。下記のように、デバイスのステータスがアクティブ（Active）で登録されていれば正常です。  
-<img src="/img/push/push_device_list.png" alt="push_device_list" title="push-device-list" width="100%"/>  
-**YOUR_SENDER_IDは、AndroidのSenderId**  
-### タグ送信  
-[setTagメソッドについて](/sdk/android/reference/#タグの送信)  
-```java
-GrowthPush.getInstance().setTag("TagName", "TagValue");
-```  
-### イベント送信  
-[trackEventメソッドについて](/sdk/android/reference/#イベントの送信)  
-```java
-GrowthPush.getInstance().trackEvent("EventName");
-```  
-
-# 管理画面設定  
-## プッシュ通知  
+# 4.備考  
+## 管理画面設定  
+### プッシュ通知  
 Growth Push管理画面の証明書設定ページにて、各OSごとに証明書の設定を行ってください。  
 [Android SenderId, APIキー取得方法](http://growthbeat.helpscoutdocs.com/article/23-gcm-api)  
-## セグメントについて  
+### セグメントについて  
 セグメント配信を利用する際に、実装が必要となります。  
 [配信したいセグメント](/manual/growthpush/#セグメントの作成)に沿って、タグやイベントの紐付けを行ってください。  
-# 最新版のSDKへの乗り換え方法  
+## 全機能を利用する方法  
+※ [全機能を利用する場合はこちら](/sdk/android/all-in-one)  
+## 最新版のSDKへの乗り換え方法  
 [SDKの乗り換え方法](/sdk/android/migrate)をご参照ください。  
-# 備考  
+## サンプルコード  
 実装サンプルは、[GitHubレポジトリ](https://github.com/growthbeat/growthbeat-android)を参考にしてください。  
+# お問い合わせ  
 ご不明な点などございます場合は、[ヘルプページ](http://growthbeat.helpscoutdocs.com/)を閲覧してください。  
