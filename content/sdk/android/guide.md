@@ -57,9 +57,6 @@ class MyActivity extends Activity {
     }
 }
 ```  
-登録されたデバイスは管理画面のデバイスページにて確認することができます。下記のように、デバイスのステータスがアクティブ（Active）で登録されていれば正常です。  
-<img src="/img/push/push_device_list.png" alt="push_device_list" title="push-device-list" width="100%"/>  
-**YOUR_SENDER_IDは、AndroidのSenderId**  
 ### タグ送信  
 セグメントを設定するために、任意のタグを埋め込んでください。  
 ```java
@@ -148,22 +145,25 @@ class MyActivity extends Activity {
 
 </application>
 ```  
-* YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。  
-AndroidManifest.xmlのサンプルは、[サンプルコード](https://github.com/growthbeat/growthbeat-android/blob/master/sample/src/main/AndroidManifest.xml)を参考にしてください。  
-
-# 4.備考  
+YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。  
+# その他設定について  
+## SenderId、APIキーの取得について  
+SenderIdは、requestRegistrationIdを実行するために必要となります。APIキーは、管理画面にて、プッシュ通知を送信するための証明書として必要になります。  
+[Android SenderId, APIキー取得方法](http://growthbeat.helpscoutdocs.com/article/23-gcm-api)  
 ## 管理画面設定  
 ### プッシュ通知  
 Growth Push管理画面の証明書設定ページにて、各OSごとに証明書の設定を行ってください。  
-[Android SenderId, APIキー取得方法](http://growthbeat.helpscoutdocs.com/article/23-gcm-api)  
 ### セグメントについて  
 セグメント配信を利用する際に、実装が必要となります。  
 [配信したいセグメント](/manual/growthpush/#セグメントの作成)に沿って、タグやイベントの紐付けを行ってください。  
+# 備考  
 ## 全機能を利用する方法  
-※ [全機能を利用する場合はこちら](/sdk/android/all-in-one)  
+Growthbeatは、プッシュ通知以外に、ポップアップメッセージ機能、ディープリンク機能を用意しております。追加の実装を行うことで機能を利用することができます。  
+詳しくは、全機能を利用するための[導入ガイド](/sdk/android/all-in-one)をご覧ください。  
 ## 最新版のSDKへの乗り換え方法  
-[SDKの乗り換え方法](/sdk/android/migrate)をご参照ください。  
+Growth Push SDKからGrowthbeat 2.x SDK への乗り換えまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへの乗り換えをされる方は
+[SDKの移行ガイド](/sdk/android/migrate)をご参照ください。  
 ## サンプルコード  
-実装サンプルは、[GitHubレポジトリ](https://github.com/growthbeat/growthbeat-android)を参考にしてください。  
+実装サンプルは、[Githubレポジトリ](https://github.com/growthbeat/growthbeat-android)を参考にしてください。  
 # お問い合わせ  
 ご不明な点などございます場合は、[ヘルプページ](http://growthbeat.helpscoutdocs.com/)を閲覧してください。  
