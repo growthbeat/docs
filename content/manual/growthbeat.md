@@ -1,5 +1,6 @@
 ---
 categories: 'manual'
+publishdate: 2014-12-01T00:00:00+09:00
 date: 2015-11-16T12:05:16+09:00
 description: 'Growtbeat'
 draft: false
