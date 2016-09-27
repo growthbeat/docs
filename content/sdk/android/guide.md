@@ -10,7 +10,6 @@ Version 2.0.4
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。  
 (※ Eclipseの導入は非推奨となっております。導入については、サポートまでご連絡ください。)  
 # 1. Gradleの設定  
-## aarを利用する場合  
 
 build.gradle(Module:app)に下記を追加してください。  
 
@@ -37,9 +36,6 @@ Growthbeat SDKを利用するには、依存ライブラリが必要となりま
 |appcompat-v7 or android-support-v4|23.0.0以上|
 |google-play-services|8.3.0以上|
 
-## jarを利用する場合  
-ダウンロードしたzipファイルの、 `release` フォルダに、growthbeat-x.x.x.jarが格納されています。  
-appディレクトリ配下の、 `libs`フォルダに、growthbeat-x.x.x.jarをコピーしてください。  
 # 2. 実装コード
 ## Javaの実装  
 ### 初期化  
