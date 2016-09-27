@@ -26,18 +26,19 @@ dependencies {
 }
 ```  
 Growthbeat SDKを利用するには、依存ライブラリが必要となります。  
-- appcompat-v7 もしくは android-support-v4
-- google-play-services
+
+- appcompat-v7もしくはandroid-support-v4
+- google-play-services  
 
 **依存ライブラリの対応バージョン**  
 
 |ライブラリ名|バージョン|
 |---------|---------|
-|appcompat-v7|23.0.0以上|
-|support-v4|23.0.0以上|
+|appcompat-v7 or android-support-v4|23.0.0以上|
 |google-play-services|8.3.0以上|
 
 ## jarを利用する場合  
+ダウンロードしたzipファイルの、 `release` フォルダに、growthbeat-x.x.x.jarが格納されています。  
 appディレクトリ配下の、 `libs`フォルダに、growthbeat-x.x.x.jarをコピーしてください。  
 # 2. 実装コード
 ## Javaの実装  
