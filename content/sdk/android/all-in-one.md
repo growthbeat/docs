@@ -1,9 +1,9 @@
 ---
 categories: 'sdk'
-date: 2016-06-29T23:50:00+09:00
-description: 'Growthbeat Android の導入方法について説明します'
+date: 2016-09-28T12:00:00+09:00
+description: 'Growthbeat SDK for Android の導入方法について説明します'
 draft: false
-title: Growthbeat Android Gudeliene
+title: Growthbeat SDK | 全機能利用ガイド
 ---
 
 Version 2.0.4  
@@ -22,14 +22,13 @@ class MainActivity extends Activity {
         super.onCreated(savedInstanceState);
 
         //...
-
         GrowthPush.getInstance().trackEvent("OpenActivity");
     }
 }
 ```  
 任意のイベントが呼び出されたときに表示するポップアップメッセージは、管理画面上で設定できます。  管理画面の設定については、次に説明します。  
 
-## AndroidManifest設定  
+## AndroidManifest.xml設定  
 AndroidManifest.xmlにGrowth Message表示用のActivityを追加します。
 
 ```xml
@@ -42,21 +41,26 @@ AndroidManifest.xmlにGrowth Message表示用のActivityを追加します。
 ```  
 ## 管理画面設定方法
 メッセージの作成方法は[こちら](/manual/growthmessage/#配信作成)を参考にしてください。  
-アプリ起動以外にも、カスタムイベントをメッセージ配信のトリガーにすることにより、アプリの任意の場所でメッセージを配信することができます。詳しくは、[こちら](/sdk/android/reference/#カスタムイベント送信)をご参照ください。  
 # 3. GrowthLinkを利用  
 ## 実装コード  
-**初期化**  
-Growth Linkの初期化処理を追加してください。
-
-```java
-GrowthLink.getInstance().initialize(getApplicationContext(), "YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
-```  
+### 初期化  
+Growth Linkの初期化処理を追加してください。  
 IntentFilterを設定したActivityのonCreateで、handleOpenUrlメソッドを呼び出してください。
 
 ```java
-GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
+class MainActivity extends Activity {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreated(savedInstanceState);
+
+        //...
+        GrowthLink.getInstance().initialize(getApplicationContext(), "YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
+        GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
+    }
+}
 ```  
-**ディープリンクアクションの実装**  
+### ディープリンクアクションの実装  
 SDKには、IntentHandlerが定義されており、この実装でディープリンク時のアクションを実装することができます。  
 たとえば下記のような形で実装できます。  
 
@@ -82,7 +86,7 @@ class MyApplication extends Application {
     }
 }
 ```   
-## AndroidManifest設定  
+## AndroidManifest.xml設定  
 AndroidManifest.xmlにGrowth Message表示用のActivityを追加します。
 
 ```xml
@@ -100,8 +104,9 @@ AndroidManifest.xmlにGrowth Message表示用のActivityを追加します。
 ```   
 # 備考  
 ## 最新版のSDKへの乗り換え方法  
-[SDKの乗り換え方法](/sdk/android/migrate)をご参照ください。  
+Growth Push SDKからGrowthbeat 2.x SDK への乗り換えまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへの乗り換えをされる方は
+[SDKの移行ガイド](/sdk/android/migrate)をご参照ください。    
 ## サンプルについて  
-実装サンプルは、[GitHubレポジトリ](https://github.com/growthbeat/growthbeat-android)を参考にしてください。  
+実装サンプルは、[Githubレポジトリ](https://github.com/growthbeat/growthbeat-android)を参考にしてください。  
 # お問い合わせ  
 ご不明な点などございます場合は、[ヘルプページ](http://faq.growthbeat.com/)を閲覧してください。  

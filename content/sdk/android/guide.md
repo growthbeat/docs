@@ -1,9 +1,9 @@
 ---
 categories: 'sdk'
-date: 2016-06-29T23:50:00+09:00
+date: 2016-09-28T12:00:00+09:00
 description: 'Growthbeat Android の導入方法について説明します'
 draft: false
-title: Growthbeat Android Gudeliene
+title: Growthbeat Android | 基本導入ガイド
 ---
 Version 2.0.4  
 # SDK概要  
@@ -160,9 +160,9 @@ Growth Push管理画面の証明書設定ページにて、各OSごとに証明�
 ## 全機能を利用する方法  
 Growthbeatは、プッシュ通知以外に、ポップアップメッセージ機能、ディープリンク機能を用意しております。追加の実装を行うことで機能を利用することができます。  
 詳しくは、全機能を利用するための[導入ガイド](/sdk/android/all-in-one)をご覧ください。  
-## 最新版のSDKへの乗り換え方法  
-Growth Push SDKからGrowthbeat 2.x SDK への乗り換えまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへの乗り換えをされる方は
-[SDKの移行ガイド](/sdk/android/migrate)をご参照ください。  
+## 最新版のSDKへのアップグレード方法  
+Growth Push SDKからGrowthbeat 2.x SDK へまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへのアップグレードをされる方は
+[SDKのアップグレードガイド](/sdk/android/upgrade)をご参照ください。  
 ## サンプルコード  
 実装サンプルは、[Githubレポジトリ](https://github.com/growthbeat/growthbeat-android)を参考にしてください。  
 # お問い合わせ  
