@@ -14,10 +14,6 @@ Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できま�
 build.gradle(Module:app)に下記を追加してください。  
 
 ```sh
-repositories {
-    jcenter()
-}
-
 dependencies {
     compile 'com.growthbeat:growthbeat-android:2.0.4@aar'
     compile 'com.android.support:appcompat-v7:23.+'
@@ -88,13 +84,7 @@ class MyActivity extends Activity {
 ## 必要な記述  
 
 ```xml
-<meta-data
-    android:name="com.google.android.gms.version"
-    android:value="@integer/google_play_services_version" />
-
 <uses-permission android:name="android.permission.INTERNET" />
-
-<!-- for Growth Push -->
 <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 <uses-permission android:name="android.permission.VIBRATE" />
 <uses-permission android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE" />
@@ -131,10 +121,6 @@ class MyActivity extends Activity {
         android:permission="com.google.android.c2dm.permission.SEND" >
         <intent-filter>
             <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-            <category android:name="YOUR_PACKAGE_NAME" />
-        </intent-filter>
-        <intent-filter>
-            <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
             <category android:name="YOUR_PACKAGE_NAME" />
         </intent-filter>
     </receiver>
