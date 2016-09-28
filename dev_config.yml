@@ -1,5 +1,5 @@
 baseurl:        "http://stg.support.growthbeat.com/"
-title:          "Growthbeat | docs"
+title:          "Growthbeatドキュメント |"
 contentdir:     "content"
 publishdir:     "public"
 layoutdir:      "layouts"

@@ -141,7 +141,7 @@ Growth Push管理画面の証明書設定ページにて、各OSごとに証明�
 # 備考  
 ## 全機能を利用する方法  
 Growthbeatは、プッシュ通知以外に、ポップアップメッセージ機能、ディープリンク機能を用意しております。追加の実装を行うことで機能を利用することができます。  
-詳しくは、全機能を利用するための[導入ガイド](/sdk/android/all-in-one)をご覧ください。  
+詳しくは、[全機能導入ガイド](/sdk/android/all-in-one)をご覧ください。  
 ## 最新版のSDKへのアップグレード方法  
 Growth Push SDKからGrowthbeat 2.x SDK へまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへのアップグレードをされる方は
 [SDKのアップグレードガイド](/sdk/android/upgrade)をご参照ください。  
