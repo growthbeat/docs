@@ -17,26 +17,34 @@ build.gradle(Module:app)に下記を追加してください。
 dependencies {
     compile 'com.growthbeat:growthbeat-android:2.0.4@aar'
     compile 'com.android.support:appcompat-v7:23.+'
-    compile 'com.google.android.gms:play-services:9.2.1'
+    compile 'com.google.android.gms:play-services-gcm:9.2.1'
+    compile 'com.google.android.gms:play-services-ads:9.2.1'
 }
 ```  
 Growthbeat SDKを利用するには、依存ライブラリが必要となります。  
 
 - appcompat-v7もしくはandroid-support-v4
-- google-play-services  
+- google-play-services-gcm
+- google-play-services-ads   
 
 **依存ライブラリの対応バージョン**  
 
 |ライブラリ名|バージョン|
 |---------|---------|
 |appcompat-v7 or android-support-v4|23.0.0以上|
-|google-play-services|8.3.0以上|
+|google-play-services-gcm|8.3.0以上|
+|google-play-services-ads|8.3.0以上|
 
 # 2. 実装コード
 ## Javaの実装  
 ### 初期化  
 GrowthPushの初期化を行います。初期化の中に、端末の基本情報の送信、広告IDの取得が行われます。  
 2行目は、デバイストークンの取得を行います。  
+
+YOUR_APPLICATION_ID, YOUR_CREDENTIAL_IDは、Growth Push管理画面から確認することができます。  
+YOUR_SENDER_IDは、Google API Consoleから取得する必要があります。  
+
+Growth Pushの管理画面の操作、Google API Consoleの操作については、後述します。
 
 ```java
 class MyActivity extends Activity {
@@ -82,6 +90,8 @@ class MyActivity extends Activity {
 
 # 3.AndroidManifest.xmlの設定  
 ## 必要な記述  
+レジストレーションIDを取得するため、またプッシュ通知を受信するためにAndroidManifest.xmlに必要なクラスを記述します。  
+YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。  
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
@@ -127,7 +137,7 @@ class MyActivity extends Activity {
 
 </application>
 ```  
-YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。  
+
 # その他設定について  
 ## SenderId、APIキーの取得について  
 SenderIdは、requestRegistrationIdを実行するために必要となります。APIキーは、管理画面にて、プッシュ通知を送信するための証明書として必要になります。  
