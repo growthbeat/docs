@@ -31,6 +31,10 @@
   {{ $.Scratch.Add "type" "reference" }}
 {{ else if in .Permalink "guide" }}
   {{ $.Scratch.Add "type" "guide" }}
+{{ else if in .Permalink "all-in-one" }}
+  {{ $.Scratch.Add "type" "all-in-one" }}
+{{ else if in .Permalink "upgrade" }}
+  {{ $.Scratch.Add "type" "upgrade" }}
 {{ else if in .Permalink "release" }}
   {{ $.Scratch.Add "type" "release" }}
 {{end}}
@@ -53,7 +57,13 @@
         <li class="item"><a class="link">APIリファレンス</a></li>
       {{ end }}
       {{ if in .Permalink "guide" }}
-        <li class="item"><a class="link">ガイド</a></li>
+        <li class="item"><a class="link">基本機能利用ガイド</a></li>
+      {{ end }}
+      {{ if in .Permalink "all-in-one" }}
+        <li class="item"><a class="link">全機能利用ガイド</a></li>
+      {{ end }}
+      {{ if in .Permalink "upgrade" }}
+        <li class="item"><a class="link">SDKアップグレードガイド</a></li>
       {{ end }}
       {{ if in .Permalink "release" }}
         <li class="item"><a class="link">リリースノート</a></li>
@@ -72,7 +82,11 @@
     {{ if in .Permalink "reference" }}
       APIリファレンス
 　　 {{ else if in .Permalink "guide" }}
-      ガイド
+      基本機能利用ガイド
+    {{ else if in .Permalink "all-in-one" }}
+      全機能利用ガイド
+    {{ else if in .Permalink "upgrade" }}
+      SDKアップグレードガイド
 　　 {{ else if in .Permalink "release" }}
       リリースノート
     {{ end }}
