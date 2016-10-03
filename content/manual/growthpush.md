@@ -150,6 +150,15 @@ Growth Pushの送信画面で「通知IDを追加」のオプションを設定�
 
 <img src="/img/push/push_report.png" alt="" title="" width="100%"/>
 
+## コピーして再利用
+
+配信一覧から下記キャプチャの赤枠内をクリックすると、選択したプッシュ通知の設定をコピーして、新しいプッシュ通知として作成します。  
+作成画面で、お好みの時間帯や他設定など編集することができます。
+
+<img src="/img/push/push_notification_copy.png" alt="" title="" width="100%"/>
+
+<img src="/img/push/push_notification_copy_2.png" alt="" title="" width="100%"/>
+
 ## CSVエクスポート
 指定した期間の配信データを一括でダウンロードすることができます。
 
