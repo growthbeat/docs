@@ -210,6 +210,13 @@ http://faq.growthbeat.com/article/81-growthpush
 * [（ステータス）active時にプッシュ送信すると、inactiveに変わる状況とは？](http://faq.growthbeat.com/article/76-activeinactive)
 * [Push通知が届かない場合のトラブルシューティング](http://faq.growthbeat.com/article/60-push)
 
+## デバイストークンコピー
+
+デバイストークンをクリップボードに貼り付けることができます。  
+下記スクリーンショット赤枠内のボタン画像をクリックすると、「デバイストークン」がクリップボードにコピーされます。
+
+<img src="/img/push/push_devicetoken_copy.png" alt="" title="" width="100%"/>
+
 # イベント
 Growth Pushに登録されているイベントを一覧で表示する画面です。一覧項目は以下の3つになっており、レポートボタンをクリックするとそれぞれのイベントを起こしたユーザーのログを確認することができます。詳細に関しましてはサポートページの[イベントとは](http://faq.growthbeat.com/article/17-article)をご参照ください。
 
