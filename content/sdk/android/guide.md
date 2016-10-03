@@ -42,7 +42,7 @@ GrowthPushの初期化を行います。初期化の中に、端末の基本情�
 2行目は、デバイストークンの取得を行います。  
 
 YOUR_APPLICATION_ID, YOUR_CREDENTIAL_IDは、Growth Push管理画面から確認することができます。  
-YOUR_SENDER_IDは、Google API Consoleから取得する必要があります。  
+YOUR_SENDER_IDは、Firebase Consoleから取得する必要があります。  
 
 Growth Pushの管理画面の操作、Google API Consoleの操作については、後述します。
 
