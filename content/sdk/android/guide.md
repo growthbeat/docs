@@ -158,4 +158,4 @@ Growth Push SDKからGrowthbeat 2.x SDK へまたは、Growthbeat 1.x SDKからG
 ## サンプルコード  
 実装サンプルは、[Githubレポジトリ](https://github.com/growthbeat/growthbeat-android)を参考にしてください。  
 # お問い合わせ  
-ご不明な点などございます場合は、[ヘルプページ](http://growthbeat.helpscoutdocs.com/)を閲覧してください。  
+ご不明な点などございます場合は、[ヘルプページ](http://faq.growthbeat.com/)を閲覧してください。  
