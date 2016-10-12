@@ -105,7 +105,7 @@ AndroidManifest.xmlにGrowth Message表示用のActivityを追加します。
 # 備考  
 ## 最新版のSDKへの乗り換え方法  
 Growth Push SDKからGrowthbeat 2.x SDK への乗り換えまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへの乗り換えをされる方は
-[SDKの移行ガイド](/sdk/android/migrate)をご参照ください。    
+[SDKの移行ガイド](/sdk/android/upgrade)をご参照ください。    
 ## サンプルについて  
 実装サンプルは、[Githubレポジトリ](https://github.com/growthbeat/growthbeat-android)を参考にしてください。  
 # お問い合わせ  
