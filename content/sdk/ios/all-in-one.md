@@ -9,7 +9,7 @@ title: Growthbeat iOS SDK | 全機能利用ガイド
 Version 2.0.4
 # Growthbeat利用ガイド  
 # 1. Growth Pushを利用  
-Growth Pushのみを利用する[導入方法](/sdk/android/guide)をご覧ください。
+Growth Pushのみを利用する[導入方法](/sdk/ios/guide)をご覧ください。
 # 2. Growth Messageを利用  
 ## 実装コード  
 アプリに、Growth Pushの任意のイベントを送信します。アプリが任意のアクティビティが、呼び出されたときに、ポップアップメッセージを表示する実装を、例として紹介します。  
@@ -24,16 +24,11 @@ Growth Pushのみを利用する[導入方法](/sdk/android/guide)をご覧く�
 任意のイベントが呼び出されたときに表示するポップアップメッセージは、管理画面上で設定できます。管理画面の設定については、次に説明します。  
 
 ## 管理画面設定方法  
-
-ここではアプリの起動時にメッセージを出す方法を説明します（共通初期設定でアプリの起動イベントを送信している必要があります）。
-
-まず、管理画面にてアプリ起動時に配信されるメッセージを作成します。メッセージの作成方法は[こちら](/manual/growthmessage/#配信作成)を参考にしてください。
-
-アプリ起動以外にも、カスタムイベントをメッセージ配信のトリガーにすることにより、アプリの任意の場所でメッセージを配信することができます。詳しくは、[こちら](/sdk/ios/reference/#カスタムイベント送信)をご参照ください。
-
+メッセージの作成方法は[こちら](/manual/growthmessage/#配信作成)を参考にしてください。    
 # 3. Growth Linkを利用  
 ## 実装コード  
 ### 初期化  
+SafariServices.frameworkを追加します。  
 Growth Linkの初期化処理を呼び出してください。 **APPLICATION_ID** と **CREDENTIAL_ID** は
 Growthbeatの初期化時と同じものです。  
 URL起動の処理で、handleOpenUrl:urlメソッドを呼び出します。  

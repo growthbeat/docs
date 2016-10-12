@@ -16,7 +16,7 @@ iOS 8.0以上
 Podfile に下記を記述し `pod install` を実行してください  
 * ProjectNameは、アプリのプロジェクト名となります。  
 
-```Podfile
+```
 target 'ProjectName' do
     pod 'Growthbeat'
 end
