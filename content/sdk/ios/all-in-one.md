@@ -3,142 +3,16 @@ categories: 'sdk'
 date: 2015-09-27T23:47:00+09:00
 description: 'Growthbeat iOS の導入方法について説明します'
 draft: false
-title: Growthbeat iOS Gudeliene
+title: Growthbeat iOS SDK | 全機能利用ガイド
 ---
 
 Version 2.0.4
-
-# 共通初期設定
-
-推奨環境
-
-iOS 8.0以上
-
-## SDK導入
-
-Growthbeat SDKで、Growthbeat 全てのサービスの機能が利用できます。
-
-Objective-C での導入方法について記載しております。
-
-### CocoaPodsを使用して導入する場合
-
-Podfile に下記を記述し `pod install` を実行してください:
-
-```
-pod 'Growthbeat'
-```
-
-### 手動で SDK を配置して導入する場合
-
-<a href="/sdk">最新版iOS SDK ダウンロードページ</a>
-
-ダウンロードしたファイルを解凍し、そのフォルダの中の **Growthbeat.framework** をプロジェクトへ組み込みます。
-任意のXcodeプロジェクトを開き Growthbeat.framework をインポートしてください。
-
-Growthbeat.framework のインポートの方法は以下の２つです:
-
-1. Xcodeプロジェクトに Growthbeat.framework をドラッグアンドドロップする
-2. Bulid Phases -> Link Binary With Libraries の + ボタンを押し、Add Other...からGrowthbeat.frameworkを選択する
-
-### import
-
-Growthbeat の import 文を記述します。
-
-```objc
-#import <Growthbeat/Growthbeat.h>
-```
-
-### 依存について
-
-Growthbeat.framework は、下記 Framework が必須となります:
-
-- Foundation.framework
-- UIKit.framework
-- CoreGraphics.framework
-- SystemConfiguration.framework
-- AdSupport.framework
-- CFNetwork.framework
-- SafariServices.framework
-
-## Growthbeat の初期化
-
-Growthbeat および Growth Push の初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。
-
-```objc
-[[GrowthPush sharedInstance] initializeWithApplicationId:@"YOUR_APLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID" environment:kGrowthPushEnvironment];
-```
-
-Growth Push SDKからの乗り換えの場合は、[こちら](#growth-push-sdkからの乗り換え方法について)も参照してください。
-
-# プッシュ通知
-
-## プッシュ通知用の証明書の作成
-
-Growth Push 管理画面にて、各 OS ごとに証明書の設定を行ってください。詳しくは、[iOS プッシュ通知証明書作成方法](http://growthhack.sirok.co.jp/growthpush/ios-p12/)をご参照ください。
-
-## デバイストークンを取得・送信をする
-
-Growthbeat の初期化後に下記を呼び出して、デバイストークンの取得を行います。
-
-```objc
-[[GrowthPush sharedInstance] requestDeviceToken];
-```
-
-`- (void)application:(UIApplication *)application
-didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken` にて下記のように実装して、デバイストークンを送信します。
-
-```objc
-- (void)application:(UIApplication *)application
-didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    [[GrowthPush sharedInstance] setDeviceToken:deviceToken];
-}
-```
-
-登録されたデバイスは管理画面のデバイスページにて確認することができます。下記のように、デバイスのステータスがアクティブ（Active）で登録されていれば正常です。
-
-<img src="/img/push/push_device_list.png" alt="push_device_list" title="push-device-list" width="100%"/>
-
-## タグ・イベントを送信する。
-
-セグメント配信を利用する際に、実装が必要となります。
-
-[配信したいセグメント](/manual/growthpush/#セグメントの作成)に沿って、タグやイベントの紐付けを行ってください。
-
-### タグ送信
-
-```objc
-[[GrowthPush sharedInstance] setTag:@"TagName" value:@"TagValue"];
-```
-
-[setTagメソッドについて](/sdk/ios/reference/#タグの送信)
-
-### イベント送信
-
-```objc
-[[GrowthPush sharedInstance] trackEvent:@"EventName"];
-```
-
-[trackEventメソッドについて](/sdk/ios/reference/#イベントの送信)
-
-# アプリ内メッセージ
-
-## メッセージを作成する。
-
-ここではアプリの起動時にメッセージを出す方法を説明します（共通初期設定でアプリの起動イベントを送信している必要があります）。
-
-まず、管理画面にてアプリ起動時に配信されるメッセージを作成します。メッセージの作成方法は[こちら](/manual/growthmessage/#配信作成)を参考にしてください。
-
-アプリ起動以外にも、カスタムイベントをメッセージ配信のトリガーにすることにより、アプリの任意の場所でメッセージを配信することができます。詳しくは、[こちら](/sdk/ios/reference/#カスタムイベント送信)をご参照ください。
-
-## メッセージを表示する
-
-Growth Pushのイベント送信と連動して、メッセージを受信します。
-
-イベント名に紐付いたメッセージを作成するだけで、メッセージ表示することはできます。デフォルトでは、メッセージ受信時に即時に表示します。
-
-`ShowMessageHandler` を利用することで、表示準備が完了したときに、メッセージ表示をすることができます。
-
-例.) 起動時に、メッセージを表示する場合
+# Growthbeat利用ガイド  
+# 1. Growth Pushを利用  
+Growth Pushのみを利用する[導入方法](/sdk/android/guide)をご覧ください。
+# 2. Growth Messageを利用  
+## 実装コード  
+アプリに、Growth Pushの任意のイベントを送信します。アプリが任意のアクティビティが、呼び出されたときに、ポップアップメッセージを表示する実装を、例として紹介します。  
 
 ```objc
 [[GrowthPush sharedInstance] trackEvent:@"Launch" value:nil showMessage:^(void(^renderMessage)()){
@@ -147,33 +21,74 @@ Growth Pushのイベント送信と連動して、メッセージを受信しま
 
 }];
 ```
+任意のイベントが呼び出されたときに表示するポップアップメッセージは、管理画面上で設定できます。管理画面の設定については、次に説明します。  
 
-# ディープリンク
+## 管理画面設定方法  
 
-## 初期設定
+ここではアプリの起動時にメッセージを出す方法を説明します（共通初期設定でアプリの起動イベントを送信している必要があります）。
 
-GrowthLinkのimport文を記述します。
+まず、管理画面にてアプリ起動時に配信されるメッセージを作成します。メッセージの作成方法は[こちら](/manual/growthmessage/#配信作成)を参考にしてください。
 
-```objc
-#import <Growthbeat/GrowthLink.h>
-```
+アプリ起動以外にも、カスタムイベントをメッセージ配信のトリガーにすることにより、アプリの任意の場所でメッセージを配信することができます。詳しくは、[こちら](/sdk/ios/reference/#カスタムイベント送信)をご参照ください。
 
-## 初期化処理
-
-Growthbeatの初期化処理の後に、Growth Linkの初期化処理を呼び出してください。 **APPLICATION_ID** と **CREDENTIAL_ID** は
-Growthbeatの初期化時と同じものです。
-
-```objc
-[[GrowthLink sharedInstance] initializeWithApplicationId:@"APPLICATION_ID" credentialId:@"CREDENTIAL_ID"];
-```
-
-URL起動の処理で、handleOpenUrl:urlメソッドを呼び出す
+# 3. GrowthLinkを利用  
+## 実装コード  
+### 初期化  
+GrowthLinkのimport文を記述します。  
+Growth Linkの初期化処理を呼び出してください。 **APPLICATION_ID** と **CREDENTIAL_ID** は
+Growthbeatの初期化時と同じものです。  
+URL起動の処理で、handleOpenUrl:urlメソッドを呼び出します。  
 
 ```objc
-- (BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+// AppDelegate.m
+#import <Growthbeat/Growthbeat.h>
+
+@implementation AppDelegate
+
+- (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary* )launchOptions {
+    // ...
+    [[GrowthLink sharedInstance] initializeWithApplicationId:@"APPLICATION_ID" credentialId:@"CREDENTIAL_ID"];
+}
+
+- (BOOL) application:(UIApplication*) application openURL:(NSURL* )url sourceApplication:(NSString* )sourceApplication annotation:(id) annotation {
     [[GrowthLink sharedInstance] handleOpenUrl:url];
     return YES;
 }
+
+- (BOOL) application:(UIApplication* )application continueUserActivity:(NSUserActivity* )userActivity restorationHandler:(void (^)(NSArray* \_Nullable)) restorationHandler {
+    if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
+        NSURL * webpageURL = userActivity.webpageURL;
+        [[GrowthLink sharedInstance] handleUniversalLinks:webpageURL];
+    }
+    return true;
+}
+
+
+@end
+```
+
+### ディープリンクアクションの実装  
+SDKには、GBIntentHandlerが定義されており、この実装でディープリンク時のアクションを実装することができます。  
+たとえば下記のような形で実装できます。  
+
+```objc
+// AppDelegate.m
+#import <Growthbeat/Growthbeat.h>
+
+@implementation AppDelegate
+
+- (BOOL) application:(UIApplication* )application didFinishLaunchingWithOptions:(NSDictionary* )launchOptions {
+    //...
+
+    [[Growthbeat sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent* customIntent) {
+           NSDictionary* extra = customIntent.extra;
+           NSLog(@"extra: %@", extra);
+           return YES;
+   }]];
+
+}
+
+@end
 ```
 
 ## プロジェクト設定
@@ -233,47 +148,6 @@ CapabilitiesタブのAssociated Domainsをクリックすると展開されド�
 
 また、entitlementsファイルがビルドに含まれている必要があります。含まれない場合はentitlementsファイルをクリックし、Targetにチェックが入っているか確認してください。
 
-**ハンドリング処理の実装**
-AppDelegate.mにUniversal Linksのハンドリング処理を実装します。
-
-[Universal Links](http://faq.growthbeat.com/article/134-universallinks)専用リンクへの対応のため、以下のように実装してください。
-
-#### UniversalLinksの取得実装について
-
-```objc
-#import <Growthbeat/GrowthLink.h> //インポートしておく
-
-
-- (BOOL) application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler{
-    if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
-        NSURL * webpageURL = userActivity.webpageURL;
-        [[GrowthLink sharedInstance] handleUniversalLinks:webpageURL];
-    }
-    return true;
-}
-
-```
-
-Xcode上での設定は以上になります。
-
-## ディープリンクアクションの実装
-
-SDKには、GBIntentHandlerというプロトコルが定義されており、この実装でディープリンク時のアクションを実装することができます。
-
-たとえば下記のような形で実装できます。
-
-```objc
-#import <Growthbeat/GBCustomIntentHandler.h>  //インポート文に追記
-```
-
-```objc
- [[Growthbeat sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
-        NSDictionary * extra = customIntent.extra;
-        NSLog(@"extra: %@", extra);
-        return YES;
-}]];
-```
-
 ### GrowthLink管理画面上 での設定
 
 「基本設定」タブ -> リンク基本設定セクションから Universal Linksの設定ができます。
@@ -293,199 +167,11 @@ apple.developer.comに登録してあるBundle IdentifierとApple TeamIDを記�
 
 [【UniversalLinks】ランディングページにリンクを埋め込む際の注意点](http://faq.growthbeat.com/article/114-universallink)
 
-# Growthbeat SDK 1.xからの変更点
-
-## 機能削除
-
-- インターフェスの変更があります。
- - 次の実装変更点でご確認ください。
-
-- GrowthAnalyticsクラスがなくなりました。
- - 2.x以降は、GrowthPush#setTag, trackEventをご利用ください。
-
-- GrowthbeatCoreクラスが、Growthbeatクラスに統合されました。
- - start, stop, initializeは削除されました。
-
-## 実装変更点
-
-### 初期化
-
-- Growthbeat 1.x
-
-```objc
-- (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
-    [[Growthbeat sharedInstance] initializeWithApplicationId:@"YOUR_APPLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID"];
-    [[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
-    [[Growthbeat sharedInstance] getClient:^(GBClient* client) {
-        NSLog(@"clientId is %@",client.id);
-    }];
-
-}
-
-- (void) applicationDidBecomeActive:(UIApplication *)application {
-    [[Growthbeat sharedInstance] start];
-}
-
-- (void) applicationWillResignActive:(UIApplication *)application {
-    [[Growthbeat sharedInstance] stop];
-}
-```
-
-- Growthbeat 2.x
-
-```objc
-- (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
-    [[GrowthPush sharedInstance] initializeWithApplicationId:@"YOUR_APPLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID" environment:kGrowthPushEnvironment];
-	[[GrowthPush sharedInstance] requestDeviceToken];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        GBClient* client = [[Growthbeat sharedInstance] waitClient];
-        NSLog(@"clientId is %@", client.id);
-    });
-
-}
-
-- (void) applicationDidBecomeActive:(UIApplication *)application {
-
-}
-
-- (void) applicationWillResignActive:(UIApplication *)application {
-
-}
-```
-
-# Growth Push SDKからの乗り換え方法について
-
-## 前準備
-
-GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行されるた
-め、[Growthbeat](https://growthbeat.com/)にアクセスして、ApplicationId、SDKキー（CredentialID）を確認します。
-
-ApplicationIdについては、Growth　Pushの左メニュー、シークレットキーのgrowthbeatApplicationIdという項目の左の文字列をご利用ください。
-
-SDKキーに関しては、Growthbeatマイページにてご確認ください。
-
-## 注意点
-
-これまでGrowth Pushでご利用いただいた、ApplicationIdは数値型、シークレットキーは文字列になっています。
-
-|項目|型|
-|---|---|
-|applicationId|数値型|
-|secret|文字列型/32文字|
-
-Growthbeat SDKで利用するものは、applicationId、credentialIdともに文字列型になっています。
-
-|項目|型|
-|---|---|
-|applicationId|文字列型/16文字|
-|credentailId|文字列型/32文字|
-
-Growthbeat SDK乗り換え時に、これまでGrowth Pushで利用していたシークレットキーを設定しても、正しく動作しませんのでご注意くださいませ。
-
-必ず、SDKキーをご利用ください。
-
-## 実装方法
-
-### SDKの初期化
-
-- GrowthPush SDK
-
- * EasyGrowthPushクラスをご利用の場合
-
-```objc
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [EasyGrowthPush setApplicationId:kYourApplicationId secret:@"YOU_APP_SECRET" environment:kGrowthPushEnvironment debug:YES];
-}
-```
-
-* GrowthPushクラスをご利用の場合
-
-```objc
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [GrowthPush setApplicationId:kYourApplicationId secret:@"YOU_APP_SECRET" environment:kGrowthPushEnvironment debug:YES];
-    [GrowthPush requestDeviceToken];
-    [GrowthPush setDeviceTags];
-}
-```
-
-- Growthbeat SDK
-
-```objc
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	// Growthbeat SDKの初期化
-	[[GrowthPush sharedInstance] initializeWithApplicationId:@"YOUR_APPLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID" environment:kGrowthPushEnvironment];
-	// デバイストークンを明示的に要求
-	[[GrowthPush sharedInstance] requestDeviceToken];
-
-	// deviceTagの取得
-	[[GrowthPush sharedInstance] setDeviceTags];
-}
-
-- (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-	// デバイストークンをGrowhPushに送信
-	[[GrowthPush sharedInstance] setDeviceToken:deviceToken];
-}
-```
-
-Growth Push SDKに存在したEasyGrowthPushクラスは、Growthbeat SDKでは廃止となっており、 `didRegisterForRemoteNotificationsWithDeviceToken` のデリゲートで、デバイストークンをGrowth Pushへ送信する実装を行う必要がございます。
-
-### アプリ起動時
-
-- Growthbeat SDK
-
-```objc
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-	// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-
-	// バッチの削除
-	[[GrowthPush sharedInstance] clearBadge];
-
-	// Launchイベントの取得
-	[[GrowthPush sharedInstance] trackEvent:@"Launch"];
-}
-```
-
-### タグ・イベントの取得
-
-- GrowthPush SDK
-
-```objc
-// タグの取得
-[GrowthPush setTag:@"TAG_NAME"];
-[GrowthPush setTag:@"TAG_NAME" value:@"TAG_VALUE"];
-// イベントの取得
-[GrowthPush trackEvent:@"EVENT_NAME"];
-[GrowthPush trackEvent:@"EVENT_NAME" value:@"EVENT_VALUE"];
-```
-
-- Growthbeat SDK
-
-```objc
-// タグの取得
-[[GrowthPush sharedInstance] setTag:@"TAG_NAME"];
-[[GrowthPush sharedInstance] setTag:@"TAG_NAME" value:@"TAG_VALUE"];
-// イベントの取得
-[[GrowthPush sharedInstance] trackEvent:@"EVENT_NAME"];
-[[GrowthPush sharedInstance] trackEvent:@"EVENT_NAME" value:@"EVENT_VALUE"];
-```
-
-Growthbeat SDKは、シングルトンインスタンスの設計となっているため、実装の変更が必要となります。
-
-## 移行確認方法
-
-ログに下記のようなものが発生していれば、Growthbeat SDK移行が正しく行われています。
-
-Growth Pushへの管理画面で、該当のGrowthPushClientIdのステータスが `Active` になっていれば、正しくプッシュ通知が行えます。
-
-```
-2016-03-16 20:31:52.743 GrowthbeatSample[1527:2124584] [GrowthbeatCore:INFO] convert client... (GrowthPushClientId:286049252, GrowthbeatClientId:PfbulyL0PsWOnCHj)
-2016-03-16 20:31:52.876 GrowthbeatSample[1527:2124584] [GrowthbeatCore:INFO] Client converted. (id:PfbulyL0PsWOnCHj)
-2016-03-16 20:31:52.969 GrowthbeatSample[1527:2124609] [GrowthPush:INFO] Create client... (growthbeatClientId: PfbulyL0PsWOnCHj, token: 0b466cb0529f435e80882ad87f5384ea8f44539307312cfc5301b0e1561b909f, environment: development)
-2016-03-16 20:31:53.199 GrowthbeatSample[1527:2124609] [GrowthPush:INFO] Create client success. (clientId: PfbulyL0PsWOnCHj)
-```
-
-# 備考
-
-ご不明な点などございます場合は、[ヘルプページ](http://growthbeat.helpscoutdocs.com/)を閲覧してください。
+# 備考  
+## 最新版のSDKへの乗り換え方法  
+Growth Push SDKからGrowthbeat 2.x SDK への乗り換えまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへの乗り換えをされる方は
+[SDKの移行ガイド](/sdk/ios/migrate)をご参照ください。    
+## サンプルについて  
+実装サンプルは、[Githubレポジトリ](https://github.com/growthbeat/growthbeat-ios)を参考にしてください。  
+# お問い合わせ  
+ご不明な点などございます場合は、[ヘルプページ](http://faq.growthbeat.com/)を閲覧してください。  

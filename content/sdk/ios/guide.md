@@ -3,7 +3,7 @@ categories: 'sdk'
 date: 2016-10-13T19:41:00+09:00
 description: 'Growthbeat iOS の導入方法について説明します'
 draft: false
-title: Growthbeat iOS | 基本導入ガイド
+title: Growthbeat iOS SDK | 基本導入ガイド
 ---
 
 Version 2.0.4  
@@ -43,8 +43,7 @@ Growthbeat.framework は、下記 Framework が必須となります
 
 # 2. 実装コード  
 ## 初期化  
-
-Growth Push の初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。
+Growth Push の初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。  
 
 ```objc
 // AppDelegate.m
@@ -69,7 +68,8 @@ Growth Push の初期化を行います。初期化では、デバイス登録�
 @end
 ```
 
-## タグ送信
+## タグ送信  
+セグメントを設定するために、任意のタグを埋め込んでください。  
 
 ```objc
 // ViewController.m
@@ -84,7 +84,8 @@ Growth Push の初期化を行います。初期化では、デバイス登録�
 @end
 ```
 
-## イベント送信
+## イベント送信  
+セグメントを設定するために、任意のイベントを埋め込んでください。  
 
 ```objc
 // ViewController.m
@@ -100,7 +101,7 @@ Growth Push の初期化を行います。初期化では、デバイス登録�
 ```
 
 # その他設定について  
-## プッシュ通知証明書の作成
+## プッシュ通知証明書の作成  
 Growth Push 管理画面にて、各 OS ごとに証明書の設定を行ってください。詳しくは、[iOS プッシュ通知証明書作成方法](http://growthhack.sirok.co.jp/growthpush/ios-p12/)をご参照ください。  
 ## 管理画面設定  
 ### プッシュ通知  

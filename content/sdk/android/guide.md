@@ -3,7 +3,7 @@ categories: 'sdk'
 date: 2016-09-28T12:00:00+09:00
 description: 'Growthbeat Android の導入方法について説明します'
 draft: false
-title: Growthbeat Android | 基本導入ガイド
+title: Growthbeat Android SDK | 基本導入ガイド
 ---
 Version 2.0.4  
 # SDK概要  
