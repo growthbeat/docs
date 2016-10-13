@@ -13,15 +13,15 @@ Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できま�
 iOS 8.0以上  
 # 1. プロジェクト設定
 ## CocoaPodsの導入方法  
-Podfile に下記を記述し `pod install` を実行してください  
-* ProjectNameは、アプリのプロジェクト名となります。  
+Podfile に下記を記述し `pod install` を実行してください。  
+CocoaPodsで、導入する場合は、自動的に依存が解決されます。  
+※ProjectNameは、アプリのプロジェクト名となります。  
 
 ```
 target 'ProjectName' do
     pod 'Growthbeat'
 end
 ```  
-CocoaPodsで、導入する場合は、自動的に依存が解決されます。  
 ## Frameworkをプロジェクトに導入する場合  
 <a href="/sdk">最新版iOS SDK ダウンロードページ</a>
 
@@ -40,6 +40,11 @@ Growthbeat.framework は、下記 Framework が必須となります
 - SystemConfiguration.framework
 - AdSupport.framework
 - CFNetwork.framework
+
+## プロジェクトのPush Notificationを有効にする  
+Capabilities にて、Push Notifications を ON にします。
+
+<img src="/img/sdk/iOS/capabilities-push-notification.png" width="90%" />
 
 # 2. 実装コード  
 ## 初期化  
@@ -102,10 +107,14 @@ Growth Push の初期化を行います。初期化では、デバイス登録�
 
 # その他設定について  
 ## プッシュ通知証明書の作成  
-Growth Push 管理画面にて、各 OS ごとに証明書の設定を行ってください。詳しくは、[iOS プッシュ通知証明書作成方法](http://growthhack.sirok.co.jp/growthpush/ios-p12/)をご参照ください。  
+開発ビルドと、リリースビルドの証明書を作成する必要があります。[iOS プッシュ通知証明書作成方法](http://growthhack.sirok.co.jp/growthpush/ios-p12/)の参考に、証明書の作成を行ってください。  
+作成した証明書を、Growth Push管理画面に登録します。  
 ## 管理画面設定  
-### プッシュ通知  
-Growth Push管理画面の証明書設定ページにて、各OSごとに証明書の設定を行ってください。  
+### プッシュ通知証明書の設定  
+Growth Push管理画面の証明書設定ページにて、証明書の設定を行ってください。  
+[プッシュ通知証明書の設定方法](/manual/growthpush/#プッシュ通知証明書の登録-更新)  
+### プッシュ通知の作成  
+[配信作成](/manual/growthpush/#配信作成)を参考に、プッシュ通知が届くかを確認します。  
 ### セグメントについて  
 セグメント配信を利用する際に、実装が必要となります。  
 [配信したいセグメント](/manual/growthpush/#セグメントの作成)に沿って、タグやイベントの紐付けを行ってください。  
