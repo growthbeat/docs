@@ -15,12 +15,18 @@ Growth Pushのみを利用する[導入方法](/sdk/ios/guide)をご覧くださ
 アプリに、Growth Pushの任意のイベントを送信します。アプリが任意のアクティビティが、呼び出されたときに、ポップアップメッセージを表示する実装を、例として紹介します。  
 
 ```objc
-[[GrowthPush sharedInstance] trackEvent:@"Launch" value:nil showMessage:^(void(^renderMessage)()){
-    renderMessage();
-} failure:^(NSString * detail) {
+// ViewController.m
+#import <Growthbeat/Growthbeat.h>
 
-}];
+@implementation ViewController
+
+- (void) viewDidLoad:() {
+    [[GrowthPush sharedInstance] trackEvent:@"OpenViewController"];
+}
+
+@end
 ```
+
 任意のイベントが呼び出されたときに表示するポップアップメッセージは、管理画面上で設定できます。管理画面の設定については、次に説明します。  
 
 ## 管理画面設定方法  
@@ -90,16 +96,16 @@ iOS9以上の場合は、UniversalLinksの設定が必須となります。iOS9�
 ### プロジェクトのAssociated Domainsを有効にする  
 Apple Developers Member Center にアクセスし “Certificate, Identifiers & Profiles” を選択します。その後"Identifers"をクリックします。  
 
-<img src="/img/link/guide-universal-01.png" alt="guide-universal-01" title="guide-universal-01" width="70%"/>
+<img src="/img/link/guide-universal-01.png" alt="guide-universal-01" title="guide-universal-01" width="100%"/>
 
 <img src="/img/link/guide-universal-02.png" alt="guide-universal-02" title="guide-universal-02" width="30%"/>
 
 Identiferを登録済みの時は"Edit"から編集を、未登録のときは"+"ボタンから新たに登録をします。
-<img src="/img/link/guide-universal-03.png" alt="guide-universal-03" title="guide-universal-03" width="70%"/>
+<img src="/img/link/guide-universal-03.png" alt="guide-universal-03" title="guide-universal-03" width="100%"/>
 
 App Servicesの欄で、Associated Domainsにチェックをてください。  
 
-<img src="/img/link/guide-universal-04.png" alt="guide-universal-04" title="guide-universal-04" width="70%"/>
+<img src="/img/link/guide-universal-04.png" alt="guide-universal-04" title="guide-universal-04" width="100%"/>
 
 Saveボタンを押し、保存してください。  
 Apple Developers Member Center での設定は以上です。  
@@ -115,17 +121,17 @@ URL Schemesにはスキームを、IdentifierにはBundle Identifierなどアプ
 <img src="/img/link/link-guide-scheme.png" alt="link-guide-scheme" title="link-guide-scheme" width="100%"/>
 
 #### Universal Links用の設定 (iOS9.x以上)  
-先ほどONにしたAssociated Domainsを使ってGrowthLinkのドメインを登録します。  
+先ほどONにしたAssociated Domainsを使ってGrowth Linkのドメインを登録します。  
 登録の前に、先ほど登録したApp Identifierと同じTeamが選択されていることを確認してください。TeamはGeneralタブにあるIdentityセクションから選択できます。  
 CapabilitiesタブのAssociated Domainsをクリックすると展開されドメインの編集ができます。  
-ここで、GrowthLinkのドメインとなるgbt.ioを登録します。＋ボタンをクリックし、"applinks:gbt.io"を追加してください。“applinks:”というのはprefixで登録ドメインの前につける必要があります。  
+ここで、Growth Linkのドメインとなるgbt.ioを登録します。＋ボタンをクリックし、"applinks:gbt.io"を追加してください。“applinks:”というのはprefixで登録ドメインの前につける必要があります。  
 
-<img src="/img/link/guide-universal-05.png" alt="guide-universal-05" title="guide-universal-05" width="70%"/>
+<img src="/img/link/guide-universal-05.png" alt="guide-universal-05" title="guide-universal-05" width="100%"/>
 
 プロジェクトブラウザ上でentitlementsファイルが生成されていることを確認してください。  
 **Xcode7上で、なんらかの原因でentitlementsファイルが生成されないことが報告されています。**
 
-<img src="/img/link/guide-universal-06.png" alt="guide-universal-06" title="guide-universal-06" width="70%"/>
+<img src="/img/link/guide-universal-06.png" alt="guide-universal-06" title="guide-universal-06" width="100%"/>
 
 また、entitlementsファイルがビルドに含まれている必要があります。含まれない場合はentitlementsファイルをクリックし、Targetにチェックが入っているか確認してください。  
 ## Growth Link管理画面上での設定  
@@ -138,7 +144,7 @@ CapabilitiesタブのAssociated Domainsをクリックすると展開されド�
 ## Growth Link設定備考  
 ### 検証の際の注意点  
 * 検証の際はアプリを一度アンインストールし、インストールしなおしてください。この手順を踏まない場合古い設定のままになります。
-* GrowthLinkの仕様上、Universal  Links用の設定については10分ごとに反映されます。検証をする際は設定を保存後10分以上経過した後に行ってください。
+* Growth Linkの仕様上、Universal  Links用の設定については10分ごとに反映されます。検証をする際は設定を保存後10分以上経過した後に行ってください。
 
 ### ランディングページを挟む場合の注意点  
 [【UniversalLinks】ランディングページにリンクを埋め込む際の注意点](http://faq.growthbeat.com/article/114-universallink)の記事を参考にしてください。  

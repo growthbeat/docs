@@ -83,7 +83,7 @@ Growth Push の初期化を行います。初期化では、デバイス登録�
 @implementation ViewController
 
 - (void) viewDidLoad:() {
-    [[GrowthPush sharedInstance] setTag:@"TagName" value:@"TagValue"];
+    [[GrowthPush sharedInstance] setTag:@"Development" value:@"true"];
 }
 
 @end
@@ -99,7 +99,7 @@ Growth Push の初期化を行います。初期化では、デバイス登録�
 @implementation ViewController
 
 - (void) viewDidLoad:() {
-    [[GrowthPush sharedInstance] trackEvent:@"EventName"];
+    [[GrowthPush sharedInstance] trackEvent:@"Launch"];
 }
 
 @end

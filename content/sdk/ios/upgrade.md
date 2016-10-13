@@ -1,7 +1,7 @@
 ---
 categories: 'sdk'
 date: 2016-09-28T12:00:00+09:00
-description: 'Growthbeat SDK for Android移行方法についてご紹介します'
+description: 'Growthbeat SDK for iOS 新バージョンアップデート方法についてご紹介します'
 draft: false
 title: Growthbeat iOS SDK | 新バージョン移行方法
 ---
@@ -38,7 +38,7 @@ Growth Push SDKに存在したEasyGrowthPushクラスは、Growthbeat SDKでは�
 
 - GrowthPush SDK  
 
-* EasyGrowthPushクラスをご利用の場合
+**EasyGrowthPushクラスをご利用の場合**
 
 ```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary* )launchOptions {
@@ -46,27 +46,35 @@ Growth Push SDKに存在したEasyGrowthPushクラスは、Growthbeat SDKでは�
 }
 ```
 
-* GrowthPushクラスをご利用の場合
+**GrowthPushクラスをご利用の場合**
 
 ```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary* )launchOptions {
-  [GrowthPush setApplicationId:kYourApplicationId secret:@"YOU_APP_SECRET" environment:kGrowthPushEnvironment debug:YES];
-  [GrowthPush requestDeviceToken];
-  [GrowthPush setDeviceTags];
+	[GrowthPush setApplicationId:kYourApplicationId secret:@"YOU_APP_SECRET" environment:kGrowthPushEnvironment debug:YES];
+	[GrowthPush requestDeviceToken];
+	[GrowthPush setDeviceTags];
+
+	[GrowthPush setTag:@"development" value@"true"];
+	[GrowthPush trackEvent:@"Launch"];
+
+	// バッチの削除
+	[GrowthPush clearBadge];
 }
 ```  
 
-- Growthbeat SDK
+- Growthbeat 2.x SDK
 
 ```objc
 - (BOOL)application:(UIApplication* )application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	// Growthbeat SDKの初期化
 	[[GrowthPush sharedInstance] initializeWithApplicationId:@"YOUR_APPLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID" environment:kGrowthPushEnvironment];
 	// デバイストークンを明示的に要求
 	[[GrowthPush sharedInstance] requestDeviceToken];
 
-	// deviceTagの取得
-	[[GrowthPush sharedInstance] setDeviceTags];
+	[[GrowthPush sharedInstance] setTag:@"development" value@"true"];
+	[[GrowthPush sharedInstance] trackEvent:@"Launch"];
+
+	// バッチの削除
+	[[GrowthPush sharedInstance] clearBadge];
 }
 
 - (void) application:(UIApplication* )application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
@@ -74,43 +82,7 @@ Growth Push SDKに存在したEasyGrowthPushクラスは、Growthbeat SDKでは�
 	[[GrowthPush sharedInstance] setDeviceToken:deviceToken];
 }
 ```  
-### アプリ起動時
 
-- Growthbeat SDK
-
-```objc
-- (void) applicationDidBecomeActive:(UIApplication* )application {
-	// バッチの削除
-	[[GrowthPush sharedInstance] clearBadge];
-
-	// Launchイベントの取得
-	[[GrowthPush sharedInstance] trackEvent:@"Launch"];
-}
-```
-
-### タグ・イベントの取得
-
-- GrowthPush SDK
-
-```objc
-// タグの取得
-[GrowthPush setTag:@"TAG_NAME"];
-[GrowthPush setTag:@"TAG_NAME" value:@"TAG_VALUE"];
-// イベントの取得
-[GrowthPush trackEvent:@"EVENT_NAME"];
-[GrowthPush trackEvent:@"EVENT_NAME" value:@"EVENT_VALUE"];
-```
-
-- Growthbeat SDK
-
-```objc
-// タグの取得
-[[GrowthPush sharedInstance] setTag:@"TAG_NAME"];
-[[GrowthPush sharedInstance] setTag:@"TAG_NAME" value:@"TAG_VALUE"];
-// イベントの取得
-[[GrowthPush sharedInstance] trackEvent:@"EVENT_NAME"];
-[[GrowthPush sharedInstance] trackEvent:@"EVENT_NAME" value:@"EVENT_VALUE"];
-```  
 Growth Push SDKからGrowthbeat SDK 2.xへの乗り換え実装は以上となります。  
 # Growthbeat SDK 1.xからのアップグレード  
 ## 機能削除  
@@ -162,11 +134,11 @@ Growth Push SDKからGrowthbeat SDK 2.xへの乗り換え実装は以上とな�
 }
 
 - (void) applicationDidBecomeActive:(UIApplication *)application {
-
+	// startは不要となります。
 }
 
 - (void) applicationWillResignActive:(UIApplication *)application {
-
+	// stopは不要となります。
 }
 ```  
 # 移行確認方法
