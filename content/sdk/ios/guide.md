@@ -41,12 +41,13 @@ Growthbeat.framework は、下記 Framework が必須となります
 - AdSupport.framework
 - CFNetwork.framework
 
-## プロジェクトのPush Notificationを有効にする  
-Capabilities にて、Push Notifications を ON にします。
+# 2. プロジェクトのPush Notificationを有効にする  
+Capabilities にて、Push Notifications を ON にします。  
+この設定を行っていないと、iOS10, iOS8にて、デバイストークンの取得ができない可能性があります。(Xcode8.0にて確認)  
 
 <img src="/img/sdk/iOS/capabilities-push-notification.png" width="90%" />
 
-# 2. 実装コード  
+# 3. 実装コード  
 ## 初期化  
 Growth Push の初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。  
 
