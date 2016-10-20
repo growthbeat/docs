@@ -3,7 +3,7 @@ categories: 'sdk'
 date: 2016-09-28T12:00:00+09:00
 description: 'Growthbeat SDK for Android の導入方法について説明します'
 draft: false
-title: Growthbeat SDK | 全機能利用ガイド
+title: Growthbeat Android SDK | 全機能利用ガイド
 ---
 
 Version 2.0.4  
@@ -26,7 +26,7 @@ class MainActivity extends Activity {
     }
 }
 ```  
-任意のイベントが呼び出されたときに表示するポップアップメッセージは、管理画面上で設定できます。  管理画面の設定については、次に説明します。  
+任意のイベントが呼び出されたときに表示するポップアップメッセージは、管理画面上で設定できます。管理画面の設定については、次に説明します。  
 
 ## AndroidManifest.xml設定  
 AndroidManifest.xmlにGrowth Message表示用のActivityを追加します。
@@ -105,7 +105,7 @@ AndroidManifest.xmlにGrowth Message表示用のActivityを追加します。
 # 備考  
 ## 最新版のSDKへの乗り換え方法  
 Growth Push SDKからGrowthbeat 2.x SDK への乗り換えまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへの乗り換えをされる方は
-[SDKの移行ガイド](/sdk/android/migrate)をご参照ください。    
+[SDKの移行ガイド](/sdk/android/upgrade)をご参照ください。    
 ## サンプルについて  
 実装サンプルは、[Githubレポジトリ](https://github.com/growthbeat/growthbeat-android)を参考にしてください。  
 # お問い合わせ  

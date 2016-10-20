@@ -1,9 +1,9 @@
 ---
 categories: 'sdk'
 date: 2016-09-28T12:00:00+09:00
-description: 'Growthbeat SDK for Android移行方法についてご紹介します'
+description: 'Growthbeat SDK for Android 新バージョンアップデート方法についてご紹介します'
 draft: false
-title: Growthbeat SDK | 新バージョン移行方法
+title: Growthbeat SDK | 新バージョンアップデート方法
 ---
 
 **Growth Push SDK及びGrowthbeat SDK 1.xのサポートは、2016年12月21日までとなっております。**  
@@ -170,7 +170,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 }
 
-protected void onDestroy() {
-    super.onDestroy();
+protected void onStop() {
+    super.onStop();
 }
 ```  
