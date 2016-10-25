@@ -8,7 +8,7 @@ title: Growthbeat Android SDK | 基本導入ガイド
 Version 2.0.4  
 # SDK概要  
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。  
-(※ Eclipseの導入は非推奨となっております。導入については、サポートまでご連絡ください。)  
+(※ Eclipseの導入は、動作保証外となっております。導入については、サポートまでご連絡ください。)  
 # 1. Gradleの設定  
 
 build.gradle(Module:app)に下記を追加してください。  
