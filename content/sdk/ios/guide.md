@@ -9,8 +9,9 @@ title: Growthbeat iOS SDK | 基本導入ガイド
 Version 2.0.4  
 # SDK概要  
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。Objective-Cでの導入方法について記載しております。  
-## 推奨環境  
-iOS 8.0以上  
+## 環境  
+最低動作保証環境: iOS 8.0以上  
+動作推奨環境：iOS 8.0以上  
 # 1. プロジェクト設定
 ## CocoaPodsの導入方法  
 Podfile に下記を記述し `pod install` を実行してください。  
