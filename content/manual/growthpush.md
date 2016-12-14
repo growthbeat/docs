@@ -1,6 +1,7 @@
 ---
 categories: 'manual'
-date: 2016-03-11T12:05:16+09:00
+publishdate: 2014-12-02T00:00:00+09:00
+date: 2016-09-28T00:00:00+09:00
 description: 'Growth Push'
 draft: false
 title: 'Growth Push'
@@ -149,6 +150,15 @@ Growth Pushの送信画面で「通知IDを追加」のオプションを設定�
 
 <img src="/img/push/push_report.png" alt="" title="" width="100%"/>
 
+## コピーして再利用
+
+配信一覧から下記キャプチャの赤枠内をクリックすると、選択したプッシュ通知の設定をコピーして、新しいプッシュ通知として作成します。  
+作成画面で、お好みの時間帯や他設定など編集することができます。
+
+<img src="/img/push/push_notification_copy.png" alt="" title="" width="100%"/>
+
+<img src="/img/push/push_notification_copy_2.png" alt="" title="" width="100%"/>
+
 ## CSVエクスポート
 指定した期間の配信データを一括でダウンロードすることができます。
 
@@ -159,13 +169,37 @@ Growth Pushの送信画面で「通知IDを追加」のオプションを設定�
 
 <img src="/img/push/push_excel_import.png" alt="" title="" width="100%"/>
 
+# プッシュ通知証明書  
+<img src="/img/push/push_certificate.jpg" alt="" title="" width="100%"/>
+## プッシュ通知証明書を作成する  
+証明書の追加・更新するには新しく証明書を作成する必要があります。  
+iOS、Androidの各証明書の作成方法については下記記事を確認ください。  
+【iOSのp12証明書のつくり方】  
+http://faq.growthbeat.com/article/178-ios-p12  
+
+【Android SDKで使うCloud Messaging サーバーキーの設定方法】  
+http://faq.growthbeat.com/article/23-gcm-api  
+## プッシュ通知証明書の登録・更新  
+### iOS証明書の設定方法  
+『p12証明書を選択』で作成した証明書を選択して頂き、『登録』を押せば追加・更新完了です。  
+※iOS証明書は開発・本番環境で異なりますので間違えないようご注意下さい。  
+<img src="/img/push/push_certificate_ios.jpg" alt="" title="" width="100%"/>
+### Android証明書の設定方法  
+取得したFCMのAPIキーを入力し、『登録』を押せば追加・更新完了です。  
+※Android証明書は開発・本番環境どちらでもご利用可能です。  
+<img src="/img/push/push_certificate_android.jpg" alt="" title="" width="100%"/>
+
+追加・更新が出来ない場合は証明書の設定を見直すか、下記トラブルシューティングをご参照下さい。  
+【証明書の登録エラーのトラブルシューティング】  
+http://faq.growthbeat.com/article/81-growthpush  
+
 # デバイス
 デバイスではデバイストークンの状況を確認することができます。デバイストークンのインポート機能もあり、CSVで一度に20万件まで送ることができます。端末のステータスは下記のように管理されており、実際に配信されるのは active の端末となります。
 
 * 不明(Unknown)：未検証状態
 * 検証中(Validating)：検証処理中
 * アクティブ(Active)：検証済み
-* 無効(Inactive)：正しくないデバイストークン
+* 不正(Invalid)：正しくないデバイストークン
 * 無効(Inactive)：プッシュ通知送信後、アプリをアンインストールもしくはプッシュ通知をオフにしているしていると分かったデバイス
 
 <img src="/img/push/push_device_list.png" alt="" title="" width="100%"/>
@@ -175,6 +209,13 @@ Growth Pushの送信画面で「通知IDを追加」のオプションを設定�
 * [デバイストークンが「invalid(不正)」になる](http://faq.growthbeat.com/article/101-invalid)
 * [（ステータス）active時にプッシュ送信すると、inactiveに変わる状況とは？](http://faq.growthbeat.com/article/76-activeinactive)
 * [Push通知が届かない場合のトラブルシューティング](http://faq.growthbeat.com/article/60-push)
+
+## デバイストークンコピー
+
+デバイストークンをクリップボードに貼り付けることができます。  
+下記スクリーンショット赤枠内のボタン画像をクリックすると、「デバイストークン」がクリップボードにコピーされます。
+
+<img src="/img/push/push_devicetoken_copy.png" alt="" title="" width="100%"/>
 
 # イベント
 Growth Pushに登録されているイベントを一覧で表示する画面です。一覧項目は以下の3つになっており、レポートボタンをクリックするとそれぞれのイベントを起こしたユーザーのログを確認することができます。詳細に関しましてはサポートページの[イベントとは](http://faq.growthbeat.com/article/17-article)をご参照ください。
@@ -187,7 +228,7 @@ Growth Pushに登録されているタグを一覧で表示する画面です。
 <img src="/img/push/push_tag_list.png" alt="" title="" width="100%"/>
 
 # セグメント
-作成したセグメント一覧の人数を見ることができます。更新ボタンを押すと、リアルタイムの人数が表示されます。セグメントの人数として表示される人数は概算となっており、配信されるのはこの人数のうち、**実際に配信が可能と判定されている端末のみ**となります。
+作成したセグメント一覧の人数を見ることができます。更新ボタンを押すと、リアルタイムの人数が表示されます。セグメントの人数として表示される人数は概算となっており、配信されるのはこの人数のうち、 **実際に配信が可能と判定されている端末のみ** となります。
 
 詳細に関しましてはサポートページの[セグメントとは](http://faq.growthbeat.com/article/18-article)をご参照ください。
 

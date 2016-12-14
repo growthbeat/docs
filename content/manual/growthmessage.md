@@ -1,5 +1,6 @@
 ---
 categories: 'manual'
+publishdate: 2015-05-01T00:00:00+09:00
 date: 2016-07-06T12:05:16+09:00
 description: 'Growth Message'
 draft: false
@@ -22,7 +23,7 @@ https://growthbeat.com/ より、会員登録を行うことができます。�
 <img src="/img/message/login.png" alt="login" title="login" width="100%"/>
 
 # 配信作成
-配信作成をするために、まずは対象となるアプリをメインメニューの【アプリ】から選択 してください。その後、サイドメニューから【配信作成】を選択します。 
+配信作成をするために、まずは対象となるアプリをメインメニューの【アプリ】から選択 してください。その後、サイドメニューから【配信作成】を選択します。
 <img src="/img/message/create.png" alt="create" title="create" width="100%"/>
 
 ## 配信対象

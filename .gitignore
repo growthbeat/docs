@@ -11,4 +11,4 @@ npm-debug.log
 
 public
 static/css/
-static/img/
+static/img/**

@@ -1,5 +1,6 @@
 ---
 categories: 'manual'
+publishdate: 2015-06-01T00:00:00+09:00
 date: 2016-01-15T12:56:00+09:00
 description: 'Growth Link'
 draft: false
