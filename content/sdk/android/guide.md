@@ -10,8 +10,8 @@ Version 2.0.4
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。  
 (※ Eclipseの導入は非推奨となっております。導入については、サポートまでご連絡ください。)  
 ## 動作環境  
-最低動作保証環境: Android 4.0.4以上
-動作推奨環境: Android 4.4以上
+最低動作保証環境: Android 4.0.4以上  
+動作推奨環境: Android 4.4以上  
 # 1. Gradleの設定  
 
 build.gradle(Module:app)に下記を追加してください。  
