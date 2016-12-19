@@ -112,14 +112,6 @@ AppDelegateクラス
 - (BOOL)enableNotification;
 ```
 
-## 基本タグの送信
-
-Device, OS, Language, Time Zone, Version, Buildが含まれます。
-
-```objc
-- (void)setDeviceTags;
-```
-
 ## イベントの送信
 
 ### イベントの送信

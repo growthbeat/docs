@@ -111,14 +111,6 @@ void requestDeviceToken(const std::string &senderId);
 |:--|:--|
 | senderId | Android の SenderId |
 
-## 基本タグの送信
-
-Device, OS, Language, Time Zone, Version, Buildが含まれます。
-
-```cs
-void setDeviceTags();
-```
-
 ## イベントの送信
 
 ### イベントの送信

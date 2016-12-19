@@ -139,14 +139,6 @@ public void SetDeviceToken (string deviceToken)
 public string GetDeviceToken ()
 ```
 
-## 基本タグの送信
-
-Device, OS, Language, Time Zone, Version, Buildが含まれます。
-
-```cs
-public void SetDeviceTags();
-```
-
 ## イベントの送信
 
 ### イベントの送信

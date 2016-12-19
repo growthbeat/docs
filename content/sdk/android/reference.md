@@ -80,12 +80,6 @@ public string registerGCM(Context context)
 |:--|:--|
 |context|applicationContext|
 
-## 基本タグの送信  
-Device, OS, Language, Time Zone, Version, Buildが含まれます。
-
-```java
-public void setDeviceTags();
-```  
 ## イベントの送信  
 ### イベントの送信  
 
