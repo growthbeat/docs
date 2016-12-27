@@ -90,6 +90,7 @@ Growth Push SDKからGrowthbeat SDK 2.xへの乗り換え実装は以上とな�
 - インターフェスの変更があります。
  - 次の実装変更点でご確認ください。
 - GrowthAnalyticsクラスがなくなりました。  
+ - Growth Analyticsに関する記述は全て削除してください。
  - 2.x以降は、GrowthPush#setTag, trackEventをご利用ください。
 - GrowthbeatCoreクラスが、Growthbeatクラスに統合されました。  
  - start, stop, initializeは削除されました。
