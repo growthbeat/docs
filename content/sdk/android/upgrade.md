@@ -117,7 +117,8 @@ Growthbeat SDKでは、 `com.growthpush.BroadcastReceiver`が廃止になりま�
 
 - インターフェスの変更があります。
  - 次の実装変更点でご確認ください。
-- GrowthAnalyticsクラスがなくなりました。  
+- GrowthAnalyticsクラスがなくなりました。
+ - Growth Analyticsに関する記述は全て削除してください。  
  - 2.x以降は、GrowthPush#setTag, trackEventをご利用ください。
 - GrowthbeatCoreクラスが、Growthbeatクラスに統合されました。  
  - start, stop, initializeは削除されました。
