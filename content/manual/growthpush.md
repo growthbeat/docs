@@ -1,7 +1,7 @@
 ---
 categories: 'manual'
 publishdate: 2014-12-02T00:00:00+09:00
-date: 2016-09-28T00:00:00+09:00
+date: 2017-01-04T00:00:00+09:00
 description: 'Growth Push'
 draft: false
 title: 'Growth Push'
@@ -31,15 +31,7 @@ https://growthbeat.com/ より、会員登録を行うことができます。�
 ## アプリの追加
 上記の操作を完了すると、管理画面が表示されます。この時アプリはDefault Appが選択された状態になっています。
 
-Growth Pushを適用したいアプリを追加するには、メインメニューの【アプリ】のプルダウンメニューから、
-【アプリ追加】を選択し、アプリケーション作成画面へ遷移します。適用したいアアプリの名前を入力し、作成
-ボタンをクリックして完了となります。
-
-<img src="/img/push/push_add_application.png" alt="" title="" width="100%"/>
-
-アプリの詳細情報に関しましてはGrowthbeat管理画面にて設定してください。設定方法は[Growthbeat管理画面操作方法](http://support.growthbeat.com/manual/growthbeat/#アプリ情報の確認)をご参照ください。
-
-<img src="/img/push/push_create_application.png" alt="" title="" width="100%"/>
+アプリの追加はGrowthbeat管理画面にて設定してください。[Growthbeat管理画面操作方法](http://support.growthbeat.com/manual/growthbeat/#アプリ一覧)をご参照ください。
 
 プッシュ通知を送信するためには、メインメニューから対象のアプリを選択する必要があります。
 
@@ -54,7 +46,6 @@ Growth Pushを適用したいアプリを追加するには、メインメニュ
 
 **セグメントの作成事例は下記を御覧ください。**
 
-* [【セグメント】Androidのバージョン指定のセグメント作成](http://faq.growthbeat.com/article/22-android)
 * [【よくあるセグメントの作成方法】性別（男性/女性）](http://faq.growthbeat.com/article/98-article)
 * [【よくあるセグメントの作成方法】課金経験あり](http://faq.growthbeat.com/article/94-article)
 * [【よくあるセグメントの作成方法】N日間起動していないユーザー](http://faq.growthbeat.com/article/90-n)
@@ -101,7 +92,7 @@ Growth Pushの送信画面で「通知IDを追加」のオプションを設定�
 * クライアントSDK側でどの通知が開かれたかを計測したい場合
 
 ## 秒間配信数
-秒間配信数は、配信速度は、「1秒間に何通を送信するか」の数字で設定していただくことが可能です。 たとえば、100を設定した場合、1秒あたり100通程度の送信となるように配信間隔を調整します。
+秒間配信数は、配信速度は、「1秒間に何通を送信するか」の数字で設定していただくことが可能です。 たとえば、100を設定した場合、1秒あたり100通程度の送信となるように配信間隔を調整します。詳細な仕様は [秒間配信数について](http://faq.growthbeat.com/article/69-article) をご参照ください。
 
 # 自動配信設定
 配信作成の設定に加えて自動配信設定の項目で、配信開始、配信終了、配信間隔を設定します。
