@@ -1,6 +1,6 @@
 ---
 categories: 'sdk'
-date: 2016-09-28T12:00:00+09:00
+date: 2017-01-06T12:00:00+09:00
 description: 'Growthbeat Android の導入方法について説明します'
 draft: false
 title: Growthbeat Android SDK | 基本導入ガイド
@@ -155,7 +155,7 @@ Growth Push管理画面の証明書設定ページにて、API Keyの設定を�
 [配信したいセグメント](/manual/growthpush/#セグメントの作成)に沿って、タグやイベントの紐付けを行ってください。  
 # 備考  
 ## 全機能を利用する方法  
-Growthbeatは、プッシュ通知以外に、ポップアップメッセージ機能、ディープリンク機能を用意しております。追加の実装を行うことで機能を利用することができます。  
+Growthbeatは、プッシュ通知以外に、ポップアップメッセージ機能を用意しております。追加の実装を行うことで機能を利用することができます。  
 詳しくは、[全機能導入ガイド](/sdk/android/all-in-one)をご覧ください。  
 ## 最新版のSDKへのアップグレード方法  
 Growth Push SDKからGrowthbeat 2.x SDK へまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへのアップグレードをされる方は

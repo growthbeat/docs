@@ -1,6 +1,6 @@
 ---
 categories: 'sdk'
-date: 2016-06-29T14:32:58+09:00
+date: 2017-01-06T14:32:58+09:00
 description: 'Growthbeat Android の API について説明します'
 draft: false
 title: Growthbeat Android API
@@ -158,6 +158,7 @@ public void setTag(String name, String value);
 |name|タグ名|
 |value|タグに持たせる値|
 
+<!--
 # Growth Link API  
 ## GrowthLinkインスタンスを取得  
 GrowthLinkインスタンスを取得します。  
@@ -182,7 +183,9 @@ public void initialize(Context context, String applicationId, String credentialI
 
 ```java
 GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
-```  
+```
+-->
+
 # AndroidManifest.xml  
 ## パーミッション設定  
 インターネット設定。通信をするために必要となります。  
@@ -214,6 +217,7 @@ Growth Pushダイアログプッシュ通知を表示するときに必要とな
 ```xml
 <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 ```  
+
 ## Growth Push設定  
 デバイストークン取得・更新やプッシュ通知を受け取る実装となります。YOUR_PACKAGE_NAMEは、アプリのPackageIDに変更してください。  
 
@@ -272,7 +276,9 @@ Growth Pushダイアログプッシュ通知を表示するときに必要とな
 <activity
     android:name="com.growthbeat.message.view.MessageActivity"
     android:theme="@android:style/Theme.Translucent" />
-```  
+```
+
+<!--
 ## Growth Link設定  
 インストール・起動時にデータを受け取るために必要になります。  
 
@@ -286,4 +292,6 @@ Growth Pushダイアログプッシュ通知を表示するときに必要とな
     </intent-filter>
 </receiver>
 ```  
+-->
+
 AndroidManifest.xmlのサンプルは、[こちら](https://github.com/growthbeat/growthbeat-android/blob/master/sample/src/main/AndroidManifest.xml)  

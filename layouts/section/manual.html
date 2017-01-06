@@ -28,20 +28,21 @@
 
 <section class="manual-card card-container">
   {{ range .Data.Pages.ByPublishDate }}
-    <a class="service" href="{{ .Permalink }}">
       {{ if in .Permalink "manual/growthbeat" }}
+        <a class="service" href="{{ .Permalink }}">
         <img class="img" src="{{ .Site.BaseURL }}img/icon_svg/icon_growthbeat.svg" alt="Growthbeat">
+        <h3 class="title">{{ .Title }}</h3>
       {{ end }}
       {{ if in .Permalink "growthpush" }}
+        <a class="service" href="{{ .Permalink }}">
         <img class="img" src="{{ .Site.BaseURL }}img/icon_svg/icon_growthpush.svg" alt="Growth Push">
+        <h3 class="title">{{ .Title }}</h3>
       {{ end }}
       {{ if in .Permalink "growthmessage" }}
+        <a class="service" href="{{ .Permalink }}">
         <img class="img" src="{{ .Site.BaseURL }}img/icon_svg/icon_growthmessage.svg" alt="Growth Message">
+        <h3 class="title">{{ .Title }}</h3>
       {{ end }}
-      {{ if in .Permalink "growthlink" }}
-        <img class="img" src="{{ .Site.BaseURL }}img/icon_svg/icon_growthlink.svg" alt="Growth Link">
-      {{ end }}
-      <h3 class="title">{{ .Title }}</h3>
     </a>
   {{ end }}
 </section>

@@ -1,6 +1,6 @@
 ---
 categories: 'sdk'
-date: 2015-11-19T14:32:58+09:00
+date: 2017-01-06T14:32:58+09:00
 description: 'Growthbeat Cocos2dx の導入方法について説明します'
 draft: false
 title: Growthbeat Cocos2dx Gudeliene

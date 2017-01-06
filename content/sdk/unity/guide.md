@@ -1,6 +1,6 @@
 ---
 categories: 'sdk'
-date: 2015-06-07T00:00:00+09:00
+date: 2017-01-06T00:00:00+09:00
 description: 'Growthbeat Unity の導入方法について説明します'
 draft: false
 title: Growthbeat Unity Guideliene
@@ -301,7 +301,7 @@ public class GrowthbeatComponent : MonoBehaviour
 }
 ```
 
-
+<!--
 # ディープリンク
 
 ## 初期化
@@ -351,7 +351,7 @@ AndroidManifestのアクティビティーに `<intent-filter>` を追加しま�
     android:name=".UnityPlayerActivity"
     android:label="@string/app_name" >
 
-    <!-- 略 -->
+    ~~ 略 ~~
 
     <intent-filter>
     	<data android:scheme="CUSTOM_URL_SCHEME" />
@@ -360,7 +360,7 @@ AndroidManifestのアクティビティーに `<intent-filter>` を追加しま�
         <action android:name="android.intent.action.VIEW" />
     </intent-filter>
 
-    <!-- 略 -->
+    ~~ 略 ~~
 
 </activity>
 ```
@@ -407,6 +407,7 @@ public class GrowthbeatComponent : MonoBehaviour
 
 }
 ```
+-->
 
 # Growthbeat SDK 1.xからの変更点
 
