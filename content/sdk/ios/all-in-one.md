@@ -1,6 +1,6 @@
 ---
 categories: 'sdk'
-date: 2015-09-27T23:47:00+09:00
+date: 2017-01-06T23:47:00+09:00
 description: 'Growthbeat iOS の導入方法について説明します'
 draft: false
 title: Growthbeat iOS SDK | 全機能利用ガイド
@@ -30,7 +30,9 @@ Growth Pushのみを利用する[導入方法](/sdk/ios/guide)をご覧くださ
 任意のイベントが呼び出されたときに表示するポップアップメッセージは、管理画面上で設定できます。管理画面の設定については、次に説明します。  
 
 ## 管理画面設定方法  
-メッセージの作成方法は[こちら](/manual/growthmessage/#配信作成)を参考にしてください。    
+メッセージの作成方法は[こちら](/manual/growthmessage/#配信作成)を参考にしてください。  
+
+<!--  
 # 3. Growth Linkを利用  
 ## 実装コード  
 ### 初期化  
@@ -148,6 +150,8 @@ CapabilitiesタブのAssociated Domainsをクリックすると展開されド�
 
 ### ランディングページを挟む場合の注意点  
 [【UniversalLinks】ランディングページにリンクを埋め込む際の注意点](http://faq.growthbeat.com/article/114-universallink)の記事を参考にしてください。  
+-->
+
 # 備考  
 ## 最新版のSDKへの乗り換え方法  
 Growth Push SDKからGrowthbeat 2.x SDK への乗り換えまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへの乗り換えをされる方は

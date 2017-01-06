@@ -202,6 +202,7 @@ iOSのみ利用できます。
 - (void)clearBadge;
 ```
 
+<!--
 # Growth Link API
 
 ## GrowthLinkインスタンスの取得
@@ -226,3 +227,4 @@ Growthbeatへデバイス登録・認証を行います。
 |:--|:--|
 |applicationId| アプリケーションID |
 |credentialId| クレデンシャルキー |
+-->

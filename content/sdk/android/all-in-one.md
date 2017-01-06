@@ -1,6 +1,6 @@
 ---
 categories: 'sdk'
-date: 2016-09-28T12:00:00+09:00
+date: 2017-01-06T12:00:00+09:00
 description: 'Growthbeat SDK for Android の導入方法について説明します'
 draft: false
 title: Growthbeat Android SDK | 全機能利用ガイド
@@ -41,6 +41,8 @@ AndroidManifest.xmlにGrowth Message表示用のActivityを追加します。
 ```  
 ## 管理画面設定方法
 メッセージの作成方法は[こちら](/manual/growthmessage/#配信作成)を参考にしてください。  
+
+<!--
 # 3. GrowthLinkを利用  
 ## 実装コード  
 ### 初期化  
@@ -87,11 +89,11 @@ class MyApplication extends Application {
 }
 ```   
 ## AndroidManifest.xml設定  
-AndroidManifest.xmlにGrowth Message表示用のActivityを追加します。
+AndroidManifest.xmlにGrowth Link用のActivityを追加します。
 
 ```xml
 <application>
-    <!-- ... -->
+    ~~ 略 ~~
     <receiver
         android:name="com.growthbeat.link.InstallReferrerReceiver"
         android:enabled="true"
@@ -101,7 +103,9 @@ AndroidManifest.xmlにGrowth Message表示用のActivityを追加します。
         </intent-filter>
     </receiver>
 </application>
-```   
+```
+-->
+
 # 備考  
 ## 最新版のSDKへの乗り換え方法  
 Growth Push SDKからGrowthbeat 2.x SDK への乗り換えまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへの乗り換えをされる方は

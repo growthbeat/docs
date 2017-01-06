@@ -1,6 +1,6 @@
 ---
 categories: 'sdk'
-date: 2015-11-16T14:32:58+09:00
+date: 2017-01-06T14:32:58+09:00
 description: 'Growthbeat Unity の API について説明します'
 draft: false
 title: Growthbeat Unity API
@@ -232,6 +232,7 @@ iOSのみ利用できます。
 public void ClearBadge ();
 ```
 
+<!--
 # Growth Link API
 
 ## Growth Link初期化
@@ -250,3 +251,4 @@ GrowthLink.GetInstance().Initialize (applicationId, credentialId);
 |:--|:--|
 |applicationId|アプリケーションID|
 |credentialId|クリデンシャルID|
+-->
