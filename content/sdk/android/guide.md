@@ -56,6 +56,8 @@ class MyActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         GrowthPush.getInstance().initialize(getApplicationContext(), "YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID", BuildConfig.DEBUG ? Environment.development : Environment.production);
+        
+        // 以下は、必ずinitialize後に呼び出してください
         GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID");
     }
 }
