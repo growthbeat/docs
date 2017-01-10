@@ -60,6 +60,8 @@ Growth Push の初期化を行います。初期化では、デバイス登録�
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary* )launchOptions {
     [[GrowthPush sharedInstance] initializeWithApplicationId:@"YOUR_APLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID" environment:kGrowthPushEnvironment];
+    
+    // 以下は、必ずinitializeWithApplicationId後に呼び出してください
     [[GrowthPush sharedInstance] requestDeviceToken];
 }
 

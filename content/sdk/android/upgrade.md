@@ -55,6 +55,8 @@ protected void onCreate(Bundle savedInstanceState) {
 	setContentView(R.layout.activity_main);
 	// GrowthPushの初期化
 	GrowthPush.getInstance().initialize(getApplicationContext(), "YOUR_APPLICATION_ID", "CREDENTIAL_ID", BuildConfig.DEBUG ? Environment.development : Environment.production);
+	
+	// 以下は、必ずinitialize後に呼び出してください
 	// Registration IDを明示的に要求
 	GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID");
 	// Launchイベントの取得
@@ -160,7 +162,9 @@ protected void onCreate(Bundle savedInstanceState) {
 
     //...
     GrowthPush.getInstance().initialize(getApplicationContext(), "YOUR_APPLICATION_ID", "CREDENTIAL_ID", BuildConfig.DEBUG ? Environment.development : Environment.production);
-	GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID");
+    
+    // 以下は、必ずinitialize後に呼び出してください
+    GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID");
     new Thread(new Runnable() {
         @Override
         public void run() {

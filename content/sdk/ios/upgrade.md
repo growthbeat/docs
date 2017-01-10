@@ -67,6 +67,8 @@ Growth Push SDKに存在したEasyGrowthPushクラスは、Growthbeat SDKでは�
 ```objc
 - (BOOL)application:(UIApplication* )application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[[GrowthPush sharedInstance] initializeWithApplicationId:@"YOUR_APPLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID" environment:kGrowthPushEnvironment];
+	
+	// 以下は、必ずinitializeWithApplicationId後に呼び出してください
 	// デバイストークンを明示的に要求
 	[[GrowthPush sharedInstance] requestDeviceToken];
 
@@ -126,6 +128,8 @@ Growth Push SDKからGrowthbeat SDK 2.xへの乗り換え実装は以上とな�
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     [[GrowthPush sharedInstance] initializeWithApplicationId:@"YOUR_APPLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID" environment:kGrowthPushEnvironment];
+    
+    // 以下は、必ずinitializeWithApplicationId後に呼び出してください
 	[[GrowthPush sharedInstance] requestDeviceToken];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         GBClient* client = [[Growthbeat sharedInstance] waitClient];
