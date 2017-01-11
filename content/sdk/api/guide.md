@@ -12,7 +12,7 @@ Growthbeat ではサーバー API を用意しております。Growthbeat プ�
 
 ## APIを使用する前に
 
-API を利用するには Growthbeat への会員登録が必要となります。API を使用するにはアカウントに紐付いている API キーの使用が必須となります。API キーの取得方法は [こちら](http://support.growthbeat.com/manual/growthbeat/#apiキーの確認) を参照してください。
+API を利用するには Growthbeat への会員登録が必要となります。API を使用するにはアカウントに紐付いている API キーの使用が必須となります。API キーの取得方法は [こちら](http://support.growthbeat.com/manual/growthbeat/#クレデンシャルキーの確認) を参照してください。
 
 # リクエスト
 
