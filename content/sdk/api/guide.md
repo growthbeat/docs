@@ -80,8 +80,8 @@ curl -X GET \
 
 # APIドキュメント一覧
 
-* ~~[V1 APIドキュメント](https://growthbeat.github.io/api/growthpush/v1/)~~ ※ こちらのAPIは 2016/12/21 廃止予定です
-* ~~[V2 APIドキュメント](https://growthbeat.github.io/api/growthpush/v2/)~~ ※ こちらのAPIは 2016/12/21 廃止予定です
+* ~~[V1 APIドキュメント](https://growthbeat.github.io/api/growthpush/v1/)~~ ※ こちらのAPIは 2016/12/21 に廃止いたしました。
+* ~~[V2 APIドキュメント](https://growthbeat.github.io/api/growthpush/v2/)~~ ※ こちらのAPIは 2016/12/21 に廃止いたしました。
 * [V3 APIドキュメント](https://growthbeat.github.io/api/growthpush/v3/)
 * [V4 APIドキュメント](https://growthbeat.github.io/api/growthpush/v4/)
 
