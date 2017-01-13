@@ -197,8 +197,8 @@ http://faq.growthbeat.com/article/81-growthpush
 
 **各ステータスに関するトラブルシューティングは下記FAQを御覧ください**
 
-* [デバイストークンが「invalid(不正)」になる](http://faq.growthbeat.com/article/101-invalid)
-* [（ステータス）active時にプッシュ送信すると、inactiveに変わる状況とは？](http://faq.growthbeat.com/article/76-activeinactive)
+* [端末ステータスが不正（Invalid）状態となる](http://faq.growthbeat.com/article/101-invalid)
+* [端末ステータスが無効（Inactive）状態となる](http://faq.growthbeat.com/article/76-activeinactive)
 * [Push通知が届かない場合のトラブルシューティング](http://faq.growthbeat.com/article/60-push)
 
 ## デバイストークンコピー
