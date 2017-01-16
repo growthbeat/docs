@@ -141,11 +141,11 @@ YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更して
 
 # その他設定について  
 ## SenderId、AP Keyの取得について  
-SenderIdは、requestRegistrationIdを実行するために必要となります。API Keyは、管理画面にて、プッシュ通知を送信するための証明書として必要になります。  
-[Android SenderId, API Key取得方法](http://growthbeat.helpscoutdocs.com/article/23-gcm-api)  
+SenderIdは、requestRegistrationIdを実行するために必要となります。APIキーは、管理画面にて、プッシュ通知を送信するための証明書として必要になります。  
+[Android SenderId, APIキー取得方法](http://growthbeat.helpscoutdocs.com/article/23-gcm-api)  
 ## 管理画面設定  
-### API Keyの登録  
-Growth Push管理画面の証明書設定ページにて、API Keyの設定を行ってください。  
+### APIキーの登録  
+Growth Push管理画面の証明書設定ページにて、APIキーの登録を行ってください。  
 ### プッシュ通知の作成  
 [配信作成](/manual/growthpush/#配信作成)を参考に、プッシュ通知が届くかを確認します。  
 ### セグメントについて  
