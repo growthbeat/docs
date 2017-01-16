@@ -38,7 +38,7 @@ Growthbeat SDK で利用するものは、 applicationId 、 credentialId とも
 Growthbeat SDK 乗り換え時に、これまで Growth Push で利用していたシークレットキーを設定しても、正しく動作しませんのでご注意くださいませ。  必ず、SDKキーをご利用ください。  
 ## 導入コード  
 ### 初期化
-Growth Push SDKに存在したEasyGrowthPushクラスは、Growthbeat SDKでは廃止となっており、 `didRegisterForRemoteNotificationsWithDeviceToken` のデリゲートで、デバイストークンをGrowth Pushへ送信する実装を行う必要がございます。  
+Growth Push SDK に存在した EasyGrowthPushクラス は、 Growthbeat SDK では廃止となっており、 `didRegisterForRemoteNotificationsWithDeviceToken` のデリゲートで、デバイストークンを Growth Push へ送信する実装を行う必要がございます。  
 
 - GrowthPush SDK  
 
@@ -89,14 +89,14 @@ Growth Push SDKに存在したEasyGrowthPushクラスは、Growthbeat SDKでは�
 }
 ```  
 
-Growth Push SDKからGrowthbeat SDK 2.xへの乗り換え実装は以上となります。  
+Growth Push SDK か らGrowthbeat SDK 2.x への乗り換え実装は以上となります。  
 # Growthbeat SDK 1.xからのアップグレード  
 ## 機能削除  
 
 - インターフェスの変更があります。
  - 次の実装変更点でご確認ください。
-- GrowthAnalyticsクラスがなくなりました。  
- - Growth Analyticsに関する記述は全て削除してください。
+- Growth Analytics クラスがなくなりました。  
+ - Growth Analytics に関する記述は全て削除してください。
  - 2.x以降は、GrowthPush#setTag, trackEventをご利用ください。
 - GrowthbeatCoreクラスが、Growthbeatクラスに統合されました。  
  - start, stop, initializeは削除されました。
@@ -151,5 +151,5 @@ Growth Push SDKからGrowthbeat SDK 2.xへの乗り換え実装は以上とな�
 }
 ```  
 # 移行確認方法
-Growth Pushへの管理画面で、該当の端末のステータスが `Active` になっていれば、正しくプッシュ通知が行えます。  
+Growth Push の管理画面で、該当の端末のステータスが `Active` になっていれば、正しくプッシュ通知が行えます。  
 移行対応は、以上となります。  
