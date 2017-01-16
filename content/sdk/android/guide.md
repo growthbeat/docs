@@ -30,13 +30,7 @@ Growthbeat SDKを利用するには、依存ライブラリが必要となりま
 - google-play-services-gcm
 - google-play-services-ads   
 
-**依存ライブラリの対応バージョン**  
-
-|ライブラリ名|バージョン|
-|---------|---------|
-|appcompat-v7 or android-support-v4|23.0.0以上|
-|google-play-services-gcm|8.3.0以上|
-|google-play-services-ads|8.3.0以上|
+依存ライブラリの対応バージョンは [Androidビルドに必要なライブラリ](http://faq.growthbeat.com/article/201-android) をご参照ください
 
 # 2. 実装コード
 ## Javaの実装  
