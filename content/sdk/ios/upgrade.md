@@ -16,22 +16,26 @@ title: Growthbeat iOS SDK | 新バージョン移行方法
 についてご紹介いたします。  
 # Growth Push SDKからのアップグレードについて  
 ## 概要  
-GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行されるため、[Growthbeat](https://growthbeat.com/)にアクセスして、ApplicationId、SDKキー（CredentialID）を確認します。   ApplicationIdについては、Growth　Pushの左メニュー、シークレットキーのgrowthbeatApplicationIdという項目の左の文字列をご利用ください。  
-SDKキーに関しては、Growthbeatマイページにてご確認ください。  
+Growth Push の認証から、Growthbeat の認証に移行されるため、新しい ApplicationId と SDKキー（クレデンシャルID）を取得する必要がございます。 
+
+ApplicationId は、Growth Push管理画面左メニュー「アプリ詳細」の 「Growthbeat アプリケーションID」 にて確認ができます。
+
+SDKキーは、Growthbeat管理画面左メニュー「 [アカウント](https://growthbeat.com/mypage/account)」の「クレデンシャルID > SDK」にて確認ができます。
+
 ### 注意点  
-これまでGrowth Pushでご利用いただいた、ApplicationIdは数値型、シークレットキーは文字列になっています。  
+これまで Growth Push でご利用いただいていた ApplicationId は数値型、シークレットキーは文字列型になっています。  
 
 |項目|型|
 |---|---|
 |applicationId|数値型|
 |secret|文字列型/32文字|
-Growthbeat SDKで利用するものは、applicationId、credentialIdともに文字列型になっています。  
+Growthbeat SDK で利用するものは、 applicationId 、 credentialId ともに文字列型になっています。  
 
 |項目|型|
 |---|---|
 |applicationId|文字列型/16文字|
 |credentailId|文字列型/32文字|
-Growthbeat SDK乗り換え時に、これまでGrowth Pushで利用していたシークレットキーを設定しても、正しく動作しませんのでご注意くださいませ。  必ず、SDKキーをご利用ください。  
+Growthbeat SDK 乗り換え時に、これまで Growth Push で利用していたシークレットキーを設定しても、正しく動作しませんのでご注意くださいませ。  必ず、SDKキーをご利用ください。  
 ## 導入コード  
 ### 初期化
 Growth Push SDKに存在したEasyGrowthPushクラスは、Growthbeat SDKでは廃止となっており、 `didRegisterForRemoteNotificationsWithDeviceToken` のデリゲートで、デバイストークンをGrowth Pushへ送信する実装を行う必要がございます。  
