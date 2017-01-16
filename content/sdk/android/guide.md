@@ -35,11 +35,13 @@ Growthbeat SDKを利用するには、依存ライブラリが必要となりま
 # 2. 実装コード
 ## Javaの実装  
 ### 初期化  
-GrowthPushの初期化を行います。初期化の中に、端末の基本情報の送信、広告IDの取得が行われます。  
-2行目は、デバイストークンの取得を行います。  
+GrowthPushの初期化を行います。初期化の中で、端末の基本情報の送信、広告IDの取得が行われます。
+requestRegistrationId で、デバイストークンの取得を行います。必ずinitialize後に呼び出してください。
 
-YOUR_APPLICATION_ID, YOUR_CREDENTIAL_IDは、Growth Push管理画面から確認することができます。  
-YOUR_SENDER_IDは、Firebase Consoleから取得する必要があります。  
+YOUR_APPLICATION_ID, YOUR_CREDENTIAL_IDは、Growth Push管理画面から確認することができます。
+YOUR_SENDER_IDは、Firebase Consoleから取得する必要があります。
+
+各種IDの取得方法は [Growthbeatで使用するID、キーまとめ](http://faq.growthbeat.com/article/130-growthbeat-id) をご参照ください。
 
 Growth Pushの管理画面の操作、Google API Consoleの操作については、後述します。
 
