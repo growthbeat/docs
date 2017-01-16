@@ -134,7 +134,7 @@ Growth Push SDK か らGrowthbeat SDK 2.x への乗り換え実装は以上と�
     [[GrowthPush sharedInstance] initializeWithApplicationId:@"YOUR_APPLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID" environment:kGrowthPushEnvironment];
     
     // 以下は、必ずinitializeWithApplicationId後に呼び出してください
-	[[GrowthPush sharedInstance] requestDeviceToken];
+    [[GrowthPush sharedInstance] requestDeviceToken];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         GBClient* client = [[Growthbeat sharedInstance] waitClient];
         NSLog(@"clientId is %@", client.id);
