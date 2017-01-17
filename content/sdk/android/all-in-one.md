@@ -10,9 +10,11 @@ Version 2.0.4
 # Growthbeat利用ガイド  
 # 1. Growth Pushを利用  
 Growth Pushのみを利用する[導入方法](/sdk/android/guide)をご覧ください。
-# 2. Growth Messageを利用  
+# 2. Growth Messageを利用 
+Growth Message を用いてポップアップを任意のタイミングで表示させるには、「[配信トリガー](http://support.growthbeat.com/manual/growthmessage/#配信トリガー)」 を設定します。「[配信トリガー](http://support.growthbeat.com/manual/growthmessage/#配信トリガー)」 は作成したカスタムイベントの中から選ぶ必要がございます。
+
 ## 実装コード  
-アプリに、Growth Pushの任意のイベントを送信します。アプリが任意のアクティビティが、呼び出されたときに、ポップアップメッセージを表示する実装を、例として紹介します。  
+配信トリガーとなるカスタムイベントを作成するには、ポップアップメッセージを表示させたい任意の場所に下記のようなイベントを送信するメソッドを記述してください。
 
 ```java
 class MainActivity extends Activity {
@@ -25,8 +27,7 @@ class MainActivity extends Activity {
         GrowthPush.getInstance().trackEvent("OpenActivity");
     }
 }
-```  
-任意のイベントが呼び出されたときに表示するポップアップメッセージは、管理画面上で設定できます。管理画面の設定については、次に説明します。  
+```
 
 ## AndroidManifest.xml設定  
 AndroidManifest.xmlにGrowth Message表示用のActivityを追加します。
@@ -40,7 +41,10 @@ AndroidManifest.xmlにGrowth Message表示用のActivityを追加します。
 </application>
 ```  
 ## 管理画面設定方法
-メッセージの作成方法は[こちら](/manual/growthmessage/#配信作成)を参考にしてください。  
+
+「[配信トリガー](http://support.growthbeat.com/manual/growthmessage/#配信トリガー)」 で先程実装したイベント（今回の場合は OpenActivity）を選択すると、指定のイベントが発火したタイミングでメッセージが表示されます。
+
+詳しいメッセージの作成方法は [配信作成](http://support.growthbeat.com/manual/growthmessage/#配信作成) を参照してください。
 
 <!--
 # 3. GrowthLinkを利用  
