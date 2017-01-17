@@ -11,8 +11,10 @@ Version 2.0.4
 # 1. Growth Pushを利用  
 Growth Pushのみを利用する[導入方法](/sdk/ios/guide)をご覧ください。
 # 2. Growth Messageを利用  
-## 実装コード  
-ポップアップメッセージを表示させたい場所で任意のイベントを送信します。
+Growth Message を用いてポップアップを任意のタイミングで表示させるには、「[配信トリガー](http://support.growthbeat.com/manual/growthmessage/#配信トリガー)」 を設定します。「[配信トリガー](http://support.growthbeat.com/manual/growthmessage/#配信トリガー)」 は作成したカスタムイベントの中から選ぶ必要がございます。
+
+## 実装コード
+配信トリガーとなるカスタムイベントを作成するには、ポップアップメッセージを表示させたい任意の場所に下記のようなイベントを送信するメソッドを記述してください。
 
 ```objc
 // ViewController.m
@@ -26,8 +28,6 @@ Growth Pushのみを利用する[導入方法](/sdk/ios/guide)をご覧くださ
 
 @end
 ```
-
-表示するポップアップメッセージは、管理画面上で設定ができます。
 
 ## 管理画面設定方法 
 「[配信トリガー](http://support.growthbeat.com/manual/growthmessage/#配信トリガー)」 で先程実装したイベント（今回の場合は OpenViewController）を選択すると、指定のイベントが発火したタイミングでメッセージが表示されます。
