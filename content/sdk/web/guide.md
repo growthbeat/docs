@@ -7,19 +7,25 @@ title: Growthbeat Web Gudeliene
 ---
 
 # SDK概要
+
 Web SDK は Push通知機能のみの対応となっております。
 
 Growth Push管理画面の証明書設定ページにて、Androidの証明書の設定を行ってください。
+
 - [Android SenderId、 APIキー取得方法](http://growthbeat.helpscoutdocs.com/article/23-gcm-api)
 
 また、導入の前に下記もご覧ください。
+
 - [Growth Push for Android Chromeの動作環境](http://faq.growthbeat.com/article/46-growth-push-for-android-chrome)
 
 # 1. manifest.json の設置
+
 manifest.json を公開ディレクトリに設置してください。
 
 ## manifest.json の例
+
 YOUR_SENDER_ID には、Firebas Cloud Messaging で取得した SenderId を指定します。 SenderId の取得方法は (Android SDKで使うCloud Messaging サーバーキーの設定方法)[http://faq.growthbeat.com/article/23-gcm-api] を参照してください。
+
 ```
 {
   "name": "APP_NAME",
@@ -37,17 +43,22 @@ YOUR_SENDER_ID には、Firebas Cloud Messaging で取得した SenderId を指�
 ```
 
 # 2. ServiceWorker の設置
+
 下記のファイルをサービスのドメイン直下に設置してください。
+
 * growthpush.min.js（本番用）または growthpush.js（開発用）
 * growthpush-sw.min.js（本番用）または growthpush-sw.js（開発用）
 
 # 3. linkタグの組み込み
+
 以下のlinkタグを `<head>` タグ内に組み込んでください。
+
 ```
 <link rel="manifest" href="./manifest.json">
 ```
 
 # 4. 初期化
+
 以下のhtmlスニペットを、`<body>` タグの内に組み込んでください。
 YOUR_APPLICATION_ID と YOUR_SECRET_KEY は Growth Push 管理画面左メニュー「アプリ詳細」内の「Growth Push SDKをお使いの方」 にて確認していただけます。
 
@@ -88,6 +99,7 @@ YOUR_APPLICATION_ID と YOUR_SECRET_KEY は Growth Push 管理画面左メニュ
 |clickEventName| 通知クリックのイベント。例: NotificationClick |
 
 # 5. RegistrationId の取得・送信
+
 下記コードで RegistrationId を Growth Push サーバーに送信します。送信に成功すると、ユーザーにPush通知の許可をリクエストします。既に許可または拒否済みの場合はリクエストされません。
 
 ```
@@ -107,11 +119,13 @@ GrowthPush.on('error', function() {
 ```
 
 # その他設定について
+
 ## SenderId、AP Keyの取得について
 SenderId は、RequestRegistrationId を実行するために必要となります。APIキーは、管理画面にて、プッシュ通知を送信するための証明書として必要になります。
 [Android SenderId, APIキー取得方法](http://growthbeat.helpscoutdocs.com/article/23-gcm-api)
 
 ## 管理画面設定
+
 ### APIキーの登録
 Growth Push管理画面の証明書設定ページにて、APIキーの登録を行ってください。  
 
