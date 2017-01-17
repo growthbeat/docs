@@ -182,3 +182,7 @@ protected void onStop() {
     super.onStop();
 }
 ```  
+
+# 移行確認方法
+Growth Push の管理画面で、該当の端末のステータスが `Active` になっていれば、正しくプッシュ通知が行えます。  
+移行対応は、以上となります。  
