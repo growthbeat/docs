@@ -24,7 +24,7 @@ manifest.json を公開ディレクトリに設置してください。
 
 ## manifest.json の例
 
-YOUR_SENDER_ID には、Firebas Cloud Messaging で取得した SenderId を指定します。 SenderId の取得方法は (Android SDKで使うCloud Messaging サーバーキーの設定方法)[http://faq.growthbeat.com/article/23-gcm-api] を参照してください。
+YOUR_SENDER_ID には、Firebas Cloud Messaging で取得した SenderId を指定します。SenderId の取得方法は [Android SDKで使うCloud Messaging サーバーキーの設定方法](http://faq.growthbeat.com/article/23-gcm-api) を参照してください。
 
 ```
 {
@@ -60,6 +60,7 @@ YOUR_SENDER_ID には、Firebas Cloud Messaging で取得した SenderId を指�
 # 4. 初期化
 
 以下のhtmlスニペットを、`<body>` タグの内に組み込んでください。
+
 YOUR_APPLICATION_ID と YOUR_SECRET_KEY は Growth Push 管理画面左メニュー「アプリ詳細」内の「Growth Push SDKをお使いの方」 にて確認していただけます。
 
 ```
