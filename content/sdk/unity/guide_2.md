@@ -20,16 +20,14 @@ Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できま�
 メニューから、`Assets -> Import Package -> Custom Package...` を選択し、でダウンロードした UnityPackge をインポートしてください。
 
 # 2. iOS の初期設定
-ビルド後、Xcodeプロジェクトに Growthbeat.framework をインポートをする必要がございます。
+ビルド後、Xcodeプロジェクトに **Growthbeat.framework** をインポートをする必要がございます。
 
 <a href="/sdk">最新版iOS SDK ダウンロードページ</a>
 
-ダウンロードしたファイルを解凍し、そのフォルダの中の **Growthbeat.framework** をプロジェクトへ組み込みます。
-任意のXcodeプロジェクトを開き Growthbeat.framework をインポートしてください。  
-Growthbeat.framework のインポートの方法は以下の２つです  
+ダウンロードしたファイルを解凍し、任意のXcodeプロジェクトを開き Growthbeat.framework をインポートしてください。Growthbeat.framework のインポートの方法は以下の2つの方法があります。
 
-1. Xcodeプロジェクトに Growthbeat.framework をドラッグアンドドロップする
-2. Bulid Phases -> Link Binary With Libraries の + ボタンを押し、Add Other...からGrowthbeat.frameworkを選択する
+1. Xcodeプロジェクトに `Growthbeat.framework` をドラッグアンドドロップする
+2. `Bulid Phases -> Link Binary With Libraries` の `+` ボタンを押し、`Add Other...` から `Growthbeat.framework` を選択する
 
 Growthbeat.framework は、下記 Framework が必須となります
 
@@ -78,7 +76,7 @@ growthbeat-x.x.x.jar をインポートする必要がございます。
 
 <a href="/sdk">最新版Android SDK ダウンロードページ</a>
 
-上記ページより最新版SDKをダウンロードし、 release フォルダ内の growthbeat-x.x.x.jar (x.x.xはバージョン番号) を、 Assets/Plugins/Android/ にコピーしてください。
+上記ページより最新版SDKをダウンロードし、 release フォルダ内の growthbeat-x.x.x.jar (x.x.xはバージョン番号) を、 `Assets/Plugins/Android/` にコピーしてください。
 
 ## AndroidManifest.xml の設定
 Unityプロジェクト内で設定するか、Androidプロジェクトの吐き出し後に設定してください。
@@ -99,8 +97,8 @@ value.xml に直接書く場合
 ```
 
 ### 必要な記述  
-レジストレーションIDを取得するため、またプッシュ通知を受信するためにAndroidManifest.xmlに必要なクラスを記述します。
-YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。  
+レジストレーションIDを取得するため、またプッシュ通知を受信するために AndroidManifest.xml に必要なクラスを記述します。
+YOUR_PACKAGE_NAME は、実装するアプリのパッケージ名に変更してください。  
 
 ```
 <uses-permission android:name="android.permission.INTERNET" />
