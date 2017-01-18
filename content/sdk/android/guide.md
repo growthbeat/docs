@@ -8,7 +8,7 @@ title: Growthbeat Android SDK | 基本導入ガイド
 Version 2.0.4  
 # SDK概要  
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。  
-(※ Eclipseの導入は非推奨となっております。導入については、サポートまでご連絡ください。)  
+(※ Eclipseの導入は非推奨となっております。導入については、[Eclipse環境での導入手順について](http://faq.growthbeat.com/article/211-eclipse) をご参照ください。)  
 ## 動作環境  
 最低動作保証環境: Android 4.0.4以上  
 動作推奨環境: Android 4.4以上  
@@ -30,22 +30,18 @@ Growthbeat SDKを利用するには、依存ライブラリが必要となりま
 - google-play-services-gcm
 - google-play-services-ads   
 
-**依存ライブラリの対応バージョン**  
-
-|ライブラリ名|バージョン|
-|---------|---------|
-|appcompat-v7 or android-support-v4|23.0.0以上|
-|google-play-services-gcm|8.3.0以上|
-|google-play-services-ads|8.3.0以上|
+依存ライブラリの対応バージョンは [Androidビルドに必要なライブラリ](http://faq.growthbeat.com/article/201-android) をご参照ください
 
 # 2. 実装コード
 ## Javaの実装  
 ### 初期化  
-GrowthPushの初期化を行います。初期化の中に、端末の基本情報の送信、広告IDの取得が行われます。  
-2行目は、デバイストークンの取得を行います。  
+GrowthPushの初期化を行います。初期化の中で、端末の基本情報の送信、広告IDの取得が行われます。
+requestRegistrationId で、デバイストークンの取得を行います。必ずinitialize後に呼び出してください。
 
-YOUR_APPLICATION_ID, YOUR_CREDENTIAL_IDは、Growth Push管理画面から確認することができます。  
-YOUR_SENDER_IDは、Firebase Consoleから取得する必要があります。  
+YOUR_APPLICATION_ID, YOUR_CREDENTIAL_IDは、Growth Push管理画面から確認することができます。
+YOUR_SENDER_IDは、Firebase Consoleから取得する必要があります。
+
+各種IDの取得方法は [Growthbeatで使用するID、キーまとめ](http://faq.growthbeat.com/article/130-growthbeat-id) をご参照ください。
 
 Growth Pushの管理画面の操作、Google API Consoleの操作については、後述します。
 
@@ -145,11 +141,11 @@ YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更して
 
 # その他設定について  
 ## SenderId、AP Keyの取得について  
-SenderIdは、requestRegistrationIdを実行するために必要となります。API Keyは、管理画面にて、プッシュ通知を送信するための証明書として必要になります。  
-[Android SenderId, API Key取得方法](http://growthbeat.helpscoutdocs.com/article/23-gcm-api)  
+SenderIdは、requestRegistrationIdを実行するために必要となります。APIキーは、管理画面にて、プッシュ通知を送信するための証明書として必要になります。  
+[Android SenderId, APIキー取得方法](http://growthbeat.helpscoutdocs.com/article/23-gcm-api)  
 ## 管理画面設定  
-### API Keyの登録  
-Growth Push管理画面の証明書設定ページにて、API Keyの設定を行ってください。  
+### APIキーの登録  
+Growth Push管理画面の証明書設定ページにて、APIキーの登録を行ってください。  
 ### プッシュ通知の作成  
 [配信作成](/manual/growthpush/#配信作成)を参考に、プッシュ通知が届くかを確認します。  
 ### セグメントについて  

@@ -16,10 +16,13 @@ title: Growthbeat SDK | 新バージョンアップデート方法
 についてご紹介いたします。  
 # Growth Push SDKからのアップグレードについて  
 ## 概要  
-GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行されるため、[Growthbeat](https://growthbeat.com/)にアクセスして、ApplicationId、SDKキー（CredentialID）を確認します。   ApplicationIdについては、Growth　Pushの左メニュー、シークレットキーのgrowthbeatApplicationIdという項目の左の文字列をご利用ください。  
-SDKキーに関しては、Growthbeatマイページにてご確認ください。  
+Growth Push の認証から、Growthbeat の認証に移行されるため、新しい ApplicationId と SDKキー（クレデンシャルID）を取得する必要がございます。 
+
+ApplicationId は、Growth Push管理画面左メニュー「アプリ詳細」の 「Growthbeat アプリケーションID」 にて確認ができます。
+
+SDKキーは、Growthbeat管理画面左メニュー「[アカウント](https://growthbeat.com/mypage/account)」の「クレデンシャルID > SDK」にて確認ができます。 
 ### 注意点  
-これまでGrowth Pushでご利用いただいた、ApplicationIdは数値型、シークレットキーは文字列になっています。  
+これまでGrowth Pushでご利用いただいた、ApplicationIdは数値型、シークレットキーは文字列型になっています。  
 
 |項目|型|
 |---|---|
@@ -31,7 +34,7 @@ Growthbeat SDKで利用するものは、applicationId、credentialIdともに�
 |---|---|
 |applicationId|文字列型/16文字|
 |credentailId|文字列型/32文字|
-Growthbeat SDK乗り換え時に、これまでGrowth Pushで利用していたシークレットキーを設定しても、正しく動作しませんのでご注意くださいませ。  必ず、SDKキーをご利用ください。  
+Growthbeat SDK 乗り換え時に、これまで Growth Push で利用していたシークレットキーを設定しても、正しく動作しませんのでご注意くださいませ。 必ず、SDKキーをご利用ください。 
 ## 導入コード  
 
 - GrowthPush SDK  
@@ -118,12 +121,12 @@ Growthbeat SDKでは、 `com.growthpush.BroadcastReceiver`が廃止になりま�
 ## 機能削除  
 
 - インターフェスの変更があります。
- - 次の実装変更点でご確認ください。
-- GrowthAnalyticsクラスがなくなりました。
- - Growth Analyticsに関する記述は全て削除してください。  
- - 2.x以降は、GrowthPush#setTag, trackEventをご利用ください。
-- GrowthbeatCoreクラスが、Growthbeatクラスに統合されました。  
- - start, stop, initializeは削除されました。
+  - 次の実装変更点でご確認ください。
+- Growth Analytics クラスがなくなりました。
+  - Growth Analytics に関する記述は全て削除してください。
+  - 2.x以降は、GrowthPush#setTag, trackEventをご利用ください。
+- GrowthbeatCoreクラスが、Growthbeatクラスに統合されました。
+  - start, stop, initializeは削除されました。
 
 ## 導入コード
 
@@ -179,3 +182,7 @@ protected void onStop() {
     super.onStop();
 }
 ```  
+
+# 移行確認方法
+Growth Push の管理画面で、該当の端末のステータスが `Active` になっていれば、正しくプッシュ通知が行えます。  
+移行対応は、以上となります。  

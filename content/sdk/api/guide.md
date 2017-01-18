@@ -12,7 +12,7 @@ Growthbeat ではサーバー API を用意しております。Growthbeat プ�
 
 ## APIを使用する前に
 
-API を利用するには Growthbeat への会員登録が必要となります。API を使用するにはアカウントに紐付いている API キーの使用が必須となります。API キーの取得方法は [こちら](http://support.growthbeat.com/manual/growthbeat/#apiキーの確認) を参照してください。
+API を利用するには Growthbeat への会員登録が必要となります。API を使用するにはアカウントに紐付いている API キーの使用が必須となります。API キーの取得方法は [こちら](http://support.growthbeat.com/manual/growthbeat/#クレデンシャルキーの確認) を参照してください。
 
 # リクエスト
 
@@ -26,7 +26,7 @@ APIとの全ての通信にはHTTPSプロトコルを利用します。
 
 # 利用制限
 
-API を使用すると API ごとにリクエスト数が加算されます。ご契約のリクエスト数、現在のリクエスト数に応じて使用する API を考慮してください。月のAPIの上限を超えますと APIに てデータが取得できなくなりますのでご了承ください。
+API を使用すると API ごとにリクエスト数が加算されます。ご契約のリクエスト数、現在のリクエスト数に応じて使用する API を考慮してください。月のAPIの上限を超えますと APIに てデータが取得できなくなりますのでご了承ください。現在の使用リクエスト数は [こちら](https://growthbeat.com/mypage/request) を参照してください。
 
 # データ形式
 
@@ -80,8 +80,8 @@ curl -X GET \
 
 # APIドキュメント一覧
 
-* ~~[V1 APIドキュメント](https://growthbeat.github.io/api/growthpush/v1/)~~ ※ こちらのAPIは 2016/12/21 廃止予定です
-* ~~[V2 APIドキュメント](https://growthbeat.github.io/api/growthpush/v2/)~~ ※ こちらのAPIは 2016/12/21 廃止予定です
+* ~~[V1 APIドキュメント](https://growthbeat.github.io/api/growthpush/v1/)~~ ※ こちらのAPIは 2016/12/21 に廃止いたしました。
+* ~~[V2 APIドキュメント](https://growthbeat.github.io/api/growthpush/v2/)~~ ※ こちらのAPIは 2016/12/21 に廃止いたしました。
 * [V3 APIドキュメント](https://growthbeat.github.io/api/growthpush/v3/)
 * [V4 APIドキュメント](https://growthbeat.github.io/api/growthpush/v4/)
 
