@@ -187,7 +187,7 @@ SenderIdは、requestRegistrationId を実行するために必要となりま�
 ### デバイストークンの確認
 下記コードでデバイストークンが正常に取得できているか確認することができます。
 ```c#
-// 必ず initialize 後に呼び出してください
+// 必ず RequestDeviceToken 後に呼び出してください
 string devicetoken = GrowthPush.GetInstance().GetDeviceToken();
 Log.Debug(devicetoken);
 ```
