@@ -145,7 +145,7 @@ YOUR_APPLICATION_ID, YOUR_CREDENTIAL_IDは、Growth Push管理画面から確認
 void Awake ()
 {
   GrowthPush.GetInstance().Initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID", Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
-  // Android のデバイストークン取得（必ずinitialize後に呼び出してください）
+  // Android のデバイストークン取得（必ず initialize 後に呼び出してください）
   GrowthPush.GetInstance ().RequestDeviceToken ("Y0UR_SENDER_ID");
 } 
 
@@ -187,6 +187,7 @@ SenderIdは、requestRegistrationId を実行するために必要となりま�
 ### デバイストークンの確認
 下記コードでデバイストークンが正常に取得できているか確認することができます。
 ```c#
+// 必ず initialize 後に呼び出してください
 string devicetoken = GrowthPush.GetInstance().GetDeviceToken();
 Log.Debug(devicetoken);
 ```
