@@ -6,30 +6,26 @@ draft: false
 title: Growthbeat Unity SDK | 基本導入ガイド
 ---
 Version 2.0.4  
-# SDK概要
+# SDK概要  
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。  
 
-## 動作環境   
-動作推奨環境: Unity 5以上
+## 動作環境
+動作推奨環境: Unity 5以上  
 ※ Unityプラットフォームがサポートしていないバージョンについては、本SDKもサポート対象外となります。
 
-# 1. プロジェクト設定
-<a href="/sdk">最新版Unity SDK ダウンロードページ</a>
-
-ダウンロードしたファイルを解凍し、そのフォルダの中の **growthbeat.unitypackage** をプロジェクトへ組み込みます。
+# 1. プロジェクト設定  
+<a href="/sdk">最新版Unity SDK ダウンロードページ</a>  
+ダウンロードしたファイルを解凍し、そのフォルダの中の **growthbeat.unitypackage** をプロジェクトへ組み込みます。  
 メニューから、`Assets -> Import Package -> Custom Package...` を選択し、でダウンロードした UnityPackge をインポートしてください。
 
 # 2. iOS の初期設定
-ビルド後、Xcodeプロジェクトに **Growthbeat.framework** をインポートをする必要がございます。
-
-<a href="/sdk">最新版iOS SDK ダウンロードページ</a>
-
-ダウンロードしたファイルを解凍し、任意のXcodeプロジェクトを開き Growthbeat.framework をインポートしてください。Growthbeat.framework のインポートの方法は以下の2つの方法があります。
-
-1. Xcodeプロジェクトに `Growthbeat.framework` をドラッグアンドドロップする
+ビルド後、Xcodeプロジェクトに **Growthbeat.framework** をインポートをする必要がございます。  
+<a href="/sdk">最新版iOS SDK ダウンロードページ</a>  
+ダウンロードしたファイルを解凍し、任意のXcodeプロジェクトを開き Growthbeat.framework をインポートしてください。Growthbeat.framework のインポートの方法は以下の2つの方法があります。  
+1. Xcodeプロジェクトに `Growthbeat.framework` をドラッグアンドドロップする  
 2. `Bulid Phases -> Link Binary With Libraries` の `+` ボタンを押し、`Add Other...` から `Growthbeat.framework` を選択する
 
-Growthbeat.framework は、下記 Framework が必須となります
+Growthbeat.framework は、下記 Framework が必須となります。
 
 - Foundation.framework
 - UIKit.framework
@@ -39,19 +35,17 @@ Growthbeat.framework は、下記 Framework が必須となります
 - CFNetwork.framework
 
 # 3. Android の初期設定
-
-Growthbeat SDKを利用するには、依存ライブラリが必要となります。  
+Growthbeat SDKを利用するには、依存ライブラリが必要となります。    
 
 - appcompat-v7もしくはandroid-support-v4
 - google-play-services-gcm
 - google-play-services-ads   
 
-依存ライブラリの対応バージョンは [Androidビルドに必要なライブラリ](http://faq.growthbeat.com/article/201-android) をご参照ください
+依存ライブラリの対応バージョンは [Androidビルドに必要なライブラリ](http://faq.growthbeat.com/article/201-android) をご参照ください。
 
 ## Google Androidプロジェクトに書き出す場合（推奨
 
-Unity から Google Android プロジェクト書き出して、Android Studio にインポートしてください。[Android Studioへのインポート方法](http://docs.unity3d.com/ja/current/Manual/android-BuildProcess.html) を参考にしてください。
-
+Unity から Google Android プロジェクト書き出して、Android Studio にインポートしてください。[Android Studioへのインポート方法](http://docs.unity3d.com/ja/current/Manual/android-BuildProcess.html) を参考にしてください。  
 インポート後、build.gradle(Module:app)に下記を追加してください。  
 
 ```sh
@@ -72,10 +66,8 @@ dependencies {
 ```
 
 ## Google Androidプロジェクトに書き出さない場合
-growthbeat-x.x.x.jar をインポートする必要がございます。
-
-<a href="/sdk">最新版Android SDK ダウンロードページ</a>
-
+growthbeat-x.x.x.jar をインポートする必要がございます。  
+<a href="/sdk">最新版Android SDK ダウンロードページ</a>  
 上記ページより最新版SDKをダウンロードし、 release フォルダ内の growthbeat-x.x.x.jar (x.x.xはバージョン番号) を、 `Assets/Plugins/Android/` にコピーしてください。
 
 ## AndroidManifest.xml の設定
@@ -87,9 +79,8 @@ Unityプロジェクト内で設定するか、Androidプロジェクトの吐�
     android:value="@integer/google_play_services_version" />
 ```
 
-Google Androidプロジェクトに書き出さない場合、 `@integer/google_play_services_version` には、直接バージョンを記入するか、 `Assets/Plugin/Android/value.xml` を作成してバージョン番号を記入してください。
-
-value.xml に直接書く場合
+Google Androidプロジェクトに書き出さない場合、 `@integer/google_play_services_version` には、直接バージョンを記入するか、 `Assets/Plugin/Android/value.xml` を作成してバージョン番号を記入してください。  
+value.xml に直接書く場合は下記の実装をしてください。  
 ```
  <resources>
      <integer name="google_play_services_version">8487000</integer>
@@ -97,7 +88,7 @@ value.xml に直接書く場合
 ```
 
 ### 必要な記述  
-レジストレーションIDを取得するため、またプッシュ通知を受信するために AndroidManifest.xml に必要なクラスを記述します。
+レジストレーションIDを取得するため、またプッシュ通知を受信するために AndroidManifest.xml に必要なクラスを記述します。  
 YOUR_PACKAGE_NAME は、実装するアプリのパッケージ名に変更してください。  
 
 ```
@@ -145,13 +136,60 @@ YOUR_PACKAGE_NAME は、実装するアプリのパッケージ名に変更し�
 </application>
 ```
 
+# 4. 実装コード
+## 初期化 
+YOUR_APPLICATION_ID, YOUR_CREDENTIAL_IDは、Growth Push管理画面から確認することができます。YOUR_SENDER_IDは、Firebase Consoleから取得する必要があります。  
+各種IDの取得方法は [Growthbeatで使用するID、キーまとめ](http://faq.growthbeat.com/article/130-growthbeat-id) をご参照ください。
+
+```c#
+void Awake ()
+{
+  GrowthPush.GetInstance().Initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID", Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
+  // Android のデバイストークン取得（必ずinitialize後に呼び出してください）
+  GrowthPush.GetInstance ().RequestDeviceToken ("Y0UR_SENDER_ID");
+} 
+
+// iOS のデバイストークン取得
+// デバイストークンが NotificationServices から戻ってくるため Update にて SetDeviceToken を実装
+void Update ()
+{
+#if UNITY_IPHONE
+  if (!tokenSent) {
+    byte[] token = NotificationServices.deviceToken;
+    if (token != null) {
+      GrowthPush.GetInstance ().SetDeviceToken(System.BitConverter.ToString(token).Replace("-", "").ToLower());
+      tokenSent = true;
+    }
+  }
+#endif
+}
+```
+
+## タグ送信  
+セグメントを設定するために、任意のタグを埋め込んでください。
+```c#
+GrowthPush.GetInstance().SetTag("TagName", "TagValue");
+```
+
+## イベント送信  
+セグメントを設定するために、任意のイベントを埋め込んでください。
+```c#
+GrowthPush.GetInstance().TrackEvent("EventName");
+```
+
 # その他設定について
 ## iOS
+### 証明書について
 開発ビルドと、リリースビルドの証明書を作成する必要があります。[iOS プッシュ通知証明書作成方法](http://faq.growthbeat.com/article/178-ios-p12)を参考に、証明書の作成を行ってください。
-
 ## Android
+### 証明書について
 SenderIdは、requestRegistrationId を実行するために必要となります。APIキーは、管理画面にて、プッシュ通知を送信するための証明書として必要になります。[Android SenderId, APIキー取得方法](http://growthbeat.helpscoutdocs.com/article/23-gcm-api)  を参考に、証明書の作成を行ってください。
-
+### デバイストークンの確認
+下記コードでデバイストークンが正常に取得できているか確認することができます。
+```c#
+string devicetoken = GrowthPush.GetInstance().GetDeviceToken();
+Log.Debug(devicetoken);
+```
 ## 管理画面設定  
 ### プッシュ通知証明書の設定  
 Growth Push管理画面の証明書設定ページにて、証明書の設定を行ってください。  
