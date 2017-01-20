@@ -15,6 +15,22 @@ Growth Pushのみを利用する[導入方法](/sdk/unity/guide)をご覧くだ�
 Growth Message を用いてポップアップを任意のタイミングで表示させるには、「[配信トリガー](http://support.growthbeat.com/manual/growthmessage/#配信トリガー)」 を設定します。「[配信トリガー](http://support.growthbeat.com/manual/growthmessage/#配信トリガー)」 は作成したカスタムイベントの中から選ぶ必要がございます。
 
 ## 実装コード  
+メッセージを表示させるのに必要なハンドラを設定します。
+
+```c#
+void Awake ()
+{
+  GrowthPush.GetInstance().Initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID", Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
+
+  IntentHandler.GetInstance ().AddNoopIntentHandler ();
+  IntentHandler.GetInstance ().AddUrlIntentHandler ();
+  IntentHandler.GetInstance ().AddCustomIntentHandler ("GrowthbeatComponent", "HandleCustomIntent");
+
+  // Android のデバイストークン取得（必ず initialize 後に呼び出してください）
+  GrowthPush.GetInstance ().RequestDeviceToken ("Y0UR_SENDER_ID");
+} 
+```
+
 配信トリガーとなるカスタムイベントを作成するには、ポップアップメッセージを表示させたい任意の場所に下記のようなイベントを送信するメソッドを記述してください。
 
 ```c#

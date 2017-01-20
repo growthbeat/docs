@@ -93,8 +93,11 @@ public static GrowthPush GetInstance ()
 ```
 
 ## 初期化
+GrowthbeatおよびGrowth Pushの初期化を行います。初期化では以下の処理が行われます。
 
-Growth Pushの初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。
+- デバイス登録、認証
+- Growth Pushの初期化
+- 基本情報の送信
 
 ```cs
 public void Initialize (string applicationId, string credentialId, Environment environment)
@@ -168,10 +171,8 @@ public void TrackEvent (string name, string value)
 
 
 ### イベントと任意の値の送信
-
-メッセージ表示のコールバックを、ゲームオブジェクトの指定メソッドへ戻します。
-
-コールバックには、uuidの文字列が返ります。
+メッセージ表示のコールバックを、ゲームオブジェクトの指定メソッドへ戻します。  
+コールバックには、uuid の文字列が返ります。
 
 ```cs
 public void TrackEvent (string name, string value, string gameObjectName, string methodName)
@@ -186,7 +187,7 @@ public void TrackEvent (string name, string value, string gameObjectName, string
 |gameObjectName|コールバックするゲームオブジェクト|
 |methodName|コールバックするメソッド名|
 
-### メッセージ表示
+### ポップアップメッセージ表示
 
 ```cs
 public void RenderMessage (string uuid);
