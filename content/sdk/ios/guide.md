@@ -50,7 +50,7 @@ Capabilities にて、Push Notifications を ON にします。
 
 # 3. 実装コード  
 ## 初期化  
-Growth Push の初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。  
+Growth Push の初期化を行います。初期化では、デバイス登録、認証、およびデバイスの基本情報の送信が行われます。  
 
 ```objc
 // AppDelegate.m

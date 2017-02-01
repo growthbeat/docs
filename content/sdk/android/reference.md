@@ -76,6 +76,7 @@ public void requestRegistrationId(String senderId)
 public string registerGCM(Context context)
 ```  
 **パラメータ**
+
 |項目名|詳細|
 |:--|:--|
 |context|applicationContext|
