@@ -24,9 +24,9 @@ https://growthbeat.com/ より、会員登録を行うことができます。�
 
 <img src="/img/push/push_create_account.png" alt="" title="" width="100%"/>
 
-ログインをすると、Growthbeatのトップ画面にたどり着きます。そこでGrowth Pushを選択して下さい。
+ログインをすると、Growthbeatのインフォメーションページにたどり着きます。ヘッダーのメニューバーからGrowth Pushを選択して下さい。
 
-<img src="/img/push/push_select_servce.png" alt="" title="" width="100%"/>
+<img src="/img/beat/beat-information-page.png" alt="" title="" width="100%"/>
 
 ## アプリの追加
 上記の操作を完了すると、管理画面が表示されます。この時アプリはDefault Appが選択された状態になっています。
@@ -39,6 +39,11 @@ https://growthbeat.com/ より、会員登録を行うことができます。�
 
 ## セグメントの作成
 イベントとタグという2つのデータをもちいて、ユーザーをセグメント化し、配信をすることができます。
+
+配信対象にある【新規セグメント作成】をクリック頂けますと、新規セグメント作成の画面が表示されます。
+<img src="/img/push/push_segment_create_2.png" alt="" title="" width="100%"/>
+
+<img src="/img/push/push_segment_create.png" alt="" title="" width="100%"/>
 
 例えば、タグの場合はiOSユーザーとAndroidユーザーに別の配信を送る際に使用できます。イベントの場合は初回起動ユーザーや、課金ユーザーに配信を送る際に使用できます。NOTを追加すると、否定条件を入れることができます。
 
@@ -187,7 +192,7 @@ http://faq.growthbeat.com/article/23-gcm-api
 http://faq.growthbeat.com/article/81-growthpush  
 
 # デバイス
-デバイスではデバイストークンの状況を確認することができます。デバイストークンのインポート機能もあり、CSVで一度に20万件まで送ることができます。端末のステータスは下記のように管理されており、実際に配信されるのは active の端末となります。
+デバイスではデバイストークンの状況を確認することができます。デバイストークンのインポート機能もあり、CSVで一度に20万件まで送ることができます。プッシュ通知ステータスは下記のように管理されており、実際に配信されるのは「有効(active)」 のデバイスとなります。
 
 * 不明(Unknown)：未検証状態
 * 検証中(Validating)：検証処理中
@@ -199,8 +204,8 @@ http://faq.growthbeat.com/article/81-growthpush
 
 **各ステータスに関するトラブルシューティングは下記FAQを御覧ください**
 
-* [端末ステータスが不正（Invalid）状態となる](http://faq.growthbeat.com/article/101-invalid)
-* [端末ステータスが無効（Inactive）状態となる](http://faq.growthbeat.com/article/76-activeinactive)
+* [プッシュ通知ステータスが不正（Invalid）状態となる](http://faq.growthbeat.com/article/101-invalid)
+* [プッシュ通知ステータスが無効（Inactive）状態となる](http://faq.growthbeat.com/article/76-activeinactive)
 * [Push通知が届かない場合のトラブルシューティング](http://faq.growthbeat.com/article/60-push)
 
 ## デバイストークンコピー
@@ -221,7 +226,7 @@ Growth Pushに登録されているタグを一覧で表示する画面です。
 <img src="/img/push/push_tag_list.png" alt="" title="" width="100%"/>
 
 # セグメント
-作成したセグメント一覧の人数を見ることができます。更新ボタンを押すと、リアルタイムの人数が表示されます。セグメントの人数として表示される人数は概算となっており、配信されるのはこの人数のうち、 **実際に配信が可能と判定されている端末のみ** となります。
+作成したセグメント一覧の人数を見ることができます。更新ボタンを押すと、リアルタイムの人数が表示されます。セグメントの人数として表示される人数は概算となっており、配信されるのはこの人数のうち、 **実際に配信が可能と判定されているデバイスのみ**  となります。
 
 詳細に関しましてはサポートページの[セグメントとは](http://faq.growthbeat.com/article/18-article)をご参照ください。
 
