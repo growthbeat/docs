@@ -129,7 +129,7 @@ APIキーとSDKキーを確認することができます。
 
 **スタッフ招待**
 
-<img src="/img/beat/beat-staff-invitation.png" alt="beat-staff-invitation" title="beat-staff-invitation" width="50%"/>
+<img src="/img/beat/beat-staff-invitation.png" alt="beat-staff-invitation" title="beat-staff-invitation" width="100%"/>
 
 |項目|内容|
 |:---|:---|
