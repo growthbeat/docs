@@ -8,11 +8,9 @@ title: Growthbeat Web API
 
 Version 1.1.4
 
-# Growth Push API
-
-## 初期化
-
-Growth Pushの初期化を行います。
+# Growth Push API  
+## 初期化  
+Growth Pushの初期化を行います。  
 
 ```javascript
 init(params:Params):void
@@ -24,7 +22,7 @@ init(params:Params):void
 |:--|:--|
 |params|Paramsオブジェクト|
 
-Paramsオブジェクト
+Paramsオブジェクト  
 
 ```javascript
 interface Params {
@@ -48,17 +46,15 @@ interface Params {
 |icon| アイコン画像。通知のアイコンで表示されます。 |
 |clickEventName| 通知クリックのイベント。例: NotificationClick |
 
-## RegistrationIdの取得・送信
+## RegistrationIdの取得・送信  
 
 ```javascript
 register():void
-```
+```  
 
-## イベントインターフェイス
-
-### イベント購読
-
-イベントを購読します。
+## イベントインターフェイス  
+### イベント購読  
+イベントを購読します。  
 
 ```javascript
 on(event:string, fn:Function)
@@ -69,7 +65,7 @@ on(event:string, fn:Function)
 |event|イベント名|
 |fn|コールバック関数|
 
-イベントを一度だけ購読します。
+イベントを一度だけ購読します。  
 
 ```javascript
 once(event:string, fn:Function)
@@ -80,9 +76,8 @@ once(event:string, fn:Function)
 |event|イベント名|
 |fn|コールバック関数|
 
-### イベント購読をやめる
-
-イベント購読をやめます。
+### イベント購読をやめる  
+イベント購読をやめます。  
 
 ```javascript
 off(event:string, fn?:Function)
@@ -93,15 +88,14 @@ off(event:string, fn?:Function)
 |event|イベント名|
 |fn|コールバック関数|
 
-## Push許可状態の取得
-
-許可済みの場合は`true`、非対応または未許可の場合は`false`が返ります。
+## Push許可状態の取得  
+許可済みの場合は`true`、非対応または未許可の場合は`false`が返ります。  
 
 ```javascript
 permitted():boolean
 ```
 
-## イベントの送信（Push専用）
+## イベントの送信  
 
 ```javascript
 track(name:string)
@@ -112,7 +106,7 @@ track(name:string)
 |:--|:--|
 |name|イベント名|
 
-## タグの送信（Push専用）
+## タグの送信  
 
 ```javascript
 tag(name:string, value?:string)
