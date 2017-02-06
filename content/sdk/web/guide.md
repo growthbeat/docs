@@ -120,6 +120,8 @@ GrowthPush.track("Login");
 
 ```
 
+# リファレンス  
+実装メソッドについては、[Growth Push javascriptのAPIリファレンス](../reference)をご確認ください。  
 # その他設定について  
 ## SenderId、AP Keyの取得について  
 SenderId は、RequestRegistrationId を実行するために必要となります。APIキーは、管理画面にて、プッシュ通知を送信するための証明書として必要になります。  
