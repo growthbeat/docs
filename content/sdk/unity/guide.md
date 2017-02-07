@@ -186,7 +186,7 @@ SenderIdは、requestRegistrationId を実行するために必要となりま�
 ```c#
 // 必ず RequestDeviceToken 後に呼び出してください
 string devicetoken = GrowthPush.GetInstance().GetDeviceToken();
-Log.Debug(devicetoken);
+Debug.Log(devicetoken);
 ```
 ## 管理画面設定  
 ### プッシュ通知証明書の設定  
