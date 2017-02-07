@@ -16,11 +16,11 @@ title: Growthbeat Unity SDK | 新バージョンアップデート方法
 についてご紹介いたします。  
 # Growth Push SDKからのアップグレードについて
 ## 概要
-Growth Push の認証から、Growthbeat の認証に移行されるため、新しい ApplicationId と SDKキー（クレデンシャルID）を取得する必要がございます。 
+Growth Push の認証から、Growthbeat の認証に移行されるため、新しい ApplicationId と SDKキー（クレデンシャルID）を取得する必要がございます。
 
 ApplicationId は、Growth Push管理画面左メニュー「アプリ詳細」の 「Growthbeat アプリケーションID」 にて確認ができます。
 
-SDKキーは、Growthbeat管理画面左メニュー「[アカウント](https://growthbeat.com/mypage/account)」の「クレデンシャルID > SDK」にて確認ができます。 
+SDKキーは、Growthbeat管理画面左メニュー「[アカウント](https://growthbeat.com/mypage/account)」の「クレデンシャルID > SDK」にて確認ができます。
 ### 注意点  
 これまでGrowth Pushでご利用いただいた、ApplicationIdは数値型、シークレットキーは文字列型になっています。  
 
@@ -34,7 +34,7 @@ Growthbeat SDKで利用するものは、applicationId、credentialIdともに�
 |---|---|
 |applicationId|文字列型/16文字|
 |credentailId|文字列型/32文字|
-Growthbeat SDK 乗り換え時に、これまで Growth Push で利用していたシークレットキーを設定しても、正しく動作しませんのでご注意くださいませ。 必ず、SDKキーをご利用ください。 
+Growthbeat SDK 乗り換え時に、これまで Growth Push で利用していたシークレットキーを設定しても、正しく動作しませんのでご注意くださいませ。 必ず、SDKキーをご利用ください。
 
 ## 導入コード
 Growthbeat SDKでは、iOSのデバイストークン取得部分をUnity上に記述する必要があります。
@@ -43,21 +43,22 @@ Growtbeat SDKでは、シングルトンインスタンスの設計に変更し�
 - GrowthPush SDK  
 
 ```c#
-void Awake () {
-  GrowthPush.Initialize(YOUR_APPLICATION_ID, "APPLICATION_SECRET", GrowthPush.Environment.Development, true, "YOUR_SENDER_ID");
-  GrowthPush.TrackEvent("Launch");
-  GrowthPush.SetDeviceTags();
-  GrowthPush.ClearBadge();
+using UnityEngine;
+public class YourGameObjectComponent : MonoBehaviour
+{
+    void Awake () {
+      GrowthPush.Initialize(YOUR_APPLICATION_ID, "APPLICATION_SECRET", GrowthPush.Environment.Development, true, "YOUR_SENDER_ID");
+      GrowthPush.TrackEvent("Launch");
+      GrowthPush.SetDeviceTags();
+      GrowthPush.ClearBadge();
+    }
 }
 ```
 
 - Growthbeat SDK 2.x
 
 ```c#
-#if UNITY_IPHONE
-using NotificationServices = UnityEngine.iOS.NotificationServices;
-#endif
-
+using UnityEngine;
 public class YourGameObjectComponent : MonoBehaviour
 {
 
@@ -83,7 +84,7 @@ public class YourGameObjectComponent : MonoBehaviour
   {
   #if UNITY_IPHONE
     if (!tokenSent) {
-      byte[] token = NotificationServices.deviceToken;
+      byte[] token = UnityEngine.iOS.NotificationServices.deviceToken;
       if (token != null) {
         GrowthPush.GetInstance ().SetDeviceToken(System.BitConverter.ToString(token).Replace("-", "").ToLower());
         tokenSent = true;
@@ -159,35 +160,71 @@ Growthbeat SDKでは、 `com.growthpush.BroadcastReceiver`が廃止になりま�
 
 ## 導入コード
 
-- Growthbeat 1.x 
+- Growthbeat 1.x
 
 ```c#
-void Awake () {
-    Growthbeat.GetInstance ().Initialize ("YOUR_APPLICATION_ID", "CREDENTIAL_ID");
-    GrowthPush.GetInstance ().RequestDeviceToken ("YOUR_SENDER_ID", Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
-    Growthbeat.GetInstance ().Start ();
-}
-
-void OnDisable ()
+using UnityEngine;
+public class YourGameObjectComponent : MonoBehaviour
 {
-    Growthbeat.GetInstance ().Stop ();
+    void Awake () {
+        Growthbeat.GetInstance ().Initialize ("YOUR_APPLICATION_ID", "CREDENTIAL_ID");
+        GrowthPush.GetInstance ().RequestDeviceToken ("YOUR_SENDER_ID", Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
+        Growthbeat.GetInstance ().Start ();
+    }
+
+    void OnDisable ()
+    {
+        Growthbeat.GetInstance ().Stop ();
+    }
+
+    bool tokenSent = false;
+    void Update ()
+    {
+    #if UNITY_IPHONE
+      if (!tokenSent) {
+        byte[] token = UnityEngine.iOS.NotificationServices.deviceToken;
+        if (token != null) {
+          GrowthPush.GetInstance ().SetDeviceToken(System.BitConverter.ToString(token).Replace("-", "").ToLower());
+          tokenSent = true;
+        }
+      }
+    #endif
+    }
 }
 ```
 
-- Growthbeat 2.x 
+- Growthbeat 2.x
 
 ```c#
-void Awake () {
-    GrowthPush.GetInstance ().Initialize ("YOUR_APPLICATION_ID", "CREDENTIAL_ID", Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
-    GrowthPush.GetInstance ().RequestDeviceToken ("YOUR_SENDER_ID");
-}
-
-void OnDisable ()
+using UnityEngine;
+public class YourGameObjectComponent : MonoBehaviour
 {
+    void Awake () {
+        GrowthPush.GetInstance ().Initialize ("YOUR_APPLICATION_ID", "CREDENTIAL_ID", Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
+        GrowthPush.GetInstance ().RequestDeviceToken ("YOUR_SENDER_ID");
+    }
 
+    void OnDisable ()
+    {
+
+    }
+
+    bool tokenSent = false;
+    void Update ()
+    {
+    #if UNITY_IPHONE
+      if (!tokenSent) {
+        byte[] token = UnityEngine.iOS.NotificationServices.deviceToken;
+        if (token != null) {
+          GrowthPush.GetInstance ().SetDeviceToken(System.BitConverter.ToString(token).Replace("-", "").ToLower());
+          tokenSent = true;
+        }
+      }
+    #endif
+    }
 }
 ```
 
 # 移行確認方法
 Growth Push の管理画面で、該当デバイスのプッシュ通知ステータスが `Active` になっていれば、正しくプッシュ通知が行えます。  
-移行対応は、以上となります。 
+移行対応は、以上となります。

@@ -104,64 +104,94 @@ YOUR_PACKAGE_NAME は、実装するアプリのパッケージ名に変更し�
 ## 初期化
 YOUR_APPLICATION_ID, YOUR_CREDENTIAL_IDは、Growth Push管理画面から確認することができます。YOUR_SENDER_IDは、Firebase Consoleから取得する必要があります。  
 各種IDの取得方法は [Growthbeatで使用するID、キーまとめ](http://faq.growthbeat.com/article/130-growthbeat-id) をご参照ください。  
+Androidは、RequestDeviceTokenを行うことで、自動的にGrowth Pushへデバイストークンが登録されます。  
+iOSは、OSからの取得後、SetDeviceTokenを行うことで、Growth Pushへデバイストークンの登録をすることができます。iOSのみを利用する場合は、RequestDeviceTokenに渡す文字列は、NULLにしてください。  
 
 ```c#
-
-void Awake ()
+using UnityEngine;
+public class GrowthbeatSampleComponent : MonoBehaviour
 {
-  GrowthPush.GetInstance().Initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID", Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
-  // Android のデバイストークン取得（必ず initialize 後に呼び出してください）
-  GrowthPush.GetInstance ().RequestDeviceToken ("YOUR_SENDER_ID");
-}
-
-// iOS のデバイストークン取得
-// デバイストークンが NotificationServices から戻ってくるため Update にて SetDeviceToken を実装
-bool tokenSent = false;
-
-void Update ()
-{
-#if UNITY_IPHONE
-  if (!tokenSent) {
-    byte[] token = NotificationServices.deviceToken;
-    if (token != null) {
-      GrowthPush.GetInstance ().SetDeviceToken(System.BitConverter.ToString(token).Replace("-", "").ToLower());
-      tokenSent = true;
+    void Awake ()
+    {
+      GrowthPush.GetInstance().Initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID", Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
+      // Android のデバイストークン取得（必ず initialize 後に呼び出してください）
+      GrowthPush.GetInstance ().RequestDeviceToken ("YOUR_SENDER_ID");
     }
-  }
-#endif
+
+    // iOS のデバイストークン取得
+    // デバイストークンが NotificationServices から戻ってくるため Update にて SetDeviceToken を実装
+    bool tokenSent = false;
+
+    void Update ()
+    {
+    #if UNITY_IPHONE
+      if (!tokenSent) {
+        byte[] token = UnityEngine.iOS.NotificationServices.deviceToken;
+        if (token != null) {
+          GrowthPush.GetInstance ().SetDeviceToken(System.BitConverter.ToString(token).Replace("-", "").ToLower());
+          tokenSent = true;
+        }
+      }
+    #endif
+    }
 }
 ```
 
 ## タグ送信  
-セグメントを設定するために、任意のタグを埋め込んでください。
+セグメントを設定するために、任意のタグを埋め込んでください。  
+
 ```c#
-GrowthPush.GetInstance().SetTag("TagName", "TagValue");
+using UnityEngine;
+public class GrowthbeatSampleComponent : MonoBehaviour
+{
+    void Awake() {
+        GrowthPush.GetInstance().SetTag("Development", "true");
+    }
+}
 ```
 
 ## イベント送信  
 セグメントを設定するために、任意のイベントを埋め込んでください。
+
 ```c#
-GrowthPush.GetInstance().TrackEvent("EventName");
+using UnityEngine;
+public class GrowthbeatSampleComponent : MonoBehaviour
+{
+    void Awake() {
+        GrowthPush.GetInstance().TrackEvent("Launch");
+    }
+}
 ```
 
-# その他設定について
-## iOS
-### 証明書について
-開発ビルドと、リリースビルドの証明書を作成する必要があります。[iOS プッシュ通知証明書作成方法](http://faq.growthbeat.com/article/178-ios-p12)を参考に、証明書の作成を行ってください。
-## Android
-### 証明書について
-SenderIdは、requestRegistrationId を実行するために必要となります。APIキーは、管理画面にて、プッシュ通知を送信するための証明書として必要になります。[Android SenderId, APIキー取得方法](http://growthbeat.helpscoutdocs.com/article/23-gcm-api)  を参考に、証明書の作成を行ってください。
-### デバイストークンの確認
-下記コードでデバイストークンが正常に取得できているか確認することができます。
+# その他設定について  
+## iOS  
+### 証明書について  
+開発ビルドと、リリースビルドの証明書を作成する必要があります。[iOS プッシュ通知証明書作成方法](http://faq.growthbeat.com/article/178-ios-p12)を参考に、証明書の作成を行ってください。  
+## Android  
+### 証明書について  
+SenderIdは、RequestDeviceToken を実行するために必要となります。APIキーは、管理画面にて、プッシュ通知を送信するための証明書として必要になります。[Android SenderId, APIキー取得方法](http://growthbeat.helpscoutdocs.com/article/23-gcm-api)  を参考に、証明書の作成を行ってください。  
+### デバイストークンの確認  
+下記コードでデバイストークンが正常に取得できているか確認することができます。  
+
 ```c#
-// 必ず RequestDeviceToken 後に呼び出してください
-string devicetoken = GrowthPush.GetInstance().GetDeviceToken();
-Debug.Log(devicetoken);
+using UnityEngine;
+public class GrowthbeatSampleComponent : MonoBehaviour
+{
+    void Awake() {
+        GrowthPush.GetInstance().Initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID", Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
+        GrowthPush.GetInstance ().RequestDeviceToken ("YOUR_SENDER_ID");
+
+        // 必ず RequestDeviceToken 後に呼び出してください
+        string devicetoken = GrowthPush.GetInstance().GetDeviceToken();
+        Debug.Log(devicetoken);
+    }
+}
 ```
+
 ## 管理画面設定  
 ### プッシュ通知証明書の設定  
 Growth Push管理画面の証明書設定ページにて、証明書の設定を行ってください。  
-[プッシュ通知証明書の設定方法](/manual/growthpush/#プッシュ通知証明書の登録-更新)
+[プッシュ通知証明書の設定方法](/manual/growthpush/#プッシュ通知証明書の登録-更新)  
 ### プッシュ通知の作成  
 [配信作成](/manual/growthpush/#配信作成)を参考に、プッシュ通知が届くかを確認します。  
 ### セグメントについて  
