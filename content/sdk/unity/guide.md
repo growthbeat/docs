@@ -33,6 +33,7 @@ Growthbeat SDKを利用するには、依存ライブラリが必要となりま
 - google-play-services-gcm
 - google-play-services-ads   
 
+
 ## SDKおよびライブラリの導入
 growthbeat-x.x.x.jar をインポートする必要がございます。  
 [最新版Android SDK ダウンロードページ](../sdk)  
@@ -45,7 +46,7 @@ Growthbeat Android SDKをインポート後、依存ライブラリをGoogle社�
 ## AndroidManifest.xml の設定  
 Unityプロジェクト内で設定するか、Androidプロジェクトの吐き出し後に設定してください。  
 
-```
+```xml
 <meta-data
     android:name="com.google.android.gms.version"
     android:value="@integer/google_play_services_version" />
@@ -55,7 +56,7 @@ Unityプロジェクト内で設定するか、Androidプロジェクトの吐�
 レジストレーションIDを取得するため、またプッシュ通知を受信するために AndroidManifest.xml に必要なクラスを記述します。  
 YOUR_PACKAGE_NAME は、実装するアプリのパッケージ名に変更してください。  
 
-```
+```xml
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 <uses-permission android:name="android.permission.VIBRATE" />
@@ -107,7 +108,7 @@ YOUR_APPLICATION_ID, YOUR_CREDENTIAL_IDは、Growth Push管理画面から確認
 Androidは、RequestDeviceTokenを行うことで、自動的にGrowth Pushへデバイストークンが登録されます。  
 iOSは、OSからの取得後、SetDeviceTokenを行うことで、Growth Pushへデバイストークンの登録をすることができます。iOSのみを利用する場合は、RequestDeviceTokenに渡す文字列は、NULLにしてください。  
 
-```c#
+```csharp
 using UnityEngine;
 public class GrowthbeatSampleComponent : MonoBehaviour
 {
@@ -140,7 +141,7 @@ public class GrowthbeatSampleComponent : MonoBehaviour
 ## タグ送信  
 セグメントを設定するために、任意のタグを埋め込んでください。  
 
-```c#
+```csharp
 using UnityEngine;
 public class GrowthbeatSampleComponent : MonoBehaviour
 {
@@ -153,7 +154,7 @@ public class GrowthbeatSampleComponent : MonoBehaviour
 ## イベント送信  
 セグメントを設定するために、任意のイベントを埋め込んでください。
 
-```c#
+```csharp
 using UnityEngine;
 public class GrowthbeatSampleComponent : MonoBehaviour
 {
@@ -173,7 +174,7 @@ SenderIdは、RequestDeviceToken を実行するために必要となります�
 ### デバイストークンの確認  
 下記コードでデバイストークンが正常に取得できているか確認することができます。  
 
-```c#
+```csharp
 using UnityEngine;
 public class GrowthbeatSampleComponent : MonoBehaviour
 {
