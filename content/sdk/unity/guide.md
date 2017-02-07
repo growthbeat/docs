@@ -70,7 +70,7 @@ Growthbeat Android SDKをインポート後、依存ライブラリをGoogle社�
 [unity-jar-resolver](https://github.com/googlesamples/unity-jar-resolver)  
 を使用して解決します。  
 
-詳しくは、[unity-jar-resolverを使用した依存ライブラリの解決](/sdk/unity/unity-jar-resolver)をご覧ください。
+詳しくは、[unity-jar-resolverを使用した依存ライブラリの解決](http://faq.growthbeat.com/article/216-unity-jar-resolver)をご覧ください。
 
 ## AndroidManifest.xml の設定
 Unityプロジェクト内で設定するか、Androidプロジェクトの吐き出し後に設定してください。
