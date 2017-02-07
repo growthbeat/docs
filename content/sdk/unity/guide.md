@@ -36,7 +36,7 @@ Growthbeat SDKを利用するには、依存ライブラリが必要となりま
 
 ## SDKおよびライブラリの導入
 growthbeat-x.x.x.jar をインポートする必要がございます。  
-[最新版Android SDK ダウンロードページ](../sdk)  
+[最新版Android SDK ダウンロードページ](../../sdk)  
 上記ページより最新版SDKをダウンロードし、`release`フォルダ内の`growthbeat-x.x.x.jar`(x.x.xはバージョン番号) を、 `Assets/Plugins/Android/` にコピーしてください。  
 
 Growthbeat Android SDKをインポート後、依存ライブラリをGoogle社の提供する  
