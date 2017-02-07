@@ -9,19 +9,15 @@ Version 2.0.4
 
 # SDK概要  
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。  
-
-## 動作環境
+## 動作環境  
 動作推奨環境: Unity 5以上  
-※ Unityプラットフォームがサポートしていないバージョンについては、本SDKもサポート対象外となります。
-
+※ Unityプラットフォームがサポートしていないバージョンについては、本SDKもサポート対象外となります。  
 # 1. プロジェクト設定  
 <a href="/sdk">最新版Unity SDK ダウンロードページ</a>  
 ダウンロードしたファイルを解凍し、そのフォルダの中の **growthbeat.unitypackage** をプロジェクトへ組み込みます。  
-メニューから、`Assets -> Import Package -> Custom Package...` を選択し、でダウンロードした UnityPackge をインポートしてください。
-
-# 2. iOS の初期設定
-
-Growthbeat.framework は、下記 Framework が必須となります。
+メニューから、`Assets -> Import Package -> Custom Package...` を選択し、でダウンロードした UnityPackge をインポートしてください。  
+# 2. iOS の初期設定  
+Growthbeat.framework は、下記 Framework が必須となります。  
 
 - Foundation.framework
 - UIKit.framework
@@ -30,50 +26,24 @@ Growthbeat.framework は、下記 Framework が必須となります。
 - AdSupport.framework
 - CFNetwork.framework
 
-# 3. Android の初期設定
-Growthbeat SDKを利用するには、依存ライブラリが必要となります。    
+# 3. Android の初期設定  
+Growthbeat SDKを利用するには、依存ライブラリが必要となります。  
 
 - appcompat-v7もしくはandroid-support-v4
 - google-play-services-gcm
 - google-play-services-ads   
 
-依存ライブラリの対応バージョンは [Androidビルドに必要なライブラリ](http://faq.growthbeat.com/article/201-android) をご参照ください。
-
-## Google Androidプロジェクトに書き出す場合
-
-Unity から Google Android プロジェクト書き出して、Android Studio にインポートしてください。[Android Studioへのインポート方法](http://docs.unity3d.com/ja/current/Manual/android-BuildProcess.html) を参考にしてください。  
-インポート後、build.gradle(Module:app)に下記を追加してください。  
-
-```sh
-dependencies {
-    // Android用のラッパーライブラリです。
-    compile files('libs/growthbeat-unity-wrapper.jar')
-    compile files('libs/unity-classes.jar')
-
-    // Androidのライブラリです。growthbeatのライブラリの機能に依存します。
-    compile 'com.growthbeat:growthbeat-android:2.0.4@aar'
-    compile 'com.android.support:appcompat-v7:23.+'
-    compile 'com.google.android.gms:play-services-gcm:9.2.1'
-    compile 'com.google.android.gms:play-services-ads:9.2.1'
-
-    // Growthbeat SDK Android
-    compile 'com.growthbeat:growthbeat-android:2.0.4@aar'
-}
-```
-
-## Google Androidプロジェクトに書き出さない場合
+## SDKおよびライブラリの導入
 growthbeat-x.x.x.jar をインポートする必要がございます。  
-<a href="/sdk">最新版Android SDK ダウンロードページ</a>  
-上記ページより最新版SDKをダウンロードし、`release`フォルダ内の`growthbeat-x.x.x.jar`(x.x.xはバージョン番号) を、 `Assets/Plugins/Android/` にコピーしてください。
+[最新版Android SDK ダウンロードページ](../sdk)  
+上記ページより最新版SDKをダウンロードし、`release`フォルダ内の`growthbeat-x.x.x.jar`(x.x.xはバージョン番号) を、 `Assets/Plugins/Android/` にコピーしてください。  
 
 Growthbeat Android SDKをインポート後、依存ライブラリをGoogle社の提供する  
 [unity-jar-resolver](https://github.com/googlesamples/unity-jar-resolver)  
 を使用して解決します。  
-
-詳しくは、[unity-jar-resolverを使用した依存ライブラリの解決](http://faq.growthbeat.com/article/216-unity-jar-resolver)をご覧ください。
-
-## AndroidManifest.xml の設定
-Unityプロジェクト内で設定するか、Androidプロジェクトの吐き出し後に設定してください。
+詳しくは、[unity-jar-resolverを使用した依存ライブラリの解決](http://faq.growthbeat.com/article/216-unity-jar-resolver)をご覧ください。  
+## AndroidManifest.xml の設定  
+Unityプロジェクト内で設定するか、Androidプロジェクトの吐き出し後に設定してください。  
 
 ```
 <meta-data
@@ -131,9 +101,9 @@ YOUR_PACKAGE_NAME は、実装するアプリのパッケージ名に変更し�
 ```
 
 # 4. 実装コード
-## 初期化 
+## 初期化
 YOUR_APPLICATION_ID, YOUR_CREDENTIAL_IDは、Growth Push管理画面から確認することができます。YOUR_SENDER_IDは、Firebase Consoleから取得する必要があります。  
-各種IDの取得方法は [Growthbeatで使用するID、キーまとめ](http://faq.growthbeat.com/article/130-growthbeat-id) をご参照ください。
+各種IDの取得方法は [Growthbeatで使用するID、キーまとめ](http://faq.growthbeat.com/article/130-growthbeat-id) をご参照ください。  
 
 ```c#
 
@@ -142,7 +112,7 @@ void Awake ()
   GrowthPush.GetInstance().Initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID", Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
   // Android のデバイストークン取得（必ず initialize 後に呼び出してください）
   GrowthPush.GetInstance ().RequestDeviceToken ("YOUR_SENDER_ID");
-} 
+}
 
 // iOS のデバイストークン取得
 // デバイストークンが NotificationServices から戻ってくるため Update にて SetDeviceToken を実装
@@ -191,7 +161,7 @@ Debug.Log(devicetoken);
 ## 管理画面設定  
 ### プッシュ通知証明書の設定  
 Growth Push管理画面の証明書設定ページにて、証明書の設定を行ってください。  
-[プッシュ通知証明書の設定方法](/manual/growthpush/#プッシュ通知証明書の登録-更新) 
+[プッシュ通知証明書の設定方法](/manual/growthpush/#プッシュ通知証明書の登録-更新)
 ### プッシュ通知の作成  
 [配信作成](/manual/growthpush/#配信作成)を参考に、プッシュ通知が届くかを確認します。  
 ### セグメントについて  
