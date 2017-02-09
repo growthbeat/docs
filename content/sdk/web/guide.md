@@ -52,6 +52,7 @@ YOUR_SENDER_ID には、Firebase Cloud Messaging で取得した SenderId を指
 # 4. 初期化  
 以下のhtmlスニペットを、`<body>` タグの内に組み込んでください。  
 YOUR_APPLICATION_ID と YOUR_SECRET_KEY は Growth Push 管理画面左メニュー「アプリ詳細」内の「Growth Push SDKをお使いの方」 にて確認していただけます。  
+各種IDの取得方法は [Growthbeatで使用するID、キーまとめ](http://faq.growthbeat.com/article/130-growthbeat-id) をご参照ください。  
 
 ```
 <script>
