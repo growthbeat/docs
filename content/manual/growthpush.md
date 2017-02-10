@@ -196,7 +196,7 @@ http://faq.growthbeat.com/article/81-growthpush
 
 * 不明(Unknown)：未検証状態
 * 検証中(Validating)：検証処理中
-* アクティブ(Active)：検証済み
+* 有効(Active)：検証済み
 * 不正(Invalid)：正しくないデバイストークン
 * 無効(Inactive)：プッシュ通知送信後、アプリをアンインストールもしくはプッシュ通知をオフにしているしていると分かったデバイス
 
