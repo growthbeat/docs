@@ -5,7 +5,7 @@ description: 'Growthbeat Android の導入方法について説明します'
 draft: false
 title: Growthbeat Android SDK | 基本導入ガイド
 ---
-Version 2.0.4  
+Version 2.0.5  
 # SDK概要  
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。  
 (※ Eclipseの導入は非推奨となっております。導入については、[Eclipse環境での導入手順について](http://faq.growthbeat.com/article/211-eclipse) をご参照ください。)  
@@ -52,7 +52,7 @@ class MyActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         GrowthPush.getInstance().initialize(getApplicationContext(), "YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID", BuildConfig.DEBUG ? Environment.development : Environment.production);
-        
+
         // 以下は、必ずinitialize後に呼び出してください
         GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID");
     }

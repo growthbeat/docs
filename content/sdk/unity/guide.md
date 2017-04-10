@@ -44,15 +44,6 @@ Growthbeat Android SDKをインポート後、依存ライブラリをGoogle社�
 を使用して解決します。  
 詳しくは、[unity-jar-resolverを使用した依存ライブラリの解決](http://faq.growthbeat.com/article/216-unity-jar-resolver)をご覧ください。  
 ## AndroidManifest.xml の設定  
-Unityプロジェクト内で設定するか、Androidプロジェクトの吐き出し後に設定してください。  
-
-```xml
-<meta-data
-    android:name="com.google.android.gms.version"
-    android:value="@integer/google_play_services_version" />
-```
-
-### 必要な記述  
 レジストレーションIDを取得するため、またプッシュ通知を受信するために AndroidManifest.xml に必要なクラスを記述します。  
 YOUR_PACKAGE_NAME は、実装するアプリのパッケージ名に変更してください。  
 

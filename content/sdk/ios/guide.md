@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat iOS SDK | 基本導入ガイド
 ---
 
-Version 2.0.4  
+Version 2.0.5  
 # SDK概要  
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。Objective-Cでの導入方法について記載しております。  
 ## 環境  
@@ -60,7 +60,7 @@ Growth Push の初期化を行います。初期化では、デバイス登録�
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary* )launchOptions {
     [[GrowthPush sharedInstance] initializeWithApplicationId:@"YOUR_APLICATION_ID" credentialId:@"YOUR_CREDENTIAL_ID" environment:kGrowthPushEnvironment];
-    
+
     // 以下は、必ずinitializeWithApplicationId後に呼び出してください
     [[GrowthPush sharedInstance] requestDeviceToken];
 }

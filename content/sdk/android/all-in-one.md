@@ -6,11 +6,11 @@ draft: false
 title: Growthbeat Android SDK | 全機能利用ガイド
 ---
 
-Version 2.0.4  
+Version 2.0.5  
 # Growthbeat利用ガイド  
 # 1. Growth Pushを利用  
 Growth Pushのみを利用する[導入方法](/sdk/android/guide)をご覧ください。
-# 2. Growth Messageを利用 
+# 2. Growth Messageを利用
 Growth Message を用いてポップアップを任意のタイミングで表示させるには、「[配信トリガー](http://support.growthbeat.com/manual/growthmessage/#配信トリガー)」 を設定します。「[配信トリガー](http://support.growthbeat.com/manual/growthmessage/#配信トリガー)」 は作成したカスタムイベントの中から選ぶ必要がございます。
 
 ## 実装コード  
