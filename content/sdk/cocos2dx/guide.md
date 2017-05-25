@@ -11,8 +11,8 @@ Version 2.0.5
 # 動作環境  
 Cocos2d-x v3.12  
 ※ 一部実装にて、バージョンごとに、Cocos2d-xのヘッダーファイルが読み込めない可能性がございます。  
-# 共通初期設定  
-1. SDK導入  
+
+# 1. SDK導入  
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。  
 ## Cocos2d-x SDK をインポートする  
 GitHubからSDKをcloneし、submoduleをupdateしてください。  
@@ -23,19 +23,19 @@ cd ./growthbeat-cocos2dx
 git submodule update --init --recursive
 ```
 
-### ソースコードをインポート  
 `source/Classes` ディレクトリの中身、Grothbeat, GrowthPush, GrowthLink 3つのフォルダーを `/path/to/your_project/Classes/` 配下にコピーしてください。  
+
 ### iOSの初期設定  
 Xcodeにて、Classesにコピーしたフォルダを、インポートしてください。選択肢にて、 `Create groups` にチェックし、ターゲットを任意のビルドスキームにチェックしてください。`growthbeat-ios/Growthbeat.framework` をコピーして、`/path/to/your_project/proj.ios/Frameworks/` 配下にコピーしてください。  
 Growthbeat.frameworkは、下記Frameworkが必須となります。Xcodeプロジェクトに、依存するFrameworkを追加してください。  
 
-1. Foundation.framework
-1. UIKit.framework
-1. CoreGraphics.framework
-1. Security.framework
-1. SystemConfiguration.framework
-1. AdSupport.framework
-1. CFNetwork.framework
+- Foundation.framework
+- UIKit.framework
+- CoreGraphics.framework
+- Security.framework
+- SystemConfiguration.framework
+- AdSupport.framework
+- CFNetwork.framework
 
 ### Androidの初期設定  
 `source/proj.android/src` の中身を、プロジェクトの `/path/to/your_project/proj.android/src` 配下にコピーしてください。  
@@ -43,7 +43,7 @@ Growthbeat.frameworkは、下記Frameworkが必須となります。Xcodeプロ�
 **Android Studio導入方法**  
 build.gradleに下記の設定をしてください。  
 
-```gradle
+```sh
 dependencies {
     // Androidのライブラリです。growthbeatのライブラリの機能に依存します。
     compile "com.android.support:appcompat-v7:23.3.0"
@@ -69,7 +69,7 @@ Eclipseの導入は非推奨となっております。導入については、[
 ### ソースビルド設定  
 Android.mk に下記を追加してください。  
 
-```c
+```sh
 LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/AppDelegate.cpp \
                    ../../Classes/HelloWorldScene.cpp \
@@ -138,7 +138,7 @@ YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更して
 </application>
 ```
 
-2. 導入コード  
+# 2. 導入コード  
 GrowthPushの初期化を行います。初期化の中で、端末の基本情報の送信、広告IDの取得が行われます。
 requestRegistrationId で、デバイストークンの取得を行います。必ずinitialize後に呼び出してください。
 
@@ -213,11 +213,9 @@ GrowthPush::getInstance()->setOpenNotificationCallback([](cocos2d::Value extra)-
 });
 ```
 
-3. SDKアップデート方法
+# 3. SDKアップデート方法
 最新のSDKへアップデートする際の方法や注意点についてをご説明します。
-
-# Growth Pussh SDKからGrowthbeat SDK 2.0.5へアップデート
-
+# Growth Pussh SDKからGrowthbeat SDK 2.0.5へアップデート  
 ## 前準備  
 GrowthPushのApplicationIdから、GrowthbeatのApplicationIdに移行されるため、[Growthbeat](https://growthbeat.com/)にアクセスして、ApplicationId、SDKキー（CredentialID）を確認します。  
 ApplicationIdについては、Growth　Pushの左メニュー、シークレットキーのgrowthbeatApplicationIdという項目の左の文字列をご利用ください。  
@@ -366,7 +364,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     GrowthPush::getInstance()->initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID", kGPEnvironment);
     GrowthPush::getInstance()->requestDeviceToken("YOUR_SENDER_ID");
     GrowthPush::getInstance()->trackEvent("Launch");
-    
+
     // ...
     return YES;
 }
