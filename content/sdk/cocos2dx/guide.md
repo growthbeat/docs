@@ -276,8 +276,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 }
 ```
 ### AndroidManifest.xml　　
-Growthbeat SDKでは、 `com.growthpush.BroadcastReceiver`が廃止になりましたので、変更が必要となります。　　
-この変更を行わないと、正しくプッシュ通知が送信できなくなりますので、ご注意ください。　　
+Growthbeat SDKでは、 `com.growthpush.BroadcastReceiver`が廃止になりましたので、変更が必要となります。この変更を行わないと、正しくプッシュ通知が送信できなくなりますので、ご注意ください。　　
 
 - GrowthPush SDK
 
