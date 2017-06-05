@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat Cocos2dx Gudeliene
 ---
 
-Version 2.0.5
+Version 2.0.6  
 
 # 動作環境  
 Cocos2d-x v3.12  
