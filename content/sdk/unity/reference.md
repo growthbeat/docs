@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat Unity API
 ---
 
-Version 2.0.6
+Version 2.0.7
 
 # Growthbeat API
 
@@ -15,7 +15,7 @@ Version 2.0.6
 Growthbeatインスタンスを取得します。
 
 ```cs
-public static Growthbeat GetInstance ()
+public static Growthbeat GetInstance ();
 ```
 
 ## ログの停止
@@ -24,7 +24,7 @@ Growthbeat SDKからのログ出力を全て停止します。
 デフォルトでは、ログ出力がおこなわれます。
 
 ```cs
-public void SetLoggerSilent (bool silent)
+public void SetLoggerSilent (bool silent);
 ```
 
 **パラメータ**
@@ -33,33 +33,38 @@ public void SetLoggerSilent (bool silent)
 |:--|:--|
 |silent| ログ出力を行うか。`YES`: ログ出力しない `NO`:ログ出力をする |
 
+# IntentHandler API
 
 ## ハンドラ
+
+```cs
+public static IntentHander GetInstance ();
+```
 
 ### 処理をしないハンドラ
 
 ```cs
-IntentHandler.GetInstance ().AddNoopIntentHandler ();
+public void AddNoopIntentHandler ();
 ```
 
 ### ブラウザを開くハンドラ
 
 ```cs
-IntentHandler.GetInstance ().AddUrlIntentHandler ();
+public void AddUrlIntentHandler ();
 ```
 
 ### カスタムハンドラ
 
 ```cs
-IntentHandler.GetInstance ().AddCustomIntentHandler ("GameObjectName", "MethodName");
+public void  AddCustomIntentHandler (string gameObjectName, string methodName);
 ```
 
 **パラメータ**
 
 |項目名|詳細|
 |:--|:--|
-|GameObjectName| コールバックをするメソッドが存在するゲームオブジェクト |
-|MethodName| コールバックをするメソッド |
+|gameObjectName| コールバックをするメソッドが存在するゲームオブジェクト |
+|methodName| コールバックをするメソッド |
 
 例.)
 
@@ -89,7 +94,7 @@ extraはJSON型の文字列が戻ってきます。
 Growth Pushインスタンスを取得します。
 
 ```cs
-public static GrowthPush GetInstance ()
+public static GrowthPush GetInstance ();
 ```
 
 ## 初期化
@@ -100,13 +105,13 @@ GrowthbeatおよびGrowth Pushの初期化を行います。初期化では以�
 - 基本情報の送信
 
 ```cs
-public void Initialize (string applicationId, string credentialId, Environment environment)
+public void Initialize (string applicationId, string credentialId, Environment environment);
 ```
 
 広告情報を保持しない場合
 
 ```cs
-public void Initialize (string applicationId, string credentialId, Environment environment, bool adInfoEnable)
+public void Initialize (string applicationId, string credentialId, Environment environment, bool adInfoEnable);
 ```
 
 **パラメータ**
@@ -123,7 +128,7 @@ public void Initialize (string applicationId, string credentialId, Environment e
 ### デバイストークンの取得
 
 ```cs
-public void RequestDeviceToken (string senderId)
+public void RequestDeviceToken (string senderId);
 ```
 
 |項目名|詳細|
@@ -133,13 +138,13 @@ public void RequestDeviceToken (string senderId)
 ### デバイストークンの送信 (iOSのみ)
 
 ```cs
-public void SetDeviceToken (string deviceToken)
+public void SetDeviceToken (string deviceToken);
 ```
 
 ### デバイストークン取得 (Androidのみ)
 
 ```cs
-public string GetDeviceToken ()
+public string GetDeviceToken ();
 ```
 
 ## イベントの送信
@@ -147,7 +152,7 @@ public string GetDeviceToken ()
 ### イベントの送信
 
 ```cs
-public void TrackEvent(string name)
+public void TrackEvent(string name);
 ```
 
 **パラメータ**
@@ -159,7 +164,7 @@ public void TrackEvent(string name)
 ### イベントと任意の値の送信
 
 ```cs
-public void TrackEvent (string name, string value)
+public void TrackEvent (string name, string value);
 ```
 
 **パラメータ**
@@ -175,7 +180,7 @@ public void TrackEvent (string name, string value)
 コールバックには、uuid の文字列が返ります。
 
 ```cs
-public void TrackEvent (string name, string value, string gameObjectName, string methodName)
+public void TrackEvent (string name, string value, string gameObjectName, string methodName);
 ```
 
 **パラメータ**
@@ -202,7 +207,7 @@ public void RenderMessage (string uuid);
 ### タグの送信
 
 ```cs
-public void SetTag (string name)
+public void SetTag (string name);
 ```
 
 **パラメータ**
@@ -214,7 +219,7 @@ public void SetTag (string name)
 ### タグと任意の値の送信
 
 ```cs
-public void SetTag (string name, string value)
+public void SetTag (string name, string value);
 ```
 
 **パラメータ**

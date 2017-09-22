@@ -5,7 +5,7 @@ description: 'Growthbeat Android の API について説明します'
 draft: false
 title: Growthbeat Android API
 ---
-Version 2.0.6
+Version 2.0.7
 [Android SDK 1.2.7以下](/sdk/android/reference-1.2.7)のリファレンスはこちら  
 # Growthbeat API  
 ## Growthbeatインスタンスの取得  
@@ -159,6 +159,30 @@ public void setTag(String name, String value);
 |name|タグ名|
 |value|タグに持たせる値|
 
+### チャンネルIDをセット
+
+Android 8.0以上のみ。  
+任意の通知チャンネルで、通知を受け取れるように変更します。  
+
+```java
+public void setChannelId(String channelId);
+```
+
+**パラメーター**
+|項目名|詳細|
+|:--|:--|
+|channelId|チャンネルID|
+
+### デフォルト通知チャンネルの削除  
+
+Android 8.0以上のみ。  
+SDKのデフォルトの通知チャンネルを削除します。  
+※ Growth Push初期化時に、channel_idがセットされていない場合、再度作成されます。
+
+```java
+public void deleteDefaultNotificationChannel();
+```
+
 <!--
 # Growth Link API  
 ## GrowthLinkインスタンスを取得  
@@ -264,11 +288,15 @@ Growth Pushダイアログプッシュ通知を表示するときに必要とな
 <!-- 通知バーのアイコンをカスタマイズすることができます。 -->
 <meta-data android:name="com.growthpush.notification.icon" android:resource="@drawable/sample_notification_icon" />
 
+<!-- 通知バーのラージアイコンを設定することができます。 -->
+<meta-data android:name="com.growthpush.notification.icon.large" android:resource="@drawable/sample_notification_icon_large" />
+
 <!-- 通知バーのアイコンの背景色をカスタマイズすることができます。 -->
 <meta-data android:name="com.growthpush.notification.icon.background.color" android:resource="@android:color/white" />
 
 <!-- ダイアログプッシュ通知のアイコンを変更できます。 -->
 <meta-data android:name="com.growthpush.dialog.icon" android:resource="@drawable/sample_notification_icon" />
+
 ```  
 ## Growth Message設定  
 ポップアップメッセージを表示するために必要となります。  

@@ -5,7 +5,7 @@ description: 'Growthbeat Unity の導入方法について説明します'
 draft: false
 title: Growthbeat Unity SDK | 基本導入ガイド
 ---
-Version 2.0.6  
+Version 2.0.7  
 
 # SDK概要  
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。  
