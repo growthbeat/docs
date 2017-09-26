@@ -5,7 +5,7 @@ description: 'Growthbeat Android の導入方法について説明します'
 draft: false
 title: Growthbeat Android SDK | 基本導入ガイド
 ---
-Version 2.0.6  
+Version 2.0.7  
 # SDK概要  
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。  
 (※ Eclipseの導入は非推奨となっております。導入については、[Eclipse環境での導入手順について](http://faq.growthbeat.com/article/211-eclipse) をご参照ください。)  
@@ -18,10 +18,10 @@ build.gradle(Module:app)に下記を追加してください。
 
 ```sh
 dependencies {
-    compile 'com.growthbeat:growthbeat-android:2.0.6@aar'
-    compile 'com.android.support:appcompat-v7:23.+'
-    compile 'com.google.android.gms:play-services-gcm:9.2.1'
-    compile 'com.google.android.gms:play-services-ads:9.2.1'
+    compile 'com.growthbeat:growthbeat-android:2.0.7@aar'
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.google.android.gms:play-services-gcm:11.2.+'
+    compile 'com.google.android.gms:play-services-ads:11.2.+'
 }
 ```  
 Growthbeat SDKを利用するには、依存ライブラリが必要となります。  
