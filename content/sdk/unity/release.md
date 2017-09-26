@@ -6,6 +6,13 @@ draft: false
 title: リリースノート
 ---
 
+# バージョン 2.0.7
+
+## 変更点
+- (Android) Android 8.0以上をターゲットとした場合に、通知が受け取れるように対応
+- (Android) BigTextStyleに対応
+- Growth Link機能を削除
+
 # バージョン 2.0.6
 
 ## バグ
