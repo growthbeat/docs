@@ -43,7 +43,8 @@ public static GrowthPush getInstance()
 ```java
 public void initialize(Context context, String applicationId, String credentialId, Environment environment)
 ```  
-広告情報を保持しない場合  
+
+広告情報を保持の可否  
 
 ```java
 public void initialize(Context context, String applicationId, String credentialId, Environment environment, boolean adInfoEnabled)
@@ -56,6 +57,22 @@ public void initialize(Context context, String applicationId, String credentialI
 |credentialId| クレデンシャルキー |
 |environment| 開発用: `Environment.development` 本番用: `Environment.production`　|
 |adInfoEnabled| 広告情報の送信設定。`true`: 送信する `false`:送信しない |
+
+広告情報を保持の可否 / チャンネルIDの設定  
+
+```java
+public void initialize(Context context, String applicationId, String credentialId, Environment environment, boolean adInfoEnabled, String channelId)
+```  
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|applicationId| アプリケーションID |
+|credentialId| クレデンシャルキー |
+|environment| 開発用: `Environment.development` 本番用: `Environment.production`　|
+|adInfoEnabled| 広告情報の送信設定。`true`: 送信する `false`:送信しない |
+|channelId| 任意のチャンネルID |
+
 ## RegistrationIdの取得・送信  
 ### デバイストークン送信  
 

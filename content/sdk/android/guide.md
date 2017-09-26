@@ -18,10 +18,10 @@ build.gradle(Module:app)に下記を追加してください。
 
 ```sh
 dependencies {
-    compile 'com.growthbeat:growthbeat-android:2.0.6@aar'
-    compile 'com.android.support:appcompat-v7:23.+'
-    compile 'com.google.android.gms:play-services-gcm:11.4.0'
-    compile 'com.google.android.gms:play-services-ads:11.4.0'
+    compile 'com.growthbeat:growthbeat-android:2.0.7@aar'
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.google.android.gms:play-services-gcm:11.2.+'
+    compile 'com.google.android.gms:play-services-ads:11.2.+'
 }
 ```  
 Growthbeat SDKを利用するには、依存ライブラリが必要となります。  

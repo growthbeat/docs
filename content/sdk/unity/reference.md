@@ -238,6 +238,30 @@ iOSのみ利用できます。
 public void ClearBadge ();
 ```
 
+### チャンネルIDをセット  
+
+Android 8.0以上のみ。  
+任意の通知チャンネルで、通知を受け取れるように変更します。  
+
+```csharp
+public void SetChannelId(string channelId);
+```
+
+**パラメーター**
+|項目名|詳細|
+|:--|:--|
+|channelId|チャンネルID|
+
+### デフォルト通知チャンネルの削除  
+
+Android 8.0以上のみ。  
+SDKのデフォルトの通知チャンネルを削除します。  
+※ Growth Push初期化時に、channel_idがセットされていない場合、再度作成されます。
+
+```csharp
+public void DeleteDefaultNotificationChannel();
+```
+
 <!--
 # Growth Link API
 
