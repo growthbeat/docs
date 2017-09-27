@@ -306,6 +306,7 @@ Growth Pushダイアログプッシュ通知を表示するときに必要とな
 <meta-data android:name="com.growthpush.notification.icon" android:resource="@drawable/sample_notification_icon" />
 
 <!-- 通知バーのラージアイコンを設定することができます。 -->
+<!-- こちらは、Android SDK 2.0.7以上で利用可能です。 -->
 <meta-data android:name="com.growthpush.notification.icon.large" android:resource="@drawable/sample_notification_icon_large" />
 
 <!-- 通知バーのアイコンの背景色をカスタマイズすることができます。 -->
