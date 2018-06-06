@@ -6,6 +6,11 @@ draft: false
 title: リリースノート
 ---
 
+# バージョン 2.0.9
+
+## 変更点
+- GCM廃止に伴い、Firebaseへ移行実装いたしました。[Google更新移行ガイド](https://firebase.google.com/support/guides/google-android?hl=ja)
+
 # バージョン 2.0.8
 
 ## バグ
