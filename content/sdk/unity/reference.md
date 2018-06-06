@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat Unity API
 ---
 
-Version 2.0.9
+Version 2.0.8  
 
 # Growthbeat API
 
@@ -176,7 +176,7 @@ public void TrackEvent (string name, string value);
 
 
 ### イベントと任意の値の送信
-メッセージ表示のコールバックを、ゲームオブジェクトの指定メソッドへ戻します。
+メッセージ表示のコールバックを、ゲームオブジェクトの指定メソッドへ戻します。  
 コールバックには、uuid の文字列が返ります。
 
 ```cs
@@ -238,10 +238,10 @@ iOSのみ利用できます。
 public void ClearBadge ();
 ```
 
-### チャンネルIDをセット
+### チャンネルIDをセット  
 
-Android 8.0以上のみ。
-任意の通知チャンネルで、通知を受け取れるように変更します。
+Android 8.0以上のみ。  
+任意の通知チャンネルで、通知を受け取れるように変更します。  
 
 ```csharp
 public void SetChannelId(string channelId);
@@ -252,10 +252,10 @@ public void SetChannelId(string channelId);
 |:--|:--|
 |channelId|チャンネルID|
 
-### デフォルト通知チャンネルの削除
+### デフォルト通知チャンネルの削除  
 
-Android 8.0以上のみ。
-SDKのデフォルトの通知チャンネルを削除します。
+Android 8.0以上のみ。  
+SDKのデフォルトの通知チャンネルを削除します。  
 ※ Growth Push初期化時に、channel_idがセットされていない場合、再度作成されます。
 
 ```csharp
