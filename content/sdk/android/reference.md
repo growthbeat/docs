@@ -5,17 +5,17 @@ description: 'Growthbeat Android の API について説明します'
 draft: false
 title: Growthbeat Android API
 ---
-Version 2.0.9
-[Android SDK 1.2.7以下](/sdk/android/reference-1.2.7)のリファレンスはこちら
-# Growthbeat API
-## Growthbeatインスタンスの取得
-Growthbeatインスタンスを取得します。
+Version 2.0.9  
+[Android SDK 1.2.7以下](/sdk/android/reference-1.2.7)のリファレンスはこちら  
+# Growthbeat API  
+## Growthbeatインスタンスの取得  
+Growthbeatインスタンスを取得します。  
 
 ```java
 public static Growthbeat getInstance()
 ```
 ## ログの停止
-Growthbeat SDKからのログ出力を全て停止します。デフォルトでは、ログ出力がおこなわれます。
+Growthbeat SDKからのログ出力を全て停止します。デフォルトでは、ログ出力がおこなわれます。  
 ```java
 public void setLoggerSilent(boolean silent)
 ```
@@ -31,9 +31,9 @@ GrowthbeatのユニークIDを取得できます。
 ```java
 public Client waitClient();
 ```
-# Growth Push API
-## GrowthPushインスタンスを取得
-GrowthPushインスタンスを取得します。
+# Growth Push API  
+## GrowthPushインスタンスを取得  
+GrowthPushインスタンスを取得します。  
 
 ```java
 public static GrowthPush getInstance()
@@ -44,7 +44,7 @@ public static GrowthPush getInstance()
 public void initialize(Context context, String applicationId, String credentialId, Environment environment)
 ```
 
-広告情報を保持の可否
+広告情報を保持の可否  
 
 ```java
 public void initialize(Context context, String applicationId, String credentialId, Environment environment, boolean adInfoEnabled)
@@ -58,7 +58,7 @@ public void initialize(Context context, String applicationId, String credentialI
 |environment| 開発用: `Environment.development` 本番用: `Environment.production`　|
 |adInfoEnabled| 広告情報の送信設定。`true`: 送信する `false`:送信しない |
 
-広告情報を保持の可否 / チャンネルIDの設定
+広告情報を保持の可否 / チャンネルIDの設定  
 
 ```java
 public void initialize(Context context, String applicationId, String credentialId, Environment environment, boolean adInfoEnabled, String channelId)
@@ -73,33 +73,23 @@ public void initialize(Context context, String applicationId, String credentialI
 |adInfoEnabled| 広告情報の送信設定。`true`: 送信する `false`:送信しない |
 |channelId| 任意のチャンネルID |
 
-## RegistrationIdの取得・送信
-### デバイストークン送信
+## RegistrationIdの取得・送信  
+### デバイストークン送信   
 
 ```java
-public void requestRegistrationId(String senderId)
+public void requestRegistrationId()
 ```
-**パラメータ**
 
-|項目名|詳細|
-|:--|:--|
-|senderId|AndroidのSenderId|
-
-### デバイストークン取得
-必ず初期化のあとに実行してください。
-タイミングによっては、取得できない可能性もありますので、 `Thread` を利用して処理を遅らせて利用するのを推奨いたします。
+### デバイストークン取得  
+必ず初期化のあとに実行してください。  
+タイミングによっては、取得できない可能性もありますので、 `Thread` を利用して処理を遅らせて利用するのを推奨いたします。  
 
 ```java
-public string registerGCM(Context context)
+public string registerFCM()
 ```
-**パラメータ**
 
-|項目名|詳細|
-|:--|:--|
-|context|applicationContext|
-
-## イベントの送信
-### イベントの送信
+## イベントの送信  
+### イベントの送信  
 
 ```java
 public void trackEvent(String name);
@@ -110,7 +100,7 @@ public void trackEvent(String name);
 |:--|:--|
 |name|イベント名|
 
-### イベントと任意の値の送信
+### イベントと任意の値の送信  
 
 ```java
 public void trackEvent(String name, String value);
@@ -122,7 +112,7 @@ public void trackEvent(String name, String value);
 |name|イベント名|
 |value|イベントに持たせる値|
 
-### イベントと任意の値送信、メッセージ表示制御
+### イベントと任意の値送信、メッセージ表示制御  
 
 ```java
 public void trackEvent(String name, String value, ShowMessageHandler showMessageHandler);
@@ -135,8 +125,8 @@ public void trackEvent(String name, String value, ShowMessageHandler showMessage
 |value|イベントに持たせる値|
 |showMessageHandler|メッセージ表示準備が完了したときのコールバック変数|
 
-### ShowMessageHandler
-設定したポップアップメッセージの表示準備が完了したときに、コールバックされます。
+### ShowMessageHandler  
+設定したポップアップメッセージの表示準備が完了したときに、コールバックされます。  
 
 ```java
 new ShowMessageHandler() {
@@ -152,8 +142,8 @@ new ShowMessageHandler() {
 	}
 }
 ```
-## タグの送信
-### タグの送信
+## タグの送信  
+### タグの送信  
 
 ```java
 public void setTag(String name);
@@ -164,7 +154,7 @@ public void setTag(String name);
 |:--|:--|
 |name|タグ名|
 
-### タグと任意の値の送信
+### タグと任意の値の送信  
 
 ```java
 public void setTag(String name, String value);
@@ -176,7 +166,7 @@ public void setTag(String name, String value);
 |name|タグ名|
 |value|タグに持たせる値|
 
-### チャンネルIDをセット
+### チャンネルIDをセット  
 
 Android 8.0以上のみ。
 任意の通知チャンネルで、通知を受け取れるように変更します。
@@ -190,11 +180,11 @@ public void setChannelId(String channelId);
 |:--|:--|
 |channelId|チャンネルID|
 
-### デフォルト通知チャンネルの削除
+### デフォルト通知チャンネルの削除  
 
-Android 8.0以上のみ。
-SDKのデフォルトの通知チャンネルを削除します。
-※ Growth Push初期化時に、channel_idがセットされていない場合、再度作成されます。
+Android 8.0以上のみ。  
+SDKのデフォルトの通知チャンネルを削除します。  
+※ Growth Push初期化時に、channel_idがセットされていない場合、再度作成されます。  
 
 ```java
 public void deleteDefaultNotificationChannel();
@@ -228,23 +218,15 @@ GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
 ```
 -->
 
-# AndroidManifest.xml
-## パーミッション設定
-インターネット設定。通信をするために必要となります。
+# AndroidManifest.xml  
+## パーミッション設定  
+インターネット設定。通信をするために必要となります。  
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
-```
-プッシュ通知を受け取るために必要となります。YOUR_PACKAGE_NAMEは、アプリのPackageIDに変更してください。
+```  
 
-```xml
-<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-<uses-permission android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE" />
-<permission
-    android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE"
-    android:protectionLevel="signature" />
-```
-プッシュ通知受け取り時に、バイブレーションを鳴らすときに設定します。
+プッシュ通知受け取り時に、バイブレーションを鳴らすときに設定します。  
 
 ```xml
 <uses-permission android:name="android.permission.VIBRATE" />
@@ -260,8 +242,8 @@ Growth Pushダイアログプッシュ通知を表示するときに必要とな
 <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 ```
 
-## Growth Push設定
-デバイストークン取得・更新やプッシュ通知を受け取る実装となります。YOUR_PACKAGE_NAMEは、アプリのPackageIDに変更してください。
+## Growth Push設定  
+デバイストークン取得・更新やプッシュ通知を受け取る実装となります。YOUR_PACKAGE_NAMEは、アプリのPackageIDに変更してください。  
 
 ```xml
 <activity
@@ -270,34 +252,16 @@ Growth Pushダイアログプッシュ通知を表示するときに必要とな
     android:launchMode="singleInstance"
     android:theme="@android:style/Theme.Translucent" />
 
-<service
-    android:name="com.growthpush.TokenRefreshService"
-    android:exported="false">
+<service android:name="com.growthpush.TokenRefreshService">
     <intent-filter>
-        <action android:name="com.google.android.gms.iid.InstanceID"/>
+        <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
     </intent-filter>
 </service>
-<service android:name="com.growthpush.RegistrationIntentService"/>
-<service
-    android:name="com.growthpush.ReceiverService"
-    android:exported="false" >
+<service android:name="com.growthpush.ReceiverService">
     <intent-filter>
-        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <action android:name="com.google.firebase.MESSAGING_EVENT" />
     </intent-filter>
 </service>
-<receiver
-    android:name="com.google.android.gms.gcm.GcmReceiver"
-    android:exported="true"
-    android:permission="com.google.android.c2dm.permission.SEND" >
-    <intent-filter>
-        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-        <category android:name="YOUR_PACKAGE_NAME" />
-    </intent-filter>
-    <intent-filter>
-        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-        <category android:name="YOUR_PACKAGE_NAME" />
-    </intent-filter>
-</receiver>
 ```
 (`*`オプション) アイコンや背景色をカスタムすることができます。リソースIDを指定してください。
 
@@ -315,9 +279,12 @@ Growth Pushダイアログプッシュ通知を表示するときに必要とな
 <!-- ダイアログプッシュ通知のアイコンを変更できます。 -->
 <meta-data android:name="com.growthpush.dialog.icon" android:resource="@drawable/sample_notification_icon" />
 
+<!-- Growth Pushが作成するデフォルト通知チャンネル名を変更できます。 -->
+<meta-data android:name="com.growthpush.notification.channel_name" android:resource="@drawable/sample_notification_icon" />
+
 ```
-## Growth Message設定
-ポップアップメッセージを表示するために必要となります。
+## Growth Message設定  
+ポップアップメッセージを表示するために必要となります。  
 
 ```xml
 <activity
