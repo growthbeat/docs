@@ -19,14 +19,13 @@ Firebaseのコンソールから、ダウンロードした、google-services.js
 インポートができていないと、デバイストークンの取得に失敗いたします。
 
 ## Gradleの設定
-
 build.gradle(Module:app)に下記を追加してください。
 
 ```sh
 dependencies {
     implementation 'com.growthbeat:growthbeat-android:2.0.9@aar'
     implementation 'com.android.support:appcompat-v7:27.1.+'
-    implementation 'com.google.firebase:firebase-messaging:15.0.+')
+    implementation 'com.google.firebase:firebase-messaging:15.0.+'
 }
 ```
 Growthbeat SDKを利用するには、依存ライブラリが必要となります。
