@@ -6,17 +6,17 @@ draft: false
 title: Growthbeat SDK | 新バージョンアップデート方法
 ---
 
-**Growth Push SDK及びGrowthbeat SDK 1.xのサポートは、2016年12月21日までとなっております。**
-# SDKアップグレードガイド
-最新のSDKにお乗り換えする方法についてご紹介いたします。
+**Growth Push SDK及びGrowthbeat SDK 1.xのサポートは、2016年12月21日までとなっております。**  
+# SDKアップグレードガイド  
+最新のSDKにお乗り換えする方法についてご紹介いたします。  
 
 - Growthbeat 2.0.0 ~ 2.0.8 SDKから最新のGrowthbeat SDKへのアップグレード
 - Growthbeat 1.x SDKから最新のGrowthbeat SDKへのアップグレード
 - Growth Push SDKから最新のGrowthbeat SDKへのアップグレード
 
-についてご紹介いたします。
+についてご紹介いたします。  
 
-# Growthbeat SDK 2.0.0 ~ 2.0.8からのアップデート
+# Growthbeat SDK 2.0.0 ~ 2.0.8からのアップデート  
 GCM廃止に伴いFCMへ変更が必要となります。
 
 https://faq.growthbeat.com/article/226-gcmtofcm
