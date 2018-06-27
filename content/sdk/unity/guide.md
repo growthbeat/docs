@@ -30,19 +30,22 @@ Growthbeat.framework は、下記 Framework が必須となります。
 Growthbeat SDKを利用するには、依存ライブラリが必要となります。
 
 - appcompat-v7もしくはandroid-support-v4
-- firebase-cloud-messaging
-
+- firebase-messagaging  
 
 ## SDKおよびライブラリの導入
 growthbeat-x.x.x.jar をインポートする必要がございます。
 [最新版Android SDK ダウンロードページ](/sdk)
 上記ページより最新版SDKをダウンロードし、`release`フォルダ内の`growthbeat-x.x.x.jar`(x.x.xはバージョン番号) を、 `Assets/Plugins/Android/` にコピーしてください。
 
-Growthbeat Android SDKをインポート後、依存ライブラリをGoogle社の提供する
-[unity-jar-resolver](https://github.com/googlesamples/unity-jar-resolver)
-を使用して解決します。
-詳しくは、[unity-jar-resolverを使用した依存ライブラリの解決](http://faq.growthbeat.com/article/216-unity-jar-resolver)をご覧ください。
-## AndroidManifest.xml の設定
+Growthbeat Android SDKをインポート後、依存ライブラリをGoogle社の提供する  
+[Firebase Unity SDK](https://firebase.google.com/docs/cloud-messaging/unity/client?hl=ja)
+を使用して解決します。  
+上記ページから、"アプリに Firebase Unity SDK を追加する"の欄を参考に、FirebaseMessaging.unitypackageのプロジェクトへインポートしてください。  
+#### google-services.jsonのインポート  
+Firebaseのコンソールから、ダウンロードした、google-services.jsonを `Assets/Plugins/Android` にインポートしてください。  
+インポートができていないと、デバイストークンの取得に失敗いたします。
+
+## AndroidManifest.xml の設定  
 レジストレーションIDを取得するため、またプッシュ通知を受信するために AndroidManifest.xml に必要なクラスを記述します。
 YOUR_PACKAGE_NAME は、実装するアプリのパッケージ名に変更してください。
 
@@ -152,7 +155,7 @@ public class GrowthbeatSampleComponent : MonoBehaviour
 {
     void Awake() {
         GrowthPush.GetInstance().Initialize("YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID", Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
-        GrowthPush.GetInstance ().RequestDeviceToken ("YOUR_SENDER_ID");
+        GrowthPush.GetInstance ().RequestDeviceToken ();
 
         // 必ず RequestDeviceToken 後に呼び出してください
         string devicetoken = GrowthPush.GetInstance().GetDeviceToken();

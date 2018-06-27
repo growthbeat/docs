@@ -129,12 +129,12 @@ APIキーとSDKキーを確認することができます。
 
 **スタッフ招待**
 
-<img src="/img/beat/beat-staff-invitation.png" alt="beat-staff-invitation" title="beat-staff-invitation" width="100%"/>
+<img src="/img/beat/beat-staff-invitation.png" alt="beat-staff-invitation" title="beat-staff-invitation" width="50%"/>
 
 |項目|内容|
 |:---|:---|
 |アプリケーション選択|権限を付与したいアプリ名|
-|権限選択| アプリ所有者：閲覧かつ編集権限 <br /><br /> 閲覧者：閲覧のみの権限|
+|権限選択| 管理者：閲覧かつ編集権限 <br /><br /> 閲覧者：閲覧のみの権限|
 |メールアドレス|招待を送りたいメールアドレス|
 |招待文|メールに含まれる文章|
 
