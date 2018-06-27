@@ -5,48 +5,45 @@ description: 'Growthbeat Android の導入方法について説明します'
 draft: false
 title: Growthbeat Android SDK | 基本導入ガイド
 ---
-Version 2.0.9  
+Version 2.0.8  
 # SDK概要  
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。  
 (※ Eclipseの導入は非推奨となっております。導入については、[Eclipse環境での導入手順について](http://faq.growthbeat.com/article/211-eclipse) をご参照ください。)  
 ## 動作環境  
 最低動作保証環境: Android 4.0.4以上  
 動作推奨環境: Android 4.4以上  
-
-# 1. プロジェクトの設定  
-Growthbeat 2.0.8以下からアップデートする方は、[FCM移行ガイド](https://faq.growthbeat.com/article/226-gcmtofcm)を参照ください  
-## google-services.jsonのインポート  
-Firebaseのコンソールから、ダウンロードした、google-services.jsonをプロジェクトルートにインポートしてください。  
-インポートができていないと、デバイストークンの取得に失敗いたします。  
-
 # 1. Gradleの設定  
+
 build.gradle(Module:app)に下記を追加してください。  
 
 ```sh
 dependencies {
-    implementation 'com.growthbeat:growthbeat-android:2.0.9@aar'
-    implementation 'com.android.support:appcompat-v7:27.1.+'
-    implementation 'com.google.firebase:firebase-messaging:15.0.+'
+    compile 'com.growthbeat:growthbeat-android:2.0.8@aar'
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.google.android.gms:play-services-gcm:11.2.+'
+    compile 'com.google.android.gms:play-services-ads:11.2.+'
 }
-```
+```  
 Growthbeat SDKを利用するには、依存ライブラリが必要となります。  
 
 - appcompat-v7もしくはandroid-support-v4
 - google-play-services-gcm
 - google-play-services-ads   
 
-依存ライブラリの対応バージョンは [Androidビルドに必要なライブラリ](http://faq.growthbeat.com/article/201-android) をご参照ください  
+依存ライブラリの対応バージョンは [Androidビルドに必要なライブラリ](http://faq.growthbeat.com/article/201-android) をご参照ください
 
-# 2. 実装コード  
+# 2. 実装コード
 ## Javaの実装  
 ### 初期化  
-GrowthPushの初期化を行います。初期化の中で、端末の基本情報の送信、広告IDの取得が行われます。  
-requestRegistrationId で、デバイストークンの取得を行います。必ずinitialize後に呼び出してください。  
+GrowthPushの初期化を行います。初期化の中で、端末の基本情報の送信、広告IDの取得が行われます。
+requestRegistrationId で、デバイストークンの取得を行います。必ずinitialize後に呼び出してください。
 
-YOUR_APPLICATION_ID, YOUR_CREDENTIAL_IDは、Growth Push管理画面から確認することができます。  
-各種IDの取得方法は [Growthbeatで使用するID、キーまとめ](http://faq.growthbeat.com/article/130-growthbeat-id) をご参照ください。  
+YOUR_APPLICATION_ID, YOUR_CREDENTIAL_IDは、Growth Push管理画面から確認することができます。
+YOUR_SENDER_IDは、Firebase Consoleから取得する必要があります。
 
-Growth Pushの管理画面の操作、Google API Consoleの操作については、後述します。  
+各種IDの取得方法は [Growthbeatで使用するID、キーまとめ](http://faq.growthbeat.com/article/130-growthbeat-id) をご参照ください。
+
+Growth Pushの管理画面の操作、Google API Consoleの操作については、後述します。
 
 ```java
 class MyActivity extends Activity {
