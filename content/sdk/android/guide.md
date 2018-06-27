@@ -94,7 +94,6 @@ class MyActivity extends Activity {
 # 3.AndroidManifest.xmlの設定  
 ## 必要な記述  
 レジストレーションIDを取得するため、またプッシュ通知を受信するためにAndroidManifest.xmlに必要なクラスを記述します。  
-YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更してください。  
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />

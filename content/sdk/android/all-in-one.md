@@ -29,7 +29,7 @@ class MainActivity extends Activity {
 }
 ```
 
-## AndroidManifest.xml設定  
+## AndroidManifest.xml設定
 AndroidManifest.xmlにGrowth Message表示用のActivityを追加します。
 
 ```xml
@@ -43,8 +43,7 @@ AndroidManifest.xmlにGrowth Message表示用のActivityを追加します。
 ## 管理画面設定方法  
 
 「[配信トリガー](http://support.growthbeat.com/manual/growthmessage/#配信トリガー)」 で先程実装したイベント（今回の場合は OpenActivity）を選択すると、指定のイベントが発火したタイミングでメッセージが表示されます。  
-
-詳しいメッセージの作成方法は [配信作成](http://support.growthbeat.com/manual/growthmessage/#配信作成) を参照してください。  
+詳しいメッセージの作成方法は [配信作成](http://support.growthbeat.com/manual/growthmessage/#配信作成) を参照してください。
 
 <!--
 # 3. GrowthLinkを利用
@@ -110,10 +109,11 @@ AndroidManifest.xmlにGrowth Link用のActivityを追加します。
 ```
 -->
 
-# 備考  
-## 最新版のSDKへの乗り換え方法  
-Growth Push SDKからGrowthbeat 2.x SDK への乗り換えまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへの乗り換えをされる方は[SDKの移行ガイド](/sdk/android/upgrade)をご参照ください。  
-## サンプルについて  
-実装サンプルは、[Githubレポジトリ](https://github.com/growthbeat/growthbeat-android)を参考にしてください。  
-# お問い合わせ  
-ご不明な点などございます場合は、[ヘルプページ](http://faq.growthbeat.com/)を閲覧してください。  
+# 備考
+## 最新版のSDKへの乗り換え方法
+Growth Push SDKからGrowthbeat 2.x SDK への乗り換えまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへの乗り換えをされる方は
+[SDKの移行ガイド](/sdk/android/upgrade)をご参照ください。
+## サンプルについて
+実装サンプルは、[Githubレポジトリ](https://github.com/growthbeat/growthbeat-android)を参考にしてください。
+# お問い合わせ
+ご不明な点などございます場合は、[ヘルプページ](http://faq.growthbeat.com/)を閲覧してください。

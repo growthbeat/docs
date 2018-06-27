@@ -17,8 +17,7 @@ title: Growthbeat SDK | 新バージョンアップデート方法
 についてご紹介いたします。  
 
 # Growthbeat SDK 2.0.0 ~ 2.0.8からのアップデート  
-GCM廃止に伴いFCMへ変更が必要となります。
-
+GCM廃止に伴いFCMへ変更が必要となります。　　
 https://faq.growthbeat.com/article/226-gcmtofcm
 
 # Growthbeat SDK 1.xからのアップグレード
