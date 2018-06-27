@@ -12,13 +12,14 @@ Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できま�
 ## 動作環境  
 最低動作保証環境: Android 4.0.4以上  
 動作推奨環境: Android 4.4以上  
+
 # 1. プロジェクトの設定  
 Growthbeat 2.0.8以下からアップデートする方は、[FCM移行ガイド](https://faq.growthbeat.com/article/226-gcmtofcm)を参照ください  
 ## google-services.jsonのインポート  
 Firebaseのコンソールから、ダウンロードした、google-services.jsonをプロジェクトルートにインポートしてください。  
 インポートができていないと、デバイストークンの取得に失敗いたします。  
 
-## Gradleの設定  
+# 1. Gradleの設定  
 build.gradle(Module:app)に下記を追加してください。  
 
 ```sh
@@ -31,7 +32,8 @@ dependencies {
 Growthbeat SDKを利用するには、依存ライブラリが必要となります。  
 
 - appcompat-v7もしくはandroid-support-v4
-- firebase-messagaging
+- google-play-services-gcm
+- google-play-services-ads   
 
 依存ライブラリの対応バージョンは [Androidビルドに必要なライブラリ](http://faq.growthbeat.com/article/201-android) をご参照ください  
 
@@ -42,7 +44,6 @@ GrowthPushの初期化を行います。初期化の中で、端末の基本情�
 requestRegistrationId で、デバイストークンの取得を行います。必ずinitialize後に呼び出してください。  
 
 YOUR_APPLICATION_ID, YOUR_CREDENTIAL_IDは、Growth Push管理画面から確認することができます。  
-
 各種IDの取得方法は [Growthbeatで使用するID、キーまとめ](http://faq.growthbeat.com/article/130-growthbeat-id) をご参照ください。  
 
 Growth Pushの管理画面の操作、Google API Consoleの操作については、後述します。  
@@ -56,7 +57,7 @@ class MyActivity extends Activity {
         GrowthPush.getInstance().initialize(getApplicationContext(), "YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID", BuildConfig.DEBUG ? Environment.development : Environment.production);
 
         // 以下は、必ずinitialize後に呼び出してください
-        GrowthPush.getInstance().requestRegistrationId();
+        GrowthPush.getInstance().requestRegistrationId("YOUR_SENDER_ID");
     }
 }
 ```  
@@ -98,7 +99,12 @@ YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更して
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 <uses-permission android:name="android.permission.VIBRATE" />
+<uses-permission android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE" />
+<permission
+    android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE"
+    android:protectionLevel="signature" />
 
 <application>
     <!-- ... -->
@@ -108,20 +114,33 @@ YOUR_PACKAGE_NAMEは、実装するアプリのパッケージ名に変更して
         android:configChanges="orientation|keyboardHidden"
         android:launchMode="singleInstance"
         android:theme="@android:style/Theme.Translucent" />
-
-    <service android:name="com.growthpush.TokenRefreshService">
+    <service
+        android:name="com.growthpush.TokenRefreshService"
+        android:exported="false">
         <intent-filter>
-            <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            <action android:name="com.google.android.gms.iid.InstanceID"/>
         </intent-filter>
     </service>
-    <service android:name="com.growthpush.ReceiverService">
+    <service android:name="com.growthpush.RegistrationIntentService"/>
+    <service
+        android:name="com.growthpush.ReceiverService"
+        android:exported="false" >
         <intent-filter>
-            <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
         </intent-filter>
     </service>
+    <receiver
+        android:name="com.google.android.gms.gcm.GcmReceiver"
+        android:exported="true"
+        android:permission="com.google.android.c2dm.permission.SEND" >
+        <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            <category android:name="YOUR_PACKAGE_NAME" />
+        </intent-filter>
+    </receiver>
 
 </application>
-```
+```  
 
 # その他設定について  
 ## SenderId、AP Keyの取得について  
@@ -129,7 +148,7 @@ SenderIdは、requestRegistrationIdを実行するために必要となります
 [Android SenderId, APIキー取得方法](http://growthbeat.helpscoutdocs.com/article/23-gcm-api)  
 ## 管理画面設定  
 ### APIキーの登録  
-Growth Push管理画面の証明書設定ページにて、APIキーの登録を行ってください。    
+Growth Push管理画面の証明書設定ページにて、APIキーの登録を行ってください。  
 ### プッシュ通知の作成  
 [配信作成](/manual/growthpush/#配信作成)を参考に、プッシュ通知が届くかを確認します。  
 ### セグメントについて  
@@ -140,8 +159,8 @@ Growth Push管理画面の証明書設定ページにて、APIキーの登録を
 Growthbeatは、プッシュ通知以外に、ポップアップメッセージ機能を用意しております。追加の実装を行うことで機能を利用することができます。  
 詳しくは、[全機能導入ガイド](/sdk/android/all-in-one)をご覧ください。  
 ## 最新版のSDKへのアップグレード方法  
-Growth Push SDKからGrowthbeat 2.x SDK へまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへのアップグレードをされる方は  
-[SDKのアップグレードガイド](/sdk/android/upgrade)をご参照ください。   
+Growth Push SDKからGrowthbeat 2.x SDK へまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへのアップグレードをされる方は
+[SDKのアップグレードガイド](/sdk/android/upgrade)をご参照ください。  
 ## サンプルコード  
 実装サンプルは、[Githubレポジトリ](https://github.com/growthbeat/growthbeat-android)を参考にしてください。  
 # お問い合わせ  

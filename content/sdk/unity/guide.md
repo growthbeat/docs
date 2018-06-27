@@ -30,7 +30,8 @@ Growthbeat.framework は、下記 Framework が必須となります。
 Growthbeat SDKを利用するには、依存ライブラリが必要となります。  
 
 - appcompat-v7もしくはandroid-support-v4
-- firebase-cloud-messaging
+- google-play-services-gcm
+- google-play-services-ads   
 
 
 ## SDKおよびライブラリの導入  
@@ -47,7 +48,12 @@ Growthbeat Android SDKをインポート後、依存ライブラリをGoogle社�
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 <uses-permission android:name="android.permission.VIBRATE" />
+<uses-permission android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE" />
+<permission
+    android:name="YOUR_PACKAGE_NAME.permission.C2D_MESSAGE"
+    android:protectionLevel="signature" />
 
 <application>
     <!-- ... -->
@@ -57,17 +63,30 @@ Growthbeat Android SDKをインポート後、依存ライブラリをGoogle社�
         android:configChanges="orientation|keyboardHidden"
         android:launchMode="singleInstance"
         android:theme="@android:style/Theme.Translucent" />
-
-    <service android:name="com.growthpush.TokenRefreshService">
+    <service
+        android:name="com.growthpush.TokenRefreshService"
+        android:exported="false">
         <intent-filter>
-            <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            <action android:name="com.google.android.gms.iid.InstanceID"/>
         </intent-filter>
     </service>
-    <service android:name="com.growthpush.ReceiverService">
+    <service android:name="com.growthpush.RegistrationIntentService"/>
+    <service
+        android:name="com.growthpush.ReceiverService"
+        android:exported="false" >
         <intent-filter>
-            <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
         </intent-filter>
     </service>
+    <receiver
+        android:name="com.google.android.gms.gcm.GcmReceiver"
+        android:exported="true"
+        android:permission="com.google.android.c2dm.permission.SEND" >
+        <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            <category android:name="YOUR_PACKAGE_NAME" />
+        </intent-filter>
+    </receiver>
 
 </application>
 ```
