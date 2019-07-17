@@ -16,7 +16,7 @@ build:
 prd-hugo-build:
   steps:
     - arjen/hugo-build:
-        version: 0.15
+        version: 0.55.6
         flags: --buildDrafts=true
         config: prd_config.yml
 
@@ -32,7 +32,7 @@ prd-deploy:
 stg-hugo-build:
   steps:
     - arjen/hugo-build:
-        version: 0.15
+        version: 0.55.6
         flags: --buildDrafts=true
         config: dev_config.yml
 
