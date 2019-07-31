@@ -13,7 +13,7 @@ Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できま�
 動作推奨環境: Unity 5以上
 ※ Unityプラットフォームがサポートしていないバージョンについては、本SDKもサポート対象外となります。
 # 1. プロジェクト設定
-<a href="/sdk">最新版Unity SDK ダウンロードページ</a>
+<a href="https://github.com/growthbeat/growthbeat-unity/archive/latest.zip">最新版Unity SDK ダウンロードページ</a>
 ダウンロードしたファイルを解凍し、そのフォルダの中の **growthbeat.unitypackage** をプロジェクトへ組み込みます。
 メニューから、`Assets -> Import Package -> Custom Package...` を選択し、でダウンロードした UnityPackge をインポートしてください。
 # 2. iOS の初期設定

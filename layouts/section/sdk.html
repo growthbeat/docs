@@ -1,124 +1,111 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.Params.locale }}">
 {{ partial "head.html" . }}
+
 <body>
-<!--[if lt IE 10]>
+    <!--[if lt IE 10]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-<div class="wrapper">
+    <div class="wrapper">
 
-<!-- Header -->
-{{ partial "header.html" . }}
-<section class="navbar-subheader">
-  <div class="container">
-    <ul class="breadcrumb">
-      <li class="item"><a class="link" href="{{ .Site.BaseURL }}">サポートページ</a></li>
-      <li class="item"><a class="link">SDKドキュメント</a></li>
-    </ul>
-  </div>
-</section>
+        <!-- Header -->
+        {{ partial "header.html" . }}
+        <section class="navbar-subheader">
+            <div class="container">
+                <ul class="breadcrumb">
+                    <li class="item"><a class="link" href="{{ .Site.BaseURL }}">サポートページ</a></li>
+                    <li class="item"><a class="link">SDKドキュメント</a></li>
+                </ul>
+            </div>
+        </section>
 
 
-<!-- Container -->
-<div class="content">
-  <div class="container">
+        <!-- Container -->
+        <div class="content">
+            <div class="container">
 
-<section class="page">
-  <h2 class="title">
-    <span class="nowrap">SDK</span>ドキュメント
-  </h2>
-</section>
+                <section class="page">
+                    <h2 class="title">
+                        <span class="nowrap">SDK</span>ドキュメント
+                    </h2>
+                </section>
 
-<section class="sdk-cards card-container">
-  <div class="ios sdk-card">
-    <div class="card-meta">
-      <img class="image" src="{{ .Site.BaseURL }}img/icon_svg/icon_ios.svg" alt="iOS">
-      <h3 class="platform">iOS</h3>
-      <div class="sdk-version">
-          <span class="version">version</span>
-          <span class="value">2.0.5</span>
-      </div>
-    </div>
-    <div class="card-btn">
-      <a class="btn" role="button" href="https://github.com/growthbeat/growthbeat-ios/archive/latest.zip">Download</a>
-    </div>
-    <div class="card-links">
-      <a class="link guide" href="{{ .Permalink }}ios/guide/">ガイド</a>
-      <a class="link api" href="{{ .Permalink }}ios/reference/">APIリファレンス</a>
-      <a class="link release" href="{{ .Permalink }}ios/release/">リリースノート</a>
-    </div>
-  </div>
-  <div class="android sdk-card">
-    <div class="card-meta">
-      <img class="image" src="{{ .Site.BaseURL }}img/icon_svg/icon_android.svg" alt="Android">
-      <h3 class="platform">Android</h3>
-      <div class="sdk-version">
-          <span class="version">version</span>
-          <span class="value">2.0.9</span>
-      </div>
-    </div>
-    <div class="card-btn">
-      <a class="btn" role="button" href="https://github.com/growthbeat/growthbeat-android/archive/latest.zip">Download</a>
-    </div>
-    <div class="card-links">
-      <a class="link guide" href="{{ .Permalink }}android/guide/">ガイド</a>
-      <a class="link api" href="{{ .Permalink }}android/reference/">APIリファレンス</a>
-      <a class="link release" href="{{ .Permalink }}android/release/">リリースノート</a>
-    </div>
-  </div>
-  <div class="unity sdk-card">
-    <div class="card-meta">
-      <img class="image" src="{{ .Site.BaseURL }}img/icon_svg/icon_unity.svg" alt="Unity">
-      <h3 class="platform">Unity</h3>
-      <div class="sdk-version">
-          <span class="version">version</span>
-          <span class="value">2.0.9</span>
-      </div>
-    </div>
-    <div class="card-btn">
-      <a class="btn" role="button" href="https://github.com/growthbeat/growthbeat-unity/archive/latest.zip">Download</a>
-    </div>
-    <div class="card-links">
-      <a class="link guide" href="{{ .Permalink }}unity/guide/">ガイド</a>
-      <a class="link api" href="{{ .Permalink }}unity/reference/">APIリファレンス</a>
-      <a class="link release" href="{{ .Permalink }}unity/release/">リリースノート</a>
-    </div>
-  </div>
-  <div class="api sdk-card">
-    <div class="card-meta">
-      <img class="image" src="{{ .Site.BaseURL }}img/icon_svg/icon_api.svg" alt="REST API">
-      <h3 class="platform">REST API</h3>
-      <div class="sdk-version">
-          <span class="version">　</span>
-          <span class="value"></span>
-      </div>
-    </div>
-    <div class="card-btn">
-      <a class="btn disabled" role="button">Download</a>
-    </div>
-    <div class="card-links">
-      <a class="link guide" href="{{ .Permalink }}api/guide/">ガイド</a>
-      <a class="link api" href="https://growthbeat.github.io/api/growthpush/v4/">APIリファレンス</a>
-      <a class="link release" href="{{ .Permalink }}api/release/">リリースノート</a>
-    </div>
-  </div>
-</section>
+                <section class="sdk-cards card-container">
+                    <div class="ios sdk-card">
+                        <div class="card-meta">
+                            <img class="image" src="{{ .Site.BaseURL }}img/icon_svg/icon_ios.svg" alt="iOS">
+                            <h3 class="platform">iOS</h3>
+                            <div class="sdk-version">
+                                <span class="version">version</span>
+                                <span class="value">2.0.5</span>
+                            </div>
+                        </div>
+                        <div class="card-btn">
+                            <a class="btn" role="button"
+                                href="https://github.com/growthbeat/growthbeat-ios/archive/latest.zip">Download</a>
+                        </div>
+                        <div class="card-links">
+                            <a class="link guide" href="{{ .Permalink }}ios/guide/">ガイド</a>
+                            <a class="link api" href="{{ .Permalink }}ios/reference/">APIリファレンス</a>
+                            <a class="link release" href="{{ .Permalink }}ios/release/">リリースノート</a>
+                        </div>
+                    </div>
+                    <div class="android sdk-card">
+                        <div class="card-meta">
+                            <img class="image" src="{{ .Site.BaseURL }}img/icon_svg/icon_android.svg" alt="Android">
+                            <h3 class="platform">Android</h3>
+                            <div class="sdk-version">
+                                <span class="version">version</span>
+                                <span class="value">2.0.9</span>
+                            </div>
+                        </div>
+                        <div class="card-btn">
+                            <a class="btn" role="button"
+                                href="https://github.com/growthbeat/growthbeat-android/archive/latest.zip">Download</a>
+                        </div>
+                        <div class="card-links">
+                            <a class="link guide" href="{{ .Permalink }}android/guide/">ガイド</a>
+                            <a class="link api" href="{{ .Permalink }}android/reference/">APIリファレンス</a>
+                            <a class="link release" href="{{ .Permalink }}android/release/">リリースノート</a>
+                        </div>
+                    </div>
+                    <div class="api sdk-card">
+                        <div class="card-meta">
+                            <img class="image" src="{{ .Site.BaseURL }}img/icon_svg/icon_api.svg" alt="REST API">
+                            <h3 class="platform">REST API</h3>
+                            <div class="sdk-version">
+                                <span class="version">　</span>
+                                <span class="value"></span>
+                            </div>
+                        </div>
+                        <div class="card-btn">
+                            <a class="btn disabled" role="button">Download</a>
+                        </div>
+                        <div class="card-links">
+                            <a class="link guide" href="{{ .Permalink }}api/guide/">ガイド</a>
+                            <a class="link api" href="https://growthbeat.github.io/api/growthpush/v4/">APIリファレンス</a>
+                            <a class="link release" href="{{ .Permalink }}api/release/">リリースノート</a>
+                        </div>
+                    </div>
+                </section>
 
-<section class="page-description">
-    <p class="description">
-        各 SDK は <span class="nowrap">GitHub</span> 上で開発・公開されています。とても簡単にアプリに導入することができます。SDK を変更しご使用いただくことは可能となっておりますが、公開されている SDK のソース以外の変更を行われた場合のアプリの不具合や動作については保証し兼ねますのでご了承ください。
-    </p>
-</section>
+                <section class="page-description">
+                    <p class="description">
+                        各 SDK は <span class="nowrap">GitHub</span> 上で開発・公開されています。とても簡単にアプリに導入することができます。SDK
+                        を変更しご使用いただくことは可能となっておりますが、公開されている SDK のソース以外の変更を行われた場合のアプリの不具合や動作については保証し兼ねますのでご了承ください。
+                    </p>
+                </section>
 
 
 
-  </div><!-- container -->
-</div><!-- content -->
+            </div><!-- container -->
+        </div><!-- content -->
 
-<!-- Footer -->
-{{ partial "footer.html" . }}
+        <!-- Footer -->
+        {{ partial "footer.html" . }}
 
-</div><!-- /wrapper -->
-{{ partial "common.html" . }}
+    </div><!-- /wrapper -->
+    {{ partial "common.html" . }}
 </body>
+
 </html>
