@@ -1,6 +1,6 @@
 ---
 categories: 'sdk'
-date: 2017-05-31T18:00:00+09:00
+date: 2019-08-01T17:00:00+09:00
 description: 'Growthbeat Android のリリースノート'
 draft: false
 title: リリースノート
