@@ -27,6 +27,8 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.0.+'
     implementation 'com.google.firebase:firebase-messaging:18.0.+'
 }
+
+apply plugin: 'com.google.gms.google-services'
 ```
 Growthbeat SDKを利用するには、依存ライブラリが必要となります。  
 
