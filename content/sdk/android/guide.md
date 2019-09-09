@@ -23,10 +23,11 @@ build.gradle(Module:app)に下記を追加してください。
 
 ```sh
 dependencies {
-    implementation 'com.growthbeat:growthbeat-android:2.0.10@aar'
-    implementation 'com.android.support:appcompat-v7:27.1.+'
-    implementation 'com.google.firebase:firebase-messaging:15.0.+'
+    implementation 'com.growthbeat:growthbeat-android:2.0.11@aar'
+    implementation 'com.android.support:appcompat-v7:28.0.+'
+    implementation 'com.google.firebase:firebase-messaging:18.0.+'
 }
+apply plugin: 'com.google.gms.google-services'
 ```
 Growthbeat SDKを利用するには、依存ライブラリが必要となります。  
 

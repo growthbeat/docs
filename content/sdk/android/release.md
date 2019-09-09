@@ -1,10 +1,15 @@
 ---
 categories: 'sdk'
-date: 2019-08-01T17:00:00+09:00
+date: 2019-09-09T17:00:00+09:00
 description: 'Growthbeat Android のリリースノート'
 draft: false
 title: リリースノート
 ---
+
+# バージョン 2.0.11
+
+## 変更点
+- Android firebase-messaging v18 に対応しました。
 
 # バージョン 2.0.10
 
