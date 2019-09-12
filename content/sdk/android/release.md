@@ -9,7 +9,8 @@ title: リリースノート
 # バージョン 2.0.11
 
 ## 変更点
-- Android firebase-messaging v18 に対応しました。
+- targetSdkVersion 28 に対応しました。
+- ドキュメントを更新しました。
 
 # バージョン 2.0.10
 
