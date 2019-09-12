@@ -1,12 +1,12 @@
 ---
 categories: 'sdk'
-date: 2017-05-31T18:00:00+09:00
+date: 2019-09-10T18:00:00+09:00
 description: 'Growthbeat SDK for Android の導入方法について説明します'
 draft: false
 title: Growthbeat Android SDK | 全機能利用ガイド
 ---
 
-Version 2.0.10  
+Version 2.0.11  
 # Growthbeat利用ガイド  
 # 1. Growth Pushを利用  
 Growth Pushのみを利用する[導入方法](/sdk/android/guide)をご覧ください。  

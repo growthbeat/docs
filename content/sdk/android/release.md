@@ -1,10 +1,16 @@
 ---
 categories: 'sdk'
-date: 2019-08-01T17:00:00+09:00
+date: 2019-09-10T18:00:00+09:00
 description: 'Growthbeat Android のリリースノート'
 draft: false
 title: リリースノート
 ---
+
+# バージョン 2.0.11
+
+## 変更点
+- targetSdkVersion 28 に対応しました。
+- ドキュメントを更新しました。
 
 # バージョン 2.0.10
 
