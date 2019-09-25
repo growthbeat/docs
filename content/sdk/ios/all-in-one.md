@@ -1,12 +1,12 @@
 ---
 categories: 'sdk'
-date: 2017-01-06T23:47:00+09:00
+date: 2019-09-25T17:00:00+09:00
 description: 'Growthbeat iOS の導入方法について説明します'
 draft: false
 title: Growthbeat iOS SDK | 全機能利用ガイド
 ---
 
-Version 2.0.5  
+Version 2.0.6 
 # Growthbeat利用ガイド  
 # 1. Growth Pushを利用  
 Growth Pushのみを利用する[導入方法](/sdk/ios/guide)をご覧ください。
