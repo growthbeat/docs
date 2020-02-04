@@ -1,12 +1,12 @@
 ---
 categories: 'sdk'
-date: 2019-09-25T17:00:00+09:00
+date: 2020-02-04T17:00:00+09:00
 description: 'Growthbeat iOS の導入方法について説明します'
 draft: false
 title: Growthbeat iOS SDK | 基本導入ガイド
 ---
 
-Version 2.0.6  
+Version 2.0.7  
 # SDK概要  
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。Objective-Cでの導入方法について記載しております。  
 ## 環境  

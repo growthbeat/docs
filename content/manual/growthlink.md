@@ -9,9 +9,10 @@ title: 'Growth Link'
 
 # ディープリンクについて
 
-Growth Linkの設定にかならずしもdeep linkの知識は必須ではありませんが、
+Growth Link[^1]の設定にかならずしもdeep linkの知識は必須ではありませんが、
 ディープリンクの知識や他関連技術とGrowth Link関係性についての理解を深めておくと設定がやりやすくなります。
 理解の助けになる記事を下記に記載いたしました。
+[^1]: Growth Linkは現在提供を停止しております。
 
 
 [ディープリンクとGrowth Linkの関係](http://faq.growthbeat.com/article/141-growthlink)
