@@ -1,11 +1,11 @@
 ---
 categories: 'sdk'
-date: 2019-09-10T18:00:00+09:00
+date: 2020-02-04T17:00:00+09:00
 description: 'Growthbeat Android の API について説明します'
 draft: false
 title: Growthbeat Android API
 ---
-Version 2.0.11 
+Version 2.0.12
 [Android SDK 1.2.7以下](/sdk/android/reference-1.2.7)のリファレンスはこちら  
 # Growthbeat API  
 ## Growthbeatインスタンスの取得  
