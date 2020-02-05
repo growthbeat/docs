@@ -252,11 +252,6 @@ Growth Pushダイアログプッシュ通知を表示するときに必要とな
     android:launchMode="singleInstance"
     android:theme="@android:style/Theme.Translucent" />
 
-<service android:name="com.growthpush.TokenRefreshService">
-    <intent-filter>
-        <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-    </intent-filter>
-</service>
 <service android:name="com.growthpush.ReceiverService">
     <intent-filter>
         <action android:name="com.google.firebase.MESSAGING_EVENT" />
