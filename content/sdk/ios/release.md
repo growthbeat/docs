@@ -1,6 +1,6 @@
 ---
 categories: 'sdk'
-date: 2019-09-25T17:00:00+09:00
+date: 2020-02-04T17:00:00+09:00
 description: 'Growthbeat iOS のリリースノート'
 draft: false
 title: リリースノート
@@ -9,8 +9,8 @@ title: リリースノート
 # バージョン 2.0.7
 
 ## 変更点
-UIWebViewを利用していた処理を削除しました。
-GrowthLink提供停止のため機能を削除しました。
+- UIWebViewを利用していた処理を削除しました。
+- GrowthLink提供停止のため機能を削除しました。
 
 # バージョン 2.0.6
 
