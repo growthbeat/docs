@@ -1,12 +1,12 @@
 ---
 categories: 'sdk'
-date: 2019-09-25T17:00:00+09:00
+date: 2020-02-04T17:00:00+09:00
 description: 'Growthbeat iOS の API について説明します'
 draft: false
 title: Growthbeat iOS API
 ---
 
-Version 2.0.6
+Version 2.0.7
 
 [iOS SDK 1.2.7以下](/sdk/ios/reference-1.2.7)のリファレンスはこちら
 

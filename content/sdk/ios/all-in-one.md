@@ -1,6 +1,6 @@
 ---
 categories: 'sdk'
-date: 2019-09-25T17:00:00+09:00
+date: 2020-02-04T17:00:00+09:00
 description: 'Growthbeat iOS の導入方法について説明します'
 draft: false
 title: Growthbeat iOS SDK | 全機能利用ガイド

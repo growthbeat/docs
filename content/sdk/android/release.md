@@ -1,10 +1,15 @@
 ---
 categories: 'sdk'
-date: 2019-09-10T18:00:00+09:00
+date: 2020-02-04T17:00:00+09:00
 description: 'Growthbeat Android のリリースノート'
 draft: false
 title: リリースノート
 ---
+
+# バージョン 2.0.12
+
+## 変更点
+- GrowthLink提供停止のため機能を削除しました。
 
 # バージョン 2.0.11
 
