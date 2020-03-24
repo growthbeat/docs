@@ -32,10 +32,21 @@ dependencies {
 }
 apply plugin: 'com.google.gms.google-services'
 ```
+
+アプリがAndroidXに対応していない場合は、Growthbeat Android SDK v2.0.12、dependencies は以下をご利用ください。
+```
+dependencies {
+    implementation 'com.growthbeat:growthbeat-android:2.0.11@aar'
+    implementation 'com.android.support:appcompat-v7:28.0.+'
+    implementation 'com.google.firebase:firebase-messaging:18.0.+'
+}
+apply plugin: 'com.google.gms.google-services'
+```
 Growthbeat SDKを利用するには、依存ライブラリが必要となります。  
 
-- AndroidX
+- AndroidX 
 - firebase-messagaging
+- アプリがAndroidXに対応していない場合は appcompat-v7もしくはandroid-support-v4
 
 依存ライブラリの対応バージョンは [Androidビルドに必要なライブラリ](http://faq.growthbeat.com/article/201-android) をご参照ください  
 
