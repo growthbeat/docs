@@ -10,7 +10,7 @@ Version 3.0.1
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。  
 (※ Eclipseの導入は非推奨となっております。導入については、[Eclipse環境での導入手順について](http://faq.growthbeat.com/article/211-eclipse) をご参照ください。)  
 ## 動作環境  
-最低動作保証環境: Android 4.1以上  
+最低動作保証環境: Android 4.1以上
 動作推奨環境: Android 4.4以上  
 
 # 1. プロジェクトの設定  
@@ -44,7 +44,7 @@ apply plugin: 'com.google.gms.google-services'
 ```
 Growthbeat SDKを利用するには、依存ライブラリが必要となります。  
 
-- AndroidX 
+- AndroidX
 - firebase-messagaging
 - アプリがAndroidXに対応していない場合は appcompat-v7もしくはandroid-support-v4
 
