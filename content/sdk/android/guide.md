@@ -12,6 +12,7 @@ Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できま�
 ## 動作環境  
 最低動作保証環境: Android 4.1以上
 動作推奨環境: Android 4.4以上  
+
 # 1. プロジェクトの設定  
 Growthbeat 2.0.8以下からアップデートする方は、[FCM移行ガイド](https://faq.growthbeat.com/article/226-gcmtofcm)を参照ください  
 アプリ側でSupport Library（appcompat-v7など）をご利用の場合は、Growthbeat SDK v2.0.12をご利用ください。
