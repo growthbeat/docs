@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat iOS API
 ---
 
-Version 2.0.7
+Version 2.0.8
 
 [iOS SDK 1.2.7以下](/sdk/ios/reference-1.2.7)のリファレンスはこちら
 
@@ -80,7 +80,7 @@ GrowthbeatおよびGrowth Pushの初期化を行います。初期化では以�
 |applicationId| アプリケーションID |
 |credentialId| クレデンシャルキー |
 |environment| 開発用: `Environment.development` 本番用: `Environment.production`　|
-|adInfoEnable | NOの場合、Growth Pushに広告IDを渡しません |
+|adInfoEnable | 指定にかかわらず Growth Pushに広告IDを渡しません |
 
 ## デバイストークンの取得・送信
 
