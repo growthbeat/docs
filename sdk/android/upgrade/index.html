@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+
+  
+  <meta name="viewport" content="width=1040px, user-scalable=yes">
+
+  
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Growthbeat SDK | 新バージョンアップデート方法 | Growthbeatドキュメント |">
+  <meta property="og:url" content="http://support.growthbeat.com/sdk/android/upgrade/">
+  <meta property="og:description" content="Growthbeat SDK for Android 新バージョンアップデート方法についてご紹介します">
+  
+  <meta property="article:author" content="" />
+  <meta property="fb:app_id" content="" />
+  <meta property="og:site_name" content="Growthbeatドキュメント |">
+
+  <title>
+      
+        Growthbeat SDK | 新バージョンアップデート方法 | Growthbeatドキュメント |
+      
+  </title>
+
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <link rel="stylesheet" href="http://support.growthbeat.com/css/main.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+</head>
+
+<body>
+
+
+
+  
+
+
+
+
+  
+
+
+<div class="wrapper">
+
+
+
+<header class="navbar-header" role="banner">
+  <div class="container">
+    <nav class="header-nav">
+      <h1 class="logo">
+        <a class="link"href="https://growthbeat.com/">
+          <img src="http://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
+        </a>
+      </h1>
+
+      <div class="search">
+        <input id="algolia-search" type="text" placeholder="サポートページを検索">
+      </div>
+      <div class="inquiry">
+        <a class="link" href="https://growthbeat.com/inquiry">お問い合わせ</a>
+      </div>
+      <div class="login">
+        <a class="link" href="https://growthbeat.com/">Growthbeat</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="navbar-subheader">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li class="item">
+        <a class="link" href="http://support.growthbeat.com/">サポートページ</a>
+      </li>
+      <li class="item">
+        <a class="link" href="http://support.growthbeat.com/sdk/">SDKドキュメント</a>
+      </li>
+      
+      
+      
+      
+        <li class="item"><a class="link">SDKアップグレードガイド</a></li>
+      
+      
+    </ul>
+  </div>
+</section>
+
+
+
+<div class="content">
+  <div class="container">
+
+<div class="page">
+  <h1 class="title">
+    
+      SDKアップグレードガイド
+　　 
+    <span class="updated">最終更新日 Wed, Sep 28, 2016</span>
+  </h1>
+  <a class="edit" href="https://github.com/growthbeat/docs/blob/master/content/sdk/android/upgrade.md">Edit on GitHub</a>
+</div>
+
+
+<section class="row markdown">
+    <div class="column column-sidebar">
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#sdkアップグレードガイド">SDKアップグレードガイド</a></li>
+<li><a href="#growthbeat-sdk-2-0-0-2-0-8からのアップデート">Growthbeat SDK 2.0.0 ~ 2.0.8からのアップデート</a></li>
+<li><a href="#growthbeat-sdk-1-xからのアップグレード">Growthbeat SDK 1.xからのアップグレード</a>
+<ul>
+<li><a href="#機能削除">機能削除</a></li>
+<li><a href="#導入コード">導入コード</a></li>
+</ul></li>
+<li><a href="#growth-push-sdkからのアップグレードについて">Growth Push SDKからのアップグレードについて</a>
+<ul>
+<li><a href="#概要">概要</a>
+<ul>
+<li><a href="#注意点">注意点</a></li>
+</ul></li>
+<li><a href="#導入コード-1">導入コード</a></li>
+<li><a href="#androidmanifest-xml">AndroidManifest.xml</a></li>
+</ul></li>
+<li><a href="#移行確認方法">移行確認方法</a></li>
+</ul>
+</nav>
+    </div>
+    <div class="column column-main">
+      <div class="typeset">
+        
+
+<p><strong>Growth Push SDK及びGrowthbeat SDK 1.xのサポートは、2016年12月21日までとなっております。</strong></p>
+
+<h1 id="sdkアップグレードガイド">SDKアップグレードガイド</h1>
+
+<p>最新のSDKにお乗り換えする方法についてご紹介いたします。</p>
+
+<ul>
+<li>Growthbeat 2.0.0 ~ 2.0.8 SDKから最新のGrowthbeat SDKへのアップグレード</li>
+<li>Growthbeat 1.x SDKから最新のGrowthbeat SDKへのアップグレード</li>
+<li>Growth Push SDKから最新のGrowthbeat SDKへのアップグレード</li>
+</ul>
+
+<p>についてご紹介いたします。</p>
+
+<h1 id="growthbeat-sdk-2-0-0-2-0-8からのアップデート">Growthbeat SDK 2.0.0 ~ 2.0.8からのアップデート</h1>
+
+<p>GCM廃止に伴いFCMへ変更が必要となります。　　
+<a href="https://faq.growthbeat.com/article/226-gcmtofcm">https://faq.growthbeat.com/article/226-gcmtofcm</a></p>
+
+<h1 id="growthbeat-sdk-1-xからのアップグレード">Growthbeat SDK 1.xからのアップグレード</h1>
+
+<h2 id="機能削除">機能削除</h2>
+
+<ul>
+<li>インターフェスの変更があります。
+
+<ul>
+<li>次の実装変更点でご確認ください。</li>
+</ul></li>
+<li>Growth Analytics クラスがなくなりました。
+
+<ul>
+<li>Growth Analytics に関する記述は全て削除してください。</li>
+<li>2.x以降は、GrowthPush#setTag, trackEventをご利用ください。</li>
+</ul></li>
+<li>GrowthbeatCoreクラスが、Growthbeatクラスに統合されました。
+
+<ul>
+<li>start, stop, initializeは削除されました。</li>
+</ul></li>
+</ul>
+
+<h2 id="導入コード">導入コード</h2>
+
+<ul>
+<li>Growthbeat 1.x</li>
+</ul>
+
+<pre><code class="language-java">protected void onCreate(Bundle savedInstanceState) {
+	super.onCreate(savedInstanceState);
+
+    //...
+
+    Growthbeat.getInstance().initialize(getApplicationContext(), &quot;YOUR_APPLICATION_ID&quot;, &quot;CREDENTIAL_ID&quot;);
+    GrowthPush.getInstance().requestRegistrationId(&quot;YOUR_SENDER_ID&quot;, BuildConfig.DEBUG ? Environment.development : Environment.production);
+    Growthbeat.getInstance().getClient(new Growthbeat.ClientCallback() {
+            @Override
+            public void callback(Client client) {
+                Log.d(&quot;GrowthbeatSample&quot;, String.format(&quot;clientId is %s&quot;, client.getId()));
+            }
+        });
+    Growthbeat.getInstance().start();
+
+}
+
+protected void onStop() {
+    super.onStop();
+    Growthbeat.getInstance().stop();
+}
+</code></pre>
+
+<ul>
+<li>Growthbeat 2.x</li>
+</ul>
+
+<pre><code class="language-java">protected void onCreate(Bundle savedInstanceState) {
+
+    super.onCreate(savedInstanceState);
+
+    //...
+    GrowthPush.getInstance().initialize(getApplicationContext(), &quot;YOUR_APPLICATION_ID&quot;, &quot;CREDENTIAL_ID&quot;, BuildConfig.DEBUG ? Environment.development : Environment.production);
+
+    // 以下は、必ずinitialize後に呼び出してください
+    GrowthPush.getInstance().requestRegistrationId(&quot;YOUR_SENDER_ID&quot;);
+    new Thread(new Runnable() {
+        @Override
+        public void run() {
+            Client client = Growthbeat.getInstance().waitClient();
+            Log.d(&quot;GrowthbeatSample&quot;, String.format(&quot;clientId is %s&quot;, client.getId()));
+        }
+    }).start();
+
+}
+
+protected void onStop() {
+    super.onStop();
+}
+</code></pre>
+
+<h1 id="growth-push-sdkからのアップグレードについて">Growth Push SDKからのアップグレードについて</h1>
+
+<h2 id="概要">概要</h2>
+
+<p>Growth Push の認証から、Growthbeat の認証に移行されるため、新しい ApplicationId と SDKキー（クレデンシャルID）を取得する必要がございます。</p>
+
+<p>ApplicationId は、Growth Push管理画面左メニュー「アプリ詳細」の 「Growthbeat アプリケーションID」 にて確認ができます。</p>
+
+<p>SDKキーは、Growthbeat管理画面左メニュー「<a href="https://growthbeat.com/mypage/account">アカウント</a>」の「クレデンシャルID &gt; SDK」にて確認ができます。</p>
+
+<h3 id="注意点">注意点</h3>
+
+<p>これまでGrowth Pushでご利用いただいた、ApplicationIdは数値型、シークレットキーは文字列型になっています。  </p>
+
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>型</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>applicationId</td>
+<td>数値型</td>
+</tr>
+
+<tr>
+<td>secret</td>
+<td>文字列型/32文字</td>
+</tr>
+</tbody>
+</table>
+
+<p>Growthbeat SDKで利用するものは、applicationId、credentialIdともに文字列型になっています。</p>
+
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>型</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>applicationId</td>
+<td>文字列型/16文字</td>
+</tr>
+
+<tr>
+<td>credentailId</td>
+<td>文字列型/32文字</td>
+</tr>
+</tbody>
+</table>
+
+<p>Growthbeat SDK 乗り換え時に、これまで Growth Push で利用していたシークレットキーを設定しても、正しく動作しませんのでご注意くださいませ。 必ず、SDKキーをご利用ください。</p>
+
+<h2 id="導入コード-1">導入コード</h2>
+
+<ul>
+<li>GrowthPush SDK</li>
+</ul>
+
+<pre><code class="language-java">protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+    GrowthPush.getInstance().initialize(getApplicationContext(), YOUR_APPLICATION_ID, &quot;APPLICATION_SECRET&quot;, BuildConfig.DEBUG ? Environment.development : Environment.production, true).register(&quot;YOUR_SENDER_ID&quot;);
+    GrowthPush.getInstance().trackEvent(&quot;Launch&quot;);
+    GrowthPush.getInstance().setDeviceTags();
+}
+</code></pre>
+
+<ul>
+<li>Growthbeat SDK 2.x</li>
+</ul>
+
+<pre><code class="language-java">protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    // GrowthPushの初期化
+    GrowthPush.getInstance().initialize(getApplicationContext(), &quot;YOUR_APPLICATION_ID&quot;, &quot;CREDENTIAL_ID&quot;, BuildConfig.DEBUG ? Environment.development : Environment.production);
+
+    // 以下は、必ずinitialize後に呼び出してください
+    // Registration IDを明示的に要求
+    GrowthPush.getInstance().requestRegistrationId(&quot;YOUR_SENDER_ID&quot;);
+    // Launchイベントの取得
+    GrowthPush.getInstance().trackEvent(&quot;Launch&quot;);
+}
+</code></pre>
+
+<h2 id="androidmanifest-xml">AndroidManifest.xml</h2>
+
+<p>Growthbeat SDKでは、 <code>com.growthpush.BroadcastReceiver</code>が廃止になりましたので、変更が必要となります。
+この変更を行わないと、正しくプッシュ通知が送信できなくなりますので、ご注意ください。</p>
+
+<ul>
+<li>GrowthPush SDK</li>
+</ul>
+
+<pre><code class="language-xml">&lt;receiver
+    android:name=&quot;com.growthpush.BroadcastReceiver&quot;
+    android:permission=&quot;com.google.android.c2dm.permission.SEND&quot; &gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;com.google.android.c2dm.intent.RECEIVE&quot; /&gt;
+        &lt;action android:name=&quot;com.google.android.c2dm.intent.REGISTRATION&quot; /&gt;
+
+        &lt;category android:name=&quot;YOUR_PACKAGE_NAME&quot; /&gt;
+    &lt;/intent-filter&gt;
+&lt;/receiver&gt;
+</code></pre>
+
+<ul>
+<li>Growthbeat SDK 2.x</li>
+</ul>
+
+<pre><code class="language-xml">&lt;service
+    android:name=&quot;com.growthpush.TokenRefreshService&quot;
+    android:exported=&quot;false&quot;&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;com.google.android.gms.iid.InstanceID&quot;/&gt;
+    &lt;/intent-filter&gt;
+&lt;/service&gt;
+&lt;service android:name=&quot;com.growthpush.RegistrationIntentService&quot;/&gt;
+&lt;service
+    android:name=&quot;com.growthpush.ReceiverService&quot;
+    android:exported=&quot;false&quot; &gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;com.google.android.c2dm.intent.RECEIVE&quot; /&gt;
+    &lt;/intent-filter&gt;
+&lt;/service&gt;
+&lt;receiver
+    android:name=&quot;com.google.android.gms.gcm.GcmReceiver&quot;
+    android:exported=&quot;true&quot;
+    android:permission=&quot;com.google.android.c2dm.permission.SEND&quot; &gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;com.google.android.c2dm.intent.RECEIVE&quot; /&gt;
+        &lt;category android:name=&quot;YOUR_PACKAGE_NAME&quot; /&gt;
+    &lt;/intent-filter&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;com.google.android.c2dm.intent.REGISTRATION&quot; /&gt;
+        &lt;category android:name=&quot;YOUR_PACKAGE_NAME&quot; /&gt;
+    &lt;/intent-filter&gt;
+&lt;/receiver&gt;
+</code></pre>
+
+<h1 id="移行確認方法">移行確認方法</h1>
+
+<p>Growth Push の管理画面で、該当デバイスのプッシュ通知ステータスが <code>Active</code> になっていれば、正しくプッシュ通知が行えます。
+移行対応は、以上となります。</p>
+
+      </div>
+    </div>
+</section>
+
+
+  </div>
+</div>
+
+
+<footer class="footer">
+  <small class="copyright">Designed by SIROK</small>
+</footer>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script src="http://support.growthbeat.com/js/sirok-scrollspy.js"></script>
+<script>
+$(function() {
+  $('pre code, code').each(function(i, block) {
+    hljs.highlightBlock(block)
+  });
+
+  var sidebar = $('.column-sidebar');
+  var offset = sidebar.offset();
+
+  $(window).scroll(function () {
+    if ($(window).scrollTop() > offset.top - 20) {
+      sidebar.addClass('fixed');
+    } else {
+      sidebar.removeClass('fixed');
+    }
+  });
+
+  sidebar.find('ul').addClass('spy-nav');
+
+  $(document.body).scrollspy({
+    target: '#TableOfContents',
+  });
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+<script type="text/javascript">
+docsearch({
+ apiKey: '11fef466694af89257b9dc61a7b7fa20',
+ indexName: 'growthbeat',
+ inputSelector: '#algolia-search'
+});
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56017268-6', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
+
+</div>
+</body>
+</html>

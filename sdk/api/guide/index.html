@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+
+  
+  <meta name="viewport" content="width=1040px, user-scalable=yes">
+
+  
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Growthbeat API Gudeliene | Growthbeatドキュメント |">
+  <meta property="og:url" content="http://support.growthbeat.com/sdk/api/guide/">
+  <meta property="og:description" content="Growthbeat API ついて説明します">
+  
+  <meta property="article:author" content="" />
+  <meta property="fb:app_id" content="" />
+  <meta property="og:site_name" content="Growthbeatドキュメント |">
+
+  <title>
+      
+        Growthbeat API Gudeliene | Growthbeatドキュメント |
+      
+  </title>
+
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <link rel="stylesheet" href="http://support.growthbeat.com/css/main.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+</head>
+
+<body>
+
+
+
+  
+
+
+
+
+  
+
+
+<div class="wrapper">
+
+
+
+<header class="navbar-header" role="banner">
+  <div class="container">
+    <nav class="header-nav">
+      <h1 class="logo">
+        <a class="link"href="https://growthbeat.com/">
+          <img src="http://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
+        </a>
+      </h1>
+
+      <div class="search">
+        <input id="algolia-search" type="text" placeholder="サポートページを検索">
+      </div>
+      <div class="inquiry">
+        <a class="link" href="https://growthbeat.com/inquiry">お問い合わせ</a>
+      </div>
+      <div class="login">
+        <a class="link" href="https://growthbeat.com/">Growthbeat</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="navbar-subheader">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li class="item">
+        <a class="link" href="http://support.growthbeat.com/">サポートページ</a>
+      </li>
+      <li class="item">
+        <a class="link" href="http://support.growthbeat.com/sdk/">SDKドキュメント</a>
+      </li>
+      
+      
+        <li class="item"><a class="link">基本機能利用ガイド</a></li>
+      
+      
+      
+      
+    </ul>
+  </div>
+</section>
+
+
+
+<div class="content">
+  <div class="container">
+
+<div class="page">
+  <h1 class="title">
+    
+      基本機能利用ガイド
+    
+    <span class="updated">最終更新日 Fri, Sep 2, 2016</span>
+  </h1>
+  <a class="edit" href="https://github.com/growthbeat/docs/blob/master/content/sdk/api/guide.md">Edit on GitHub</a>
+</div>
+
+
+<section class="row markdown">
+    <div class="column column-sidebar">
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#概要">概要</a>
+<ul>
+<li><a href="#apiを使用する前に">APIを使用する前に</a></li>
+</ul></li>
+<li><a href="#リクエスト">リクエスト</a></li>
+<li><a href="#利用制限">利用制限</a></li>
+<li><a href="#データ形式">データ形式</a></li>
+<li><a href="#apiドキュメント一覧">APIドキュメント一覧</a></li>
+<li><a href="#活用例">活用例</a></li>
+</ul>
+</nav>
+    </div>
+    <div class="column column-main">
+      <div class="typeset">
+        
+
+<h1 id="概要">概要</h1>
+
+<p>Growthbeat ではサーバー API を用意しております。Growthbeat プラットフォームに蓄積されたデータを管理画面外からも取得することが可能となっております。</p>
+
+<h2 id="apiを使用する前に">APIを使用する前に</h2>
+
+<p>API を利用するには Growthbeat への会員登録が必要となります。API を使用するにはアカウントに紐付いている API キーの使用が必須となります。API キーの取得方法は <a href="http://support.growthbeat.com/manual/growthbeat/#クレデンシャルキーの確認">こちら</a> を参照してください。</p>
+
+<h1 id="リクエスト">リクエスト</h1>
+
+<p>APIとの全ての通信にはHTTPSプロトコルを利用します。</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">利用サービス</th>
+<th align="center">アクセス先ホスト</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">Growthbeat</td>
+<td align="center">api.growthbeat.com</td>
+</tr>
+
+<tr>
+<td align="center">Growth Push</td>
+<td align="center">api.growthpush.com</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="利用制限">利用制限</h1>
+
+<p>API を使用すると API ごとにリクエスト数が加算されます。ご契約のリクエスト数、現在のリクエスト数に応じて使用する API を考慮してください。月のAPIの上限を超えますと APIに てデータが取得できなくなりますのでご了承ください。現在の使用リクエスト数は <a href="https://growthbeat.com/mypage/request">こちら</a> を参照してください。</p>
+
+<h1 id="データ形式">データ形式</h1>
+
+<p>APIとのデータの送受信にはJSONを利用します。JSONをリクエストボディに含める場合、リクエストのContent-Typeヘッダに <code>application/json</code> を指定し、リクエストヘッダーは <code>application/x-www-form-urlencoded</code> で送信してください。
+GETリクエストにバラメータを含める場合にはURIクエリを利用します。</p>
+
+<p>正常なレスポンスの場合は、リファレンスにあるAPIごとのJSON形式のレスポンスが返ります。エラーレスポンス時には、エラーコード、エラーメッセージのみのJSON形式のレスポンスが返ります。</p>
+
+<p><strong>正常なレスポンス例</strong></p>
+
+<pre><code>curl -X GET \
+    -H 'Accept: application/json' \
+    -G \
+    --data &quot;applicationId=GROWTHBEAT_APPLICATION_ID&quot; \
+    --data &quot;credentialId=GROWTHBEAT_CREDENTIAL_ID&quot; \
+    https://api.growthpush.com/4/clients/GROWTHBEAT_CLIENT_ID | jq .
+</code></pre>
+
+<pre><code>{
+  &quot;id&quot;: &quot;GROWTHBEAT_CLIENT_ID&quot;,
+  &quot;applicationId&quot;: &quot;GROWTHBEAT_APPLICATION_ID&quot;,
+  &quot;token&quot;: &quot;DEVICE_TOKEN&quot;,
+  &quot;status&quot;: &quot;STATUS&quot;,
+  &quot;os&quot;: &quot;OS&quot;,
+  &quot;environment&quot;: &quot;ENVIRONMENT&quot;,
+  &quot;updated&quot;: &quot;2015-02-03 12:34:56&quot;,
+  &quot;created&quot;: &quot;2015-02-03 12:34:56&quot;
+}
+</code></pre>
+
+<p><strong>エラーレスポンス例</strong></p>
+
+<pre><code>curl -X GET \
+    -H 'Accept: application/json' \
+    -G \
+    --data &quot;applicationId=GROWTHBEAT_APPLICATION_ID&quot; \
+    --data &quot;credentialId=GROWTHBEAT_CREDENTIAL_ID&quot; \
+    https://api.growthpush.com/4/clients/GROWTHBEAT_CLIENT_ID | jq .
+</code></pre>
+
+<pre><code>{
+    &quot;status&quot;: 400,
+    &quot;message&quot;: &quot;Invaid credential.&quot;,
+    &quot;code&quot;: 1001
+}
+</code></pre>
+
+<h1 id="apiドキュメント一覧">APIドキュメント一覧</h1>
+
+<ul>
+<li><del><a href="https://growthbeat.github.io/api/growthpush/v1/">V1 APIドキュメント</a></del> ※ こちらのAPIは 2016/12/21 に廃止いたしました。</li>
+<li><del><a href="https://growthbeat.github.io/api/growthpush/v2/">V2 APIドキュメント</a></del> ※ こちらのAPIは 2016/12/21 に廃止いたしました。</li>
+<li><a href="https://growthbeat.github.io/api/growthpush/v3/">V3 APIドキュメント</a></li>
+<li><a href="https://growthbeat.github.io/api/growthpush/v4/">V4 APIドキュメント</a></li>
+</ul>
+
+<h1 id="活用例">活用例</h1>
+
+<ul>
+<li><a href="http://faq.growthbeat.com/article/51-notifications-api-push">Notifications API 経由で、特定のユーザーに対してPush通知を送る方法</a></li>
+</ul>
+
+      </div>
+    </div>
+</section>
+
+
+  </div>
+</div>
+
+
+<footer class="footer">
+  <small class="copyright">Designed by SIROK</small>
+</footer>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script src="http://support.growthbeat.com/js/sirok-scrollspy.js"></script>
+<script>
+$(function() {
+  $('pre code, code').each(function(i, block) {
+    hljs.highlightBlock(block)
+  });
+
+  var sidebar = $('.column-sidebar');
+  var offset = sidebar.offset();
+
+  $(window).scroll(function () {
+    if ($(window).scrollTop() > offset.top - 20) {
+      sidebar.addClass('fixed');
+    } else {
+      sidebar.removeClass('fixed');
+    }
+  });
+
+  sidebar.find('ul').addClass('spy-nav');
+
+  $(document.body).scrollspy({
+    target: '#TableOfContents',
+  });
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+<script type="text/javascript">
+docsearch({
+ apiKey: '11fef466694af89257b9dc61a7b7fa20',
+ indexName: 'growthbeat',
+ inputSelector: '#algolia-search'
+});
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56017268-6', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+
+  
+  <meta name="viewport" content="width=1040px, user-scalable=yes">
+
+  
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Growthbeat Web API | Growthbeatドキュメント |">
+  <meta property="og:url" content="http://support.growthbeat.com/sdk/web/reference/">
+  <meta property="og:description" content="Growthbeat Web の API について説明します">
+  
+  <meta property="article:author" content="" />
+  <meta property="fb:app_id" content="" />
+  <meta property="og:site_name" content="Growthbeatドキュメント |">
+
+  <title>
+      
+        Growthbeat Web API | Growthbeatドキュメント |
+      
+  </title>
+
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <link rel="stylesheet" href="http://support.growthbeat.com/css/main.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+</head>
+
+<body>
+
+
+
+  
+
+
+
+
+  
+
+
+<div class="wrapper">
+
+
+
+<header class="navbar-header" role="banner">
+  <div class="container">
+    <nav class="header-nav">
+      <h1 class="logo">
+        <a class="link"href="https://growthbeat.com/">
+          <img src="http://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
+        </a>
+      </h1>
+
+      <div class="search">
+        <input id="algolia-search" type="text" placeholder="サポートページを検索">
+      </div>
+      <div class="inquiry">
+        <a class="link" href="https://growthbeat.com/inquiry">お問い合わせ</a>
+      </div>
+      <div class="login">
+        <a class="link" href="https://growthbeat.com/">Growthbeat</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="navbar-subheader">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li class="item">
+        <a class="link" href="http://support.growthbeat.com/">サポートページ</a>
+      </li>
+      <li class="item">
+        <a class="link" href="http://support.growthbeat.com/sdk/">SDKドキュメント</a>
+      </li>
+      
+        <li class="item"><a class="link">APIリファレンス</a></li>
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+</section>
+
+
+
+<div class="content">
+  <div class="container">
+
+<div class="page">
+  <h1 class="title">
+    
+      APIリファレンス
+　　 
+    <span class="updated">最終更新日 Tue, Feb 17, 2015</span>
+  </h1>
+  <a class="edit" href="https://github.com/growthbeat/docs/blob/master/content/sdk/web/reference.md">Edit on GitHub</a>
+</div>
+
+
+<section class="row markdown">
+    <div class="column column-sidebar">
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#growth-push-api">Growth Push API</a>
+<ul>
+<li><a href="#初期化">初期化</a></li>
+<li><a href="#registrationidの取得-送信">RegistrationIdの取得・送信</a></li>
+<li><a href="#イベントインターフェイス">イベントインターフェイス</a>
+<ul>
+<li><a href="#イベント購読">イベント購読</a></li>
+<li><a href="#イベント購読をやめる">イベント購読をやめる</a></li>
+</ul></li>
+<li><a href="#push許可状態の取得">Push許可状態の取得</a></li>
+<li><a href="#イベントの送信">イベントの送信</a></li>
+<li><a href="#タグの送信">タグの送信</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+    <div class="column column-main">
+      <div class="typeset">
+        
+
+<p>Version 1.1.4</p>
+
+<h1 id="growth-push-api">Growth Push API</h1>
+
+<h2 id="初期化">初期化</h2>
+
+<p>Growth Pushの初期化を行います。</p>
+
+<pre><code class="language-javascript">init(params:Params):void
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">params</td>
+<td align="left">Paramsオブジェクト</td>
+</tr>
+</tbody>
+</table>
+
+<p>Paramsオブジェクト</p>
+
+<pre><code class="language-javascript">interface Params {
+  applicationId:number;
+  credentialId:string;
+  environment?:string;
+  receiver:string;
+  appName:string;
+  icon:string;
+  clickEventName:string;
+}
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">applicationId</td>
+<td align="left">Growth Push管理画面のアプリID</td>
+</tr>
+
+<tr>
+<td align="left">credentialId</td>
+<td align="left">Growth Push管理画面のシークレットキー</td>
+</tr>
+
+<tr>
+<td align="left">environment</td>
+<td align="left">本番環境: <code>production</code> 開発環境: <code>development</code></td>
+</tr>
+
+<tr>
+<td align="left">receiver</td>
+<td align="left">本番環境: <code>/growthpush-sw.min.js</code> 開発環境: <code>/growthpush-sw.js</code></td>
+</tr>
+
+<tr>
+<td align="left">appName</td>
+<td align="left">アプリ名。通知のタイトルで表示されます。</td>
+</tr>
+
+<tr>
+<td align="left">icon</td>
+<td align="left">アイコン画像。通知のアイコンで表示されます。</td>
+</tr>
+
+<tr>
+<td align="left">clickEventName</td>
+<td align="left">通知クリックのイベント。例: NotificationClick</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="registrationidの取得-送信">RegistrationIdの取得・送信</h2>
+
+<pre><code class="language-javascript">register():void
+</code></pre>
+
+<h2 id="イベントインターフェイス">イベントインターフェイス</h2>
+
+<h3 id="イベント購読">イベント購読</h3>
+
+<p>イベントを購読します。</p>
+
+<pre><code class="language-javascript">on(event:string, fn:Function)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">event</td>
+<td align="left">イベント名</td>
+</tr>
+
+<tr>
+<td align="left">fn</td>
+<td align="left">コールバック関数</td>
+</tr>
+</tbody>
+</table>
+
+<p>イベントを一度だけ購読します。</p>
+
+<pre><code class="language-javascript">once(event:string, fn:Function)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">event</td>
+<td align="left">イベント名</td>
+</tr>
+
+<tr>
+<td align="left">fn</td>
+<td align="left">コールバック関数</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="イベント購読をやめる">イベント購読をやめる</h3>
+
+<p>イベント購読をやめます。</p>
+
+<pre><code class="language-javascript">off(event:string, fn?:Function)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">event</td>
+<td align="left">イベント名</td>
+</tr>
+
+<tr>
+<td align="left">fn</td>
+<td align="left">コールバック関数</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="push許可状態の取得">Push許可状態の取得</h2>
+
+<p>許可済みの場合は<code>true</code>、非対応または未許可の場合は<code>false</code>が返ります。</p>
+
+<pre><code class="language-javascript">permitted():boolean
+</code></pre>
+
+<h2 id="イベントの送信">イベントの送信</h2>
+
+<pre><code class="language-javascript">track(name:string)
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">name</td>
+<td align="left">イベント名</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="タグの送信">タグの送信</h2>
+
+<pre><code class="language-javascript">tag(name:string, value?:string)
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">name</td>
+<td align="left">タグ名</td>
+</tr>
+
+<tr>
+<td align="left">value</td>
+<td align="left">タグに持たせる値</td>
+</tr>
+</tbody>
+</table>
+
+      </div>
+    </div>
+</section>
+
+
+  </div>
+</div>
+
+
+<footer class="footer">
+  <small class="copyright">Designed by SIROK</small>
+</footer>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script src="http://support.growthbeat.com/js/sirok-scrollspy.js"></script>
+<script>
+$(function() {
+  $('pre code, code').each(function(i, block) {
+    hljs.highlightBlock(block)
+  });
+
+  var sidebar = $('.column-sidebar');
+  var offset = sidebar.offset();
+
+  $(window).scroll(function () {
+    if ($(window).scrollTop() > offset.top - 20) {
+      sidebar.addClass('fixed');
+    } else {
+      sidebar.removeClass('fixed');
+    }
+  });
+
+  sidebar.find('ul').addClass('spy-nav');
+
+  $(document.body).scrollspy({
+    target: '#TableOfContents',
+  });
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+<script type="text/javascript">
+docsearch({
+ apiKey: '11fef466694af89257b9dc61a7b7fa20',
+ indexName: 'growthbeat',
+ inputSelector: '#algolia-search'
+});
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56017268-6', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+
+  
+  <meta name="viewport" content="width=1040px, user-scalable=yes">
+
+  
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Growthbeat iOS SDK | 新バージョン移行方法 | Growthbeatドキュメント |">
+  <meta property="og:url" content="http://support.growthbeat.com/sdk/ios/upgrade/">
+  <meta property="og:description" content="Growthbeat SDK for iOS 新バージョンアップデート方法についてご紹介します">
+  
+  <meta property="article:author" content="" />
+  <meta property="fb:app_id" content="" />
+  <meta property="og:site_name" content="Growthbeatドキュメント |">
+
+  <title>
+      
+        Growthbeat iOS SDK | 新バージョン移行方法 | Growthbeatドキュメント |
+      
+  </title>
+
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <link rel="stylesheet" href="http://support.growthbeat.com/css/main.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+</head>
+
+<body>
+
+
+
+  
+
+
+
+
+  
+
+
+<div class="wrapper">
+
+
+
+<header class="navbar-header" role="banner">
+  <div class="container">
+    <nav class="header-nav">
+      <h1 class="logo">
+        <a class="link"href="https://growthbeat.com/">
+          <img src="http://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
+        </a>
+      </h1>
+
+      <div class="search">
+        <input id="algolia-search" type="text" placeholder="サポートページを検索">
+      </div>
+      <div class="inquiry">
+        <a class="link" href="https://growthbeat.com/inquiry">お問い合わせ</a>
+      </div>
+      <div class="login">
+        <a class="link" href="https://growthbeat.com/">Growthbeat</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="navbar-subheader">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li class="item">
+        <a class="link" href="http://support.growthbeat.com/">サポートページ</a>
+      </li>
+      <li class="item">
+        <a class="link" href="http://support.growthbeat.com/sdk/">SDKドキュメント</a>
+      </li>
+      
+      
+      
+      
+        <li class="item"><a class="link">SDKアップグレードガイド</a></li>
+      
+      
+    </ul>
+  </div>
+</section>
+
+
+
+<div class="content">
+  <div class="container">
+
+<div class="page">
+  <h1 class="title">
+    
+      SDKアップグレードガイド
+　　 
+    <span class="updated">最終更新日 Wed, Sep 28, 2016</span>
+  </h1>
+  <a class="edit" href="https://github.com/growthbeat/docs/blob/master/content/sdk/ios/upgrade.md">Edit on GitHub</a>
+</div>
+
+
+<section class="row markdown">
+    <div class="column column-sidebar">
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#sdkアップグレードガイド">SDKアップグレードガイド</a></li>
+<li><a href="#growth-push-sdkからのアップグレードについて">Growth Push SDKからのアップグレードについて</a>
+<ul>
+<li><a href="#概要">概要</a>
+<ul>
+<li><a href="#注意点">注意点</a></li>
+</ul></li>
+<li><a href="#導入コード">導入コード</a>
+<ul>
+<li><a href="#初期化">初期化</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#growthbeat-sdk-1-xからのアップグレード">Growthbeat SDK 1.xからのアップグレード</a>
+<ul>
+<li><a href="#機能削除">機能削除</a></li>
+<li><a href="#導入コード-1">導入コード</a>
+<ul>
+<li><a href="#初期化-1">初期化</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#移行確認方法">移行確認方法</a></li>
+</ul>
+</nav>
+    </div>
+    <div class="column column-main">
+      <div class="typeset">
+        
+
+<p><strong>Growth Push SDK及びGrowthbeat SDK 1.xのサポートは、2016年12月21日までとなっております。</strong></p>
+
+<h1 id="sdkアップグレードガイド">SDKアップグレードガイド</h1>
+
+<p>最新のSDKにお乗り換えする方法についてご紹介いたします。</p>
+
+<ul>
+<li>Growth Push SDKから最新のGrowthbeat SDKへのアップグレード</li>
+<li>Growthbeat 1.x SDKから最新のGrowthbeat SDKへのアップグレード</li>
+</ul>
+
+<p>についてご紹介いたします。</p>
+
+<h1 id="growth-push-sdkからのアップグレードについて">Growth Push SDKからのアップグレードについて</h1>
+
+<h2 id="概要">概要</h2>
+
+<p>Growth Push の認証から、Growthbeat の認証に移行されるため、新しい ApplicationId と SDKキー（クレデンシャルID）を取得する必要がございます。</p>
+
+<p>ApplicationId は、Growth Push管理画面左メニュー「アプリ詳細」の 「Growthbeat アプリケーションID」 にて確認ができます。</p>
+
+<p>SDKキーは、Growthbeat管理画面左メニュー「 <a href="https://growthbeat.com/mypage/account">アカウント</a>」の「クレデンシャルID &gt; SDK」にて確認ができます。</p>
+
+<h3 id="注意点">注意点</h3>
+
+<p>これまで Growth Push でご利用いただいていた ApplicationId は数値型、シークレットキーは文字列型になっています。  </p>
+
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>型</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>applicationId</td>
+<td>数値型</td>
+</tr>
+
+<tr>
+<td>secret</td>
+<td>文字列型/32文字</td>
+</tr>
+</tbody>
+</table>
+
+<p>Growthbeat SDK で利用するものは、 applicationId 、 credentialId ともに文字列型になっています。</p>
+
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>型</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>applicationId</td>
+<td>文字列型/16文字</td>
+</tr>
+
+<tr>
+<td>credentailId</td>
+<td>文字列型/32文字</td>
+</tr>
+</tbody>
+</table>
+
+<p>Growthbeat SDK 乗り換え時に、これまで Growth Push で利用していたシークレットキーを設定しても、正しく動作しませんのでご注意くださいませ。  必ず、SDKキーをご利用ください。</p>
+
+<h2 id="導入コード">導入コード</h2>
+
+<h3 id="初期化">初期化</h3>
+
+<p>Growth Push SDK に存在した EasyGrowthPushクラス は、 Growthbeat SDK では廃止となっており、 <code>didRegisterForRemoteNotificationsWithDeviceToken</code> のデリゲートで、デバイストークンを Growth Push へ送信する実装を行う必要がございます。</p>
+
+<ul>
+<li>GrowthPush SDK<br /></li>
+</ul>
+
+<p><strong>EasyGrowthPushクラスをご利用の場合</strong></p>
+
+<pre><code class="language-objc">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary* )launchOptions {
+  [EasyGrowthPush setApplicationId:kYourApplicationId secret:@&quot;YOU_APP_SECRET&quot; environment:kGrowthPushEnvironment debug:YES];
+}
+</code></pre>
+
+<p><strong>GrowthPushクラスをご利用の場合</strong></p>
+
+<pre><code class="language-objc">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary* )launchOptions {
+	[GrowthPush setApplicationId:kYourApplicationId secret:@&quot;YOU_APP_SECRET&quot; environment:kGrowthPushEnvironment debug:YES];
+	[GrowthPush requestDeviceToken];
+	[GrowthPush setDeviceTags];
+
+	[GrowthPush setTag:@&quot;development&quot; value@&quot;true&quot;];
+	[GrowthPush trackEvent:@&quot;Launch&quot;];
+
+	// バッチの削除
+	[GrowthPush clearBadge];
+}
+</code></pre>
+
+<ul>
+<li>Growthbeat 2.x SDK</li>
+</ul>
+
+<pre><code class="language-objc">- (BOOL)application:(UIApplication* )application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	[[GrowthPush sharedInstance] initializeWithApplicationId:@&quot;YOUR_APPLICATION_ID&quot; credentialId:@&quot;YOUR_CREDENTIAL_ID&quot; environment:kGrowthPushEnvironment];
+	
+	// 以下は、必ずinitializeWithApplicationId後に呼び出してください
+	// デバイストークンを明示的に要求
+	[[GrowthPush sharedInstance] requestDeviceToken];
+
+	[[GrowthPush sharedInstance] setTag:@&quot;development&quot; value@&quot;true&quot;];
+	[[GrowthPush sharedInstance] trackEvent:@&quot;Launch&quot;];
+
+	// バッチの削除
+	[[GrowthPush sharedInstance] clearBadge];
+}
+
+- (void) application:(UIApplication* )application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+	// デバイストークンをGrowhPushに送信
+	[[GrowthPush sharedInstance] setDeviceToken:deviceToken];
+}
+</code></pre>
+
+<p>Growth Push SDK か らGrowthbeat SDK 2.x への乗り換え実装は以上となります。</p>
+
+<h1 id="growthbeat-sdk-1-xからのアップグレード">Growthbeat SDK 1.xからのアップグレード</h1>
+
+<h2 id="機能削除">機能削除</h2>
+
+<ul>
+<li>インターフェスの変更があります。
+
+<ul>
+<li>次の実装変更点でご確認ください。</li>
+</ul></li>
+<li>Growth Analytics クラスがなくなりました。<br />
+
+<ul>
+<li>Growth Analytics に関する記述は全て削除してください。</li>
+<li>2.x以降は、GrowthPush#setTag, trackEventをご利用ください。</li>
+</ul></li>
+<li>GrowthbeatCoreクラスが、Growthbeatクラスに統合されました。<br />
+
+<ul>
+<li>start, stop, initializeは削除されました。</li>
+</ul></li>
+</ul>
+
+<h2 id="導入コード-1">導入コード</h2>
+
+<h3 id="初期化-1">初期化</h3>
+
+<ul>
+<li>Growthbeat 1.x</li>
+</ul>
+
+<pre><code class="language-objc">- (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    [[Growthbeat sharedInstance] initializeWithApplicationId:@&quot;YOUR_APPLICATION_ID&quot; credentialId:@&quot;YOUR_CREDENTIAL_ID&quot;];
+    [[GrowthPush sharedInstance] requestDeviceTokenWithEnvironment:kGrowthPushEnvironment];
+    [[Growthbeat sharedInstance] getClient:^(GBClient* client) {
+        NSLog(@&quot;clientId is %@&quot;,client.id);
+    }];
+
+}
+
+- (void) applicationDidBecomeActive:(UIApplication *)application {
+    [[Growthbeat sharedInstance] start];
+}
+
+- (void) applicationWillResignActive:(UIApplication *)application {
+    [[Growthbeat sharedInstance] stop];
+}
+</code></pre>
+
+<ul>
+<li>Growthbeat 2.x</li>
+</ul>
+
+<pre><code class="language-objc">- (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    [[GrowthPush sharedInstance] initializeWithApplicationId:@&quot;YOUR_APPLICATION_ID&quot; credentialId:@&quot;YOUR_CREDENTIAL_ID&quot; environment:kGrowthPushEnvironment];
+    
+    // 以下は、必ずinitializeWithApplicationId後に呼び出してください
+    [[GrowthPush sharedInstance] requestDeviceToken];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        GBClient* client = [[Growthbeat sharedInstance] waitClient];
+        NSLog(@&quot;clientId is %@&quot;, client.id);
+    });
+
+}
+
+- (void) applicationDidBecomeActive:(UIApplication *)application {
+	// startは不要となります。
+}
+
+- (void) applicationWillResignActive:(UIApplication *)application {
+	// stopは不要となります。
+}
+</code></pre>
+
+<h1 id="移行確認方法">移行確認方法</h1>
+
+<p>Growth Push の管理画面で、該当デバイスのプッシュ通知ステータスが <code>Active</code> になっていれば、正しくプッシュ通知が行えます。<br />
+移行対応は、以上となります。</p>
+
+      </div>
+    </div>
+</section>
+
+
+  </div>
+</div>
+
+
+<footer class="footer">
+  <small class="copyright">Designed by SIROK</small>
+</footer>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script src="http://support.growthbeat.com/js/sirok-scrollspy.js"></script>
+<script>
+$(function() {
+  $('pre code, code').each(function(i, block) {
+    hljs.highlightBlock(block)
+  });
+
+  var sidebar = $('.column-sidebar');
+  var offset = sidebar.offset();
+
+  $(window).scroll(function () {
+    if ($(window).scrollTop() > offset.top - 20) {
+      sidebar.addClass('fixed');
+    } else {
+      sidebar.removeClass('fixed');
+    }
+  });
+
+  sidebar.find('ul').addClass('spy-nav');
+
+  $(document.body).scrollspy({
+    target: '#TableOfContents',
+  });
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+<script type="text/javascript">
+docsearch({
+ apiKey: '11fef466694af89257b9dc61a7b7fa20',
+ indexName: 'growthbeat',
+ inputSelector: '#algolia-search'
+});
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56017268-6', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
+
+</div>
+</body>
+</html>

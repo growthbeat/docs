@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+
+  
+  <meta name="viewport" content="width=1040px, user-scalable=yes">
+
+  
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Growthbeat Web Gudeliene | Growthbeatドキュメント |">
+  <meta property="og:url" content="http://support.growthbeat.com/sdk/web/guide/">
+  <meta property="og:description" content="Growthbeat Web の導入方法について説明します">
+  
+  <meta property="article:author" content="" />
+  <meta property="fb:app_id" content="" />
+  <meta property="og:site_name" content="Growthbeatドキュメント |">
+
+  <title>
+      
+        Growthbeat Web Gudeliene | Growthbeatドキュメント |
+      
+  </title>
+
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <link rel="stylesheet" href="http://support.growthbeat.com/css/main.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+</head>
+
+<body>
+
+
+
+  
+
+
+
+
+  
+
+
+<div class="wrapper">
+
+
+
+<header class="navbar-header" role="banner">
+  <div class="container">
+    <nav class="header-nav">
+      <h1 class="logo">
+        <a class="link"href="https://growthbeat.com/">
+          <img src="http://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
+        </a>
+      </h1>
+
+      <div class="search">
+        <input id="algolia-search" type="text" placeholder="サポートページを検索">
+      </div>
+      <div class="inquiry">
+        <a class="link" href="https://growthbeat.com/inquiry">お問い合わせ</a>
+      </div>
+      <div class="login">
+        <a class="link" href="https://growthbeat.com/">Growthbeat</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="navbar-subheader">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li class="item">
+        <a class="link" href="http://support.growthbeat.com/">サポートページ</a>
+      </li>
+      <li class="item">
+        <a class="link" href="http://support.growthbeat.com/sdk/">SDKドキュメント</a>
+      </li>
+      
+      
+        <li class="item"><a class="link">基本機能利用ガイド</a></li>
+      
+      
+      
+      
+    </ul>
+  </div>
+</section>
+
+
+
+<div class="content">
+  <div class="container">
+
+<div class="page">
+  <h1 class="title">
+    
+      基本機能利用ガイド
+    
+    <span class="updated">最終更新日 Tue, Jan 17, 2017</span>
+  </h1>
+  <a class="edit" href="https://github.com/growthbeat/docs/blob/master/content/sdk/web/guide.md">Edit on GitHub</a>
+</div>
+
+
+<section class="row markdown">
+    <div class="column column-sidebar">
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#sdk概要">SDK概要</a></li>
+<li><a href="#1-manifest-json-の設置">1. manifest.json の設置</a>
+<ul>
+<li><a href="#manifest-json-の例">manifest.json の例</a></li>
+</ul></li>
+<li><a href="#2-serviceworker-の設置">2. ServiceWorker の設置</a></li>
+<li><a href="#3-linkタグの組み込み">3. linkタグの組み込み</a></li>
+<li><a href="#4-初期化">4. 初期化</a></li>
+<li><a href="#5-registrationid-の取得-送信">5. RegistrationId の取得・送信</a></li>
+<li><a href="#5-タグ-イベントの送信">5. タグ/イベントの送信</a></li>
+<li><a href="#リファレンス">リファレンス</a></li>
+<li><a href="#その他設定について">その他設定について</a>
+<ul>
+<li><a href="#senderid-ap-keyの取得について">SenderId、AP Keyの取得について</a></li>
+<li><a href="#管理画面設定">管理画面設定</a>
+<ul>
+<li><a href="#apiキーの登録">APIキーの登録</a></li>
+<li><a href="#プッシュ通知の作成">プッシュ通知の作成</a></li>
+<li><a href="#セグメントについて">セグメントについて</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#お問い合わせ">お問い合わせ</a></li>
+</ul>
+</nav>
+    </div>
+    <div class="column column-main">
+      <div class="typeset">
+        
+
+<h1 id="sdk概要">SDK概要</h1>
+
+<p>Web SDK は Push通知機能のみの対応となっております。<br />
+Growth Push管理画面の証明書設定ページにて、Androidの証明書の設定を行ってください。</p>
+
+<ul>
+<li><a href="http://growthbeat.helpscoutdocs.com/article/23-gcm-api">Android SenderId、 APIキー取得方法</a></li>
+</ul>
+
+<p>また、導入の前に下記もご覧ください。</p>
+
+<ul>
+<li><a href="http://faq.growthbeat.com/article/46-growth-push-for-android-chrome">Growth Push for Android Chromeの動作環境</a></li>
+</ul>
+
+<h1 id="1-manifest-json-の設置">1. manifest.json の設置</h1>
+
+<p>manifest.json を公開ディレクトリに設置してください。</p>
+
+<h2 id="manifest-json-の例">manifest.json の例</h2>
+
+<p>YOUR_SENDER_ID には、Firebase Cloud Messaging で取得した SenderId を指定します。SenderId の取得方法は <a href="http://faq.growthbeat.com/article/23-gcm-api">Android SDKで使うCloud Messaging サーバーキーの設定方法</a> を参照してください。</p>
+
+<pre><code>{
+  &quot;name&quot;: &quot;APP_NAME&quot;,
+  &quot;short_name&quot;: &quot;SHORT_APP_NAME&quot;,
+  &quot;icons&quot;: [{
+    &quot;src&quot;: &quot;HOME_SCREEN_ICON&quot;,
+    &quot;sizes&quot;: &quot;144x444&quot;,
+    &quot;type&quot;: &quot;image/png&quot;
+  }],
+  &quot;start_url&quot;: &quot;/&quot;,
+  &quot;display&quot;: &quot;standalone&quot;,
+  &quot;gcm_sender_id&quot;: &quot;GCM_SENDER_ID&quot;,
+  &quot;gcm_user_visible_only&quot;: true
+}
+</code></pre>
+
+<h1 id="2-serviceworker-の設置">2. ServiceWorker の設置</h1>
+
+<p>下記のファイルをサービスのドメイン直下に設置してください。</p>
+
+<ul>
+<li>growthpush.min.js（本番用）または growthpush.js（開発用）</li>
+<li>growthpush-sw.min.js（本番用）または growthpush-sw.js（開発用）</li>
+</ul>
+
+<h1 id="3-linkタグの組み込み">3. linkタグの組み込み</h1>
+
+<p>以下のlinkタグを <code>&lt;head&gt;</code> タグ内に組み込んでください。</p>
+
+<pre><code>&lt;link rel=&quot;manifest&quot; href=&quot;./manifest.json&quot;&gt;
+</code></pre>
+
+<h1 id="4-初期化">4. 初期化</h1>
+
+<p>以下のhtmlスニペットを、<code>&lt;body&gt;</code> タグの内に組み込んでください。<br />
+YOUR_APPLICATION_ID と YOUR_SECRET_KEY は Growth Push 管理画面左メニュー「アプリ詳細」内の「Growth Push SDKをお使いの方」 にて確認していただけます。<br />
+各種IDの取得方法は <a href="http://faq.growthbeat.com/article/130-growthbeat-id">Growthbeatで使用するID、キーまとめ</a> をご参照ください。</p>
+
+<pre><code>&lt;script&gt;
+  (function () {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.async = true;
+    script.src = '/path/to/growthpush.js';
+    document.getElementsByTagName('script')[0].parentNode.appendChild(script);
+  })();
+
+  document.addEventListener('growthpushReady', function () {
+    GrowthPush.init({
+      applicationId: YOUR_APPLICATION_ID,
+      credentialId: 'YOUR_SECRET_KEY',
+      environment: 'development',
+      receiver: '/growthpush-sw.js',
+      appName: 'YOUR_APPLICATION_NAME',
+      icon: 'YOUR_NOTIFICATION_ICON',
+      clickEventName: 'NOTIFICATION_CLICK_EVENT_NAME'
+    });
+  });
+&lt;/script&gt;
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">applicationId</td>
+<td align="left">Growth Push管理画面のアプリID</td>
+</tr>
+
+<tr>
+<td align="left">credentialId</td>
+<td align="left">Growth Push管理画面のシークレットキー</td>
+</tr>
+
+<tr>
+<td align="left">environment</td>
+<td align="left">本番環境: <code>production</code> 開発環境: <code>development</code></td>
+</tr>
+
+<tr>
+<td align="left">receiver</td>
+<td align="left">本番環境: <code>/growthpush-sw.min.js</code> 開発環境: <code>/growthpush-sw.js</code></td>
+</tr>
+
+<tr>
+<td align="left">appName</td>
+<td align="left">アプリ名。通知のタイトルで表示されます。</td>
+</tr>
+
+<tr>
+<td align="left">icon</td>
+<td align="left">アイコン画像。通知のアイコンで表示されます。</td>
+</tr>
+
+<tr>
+<td align="left">clickEventName</td>
+<td align="left">通知クリックのイベント。例: NotificationClick</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="5-registrationid-の取得-送信">5. RegistrationId の取得・送信</h1>
+
+<p>下記コードで RegistrationId を Growth Push サーバーに送信します。送信に成功すると、ユーザーにPush通知の許可をリクエストします。既に許可または拒否済みの場合はリクエストされません。</p>
+
+<pre><code>GrowthPush.register();
+</code></pre>
+
+<p>Push通知の許可が得られると、registeredイベントが発火します。</p>
+
+<pre><code>GrowthPush.on('registered', function() {
+  // 許可が得られたときの処理
+});
+
+GrowthPush.on('error', function() {
+  // エラーが起きたときの処理
+});
+</code></pre>
+
+<h1 id="5-タグ-イベントの送信">5. タグ/イベントの送信</h1>
+
+<p>セグメントを設定するために、任意のタグ・イベントを埋め込こむことができます。</p>
+
+<pre><code>// タグの埋め込み
+GrowthPush.tag(&quot;Development&quot;, &quot;true&quot;);
+
+// イベントの発火
+GrowthPush.track(&quot;Login&quot;);
+
+</code></pre>
+
+<h1 id="リファレンス">リファレンス</h1>
+
+<p>実装メソッドについては、<a href="../reference">Growth Push javascriptのAPIリファレンス</a>をご確認ください。</p>
+
+<h1 id="その他設定について">その他設定について</h1>
+
+<h2 id="senderid-ap-keyの取得について">SenderId、AP Keyの取得について</h2>
+
+<p>SenderId は、RequestRegistrationId を実行するために必要となります。APIキーは、管理画面にて、プッシュ通知を送信するための証明書として必要になります。<br />
+<a href="http://growthbeat.helpscoutdocs.com/article/23-gcm-api">Android SenderId, APIキー取得方法</a></p>
+
+<h2 id="管理画面設定">管理画面設定</h2>
+
+<h3 id="apiキーの登録">APIキーの登録</h3>
+
+<p>Growth Push管理画面の証明書設定ページにて、APIキーの登録を行ってください。</p>
+
+<h3 id="プッシュ通知の作成">プッシュ通知の作成</h3>
+
+<p><a href="http://support.growthbeat.com/manual/growthpush/#配信作成">配信作成</a> を参考に、プッシュ通知が届くかを確認します。</p>
+
+<h3 id="セグメントについて">セグメントについて</h3>
+
+<p>セグメント配信を利用する際に、実装が必要となります。<br />
+<a href="http://support.growthbeat.com/manual/growthpush/#セグメントの作成">配信したいセグメント</a>に沿って、タグやイベントの紐付けを行ってください。</p>
+
+<h1 id="お問い合わせ">お問い合わせ</h1>
+
+<p>ご不明な点などございます場合は、<a href="http://faq.growthbeat.com/">ヘルプページ</a> を閲覧してください。</p>
+
+      </div>
+    </div>
+</section>
+
+
+  </div>
+</div>
+
+
+<footer class="footer">
+  <small class="copyright">Designed by SIROK</small>
+</footer>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script src="http://support.growthbeat.com/js/sirok-scrollspy.js"></script>
+<script>
+$(function() {
+  $('pre code, code').each(function(i, block) {
+    hljs.highlightBlock(block)
+  });
+
+  var sidebar = $('.column-sidebar');
+  var offset = sidebar.offset();
+
+  $(window).scroll(function () {
+    if ($(window).scrollTop() > offset.top - 20) {
+      sidebar.addClass('fixed');
+    } else {
+      sidebar.removeClass('fixed');
+    }
+  });
+
+  sidebar.find('ul').addClass('spy-nav');
+
+  $(document.body).scrollspy({
+    target: '#TableOfContents',
+  });
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+<script type="text/javascript">
+docsearch({
+ apiKey: '11fef466694af89257b9dc61a7b7fa20',
+ indexName: 'growthbeat',
+ inputSelector: '#algolia-search'
+});
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56017268-6', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
+
+</div>
+</body>
+</html>

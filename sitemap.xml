@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/android/reference/</loc>
+    <lastmod>2020-04-07T17:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/android/guide/</loc>
+    <lastmod>2020-04-07T17:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/android/release/</loc>
+    <lastmod>2020-04-07T17:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/android/all-in-one/</loc>
+    <lastmod>2020-02-04T17:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/ios/reference/</loc>
+    <lastmod>2020-02-04T17:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/ios/all-in-one/</loc>
+    <lastmod>2020-02-04T17:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/ios/guide/</loc>
+    <lastmod>2020-02-04T17:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/ios/release/</loc>
+    <lastmod>2020-02-04T17:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/web/guide/</loc>
+    <lastmod>2017-01-17T14:32:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/cocos2dx/guide/</loc>
+    <lastmod>2017-01-06T14:32:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/unity/reference/</loc>
+    <lastmod>2017-01-06T14:32:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/unity/all-in-one/</loc>
+    <lastmod>2017-01-06T12:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/unity/guide/</loc>
+    <lastmod>2017-01-06T12:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/unity/upgrade/</loc>
+    <lastmod>2017-01-06T12:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/manual/growthpush/</loc>
+    <lastmod>2017-01-04T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/android/upgrade/</loc>
+    <lastmod>2016-09-28T12:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/ios/upgrade/</loc>
+    <lastmod>2016-09-28T12:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/api/reference/</loc>
+    <lastmod>2016-09-02T10:13:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/api/release/</loc>
+    <lastmod>2016-09-02T10:10:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/api/guide/</loc>
+    <lastmod>2016-09-02T10:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/manual/growthmessage/</loc>
+    <lastmod>2016-07-06T12:05:16+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/manual/growthlink/</loc>
+    <lastmod>2016-01-15T12:56:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/cocos2dx/reference/</loc>
+    <lastmod>2015-11-16T14:32:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/unity/reference-1.2.7/</loc>
+    <lastmod>2015-11-16T14:32:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/manual/growthbeat/</loc>
+    <lastmod>2015-11-16T12:05:16+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/android/reference-1.2.7/</loc>
+    <lastmod>2015-11-12T14:32:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/ios/reference-1.2.7/</loc>
+    <lastmod>2015-11-12T14:32:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/help/report-number/</loc>
+    <lastmod>2015-09-14T14:32:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/cocos2dx/release/</loc>
+    <lastmod>2015-09-14T14:32:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/unity/release/</loc>
+    <lastmod>2015-09-14T14:32:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/help/get-log/</loc>
+    <lastmod>2015-09-14T14:32:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/web/reference/</loc>
+    <lastmod>2015-02-17T14:32:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/web/release/</loc>
+    <lastmod>2015-02-17T14:32:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/</loc>
+    <lastmod>2020-04-07T17:00:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/categories/help/</loc>
+    <lastmod>2015-09-14T14:32:58+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/help/</loc>
+    <lastmod>2015-09-14T14:32:58+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/categories/manual/</loc>
+    <lastmod>2017-01-04T00:00:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/manual/</loc>
+    <lastmod>2017-01-04T00:00:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/categories/sdk/</loc>
+    <lastmod>2020-04-07T17:00:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/sdk/</loc>
+    <lastmod>2020-04-07T17:00:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://support.growthbeat.com/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+
+  
+  <meta name="viewport" content="width=1040px, user-scalable=yes">
+
+  
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Growthbeat Unity API | Growthbeatドキュメント |">
+  <meta property="og:url" content="http://support.growthbeat.com/sdk/unity/reference/">
+  <meta property="og:description" content="Growthbeat Unity の API について説明します">
+  
+  <meta property="article:author" content="" />
+  <meta property="fb:app_id" content="" />
+  <meta property="og:site_name" content="Growthbeatドキュメント |">
+
+  <title>
+      
+        Growthbeat Unity API | Growthbeatドキュメント |
+      
+  </title>
+
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <link rel="stylesheet" href="http://support.growthbeat.com/css/main.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+</head>
+
+<body>
+
+
+
+  
+
+
+
+
+  
+
+
+<div class="wrapper">
+
+
+
+<header class="navbar-header" role="banner">
+  <div class="container">
+    <nav class="header-nav">
+      <h1 class="logo">
+        <a class="link"href="https://growthbeat.com/">
+          <img src="http://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
+        </a>
+      </h1>
+
+      <div class="search">
+        <input id="algolia-search" type="text" placeholder="サポートページを検索">
+      </div>
+      <div class="inquiry">
+        <a class="link" href="https://growthbeat.com/inquiry">お問い合わせ</a>
+      </div>
+      <div class="login">
+        <a class="link" href="https://growthbeat.com/">Growthbeat</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="navbar-subheader">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li class="item">
+        <a class="link" href="http://support.growthbeat.com/">サポートページ</a>
+      </li>
+      <li class="item">
+        <a class="link" href="http://support.growthbeat.com/sdk/">SDKドキュメント</a>
+      </li>
+      
+        <li class="item"><a class="link">APIリファレンス</a></li>
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+</section>
+
+
+
+<div class="content">
+  <div class="container">
+
+<div class="page">
+  <h1 class="title">
+    
+      APIリファレンス
+　　 
+    <span class="updated">最終更新日 Fri, Jan 6, 2017</span>
+  </h1>
+  <a class="edit" href="https://github.com/growthbeat/docs/blob/master/content/sdk/unity/reference.md">Edit on GitHub</a>
+</div>
+
+
+<section class="row markdown">
+    <div class="column column-sidebar">
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#growthbeat-api">Growthbeat API</a>
+<ul>
+<li><a href="#growthbeatインスタンスの取得">Growthbeatインスタンスの取得</a></li>
+<li><a href="#ログの停止">ログの停止</a></li>
+</ul></li>
+<li><a href="#intenthandler-api">IntentHandler API</a>
+<ul>
+<li><a href="#ハンドラ">ハンドラ</a>
+<ul>
+<li><a href="#処理をしないハンドラ">処理をしないハンドラ</a></li>
+<li><a href="#ブラウザを開くハンドラ">ブラウザを開くハンドラ</a></li>
+<li><a href="#カスタムハンドラ">カスタムハンドラ</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#growth-push-api">Growth Push API</a>
+<ul>
+<li><a href="#growth-pushインスタンスの取得">Growth Pushインスタンスの取得</a></li>
+<li><a href="#初期化">初期化</a></li>
+<li><a href="#デバイストークンの取得-送信">デバイストークンの取得・送信</a>
+<ul>
+<li><a href="#デバイストークンの取得">デバイストークンの取得</a></li>
+<li><a href="#デバイストークンの送信-iosのみ">デバイストークンの送信 (iOSのみ)</a></li>
+<li><a href="#デバイストークン取得-androidのみ">デバイストークン取得 (Androidのみ)</a></li>
+</ul></li>
+<li><a href="#イベントの送信">イベントの送信</a>
+<ul>
+<li><a href="#イベントの送信-1">イベントの送信</a></li>
+<li><a href="#イベントと任意の値の送信">イベントと任意の値の送信</a></li>
+<li><a href="#イベントと任意の値の送信-1">イベントと任意の値の送信</a></li>
+<li><a href="#ポップアップメッセージ表示">ポップアップメッセージ表示</a></li>
+</ul></li>
+<li><a href="#タグの送信">タグの送信</a>
+<ul>
+<li><a href="#タグの送信-1">タグの送信</a></li>
+<li><a href="#タグと任意の値の送信">タグと任意の値の送信</a></li>
+</ul></li>
+<li><a href="#バッチクリア-iosのみ">バッチクリア (iOSのみ)</a>
+<ul>
+<li><a href="#チャンネルidをセット">チャンネルIDをセット</a></li>
+<li><a href="#デフォルト通知チャンネルの削除">デフォルト通知チャンネルの削除</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+    <div class="column column-main">
+      <div class="typeset">
+        
+
+<p>Version 2.0.9</p>
+
+<h1 id="growthbeat-api">Growthbeat API</h1>
+
+<h2 id="growthbeatインスタンスの取得">Growthbeatインスタンスの取得</h2>
+
+<p>Growthbeatインスタンスを取得します。</p>
+
+<pre><code class="language-cs">public static Growthbeat GetInstance ();
+</code></pre>
+
+<h2 id="ログの停止">ログの停止</h2>
+
+<p>Growthbeat SDKからのログ出力を全て停止します。
+デフォルトでは、ログ出力がおこなわれます。</p>
+
+<pre><code class="language-cs">public void SetLoggerSilent (bool silent);
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">silent</td>
+<td align="left">ログ出力を行うか。<code>YES</code>: ログ出力しない <code>NO</code>:ログ出力をする</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="intenthandler-api">IntentHandler API</h1>
+
+<h2 id="ハンドラ">ハンドラ</h2>
+
+<pre><code class="language-cs">public static IntentHander GetInstance ();
+</code></pre>
+
+<h3 id="処理をしないハンドラ">処理をしないハンドラ</h3>
+
+<pre><code class="language-cs">public void AddNoopIntentHandler ();
+</code></pre>
+
+<h3 id="ブラウザを開くハンドラ">ブラウザを開くハンドラ</h3>
+
+<pre><code class="language-cs">public void AddUrlIntentHandler ();
+</code></pre>
+
+<h3 id="カスタムハンドラ">カスタムハンドラ</h3>
+
+<pre><code class="language-cs">public void  AddCustomIntentHandler (string gameObjectName, string methodName);
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">gameObjectName</td>
+<td align="left">コールバックをするメソッドが存在するゲームオブジェクト</td>
+</tr>
+
+<tr>
+<td align="left">methodName</td>
+<td align="left">コールバックをするメソッド</td>
+</tr>
+</tbody>
+</table>
+
+<p>例.)</p>
+
+<pre><code class="language-cs">public class GrowthbeatComponent : MonoBehaviour
+{
+
+    void Awake ()
+    {
+        IntentHandler.GetInstance ().AddCustomIntentHandler (&quot;GrowthbeatComponent&quot;, &quot;HandleCustomIntent&quot;);
+    }
+
+    void HandleCustomIntent(string extra) {
+        Debug.Log(&quot;Enter HandleCustomIntent&quot;);
+        Debug.Log(extra);
+    }
+
+}
+</code></pre>
+
+<p>extraはJSON型の文字列が戻ってきます。</p>
+
+<h1 id="growth-push-api">Growth Push API</h1>
+
+<h2 id="growth-pushインスタンスの取得">Growth Pushインスタンスの取得</h2>
+
+<p>Growth Pushインスタンスを取得します。</p>
+
+<pre><code class="language-cs">public static GrowthPush GetInstance ();
+</code></pre>
+
+<h2 id="初期化">初期化</h2>
+
+<p>GrowthbeatおよびGrowth Pushの初期化を行います。初期化では以下の処理が行われます。</p>
+
+<ul>
+<li>デバイス登録、認証</li>
+<li>Growth Pushの初期化</li>
+<li>基本情報の送信</li>
+</ul>
+
+<pre><code class="language-cs">public void Initialize (string applicationId, string credentialId, Environment environment);
+</code></pre>
+
+<p>広告情報を保持しない場合</p>
+
+<pre><code class="language-cs">public void Initialize (string applicationId, string credentialId, Environment environment, bool adInfoEnable);
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">applicationId</td>
+<td align="left">アプリケーションID</td>
+</tr>
+
+<tr>
+<td align="left">credentialId</td>
+<td align="left">クレデンシャルキー</td>
+</tr>
+
+<tr>
+<td align="left">environment</td>
+<td align="left">開発用: <code>Environment.development</code> 本番用: <code>Environment.production</code>　</td>
+</tr>
+
+<tr>
+<td align="left">adInfoEnabled</td>
+<td align="left">広告情報の送信設定。<code>true</code>: 送信する <code>false</code>:送信しない</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="デバイストークンの取得-送信">デバイストークンの取得・送信</h2>
+
+<h3 id="デバイストークンの取得">デバイストークンの取得</h3>
+
+<pre><code class="language-cs">public void RequestDeviceToken (string senderId);
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">senderId</td>
+<td align="left">Android の SenderId * iOSのみの場合は、引数なし</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="デバイストークンの送信-iosのみ">デバイストークンの送信 (iOSのみ)</h3>
+
+<pre><code class="language-cs">public void SetDeviceToken (string deviceToken);
+</code></pre>
+
+<h3 id="デバイストークン取得-androidのみ">デバイストークン取得 (Androidのみ)</h3>
+
+<pre><code class="language-cs">public string GetDeviceToken ();
+</code></pre>
+
+<h2 id="イベントの送信">イベントの送信</h2>
+
+<h3 id="イベントの送信-1">イベントの送信</h3>
+
+<pre><code class="language-cs">public void TrackEvent(string name);
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">name</td>
+<td align="left">イベント名</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="イベントと任意の値の送信">イベントと任意の値の送信</h3>
+
+<pre><code class="language-cs">public void TrackEvent (string name, string value);
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">name</td>
+<td align="left">イベント名</td>
+</tr>
+
+<tr>
+<td align="left">value</td>
+<td align="left">イベントに持たせる値</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="イベントと任意の値の送信-1">イベントと任意の値の送信</h3>
+
+<p>メッセージ表示のコールバックを、ゲームオブジェクトの指定メソッドへ戻します。
+コールバックには、uuid の文字列が返ります。</p>
+
+<pre><code class="language-cs">public void TrackEvent (string name, string value, string gameObjectName, string methodName);
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">name</td>
+<td align="left">イベント名</td>
+</tr>
+
+<tr>
+<td align="left">value</td>
+<td align="left">イベントに持たせる値</td>
+</tr>
+
+<tr>
+<td align="left">gameObjectName</td>
+<td align="left">コールバックするゲームオブジェクト</td>
+</tr>
+
+<tr>
+<td align="left">methodName</td>
+<td align="left">コールバックするメソッド名</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="ポップアップメッセージ表示">ポップアップメッセージ表示</h3>
+
+<pre><code class="language-cs">public void RenderMessage (string uuid);
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">uuid</td>
+<td align="left">TrackEvent時のコールバックされた文字列</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="タグの送信">タグの送信</h2>
+
+<h3 id="タグの送信-1">タグの送信</h3>
+
+<pre><code class="language-cs">public void SetTag (string name);
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">name</td>
+<td align="left">タグ名</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="タグと任意の値の送信">タグと任意の値の送信</h3>
+
+<pre><code class="language-cs">public void SetTag (string name, string value);
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">name</td>
+<td align="left">タグ名</td>
+</tr>
+
+<tr>
+<td align="left">value</td>
+<td align="left">タグに持たせる値</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="バッチクリア-iosのみ">バッチクリア (iOSのみ)</h2>
+
+<p>配信時に、バッチにチェックマークを付けた場合、バッチをクリアするためのメソッドです。
+iOSのみ利用できます。</p>
+
+<pre><code class="language-cs">public void ClearBadge ();
+</code></pre>
+
+<h3 id="チャンネルidをセット">チャンネルIDをセット</h3>
+
+<p>Android 8.0以上のみ。
+任意の通知チャンネルで、通知を受け取れるように変更します。</p>
+
+<pre><code class="language-csharp">public void SetChannelId(string channelId);
+</code></pre>
+
+<p><strong>パラメーター</strong>
+|項目名|詳細|
+|:&ndash;|:&ndash;|
+|channelId|チャンネルID|</p>
+
+<h3 id="デフォルト通知チャンネルの削除">デフォルト通知チャンネルの削除</h3>
+
+<p>Android 8.0以上のみ。
+SDKのデフォルトの通知チャンネルを削除します。
+※ Growth Push初期化時に、channel_idがセットされていない場合、再度作成されます。</p>
+
+<pre><code class="language-csharp">public void DeleteDefaultNotificationChannel();
+</code></pre>
+
+<!--
+# Growth Link API
+
+## Growth Link初期化
+
+Growth Linkを初期化します。
+
+applicationId, credentialIdは、Growthbeatの初期化時に利用したものと同じものを利用してください。
+
+```cs
+GrowthLink.GetInstance().Initialize (applicationId, credentialId);
+```
+
+**パラメータ**
+
+|項目名|詳細|
+|:--|:--|
+|applicationId|アプリケーションID|
+|credentialId|クリデンシャルID|
+-->
+
+      </div>
+    </div>
+</section>
+
+
+  </div>
+</div>
+
+
+<footer class="footer">
+  <small class="copyright">Designed by SIROK</small>
+</footer>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script src="http://support.growthbeat.com/js/sirok-scrollspy.js"></script>
+<script>
+$(function() {
+  $('pre code, code').each(function(i, block) {
+    hljs.highlightBlock(block)
+  });
+
+  var sidebar = $('.column-sidebar');
+  var offset = sidebar.offset();
+
+  $(window).scroll(function () {
+    if ($(window).scrollTop() > offset.top - 20) {
+      sidebar.addClass('fixed');
+    } else {
+      sidebar.removeClass('fixed');
+    }
+  });
+
+  sidebar.find('ul').addClass('spy-nav');
+
+  $(document.body).scrollspy({
+    target: '#TableOfContents',
+  });
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+<script type="text/javascript">
+docsearch({
+ apiKey: '11fef466694af89257b9dc61a7b7fa20',
+ indexName: 'growthbeat',
+ inputSelector: '#algolia-search'
+});
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56017268-6', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
+
+</div>
+</body>
+</html>

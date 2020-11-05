@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+
+  
+  <meta name="viewport" content="width=1040px, user-scalable=yes">
+
+  
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Growthbeat Cocos2dx API | Growthbeatドキュメント |">
+  <meta property="og:url" content="http://support.growthbeat.com/sdk/cocos2dx/reference/">
+  <meta property="og:description" content="Growthbeat Cocos2dx の API について説明します">
+  
+  <meta property="article:author" content="" />
+  <meta property="fb:app_id" content="" />
+  <meta property="og:site_name" content="Growthbeatドキュメント |">
+
+  <title>
+      
+        Growthbeat Cocos2dx API | Growthbeatドキュメント |
+      
+  </title>
+
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <link rel="stylesheet" href="http://support.growthbeat.com/css/main.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+</head>
+
+<body>
+
+
+
+  
+
+
+
+
+  
+
+
+<div class="wrapper">
+
+
+
+<header class="navbar-header" role="banner">
+  <div class="container">
+    <nav class="header-nav">
+      <h1 class="logo">
+        <a class="link"href="https://growthbeat.com/">
+          <img src="http://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
+        </a>
+      </h1>
+
+      <div class="search">
+        <input id="algolia-search" type="text" placeholder="サポートページを検索">
+      </div>
+      <div class="inquiry">
+        <a class="link" href="https://growthbeat.com/inquiry">お問い合わせ</a>
+      </div>
+      <div class="login">
+        <a class="link" href="https://growthbeat.com/">Growthbeat</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="navbar-subheader">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li class="item">
+        <a class="link" href="http://support.growthbeat.com/">サポートページ</a>
+      </li>
+      <li class="item">
+        <a class="link" href="http://support.growthbeat.com/sdk/">SDKドキュメント</a>
+      </li>
+      
+        <li class="item"><a class="link">APIリファレンス</a></li>
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+</section>
+
+
+
+<div class="content">
+  <div class="container">
+
+<div class="page">
+  <h1 class="title">
+    
+      APIリファレンス
+　　 
+    <span class="updated">最終更新日 Mon, Nov 16, 2015</span>
+  </h1>
+  <a class="edit" href="https://github.com/growthbeat/docs/blob/master/content/sdk/cocos2dx/reference.md">Edit on GitHub</a>
+</div>
+
+
+<section class="row markdown">
+    <div class="column column-sidebar">
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#growthbeat-api">Growthbeat API</a>
+<ul>
+<li><a href="#growthbeat-インスタンスの取得">Growthbeat インスタンスの取得</a></li>
+<li><a href="#ハンドラ">ハンドラ</a>
+<ul>
+<li><a href="#ハンドラ初期化">ハンドラ初期化</a></li>
+<li><a href="#処理をしないハンドラ">処理をしないハンドラ</a></li>
+<li><a href="#ブラウザを開くハンドラ">ブラウザを開くハンドラ</a></li>
+<li><a href="#カスタムハンドラ">カスタムハンドラ</a></li>
+</ul></li>
+<li><a href="#ログの停止">ログの停止</a></li>
+</ul></li>
+<li><a href="#growth-push-api">Growth Push API</a>
+<ul>
+<li><a href="#growth-push-インスタンスの取得">Growth Push インスタンスの取得</a></li>
+<li><a href="#初期化">初期化</a></li>
+<li><a href="#デバイストークンの取得-送信">デバイストークンの取得・送信</a>
+<ul>
+<li><a href="#ios">iOS</a></li>
+<li><a href="#android-ios">Android &amp; iOS</a></li>
+</ul></li>
+<li><a href="#イベントの送信">イベントの送信</a>
+<ul>
+<li><a href="#イベントの送信-1">イベントの送信</a></li>
+<li><a href="#イベントと任意の値の送信">イベントと任意の値の送信</a></li>
+<li><a href="#イベントと任意の値の送信-1">イベントと任意の値の送信</a></li>
+<li><a href="#メッセージ表示">メッセージ表示</a></li>
+</ul></li>
+<li><a href="#タグの送信">タグの送信</a>
+<ul>
+<li><a href="#タグの送信-1">タグの送信</a></li>
+<li><a href="#タグと任意の値の送信">タグと任意の値の送信</a></li>
+</ul></li>
+<li><a href="#バッチクリア">バッチクリア</a></li>
+</ul></li>
+<li><a href="#growth-link-api">Growth Link API</a>
+<ul>
+<li><a href="#growth-linkの初期化">Growth Linkの初期化</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+    <div class="column column-main">
+      <div class="typeset">
+        
+
+<p>Version 2.0.6</p>
+
+<h1 id="growthbeat-api">Growthbeat API</h1>
+
+<h2 id="growthbeat-インスタンスの取得">Growthbeat インスタンスの取得</h2>
+
+<p>Growthbeat インスタンスを取得します。</p>
+
+<pre><code class="language-cpp">static Growthbeat* getInstance();
+</code></pre>
+
+<h2 id="ハンドラ">ハンドラ</h2>
+
+<h3 id="ハンドラ初期化">ハンドラ初期化</h3>
+
+<pre><code class="language-cpp">void initializeIntentHandlers();
+</code></pre>
+
+<h3 id="処理をしないハンドラ">処理をしないハンドラ</h3>
+
+<pre><code class="language-cpp">void addNoopIntentHandler();
+</code></pre>
+
+<h3 id="ブラウザを開くハンドラ">ブラウザを開くハンドラ</h3>
+
+<pre><code class="language-cpp">void addUrlIntentHandler();
+</code></pre>
+
+<h3 id="カスタムハンドラ">カスタムハンドラ</h3>
+
+<pre><code class="language-cpp">void addCustomIntentHandler(const std::function&lt;bool(std::map&lt;std::string,std::string&gt;)&gt;&amp; handle);
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">map</td>
+<td align="left">key/valueのマップ値</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="ログの停止">ログの停止</h2>
+
+<p>Growthbeat SDKからのログ出力を全て停止します。
+デフォルトでは、ログ出力がおこなわれます。</p>
+
+<pre><code class="language-cpp">void setLoggerSilent(bool silent);
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">silent</td>
+<td align="left">ログ出力を行うか。<code>YES</code>: ログ出力しない <code>NO</code>:ログ出力をする</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="growth-push-api">Growth Push API</h1>
+
+<h2 id="growth-push-インスタンスの取得">Growth Push インスタンスの取得</h2>
+
+<p>Growth Push インスタンスを取得します。</p>
+
+<pre><code class="language-cpp">static GrowthPush* getInstance();
+</code></pre>
+
+<h2 id="初期化">初期化</h2>
+
+<p>Growth Push の初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。</p>
+
+<pre><code class="language-cpp">void initialize(const std::string &amp;applicationId, const std::string &amp;credentialId, GPEnvironment environment);
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">applicationId</td>
+<td align="left">アプリケーションID</td>
+</tr>
+
+<tr>
+<td align="left">credentialId</td>
+<td align="left">クレデンシャルキー</td>
+</tr>
+
+<tr>
+<td align="left">environment</td>
+<td align="left">開発用: <code>Environment.development</code> 本番用: <code>Environment.production</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="デバイストークンの取得-送信">デバイストークンの取得・送信</h2>
+
+<h3 id="ios">iOS</h3>
+
+<pre><code class="language-cpp">void requestDeviceToken();
+</code></pre>
+
+<h3 id="android-ios">Android &amp; iOS</h3>
+
+<pre><code class="language-cpp">void requestDeviceToken(const std::string &amp;senderId);
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">senderId</td>
+<td align="left">Android の SenderId</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="イベントの送信">イベントの送信</h2>
+
+<h3 id="イベントの送信-1">イベントの送信</h3>
+
+<pre><code class="language-cpp">void trackEvent(const std::string &amp;name);
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">name</td>
+<td align="left">イベント名</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="イベントと任意の値の送信">イベントと任意の値の送信</h3>
+
+<pre><code class="language-cpp">void trackEvent(const std::string &amp;name, const std::string &amp;value);
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">name</td>
+<td align="left">イベント名</td>
+</tr>
+
+<tr>
+<td align="left">value</td>
+<td align="left">イベントに持たせる値</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="イベントと任意の値の送信-1">イベントと任意の値の送信</h3>
+
+<p>設定したポップアップメッセージの表示準備が完了したときに、コールバックされます。</p>
+
+<pre><code class="language-cpp">void trackEvent(const std::string &amp;name, const std::string &amp;value, const std::function&lt;void(std::string)&gt; &amp;showMessageHandler);
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">name</td>
+<td align="left">イベント名</td>
+</tr>
+
+<tr>
+<td align="left">value</td>
+<td align="left">イベントに持たせる値</td>
+</tr>
+
+<tr>
+<td align="left">showMessageHandler</td>
+<td align="left">メッセージコールバック</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="メッセージ表示">メッセージ表示</h3>
+
+<pre><code class="language-cpp">void renderMessage(const std::string &amp;uuid);
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">uuid</td>
+<td align="left">メッセージ表示するためのキー</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="タグの送信">タグの送信</h2>
+
+<h3 id="タグの送信-1">タグの送信</h3>
+
+<pre><code class="language-cpp">void setTag(const std::string &amp;name);
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">name</td>
+<td align="left">タグ名</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="タグと任意の値の送信">タグと任意の値の送信</h3>
+
+<pre><code class="language-cpp">void setTag(const std::string &amp;name, const std::string &amp;value);
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">name</td>
+<td align="left">タグ名</td>
+</tr>
+
+<tr>
+<td align="left">value</td>
+<td align="left">タグに持たせる値</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="バッチクリア">バッチクリア</h2>
+
+<p>配信時に、バッチにチェックマークを付けた場合、バッチをクリアするためのメソッドです。
+iOSのみ利用できます。</p>
+
+<pre><code class="language-cpp">void clearBadge();
+</code></pre>
+
+<h1 id="growth-link-api">Growth Link API</h1>
+
+<h2 id="growth-linkの初期化">Growth Linkの初期化</h2>
+
+<p>Growthbeatへデバイス登録・認証を行います。</p>
+
+<pre><code class="language-cpp">void initialize(const std::string&amp; applicationId, const std::string&amp; credentialId);
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">applicationId</td>
+<td align="left">アプリケーションID</td>
+</tr>
+
+<tr>
+<td align="left">credentialId</td>
+<td align="left">クレデンシャルキー</td>
+</tr>
+</tbody>
+</table>
+
+<pre><code class="language-cpp">void handleOpenUrl(const std::string&amp; url);
+</code></pre>
+
+<p><strong>パラメータ</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">項目名</th>
+<th align="left">詳細</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">url</td>
+<td align="left">表示するURL</td>
+</tr>
+</tbody>
+</table>
+
+      </div>
+    </div>
+</section>
+
+
+  </div>
+</div>
+
+
+<footer class="footer">
+  <small class="copyright">Designed by SIROK</small>
+</footer>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script src="http://support.growthbeat.com/js/sirok-scrollspy.js"></script>
+<script>
+$(function() {
+  $('pre code, code').each(function(i, block) {
+    hljs.highlightBlock(block)
+  });
+
+  var sidebar = $('.column-sidebar');
+  var offset = sidebar.offset();
+
+  $(window).scroll(function () {
+    if ($(window).scrollTop() > offset.top - 20) {
+      sidebar.addClass('fixed');
+    } else {
+      sidebar.removeClass('fixed');
+    }
+  });
+
+  sidebar.find('ul').addClass('spy-nav');
+
+  $(document.body).scrollspy({
+    target: '#TableOfContents',
+  });
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+<script type="text/javascript">
+docsearch({
+ apiKey: '11fef466694af89257b9dc61a7b7fa20',
+ indexName: 'growthbeat',
+ inputSelector: '#algolia-search'
+});
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56017268-6', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
+
+</div>
+</body>
+</html>

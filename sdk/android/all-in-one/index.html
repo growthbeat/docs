@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+
+  
+  <meta name="viewport" content="width=1040px, user-scalable=yes">
+
+  
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Growthbeat Android SDK | 全機能利用ガイド | Growthbeatドキュメント |">
+  <meta property="og:url" content="http://support.growthbeat.com/sdk/android/all-in-one/">
+  <meta property="og:description" content="Growthbeat SDK for Android の導入方法について説明します">
+  
+  <meta property="article:author" content="" />
+  <meta property="fb:app_id" content="" />
+  <meta property="og:site_name" content="Growthbeatドキュメント |">
+
+  <title>
+      
+        Growthbeat Android SDK | 全機能利用ガイド | Growthbeatドキュメント |
+      
+  </title>
+
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <link rel="stylesheet" href="http://support.growthbeat.com/css/main.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+</head>
+
+<body>
+
+
+
+  
+
+
+
+
+  
+
+
+<div class="wrapper">
+
+
+
+<header class="navbar-header" role="banner">
+  <div class="container">
+    <nav class="header-nav">
+      <h1 class="logo">
+        <a class="link"href="https://growthbeat.com/">
+          <img src="http://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
+        </a>
+      </h1>
+
+      <div class="search">
+        <input id="algolia-search" type="text" placeholder="サポートページを検索">
+      </div>
+      <div class="inquiry">
+        <a class="link" href="https://growthbeat.com/inquiry">お問い合わせ</a>
+      </div>
+      <div class="login">
+        <a class="link" href="https://growthbeat.com/">Growthbeat</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="navbar-subheader">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li class="item">
+        <a class="link" href="http://support.growthbeat.com/">サポートページ</a>
+      </li>
+      <li class="item">
+        <a class="link" href="http://support.growthbeat.com/sdk/">SDKドキュメント</a>
+      </li>
+      
+      
+      
+        <li class="item"><a class="link">全機能利用ガイド</a></li>
+      
+      
+      
+    </ul>
+  </div>
+</section>
+
+
+
+<div class="content">
+  <div class="container">
+
+<div class="page">
+  <h1 class="title">
+    
+      全機能利用ガイド
+    
+    <span class="updated">最終更新日 Tue, Feb 4, 2020</span>
+  </h1>
+  <a class="edit" href="https://github.com/growthbeat/docs/blob/master/content/sdk/android/all-in-one.md">Edit on GitHub</a>
+</div>
+
+
+<section class="row markdown">
+    <div class="column column-sidebar">
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#growthbeat利用ガイド">Growthbeat利用ガイド</a></li>
+<li><a href="#1-growth-pushを利用">1. Growth Pushを利用</a></li>
+<li><a href="#2-growth-messageを利用">2. Growth Messageを利用</a>
+<ul>
+<li><a href="#実装コード">実装コード</a></li>
+<li><a href="#androidmanifest-xml設定">AndroidManifest.xml設定</a></li>
+<li><a href="#管理画面設定方法">管理画面設定方法</a></li>
+</ul></li>
+<li><a href="#備考">備考</a>
+<ul>
+<li><a href="#最新版のsdkへの乗り換え方法">最新版のSDKへの乗り換え方法</a></li>
+<li><a href="#サンプルについて">サンプルについて</a></li>
+</ul></li>
+<li><a href="#お問い合わせ">お問い合わせ</a></li>
+</ul>
+</nav>
+    </div>
+    <div class="column column-main">
+      <div class="typeset">
+        
+
+<p>Version 2.0.11</p>
+
+<h1 id="growthbeat利用ガイド">Growthbeat利用ガイド</h1>
+
+<h1 id="1-growth-pushを利用">1. Growth Pushを利用</h1>
+
+<p>Growth Pushのみを利用する<a href="/sdk/android/guide">導入方法</a>をご覧ください。</p>
+
+<h1 id="2-growth-messageを利用">2. Growth Messageを利用</h1>
+
+<p>Growth Message を用いてポップアップを任意のタイミングで表示させるには、「<a href="http://support.growthbeat.com/manual/growthmessage/#配信トリガー">配信トリガー</a>」 を設定します。「<a href="http://support.growthbeat.com/manual/growthmessage/#配信トリガー">配信トリガー</a>」 は作成したカスタムイベントの中から選ぶ必要がございます。</p>
+
+<h2 id="実装コード">実装コード</h2>
+
+<p>配信トリガーとなるカスタムイベントを作成するには、ポップアップメッセージを表示させたい任意の場所に下記のようなイベントを送信するメソッドを記述してください。</p>
+
+<pre><code class="language-java">class MainActivity extends Activity {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreated(savedInstanceState);
+
+        //...
+        GrowthPush.getInstance().trackEvent(&quot;OpenActivity&quot;);
+    }
+}
+</code></pre>
+
+<h2 id="androidmanifest-xml設定">AndroidManifest.xml設定</h2>
+
+<p>AndroidManifest.xmlにGrowth Message表示用のActivityを追加します。</p>
+
+<pre><code class="language-xml">&lt;application&gt;
+    &lt;!-- ... --&gt;
+    &lt;activity
+        android:name=&quot;com.growthbeat.message.view.MessageActivity&quot;
+        android:theme=&quot;@android:style/Theme.Translucent&quot; /&gt;
+&lt;/application&gt;
+</code></pre>
+
+<h2 id="管理画面設定方法">管理画面設定方法</h2>
+
+<p>「<a href="http://support.growthbeat.com/manual/growthmessage/#配信トリガー">配信トリガー</a>」 で先程実装したイベント（今回の場合は OpenActivity）を選択すると、指定のイベントが発火したタイミングでメッセージが表示されます。<br />
+詳しいメッセージの作成方法は <a href="http://support.growthbeat.com/manual/growthmessage/#配信作成">配信作成</a> を参照してください。</p>
+
+<!--
+# 3. GrowthLinkを利用
+## 実装コード
+### 初期化
+Growth Linkの初期化処理を追加してください。
+IntentFilterを設定したActivityのonCreateで、handleOpenUrlメソッドを呼び出してください。
+
+```java
+class MainActivity extends Activity {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreated(savedInstanceState);
+
+        //...
+        GrowthLink.getInstance().initialize(getApplicationContext(), "YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
+        GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
+    }
+}
+```
+### ディープリンクアクションの実装
+SDKには、IntentHandlerが定義されており、この実装でディープリンク時のアクションを実装することができます。
+たとえば下記のような形で実装できます。
+
+```java
+class MyApplication extends Application {
+
+    @Override
+    public void onCreate() {
+        List<IntentHandler> intentHandlers = new ArrayList<IntentHandler>();
+        intentHandlers.add(new UrlIntentHandler(Growthbeat.getInstance().getContext()));
+        intentHandlers.add(new NoopIntentHandler());
+        intentHandlers.add(new IntentHandler() {
+            public boolean handle(com.growthbeat.model.Intent intent) {
+                if (intent.getType() != com.growthbeat.model.Intent.Type.custom)
+                    return false;
+                Map<String, String> extra = ((CustomIntent) intent).getExtra();
+                // TODO ここにアプリ内の画面を開く処理を実装します。
+                Log.d("Growth Link", "extra: " + extra);
+                return true;
+            }
+        });
+        Growthbeat.getInstance().setIntentHandlers(intentHandlers);
+    }
+}
+```
+## AndroidManifest.xml設定
+AndroidManifest.xmlにGrowth Link用のActivityを追加します。
+
+```xml
+<application>
+    ~~ 略 ~~
+    <receiver
+        android:name="com.growthbeat.link.InstallReferrerReceiver"
+        android:enabled="true"
+        android:exported="true" >
+        <intent-filter>
+            <action android:name="com.android.vending.INSTALL_REFERRER" />
+        </intent-filter>
+    </receiver>
+</application>
+```
+-->
+
+<h1 id="備考">備考</h1>
+
+<h2 id="最新版のsdkへの乗り換え方法">最新版のSDKへの乗り換え方法</h2>
+
+<p>Growth Push SDKからGrowthbeat 2.x SDK への乗り換えまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへの乗り換えをされる方は
+<a href="/sdk/android/upgrade">SDKの移行ガイド</a>をご参照ください。</p>
+
+<h2 id="サンプルについて">サンプルについて</h2>
+
+<p>実装サンプルは、<a href="https://github.com/growthbeat/growthbeat-android">Githubレポジトリ</a>を参考にしてください。</p>
+
+<h1 id="お問い合わせ">お問い合わせ</h1>
+
+<p>ご不明な点などございます場合は、<a href="http://faq.growthbeat.com/">ヘルプページ</a>を閲覧してください。</p>
+
+      </div>
+    </div>
+</section>
+
+
+  </div>
+</div>
+
+
+<footer class="footer">
+  <small class="copyright">Designed by SIROK</small>
+</footer>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script src="http://support.growthbeat.com/js/sirok-scrollspy.js"></script>
+<script>
+$(function() {
+  $('pre code, code').each(function(i, block) {
+    hljs.highlightBlock(block)
+  });
+
+  var sidebar = $('.column-sidebar');
+  var offset = sidebar.offset();
+
+  $(window).scroll(function () {
+    if ($(window).scrollTop() > offset.top - 20) {
+      sidebar.addClass('fixed');
+    } else {
+      sidebar.removeClass('fixed');
+    }
+  });
+
+  sidebar.find('ul').addClass('spy-nav');
+
+  $(document.body).scrollspy({
+    target: '#TableOfContents',
+  });
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+<script type="text/javascript">
+docsearch({
+ apiKey: '11fef466694af89257b9dc61a7b7fa20',
+ indexName: 'growthbeat',
+ inputSelector: '#algolia-search'
+});
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56017268-6', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
+
+</div>
+</body>
+</html>

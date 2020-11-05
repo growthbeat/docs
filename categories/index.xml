@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Growthbeatドキュメント |</title>
+    <link>http://support.growthbeat.com/categories/</link>
+    <description>Recent content in Categories on Growthbeatドキュメント |</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="http://support.growthbeat.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Help</title>
+      <link>http://support.growthbeat.com/categories/help/</link>
+      <pubDate>Mon, 14 Sep 2015 14:32:58 +0900</pubDate>
+      
+      <guid>http://support.growthbeat.com/categories/help/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Manual</title>
+      <link>http://support.growthbeat.com/categories/manual/</link>
+      <pubDate>Wed, 04 Jan 2017 00:00:00 +0900</pubDate>
+      
+      <guid>http://support.growthbeat.com/categories/manual/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sdk</title>
+      <link>http://support.growthbeat.com/categories/sdk/</link>
+      <pubDate>Tue, 07 Apr 2020 17:00:00 +0900</pubDate>
+      
+      <guid>http://support.growthbeat.com/categories/sdk/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

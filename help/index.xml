@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Helps on Growthbeatドキュメント |</title>
+    <link>http://support.growthbeat.com/help/</link>
+    <description>Recent content in Helps on Growthbeatドキュメント |</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 14 Sep 2015 14:32:58 +0900</lastBuildDate>
+    
+	<atom:link href="http://support.growthbeat.com/help/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>「全体配信」の対象数とレポートの「配信数（合計）」の数値とは？</title>
+      <link>http://support.growthbeat.com/help/report-number/</link>
+      <pubDate>Mon, 14 Sep 2015 14:32:58 +0900</pubDate>
+      
+      <guid>http://support.growthbeat.com/help/report-number/</guid>
+      <description>&lt;p&gt;セグメントの人数として表示される人数は概算となっておりまして、
+配信されるのは、この人数のうち、実際に配信が可能と判定されている端末のみとなります。&lt;/p&gt;
+
+&lt;p&gt;詳細については下記をご覧くださいませ。&lt;/p&gt;
+
+&lt;p&gt;セグメントの概算人数とは？いつ更新されるのか？
+&lt;a href=&#34;http://growthhack.sirok.co.jp/growthpush/3976/&#34;&gt;http://growthhack.sirok.co.jp/growthpush/3976/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>送信のログは取得可能でしょうか？</title>
+      <link>http://support.growthbeat.com/help/get-log/</link>
+      <pubDate>Mon, 14 Sep 2015 14:32:58 +0900</pubDate>
+      
+      <guid>http://support.growthbeat.com/help/get-log/</guid>
+      <description>&lt;p&gt;通知の配信履歴は、管理画面の通知一覧から、
+またはNotifications APIを利用して、取得可能です。&lt;/p&gt;
+
+&lt;p&gt;Notifications API
+&lt;a href=&#34;http://ja.growthpush.com/documents#restNotificationsApi&#34;&gt;http://ja.growthpush.com/documents#restNotificationsApi&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;プッシュ通知の配信の詳細なログについては、
+管理画面の配信履歴画面から文言部分をクリックし詳細を確認することで閲覧が可能です。&lt;/p&gt;
+
+&lt;p&gt;Push通知が届かない場合のトラブルシューティング
+&lt;a href=&#34;http://growthhack.sirok.co.jp/growthpush/growth-push-push-2/&#34;&gt;http://growthhack.sirok.co.jp/growthpush/growth-push-push-2/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;このページ内の下記画像の部分から、
+ログファイルの閲覧が可能です。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://growthhack.sirok.co.jp/wordpress/wp-content/uploads/2014/05/06a3a84c13e96e07aab2ffb7f04ba0ec.png&#34;&gt;http://growthhack.sirok.co.jp/wordpress/wp-content/uploads/2014/05/06a3a84c13e96e07aab2ffb7f04ba0ec.png&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

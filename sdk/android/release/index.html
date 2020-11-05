@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+
+  
+  <meta name="viewport" content="width=1040px, user-scalable=yes">
+
+  
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="リリースノート | Growthbeatドキュメント |">
+  <meta property="og:url" content="http://support.growthbeat.com/sdk/android/release/">
+  <meta property="og:description" content="Growthbeat Android のリリースノート">
+  
+  <meta property="article:author" content="" />
+  <meta property="fb:app_id" content="" />
+  <meta property="og:site_name" content="Growthbeatドキュメント |">
+
+  <title>
+      
+        リリースノート | Growthbeatドキュメント |
+      
+  </title>
+
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <link rel="stylesheet" href="http://support.growthbeat.com/css/main.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+</head>
+
+<body>
+
+
+
+  
+
+
+
+
+  
+
+
+<div class="wrapper">
+
+
+
+<header class="navbar-header" role="banner">
+  <div class="container">
+    <nav class="header-nav">
+      <h1 class="logo">
+        <a class="link"href="https://growthbeat.com/">
+          <img src="http://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
+        </a>
+      </h1>
+
+      <div class="search">
+        <input id="algolia-search" type="text" placeholder="サポートページを検索">
+      </div>
+      <div class="inquiry">
+        <a class="link" href="https://growthbeat.com/inquiry">お問い合わせ</a>
+      </div>
+      <div class="login">
+        <a class="link" href="https://growthbeat.com/">Growthbeat</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="navbar-subheader">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li class="item">
+        <a class="link" href="http://support.growthbeat.com/">サポートページ</a>
+      </li>
+      <li class="item">
+        <a class="link" href="http://support.growthbeat.com/sdk/">SDKドキュメント</a>
+      </li>
+      
+      
+      
+      
+      
+        <li class="item"><a class="link">リリースノート</a></li>
+      
+    </ul>
+  </div>
+</section>
+
+
+
+<div class="content">
+  <div class="container">
+
+<div class="page">
+  <h1 class="title">
+    
+      リリースノート
+    
+    <span class="updated">最終更新日 Tue, Apr 7, 2020</span>
+  </h1>
+  <a class="edit" href="https://github.com/growthbeat/docs/blob/master/content/sdk/android/release.md">Edit on GitHub</a>
+</div>
+
+
+<section class="row markdown">
+    <div class="column column-sidebar">
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#バージョン-3-0-1">バージョン 3.0.1</a>
+<ul>
+<li><a href="#変更点">変更点</a></li>
+</ul></li>
+<li><a href="#バージョン-3-0-0">バージョン 3.0.0</a>
+<ul>
+<li><a href="#変更点-1">変更点</a></li>
+</ul></li>
+<li><a href="#バージョン-2-0-12">バージョン 2.0.12</a>
+<ul>
+<li><a href="#変更点-2">変更点</a></li>
+</ul></li>
+<li><a href="#バージョン-2-0-11">バージョン 2.0.11</a>
+<ul>
+<li><a href="#変更点-3">変更点</a></li>
+</ul></li>
+<li><a href="#バージョン-2-0-10">バージョン 2.0.10</a>
+<ul>
+<li><a href="#バグ">バグ</a></li>
+</ul></li>
+<li><a href="#バージョン-2-0-9">バージョン 2.0.9</a>
+<ul>
+<li><a href="#変更点-4">変更点</a></li>
+</ul></li>
+<li><a href="#バージョン-2-0-8">バージョン 2.0.8</a>
+<ul>
+<li><a href="#バグ-1">バグ</a></li>
+</ul></li>
+<li><a href="#バージョン-2-0-7">バージョン 2.0.7</a>
+<ul>
+<li><a href="#変更点-5">変更点</a></li>
+</ul></li>
+<li><a href="#バージョン-2-0-6">バージョン 2.0.6</a>
+<ul>
+<li><a href="#バグ-2">バグ</a></li>
+</ul></li>
+<li><a href="#バージョン-2-0-5">バージョン 2.0.5</a>
+<ul>
+<li><a href="#変更点-6">変更点</a></li>
+<li><a href="#バグ-3">バグ</a></li>
+</ul></li>
+<li><a href="#バージョン-2-0-4">バージョン 2.0.4</a>
+<ul>
+<li><a href="#変更点-7">変更点</a></li>
+</ul></li>
+<li><a href="#バージョン-2-0-3">バージョン 2.0.3</a>
+<ul>
+<li><a href="#変更点-8">変更点</a></li>
+</ul></li>
+<li><a href="#バージョン-2-0-2">バージョン 2.0.2</a>
+<ul>
+<li><a href="#変更点-9">変更点</a></li>
+<li><a href="#バグ-4">バグ</a></li>
+</ul></li>
+<li><a href="#バージョン-2-0-1">バージョン 2.0.1</a>
+<ul>
+<li><a href="#変更点-10">変更点</a></li>
+<li><a href="#バグ-5">バグ</a></li>
+</ul></li>
+<li><a href="#バージョン-2-0-0">バージョン 2.0.0</a>
+<ul>
+<li><a href="#変更点-11">変更点</a></li>
+</ul></li>
+<li><a href="#バージョン-1-2-7">バージョン 1.2.7</a>
+<ul>
+<li><a href="#変更点-12">変更点</a></li>
+<li><a href="#バグ-6">バグ</a></li>
+</ul></li>
+<li><a href="#バージョン-1-2-6">バージョン 1.2.6</a>
+<ul>
+<li><a href="#変更点-13">変更点</a></li>
+<li><a href="#ドキュメント">ドキュメント</a></li>
+<li><a href="#バグ-7">バグ</a></li>
+</ul></li>
+<li><a href="#バージョン-1-2-5">バージョン 1.2.5</a>
+<ul>
+<li><a href="#新機能">新機能</a></li>
+<li><a href="#変更点-14">変更点</a></li>
+<li><a href="#バグ-8">バグ</a></li>
+</ul></li>
+<li><a href="#バージョン-1-2-4">バージョン 1.2.4</a>
+<ul>
+<li><a href="#新機能-1">新機能</a></li>
+<li><a href="#変更点-15">変更点</a></li>
+<li><a href="#ドキュメント-1">ドキュメント</a></li>
+</ul></li>
+<li><a href="#バージョン-1-2-3">バージョン 1.2.3</a>
+<ul>
+<li><a href="#新機能-2">新機能</a></li>
+<li><a href="#ドキュメント-2">ドキュメント</a></li>
+<li><a href="#バグ対応">バグ対応</a></li>
+</ul></li>
+<li><a href="#バージョン-1-2-2">バージョン 1.2.2</a>
+<ul>
+<li><a href="#新機能-3">新機能</a></li>
+<li><a href="#ドキュメント-3">ドキュメント</a></li>
+</ul></li>
+<li><a href="#バージョン-1-2-1">バージョン 1.2.1</a>
+<ul>
+<li><a href="#新機能-4">新機能</a></li>
+<li><a href="#ドキュメント-4">ドキュメント</a></li>
+</ul></li>
+<li><a href="#バージョン-1-2-0">バージョン 1.2.0</a>
+<ul>
+<li><a href="#新機能-5">新機能</a></li>
+<li><a href="#ドキュメント-5">ドキュメント</a></li>
+</ul></li>
+<li><a href="#バージョン-1-1-2">バージョン 1.1.2</a>
+<ul>
+<li><a href="#バグフィックス">バグフィックス</a></li>
+</ul></li>
+<li><a href="#バージョン-1-1-1">バージョン 1.1.1</a>
+<ul>
+<li><a href="#変更点-16">変更点</a></li>
+<li><a href="#ドキュメント-6">ドキュメント</a></li>
+</ul></li>
+<li><a href="#バージョン-1-1-0">バージョン 1.1.0</a>
+<ul>
+<li><a href="#新機能-6">新機能</a></li>
+<li><a href="#変更点-17">変更点</a></li>
+<li><a href="#ドキュメント-7">ドキュメント</a></li>
+</ul></li>
+<li><a href="#バージョン-1-0-1">バージョン 1.0.1</a>
+<ul>
+<li><a href="#新機能-7">新機能</a></li>
+</ul></li>
+<li><a href="#バージョン-1-0">バージョン 1.0</a>
+<ul>
+<li><a href="#ドキュメント-8">ドキュメント</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+    <div class="column column-main">
+      <div class="typeset">
+        
+
+<h1 id="バージョン-3-0-1">バージョン 3.0.1</h1>
+
+<h2 id="変更点">変更点</h2>
+
+<ul>
+<li>Gradleタスクに不具合があったため、Gradleのバージョンを5.4.2に変更しました。</li>
+</ul>
+
+<h1 id="バージョン-3-0-0">バージョン 3.0.0</h1>
+
+<h2 id="変更点-1">変更点</h2>
+
+<ul>
+<li>サポートライブラリからAndroidXに移行しました。</li>
+</ul>
+
+<h1 id="バージョン-2-0-12">バージョン 2.0.12</h1>
+
+<h2 id="変更点-2">変更点</h2>
+
+<ul>
+<li>GrowthLink提供停止のため機能を削除しました。</li>
+</ul>
+
+<h1 id="バージョン-2-0-11">バージョン 2.0.11</h1>
+
+<h2 id="変更点-3">変更点</h2>
+
+<ul>
+<li>targetSdkVersion 28 に対応しました。</li>
+<li>ドキュメントを更新しました。</li>
+</ul>
+
+<h1 id="バージョン-2-0-10">バージョン 2.0.10</h1>
+
+<h2 id="バグ">バグ</h2>
+
+<ul>
+<li>GrowthMessageの画像タップ時にアプリがクラッシュする場合があるバグを修正しました。</li>
+</ul>
+
+<h1 id="バージョン-2-0-9">バージョン 2.0.9</h1>
+
+<h2 id="変更点-4">変更点</h2>
+
+<ul>
+<li>GCM廃止に伴い、Firebaseへ移行実装いたしました。<a href="https://faq.growthbeat.com/article/226-gcmtofcm">アップデートガイド</a></li>
+</ul>
+
+<h1 id="バージョン-2-0-8">バージョン 2.0.8</h1>
+
+<h2 id="バグ-1">バグ</h2>
+
+<ul>
+<li>Android 8.1等の一部端末で、タグ、イベント登録が失敗する挙動を修正しました。</li>
+</ul>
+
+<h1 id="バージョン-2-0-7">バージョン 2.0.7</h1>
+
+<h2 id="変更点-5">変更点</h2>
+
+<ul>
+<li>Android 8.0以上をターゲットとした場合に、通知が受け取れるように対応</li>
+<li>BigTextStyleに対応</li>
+</ul>
+
+<h1 id="バージョン-2-0-6">バージョン 2.0.6</h1>
+
+<h2 id="バグ-2">バグ</h2>
+
+<ul>
+<li>通知一覧に複数通知がある場合に、アプリに遷移しない問題を修正しました。</li>
+</ul>
+
+<h1 id="バージョン-2-0-5">バージョン 2.0.5</h1>
+
+<h2 id="変更点-6">変更点</h2>
+
+<ul>
+<li>通知のカスタマイズをしやすいように変更しました。</li>
+<li>通信エラー時に、エラーコードを表示するように変更しました。</li>
+<li>通知一覧で、複数表示の対応をいたしました。</li>
+</ul>
+
+<h2 id="バグ-3">バグ</h2>
+
+<ul>
+<li>Growth Messageを閉じるときに、確率的にクラッシュする問題を修正しました。</li>
+<li>Libraryプロジェクトのマニフェストに、application の記述を削除しました。</li>
+</ul>
+
+<h1 id="バージョン-2-0-4">バージョン 2.0.4</h1>
+
+<h2 id="変更点-7">変更点</h2>
+
+<ul>
+<li>Fixed issue <a href="https://github.com/growthbeat/growthbeat-android/issues/75">https://github.com/growthbeat/growthbeat-android/issues/75</a></li>
+<li>Fixed issue <a href="https://github.com/growthbeat/growthbeat-android/issues/76">https://github.com/growthbeat/growthbeat-android/issues/76</a></li>
+<li>内部処理の最適化をいたしました。</li>
+</ul>
+
+<h1 id="バージョン-2-0-3">バージョン 2.0.3</h1>
+
+<h2 id="変更点-8">変更点</h2>
+
+<ul>
+<li>LruCacheをサポートライブラリの使用に変更いたしました。</li>
+</ul>
+
+<h1 id="バージョン-2-0-2">バージョン 2.0.2</h1>
+
+<h2 id="変更点-9">変更点</h2>
+
+<ul>
+<li>Client APIの変更がありました。</li>
+</ul>
+
+<h2 id="バグ-4">バグ</h2>
+
+<ul>
+<li>Growthbeat 1.xから乗り換え時に、特定の条件で情報が引き継げない不具合を修正しました。</li>
+</ul>
+
+<h1 id="バージョン-2-0-1">バージョン 2.0.1</h1>
+
+<h2 id="変更点-10">変更点</h2>
+
+<ul>
+<li>Handlerを使ったメッセージ表示方法を変更しました。</li>
+</ul>
+
+<h2 id="バグ-5">バグ</h2>
+
+<ul>
+<li>Tagの値がnullの場合に、データが送られない不具合を修正しました。</li>
+</ul>
+
+<h1 id="バージョン-2-0-0">バージョン 2.0.0</h1>
+
+<h2 id="変更点-11">変更点</h2>
+
+<ul>
+<li>Growthbeatのインターフェースを変更しました。</li>
+<li>Growth Analyticsの機能が無くなりました。</li>
+<li>Growth Messageの表示機能が改善いたしました。</li>
+</ul>
+
+<h1 id="バージョン-1-2-7">バージョン 1.2.7</h1>
+
+<h2 id="変更点-12">変更点</h2>
+
+<ul>
+<li>Growth LinkのFingerprint計測処理を最適化しました。</li>
+</ul>
+
+<h2 id="バグ-6">バグ</h2>
+
+<ul>
+<li>Growth LinkのSynchronize処理が複数回実行される可能性がある部分を修正しました。</li>
+</ul>
+
+<h1 id="バージョン-1-2-6">バージョン 1.2.6</h1>
+
+<h2 id="変更点-13">変更点</h2>
+
+<ul>
+<li>Registration tokenをInstanceIDクラスで取得するように変更しました。</li>
+<li>Registration tokenの更新通知を受け取るクラスを追加しました。</li>
+<li>Push通知受信クラスをBroadcastReceiverからGcmListenerServiceに変更しました。</li>
+<li>Growth Pushのdeprecatedコメントを削除しました。</li>
+</ul>
+
+<h2 id="ドキュメント">ドキュメント</h2>
+
+<ul>
+<li>Growth Pushの導入方法を変更しました。</li>
+</ul>
+
+<h2 id="バグ-7">バグ</h2>
+
+<ul>
+<li>スレッドがデッドロックする不具合を修正しました。</li>
+<li>プッシュ通知の通知エリアのアイコン背景色が変更できない不具合を修正しました。</li>
+</ul>
+
+<h1 id="バージョン-1-2-5">バージョン 1.2.5</h1>
+
+<h2 id="新機能">新機能</h2>
+
+<ul>
+<li>Growthbeatのクライアントを取得するAPIを追加しました。</li>
+<li>広告情報の送信をオプション化しました。</li>
+</ul>
+
+<h2 id="変更点-14">変更点</h2>
+
+<ul>
+<li>スレッド管理を一元化するようにしました。</li>
+<li>Installイベントを起動時からGrowthbeatの初期化内に移動しました。</li>
+</ul>
+
+<h2 id="バグ-8">バグ</h2>
+
+<ul>
+<li>Android Mにて、Growth Messageのバナータイプがクラッシュする現象を修正しました。</li>
+</ul>
+
+<h1 id="バージョン-1-2-4">バージョン 1.2.4</h1>
+
+<h2 id="新機能-1">新機能</h2>
+
+<ul>
+<li>Gradleプロジェクトに対応しました。</li>
+</ul>
+
+<h2 id="変更点-15">変更点</h2>
+
+<ul>
+<li>HttpClientを廃止して、HttpURLConnectionに移行しました。</li>
+<li>growthlink.jarを廃止して、growthbeat.jarに統合しました。</li>
+</ul>
+
+<h2 id="ドキュメント-1">ドキュメント</h2>
+
+<ul>
+<li>Gradleプロジェクトへの導入方法を追加しました。</li>
+</ul>
+
+<h1 id="バージョン-1-2-3">バージョン 1.2.3</h1>
+
+<h2 id="新機能-2">新機能</h2>
+
+<ul>
+<li>Growth Link デバイスフィンガープリントに対応いたしました。</li>
+</ul>
+
+<h2 id="ドキュメント-2">ドキュメント</h2>
+
+<ul>
+<li>Growth Push SDKからの乗り換え方法を追加しました。</li>
+</ul>
+
+<h2 id="バグ対応">バグ対応</h2>
+
+<ul>
+<li>Growth Messageで、ポップアップのActivityが消えない問題を修正しました。</li>
+</ul>
+
+<h1 id="バージョン-1-2-2">バージョン 1.2.2</h1>
+
+<h2 id="新機能-3">新機能</h2>
+
+<ul>
+<li>Growth Pushでカスタムアイコンを設定できるようにしました。</li>
+<li>Growth Pushのダイアログ表示を管理画面から変更できるように変更しました。</li>
+</ul>
+
+<h2 id="ドキュメント-3">ドキュメント</h2>
+
+<ul>
+<li>カスタムアイコン表示の実装方法を記載しました。</li>
+</ul>
+
+<h1 id="バージョン-1-2-1">バージョン 1.2.1</h1>
+
+<h2 id="新機能-4">新機能</h2>
+
+<ul>
+<li>Growth Messageの配信パターン、ウォークスルーをサポートしました。</li>
+</ul>
+
+<h2 id="ドキュメント-4">ドキュメント</h2>
+
+<ul>
+<li>iOSのみの実装方法の記載となります。</li>
+</ul>
+
+<h1 id="バージョン-1-2-0">バージョン 1.2.0</h1>
+
+<h2 id="新機能-5">新機能</h2>
+
+<ul>
+<li>Growth Link追加いたしました。</li>
+</ul>
+
+<h2 id="ドキュメント-5">ドキュメント</h2>
+
+<ul>
+<li>Growth Link導入方法を追加</li>
+</ul>
+
+<h1 id="バージョン-1-1-2">バージョン 1.1.2</h1>
+
+<h2 id="バグフィックス">バグフィックス</h2>
+
+<ul>
+<li>Growth Pushデバイストークン送信方法を変更いたしました。</li>
+</ul>
+
+<h1 id="バージョン-1-1-1">バージョン 1.1.1</h1>
+
+<h2 id="変更点-16">変更点</h2>
+
+<ul>
+<li>Growth Push一部メソッドを変更</li>
+</ul>
+
+<h2 id="ドキュメント-6">ドキュメント</h2>
+
+<h1 id="バージョン-1-1-0">バージョン 1.1.0</h1>
+
+<h2 id="新機能-6">新機能</h2>
+
+<ul>
+<li>Growth Push導入方法追加いたしました。</li>
+</ul>
+
+<h2 id="変更点-17">変更点</h2>
+
+<ul>
+<li>Growthbeat, Growth Analytics一部メソッド変更を修正</li>
+</ul>
+
+<h2 id="ドキュメント-7">ドキュメント</h2>
+
+<ul>
+<li>Growth Push導入方法を追加いたしました。</li>
+<li>Growthbeat, Growth Analyticsのメソッド変更点**を修正いたしました。</li>
+</ul>
+
+<h1 id="バージョン-1-0-1">バージョン 1.0.1</h1>
+
+<h2 id="新機能-7">新機能</h2>
+
+<ul>
+<li>Growth Analyticsカスタムタグ・イベントについて追加いたしました。</li>
+</ul>
+
+<h1 id="バージョン-1-0">バージョン 1.0</h1>
+
+<p>Growthbeat メジャーバージョンSDKリリースいたしました。</p>
+
+<h2 id="ドキュメント-8">ドキュメント</h2>
+
+<ul>
+<li>Growthbeat, Growth Analytics, Growth Messageの導入方法を記載</li>
+</ul>
+
+      </div>
+    </div>
+</section>
+
+
+  </div>
+</div>
+
+
+<footer class="footer">
+  <small class="copyright">Designed by SIROK</small>
+</footer>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script src="http://support.growthbeat.com/js/sirok-scrollspy.js"></script>
+<script>
+$(function() {
+  $('pre code, code').each(function(i, block) {
+    hljs.highlightBlock(block)
+  });
+
+  var sidebar = $('.column-sidebar');
+  var offset = sidebar.offset();
+
+  $(window).scroll(function () {
+    if ($(window).scrollTop() > offset.top - 20) {
+      sidebar.addClass('fixed');
+    } else {
+      sidebar.removeClass('fixed');
+    }
+  });
+
+  sidebar.find('ul').addClass('spy-nav');
+
+  $(document.body).scrollspy({
+    target: '#TableOfContents',
+  });
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+<script type="text/javascript">
+docsearch({
+ apiKey: '11fef466694af89257b9dc61a7b7fa20',
+ indexName: 'growthbeat',
+ inputSelector: '#algolia-search'
+});
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56017268-6', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
+
+</div>
+</body>
+</html>
