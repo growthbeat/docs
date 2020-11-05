@@ -5,6 +5,10 @@ description: 'Growthbeat iOS のリリースノート'
 draft: false
 title: リリースノート
 ---
+# バージョン 2.0.8
+
+## 変更点
+- Advertising ID, TrackingEnable flag 取得処理を削除しました。
 
 # バージョン 2.0.7
 
