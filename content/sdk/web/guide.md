@@ -131,9 +131,9 @@ SenderId は、RequestRegistrationId を実行するために必要となりま�
 ### APIキーの登録  
 Growth Push管理画面の証明書設定ページにて、APIキーの登録を行ってください。    
 ### プッシュ通知の作成  
-[配信作成](http://support.growthbeat.com/manual/growthpush/#配信作成) を参考に、プッシュ通知が届くかを確認します。  
+[配信作成](https://support.growthbeat.com/manual/growthpush/#配信作成) を参考に、プッシュ通知が届くかを確認します。  
 ### セグメントについて  
 セグメント配信を利用する際に、実装が必要となります。  
-[配信したいセグメント](http://support.growthbeat.com/manual/growthpush/#セグメントの作成)に沿って、タグやイベントの紐付けを行ってください。  
+[配信したいセグメント](https://support.growthbeat.com/manual/growthpush/#セグメントの作成)に沿って、タグやイベントの紐付けを行ってください。  
 # お問い合わせ  
 ご不明な点などございます場合は、[ヘルプページ](http://faq.growthbeat.com/) を閲覧してください。  

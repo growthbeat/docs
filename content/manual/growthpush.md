@@ -31,7 +31,7 @@ https://growthbeat.com/ より、会員登録を行うことができます。�
 ## アプリの追加
 上記の操作を完了すると、管理画面が表示されます。この時アプリはDefault Appが選択された状態になっています。
 
-アプリの追加はGrowthbeat管理画面にて設定してください。[Growthbeat管理画面操作方法](http://support.growthbeat.com/manual/growthbeat/#アプリ一覧)をご参照ください。
+アプリの追加はGrowthbeat管理画面にて設定してください。[Growthbeat管理画面操作方法](https://support.growthbeat.com/manual/growthbeat/#アプリ一覧)をご参照ください。
 
 プッシュ通知を送信するためには、メインメニューから対象のアプリを選択する必要があります。
 
