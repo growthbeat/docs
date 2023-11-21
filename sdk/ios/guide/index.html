@@ -10,7 +10,7 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="Growthbeat iOS SDK | 基本導入ガイド | Growthbeatドキュメント |">
-  <meta property="og:url" content="http://support.growthbeat.com/sdk/ios/guide/">
+  <meta property="og:url" content="https://support.growthbeat.com/sdk/ios/guide/">
   <meta property="og:description" content="Growthbeat iOS の導入方法について説明します">
   
   <meta property="article:author" content="" />
@@ -26,7 +26,7 @@
   
   <link rel="shortcut icon" href="/favicon.ico">
 
-  <link rel="stylesheet" href="http://support.growthbeat.com/css/main.css" />
+  <link rel="stylesheet" href="https://support.growthbeat.com/css/main.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
 </head>
 
@@ -51,7 +51,7 @@
     <nav class="header-nav">
       <h1 class="logo">
         <a class="link"href="https://growthbeat.com/">
-          <img src="http://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
+          <img src="https://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
         </a>
       </h1>
 
@@ -72,10 +72,10 @@
   <div class="container">
     <ul class="breadcrumb">
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/">サポートページ</a>
+        <a class="link" href="https://support.growthbeat.com/">サポートページ</a>
       </li>
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/sdk/">SDKドキュメント</a>
+        <a class="link" href="https://support.growthbeat.com/sdk/">SDKドキュメント</a>
       </li>
       
       
@@ -107,86 +107,65 @@
 <section class="row markdown">
     <div class="column column-sidebar">
       <nav id="TableOfContents">
-<ul>
-<li><a href="#sdk概要">SDK概要</a>
-<ul>
-<li><a href="#環境">環境</a></li>
-</ul></li>
-<li><a href="#1-プロジェクト設定">1. プロジェクト設定</a>
-<ul>
-<li><a href="#cocoapodsの導入方法">CocoaPodsの導入方法</a></li>
-<li><a href="#frameworkをプロジェクトに導入する場合">Frameworkをプロジェクトに導入する場合</a></li>
-</ul></li>
-<li><a href="#2-プロジェクトのpush-notificationを有効にする">2. プロジェクトのPush Notificationを有効にする</a></li>
-<li><a href="#3-実装コード">3. 実装コード</a>
-<ul>
-<li><a href="#初期化">初期化</a></li>
-<li><a href="#タグ送信">タグ送信</a></li>
-<li><a href="#イベント送信">イベント送信</a></li>
-</ul></li>
-<li><a href="#その他設定について">その他設定について</a>
-<ul>
-<li><a href="#プッシュ通知証明書の作成">プッシュ通知証明書の作成</a></li>
-<li><a href="#管理画面設定">管理画面設定  </a>
-<ul>
-<li><a href="#プッシュ通知証明書の設定">プッシュ通知証明書の設定</a></li>
-<li><a href="#プッシュ通知の作成">プッシュ通知の作成</a></li>
-<li><a href="#セグメントについて">セグメントについて</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#備考">備考</a>
-<ul>
-<li><a href="#全機能を利用する方法">全機能を利用する方法</a></li>
-<li><a href="#最新版のsdkへのアップグレード方法">最新版のSDKへのアップグレード方法</a></li>
-<li><a href="#サンプルコード">サンプルコード</a></li>
-</ul></li>
-<li><a href="#お問い合わせ">お問い合わせ</a></li>
-</ul>
+  <ul>
+    <li><a href="#heading">環境</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#cocoapods">CocoaPodsの導入方法</a></li>
+    <li><a href="#framework">Frameworkをプロジェクトに導入する場合</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-1">初期化</a></li>
+    <li><a href="#heading-2">タグ送信</a></li>
+    <li><a href="#heading-3">イベント送信</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-5">プッシュ通知証明書の作成</a></li>
+    <li><a href="#-">管理画面設定  </a>
+      <ul>
+        <li><a href="#heading-6">プッシュ通知証明書の設定</a></li>
+        <li><a href="#heading-7">プッシュ通知の作成</a></li>
+        <li><a href="#heading-8">セグメントについて</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-10">全機能を利用する方法</a></li>
+    <li><a href="#sdk-1">最新版のSDKへのアップグレード方法</a></li>
+    <li><a href="#heading-11">サンプルコード</a></li>
+  </ul>
 </nav>
     </div>
     <div class="column column-main">
       <div class="typeset">
-        
-
-<p>Version 2.0.8</p>
-
-<h1 id="sdk概要">SDK概要</h1>
-
+        <p>Version 2.0.8</p>
+<h1 id="sdk">SDK概要</h1>
 <p>Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。Objective-Cでの導入方法について記載しております。</p>
-
-<h2 id="環境">環境</h2>
-
-<p>最低動作保証環境: iOS 8.0以上<br />
+<h2 id="heading">環境</h2>
+<p>最低動作保証環境: iOS 8.0以上<br>
 動作推奨環境：iOS 8.0以上</p>
-
-<h1 id="1-プロジェクト設定">1. プロジェクト設定</h1>
-
-<h2 id="cocoapodsの導入方法">CocoaPodsの導入方法</h2>
-
-<p>Podfile に下記を記述し <code>pod install</code> を実行してください。<br />
-CocoaPodsで、導入する場合は、自動的に依存が解決されます。<br />
+<h1 id="1-">1. プロジェクト設定</h1>
+<h2 id="cocoapods">CocoaPodsの導入方法</h2>
+<p>Podfile に下記を記述し <code>pod install</code> を実行してください。<br>
+CocoaPodsで、導入する場合は、自動的に依存が解決されます。<br>
 ※ProjectNameは、アプリのプロジェクト名となります。</p>
-
 <pre><code>target 'ProjectName' do
     pod 'Growthbeat'
 end
-</code></pre>
-
-<h2 id="frameworkをプロジェクトに導入する場合">Frameworkをプロジェクトに導入する場合</h2>
-
-<p><a href="/sdk">最新版iOS SDK ダウンロードページ</a></p>
-
+</code></pre><h2 id="framework">Frameworkをプロジェクトに導入する場合</h2>
+<p><!-- raw HTML omitted -->最新版iOS SDK ダウンロードページ<!-- raw HTML omitted --></p>
 <p>ダウンロードしたファイルを解凍し、そのフォルダの中の <strong>Growthbeat.framework</strong> をプロジェクトへ組み込みます。
-任意のXcodeプロジェクトを開き Growthbeat.framework をインポートしてください。<br />
+任意のXcodeプロジェクトを開き Growthbeat.framework をインポートしてください。<br>
 Growthbeat.framework のインポートの方法は以下の２つです</p>
-
 <ol>
 <li>Xcodeプロジェクトに Growthbeat.framework をドラッグアンドドロップする</li>
 <li>Bulid Phases -&gt; Link Binary With Libraries の + ボタンを押し、Add Other&hellip;からGrowthbeat.frameworkを選択する</li>
 </ol>
-
 <p>Growthbeat.framework は、下記 Framework が必須となります</p>
-
 <ul>
 <li>Foundation.framework</li>
 <li>UIKit.framework</li>
@@ -195,116 +174,81 @@ Growthbeat.framework のインポートの方法は以下の２つです</p>
 <li>AdSupport.framework</li>
 <li>CFNetwork.framework</li>
 </ul>
-
-<h1 id="2-プロジェクトのpush-notificationを有効にする">2. プロジェクトのPush Notificationを有効にする</h1>
-
-<p>Capabilities にて、Push Notifications を ON にします。<br />
+<h1 id="2-push-notification">2. プロジェクトのPush Notificationを有効にする</h1>
+<p>Capabilities にて、Push Notifications を ON にします。<br>
 この設定を行っていないと、iOS10, iOS8にて、デバイストークンの取得ができない可能性があります。(Xcode8.0にて確認)</p>
-
-<p><img src="/img/sdk/iOS/capabilities-push-notification.png" width="90%" /></p>
-
-<h1 id="3-実装コード">3. 実装コード</h1>
-
-<h2 id="初期化">初期化</h2>
-
+<p><!-- raw HTML omitted --></p>
+<h1 id="3-">3. 実装コード</h1>
+<h2 id="heading-1">初期化</h2>
 <p>Growth Push の初期化を行います。初期化では、デバイス登録、認証、およびデバイスの基本情報の送信が行われます。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#75715e">// AppDelegate.m
+</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">import &lt;Growthbeat</span><span style="color:#75715e">/</span><span style="color:#75715e">Growthbeat.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">@implementation</span> <span style="color:#a6e22e">AppDelegate</span>
 
-<pre><code class="language-objc">// AppDelegate.m
-#import &lt;Growthbeat/Growthbeat.h&gt;
+- (<span style="color:#66d9ef">BOOL</span>) <span style="color:#a6e22e">application:</span>(UIApplication <span style="color:#f92672">*</span>)application <span style="color:#a6e22e">didFinishLaunchingWithOptions:</span>(NSDictionary<span style="color:#f92672">*</span> )launchOptions {
+    [[GrowthPush sharedInstance] initializeWithApplicationId:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">YOUR_APLICATION_ID</span><span style="color:#e6db74">&#34;</span> credentialId:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">YOUR_CREDENTIAL_ID</span><span style="color:#e6db74">&#34;</span> environment:kGrowthPushEnvironment];
 
-@implementation AppDelegate
-
-- (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary* )launchOptions {
-    [[GrowthPush sharedInstance] initializeWithApplicationId:@&quot;YOUR_APLICATION_ID&quot; credentialId:@&quot;YOUR_CREDENTIAL_ID&quot; environment:kGrowthPushEnvironment];
-
-    // 以下は、必ずinitializeWithApplicationId後に呼び出してください
-    [[GrowthPush sharedInstance] requestDeviceToken];
+    <span style="color:#75715e">// 以下は、必ずinitializeWithApplicationId後に呼び出してください
+</span><span style="color:#75715e"></span>    [[GrowthPush sharedInstance] requestDeviceToken];
 }
 
-- (void) application:(UIApplication* )application didRegisterForRemoteNotificationsWithDeviceToken:(NSData* )deviceToken {
+- (<span style="color:#66d9ef">void</span>) <span style="color:#a6e22e">application:</span>(UIApplication<span style="color:#f92672">*</span> )application <span style="color:#a6e22e">didRegisterForRemoteNotificationsWithDeviceToken:</span>(NSData<span style="color:#f92672">*</span> )deviceToken {
     [[GrowthPush sharedInstance] setDeviceToken:deviceToken];
 }
 
-- (void) application:(UIApplication* )application didFailToRegisterForRemoteNotificationsWithError:(NSError* )error {
-    // エラーがあったかどうかを確認するため
-    NSLog(@&quot;didFailToRegisterForRemoteNotification : %@&quot;, error);
+- (<span style="color:#66d9ef">void</span>) <span style="color:#a6e22e">application:</span>(UIApplication<span style="color:#f92672">*</span> )application <span style="color:#a6e22e">didFailToRegisterForRemoteNotificationsWithError:</span>(NSError<span style="color:#f92672">*</span> )error {
+    <span style="color:#75715e">// エラーがあったかどうかを確認するため
+</span><span style="color:#75715e"></span>    NSLog(<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">didFailToRegisterForRemoteNotification : %@</span><span style="color:#e6db74">&#34;</span>, error);
 }
 
-@end
-</code></pre>
-
-<h2 id="タグ送信">タグ送信</h2>
-
+<span style="color:#66d9ef">@end</span>
+</code></pre></div><h2 id="heading-2">タグ送信</h2>
 <p>セグメントを設定するために、任意のタグを埋め込んでください。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#75715e">// ViewController.m
+</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">import &lt;Growthbeat</span><span style="color:#75715e">/</span><span style="color:#75715e">Growthbeat.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">@implementation</span> <span style="color:#a6e22e">ViewController</span>
 
-<pre><code class="language-objc">// ViewController.m
-#import &lt;Growthbeat/Growthbeat.h&gt;
-
-@implementation ViewController
-
-- (void) viewDidLoad:() {
-    [[GrowthPush sharedInstance] setTag:@&quot;Development&quot; value:@&quot;true&quot;];
+- (<span style="color:#66d9ef">void</span>) <span style="color:#a6e22e">viewDidLoad:</span>() {
+    [[GrowthPush sharedInstance] setTag:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">Development</span><span style="color:#e6db74">&#34;</span> value:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">true</span><span style="color:#e6db74">&#34;</span>];
 }
 
-@end
-</code></pre>
-
-<h2 id="イベント送信">イベント送信</h2>
-
+<span style="color:#66d9ef">@end</span>
+</code></pre></div><h2 id="heading-3">イベント送信</h2>
 <p>セグメントを設定するために、任意のイベントを埋め込んでください。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#75715e">// ViewController.m
+</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">import &lt;Growthbeat</span><span style="color:#75715e">/</span><span style="color:#75715e">Growthbeat.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">@implementation</span> <span style="color:#a6e22e">ViewController</span>
 
-<pre><code class="language-objc">// ViewController.m
-#import &lt;Growthbeat/Growthbeat.h&gt;
-
-@implementation ViewController
-
-- (void) viewDidLoad:() {
-    [[GrowthPush sharedInstance] trackEvent:@&quot;Launch&quot;];
+- (<span style="color:#66d9ef">void</span>) <span style="color:#a6e22e">viewDidLoad:</span>() {
+    [[GrowthPush sharedInstance] trackEvent:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">Launch</span><span style="color:#e6db74">&#34;</span>];
 }
 
-@end
-</code></pre>
-
-<h1 id="その他設定について">その他設定について</h1>
-
-<h2 id="プッシュ通知証明書の作成">プッシュ通知証明書の作成</h2>
-
+<span style="color:#66d9ef">@end</span>
+</code></pre></div><h1 id="heading-4">その他設定について</h1>
+<h2 id="heading-5">プッシュ通知証明書の作成</h2>
 <p>開発ビルドと、リリースビルドの証明書を作成する必要があります。<a href="http://faq.growthbeat.com/article/178-ios-p12">iOS プッシュ通知証明書作成方法</a>の参考に、証明書の作成を行ってください。作成した証明書を、Growth Push管理画面に登録します。</p>
-
-<h2 id="管理画面設定">管理画面設定  </h2>
-
-<h3 id="プッシュ通知証明書の設定">プッシュ通知証明書の設定</h3>
-
-<p>Growth Push管理画面の証明書設定ページにて、証明書の設定を行ってください。<br />
-<a href="/manual/growthpush/#プッシュ通知証明書の登録-更新">プッシュ通知証明書の設定方法</a></p>
-
-<h3 id="プッシュ通知の作成">プッシュ通知の作成</h3>
-
-<p><a href="/manual/growthpush/#配信作成">配信作成</a>を参考に、プッシュ通知が届くかを確認します。</p>
-
-<h3 id="セグメントについて">セグメントについて</h3>
-
-<p>セグメント配信を利用する際に、実装が必要となります。<br />
-<a href="/manual/growthpush/#セグメントの作成">配信したいセグメント</a>に沿って、タグやイベントの紐付けを行ってください。</p>
-
-<h1 id="備考">備考</h1>
-
-<h2 id="全機能を利用する方法">全機能を利用する方法</h2>
-
-<p>Growthbeatは、プッシュ通知以外に、ポップアップメッセージ機能を用意しております。追加の実装を行うことで機能を利用することができます。<br />
+<h2 id="-">管理画面設定  </h2>
+<h3 id="heading-6">プッシュ通知証明書の設定</h3>
+<p>Growth Push管理画面の証明書設定ページにて、証明書の設定を行ってください。<br>
+<a href="/manual/growthpush/#%E3%83%97%E3%83%83%E3%82%B7%E3%83%A5%E9%80%9A%E7%9F%A5%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AE%E7%99%BB%E9%8C%B2-%E6%9B%B4%E6%96%B0">プッシュ通知証明書の設定方法</a></p>
+<h3 id="heading-7">プッシュ通知の作成</h3>
+<p><a href="/manual/growthpush/#%E9%85%8D%E4%BF%A1%E4%BD%9C%E6%88%90">配信作成</a>を参考に、プッシュ通知が届くかを確認します。</p>
+<h3 id="heading-8">セグメントについて</h3>
+<p>セグメント配信を利用する際に、実装が必要となります。<br>
+<a href="/manual/growthpush/#%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90">配信したいセグメント</a>に沿って、タグやイベントの紐付けを行ってください。</p>
+<h1 id="heading-9">備考</h1>
+<h2 id="heading-10">全機能を利用する方法</h2>
+<p>Growthbeatは、プッシュ通知以外に、ポップアップメッセージ機能を用意しております。追加の実装を行うことで機能を利用することができます。<br>
 詳しくは、<a href="/sdk/ios/all-in-one">全機能導入ガイド</a>をご覧ください。</p>
-
-<h2 id="最新版のsdkへのアップグレード方法">最新版のSDKへのアップグレード方法</h2>
-
+<h2 id="sdk-1">最新版のSDKへのアップグレード方法</h2>
 <p>Growth Push SDKからGrowthbeat 2.x SDK へまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへのアップグレードをされる方は
 <a href="/sdk/ios/upgrade">SDKのアップグレードガイド</a>をご参照ください。</p>
-
-<h2 id="サンプルコード">サンプルコード</h2>
-
+<h2 id="heading-11">サンプルコード</h2>
 <p>実装サンプルは、<a href="https://github.com/growthbeat/growthbeat-ios">Githubレポジトリ</a>を参考にしてください。</p>
-
-<h1 id="お問い合わせ">お問い合わせ</h1>
-
+<h1 id="heading-12">お問い合わせ</h1>
 <p>ご不明な点などございます場合は、<a href="http://faq.growthbeat.com/">ヘルプページ</a>を閲覧してください。</p>
 
       </div>
@@ -324,7 +268,7 @@ Growthbeat.framework のインポートの方法は以下の２つです</p>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-<script src="http://support.growthbeat.com/js/sirok-scrollspy.js"></script>
+<script src="https://support.growthbeat.com/js/sirok-scrollspy.js"></script>
 <script>
 $(function() {
   $('pre code, code').each(function(i, block) {

@@ -10,7 +10,7 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="Growthbeat Unity SDK | 新バージョンアップデート方法 | Growthbeatドキュメント |">
-  <meta property="og:url" content="http://support.growthbeat.com/sdk/unity/upgrade/">
+  <meta property="og:url" content="https://support.growthbeat.com/sdk/unity/upgrade/">
   <meta property="og:description" content="Growthbeat SDK for Unity 新バージョンアップデート方法についてご紹介します">
   
   <meta property="article:author" content="" />
@@ -26,7 +26,7 @@
   
   <link rel="shortcut icon" href="/favicon.ico">
 
-  <link rel="stylesheet" href="http://support.growthbeat.com/css/main.css" />
+  <link rel="stylesheet" href="https://support.growthbeat.com/css/main.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
 </head>
 
@@ -51,7 +51,7 @@
     <nav class="header-nav">
       <h1 class="logo">
         <a class="link"href="https://growthbeat.com/">
-          <img src="http://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
+          <img src="https://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
         </a>
       </h1>
 
@@ -72,10 +72,10 @@
   <div class="container">
     <ul class="breadcrumb">
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/">サポートページ</a>
+        <a class="link" href="https://support.growthbeat.com/">サポートページ</a>
       </li>
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/sdk/">SDKドキュメント</a>
+        <a class="link" href="https://support.growthbeat.com/sdk/">SDKドキュメント</a>
       </li>
       
       
@@ -107,156 +107,125 @@
 <section class="row markdown">
     <div class="column column-sidebar">
       <nav id="TableOfContents">
-<ul>
-<li><a href="#sdkアップグレードガイド">SDKアップグレードガイド</a></li>
-<li><a href="#growthbeat-sdk-2-0-0-2-0-8からのアップデート">Growthbeat SDK 2.0.0 ~ 2.0.8からのアップデート</a></li>
-<li><a href="#growthbeat-sdk-1-xからのアップグレード">Growthbeat SDK 1.xからのアップグレード</a>
-<ul>
-<li><a href="#機能削除">機能削除</a></li>
-<li><a href="#導入コード">導入コード</a></li>
-</ul></li>
-<li><a href="#growth-push-sdkからのアップグレードについて">Growth Push SDKからのアップグレードについて</a>
-<ul>
-<li><a href="#概要">概要</a>
-<ul>
-<li><a href="#注意点">注意点</a></li>
-</ul></li>
-<li><a href="#導入コード-1">導入コード</a></li>
-<li><a href="#androidmanifest-xml">AndroidManifest.xml</a></li>
-</ul></li>
-<li><a href="#移行確認方法">移行確認方法</a></li>
-</ul>
+  <ul>
+    <li><a href="#heading">機能削除</a></li>
+    <li><a href="#heading-1">導入コード</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-2">概要</a>
+      <ul>
+        <li><a href="#heading-3">注意点</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-4">導入コード</a></li>
+    <li><a href="#androidmanifestxml">AndroidManifest.xml</a></li>
+  </ul>
 </nav>
     </div>
     <div class="column column-main">
       <div class="typeset">
-        
-
-<p><strong>Growth Push SDK及びGrowthbeat SDK 1.xのサポートは、2016年12月21日までとなっております。</strong></p>
-
-<h1 id="sdkアップグレードガイド">SDKアップグレードガイド</h1>
-
+        <p><strong>Growth Push SDK及びGrowthbeat SDK 1.xのサポートは、2016年12月21日までとなっております。</strong></p>
+<h1 id="sdk">SDKアップグレードガイド</h1>
 <p>最新のSDKにお乗り換えする方法についてご紹介いたします。</p>
-
 <ul>
 <li>Growthbeat 2.0.0 ~ 2.0.8 SDKから最新のGrowthbeat SDKへのアップグレード</li>
 <li>Growthbeat 1.x SDKから最新のGrowthbeat SDKへのアップグレード</li>
 <li>Growth Push SDKから最新のGrowthbeat SDKへのアップグレード</li>
 </ul>
-
 <p>についてご紹介いたします。</p>
-
-<h1 id="growthbeat-sdk-2-0-0-2-0-8からのアップデート">Growthbeat SDK 2.0.0 ~ 2.0.8からのアップデート</h1>
-
+<h1 id="growthbeat-sdk-200--208">Growthbeat SDK 2.0.0 ~ 2.0.8からのアップデート</h1>
 <p>GCM廃止に伴いFCMへ変更が必要となります。　　
 <a href="https://faq.growthbeat.com/article/226-gcmtofcm">https://faq.growthbeat.com/article/226-gcmtofcm</a></p>
-
-<h1 id="growthbeat-sdk-1-xからのアップグレード">Growthbeat SDK 1.xからのアップグレード</h1>
-
-<h2 id="機能削除">機能削除</h2>
-
+<h1 id="growthbeat-sdk-1x">Growthbeat SDK 1.xからのアップグレード</h1>
+<h2 id="heading">機能削除</h2>
 <ul>
 <li>インターフェスの変更があります。
-
 <ul>
 <li>次の実装変更点でご確認ください。</li>
-</ul></li>
+</ul>
+</li>
 <li>Growth Analytics クラスがなくなりました。
-
 <ul>
 <li>Growth Analytics に関する記述は全て削除してください。</li>
 <li>2.x以降は、GrowthPush#setTag, trackEventをご利用ください。</li>
-</ul></li>
+</ul>
+</li>
 <li>GrowthbeatCoreクラスが、Growthbeatクラスに統合されました。
-
 <ul>
 <li>start, stop, initializeは削除されました。</li>
-</ul></li>
 </ul>
-
-<h2 id="導入コード">導入コード</h2>
-
+</li>
+</ul>
+<h2 id="heading-1">導入コード</h2>
 <ul>
 <li>Growthbeat 1.x</li>
 </ul>
-
-<pre><code class="language-c#">using UnityEngine;
-public class YourGameObjectComponent : MonoBehaviour
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#"><span style="color:#66d9ef">using</span> UnityEngine;
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">YourGameObjectComponent</span> : MonoBehaviour
 {
-    void Awake () {
-        Growthbeat.GetInstance ().Initialize (&quot;YOUR_APPLICATION_ID&quot;, &quot;CREDENTIAL_ID&quot;);
-        GrowthPush.GetInstance ().RequestDeviceToken (&quot;YOUR_SENDER_ID&quot;, Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
+    <span style="color:#66d9ef">void</span> Awake () {
+        Growthbeat.GetInstance ().Initialize (<span style="color:#e6db74">&#34;YOUR_APPLICATION_ID&#34;</span>, <span style="color:#e6db74">&#34;CREDENTIAL_ID&#34;</span>);
+        GrowthPush.GetInstance ().RequestDeviceToken (<span style="color:#e6db74">&#34;YOUR_SENDER_ID&#34;</span>, Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
         Growthbeat.GetInstance ().Start ();
     }
 
-    void OnDisable ()
+    <span style="color:#66d9ef">void</span> OnDisable ()
     {
         Growthbeat.GetInstance ().Stop ();
     }
 
-    bool tokenSent = false;
-    void Update ()
+    <span style="color:#66d9ef">bool</span> tokenSent = <span style="color:#66d9ef">false</span>;
+    <span style="color:#66d9ef">void</span> Update ()
     {
-    #if UNITY_IPHONE
-      if (!tokenSent) {
-        byte[] token = UnityEngine.iOS.NotificationServices.deviceToken;
-        if (token != null) {
-          GrowthPush.GetInstance ().SetDeviceToken(System.BitConverter.ToString(token).Replace(&quot;-&quot;, &quot;&quot;).ToLower());
-          tokenSent = true;
+    <span style="color:#75715e">#if UNITY_IPHONE
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> (!tokenSent) {
+        <span style="color:#66d9ef">byte</span>[] token = UnityEngine.iOS.NotificationServices.deviceToken;
+        <span style="color:#66d9ef">if</span> (token != <span style="color:#66d9ef">null</span>) {
+          GrowthPush.GetInstance ().SetDeviceToken(System.BitConverter.ToString(token).Replace(<span style="color:#e6db74">&#34;-&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>).ToLower());
+          tokenSent = <span style="color:#66d9ef">true</span>;
         }
       }
-    #endif
-    }
+    <span style="color:#75715e">#endif
+</span><span style="color:#75715e"></span>    }
 }
-</code></pre>
-
-<ul>
+</code></pre></div><ul>
 <li>Growthbeat 2.x</li>
 </ul>
-
-<pre><code class="language-c#">using UnityEngine;
-public class YourGameObjectComponent : MonoBehaviour
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#"><span style="color:#66d9ef">using</span> UnityEngine;
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">YourGameObjectComponent</span> : MonoBehaviour
 {
-    void Awake () {
-        GrowthPush.GetInstance ().Initialize (&quot;YOUR_APPLICATION_ID&quot;, &quot;CREDENTIAL_ID&quot;, Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
-        GrowthPush.GetInstance ().RequestDeviceToken (&quot;YOUR_SENDER_ID&quot;);
+    <span style="color:#66d9ef">void</span> Awake () {
+        GrowthPush.GetInstance ().Initialize (<span style="color:#e6db74">&#34;YOUR_APPLICATION_ID&#34;</span>, <span style="color:#e6db74">&#34;CREDENTIAL_ID&#34;</span>, Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
+        GrowthPush.GetInstance ().RequestDeviceToken (<span style="color:#e6db74">&#34;YOUR_SENDER_ID&#34;</span>);
     }
 
-    void OnDisable ()
+    <span style="color:#66d9ef">void</span> OnDisable ()
     {
 
     }
 
-    bool tokenSent = false;
-    void Update ()
+    <span style="color:#66d9ef">bool</span> tokenSent = <span style="color:#66d9ef">false</span>;
+    <span style="color:#66d9ef">void</span> Update ()
     {
-    #if UNITY_IPHONE
-      if (!tokenSent) {
-        byte[] token = UnityEngine.iOS.NotificationServices.deviceToken;
-        if (token != null) {
-          GrowthPush.GetInstance ().SetDeviceToken(System.BitConverter.ToString(token).Replace(&quot;-&quot;, &quot;&quot;).ToLower());
-          tokenSent = true;
+    <span style="color:#75715e">#if UNITY_IPHONE
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> (!tokenSent) {
+        <span style="color:#66d9ef">byte</span>[] token = UnityEngine.iOS.NotificationServices.deviceToken;
+        <span style="color:#66d9ef">if</span> (token != <span style="color:#66d9ef">null</span>) {
+          GrowthPush.GetInstance ().SetDeviceToken(System.BitConverter.ToString(token).Replace(<span style="color:#e6db74">&#34;-&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>).ToLower());
+          tokenSent = <span style="color:#66d9ef">true</span>;
         }
       }
-    #endif
-    }
+    <span style="color:#75715e">#endif
+</span><span style="color:#75715e"></span>    }
 }
-</code></pre>
-
-<h1 id="growth-push-sdkからのアップグレードについて">Growth Push SDKからのアップグレードについて</h1>
-
-<h2 id="概要">概要</h2>
-
+</code></pre></div><h1 id="growth-push-sdk">Growth Push SDKからのアップグレードについて</h1>
+<h2 id="heading-2">概要</h2>
 <p>Growth Push の認証から、Growthbeat の認証に移行されるため、新しい ApplicationId と SDKキー（クレデンシャルID）を取得する必要がございます。</p>
-
 <p>ApplicationId は、Growth Push管理画面左メニュー「アプリ詳細」の 「Growthbeat アプリケーションID」 にて確認ができます。</p>
-
 <p>SDKキーは、Growthbeat管理画面左メニュー「<a href="https://growthbeat.com/mypage/account">アカウント</a>」の「クレデンシャルID &gt; SDK」にて確認ができます。</p>
-
-<h3 id="注意点">注意点</h3>
-
+<h3 id="heading-3">注意点</h3>
 <p>これまでGrowth Pushでご利用いただいた、ApplicationIdは数値型、シークレットキーは文字列型になっています。  </p>
-
 <table>
 <thead>
 <tr>
@@ -264,22 +233,21 @@ public class YourGameObjectComponent : MonoBehaviour
 <th>型</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>applicationId</td>
 <td>数値型</td>
 </tr>
-
 <tr>
 <td>secret</td>
 <td>文字列型/32文字</td>
 </tr>
+<tr>
+<td>Growthbeat SDKで利用するものは、applicationId、credentialIdともに文字列型になっています。</td>
+<td></td>
+</tr>
 </tbody>
 </table>
-
-<p>Growthbeat SDKで利用するものは、applicationId、credentialIdともに文字列型になっています。</p>
-
 <table>
 <thead>
 <tr>
@@ -287,142 +255,124 @@ public class YourGameObjectComponent : MonoBehaviour
 <th>型</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>applicationId</td>
 <td>文字列型/16文字</td>
 </tr>
-
 <tr>
 <td>credentailId</td>
 <td>文字列型/32文字</td>
 </tr>
+<tr>
+<td>Growthbeat SDK 乗り換え時に、これまで Growth Push で利用していたシークレットキーを設定しても、正しく動作しませんのでご注意くださいませ。 必ず、SDKキーをご利用ください。</td>
+<td></td>
+</tr>
 </tbody>
 </table>
-
-<p>Growthbeat SDK 乗り換え時に、これまで Growth Push で利用していたシークレットキーを設定しても、正しく動作しませんのでご注意くださいませ。 必ず、SDKキーをご利用ください。</p>
-
-<h2 id="導入コード-1">導入コード</h2>
-
+<h2 id="heading-4">導入コード</h2>
 <p>Growthbeat SDKでは、iOSのデバイストークン取得部分をUnity上に記述する必要があります。
 Growtbeat SDKでは、シングルトンインスタンスの設計に変更したため、これまでの実装部分を変更していただく必要がございます。</p>
-
 <ul>
-<li>GrowthPush SDK<br /></li>
+<li>GrowthPush SDK</li>
 </ul>
-
-<pre><code class="language-c#">using UnityEngine;
-public class YourGameObjectComponent : MonoBehaviour
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#"><span style="color:#66d9ef">using</span> UnityEngine;
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">YourGameObjectComponent</span> : MonoBehaviour
 {
-    void Awake () {
-      GrowthPush.Initialize(YOUR_APPLICATION_ID, &quot;APPLICATION_SECRET&quot;, GrowthPush.Environment.Development, true, &quot;YOUR_SENDER_ID&quot;);
-      GrowthPush.TrackEvent(&quot;Launch&quot;);
+    <span style="color:#66d9ef">void</span> Awake () {
+      GrowthPush.Initialize(YOUR_APPLICATION_ID, <span style="color:#e6db74">&#34;APPLICATION_SECRET&#34;</span>, GrowthPush.Environment.Development, <span style="color:#66d9ef">true</span>, <span style="color:#e6db74">&#34;YOUR_SENDER_ID&#34;</span>);
+      GrowthPush.TrackEvent(<span style="color:#e6db74">&#34;Launch&#34;</span>);
       GrowthPush.SetDeviceTags();
       GrowthPush.ClearBadge();
     }
 }
-</code></pre>
-
-<ul>
+</code></pre></div><ul>
 <li>Growthbeat SDK 2.x</li>
 </ul>
-
-<pre><code class="language-c#">using UnityEngine;
-public class YourGameObjectComponent : MonoBehaviour
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#"><span style="color:#66d9ef">using</span> UnityEngine;
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">YourGameObjectComponent</span> : MonoBehaviour
 {
 
-    void Awake () {
-      // Growthbeat SDKの初期化
-      Growthbeat.GetInstance ().Initialize (&quot;YOUR_APPLICATION_ID&quot;, &quot;CREDENTIAL_ID&quot;);
+    <span style="color:#66d9ef">void</span> Awake () {
+      <span style="color:#75715e">// Growthbeat SDKの初期化
+</span><span style="color:#75715e"></span>      Growthbeat.GetInstance ().Initialize (<span style="color:#e6db74">&#34;YOUR_APPLICATION_ID&#34;</span>, <span style="color:#e6db74">&#34;CREDENTIAL_ID&#34;</span>);
 
-      // デバイストークンを明示的に要求
-      GrowthPush.GetInstance ().RequestDeviceToken (&quot;YOUR_SENDER_ID&quot;, Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
+      <span style="color:#75715e">// デバイストークンを明示的に要求
+</span><span style="color:#75715e"></span>      GrowthPush.GetInstance ().RequestDeviceToken (<span style="color:#e6db74">&#34;YOUR_SENDER_ID&#34;</span>, Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
 
-      // バッチの削除
-      GrowthPush.GetInstance ().ClearBadge ();
+      <span style="color:#75715e">// バッチの削除
+</span><span style="color:#75715e"></span>      GrowthPush.GetInstance ().ClearBadge ();
 
-      // Launchイベントの取得
-      GrowthPush.GetInstance ().TrackEvent (&quot;Launch&quot;);
+      <span style="color:#75715e">// Launchイベントの取得
+</span><span style="color:#75715e"></span>      GrowthPush.GetInstance ().TrackEvent (<span style="color:#e6db74">&#34;Launch&#34;</span>);
 
-      // DeviceTagの取得
-      GrowthPush.GetInstance ().SetDeviceTags ();
+      <span style="color:#75715e">// DeviceTagの取得
+</span><span style="color:#75715e"></span>      GrowthPush.GetInstance ().SetDeviceTags ();
     }
 
-  bool tokenSent = false;
-  void Update ()
+  <span style="color:#66d9ef">bool</span> tokenSent = <span style="color:#66d9ef">false</span>;
+  <span style="color:#66d9ef">void</span> Update ()
   {
-  #if UNITY_IPHONE
-    if (!tokenSent) {
-      byte[] token = UnityEngine.iOS.NotificationServices.deviceToken;
-      if (token != null) {
-        GrowthPush.GetInstance ().SetDeviceToken(System.BitConverter.ToString(token).Replace(&quot;-&quot;, &quot;&quot;).ToLower());
-        tokenSent = true;
+  <span style="color:#75715e">#if UNITY_IPHONE
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (!tokenSent) {
+      <span style="color:#66d9ef">byte</span>[] token = UnityEngine.iOS.NotificationServices.deviceToken;
+      <span style="color:#66d9ef">if</span> (token != <span style="color:#66d9ef">null</span>) {
+        GrowthPush.GetInstance ().SetDeviceToken(System.BitConverter.ToString(token).Replace(<span style="color:#e6db74">&#34;-&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>).ToLower());
+        tokenSent = <span style="color:#66d9ef">true</span>;
       }
     }
-  #endif
-  }
+  <span style="color:#75715e">#endif
+</span><span style="color:#75715e"></span>  }
 }
-</code></pre>
-
-<h2 id="androidmanifest-xml">AndroidManifest.xml</h2>
-
-<p>Growthbeat SDKでは、 <code>com.growthpush.BroadcastReceiver</code>が廃止になりましたので、変更が必要となります。<br />
+</code></pre></div><h2 id="androidmanifestxml">AndroidManifest.xml</h2>
+<p>Growthbeat SDKでは、 <code>com.growthpush.BroadcastReceiver</code>が廃止になりましたので、変更が必要となります。<br>
 この変更を行わないと、正しくプッシュ通知が送信できなくなりますので、ご注意ください。</p>
-
 <ul>
 <li>GrowthPush SDK</li>
 </ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;receiver</span>
+    <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthpush.BroadcastReceiver&#34;</span>
+    <span style="color:#a6e22e">android:permission=</span><span style="color:#e6db74">&#34;com.google.android.c2dm.permission.SEND&#34;</span> <span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;intent-filter</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;action</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.google.android.c2dm.intent.RECEIVE&#34;</span> <span style="color:#f92672">/&gt;</span>
+        <span style="color:#f92672">&lt;action</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.google.android.c2dm.intent.REGISTRATION&#34;</span> <span style="color:#f92672">/&gt;</span>
 
-<pre><code class="language-xml">&lt;receiver
-    android:name=&quot;com.growthpush.BroadcastReceiver&quot;
-    android:permission=&quot;com.google.android.c2dm.permission.SEND&quot; &gt;
-    &lt;intent-filter&gt;
-        &lt;action android:name=&quot;com.google.android.c2dm.intent.RECEIVE&quot; /&gt;
-        &lt;action android:name=&quot;com.google.android.c2dm.intent.REGISTRATION&quot; /&gt;
-
-        &lt;category android:name=&quot;YOUR_PACKAGE_NAME&quot; /&gt;
-    &lt;/intent-filter&gt;
-&lt;/receiver&gt;
-</code></pre>
-
-<ul>
-<li>Growthbeat SDK 2.x<br /></li>
+        <span style="color:#f92672">&lt;category</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;YOUR_PACKAGE_NAME&#34;</span> <span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;/intent-filter&gt;</span>
+<span style="color:#f92672">&lt;/receiver&gt;</span>
+</code></pre></div><ul>
+<li>Growthbeat SDK 2.x</li>
 </ul>
-
-<pre><code class="language-xml">&lt;service
-    android:name=&quot;com.growthpush.TokenRefreshService&quot;
-    android:exported=&quot;false&quot;&gt;
-    &lt;intent-filter&gt;
-        &lt;action android:name=&quot;com.google.android.gms.iid.InstanceID&quot;/&gt;
-    &lt;/intent-filter&gt;
-&lt;/service&gt;
-&lt;service android:name=&quot;com.growthpush.RegistrationIntentService&quot;/&gt;
-&lt;service
-    android:name=&quot;com.growthpush.ReceiverService&quot;
-    android:exported=&quot;false&quot; &gt;
-    &lt;intent-filter&gt;
-        &lt;action android:name=&quot;com.google.android.c2dm.intent.RECEIVE&quot; /&gt;
-    &lt;/intent-filter&gt;
-&lt;/service&gt;
-&lt;receiver
-    android:name=&quot;com.google.android.gms.gcm.GcmReceiver&quot;
-    android:exported=&quot;true&quot;
-    android:permission=&quot;com.google.android.c2dm.permission.SEND&quot; &gt;
-    &lt;intent-filter&gt;
-        &lt;action android:name=&quot;com.google.android.c2dm.intent.RECEIVE&quot; /&gt;
-        &lt;category android:name=&quot;YOUR_PACKAGE_NAME&quot; /&gt;
-    &lt;/intent-filter&gt;
-    &lt;intent-filter&gt;
-        &lt;action android:name=&quot;com.google.android.c2dm.intent.REGISTRATION&quot; /&gt;
-        &lt;category android:name=&quot;YOUR_PACKAGE_NAME&quot; /&gt;
-    &lt;/intent-filter&gt;
-&lt;/receiver&gt;
-</code></pre>
-
-<h1 id="移行確認方法">移行確認方法</h1>
-
-<p>Growth Push の管理画面で、該当デバイスのプッシュ通知ステータスが <code>Active</code> になっていれば、正しくプッシュ通知が行えます。<br />
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;service</span>
+    <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthpush.TokenRefreshService&#34;</span>
+    <span style="color:#a6e22e">android:exported=</span><span style="color:#e6db74">&#34;false&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;intent-filter</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;action</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.google.android.gms.iid.InstanceID&#34;</span><span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;/intent-filter&gt;</span>
+<span style="color:#f92672">&lt;/service&gt;</span>
+<span style="color:#f92672">&lt;service</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthpush.RegistrationIntentService&#34;</span><span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;service</span>
+    <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthpush.ReceiverService&#34;</span>
+    <span style="color:#a6e22e">android:exported=</span><span style="color:#e6db74">&#34;false&#34;</span> <span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;intent-filter</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;action</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.google.android.c2dm.intent.RECEIVE&#34;</span> <span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;/intent-filter&gt;</span>
+<span style="color:#f92672">&lt;/service&gt;</span>
+<span style="color:#f92672">&lt;receiver</span>
+    <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.google.android.gms.gcm.GcmReceiver&#34;</span>
+    <span style="color:#a6e22e">android:exported=</span><span style="color:#e6db74">&#34;true&#34;</span>
+    <span style="color:#a6e22e">android:permission=</span><span style="color:#e6db74">&#34;com.google.android.c2dm.permission.SEND&#34;</span> <span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;intent-filter</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;action</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.google.android.c2dm.intent.RECEIVE&#34;</span> <span style="color:#f92672">/&gt;</span>
+        <span style="color:#f92672">&lt;category</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;YOUR_PACKAGE_NAME&#34;</span> <span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;/intent-filter&gt;</span>
+    <span style="color:#f92672">&lt;intent-filter</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;action</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.google.android.c2dm.intent.REGISTRATION&#34;</span> <span style="color:#f92672">/&gt;</span>
+        <span style="color:#f92672">&lt;category</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;YOUR_PACKAGE_NAME&#34;</span> <span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;/intent-filter&gt;</span>
+<span style="color:#f92672">&lt;/receiver&gt;</span>
+</code></pre></div><h1 id="heading-5">移行確認方法</h1>
+<p>Growth Push の管理画面で、該当デバイスのプッシュ通知ステータスが <code>Active</code> になっていれば、正しくプッシュ通知が行えます。<br>
 移行対応は、以上となります。</p>
 
       </div>
@@ -442,7 +392,7 @@ public class YourGameObjectComponent : MonoBehaviour
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-<script src="http://support.growthbeat.com/js/sirok-scrollspy.js"></script>
+<script src="https://support.growthbeat.com/js/sirok-scrollspy.js"></script>
 <script>
 $(function() {
   $('pre code, code').each(function(i, block) {

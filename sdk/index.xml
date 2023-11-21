@@ -1,36 +1,37 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sdks on Growthbeatドキュメント |</title>
-    <link>http://support.growthbeat.com/sdk/</link>
+    <link>https://support.growthbeat.com/sdk/</link>
     <description>Recent content in Sdks on Growthbeatドキュメント |</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 07 Apr 2020 17:00:00 +0900</lastBuildDate>
     
-	<atom:link href="http://support.growthbeat.com/sdk/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://support.growthbeat.com/sdk/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Growthbeat Android API</title>
-      <link>http://support.growthbeat.com/sdk/android/reference/</link>
+      <link>https://support.growthbeat.com/sdk/android/reference/</link>
       <pubDate>Tue, 07 Apr 2020 17:00:00 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/android/reference/</guid>
+      <guid>https://support.growthbeat.com/sdk/android/reference/</guid>
       <description>Version 3.0.1 Android SDK 1.2.7以下のリファレンスはこちら
 Growthbeat API Growthbeatインスタンスの取得 Growthbeatインスタンスを取得します。
-public static Growthbeat getInstance()  ログの停止 Growthbeat SDKからのログ出力を全て停止します。デフォルトでは、ログ出力がおこなわれます。
-public void setLoggerSilent(boolean silent)  パラメータ
+public static Growthbeat getInstance() ログの停止 Growthbeat SDKからのログ出力を全て停止します。デフォルトでは、ログ出力がおこなわれます。
+public void setLoggerSilent(boolean silent) パラメータ
    項目名 詳細     silent ログ出力を行うか。YES: ログ出力しない NO:ログ出力をする    GrowthbeatユニークIDを取得する GrowthbeatのユニークIDを取得できます。 取得時に、ロックされるので必ずメインスレッド以外で呼び出してください。
-public Client waitClient();  Growth Push API GrowthPushインスタンスを取得 GrowthPushインスタンスを取得します。
-public static GrowthPush getInstance()  初期化 public void initialize(Context context, String applicationId, String credentialId, Environment environment)  広告情報を保持の可否</description>
+public Client waitClient(); Growth Push API GrowthPushインスタンスを取得 GrowthPushインスタンスを取得します。
+public static GrowthPush getInstance() 初期化 public void initialize(Context context, String applicationId, String credentialId, Environment environment) 広告情報を保持の可否
+public void initialize(Context context, String applicationId, String credentialId, Environment environment, boolean adInfoEnabled) パラメータ</description>
     </item>
     
     <item>
       <title>Growthbeat Android SDK | 基本導入ガイド</title>
-      <link>http://support.growthbeat.com/sdk/android/guide/</link>
+      <link>https://support.growthbeat.com/sdk/android/guide/</link>
       <pubDate>Tue, 07 Apr 2020 17:00:00 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/android/guide/</guid>
+      <guid>https://support.growthbeat.com/sdk/android/guide/</guid>
       <description>Version 3.0.1
 SDK概要 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。
 (※ Eclipseの導入は非推奨となっております。導入については、Eclipse環境での導入手順について をご参照ください。)
@@ -40,72 +41,78 @@ SDK概要 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用�
 google-services.jsonのインポート Firebaseのコンソールから、ダウンロードした、google-services.jsonをプロジェクトルートにインポートしてください。
 インポートができていないと、デバイストークンの取得に失敗いたします。
 Gradleの設定 build.gradle(Module:app)に下記を追加してください。
-dependencies { implementation &#39;com.growthbeat:growthbeat-android:3.0.1@aar&#39; implementation &#39;androidx.appcompat:appcompat:1.1.0&#39; implementation &#39;com.google.firebase:firebase-messaging:18.0.0&#39; } apply plugin: &#39;com.google.gms.google-services&#39;  アプリがAndroidXに対応していない場合は、Growthbeat Android SDK v2.0.12、dependencies は以下をご利用ください。
-dependencies { implementation &#39;com.growthbeat:growthbeat-android:2.0.11@aar&#39; implementation &#39;com.android.support:appcompat-v7:28.0.+&#39; implementation &#39;com.google.firebase:firebase-messaging:18.0.+&#39; } apply plugin: &#39;com.google.gms.google-services&#39;  Growthbeat SDKを利用するには、依存ライブラリが必要となります。
- AndroidX firebase-messagaging アプリがAndroidXに対応していない場合は appcompat-v7もしくはandroid-support-v4  依存ライブラリの対応バージョンは Androidビルドに必要なライブラリ をご参照ください</description>
+dependencies { implementation &amp;#39;com.growthbeat:growthbeat-android:3.0.1@aar&amp;#39; implementation &amp;#39;androidx.appcompat:appcompat:1.1.0&amp;#39; implementation &amp;#39;com.google.firebase:firebase-messaging:18.0.0&amp;#39; } apply plugin: &amp;#39;com.google.gms.google-services&amp;#39; アプリがAndroidXに対応していない場合は、Growthbeat Android SDK v2.0.12、dependencies は以下をご利用ください。
+dependencies { implementation &#39;com.growthbeat:growthbeat-android:2.0.11@aar&#39; implementation &#39;com.android.support:appcompat-v7:28.0.+&#39; implementation &#39;com.google.firebase:firebase-messaging:18.0.+&#39; } apply plugin: &#39;com.google.gms.google-services&#39; Growthbeat SDKを利用するには、依存ライブラリが必要となります。
+ AndroidX firebase-messagaging アプリがAndroidXに対応していない場合は appcompat-v7もしくはandroid-support-v4  依存ライブラリの対応バージョンは Androidビルドに必要なライブラリ をご参照ください
+2. 実装コード Javaの実装 初期化 GrowthPushの初期化を行います。初期化の中で、端末の基本情報の送信、広告IDの取得が行われます。</description>
     </item>
     
     <item>
       <title>リリースノート</title>
-      <link>http://support.growthbeat.com/sdk/android/release/</link>
+      <link>https://support.growthbeat.com/sdk/android/release/</link>
       <pubDate>Tue, 07 Apr 2020 17:00:00 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/android/release/</guid>
+      <guid>https://support.growthbeat.com/sdk/android/release/</guid>
       <description>バージョン 3.0.1 変更点  Gradleタスクに不具合があったため、Gradleのバージョンを5.4.2に変更しました。  バージョン 3.0.0 変更点  サポートライブラリからAndroidXに移行しました。  バージョン 2.0.12 変更点  GrowthLink提供停止のため機能を削除しました。  バージョン 2.0.11 変更点  targetSdkVersion 28 に対応しました。 ドキュメントを更新しました。  バージョン 2.0.10 バグ  GrowthMessageの画像タップ時にアプリがクラッシュする場合があるバグを修正しました。  バージョン 2.0.9 変更点  GCM廃止に伴い、Firebaseへ移行実装いたしました。アップデートガイド  バージョン 2.0.8 バグ  Android 8.1等の一部端末で、タグ、イベント登録が失敗する挙動を修正しました。  バージョン 2.0.7 変更点  Android 8.0以上をターゲットとした場合に、通知が受け取れるように対応 BigTextStyleに対応  バージョン 2.0.6 バグ  通知一覧に複数通知がある場合に、アプリに遷移しない問題を修正しました。  バージョン 2.0.5 変更点  通知のカスタマイズをしやすいように変更しました。 通信エラー時に、エラーコードを表示するように変更しました。 通知一覧で、複数表示の対応をいたしました。  バグ  Growth Messageを閉じるときに、確率的にクラッシュする問題を修正しました。 Libraryプロジェクトのマニフェストに、application の記述を削除しました。  バージョン 2.</description>
     </item>
     
     <item>
       <title>Growthbeat Android SDK | 全機能利用ガイド</title>
-      <link>http://support.growthbeat.com/sdk/android/all-in-one/</link>
+      <link>https://support.growthbeat.com/sdk/android/all-in-one/</link>
       <pubDate>Tue, 04 Feb 2020 17:00:00 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/android/all-in-one/</guid>
+      <guid>https://support.growthbeat.com/sdk/android/all-in-one/</guid>
       <description>Version 2.0.11
 Growthbeat利用ガイド 1. Growth Pushを利用 Growth Pushのみを利用する導入方法をご覧ください。
 2. Growth Messageを利用 Growth Message を用いてポップアップを任意のタイミングで表示させるには、「配信トリガー」 を設定します。「配信トリガー」 は作成したカスタムイベントの中から選ぶ必要がございます。
 実装コード 配信トリガーとなるカスタムイベントを作成するには、ポップアップメッセージを表示させたい任意の場所に下記のようなイベントを送信するメソッドを記述してください。
-class MainActivity extends Activity { @Override public void onCreate(Bundle savedInstanceState) { super.onCreated(savedInstanceState); //... GrowthPush.getInstance().trackEvent(&amp;quot;OpenActivity&amp;quot;); } }  AndroidManifest.xml設定 AndroidManifest.xmlにGrowth Message表示用のActivityを追加します。
-&amp;lt;application&amp;gt; &amp;lt;!-- ... --&amp;gt; &amp;lt;activity android:name=&amp;quot;com.growthbeat.message.view.MessageActivity&amp;quot; android:theme=&amp;quot;@android:style/Theme.Translucent&amp;quot; /&amp;gt; &amp;lt;/application&amp;gt;  管理画面設定方法 「配信トリガー」 で先程実装したイベント（今回の場合は OpenActivity）を選択すると、指定のイベントが発火したタイミングでメッセージが表示されます。
+class MainActivity extends Activity { @Override public void onCreate(Bundle savedInstanceState) { super.onCreated(savedInstanceState); //...  GrowthPush.getInstance().trackEvent(&amp;#34;OpenActivity&amp;#34;); } } AndroidManifest.xml設定 AndroidManifest.xmlにGrowth Message表示用のActivityを追加します。
+&amp;lt;application&amp;gt; &amp;lt;!--... --&amp;gt; &amp;lt;activity android:name=&amp;#34;com.growthbeat.message.view.MessageActivity&amp;#34; android:theme=&amp;#34;@android:style/Theme.Translucent&amp;#34; /&amp;gt; &amp;lt;/application&amp;gt; 管理画面設定方法 「配信トリガー」 で先程実装したイベント（今回の場合は OpenActivity）を選択すると、指定のイベントが発火したタイミングでメッセージが表示されます。
 詳しいメッセージの作成方法は 配信作成 を参照してください。
-intentHandlers = new ArrayList(); intentHandlers.add(new UrlIntentHandler(Growthbeat.getInstance().getContext())); intentHandlers.add(new NoopIntentHandler()); intentHandlers.add(new IntentHandler() { public boolean handle(com.growthbeat.model.Intent intent) { if (intent.</description>
+備考 最新版のSDKへの乗り換え方法 Growth Push SDKからGrowthbeat 2.x SDK への乗り換えまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへの乗り換えをされる方は SDKの移行ガイドをご参照ください。
+サンプルについて 実装サンプルは、Githubレポジトリを参考にしてください。
+お問い合わせ ご不明な点などございます場合は、ヘルプページを閲覧してください。</description>
     </item>
     
     <item>
       <title>Growthbeat iOS API</title>
-      <link>http://support.growthbeat.com/sdk/ios/reference/</link>
+      <link>https://support.growthbeat.com/sdk/ios/reference/</link>
       <pubDate>Tue, 04 Feb 2020 17:00:00 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/ios/reference/</guid>
+      <guid>https://support.growthbeat.com/sdk/ios/reference/</guid>
       <description>Version 2.0.8
 iOS SDK 1.2.7以下のリファレンスはこちら
 Growthbeat API Growthbeatインスタンスの取得 Growthbeatインスタンスを取得します。
-+ (instancetype)sharedInstance;  ログの停止 Growthbeat SDKからのログ出力を全て停止します。 デフォルトでは、ログ出力がおこなわれます。
-- (void) setLoggerSilent:(BOOL silent);  パラメータ
-   項目名 詳細     silent ログ出力を行うか。YES: ログ出力しない NO:ログ出力をする    IntentHandlerを追加する。 [[Growthbeat sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) { NSDictionary * extra = customIntent.extra; NSLog(@&amp;quot;extra: %@&amp;quot;, extra); return YES; }]];  Growth Push API GrowthPushインスタンスの取得 GrowthPushインスタンスを取得します。
-+ (instancetype)sharedInstance;  初期化 GrowthbeatおよびGrowth Pushの初期化を行います。初期化では以下の処理が行われます。</description>
++ (instancetype)sharedInstance; ログの停止 Growthbeat SDKからのログ出力を全て停止します。 デフォルトでは、ログ出力がおこなわれます。
+- (void) setLoggerSilent:(BOOL silent); パラメータ
+   項目名 詳細     silent ログ出力を行うか。YES: ログ出力しない NO:ログ出力をする    IntentHandlerを追加する。 [[Growthbeat sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) { NSDictionary * extra = customIntent.extra; NSLog(@&amp;#34;extra: %@&amp;#34;, extra); return YES; }]]; Growth Push API GrowthPushインスタンスの取得 GrowthPushインスタンスを取得します。
++ (instancetype)sharedInstance; 初期化 GrowthbeatおよびGrowth Pushの初期化を行います。初期化では以下の処理が行われます。
+ デバイス登録、認証 Growth Pushの初期化 基本情報の送信  - (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId environment:(GPEnvironment)environment; 広告情報を保持しない場合</description>
     </item>
     
     <item>
       <title>Growthbeat iOS SDK | 全機能利用ガイド</title>
-      <link>http://support.growthbeat.com/sdk/ios/all-in-one/</link>
+      <link>https://support.growthbeat.com/sdk/ios/all-in-one/</link>
       <pubDate>Tue, 04 Feb 2020 17:00:00 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/ios/all-in-one/</guid>
+      <guid>https://support.growthbeat.com/sdk/ios/all-in-one/</guid>
       <description>Version 2.0.6
 Growthbeat利用ガイド 1. Growth Pushを利用 Growth Pushのみを利用する導入方法をご覧ください。
 2. Growth Messageを利用 Growth Message を用いてポップアップを任意のタイミングで表示させるには、「配信トリガー」 を設定します。「配信トリガー」 は作成したカスタムイベントの中から選ぶ必要がございます。
 実装コード 配信トリガーとなるカスタムイベントを作成するには、ポップアップメッセージを表示させたい任意の場所に下記のようなイベントを送信するメソッドを記述してください。
-// ViewController.m #import &amp;lt;Growthbeat/Growthbeat.h&amp;gt; @implementation ViewController - (void) viewDidLoad:() { [[GrowthPush sharedInstance] trackEvent:@&amp;quot;OpenViewController&amp;quot;]; } @end  管理画面設定方法 「配信トリガー」 で先程実装したイベント（今回の場合は OpenViewController）を選択すると、指定のイベントが発火したタイミングでメッセージが表示されます。
+// ViewController.m #import &amp;lt;Growthbeat/Growthbeat.h&amp;gt; @implementation ViewController - (void) viewDidLoad:() { [[GrowthPush sharedInstance] trackEvent:@&amp;#34;OpenViewController&amp;#34;]; } @end 管理画面設定方法 「配信トリガー」 で先程実装したイベント（今回の場合は OpenViewController）を選択すると、指定のイベントが発火したタイミングでメッセージが表示されます。
 詳しいメッセージの作成方法は 配信作成 を参照してください。
-@implementation AppDelegate - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary* )launchOptions { // ... [[GrowthLink sharedInstance] initializeWithApplicationId:@&#34;APPLICATION_ID&#34; credentialId:@&#34;CREDENTIAL_ID&#34;]; } - (BOOL) application:(UIApplication*) application openURL:(NSURL* )url sourceApplication:(NSString* )sourceApplication annotation:(id) annotation { [[GrowthLink sharedInstance] handleOpenUrl:url]; return YES; } - (BOOL) application:(UIApplication* )application continueUserActivity:(NSUserActivity* )userActivity restorationHandler:(void (^)(NSArray* \_Nullable)) restorationHandler { if ([userActivity.</description>
+備考 最新版のSDKへの乗り換え方法 Growth Push SDKからGrowthbeat 2.x SDK への乗り換えまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへの乗り換えをされる方は SDKの移行ガイドをご参照ください。
+サンプルについて 実装サンプルは、Githubレポジトリを参考にしてください。
+お問い合わせ ご不明な点などございます場合は、ヘルプページを閲覧してください。</description>
     </item>
     
     <item>
       <title>Growthbeat iOS SDK | 基本導入ガイド</title>
-      <link>http://support.growthbeat.com/sdk/ios/guide/</link>
+      <link>https://support.growthbeat.com/sdk/ios/guide/</link>
       <pubDate>Tue, 04 Feb 2020 17:00:00 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/ios/guide/</guid>
+      <guid>https://support.growthbeat.com/sdk/ios/guide/</guid>
       <description>Version 2.0.8
 SDK概要 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。Objective-Cでの導入方法について記載しております。
 環境 最低動作保証環境: iOS 8.0以上
@@ -113,8 +120,7 @@ SDK概要 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用�
 1. プロジェクト設定 CocoaPodsの導入方法 Podfile に下記を記述し pod install を実行してください。
 CocoaPodsで、導入する場合は、自動的に依存が解決されます。
 ※ProjectNameは、アプリのプロジェクト名となります。
-target &#39;ProjectName&#39; do pod &#39;Growthbeat&#39; end  Frameworkをプロジェクトに導入する場合 最新版iOS SDK ダウンロードページ
-ダウンロードしたファイルを解凍し、そのフォルダの中の Growthbeat.framework をプロジェクトへ組み込みます。 任意のXcodeプロジェクトを開き Growthbeat.framework をインポートしてください。
+target &#39;ProjectName&#39; do pod &#39;Growthbeat&#39; end Frameworkをプロジェクトに導入する場合 最新版iOS SDK ダウンロードページダウンロードしたファイルを解凍し、そのフォルダの中の Growthbeat.framework をプロジェクトへ組み込みます。 任意のXcodeプロジェクトを開き Growthbeat.framework をインポートしてください。
 Growthbeat.framework のインポートの方法は以下の２つです
  Xcodeプロジェクトに Growthbeat.framework をドラッグアンドドロップする Bulid Phases -&amp;gt; Link Binary With Libraries の + ボタンを押し、Add Other&amp;hellip;からGrowthbeat.frameworkを選択する  Growthbeat.framework は、下記 Framework が必須となります
  Foundation.framework UIKit.framework CoreGraphics.framework SystemConfiguration.framework AdSupport.framework CFNetwork.framework  2. プロジェクトのPush Notificationを有効にする Capabilities にて、Push Notifications を ON にします。</description>
@@ -122,157 +128,158 @@ Growthbeat.framework のインポートの方法は以下の２つです
     
     <item>
       <title>リリースノート</title>
-      <link>http://support.growthbeat.com/sdk/ios/release/</link>
+      <link>https://support.growthbeat.com/sdk/ios/release/</link>
       <pubDate>Tue, 04 Feb 2020 17:00:00 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/ios/release/</guid>
+      <guid>https://support.growthbeat.com/sdk/ios/release/</guid>
       <description>バージョン 2.0.8 変更点  Advertising ID, TrackingEnable flag 取得処理を削除しました。  バージョン 2.0.7 変更点  UIWebViewを利用していた処理を削除しました。 GrowthLink提供停止のため機能を削除しました。  バージョン 2.0.6 変更点  iOS 13でデバイストークンが取得出来ない場合がある問題を修正しました。  バージョン 2.0.5 変更点  初期化前に、タグ/イベントの送信を大量に行うと、アプリが固まってしまう問題を修正しました。 通信時のエラーコードを表示するように変更しました。  バグ  Growth Messageのタグの種類送信方法を修正しました。  バージョン 2.0.4 変更点  サンプルアプリを変更いたしました。  バージョン 2.0.3 変更点  CocoaPodsにて、frameworkの提供を終了し、ソースコードの提供に変更いたしました。  バージョン 2.0.2 変更点  Client APIの変更がありました。  バグ  Growthbeat 1.xから乗り換え時に、特定の条件で情報が引き継げない不具合を修正しました。  バージョン 2.0.1 変更点  Handlerを使ったメッセージ表示方法を変更しました。  バグ  ウォークスルー表示で、回転を行ったときに1ページ目に戻ってしまうバグを修正しました。  バージョン 2.</description>
     </item>
     
     <item>
       <title>Growthbeat Web Gudeliene</title>
-      <link>http://support.growthbeat.com/sdk/web/guide/</link>
+      <link>https://support.growthbeat.com/sdk/web/guide/</link>
       <pubDate>Tue, 17 Jan 2017 14:32:58 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/web/guide/</guid>
+      <guid>https://support.growthbeat.com/sdk/web/guide/</guid>
       <description>SDK概要 Web SDK は Push通知機能のみの対応となっております。
 Growth Push管理画面の証明書設定ページにて、Androidの証明書の設定を行ってください。
  Android SenderId、 APIキー取得方法  また、導入の前に下記もご覧ください。
  Growth Push for Android Chromeの動作環境  1. manifest.json の設置 manifest.json を公開ディレクトリに設置してください。
 manifest.json の例 YOUR_SENDER_ID には、Firebase Cloud Messaging で取得した SenderId を指定します。SenderId の取得方法は Android SDKで使うCloud Messaging サーバーキーの設定方法 を参照してください。
-{ &amp;quot;name&amp;quot;: &amp;quot;APP_NAME&amp;quot;, &amp;quot;short_name&amp;quot;: &amp;quot;SHORT_APP_NAME&amp;quot;, &amp;quot;icons&amp;quot;: [{ &amp;quot;src&amp;quot;: &amp;quot;HOME_SCREEN_ICON&amp;quot;, &amp;quot;sizes&amp;quot;: &amp;quot;144x444&amp;quot;, &amp;quot;type&amp;quot;: &amp;quot;image/png&amp;quot; }], &amp;quot;start_url&amp;quot;: &amp;quot;/&amp;quot;, &amp;quot;display&amp;quot;: &amp;quot;standalone&amp;quot;, &amp;quot;gcm_sender_id&amp;quot;: &amp;quot;GCM_SENDER_ID&amp;quot;, &amp;quot;gcm_user_visible_only&amp;quot;: true }  2. ServiceWorker の設置 下記のファイルをサービスのドメイン直下に設置してください。
- growthpush.</description>
+{ &amp;quot;name&amp;quot;: &amp;quot;APP_NAME&amp;quot;, &amp;quot;short_name&amp;quot;: &amp;quot;SHORT_APP_NAME&amp;quot;, &amp;quot;icons&amp;quot;: [{ &amp;quot;src&amp;quot;: &amp;quot;HOME_SCREEN_ICON&amp;quot;, &amp;quot;sizes&amp;quot;: &amp;quot;144x444&amp;quot;, &amp;quot;type&amp;quot;: &amp;quot;image/png&amp;quot; }], &amp;quot;start_url&amp;quot;: &amp;quot;/&amp;quot;, &amp;quot;display&amp;quot;: &amp;quot;standalone&amp;quot;, &amp;quot;gcm_sender_id&amp;quot;: &amp;quot;GCM_SENDER_ID&amp;quot;, &amp;quot;gcm_user_visible_only&amp;quot;: true } 2. ServiceWorker の設置 下記のファイルをサービスのドメイン直下に設置してください。
+ growthpush.min.js（本番用）または growthpush.js（開発用） growthpush-sw.</description>
     </item>
     
     <item>
       <title>Growthbeat Cocos2dx Gudeliene</title>
-      <link>http://support.growthbeat.com/sdk/cocos2dx/guide/</link>
+      <link>https://support.growthbeat.com/sdk/cocos2dx/guide/</link>
       <pubDate>Fri, 06 Jan 2017 14:32:58 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/cocos2dx/guide/</guid>
+      <guid>https://support.growthbeat.com/sdk/cocos2dx/guide/</guid>
       <description>Version 2.0.6
 動作環境 Cocos2d-x v3.12
 ※ 一部実装にて、バージョンごとに、Cocos2d-xのヘッダーファイルが読み込めない可能性がございます。
 1. SDK導入 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。
 Cocos2d-x SDK をインポートする GitHubからSDKをcloneし、submoduleをupdateしてください。
-git clone https://github.com/SIROK/growthbeat-cocos2dx.git cd ./growthbeat-cocos2dx git submodule update --init --recursive  source/Classes ディレクトリの中身、Grothbeat, GrowthPush, GrowthLink 3つのフォルダーを /path/to/your_project/Classes/ 配下にコピーしてください。
+git clone https://github.com/SIROK/growthbeat-cocos2dx.git cd ./growthbeat-cocos2dx git submodule update --init --recursive source/Classes ディレクトリの中身、Grothbeat, GrowthPush, GrowthLink 3つのフォルダーを /path/to/your_project/Classes/ 配下にコピーしてください。
 iOSの初期設定 Xcodeにて、Classesにコピーしたフォルダを、インポートしてください。選択肢にて、 Create groups にチェックし、ターゲットを任意のビルドスキームにチェックしてください。growthbeat-ios/Growthbeat.framework をコピーして、/path/to/your_project/proj.ios/Frameworks/ 配下にコピーしてください。
 Growthbeat.frameworkは、下記Frameworkが必須となります。Xcodeプロジェクトに、依存するFrameworkを追加してください。
  Foundation.framework UIKit.framework CoreGraphics.framework Security.framework SystemConfiguration.framework AdSupport.framework CFNetwork.framework  Androidの初期設定 source/proj.android/src の中身を、プロジェクトの /path/to/your_project/proj.android/src 配下にコピーしてください。
 Android Studio導入方法
 build.gradleに下記の設定をしてください。
-dependencies { // Androidのライブラリです。growthbeatのライブラリの機能に依存します。 compile &amp;quot;com.android.support:appcompat-v7:23.3.0&amp;quot; compile &#39;com.google.android.gms:play-services-gcm:9.2.1&#39; compile &#39;com.google.android.gms:play-services-ads:9.2.1&#39; // Growthbeat SDK Android compile &#39;com.</description>
+dependencies { // Androidのライブラリです。growthbeatのライブラリの機能に依存します。 compile &amp;#34;com.android.support:appcompat-v7:23.3.0&amp;#34; compile &amp;#39;com.google.android.gms:play-services-gcm:9.2.1&amp;#39; compile &amp;#39;com.google.android.gms:play-services-ads:9.2.1&amp;#39; // Growthbeat SDK Android compile &amp;#39;com.</description>
     </item>
     
     <item>
       <title>Growthbeat Unity API</title>
-      <link>http://support.growthbeat.com/sdk/unity/reference/</link>
+      <link>https://support.growthbeat.com/sdk/unity/reference/</link>
       <pubDate>Fri, 06 Jan 2017 14:32:58 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/unity/reference/</guid>
+      <guid>https://support.growthbeat.com/sdk/unity/reference/</guid>
       <description>Version 2.0.9
 Growthbeat API Growthbeatインスタンスの取得 Growthbeatインスタンスを取得します。
-public static Growthbeat GetInstance ();  ログの停止 Growthbeat SDKからのログ出力を全て停止します。 デフォルトでは、ログ出力がおこなわれます。
-public void SetLoggerSilent (bool silent);  パラメータ
-   項目名 詳細     silent ログ出力を行うか。YES: ログ出力しない NO:ログ出力をする    IntentHandler API ハンドラ public static IntentHander GetInstance ();  処理をしないハンドラ public void AddNoopIntentHandler ();  ブラウザを開くハンドラ public void AddUrlIntentHandler ();  カスタムハンドラ public void AddCustomIntentHandler (string gameObjectName, string methodName);  パラメータ</description>
+public static Growthbeat GetInstance (); ログの停止 Growthbeat SDKからのログ出力を全て停止します。 デフォルトでは、ログ出力がおこなわれます。
+public void SetLoggerSilent (bool silent); パラメータ
+   項目名 詳細     silent ログ出力を行うか。YES: ログ出力しない NO:ログ出力をする    IntentHandler API ハンドラ public static IntentHander GetInstance (); 処理をしないハンドラ public void AddNoopIntentHandler (); ブラウザを開くハンドラ public void AddUrlIntentHandler (); カスタムハンドラ public void AddCustomIntentHandler (string gameObjectName, string methodName); パラメータ
+   項目名 詳細     gameObjectName コールバックをするメソッドが存在するゲームオブジェクト   methodName コールバックをするメソッド    例.</description>
     </item>
     
     <item>
       <title>Growthbeat Unity SDK | 全機能利用ガイド</title>
-      <link>http://support.growthbeat.com/sdk/unity/all-in-one/</link>
+      <link>https://support.growthbeat.com/sdk/unity/all-in-one/</link>
       <pubDate>Fri, 06 Jan 2017 12:00:00 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/unity/all-in-one/</guid>
+      <guid>https://support.growthbeat.com/sdk/unity/all-in-one/</guid>
       <description>Growthbeat利用ガイド 1. Growth Pushを利用 Growth Pushのみを利用する導入方法をご覧ください。
 2. Growth Messageを利用 Growth Message を用いてポップアップを任意のタイミングで表示させるには、「配信トリガー」 を設定します。「配信トリガー」 は作成したカスタムイベントの中から選ぶ必要がございます。
 実装コード メッセージを表示させるのに必要なハンドラを設定します。
-void Awake () { GrowthPush.GetInstance().Initialize(&amp;quot;YOUR_APPLICATION_ID&amp;quot;, &amp;quot;YOUR_CREDENTIAL_ID&amp;quot;, Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production); IntentHandler.GetInstance ().AddNoopIntentHandler (); IntentHandler.GetInstance ().AddUrlIntentHandler (); IntentHandler.GetInstance ().AddCustomIntentHandler (&amp;quot;GrowthbeatComponent&amp;quot;, &amp;quot;HandleCustomIntent&amp;quot;); // Android のデバイストークン取得（必ず initialize 後に呼び出してください） GrowthPush.GetInstance ().RequestDeviceToken (&amp;quot;Y0UR_SENDER_ID&amp;quot;); }  配信トリガーとなるカスタムイベントを作成するには、ポップアップメッセージを表示させたい任意の場所に下記のようなイベントを送信するメソッドを記述してください。
-public class GrowthbeatComponent : MonoBehaviour { void Awake () { GrowthPush.getInstance().TrackEvent(&amp;quot;Launch&amp;quot;,&amp;quot;&amp;quot;,&amp;quot;GrowthbeatComponent&amp;quot;,&amp;quot;ShowMessage&amp;quot;); } void ShowMessage (string uuid) { // wait frame GrowthPush.GetInstance ().</description>
+void Awake () { GrowthPush.GetInstance().Initialize(&amp;#34;YOUR_APPLICATION_ID&amp;#34;, &amp;#34;YOUR_CREDENTIAL_ID&amp;#34;, Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production); IntentHandler.GetInstance ().AddNoopIntentHandler (); IntentHandler.GetInstance ().AddUrlIntentHandler (); IntentHandler.GetInstance ().AddCustomIntentHandler (&amp;#34;GrowthbeatComponent&amp;#34;, &amp;#34;HandleCustomIntent&amp;#34;); // Android のデバイストークン取得（必ず initialize 後に呼び出してください）  GrowthPush.GetInstance ().RequestDeviceToken (&amp;#34;Y0UR_SENDER_ID&amp;#34;); } 配信トリガーとなるカスタムイベントを作成するには、ポップアップメッセージを表示させたい任意の場所に下記のようなイベントを送信するメソッドを記述してください。
+public class GrowthbeatComponent : MonoBehaviour { void Awake () { GrowthPush.getInstance().TrackEvent(&amp;#34;Launch&amp;#34;,&amp;#34;&amp;#34;,&amp;#34;GrowthbeatComponent&amp;#34;,&amp;#34;ShowMessage&amp;#34;); } void ShowMessage (string uuid) { // wait frame  GrowthPush.GetInstance ().</description>
     </item>
     
     <item>
       <title>Growthbeat Unity SDK | 基本導入ガイド</title>
-      <link>http://support.growthbeat.com/sdk/unity/guide/</link>
+      <link>https://support.growthbeat.com/sdk/unity/guide/</link>
       <pubDate>Fri, 06 Jan 2017 12:00:00 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/unity/guide/</guid>
+      <guid>https://support.growthbeat.com/sdk/unity/guide/</guid>
       <description>Version 2.0.9
 SDK概要 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。
 動作環境 動作推奨環境: Unity 5以上 ※ Unityプラットフォームがサポートしていないバージョンについては、本SDKもサポート対象外となります。
-1. プロジェクト設定 最新版Unity SDK ダウンロードページ ダウンロードしたファイルを解凍し、そのフォルダの中の growthbeat.unitypackage をプロジェクトへ組み込みます。 メニューから、Assets -&amp;gt; Import Package -&amp;gt; Custom Package... を選択し、でダウンロードした UnityPackge をインポートしてください。
+1. プロジェクト設定 最新版Unity SDK ダウンロードページダウンロードしたファイルを解凍し、そのフォルダの中の growthbeat.unitypackage をプロジェクトへ組み込みます。 メニューから、Assets -&amp;gt; Import Package -&amp;gt; Custom Package... を選択し、でダウンロードした UnityPackge をインポートしてください。
 2. iOS の初期設定 Growthbeat.framework は、下記 Framework が必須となります。
  Foundation.framework UIKit.framework CoreGraphics.framework SystemConfiguration.framework AdSupport.framework CFNetwork.framework  3. Android の初期設定 Growthbeat SDKを利用するには、依存ライブラリが必要となります。
- appcompat-v7もしくはandroid-support-v4 firebase-messagaging
-  SDKおよびライブラリの導入 growthbeat-x.x.x.jar をインポートする必要がございます。 最新版Android SDK ダウンロードページ 上記ページより最新版SDKをダウンロードし、releaseフォルダ内のgrowthbeat-x.x.x.jar(x.x.xはバージョン番号) を、 Assets/Plugins/Android/ にコピーしてください。
+ appcompat-v7もしくはandroid-support-v4 firebase-messagaging  SDKおよびライブラリの導入 growthbeat-x.x.x.jar をインポートする必要がございます。 最新版Android SDK ダウンロードページ 上記ページより最新版SDKをダウンロードし、releaseフォルダ内のgrowthbeat-x.x.x.jar(x.x.xはバージョン番号) を、 Assets/Plugins/Android/ にコピーしてください。
 Growthbeat Android SDKをインポート後、依存ライブラリをGoogle社の提供する
-Firebase Unity SDK を使用して解決します。</description>
+Firebase Unity SDK を使用して解決します。
+上記ページから、&amp;ldquo;アプリに Firebase Unity SDK を追加する&amp;quot;の欄を参考に、FirebaseMessaging.</description>
     </item>
     
     <item>
       <title>Growthbeat Unity SDK | 新バージョンアップデート方法</title>
-      <link>http://support.growthbeat.com/sdk/unity/upgrade/</link>
+      <link>https://support.growthbeat.com/sdk/unity/upgrade/</link>
       <pubDate>Fri, 06 Jan 2017 12:00:00 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/unity/upgrade/</guid>
+      <guid>https://support.growthbeat.com/sdk/unity/upgrade/</guid>
       <description>Growth Push SDK及びGrowthbeat SDK 1.xのサポートは、2016年12月21日までとなっております。
 SDKアップグレードガイド 最新のSDKにお乗り換えする方法についてご紹介いたします。
  Growthbeat 2.0.0 ~ 2.0.8 SDKから最新のGrowthbeat SDKへのアップグレード Growthbeat 1.x SDKから最新のGrowthbeat SDKへのアップグレード Growth Push SDKから最新のGrowthbeat SDKへのアップグレード  についてご紹介いたします。
 Growthbeat SDK 2.0.0 ~ 2.0.8からのアップデート GCM廃止に伴いFCMへ変更が必要となります。　https://faq.growthbeat.com/article/226-gcmtofcm
-Growthbeat SDK 1.xからのアップグレード 機能削除  インターフェスの変更があります。  次の実装変更点でご確認ください。  Growth Analytics クラスがなくなりました。  Growth Analytics に関する記述は全て削除してください。 2.x以降は、GrowthPush#setTag, trackEventをご利用ください。  GrowthbeatCoreクラスが、Growthbeatクラスに統合されました。  start, stop, initializeは削除されました。   導入コード  Growthbeat 1.x  using UnityEngine; public class YourGameObjectComponent : MonoBehaviour { void Awake () { Growthbeat.</description>
-    </item>
-    
-    <item>
-      <title>Growthbeat SDK | 新バージョンアップデート方法</title>
-      <link>http://support.growthbeat.com/sdk/android/upgrade/</link>
-      <pubDate>Wed, 28 Sep 2016 12:00:00 +0900</pubDate>
-      
-      <guid>http://support.growthbeat.com/sdk/android/upgrade/</guid>
-      <description>Growth Push SDK及びGrowthbeat SDK 1.xのサポートは、2016年12月21日までとなっております。
-SDKアップグレードガイド 最新のSDKにお乗り換えする方法についてご紹介いたします。
- Growthbeat 2.0.0 ~ 2.0.8 SDKから最新のGrowthbeat SDKへのアップグレード Growthbeat 1.x SDKから最新のGrowthbeat SDKへのアップグレード Growth Push SDKから最新のGrowthbeat SDKへのアップグレード  についてご紹介いたします。
-Growthbeat SDK 2.0.0 ~ 2.0.8からのアップデート GCM廃止に伴いFCMへ変更が必要となります。　https://faq.growthbeat.com/article/226-gcmtofcm
-Growthbeat SDK 1.xからのアップグレード 機能削除  インターフェスの変更があります。  次の実装変更点でご確認ください。  Growth Analytics クラスがなくなりました。  Growth Analytics に関する記述は全て削除してください。 2.x以降は、GrowthPush#setTag, trackEventをご利用ください。  GrowthbeatCoreクラスが、Growthbeatクラスに統合されました。  start, stop, initializeは削除されました。   導入コード  Growthbeat 1.x  protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); //... Growthbeat.</description>
+Growthbeat SDK 1.xからのアップグレード 機能削除  インターフェスの変更があります。  次の実装変更点でご確認ください。   Growth Analytics クラスがなくなりました。  Growth Analytics に関する記述は全て削除してください。 2.x以降は、GrowthPush#setTag, trackEventをご利用ください。   GrowthbeatCoreクラスが、Growthbeatクラスに統合されました。  start, stop, initializeは削除されました。    導入コード  Growthbeat 1.x  using UnityEngine; public class YourGameObjectComponent : MonoBehaviour { void Awake () { Growthbeat.</description>
     </item>
     
     <item>
       <title>Growthbeat iOS SDK | 新バージョン移行方法</title>
-      <link>http://support.growthbeat.com/sdk/ios/upgrade/</link>
+      <link>https://support.growthbeat.com/sdk/ios/upgrade/</link>
       <pubDate>Wed, 28 Sep 2016 12:00:00 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/ios/upgrade/</guid>
+      <guid>https://support.growthbeat.com/sdk/ios/upgrade/</guid>
       <description>Growth Push SDK及びGrowthbeat SDK 1.xのサポートは、2016年12月21日までとなっております。
 SDKアップグレードガイド 最新のSDKにお乗り換えする方法についてご紹介いたします。
  Growth Push SDKから最新のGrowthbeat SDKへのアップグレード Growthbeat 1.x SDKから最新のGrowthbeat SDKへのアップグレード  についてご紹介いたします。
 Growth Push SDKからのアップグレードについて 概要 Growth Push の認証から、Growthbeat の認証に移行されるため、新しい ApplicationId と SDKキー（クレデンシャルID）を取得する必要がございます。
 ApplicationId は、Growth Push管理画面左メニュー「アプリ詳細」の 「Growthbeat アプリケーションID」 にて確認ができます。
 SDKキーは、Growthbeat管理画面左メニュー「 アカウント」の「クレデンシャルID &amp;gt; SDK」にて確認ができます。
-注意点 これまで Growth Push でご利用いただいていた ApplicationId は数値型、シークレットキーは文字列型になっています。    項目 型     applicationId 数値型   secret 文字列型/32文字    Growthbeat SDK で利用するものは、 applicationId 、 credentialId ともに文字列型になっています。</description>
+注意点 これまで Growth Push でご利用いただいていた ApplicationId は数値型、シークレットキーは文字列型になっています。    項目 型     applicationId 数値型   secret 文字列型/32文字   Growthbeat SDK で利用するものは、 applicationId 、 credentialId ともに文字列型になっています。        項目 型     applicationId 文字列型/16文字   credentailId 文字列型/32文字   Growthbeat SDK 乗り換え時に、これまで Growth Push で利用していたシークレットキーを設定しても、正しく動作しませんのでご注意くださいませ。 必ず、SDKキーをご利用ください。     導入コード 初期化 Growth Push SDK に存在した EasyGrowthPushクラス は、 Growthbeat SDK では廃止となっており、 didRegisterForRemoteNotificationsWithDeviceToken のデリゲートで、デバイストークンを Growth Push へ送信する実装を行う必要がございます。</description>
+    </item>
+    
+    <item>
+      <title>Growthbeat SDK | 新バージョンアップデート方法</title>
+      <link>https://support.growthbeat.com/sdk/android/upgrade/</link>
+      <pubDate>Wed, 28 Sep 2016 12:00:00 +0900</pubDate>
+      
+      <guid>https://support.growthbeat.com/sdk/android/upgrade/</guid>
+      <description>Growth Push SDK及びGrowthbeat SDK 1.xのサポートは、2016年12月21日までとなっております。
+SDKアップグレードガイド 最新のSDKにお乗り換えする方法についてご紹介いたします。
+ Growthbeat 2.0.0 ~ 2.0.8 SDKから最新のGrowthbeat SDKへのアップグレード Growthbeat 1.x SDKから最新のGrowthbeat SDKへのアップグレード Growth Push SDKから最新のGrowthbeat SDKへのアップグレード  についてご紹介いたします。
+Growthbeat SDK 2.0.0 ~ 2.0.8からのアップデート GCM廃止に伴いFCMへ変更が必要となります。　https://faq.growthbeat.com/article/226-gcmtofcm
+Growthbeat SDK 1.xからのアップグレード 機能削除  インターフェスの変更があります。  次の実装変更点でご確認ください。   Growth Analytics クラスがなくなりました。  Growth Analytics に関する記述は全て削除してください。 2.x以降は、GrowthPush#setTag, trackEventをご利用ください。   GrowthbeatCoreクラスが、Growthbeatクラスに統合されました。  start, stop, initializeは削除されました。    導入コード  Growthbeat 1.x  protected void onCreate(Bundle savedInstanceState) { super.</description>
     </item>
     
     <item>
       <title>Growthbeat API</title>
-      <link>http://support.growthbeat.com/sdk/api/reference/</link>
+      <link>https://support.growthbeat.com/sdk/api/reference/</link>
       <pubDate>Fri, 02 Sep 2016 10:13:58 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/api/reference/</guid>
-      <description> Growth Push API 最新版は下記を参照してください  V1 APIドキュメント ※ こちらのAPIは 2016/12/21 廃止予定です V2 APIドキュメント ※ こちらのAPIは 2016/12/21 廃止予定です V3 APIドキュメント V4 APIドキュメント  </description>
+      <guid>https://support.growthbeat.com/sdk/api/reference/</guid>
+      <description>Growth Push API 最新版は下記を参照してください  V1 APIドキュメント ※ こちらのAPIは 2016/12/21 廃止予定です V2 APIドキュメント ※ こちらのAPIは 2016/12/21 廃止予定です V3 APIドキュメント V4 APIドキュメント  </description>
     </item>
     
     <item>
       <title>リリースノート</title>
-      <link>http://support.growthbeat.com/sdk/api/release/</link>
+      <link>https://support.growthbeat.com/sdk/api/release/</link>
       <pubDate>Fri, 02 Sep 2016 10:10:00 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/api/release/</guid>
+      <guid>https://support.growthbeat.com/sdk/api/release/</guid>
       <description>2016/09/02  Client v4 API を公開しました  バージョン 1.0.0 ドキュメントリリース</description>
     </item>
     
     <item>
       <title>Growthbeat API Gudeliene</title>
-      <link>http://support.growthbeat.com/sdk/api/guide/</link>
+      <link>https://support.growthbeat.com/sdk/api/guide/</link>
       <pubDate>Fri, 02 Sep 2016 10:00:00 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/api/guide/</guid>
+      <guid>https://support.growthbeat.com/sdk/api/guide/</guid>
       <description>概要 Growthbeat ではサーバー API を用意しております。Growthbeat プラットフォームに蓄積されたデータを管理画面外からも取得することが可能となっております。
 APIを使用する前に API を利用するには Growthbeat への会員登録が必要となります。API を使用するにはアカウントに紐付いている API キーの使用が必須となります。API キーの取得方法は こちら を参照してください。
 リクエスト APIとの全ての通信にはHTTPSプロトコルを利用します。
@@ -285,70 +292,70 @@ curl -X GET \ -H &#39;Accept: application/json&#39; \ -G \ --data &amp;quot;appl
     
     <item>
       <title>Growthbeat Cocos2dx API</title>
-      <link>http://support.growthbeat.com/sdk/cocos2dx/reference/</link>
+      <link>https://support.growthbeat.com/sdk/cocos2dx/reference/</link>
       <pubDate>Mon, 16 Nov 2015 14:32:58 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/cocos2dx/reference/</guid>
+      <guid>https://support.growthbeat.com/sdk/cocos2dx/reference/</guid>
       <description>Version 2.0.6
 Growthbeat API Growthbeat インスタンスの取得 Growthbeat インスタンスを取得します。
-static Growthbeat* getInstance();  ハンドラ ハンドラ初期化 void initializeIntentHandlers();  処理をしないハンドラ void addNoopIntentHandler();  ブラウザを開くハンドラ void addUrlIntentHandler();  カスタムハンドラ void addCustomIntentHandler(const std::function&amp;lt;bool(std::map&amp;lt;std::string,std::string&amp;gt;)&amp;gt;&amp;amp; handle);  パラメータ
+static Growthbeat* getInstance(); ハンドラ ハンドラ初期化 void initializeIntentHandlers(); 処理をしないハンドラ void addNoopIntentHandler(); ブラウザを開くハンドラ void addUrlIntentHandler(); カスタムハンドラ void addCustomIntentHandler(const std::function&amp;lt;bool(std::map&amp;lt;std::string,std::string&amp;gt;)&amp;gt;&amp;amp; handle); パラメータ
    項目名 詳細     map key/valueのマップ値    ログの停止 Growthbeat SDKからのログ出力を全て停止します。 デフォルトでは、ログ出力がおこなわれます。
-void setLoggerSilent(bool silent);  パラメータ
+void setLoggerSilent(bool silent); パラメータ
    項目名 詳細     silent ログ出力を行うか。YES: ログ出力しない NO:ログ出力をする    Growth Push API Growth Push インスタンスの取得 Growth Push インスタンスを取得します。</description>
     </item>
     
     <item>
       <title>Growthbeat Unity API</title>
-      <link>http://support.growthbeat.com/sdk/unity/reference-1.2.7/</link>
+      <link>https://support.growthbeat.com/sdk/unity/reference-1.2.7/</link>
       <pubDate>Mon, 16 Nov 2015 14:32:58 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/unity/reference-1.2.7/</guid>
+      <guid>https://support.growthbeat.com/sdk/unity/reference-1.2.7/</guid>
       <description>Version 1.2.7
 Growthbeat API Growthbeatインスタンスの取得 Growthbeatインスタンスを取得します。
-public static Growthbeat GetInstance ()  初期化 Growthbeatの初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。
-public void Initialize (string applicationId, string credentialId)  パラメータ
+public static Growthbeat GetInstance () 初期化 Growthbeatの初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。
+public void Initialize (string applicationId, string credentialId) パラメータ
    項目名 詳細     applicationId アプリケーションID   credentialId クレデンシャルキー    起動イベントの送信 アプリケーションの起動イベントを送信します。
-public void Start ()  終了イベントの送信 アプリケーションの起動イベントを送信します。
-public void Stop ()  ログの停止 Growthbeat SDKからのログ出力を全て停止します。 デフォルトでは、ログ出力がおこなわれます。
-public void SetLoggerSilent (bool silent)  パラメータ
+public void Start () 終了イベントの送信 アプリケーションの起動イベントを送信します。
+public void Stop () ログの停止 Growthbeat SDKからのログ出力を全て停止します。 デフォルトでは、ログ出力がおこなわれます。
+public void SetLoggerSilent (bool silent) パラメータ
    項目名 詳細     silent ログ出力を行うか。YES: ログ出力しない NO:ログ出力をする    ハンドラ 処理をしないハンドラ IntentHandler.</description>
     </item>
     
     <item>
       <title>Growthbeat Android API</title>
-      <link>http://support.growthbeat.com/sdk/android/reference-1.2.7/</link>
+      <link>https://support.growthbeat.com/sdk/android/reference-1.2.7/</link>
       <pubDate>Thu, 12 Nov 2015 14:32:58 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/android/reference-1.2.7/</guid>
+      <guid>https://support.growthbeat.com/sdk/android/reference-1.2.7/</guid>
       <description>Version 1.2.7
 Growthbeat API Growthbeatインスタンスの取得 Growthbeatインスタンスを取得します。
-public static Growthbeat getInstance()  初期化 Growthbeatの初期化を行います。初期化では以下の処理が行われます。
- デバイス登録、認証 Growth Push、Growth Analytics、Growth Messageの初期化（Growth Linkは別途初期化が必要） 基本情報の送信  public void initialize(Context context, String applicationId, String credentialId)  パラメータ
-   項目名 詳細     applicationId アプリケーションID   credentialId クレデンシャルキー    public void initialize(Context context, String applicationId, String credentialId, boolean adInfoEnabled)  パラメータ
+public static Growthbeat getInstance() 初期化 Growthbeatの初期化を行います。初期化では以下の処理が行われます。
+ デバイス登録、認証 Growth Push、Growth Analytics、Growth Messageの初期化（Growth Linkは別途初期化が必要） 基本情報の送信  public void initialize(Context context, String applicationId, String credentialId) パラメータ
+   項目名 詳細     applicationId アプリケーションID   credentialId クレデンシャルキー    public void initialize(Context context, String applicationId, String credentialId, boolean adInfoEnabled) パラメータ
    項目名 詳細     applicationId アプリケーションID   credentialId クレデンシャルキー   adInfoEnabled 広告情報の送信設定。true: 送信する false:送信しない    起動イベントの送信 アプリケーションの起動イベントを送信します。</description>
     </item>
     
     <item>
       <title>Growthbeat iOS API</title>
-      <link>http://support.growthbeat.com/sdk/ios/reference-1.2.7/</link>
+      <link>https://support.growthbeat.com/sdk/ios/reference-1.2.7/</link>
       <pubDate>Thu, 12 Nov 2015 14:32:58 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/ios/reference-1.2.7/</guid>
+      <guid>https://support.growthbeat.com/sdk/ios/reference-1.2.7/</guid>
       <description>Version 1.2.7
 Growthbeat API Growthbeatインスタンスの取得 Growthbeatインスタンスを取得します。
-+ (instancetype)sharedInstance;  初期化 Growthbeatの初期化を行います。初期化では以下の処理が行われます。
- デバイス登録、認証 Growth Push、Growth Analytics、Growth Messageの初期化（Growth Linkは別途初期化が必要） 基本情報の送信  - (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId;  パラメータ
-   項目名 詳細     applicationId アプリケーションID   credentialId クレデンシャルキー    - (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId adInfoEnable:(BOOL)adInfoEnable;  パラメータ
++ (instancetype)sharedInstance; 初期化 Growthbeatの初期化を行います。初期化では以下の処理が行われます。
+ デバイス登録、認証 Growth Push、Growth Analytics、Growth Messageの初期化（Growth Linkは別途初期化が必要） 基本情報の送信  - (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId; パラメータ
+   項目名 詳細     applicationId アプリケーションID   credentialId クレデンシャルキー    - (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId adInfoEnable:(BOOL)adInfoEnable; パラメータ
    項目名 詳細     applicationId アプリケーションID   credentialId クレデンシャルキー   adInfoEnabled 広告情報の送信設定。YES: 送信する NO:送信しない    起動イベントの送信 アプリケーションの起動イベントを送信します。</description>
     </item>
     
     <item>
       <title>リリースノート</title>
-      <link>http://support.growthbeat.com/sdk/cocos2dx/release/</link>
+      <link>https://support.growthbeat.com/sdk/cocos2dx/release/</link>
       <pubDate>Mon, 14 Sep 2015 14:32:58 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/cocos2dx/release/</guid>
-      <description> バージョン 2.0.6 バグ  最新のプッシュ通知以外で、アプリが起動しないバグを修正しました。  バージョン 2.0.4 変更点  Android SDK、iOS SDKの更新をしました。  バージョン 2.0.3 動作環境 Cocos2d-x 3.12
+      <guid>https://support.growthbeat.com/sdk/cocos2dx/release/</guid>
+      <description>バージョン 2.0.6 バグ  最新のプッシュ通知以外で、アプリが起動しないバグを修正しました。  バージョン 2.0.4 変更点  Android SDK、iOS SDKの更新をしました。  バージョン 2.0.3 動作環境 Cocos2d-x 3.12
 新機能  Growthbeatのインターフェースを変更しました。 Growth Analyticsの機能が無くなりました。 Growth Messageの表示機能が改善いたしました。  ドキュメント  Growthbeat 1.x SDKからの変更点について記載いたしました。  バージョン 1.2.6 動作環境 Cocos2d-x 3.7.2
 新機能  Growth Linkが対応いたしました。  ドキュメント  Growth Link についての導入方法を掲載しました。  バージョン 1.2.3 動作環境 Cocos2d-x 3.7.2
 新機能  Cocos SDKをリリースしました。  ドキュメント  導入方法について掲載しました。  </description>
@@ -356,34 +363,34 @@ Growthbeat API Growthbeatインスタンスの取得 Growthbeatインスタン�
     
     <item>
       <title>リリースノート</title>
-      <link>http://support.growthbeat.com/sdk/unity/release/</link>
+      <link>https://support.growthbeat.com/sdk/unity/release/</link>
       <pubDate>Mon, 14 Sep 2015 14:32:58 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/unity/release/</guid>
+      <guid>https://support.growthbeat.com/sdk/unity/release/</guid>
       <description>バージョン 2.0.9 変更点  GCM廃止に伴い、Firebaseへ移行実装いたしました。アップデートガイド  バージョン 2.0.8 バグ  Android 8.1等の一部端末で、タグ、イベント登録が失敗する挙動を修正しました。  バージョン 2.0.7 変更点  (Android) Android 8.0以上をターゲットとした場合に、通知が受け取れるように対応 (Android) BigTextStyleに対応 Growth Link機能を削除  バージョン 2.0.6 バグ  Android 通知一覧に複数通知がある場合に、アプリに遷移しない問題を修正しました。  バージョン 2.0.5 変更点  Android SDK、iOS SDKの更新をしました。         update 2.0.6
-バージョン 2.0.4        変更点  Android SDK、iOS SDKの更新をしました。  バージョン 2.0.2 変更点  Client APIの変更がありました。  バグ  Growthbeat 1.</description>
+       バージョン 2.0.4 変更点  Android SDK、iOS SDKの更新をしました。  バージョン 2.0.2 変更点  Client APIの変更がありました。  バグ  Growthbeat 1.</description>
     </item>
     
     <item>
       <title>Growthbeat Web API</title>
-      <link>http://support.growthbeat.com/sdk/web/reference/</link>
+      <link>https://support.growthbeat.com/sdk/web/reference/</link>
       <pubDate>Tue, 17 Feb 2015 14:32:58 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/web/reference/</guid>
+      <guid>https://support.growthbeat.com/sdk/web/reference/</guid>
       <description>Version 1.1.4
 Growth Push API 初期化 Growth Pushの初期化を行います。
-init(params:Params):void  パラメータ
+init(params:Params):void パラメータ
    項目名 詳細     params Paramsオブジェクト    Paramsオブジェクト
-interface Params { applicationId:number; credentialId:string; environment?:string; receiver:string; appName:string; icon:string; clickEventName:string; }     項目名 詳細     applicationId Growth Push管理画面のアプリID   credentialId Growth Push管理画面のシークレットキー   environment 本番環境: production 開発環境: development   receiver 本番環境: /growthpush-sw.min.js 開発環境: /growthpush-sw.js   appName アプリ名。通知のタイトルで表示されます。   icon アイコン画像。通知のアイコンで表示されます。   clickEventName 通知クリックのイベント。例: NotificationClick    RegistrationIdの取得・送信 register():void  イベントインターフェイス イベント購読 イベントを購読します。</description>
+interface Params { applicationId:number; credentialId:string; environment?:string; receiver:string; appName:string; icon:string; clickEventName:string; }    項目名 詳細     applicationId Growth Push管理画面のアプリID   credentialId Growth Push管理画面のシークレットキー   environment 本番環境: production 開発環境: development   receiver 本番環境: /growthpush-sw.min.js 開発環境: /growthpush-sw.js   appName アプリ名。通知のタイトルで表示されます。   icon アイコン画像。通知のアイコンで表示されます。   clickEventName 通知クリックのイベント。例: NotificationClick    RegistrationIdの取得・送信 register():void イベントインターフェイス イベント購読 イベントを購読します。</description>
     </item>
     
     <item>
       <title>リリースノート</title>
-      <link>http://support.growthbeat.com/sdk/web/release/</link>
+      <link>https://support.growthbeat.com/sdk/web/release/</link>
       <pubDate>Tue, 17 Feb 2015 14:32:58 +0900</pubDate>
       
-      <guid>http://support.growthbeat.com/sdk/web/release/</guid>
-      <description> バージョン 1.1.4 バグフィックス  非対応環境でのエラー修正  バージョン 1.1.3 新機能  Push通知許可取得成功時にイベントを発行するようにしました。 カスタムフィールドで通知のタイトルとアイコンを変えられるようにしました。 カスタムフィールドに通知IDを追加した場合、通知毎の起動イベントを送信するようにしました。  バージョン 1.1.2 変更点  タグ、イベントの送信機構を変更  バージョン 1.1.1 変更点  Android OS以外で動作しないように変更  バグフィックス  push通知が受信できないバグ修正  ドキュメント  レシーバーファイルのパスのドキュメント修正  バージョン 1.1.0 新機能  通知状態取得インターフェイス追加  変更点  レシーバーファイルの変更 各インターフェイス変更  バージョン 1.0.1 新機能  タグ・イベントの追加  変更点  初期化インターフェース変更  バージョン 1.0.0  Growth Push For Chromeリリース  </description>
+      <guid>https://support.growthbeat.com/sdk/web/release/</guid>
+      <description>バージョン 1.1.4 バグフィックス  非対応環境でのエラー修正  バージョン 1.1.3 新機能  Push通知許可取得成功時にイベントを発行するようにしました。 カスタムフィールドで通知のタイトルとアイコンを変えられるようにしました。 カスタムフィールドに通知IDを追加した場合、通知毎の起動イベントを送信するようにしました。  バージョン 1.1.2 変更点  タグ、イベントの送信機構を変更  バージョン 1.1.1 変更点  Android OS以外で動作しないように変更  バグフィックス  push通知が受信できないバグ修正  ドキュメント  レシーバーファイルのパスのドキュメント修正  バージョン 1.1.0 新機能  通知状態取得インターフェイス追加  変更点  レシーバーファイルの変更 各インターフェイス変更  バージョン 1.0.1 新機能  タグ・イベントの追加  変更点  初期化インターフェース変更  バージョン 1.0.0  Growth Push For Chromeリリース  </description>
     </item>
     
   </channel>

@@ -10,7 +10,7 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="Growthbeat iOS API | Growthbeatドキュメント |">
-  <meta property="og:url" content="http://support.growthbeat.com/sdk/ios/reference/">
+  <meta property="og:url" content="https://support.growthbeat.com/sdk/ios/reference/">
   <meta property="og:description" content="Growthbeat iOS の API について説明します">
   
   <meta property="article:author" content="" />
@@ -26,7 +26,7 @@
   
   <link rel="shortcut icon" href="/favicon.ico">
 
-  <link rel="stylesheet" href="http://support.growthbeat.com/css/main.css" />
+  <link rel="stylesheet" href="https://support.growthbeat.com/css/main.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
 </head>
 
@@ -51,7 +51,7 @@
     <nav class="header-nav">
       <h1 class="logo">
         <a class="link"href="https://growthbeat.com/">
-          <img src="http://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
+          <img src="https://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
         </a>
       </h1>
 
@@ -72,10 +72,10 @@
   <div class="container">
     <ul class="breadcrumb">
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/">サポートページ</a>
+        <a class="link" href="https://support.growthbeat.com/">サポートページ</a>
       </li>
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/sdk/">SDKドキュメント</a>
+        <a class="link" href="https://support.growthbeat.com/sdk/">SDKドキュメント</a>
       </li>
       
         <li class="item"><a class="link">APIリファレンス</a></li>
@@ -107,67 +107,53 @@
 <section class="row markdown">
     <div class="column column-sidebar">
       <nav id="TableOfContents">
-<ul>
-<li><a href="#growthbeat-api">Growthbeat API</a>
-<ul>
-<li><a href="#growthbeatインスタンスの取得">Growthbeatインスタンスの取得</a></li>
-<li><a href="#ログの停止">ログの停止</a></li>
-<li><a href="#intenthandlerを追加する">IntentHandlerを追加する。</a></li>
-</ul></li>
-<li><a href="#growth-push-api">Growth Push API</a>
-<ul>
-<li><a href="#growthpushインスタンスの取得">GrowthPushインスタンスの取得</a></li>
-<li><a href="#初期化">初期化</a></li>
-<li><a href="#デバイストークンの取得-送信">デバイストークンの取得・送信</a>
-<ul>
-<li><a href="#デバイストークンの取得">デバイストークンの取得</a></li>
-<li><a href="#デバイストークンの送信">デバイストークンの送信</a></li>
-</ul></li>
-<li><a href="#プッシュ通知の有効-無効を判定">プッシュ通知の有効・無効を判定</a></li>
-<li><a href="#イベントの送信">イベントの送信</a>
-<ul>
-<li><a href="#イベントの送信-1">イベントの送信</a></li>
-<li><a href="#イベントと任意の値の送信">イベントと任意の値の送信</a></li>
-<li><a href="#イベントと任意の値の送信-1">イベントと任意の値の送信</a></li>
-<li><a href="#ポップアップメッセージ表示">ポップアップメッセージ表示</a></li>
-</ul></li>
-<li><a href="#タグの送信">タグの送信</a>
-<ul>
-<li><a href="#タグの送信-1">タグの送信</a></li>
-<li><a href="#タグと任意の値の送信">タグと任意の値の送信</a></li>
-</ul></li>
-<li><a href="#バッチクリア">バッチクリア</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#growthbeat">Growthbeatインスタンスの取得</a></li>
+    <li><a href="#heading">ログの停止</a></li>
+    <li><a href="#intenthandler">IntentHandlerを追加する。</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#growthpush">GrowthPushインスタンスの取得</a></li>
+    <li><a href="#heading-1">初期化</a></li>
+    <li><a href="#heading-2">デバイストークンの取得・送信</a>
+      <ul>
+        <li><a href="#heading-3">デバイストークンの取得</a></li>
+        <li><a href="#heading-4">デバイストークンの送信</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-5">プッシュ通知の有効・無効を判定</a></li>
+    <li><a href="#heading-6">イベントの送信</a>
+      <ul>
+        <li><a href="#heading-7">イベントの送信</a></li>
+        <li><a href="#heading-8">イベントと任意の値の送信</a></li>
+        <li><a href="#heading-9">イベントと任意の値の送信</a></li>
+        <li><a href="#heading-10">ポップアップメッセージ表示</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-11">タグの送信</a>
+      <ul>
+        <li><a href="#heading-12">タグの送信</a></li>
+        <li><a href="#heading-13">タグと任意の値の送信</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-14">バッチクリア</a></li>
+  </ul>
 </nav>
     </div>
     <div class="column column-main">
       <div class="typeset">
-        
-
-<p>Version 2.0.8</p>
-
+        <p>Version 2.0.8</p>
 <p><a href="/sdk/ios/reference-1.2.7">iOS SDK 1.2.7以下</a>のリファレンスはこちら</p>
-
 <h1 id="growthbeat-api">Growthbeat API</h1>
-
-<h2 id="growthbeatインスタンスの取得">Growthbeatインスタンスの取得</h2>
-
+<h2 id="growthbeat">Growthbeatインスタンスの取得</h2>
 <p>Growthbeatインスタンスを取得します。</p>
-
-<pre><code class="language-objc">+ (instancetype)sharedInstance;
-</code></pre>
-
-<h2 id="ログの停止">ログの停止</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">+ (<span style="color:#66d9ef">instancetype</span>)<span style="color:#a6e22e">sharedInstance</span>;
+</code></pre></div><h2 id="heading">ログの停止</h2>
 <p>Growthbeat SDKからのログ出力を全て停止します。
 デフォルトでは、ログ出力がおこなわれます。</p>
-
-<pre><code class="language-objc">- (void) setLoggerSilent:(BOOL silent);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#66d9ef">void</span>) <span style="color:#a6e22e">setLoggerSilent:</span>(<span style="color:#66d9ef">BOOL</span> silent);
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -175,7 +161,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">silent</td>
@@ -183,45 +168,27 @@
 </tr>
 </tbody>
 </table>
-
-<h2 id="intenthandlerを追加する">IntentHandlerを追加する。</h2>
-
-<pre><code class="language-objc">[[Growthbeat sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent *customIntent) {
-        NSDictionary * extra = customIntent.extra;
-        NSLog(@&quot;extra: %@&quot;, extra);
-        return YES;
+<h2 id="intenthandler">IntentHandlerを追加する。</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[[Growthbeat sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:<span style="color:#f92672">^</span><span style="color:#66d9ef">BOOL</span>(GBCustomIntent <span style="color:#f92672">*</span>customIntent) {
+        NSDictionary <span style="color:#f92672">*</span> extra <span style="color:#f92672">=</span> customIntent.extra;
+        NSLog(<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">extra: %@</span><span style="color:#e6db74">&#34;</span>, extra);
+        <span style="color:#66d9ef">return</span> YES;
 }]];
-</code></pre>
-
-<h1 id="growth-push-api">Growth Push API</h1>
-
-<h2 id="growthpushインスタンスの取得">GrowthPushインスタンスの取得</h2>
-
+</code></pre></div><h1 id="growth-push-api">Growth Push API</h1>
+<h2 id="growthpush">GrowthPushインスタンスの取得</h2>
 <p>GrowthPushインスタンスを取得します。</p>
-
-<pre><code class="language-objc">+ (instancetype)sharedInstance;
-</code></pre>
-
-<h2 id="初期化">初期化</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">+ (<span style="color:#66d9ef">instancetype</span>)<span style="color:#a6e22e">sharedInstance</span>;
+</code></pre></div><h2 id="heading-1">初期化</h2>
 <p>GrowthbeatおよびGrowth Pushの初期化を行います。初期化では以下の処理が行われます。</p>
-
 <ul>
 <li>デバイス登録、認証</li>
 <li>Growth Pushの初期化</li>
 <li>基本情報の送信</li>
 </ul>
-
-<pre><code class="language-objc">- (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId environment:(GPEnvironment)environment;
-</code></pre>
-
-<p>広告情報を保持しない場合</p>
-
-<pre><code class="language-objc">- (void)initializeWithApplicationId:(NSString *)applicationId credentialId:(NSString *)credentialId environment:(GPEnvironment)environment adInfoEnable:(BOOL)adInfoEnable;
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">initializeWithApplicationId:</span>(NSString <span style="color:#f92672">*</span>)applicationId <span style="color:#a6e22e">credentialId:</span>(NSString <span style="color:#f92672">*</span>)credentialId <span style="color:#a6e22e">environment:</span>(GPEnvironment)environment;
+</code></pre></div><p>広告情報を保持しない場合</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">initializeWithApplicationId:</span>(NSString <span style="color:#f92672">*</span>)applicationId <span style="color:#a6e22e">credentialId:</span>(NSString <span style="color:#f92672">*</span>)credentialId <span style="color:#a6e22e">environment:</span>(GPEnvironment)environment <span style="color:#a6e22e">adInfoEnable:</span>(<span style="color:#66d9ef">BOOL</span>)adInfoEnable;
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -229,63 +196,39 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">applicationId</td>
 <td align="left">アプリケーションID</td>
 </tr>
-
 <tr>
 <td align="left">credentialId</td>
 <td align="left">クレデンシャルキー</td>
 </tr>
-
 <tr>
 <td align="left">environment</td>
 <td align="left">開発用: <code>Environment.development</code> 本番用: <code>Environment.production</code>　</td>
 </tr>
-
 <tr>
 <td align="left">adInfoEnable</td>
 <td align="left">指定にかかわらず Growth Pushに広告IDを渡しません</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="デバイストークンの取得-送信">デバイストークンの取得・送信</h2>
-
-<h3 id="デバイストークンの取得">デバイストークンの取得</h3>
-
-<pre><code class="language-objc">- (void)requestDeviceToken;
-</code></pre>
-
-<p>このメソッドを実行すると、アプリ初回起動時に、プッシュ通知の許可ダイアログが表示されます。</p>
-
-<h3 id="デバイストークンの送信">デバイストークンの送信</h3>
-
-<pre><code class="language-objc">- (void)setDeviceToken:(id)deviceToken;
-</code></pre>
-
-<p>AppDelegateクラスの didRegisterForRemoteNotificationsWithDeviceToken に必ず実装してください。</p>
-
-<pre><code class="language-objc">- (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken`
-</code></pre>
-
-<h2 id="プッシュ通知の有効-無効を判定">プッシュ通知の有効・無効を判定</h2>
-
-<pre><code class="language-objc">- (BOOL)enableNotification;
-</code></pre>
-
-<h2 id="イベントの送信">イベントの送信</h2>
-
-<h3 id="イベントの送信-1">イベントの送信</h3>
-
-<pre><code class="language-objc">- (void)trackEvent:(NSString *)name;
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h2 id="heading-2">デバイストークンの取得・送信</h2>
+<h3 id="heading-3">デバイストークンの取得</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">requestDeviceToken</span>;
+</code></pre></div><p>このメソッドを実行すると、アプリ初回起動時に、プッシュ通知の許可ダイアログが表示されます。</p>
+<h3 id="heading-4">デバイストークンの送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">setDeviceToken:</span>(<span style="color:#66d9ef">id</span>)deviceToken;
+</code></pre></div><p>AppDelegateクラスの didRegisterForRemoteNotificationsWithDeviceToken に必ず実装してください。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#66d9ef">void</span>) <span style="color:#a6e22e">application:</span>(UIApplication <span style="color:#f92672">*</span>)application <span style="color:#a6e22e">didRegisterForRemoteNotificationsWithDeviceToken:</span>(NSData <span style="color:#f92672">*</span>)deviceToken<span style="color:#960050;background-color:#1e0010">`</span>
+</code></pre></div><h2 id="heading-5">プッシュ通知の有効・無効を判定</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#66d9ef">BOOL</span>)<span style="color:#a6e22e">enableNotification</span>;
+</code></pre></div><h2 id="heading-6">イベントの送信</h2>
+<h3 id="heading-7">イベントの送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">trackEvent:</span>(NSString <span style="color:#f92672">*</span>)name;
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -293,7 +236,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
@@ -301,14 +243,9 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="イベントと任意の値の送信">イベントと任意の値の送信</h3>
-
-<pre><code class="language-objc">- (void)trackEvent:(NSString *)name value:(NSString *)value;
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h3 id="heading-8">イベントと任意の値の送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">trackEvent:</span>(NSString <span style="color:#f92672">*</span>)name <span style="color:#a6e22e">value:</span>(NSString <span style="color:#f92672">*</span>)value;
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -316,27 +253,20 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
 <td align="left">イベント名</td>
 </tr>
-
 <tr>
 <td align="left">value</td>
 <td align="left">イベントに持たせる値</td>
 </tr>
 </tbody>
 </table>
-
-<h3 id="イベントと任意の値の送信-1">イベントと任意の値の送信</h3>
-
-<pre><code class="language-objc">- (void)trackEvent:(NSString *)name value:(NSString *)value showMessage:(void (^)(void(^renderMessage)()))showMessageHandler failure:(void (^)(NSString *detail))failureHandler;
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h3 id="heading-9">イベントと任意の値の送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">trackEvent:</span>(NSString <span style="color:#f92672">*</span>)name <span style="color:#a6e22e">value:</span>(NSString <span style="color:#f92672">*</span>)value <span style="color:#a6e22e">showMessage:</span>(<span style="color:#66d9ef">void</span> (<span style="color:#f92672">^</span>)(<span style="color:#66d9ef">void</span>(<span style="color:#f92672">^</span>renderMessage)()))showMessageHandler <span style="color:#a6e22e">failure:</span>(<span style="color:#66d9ef">void</span> (<span style="color:#f92672">^</span>)(NSString <span style="color:#f92672">*</span>detail))failureHandler;
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -344,49 +274,36 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
 <td align="left">イベント名</td>
 </tr>
-
 <tr>
 <td align="left">value</td>
 <td align="left">イベントに持たせる値</td>
 </tr>
-
 <tr>
 <td align="left">messageHander</td>
 <td align="left">メッセージ表示準備完了時のコールバック</td>
 </tr>
-
 <tr>
 <td align="left">failureHandler</td>
 <td align="left">メッセージ処理中にエラーが発生した場合のコールバック</td>
 </tr>
 </tbody>
 </table>
-
-<h3 id="ポップアップメッセージ表示">ポップアップメッセージ表示</h3>
-
-<pre><code class="language-objc">[[GrowthPush sharedInstance] trackEvent:@&quot;Launch&quot; value:nil showMessage:^(void(^renderMessage)()){
-    // コールすることでメッセージが表示されます。
-    renderMessage();
-} failure:^(NSString * detail) {
-    // detailはエラーメッセージが返ってきます。
-}];
-</code></pre>
-
-<h2 id="タグの送信">タグの送信</h2>
-
-<h3 id="タグの送信-1">タグの送信</h3>
-
-<pre><code class="language-objc">- (void)setTag:(NSString *)name;
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h3 id="heading-10">ポップアップメッセージ表示</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[[GrowthPush sharedInstance] trackEvent:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">Launch</span><span style="color:#e6db74">&#34;</span> value:nil showMessage:<span style="color:#f92672">^</span>(<span style="color:#66d9ef">void</span>(<span style="color:#f92672">^</span>renderMessage)()){
+    <span style="color:#75715e">// コールすることでメッセージが表示されます。
+</span><span style="color:#75715e"></span>    renderMessage();
+} failure:<span style="color:#f92672">^</span>(NSString <span style="color:#f92672">*</span> detail) {
+    <span style="color:#75715e">// detailはエラーメッセージが返ってきます。
+</span><span style="color:#75715e"></span>}];
+</code></pre></div><h2 id="heading-11">タグの送信</h2>
+<h3 id="heading-12">タグの送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">setTag:</span>(NSString <span style="color:#f92672">*</span>)name;
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -394,7 +311,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
@@ -402,14 +318,9 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="タグと任意の値の送信">タグと任意の値の送信</h3>
-
-<pre><code class="language-objc">- (void)setTag:(NSString *)name value:(NSString *)value;
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h3 id="heading-13">タグと任意の値の送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">setTag:</span>(NSString <span style="color:#f92672">*</span>)name <span style="color:#a6e22e">value:</span>(NSString <span style="color:#f92672">*</span>)value;
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -417,54 +328,23 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
 <td align="left">タグ名</td>
 </tr>
-
 <tr>
 <td align="left">value</td>
 <td align="left">タグに持たせる値</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="バッチクリア">バッチクリア</h2>
-
+<h2 id="heading-14">バッチクリア</h2>
 <p>配信時に、バッチにチェックマークを付けた場合、バッチをクリアするためのメソッドです。
 iOSのみ利用できます。</p>
-
-<pre><code class="language-objc">- (void)clearBadge;
-</code></pre>
-
-<!--
-# Growth Link API
-
-## GrowthLinkインスタンスの取得
-
-GrowthLinkインスタンスを取得します。
-
-```objc
-+ (instancetype)sharedInstance;
-```
-
-## Growth Linkの初期化
-
-Growthbeatへデバイス登録・認証を行います。
-
-```objc
-- (void)initializeWithApplicationId:(NSString *)applicationId APPLICATION_ID:(NSString *)credentialId;
-```
-
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|applicationId| アプリケーションID |
-|credentialId| クレデンシャルキー |
--->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">clearBadge</span>;
+</code></pre></div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 
       </div>
     </div>
@@ -483,7 +363,7 @@ Growthbeatへデバイス登録・認証を行います。
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-<script src="http://support.growthbeat.com/js/sirok-scrollspy.js"></script>
+<script src="https://support.growthbeat.com/js/sirok-scrollspy.js"></script>
 <script>
 $(function() {
   $('pre code, code').each(function(i, block) {

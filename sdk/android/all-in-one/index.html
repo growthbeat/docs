@@ -10,7 +10,7 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="Growthbeat Android SDK | 全機能利用ガイド | Growthbeatドキュメント |">
-  <meta property="og:url" content="http://support.growthbeat.com/sdk/android/all-in-one/">
+  <meta property="og:url" content="https://support.growthbeat.com/sdk/android/all-in-one/">
   <meta property="og:description" content="Growthbeat SDK for Android の導入方法について説明します">
   
   <meta property="article:author" content="" />
@@ -26,7 +26,7 @@
   
   <link rel="shortcut icon" href="/favicon.ico">
 
-  <link rel="stylesheet" href="http://support.growthbeat.com/css/main.css" />
+  <link rel="stylesheet" href="https://support.growthbeat.com/css/main.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
 </head>
 
@@ -51,7 +51,7 @@
     <nav class="header-nav">
       <h1 class="logo">
         <a class="link"href="https://growthbeat.com/">
-          <img src="http://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
+          <img src="https://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
         </a>
       </h1>
 
@@ -72,10 +72,10 @@
   <div class="container">
     <ul class="breadcrumb">
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/">サポートページ</a>
+        <a class="link" href="https://support.growthbeat.com/">サポートページ</a>
       </li>
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/sdk/">SDKドキュメント</a>
+        <a class="link" href="https://support.growthbeat.com/sdk/">SDKドキュメント</a>
       </li>
       
       
@@ -107,150 +107,58 @@
 <section class="row markdown">
     <div class="column column-sidebar">
       <nav id="TableOfContents">
-<ul>
-<li><a href="#growthbeat利用ガイド">Growthbeat利用ガイド</a></li>
-<li><a href="#1-growth-pushを利用">1. Growth Pushを利用</a></li>
-<li><a href="#2-growth-messageを利用">2. Growth Messageを利用</a>
-<ul>
-<li><a href="#実装コード">実装コード</a></li>
-<li><a href="#androidmanifest-xml設定">AndroidManifest.xml設定</a></li>
-<li><a href="#管理画面設定方法">管理画面設定方法</a></li>
-</ul></li>
-<li><a href="#備考">備考</a>
-<ul>
-<li><a href="#最新版のsdkへの乗り換え方法">最新版のSDKへの乗り換え方法</a></li>
-<li><a href="#サンプルについて">サンプルについて</a></li>
-</ul></li>
-<li><a href="#お問い合わせ">お問い合わせ</a></li>
-</ul>
+  <ul>
+    <li><a href="#heading">実装コード</a></li>
+    <li><a href="#androidmanifestxml">AndroidManifest.xml設定</a></li>
+    <li><a href="#heading-1">管理画面設定方法</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#sdk">最新版のSDKへの乗り換え方法</a></li>
+    <li><a href="#heading-3">サンプルについて</a></li>
+  </ul>
 </nav>
     </div>
     <div class="column column-main">
       <div class="typeset">
-        
-
-<p>Version 2.0.11</p>
-
-<h1 id="growthbeat利用ガイド">Growthbeat利用ガイド</h1>
-
-<h1 id="1-growth-pushを利用">1. Growth Pushを利用</h1>
-
+        <p>Version 2.0.11</p>
+<h1 id="growthbeat">Growthbeat利用ガイド</h1>
+<h1 id="1-growth-push">1. Growth Pushを利用</h1>
 <p>Growth Pushのみを利用する<a href="/sdk/android/guide">導入方法</a>をご覧ください。</p>
-
-<h1 id="2-growth-messageを利用">2. Growth Messageを利用</h1>
-
-<p>Growth Message を用いてポップアップを任意のタイミングで表示させるには、「<a href="http://support.growthbeat.com/manual/growthmessage/#配信トリガー">配信トリガー</a>」 を設定します。「<a href="http://support.growthbeat.com/manual/growthmessage/#配信トリガー">配信トリガー</a>」 は作成したカスタムイベントの中から選ぶ必要がございます。</p>
-
-<h2 id="実装コード">実装コード</h2>
-
+<h1 id="2-growth-message">2. Growth Messageを利用</h1>
+<p>Growth Message を用いてポップアップを任意のタイミングで表示させるには、「<a href="https://support.growthbeat.com/manual/growthmessage/#%E9%85%8D%E4%BF%A1%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC">配信トリガー</a>」 を設定します。「<a href="https://support.growthbeat.com/manual/growthmessage/#%E9%85%8D%E4%BF%A1%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC">配信トリガー</a>」 は作成したカスタムイベントの中から選ぶ必要がございます。</p>
+<h2 id="heading">実装コード</h2>
 <p>配信トリガーとなるカスタムイベントを作成するには、ポップアップメッセージを表示させたい任意の場所に下記のようなイベントを送信するメソッドを記述してください。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MainActivity</span> <span style="color:#66d9ef">extends</span> Activity <span style="color:#f92672">{</span>
 
-<pre><code class="language-java">class MainActivity extends Activity {
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCreate</span><span style="color:#f92672">(</span>Bundle savedInstanceState<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">super</span><span style="color:#f92672">.</span><span style="color:#a6e22e">onCreated</span><span style="color:#f92672">(</span>savedInstanceState<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreated(savedInstanceState);
-
-        //...
-        GrowthPush.getInstance().trackEvent(&quot;OpenActivity&quot;);
-    }
-}
-</code></pre>
-
-<h2 id="androidmanifest-xml設定">AndroidManifest.xml設定</h2>
-
+        <span style="color:#75715e">//...
+</span><span style="color:#75715e"></span>        GrowthPush<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">trackEvent</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;OpenActivity&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="androidmanifestxml">AndroidManifest.xml設定</h2>
 <p>AndroidManifest.xmlにGrowth Message表示用のActivityを追加します。</p>
-
-<pre><code class="language-xml">&lt;application&gt;
-    &lt;!-- ... --&gt;
-    &lt;activity
-        android:name=&quot;com.growthbeat.message.view.MessageActivity&quot;
-        android:theme=&quot;@android:style/Theme.Translucent&quot; /&gt;
-&lt;/application&gt;
-</code></pre>
-
-<h2 id="管理画面設定方法">管理画面設定方法</h2>
-
-<p>「<a href="http://support.growthbeat.com/manual/growthmessage/#配信トリガー">配信トリガー</a>」 で先程実装したイベント（今回の場合は OpenActivity）を選択すると、指定のイベントが発火したタイミングでメッセージが表示されます。<br />
-詳しいメッセージの作成方法は <a href="http://support.growthbeat.com/manual/growthmessage/#配信作成">配信作成</a> を参照してください。</p>
-
-<!--
-# 3. GrowthLinkを利用
-## 実装コード
-### 初期化
-Growth Linkの初期化処理を追加してください。
-IntentFilterを設定したActivityのonCreateで、handleOpenUrlメソッドを呼び出してください。
-
-```java
-class MainActivity extends Activity {
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreated(savedInstanceState);
-
-        //...
-        GrowthLink.getInstance().initialize(getApplicationContext(), "YOUR_APPLICATION_ID", "YOUR_CREDENTIAL_ID");
-        GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
-    }
-}
-```
-### ディープリンクアクションの実装
-SDKには、IntentHandlerが定義されており、この実装でディープリンク時のアクションを実装することができます。
-たとえば下記のような形で実装できます。
-
-```java
-class MyApplication extends Application {
-
-    @Override
-    public void onCreate() {
-        List<IntentHandler> intentHandlers = new ArrayList<IntentHandler>();
-        intentHandlers.add(new UrlIntentHandler(Growthbeat.getInstance().getContext()));
-        intentHandlers.add(new NoopIntentHandler());
-        intentHandlers.add(new IntentHandler() {
-            public boolean handle(com.growthbeat.model.Intent intent) {
-                if (intent.getType() != com.growthbeat.model.Intent.Type.custom)
-                    return false;
-                Map<String, String> extra = ((CustomIntent) intent).getExtra();
-                // TODO ここにアプリ内の画面を開く処理を実装します。
-                Log.d("Growth Link", "extra: " + extra);
-                return true;
-            }
-        });
-        Growthbeat.getInstance().setIntentHandlers(intentHandlers);
-    }
-}
-```
-## AndroidManifest.xml設定
-AndroidManifest.xmlにGrowth Link用のActivityを追加します。
-
-```xml
-<application>
-    ~~ 略 ~~
-    <receiver
-        android:name="com.growthbeat.link.InstallReferrerReceiver"
-        android:enabled="true"
-        android:exported="true" >
-        <intent-filter>
-            <action android:name="com.android.vending.INSTALL_REFERRER" />
-        </intent-filter>
-    </receiver>
-</application>
-```
--->
-
-<h1 id="備考">備考</h1>
-
-<h2 id="最新版のsdkへの乗り換え方法">最新版のSDKへの乗り換え方法</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;application</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> ... </span><span style="color:#75715e">--&gt;</span>
+    <span style="color:#f92672">&lt;activity</span>
+        <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthbeat.message.view.MessageActivity&#34;</span>
+        <span style="color:#a6e22e">android:theme=</span><span style="color:#e6db74">&#34;@android:style/Theme.Translucent&#34;</span> <span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;/application&gt;</span>
+</code></pre></div><h2 id="heading-1">管理画面設定方法</h2>
+<p>「<a href="https://support.growthbeat.com/manual/growthmessage/#%E9%85%8D%E4%BF%A1%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC">配信トリガー</a>」 で先程実装したイベント（今回の場合は OpenActivity）を選択すると、指定のイベントが発火したタイミングでメッセージが表示されます。<br>
+詳しいメッセージの作成方法は <a href="https://support.growthbeat.com/manual/growthmessage/#%E9%85%8D%E4%BF%A1%E4%BD%9C%E6%88%90">配信作成</a> を参照してください。</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h1 id="heading-2">備考</h1>
+<h2 id="sdk">最新版のSDKへの乗り換え方法</h2>
 <p>Growth Push SDKからGrowthbeat 2.x SDK への乗り換えまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへの乗り換えをされる方は
 <a href="/sdk/android/upgrade">SDKの移行ガイド</a>をご参照ください。</p>
-
-<h2 id="サンプルについて">サンプルについて</h2>
-
+<h2 id="heading-3">サンプルについて</h2>
 <p>実装サンプルは、<a href="https://github.com/growthbeat/growthbeat-android">Githubレポジトリ</a>を参考にしてください。</p>
-
-<h1 id="お問い合わせ">お問い合わせ</h1>
-
+<h1 id="heading-4">お問い合わせ</h1>
 <p>ご不明な点などございます場合は、<a href="http://faq.growthbeat.com/">ヘルプページ</a>を閲覧してください。</p>
 
       </div>
@@ -270,7 +178,7 @@ AndroidManifest.xmlにGrowth Link用のActivityを追加します。
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-<script src="http://support.growthbeat.com/js/sirok-scrollspy.js"></script>
+<script src="https://support.growthbeat.com/js/sirok-scrollspy.js"></script>
 <script>
 $(function() {
   $('pre code, code').each(function(i, block) {

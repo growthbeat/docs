@@ -10,7 +10,7 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="Growthbeat iOS SDK | 全機能利用ガイド | Growthbeatドキュメント |">
-  <meta property="og:url" content="http://support.growthbeat.com/sdk/ios/all-in-one/">
+  <meta property="og:url" content="https://support.growthbeat.com/sdk/ios/all-in-one/">
   <meta property="og:description" content="Growthbeat iOS の導入方法について説明します">
   
   <meta property="article:author" content="" />
@@ -26,7 +26,7 @@
   
   <link rel="shortcut icon" href="/favicon.ico">
 
-  <link rel="stylesheet" href="http://support.growthbeat.com/css/main.css" />
+  <link rel="stylesheet" href="https://support.growthbeat.com/css/main.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
 </head>
 
@@ -51,7 +51,7 @@
     <nav class="header-nav">
       <h1 class="logo">
         <a class="link"href="https://growthbeat.com/">
-          <img src="http://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
+          <img src="https://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
         </a>
       </h1>
 
@@ -72,10 +72,10 @@
   <div class="container">
     <ul class="breadcrumb">
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/">サポートページ</a>
+        <a class="link" href="https://support.growthbeat.com/">サポートページ</a>
       </li>
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/sdk/">SDKドキュメント</a>
+        <a class="link" href="https://support.growthbeat.com/sdk/">SDKドキュメント</a>
       </li>
       
       
@@ -107,194 +107,49 @@
 <section class="row markdown">
     <div class="column column-sidebar">
       <nav id="TableOfContents">
-<ul>
-<li><a href="#growthbeat利用ガイド">Growthbeat利用ガイド</a></li>
-<li><a href="#1-growth-pushを利用">1. Growth Pushを利用</a></li>
-<li><a href="#2-growth-messageを利用">2. Growth Messageを利用</a>
-<ul>
-<li><a href="#実装コード">実装コード</a></li>
-<li><a href="#管理画面設定方法">管理画面設定方法</a></li>
-</ul></li>
-<li><a href="#備考">備考</a>
-<ul>
-<li><a href="#最新版のsdkへの乗り換え方法">最新版のSDKへの乗り換え方法</a></li>
-<li><a href="#サンプルについて">サンプルについて</a></li>
-</ul></li>
-<li><a href="#お問い合わせ">お問い合わせ</a></li>
-</ul>
+  <ul>
+    <li><a href="#heading">実装コード</a></li>
+    <li><a href="#heading-1">管理画面設定方法</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#sdk">最新版のSDKへの乗り換え方法</a></li>
+    <li><a href="#heading-3">サンプルについて</a></li>
+  </ul>
 </nav>
     </div>
     <div class="column column-main">
       <div class="typeset">
-        
-
-<p>Version 2.0.6</p>
-
-<h1 id="growthbeat利用ガイド">Growthbeat利用ガイド</h1>
-
-<h1 id="1-growth-pushを利用">1. Growth Pushを利用</h1>
-
+        <p>Version 2.0.6</p>
+<h1 id="growthbeat">Growthbeat利用ガイド</h1>
+<h1 id="1-growth-push">1. Growth Pushを利用</h1>
 <p>Growth Pushのみを利用する<a href="/sdk/ios/guide">導入方法</a>をご覧ください。</p>
-
-<h1 id="2-growth-messageを利用">2. Growth Messageを利用</h1>
-
-<p>Growth Message を用いてポップアップを任意のタイミングで表示させるには、「<a href="http://support.growthbeat.com/manual/growthmessage/#配信トリガー">配信トリガー</a>」 を設定します。「<a href="http://support.growthbeat.com/manual/growthmessage/#配信トリガー">配信トリガー</a>」 は作成したカスタムイベントの中から選ぶ必要がございます。</p>
-
-<h2 id="実装コード">実装コード</h2>
-
+<h1 id="2-growth-message">2. Growth Messageを利用</h1>
+<p>Growth Message を用いてポップアップを任意のタイミングで表示させるには、「<a href="https://support.growthbeat.com/manual/growthmessage/#%E9%85%8D%E4%BF%A1%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC">配信トリガー</a>」 を設定します。「<a href="https://support.growthbeat.com/manual/growthmessage/#%E9%85%8D%E4%BF%A1%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC">配信トリガー</a>」 は作成したカスタムイベントの中から選ぶ必要がございます。</p>
+<h2 id="heading">実装コード</h2>
 <p>配信トリガーとなるカスタムイベントを作成するには、ポップアップメッセージを表示させたい任意の場所に下記のようなイベントを送信するメソッドを記述してください。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#75715e">// ViewController.m
+</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">import &lt;Growthbeat</span><span style="color:#75715e">/</span><span style="color:#75715e">Growthbeat.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">@implementation</span> <span style="color:#a6e22e">ViewController</span>
 
-<pre><code class="language-objc">// ViewController.m
-#import &lt;Growthbeat/Growthbeat.h&gt;
-
-@implementation ViewController
-
-- (void) viewDidLoad:() {
-    [[GrowthPush sharedInstance] trackEvent:@&quot;OpenViewController&quot;];
+- (<span style="color:#66d9ef">void</span>) <span style="color:#a6e22e">viewDidLoad:</span>() {
+    [[GrowthPush sharedInstance] trackEvent:<span style="color:#e6db74">@&#34;</span><span style="color:#e6db74">OpenViewController</span><span style="color:#e6db74">&#34;</span>];
 }
 
-@end
-</code></pre>
-
-<h2 id="管理画面設定方法">管理画面設定方法</h2>
-
-<p>「<a href="http://support.growthbeat.com/manual/growthmessage/#配信トリガー">配信トリガー</a>」 で先程実装したイベント（今回の場合は OpenViewController）を選択すると、指定のイベントが発火したタイミングでメッセージが表示されます。</p>
-
-<p>詳しいメッセージの作成方法は <a href="/manual/growthmessage/#配信作成">配信作成</a> を参照してください。</p>
-
-<!--  
-# 3. Growth Linkを利用  
-## 実装コード  
-### 初期化  
-SafariServices.frameworkを追加します。  
-Growth Linkの初期化処理を呼び出してください。 **APPLICATION_ID** と **CREDENTIAL_ID** は
-Growthbeatの初期化時と同じものです。  
-URL起動の処理で、handleOpenUrl:urlメソッドを呼び出します。  
-
-```objc
-// AppDelegate.m
-#import <Growthbeat/Growthbeat.h>
-
-@implementation AppDelegate
-
-- (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary* )launchOptions {
-    // ...
-    [[GrowthLink sharedInstance] initializeWithApplicationId:@"APPLICATION_ID" credentialId:@"CREDENTIAL_ID"];
-}
-
-- (BOOL) application:(UIApplication*) application openURL:(NSURL* )url sourceApplication:(NSString* )sourceApplication annotation:(id) annotation {
-    [[GrowthLink sharedInstance] handleOpenUrl:url];
-    return YES;
-}
-
-- (BOOL) application:(UIApplication* )application continueUserActivity:(NSUserActivity* )userActivity restorationHandler:(void (^)(NSArray* \_Nullable)) restorationHandler {
-    if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
-        NSURL * webpageURL = userActivity.webpageURL;
-        [[GrowthLink sharedInstance] handleUniversalLinks:webpageURL];
-    }
-    return true;
-}
-
-
-@end
-```
-
-### ディープリンクアクションの実装  
-SDKには、GBIntentHandlerが定義されており、この実装でディープリンク時のアクションを実装することができます。  
-たとえば下記のような形で実装できます。  
-
-```objc
-// AppDelegate.m
-#import <Growthbeat/Growthbeat.h>
-
-@implementation AppDelegate
-
-- (BOOL) application:(UIApplication* )application didFinishLaunchingWithOptions:(NSDictionary* )launchOptions {
-    //...
-
-    [[Growthbeat sharedInstance] addIntentHandler:[[GBCustomIntentHandler alloc] initWithBlock:^BOOL(GBCustomIntent* customIntent) {
-           NSDictionary* extra = customIntent.extra;
-           NSLog(@"extra: %@", extra);
-           return YES;
-   }]];
-
-}
-
-@end
-```
-
-## プロジェクトへディープリンクの設定  
-iOS9以上の場合は、UniversalLinksの設定が必須となります。iOS9未満のみ対応させる場合は、スキーム設定を行うだけです。  
-### プロジェクトのAssociated Domainsを有効にする  
-Apple Developers Member Center にアクセスし “Certificate, Identifiers & Profiles” を選択します。その後"Identifers"をクリックします。  
-
-<img src="/img/link/guide-universal-01.png" alt="guide-universal-01" title="guide-universal-01" width="100%"/>
-
-<img src="/img/link/guide-universal-02.png" alt="guide-universal-02" title="guide-universal-02" width="30%"/>
-
-Identiferを登録済みの時は"Edit"から編集を、未登録のときは"+"ボタンから新たに登録をします。
-<img src="/img/link/guide-universal-03.png" alt="guide-universal-03" title="guide-universal-03" width="100%"/>
-
-App Servicesの欄で、Associated Domainsにチェックをてください。  
-
-<img src="/img/link/guide-universal-04.png" alt="guide-universal-04" title="guide-universal-04" width="100%"/>
-
-Saveボタンを押し、保存してください。  
-Apple Developers Member Center での設定は以上です。  
-### Xcodeプロジェクト設定  
-
-**動作の注意**  
-`General -> Identity -> Version`　が空欄であると正常に動作しません。
-正しいバージョンを指定してください。  
-
-#### スキームの設定  
-ディープリンクからアプリを起動できるように、info.plistの編集、もしくは Xcode上で Info -> URL Typesからディープリンクからアプリを開くスキームの設定をします。
-URL Schemesにはスキームを、IdentifierにはBundle Identifierなどアプリごとに一意になる値を入力してください。
-<img src="/img/link/link-guide-scheme.png" alt="link-guide-scheme" title="link-guide-scheme" width="100%"/>
-
-#### Universal Links用の設定 (iOS9.x以上)  
-先ほどONにしたAssociated Domainsを使ってGrowth Linkのドメインを登録します。  
-登録の前に、先ほど登録したApp Identifierと同じTeamが選択されていることを確認してください。TeamはGeneralタブにあるIdentityセクションから選択できます。  
-CapabilitiesタブのAssociated Domainsをクリックすると展開されドメインの編集ができます。  
-ここで、Growth Linkのドメインとなるgbt.ioを登録します。＋ボタンをクリックし、"applinks:gbt.io"を追加してください。“applinks:”というのはprefixで登録ドメインの前につける必要があります。  
-
-<img src="/img/link/guide-universal-05.png" alt="guide-universal-05" title="guide-universal-05" width="100%"/>
-
-プロジェクトブラウザ上でentitlementsファイルが生成されていることを確認してください。  
-**Xcode7上で、なんらかの原因でentitlementsファイルが生成されないことが報告されています。**
-
-<img src="/img/link/guide-universal-06.png" alt="guide-universal-06" title="guide-universal-06" width="100%"/>
-
-また、entitlementsファイルがビルドに含まれている必要があります。含まれない場合はentitlementsファイルをクリックし、Targetにチェックが入っているか確認してください。  
-## Growth Link管理画面上での設定  
-「基本設定」タブ -> リンク基本設定セクションから Universal Linksの設定ができます。  
-「Universal Linkに対応させる」をチェックし、Bundle IdentifierとApple TeamIDを記入してください。  
-フォーム入力後、「保存」ボタンを押して設定を保存します。  
-
-<img src="/img/link/guide-universal-07.png" alt="guide-universal-07" title="guide-universal-07" width="70%"/>
-
-## Growth Link設定備考  
-### 検証の際の注意点  
-* 検証の際はアプリを一度アンインストールし、インストールしなおしてください。この手順を踏まない場合古い設定のままになります。
-* Growth Linkの仕様上、Universal  Links用の設定については10分ごとに反映されます。検証をする際は設定を保存後10分以上経過した後に行ってください。
-
-### ランディングページを挟む場合の注意点  
-[【UniversalLinks】ランディングページにリンクを埋め込む際の注意点](http://faq.growthbeat.com/article/114-universallink)の記事を参考にしてください。  
--->
-
-<h1 id="備考">備考</h1>
-
-<h2 id="最新版のsdkへの乗り換え方法">最新版のSDKへの乗り換え方法</h2>
-
+<span style="color:#66d9ef">@end</span>
+</code></pre></div><h2 id="heading-1">管理画面設定方法</h2>
+<p>「<a href="https://support.growthbeat.com/manual/growthmessage/#%E9%85%8D%E4%BF%A1%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC">配信トリガー</a>」 で先程実装したイベント（今回の場合は OpenViewController）を選択すると、指定のイベントが発火したタイミングでメッセージが表示されます。</p>
+<p>詳しいメッセージの作成方法は <a href="/manual/growthmessage/#%E9%85%8D%E4%BF%A1%E4%BD%9C%E6%88%90">配信作成</a> を参照してください。</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h1 id="heading-2">備考</h1>
+<h2 id="sdk">最新版のSDKへの乗り換え方法</h2>
 <p>Growth Push SDKからGrowthbeat 2.x SDK への乗り換えまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへの乗り換えをされる方は
 <a href="/sdk/ios/upgrade">SDKの移行ガイド</a>をご参照ください。</p>
-
-<h2 id="サンプルについて">サンプルについて</h2>
-
+<h2 id="heading-3">サンプルについて</h2>
 <p>実装サンプルは、<a href="https://github.com/growthbeat/growthbeat-ios">Githubレポジトリ</a>を参考にしてください。</p>
-
-<h1 id="お問い合わせ">お問い合わせ</h1>
-
+<h1 id="heading-4">お問い合わせ</h1>
 <p>ご不明な点などございます場合は、<a href="http://faq.growthbeat.com/">ヘルプページ</a>を閲覧してください。</p>
 
       </div>
@@ -314,7 +169,7 @@ CapabilitiesタブのAssociated Domainsをクリックすると展開されド�
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-<script src="http://support.growthbeat.com/js/sirok-scrollspy.js"></script>
+<script src="https://support.growthbeat.com/js/sirok-scrollspy.js"></script>
 <script>
 $(function() {
   $('pre code, code').each(function(i, block) {

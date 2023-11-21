@@ -10,7 +10,7 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="Growthbeat Android API | Growthbeatドキュメント |">
-  <meta property="og:url" content="http://support.growthbeat.com/sdk/android/reference/">
+  <meta property="og:url" content="https://support.growthbeat.com/sdk/android/reference/">
   <meta property="og:description" content="Growthbeat Android の API について説明します">
   
   <meta property="article:author" content="" />
@@ -26,7 +26,7 @@
   
   <link rel="shortcut icon" href="/favicon.ico">
 
-  <link rel="stylesheet" href="http://support.growthbeat.com/css/main.css" />
+  <link rel="stylesheet" href="https://support.growthbeat.com/css/main.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
 </head>
 
@@ -51,7 +51,7 @@
     <nav class="header-nav">
       <h1 class="logo">
         <a class="link"href="https://growthbeat.com/">
-          <img src="http://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
+          <img src="https://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
         </a>
       </h1>
 
@@ -72,10 +72,10 @@
   <div class="container">
     <ul class="breadcrumb">
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/">サポートページ</a>
+        <a class="link" href="https://support.growthbeat.com/">サポートページ</a>
       </li>
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/sdk/">SDKドキュメント</a>
+        <a class="link" href="https://support.growthbeat.com/sdk/">SDKドキュメント</a>
       </li>
       
         <li class="item"><a class="link">APIリファレンス</a></li>
@@ -107,71 +107,58 @@
 <section class="row markdown">
     <div class="column column-sidebar">
       <nav id="TableOfContents">
-<ul>
-<li><a href="#growthbeat-api">Growthbeat API</a>
-<ul>
-<li><a href="#growthbeatインスタンスの取得">Growthbeatインスタンスの取得</a></li>
-<li><a href="#ログの停止">ログの停止</a></li>
-<li><a href="#growthbeatユニークidを取得する">GrowthbeatユニークIDを取得する</a></li>
-</ul></li>
-<li><a href="#growth-push-api">Growth Push API</a>
-<ul>
-<li><a href="#growthpushインスタンスを取得">GrowthPushインスタンスを取得</a></li>
-<li><a href="#初期化">初期化</a></li>
-<li><a href="#registrationidの取得-送信">RegistrationIdの取得・送信</a>
-<ul>
-<li><a href="#デバイストークン送信">デバイストークン送信</a></li>
-<li><a href="#デバイストークン取得">デバイストークン取得</a></li>
-</ul></li>
-<li><a href="#イベントの送信">イベントの送信</a>
-<ul>
-<li><a href="#イベントの送信-1">イベントの送信</a></li>
-<li><a href="#イベントと任意の値の送信">イベントと任意の値の送信</a></li>
-<li><a href="#イベントと任意の値送信-メッセージ表示制御">イベントと任意の値送信、メッセージ表示制御</a></li>
-<li><a href="#showmessagehandler">ShowMessageHandler</a></li>
-</ul></li>
-<li><a href="#タグの送信">タグの送信</a>
-<ul>
-<li><a href="#タグの送信-1">タグの送信</a></li>
-<li><a href="#タグと任意の値の送信">タグと任意の値の送信</a></li>
-<li><a href="#チャンネルidをセット">チャンネルIDをセット</a></li>
-<li><a href="#デフォルト通知チャンネルの削除">デフォルト通知チャンネルの削除</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#androidmanifest-xml">AndroidManifest.xml</a>
-<ul>
-<li><a href="#パーミッション設定">パーミッション設定</a></li>
-<li><a href="#growth-push設定">Growth Push設定</a></li>
-<li><a href="#growth-message設定">Growth Message設定</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#growthbeat">Growthbeatインスタンスの取得</a></li>
+    <li><a href="#heading">ログの停止</a></li>
+    <li><a href="#growthbeatid">GrowthbeatユニークIDを取得する</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#growthpush">GrowthPushインスタンスを取得</a></li>
+    <li><a href="#heading-1">初期化</a></li>
+    <li><a href="#registrationid">RegistrationIdの取得・送信</a>
+      <ul>
+        <li><a href="#heading-2">デバイストークン送信</a></li>
+        <li><a href="#heading-3">デバイストークン取得</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-4">イベントの送信</a>
+      <ul>
+        <li><a href="#heading-5">イベントの送信</a></li>
+        <li><a href="#heading-6">イベントと任意の値の送信</a></li>
+        <li><a href="#heading-7">イベントと任意の値送信、メッセージ表示制御</a></li>
+        <li><a href="#showmessagehandler">ShowMessageHandler</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-8">タグの送信</a>
+      <ul>
+        <li><a href="#heading-9">タグの送信</a></li>
+        <li><a href="#heading-10">タグと任意の値の送信</a></li>
+        <li><a href="#id">チャンネルIDをセット</a></li>
+        <li><a href="#heading-11">デフォルト通知チャンネルの削除</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-12">パーミッション設定</a></li>
+    <li><a href="#growth-push">Growth Push設定</a></li>
+    <li><a href="#growth-message">Growth Message設定</a></li>
+  </ul>
 </nav>
     </div>
     <div class="column column-main">
       <div class="typeset">
-        
-
-<p>Version 3.0.1
+        <p>Version 3.0.1
 <a href="/sdk/android/reference-1.2.7">Android SDK 1.2.7以下</a>のリファレンスはこちら</p>
-
 <h1 id="growthbeat-api">Growthbeat API</h1>
-
-<h2 id="growthbeatインスタンスの取得">Growthbeatインスタンスの取得</h2>
-
+<h2 id="growthbeat">Growthbeatインスタンスの取得</h2>
 <p>Growthbeatインスタンスを取得します。</p>
-
-<pre><code class="language-java">public static Growthbeat getInstance()
-</code></pre>
-
-<h2 id="ログの停止">ログの停止</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> Growthbeat <span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+</code></pre></div><h2 id="heading">ログの停止</h2>
 <p>Growthbeat SDKからのログ出力を全て停止します。デフォルトでは、ログ出力がおこなわれます。</p>
-
-<pre><code class="language-java">public void setLoggerSilent(boolean silent)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setLoggerSilent</span><span style="color:#f92672">(</span><span style="color:#66d9ef">boolean</span> silent<span style="color:#f92672">)</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -179,7 +166,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">silent</td>
@@ -187,36 +173,19 @@
 </tr>
 </tbody>
 </table>
-
-<h2 id="growthbeatユニークidを取得する">GrowthbeatユニークIDを取得する</h2>
-
+<h2 id="growthbeatid">GrowthbeatユニークIDを取得する</h2>
 <p>GrowthbeatのユニークIDを取得できます。
 取得時に、ロックされるので必ずメインスレッド以外で呼び出してください。</p>
-
-<pre><code class="language-java">public Client waitClient();
-</code></pre>
-
-<h1 id="growth-push-api">Growth Push API</h1>
-
-<h2 id="growthpushインスタンスを取得">GrowthPushインスタンスを取得</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> Client <span style="color:#a6e22e">waitClient</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><h1 id="growth-push-api">Growth Push API</h1>
+<h2 id="growthpush">GrowthPushインスタンスを取得</h2>
 <p>GrowthPushインスタンスを取得します。</p>
-
-<pre><code class="language-java">public static GrowthPush getInstance()
-</code></pre>
-
-<h2 id="初期化">初期化</h2>
-
-<pre><code class="language-java">public void initialize(Context context, String applicationId, String credentialId, Environment environment)
-</code></pre>
-
-<p>広告情報を保持の可否</p>
-
-<pre><code class="language-java">public void initialize(Context context, String applicationId, String credentialId, Environment environment, boolean adInfoEnabled)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> GrowthPush <span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+</code></pre></div><h2 id="heading-1">初期化</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initialize</span><span style="color:#f92672">(</span>Context context<span style="color:#f92672">,</span> String applicationId<span style="color:#f92672">,</span> String credentialId<span style="color:#f92672">,</span> Environment environment<span style="color:#f92672">)</span>
+</code></pre></div><p>広告情報を保持の可否</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initialize</span><span style="color:#f92672">(</span>Context context<span style="color:#f92672">,</span> String applicationId<span style="color:#f92672">,</span> String credentialId<span style="color:#f92672">,</span> Environment environment<span style="color:#f92672">,</span> <span style="color:#66d9ef">boolean</span> adInfoEnabled<span style="color:#f92672">)</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -224,37 +193,28 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">applicationId</td>
 <td align="left">アプリケーションID</td>
 </tr>
-
 <tr>
 <td align="left">credentialId</td>
 <td align="left">クレデンシャルキー</td>
 </tr>
-
 <tr>
 <td align="left">environment</td>
 <td align="left">開発用: <code>Environment.development</code> 本番用: <code>Environment.production</code>　</td>
 </tr>
-
 <tr>
 <td align="left">adInfoEnabled</td>
 <td align="left">広告情報の送信設定。<code>true</code>: 送信する <code>false</code>:送信しない</td>
 </tr>
 </tbody>
 </table>
-
 <p>広告情報を保持の可否 / チャンネルIDの設定</p>
-
-<pre><code class="language-java">public void initialize(Context context, String applicationId, String credentialId, Environment environment, boolean adInfoEnabled, String channelId)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initialize</span><span style="color:#f92672">(</span>Context context<span style="color:#f92672">,</span> String applicationId<span style="color:#f92672">,</span> String credentialId<span style="color:#f92672">,</span> Environment environment<span style="color:#f92672">,</span> <span style="color:#66d9ef">boolean</span> adInfoEnabled<span style="color:#f92672">,</span> String channelId<span style="color:#f92672">)</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -262,59 +222,40 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">applicationId</td>
 <td align="left">アプリケーションID</td>
 </tr>
-
 <tr>
 <td align="left">credentialId</td>
 <td align="left">クレデンシャルキー</td>
 </tr>
-
 <tr>
 <td align="left">environment</td>
 <td align="left">開発用: <code>Environment.development</code> 本番用: <code>Environment.production</code>　</td>
 </tr>
-
 <tr>
 <td align="left">adInfoEnabled</td>
 <td align="left">広告情報の送信設定。<code>true</code>: 送信する <code>false</code>:送信しない</td>
 </tr>
-
 <tr>
 <td align="left">channelId</td>
 <td align="left">任意のチャンネルID</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="registrationidの取得-送信">RegistrationIdの取得・送信</h2>
-
-<h3 id="デバイストークン送信">デバイストークン送信</h3>
-
-<pre><code class="language-java">public void requestRegistrationId()
-</code></pre>
-
-<h3 id="デバイストークン取得">デバイストークン取得</h3>
-
-<p>必ず初期化のあとに実行してください。<br />
+<h2 id="registrationid">RegistrationIdの取得・送信</h2>
+<h3 id="heading-2">デバイストークン送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">requestRegistrationId</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+</code></pre></div><h3 id="heading-3">デバイストークン取得</h3>
+<p>必ず初期化のあとに実行してください。<br>
 タイミングによっては、取得できない可能性もありますので、 <code>Thread</code> を利用して処理を遅らせて利用するのを推奨いたします。</p>
-
-<pre><code class="language-java">public string registerFCM()
-</code></pre>
-
-<h2 id="イベントの送信">イベントの送信</h2>
-
-<h3 id="イベントの送信-1">イベントの送信</h3>
-
-<pre><code class="language-java">public void trackEvent(String name);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> string <span style="color:#a6e22e">registerFCM</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+</code></pre></div><h2 id="heading-4">イベントの送信</h2>
+<h3 id="heading-5">イベントの送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">trackEvent</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -322,7 +263,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
@@ -330,14 +270,9 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="イベントと任意の値の送信">イベントと任意の値の送信</h3>
-
-<pre><code class="language-java">public void trackEvent(String name, String value);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h3 id="heading-6">イベントと任意の値の送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">trackEvent</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">,</span> String value<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -345,27 +280,20 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
 <td align="left">イベント名</td>
 </tr>
-
 <tr>
 <td align="left">value</td>
 <td align="left">イベントに持たせる値</td>
 </tr>
 </tbody>
 </table>
-
-<h3 id="イベントと任意の値送信-メッセージ表示制御">イベントと任意の値送信、メッセージ表示制御</h3>
-
-<pre><code class="language-java">public void trackEvent(String name, String value, ShowMessageHandler showMessageHandler);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h3 id="heading-7">イベントと任意の値送信、メッセージ表示制御</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">trackEvent</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">,</span> String value<span style="color:#f92672">,</span> ShowMessageHandler showMessageHandler<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -373,52 +301,39 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
 <td align="left">イベント名</td>
 </tr>
-
 <tr>
 <td align="left">value</td>
 <td align="left">イベントに持たせる値</td>
 </tr>
-
 <tr>
 <td align="left">showMessageHandler</td>
 <td align="left">メッセージ表示準備が完了したときのコールバック変数</td>
 </tr>
 </tbody>
 </table>
-
 <h3 id="showmessagehandler">ShowMessageHandler</h3>
-
 <p>設定したポップアップメッセージの表示準備が完了したときに、コールバックされます。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">new</span> ShowMessageHandler<span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+	<span style="color:#a6e22e">@Override</span>
+	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">complete</span><span style="color:#f92672">(</span>MessageRenderHandler renderHandler<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// 画面の表示
+</span><span style="color:#75715e"></span>		renderHandler<span style="color:#f92672">.</span><span style="color:#a6e22e">render</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
 
-<pre><code class="language-java">new ShowMessageHandler() {
-	@Override
-	public void complete(MessageRenderHandler renderHandler) {
-        // 画面の表示
-		renderHandler.render();
-	}
-
-	@Override
-	public void error(String error) {
-        // errorはエラーメッセージが返ります。
-	}
-}
-</code></pre>
-
-<h2 id="タグの送信">タグの送信</h2>
-
-<h3 id="タグの送信-1">タグの送信</h3>
-
-<pre><code class="language-java">public void setTag(String name);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+	<span style="color:#a6e22e">@Override</span>
+	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">error</span><span style="color:#f92672">(</span>String error<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// errorはエラーメッセージが返ります。
+</span><span style="color:#75715e"></span>	<span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="heading-8">タグの送信</h2>
+<h3 id="heading-9">タグの送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setTag</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -426,7 +341,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
@@ -434,14 +348,9 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="タグと任意の値の送信">タグと任意の値の送信</h3>
-
-<pre><code class="language-java">public void setTag(String name, String value);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h3 id="heading-10">タグと任意の値の送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setTag</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">,</span> String value<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -449,156 +358,79 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
 <td align="left">タグ名</td>
 </tr>
-
 <tr>
 <td align="left">value</td>
 <td align="left">タグに持たせる値</td>
 </tr>
 </tbody>
 </table>
-
-<h3 id="チャンネルidをセット">チャンネルIDをセット</h3>
-
+<h3 id="id">チャンネルIDをセット</h3>
 <p>Android 8.0以上のみ。
 任意の通知チャンネルで、通知を受け取れるように変更します。</p>
-
-<pre><code class="language-java">public void setChannelId(String channelId);
-</code></pre>
-
-<p><strong>パラメーター</strong>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setChannelId</span><span style="color:#f92672">(</span>String channelId<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><p><strong>パラメーター</strong>
 |項目名|詳細|
 |:&ndash;|:&ndash;|
 |channelId|チャンネルID|</p>
-
-<h3 id="デフォルト通知チャンネルの削除">デフォルト通知チャンネルの削除</h3>
-
-<p>Android 8.0以上のみ。<br />
-SDKのデフォルトの通知チャンネルを削除します。<br />
+<h3 id="heading-11">デフォルト通知チャンネルの削除</h3>
+<p>Android 8.0以上のみ。<br>
+SDKのデフォルトの通知チャンネルを削除します。<br>
 ※ Growth Push初期化時に、channel_idがセットされていない場合、再度作成されます。</p>
-
-<pre><code class="language-java">public void deleteDefaultNotificationChannel();
-</code></pre>
-
-<!--
-# Growth Link API
-## GrowthLinkインスタンスを取得
-GrowthLinkインスタンスを取得します。
-
-```java
-public static GrowthLink getInstance()
-```
-## Growth Linkの初期化
-
-```java
-public void initialize(Context context, String applicationId, String credentialId)
-```
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|applicationId| アプリケーションID |
-|credentialId| クレデンシャルキー |
-
-## リンクデータを引き渡し
-カスタムURLスキームを受け取るActivityで下記を実装します。
-
-```java
-GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
-```
--->
-
-<h1 id="androidmanifest-xml">AndroidManifest.xml</h1>
-
-<h2 id="パーミッション設定">パーミッション設定</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">deleteDefaultNotificationChannel</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h1 id="androidmanifestxml">AndroidManifest.xml</h1>
+<h2 id="heading-12">パーミッション設定</h2>
 <p>インターネット設定。通信をするために必要となります。</p>
-
-<pre><code class="language-xml">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
-</code></pre>
-
-<p>プッシュ通知受け取り時に、バイブレーションを鳴らすときに設定します。</p>
-
-<pre><code class="language-xml">&lt;uses-permission android:name=&quot;android.permission.VIBRATE&quot; /&gt;
-</code></pre>
-
-<p>Growth Pushダイアログプッシュ通知を表示するときに必要となります。</p>
-
-<pre><code class="language-xml">&lt;uses-permission android:name=&quot;android.permission.WAKE_LOCK&quot; /&gt;
-</code></pre>
-
-<p>(<code>*</code>オプション) Googleアカウントを設定します。APIレベル15以下の場合は設定します。</p>
-
-<pre><code class="language-xml">&lt;uses-permission android:name=&quot;android.permission.GET_ACCOUNTS&quot; /&gt;
-</code></pre>
-
-<h2 id="growth-push設定">Growth Push設定</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;uses-permission</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;android.permission.INTERNET&#34;</span> <span style="color:#f92672">/&gt;</span>
+</code></pre></div><p>プッシュ通知受け取り時に、バイブレーションを鳴らすときに設定します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;uses-permission</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;android.permission.VIBRATE&#34;</span> <span style="color:#f92672">/&gt;</span>
+</code></pre></div><p>Growth Pushダイアログプッシュ通知を表示するときに必要となります。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;uses-permission</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;android.permission.WAKE_LOCK&#34;</span> <span style="color:#f92672">/&gt;</span>
+</code></pre></div><p>(<code>*</code>オプション) Googleアカウントを設定します。APIレベル15以下の場合は設定します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;uses-permission</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;android.permission.GET_ACCOUNTS&#34;</span> <span style="color:#f92672">/&gt;</span>
+</code></pre></div><h2 id="growth-push">Growth Push設定</h2>
 <p>デバイストークン取得・更新やプッシュ通知を受け取る実装となります。YOUR_PACKAGE_NAMEは、アプリのPackageIDに変更してください。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;activity</span>
+    <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthpush.view.AlertActivity&#34;</span>
+    <span style="color:#a6e22e">android:configChanges=</span><span style="color:#e6db74">&#34;orientation|keyboardHidden&#34;</span>
+    <span style="color:#a6e22e">android:launchMode=</span><span style="color:#e6db74">&#34;singleInstance&#34;</span>
+    <span style="color:#a6e22e">android:theme=</span><span style="color:#e6db74">&#34;@android:style/Theme.Translucent&#34;</span> <span style="color:#f92672">/&gt;</span>
 
-<pre><code class="language-xml">&lt;activity
-    android:name=&quot;com.growthpush.view.AlertActivity&quot;
-    android:configChanges=&quot;orientation|keyboardHidden&quot;
-    android:launchMode=&quot;singleInstance&quot;
-    android:theme=&quot;@android:style/Theme.Translucent&quot; /&gt;
+<span style="color:#f92672">&lt;service</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthpush.ReceiverService&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;intent-filter</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;action</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.google.firebase.MESSAGING_EVENT&#34;</span> <span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;/intent-filter&gt;</span>
+<span style="color:#f92672">&lt;/service&gt;</span>
+</code></pre></div><p>(<code>*</code>オプション) アイコンや背景色をカスタムすることができます。リソースIDを指定してください。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> 通知バーのアイコンをカスタマイズすることができます。 </span><span style="color:#75715e">--&gt;</span>
+<span style="color:#f92672">&lt;meta-data</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthpush.notification.icon&#34;</span> <span style="color:#a6e22e">android:resource=</span><span style="color:#e6db74">&#34;@drawable/sample_notification_icon&#34;</span> <span style="color:#f92672">/&gt;</span>
 
-&lt;service android:name=&quot;com.growthpush.ReceiverService&quot;&gt;
-    &lt;intent-filter&gt;
-        &lt;action android:name=&quot;com.google.firebase.MESSAGING_EVENT&quot; /&gt;
-    &lt;/intent-filter&gt;
-&lt;/service&gt;
-</code></pre>
+<span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> 通知バーのラージアイコンを設定することができます。 </span><span style="color:#75715e">--&gt;</span>
+<span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> こちらは、Android SDK 2.0.7以上で利用可能です。 </span><span style="color:#75715e">--&gt;</span>
+<span style="color:#f92672">&lt;meta-data</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthpush.notification.icon.large&#34;</span> <span style="color:#a6e22e">android:resource=</span><span style="color:#e6db74">&#34;@drawable/sample_notification_icon_large&#34;</span> <span style="color:#f92672">/&gt;</span>
 
-<p>(<code>*</code>オプション) アイコンや背景色をカスタムすることができます。リソースIDを指定してください。</p>
+<span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> 通知バーのアイコンの背景色をカスタマイズすることができます。 </span><span style="color:#75715e">--&gt;</span>
+<span style="color:#f92672">&lt;meta-data</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthpush.notification.icon.background.color&#34;</span> <span style="color:#a6e22e">android:resource=</span><span style="color:#e6db74">&#34;@android:color/white&#34;</span> <span style="color:#f92672">/&gt;</span>
 
-<pre><code class="language-xml">&lt;!-- 通知バーのアイコンをカスタマイズすることができます。 --&gt;
-&lt;meta-data android:name=&quot;com.growthpush.notification.icon&quot; android:resource=&quot;@drawable/sample_notification_icon&quot; /&gt;
+<span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> ダイアログプッシュ通知のアイコンを変更できます。 </span><span style="color:#75715e">--&gt;</span>
+<span style="color:#f92672">&lt;meta-data</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthpush.dialog.icon&#34;</span> <span style="color:#a6e22e">android:resource=</span><span style="color:#e6db74">&#34;@drawable/sample_notification_icon&#34;</span> <span style="color:#f92672">/&gt;</span>
 
-&lt;!-- 通知バーのラージアイコンを設定することができます。 --&gt;
-&lt;!-- こちらは、Android SDK 2.0.7以上で利用可能です。 --&gt;
-&lt;meta-data android:name=&quot;com.growthpush.notification.icon.large&quot; android:resource=&quot;@drawable/sample_notification_icon_large&quot; /&gt;
+<span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> Growth Pushが作成するデフォルト通知チャンネル名を変更できます。 </span><span style="color:#75715e">--&gt;</span>
+<span style="color:#f92672">&lt;meta-data</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthpush.notification.channel_name&#34;</span> <span style="color:#a6e22e">android:resource=</span><span style="color:#e6db74">&#34;@drawable/sample_notification_icon&#34;</span> <span style="color:#f92672">/&gt;</span>
 
-&lt;!-- 通知バーのアイコンの背景色をカスタマイズすることができます。 --&gt;
-&lt;meta-data android:name=&quot;com.growthpush.notification.icon.background.color&quot; android:resource=&quot;@android:color/white&quot; /&gt;
-
-&lt;!-- ダイアログプッシュ通知のアイコンを変更できます。 --&gt;
-&lt;meta-data android:name=&quot;com.growthpush.dialog.icon&quot; android:resource=&quot;@drawable/sample_notification_icon&quot; /&gt;
-
-&lt;!-- Growth Pushが作成するデフォルト通知チャンネル名を変更できます。 --&gt;
-&lt;meta-data android:name=&quot;com.growthpush.notification.channel_name&quot; android:resource=&quot;@drawable/sample_notification_icon&quot; /&gt;
-
-</code></pre>
-
-<h2 id="growth-message設定">Growth Message設定</h2>
-
+</code></pre></div><h2 id="growth-message">Growth Message設定</h2>
 <p>ポップアップメッセージを表示するために必要となります。</p>
-
-<pre><code class="language-xml">&lt;activity
-    android:name=&quot;com.growthbeat.message.view.MessageActivity&quot;
-    android:theme=&quot;@android:style/Theme.Translucent&quot; /&gt;
-</code></pre>
-
-<!--
-## Growth Link設定
-インストール・起動時にデータを受け取るために必要になります。
-
-```xml
-<receiver
-    android:name="com.growthbeat.link.InstallReferrerReceiver"
-    android:enabled="true"
-    android:exported="true" >
-    <intent-filter>
-        <action android:name="com.android.vending.INSTALL_REFERRER" />
-    </intent-filter>
-</receiver>
-```
--->
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;activity</span>
+    <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthbeat.message.view.MessageActivity&#34;</span>
+    <span style="color:#a6e22e">android:theme=</span><span style="color:#e6db74">&#34;@android:style/Theme.Translucent&#34;</span> <span style="color:#f92672">/&gt;</span>
+</code></pre></div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>AndroidManifest.xmlのサンプルは、<a href="https://github.com/growthbeat/growthbeat-android/blob/master/sample/src/main/AndroidManifest.xml">こちら</a></p>
 
       </div>
@@ -618,7 +450,7 @@ GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-<script src="http://support.growthbeat.com/js/sirok-scrollspy.js"></script>
+<script src="https://support.growthbeat.com/js/sirok-scrollspy.js"></script>
 <script>
 $(function() {
   $('pre code, code').each(function(i, block) {

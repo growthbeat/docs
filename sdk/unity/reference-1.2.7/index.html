@@ -10,7 +10,7 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="Growthbeat Unity API | Growthbeatドキュメント |">
-  <meta property="og:url" content="http://support.growthbeat.com/sdk/unity/reference-1.2.7/">
+  <meta property="og:url" content="https://support.growthbeat.com/sdk/unity/reference-1.2.7/">
   <meta property="og:description" content="Growthbeat Unity の API について説明します">
   
   <meta property="article:author" content="" />
@@ -26,7 +26,7 @@
   
   <link rel="shortcut icon" href="/favicon.ico">
 
-  <link rel="stylesheet" href="http://support.growthbeat.com/css/main.css" />
+  <link rel="stylesheet" href="https://support.growthbeat.com/css/main.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
 </head>
 
@@ -51,7 +51,7 @@
     <nav class="header-nav">
       <h1 class="logo">
         <a class="link"href="https://growthbeat.com/">
-          <img src="http://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
+          <img src="https://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
         </a>
       </h1>
 
@@ -72,10 +72,10 @@
   <div class="container">
     <ul class="breadcrumb">
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/">サポートページ</a>
+        <a class="link" href="https://support.growthbeat.com/">サポートページ</a>
       </li>
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/sdk/">SDKドキュメント</a>
+        <a class="link" href="https://support.growthbeat.com/sdk/">SDKドキュメント</a>
       </li>
       
         <li class="item"><a class="link">APIリファレンス</a></li>
@@ -107,113 +107,105 @@
 <section class="row markdown">
     <div class="column column-sidebar">
       <nav id="TableOfContents">
-<ul>
-<li><a href="#growthbeat-api">Growthbeat API</a>
-<ul>
-<li><a href="#growthbeatインスタンスの取得">Growthbeatインスタンスの取得</a></li>
-<li><a href="#初期化">初期化</a></li>
-<li><a href="#起動イベントの送信">起動イベントの送信</a></li>
-<li><a href="#終了イベントの送信">終了イベントの送信</a></li>
-<li><a href="#ログの停止">ログの停止</a></li>
-<li><a href="#ハンドラ">ハンドラ</a>
-<ul>
-<li><a href="#処理をしないハンドラ">処理をしないハンドラ</a></li>
-<li><a href="#ブラウザを開くハンドラ">ブラウザを開くハンドラ</a></li>
-<li><a href="#カスタムハンドラ">カスタムハンドラ</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#growth-analytics-api">Growth Analytics API</a>
-<ul>
-<li><a href="#growth-analytics-インスタンスの取得">Growth Analytics インスタンスの取得</a></li>
-<li><a href="#基本タグの送信">基本タグの送信</a></li>
-<li><a href="#特定のイベントを送信">特定のイベントを送信</a>
-<ul>
-<li><a href="#起動イベント">起動イベント</a></li>
-<li><a href="#終了イベント">終了イベント</a></li>
-<li><a href="#購入イベント">購入イベント</a></li>
-</ul></li>
-<li><a href="#特定のタグを送信">特定のタグを送信</a>
-<ul>
-<li><a href="#ユーザーidタグ">ユーザーIDタグ</a></li>
-<li><a href="#名前タグ">名前タグ</a></li>
-<li><a href="#年齢タグ">年齢タグ</a></li>
-<li><a href="#性別タグ">性別タグ</a></li>
-<li><a href="#レベルタグ">レベルタグ</a></li>
-<li><a href="#開発用タグ">開発用タグ</a></li>
-<li><a href="#乱数タグ">乱数タグ</a></li>
-</ul></li>
-<li><a href="#カスタムイベント送信">カスタムイベント送信</a>
-<ul>
-<li><a href="#イベントの送信">イベントの送信</a></li>
-<li><a href="#イベント名と任意のmapの送信">イベント名と任意のMapの送信</a></li>
-<li><a href="#イベント名とイベント取得回数オプションの送信">イベント名とイベント取得回数オプションの送信</a></li>
-<li><a href="#イベント名と任意のmapの送信とイベント取得回数オプションの送信">イベント名と任意のMapの送信とイベント取得回数オプションの送信</a></li>
-</ul></li>
-<li><a href="#カスタムタグ送信">カスタムタグ送信</a>
-<ul>
-<li><a href="#タグの送信">タグの送信</a></li>
-<li><a href="#タグと任意の値を送信">タグと任意の値を送信</a></li>
-</ul></li>
-<li><a href="#フルカスタマイズなイベントの送信">フルカスタマイズなイベントの送信</a></li>
-<li><a href="#フルカスタマイズなタグの送信">フルカスタマイズなタグの送信</a></li>
-</ul></li>
-<li><a href="#growth-push-api">Growth Push API</a>
-<ul>
-<li><a href="#growth-pushインスタンスの取得">Growth Pushインスタンスの取得</a></li>
-<li><a href="#デバイストークンの取得-送信">デバイストークンの取得・送信</a>
-<ul>
-<li><a href="#デバイストークンの取得">デバイストークンの取得</a></li>
-<li><a href="#デバイストークンの送信">デバイストークンの送信</a></li>
-<li><a href="#android-デバイストークン取得">Android デバイストークン取得</a></li>
-</ul></li>
-<li><a href="#基本タグの送信-1">基本タグの送信</a></li>
-<li><a href="#イベントの送信-push専用">イベントの送信（Push専用）</a>
-<ul>
-<li><a href="#イベントの送信-push専用-1">イベントの送信（Push専用）</a></li>
-<li><a href="#イベントと任意の値の送信-push専用">イベントと任意の値の送信（Push専用）</a></li>
-</ul></li>
-<li><a href="#タグの送信-push専用">タグの送信（Push専用）</a>
-<ul>
-<li><a href="#タグの送信-push専用-1">タグの送信（Push専用）</a></li>
-<li><a href="#タグと任意の値の送信-push専用">タグと任意の値の送信（Push専用）</a></li>
-</ul></li>
-<li><a href="#バッチクリア">バッチクリア</a></li>
-</ul></li>
-<li><a href="#growth-message-api">Growth Message API</a>
-<ul>
-<li><a href="#growthmessageインスタンスの取得">GrowthMessageインスタンスの取得</a></li>
-</ul></li>
-<li><a href="#growth-link-api">Growth Link API</a>
-<ul>
-<li><a href="#growth-link初期化">Growth Link初期化</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#growthbeat">Growthbeatインスタンスの取得</a></li>
+    <li><a href="#heading">初期化</a></li>
+    <li><a href="#heading-1">起動イベントの送信</a></li>
+    <li><a href="#heading-2">終了イベントの送信</a></li>
+    <li><a href="#heading-3">ログの停止</a></li>
+    <li><a href="#heading-4">ハンドラ</a>
+      <ul>
+        <li><a href="#heading-5">処理をしないハンドラ</a></li>
+        <li><a href="#heading-6">ブラウザを開くハンドラ</a></li>
+        <li><a href="#heading-7">カスタムハンドラ</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#growth-analytics-">Growth Analytics インスタンスの取得</a></li>
+    <li><a href="#heading-8">基本タグの送信</a></li>
+    <li><a href="#heading-9">特定のイベントを送信</a>
+      <ul>
+        <li><a href="#heading-10">起動イベント</a></li>
+        <li><a href="#heading-11">終了イベント</a></li>
+        <li><a href="#heading-12">購入イベント</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-13">特定のタグを送信</a>
+      <ul>
+        <li><a href="#id">ユーザーIDタグ</a></li>
+        <li><a href="#heading-14">名前タグ</a></li>
+        <li><a href="#heading-15">年齢タグ</a></li>
+        <li><a href="#heading-16">性別タグ</a></li>
+        <li><a href="#heading-17">レベルタグ</a></li>
+        <li><a href="#heading-18">開発用タグ</a></li>
+        <li><a href="#heading-19">乱数タグ</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-20">カスタムイベント送信</a>
+      <ul>
+        <li><a href="#heading-21">イベントの送信</a></li>
+        <li><a href="#map">イベント名と任意のMapの送信</a></li>
+        <li><a href="#heading-22">イベント名とイベント取得回数オプションの送信</a></li>
+        <li><a href="#map-1">イベント名と任意のMapの送信とイベント取得回数オプションの送信</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-23">カスタムタグ送信</a>
+      <ul>
+        <li><a href="#heading-24">タグの送信</a></li>
+        <li><a href="#heading-25">タグと任意の値を送信</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-26">フルカスタマイズなイベントの送信</a></li>
+    <li><a href="#heading-27">フルカスタマイズなタグの送信</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#growth-push">Growth Pushインスタンスの取得</a></li>
+    <li><a href="#heading-28">デバイストークンの取得・送信</a>
+      <ul>
+        <li><a href="#heading-29">デバイストークンの取得</a></li>
+        <li><a href="#heading-30">デバイストークンの送信</a></li>
+        <li><a href="#android-">Android デバイストークン取得</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-31">基本タグの送信</a></li>
+    <li><a href="#push">イベントの送信（Push専用）</a>
+      <ul>
+        <li><a href="#push-1">イベントの送信（Push専用）</a></li>
+        <li><a href="#push-2">イベントと任意の値の送信（Push専用）</a></li>
+      </ul>
+    </li>
+    <li><a href="#push-3">タグの送信（Push専用）</a>
+      <ul>
+        <li><a href="#push-4">タグの送信（Push専用）</a></li>
+        <li><a href="#push-5">タグと任意の値の送信（Push専用）</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-32">バッチクリア</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#growthmessage">GrowthMessageインスタンスの取得</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#growth-link">Growth Link初期化</a></li>
+  </ul>
 </nav>
     </div>
     <div class="column column-main">
       <div class="typeset">
-        
-
-<p>Version 1.2.7</p>
-
+        <p>Version 1.2.7</p>
 <h1 id="growthbeat-api">Growthbeat API</h1>
-
-<h2 id="growthbeatインスタンスの取得">Growthbeatインスタンスの取得</h2>
-
+<h2 id="growthbeat">Growthbeatインスタンスの取得</h2>
 <p>Growthbeatインスタンスを取得します。</p>
-
-<pre><code class="language-cs">public static Growthbeat GetInstance ()
-</code></pre>
-
-<h2 id="初期化">初期化</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> Growthbeat GetInstance ()
+</code></pre></div><h2 id="heading">初期化</h2>
 <p>Growthbeatの初期化を行います。初期化では、デバイス登録、認証、および端末の基本情報の送信が行われます。</p>
-
-<pre><code class="language-cs">public void Initialize (string applicationId, string credentialId)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Initialize (<span style="color:#66d9ef">string</span> applicationId, <span style="color:#66d9ef">string</span> credentialId)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -221,44 +213,28 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">applicationId</td>
 <td align="left">アプリケーションID</td>
 </tr>
-
 <tr>
 <td align="left">credentialId</td>
 <td align="left">クレデンシャルキー</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="起動イベントの送信">起動イベントの送信</h2>
-
+<h2 id="heading-1">起動イベントの送信</h2>
 <p>アプリケーションの起動イベントを送信します。</p>
-
-<pre><code class="language-cs">public void Start ()
-</code></pre>
-
-<h2 id="終了イベントの送信">終了イベントの送信</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Start ()
+</code></pre></div><h2 id="heading-2">終了イベントの送信</h2>
 <p>アプリケーションの起動イベントを送信します。</p>
-
-<pre><code class="language-cs">public void Stop ()
-</code></pre>
-
-<h2 id="ログの停止">ログの停止</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Stop ()
+</code></pre></div><h2 id="heading-3">ログの停止</h2>
 <p>Growthbeat SDKからのログ出力を全て停止します。
 デフォルトでは、ログ出力がおこなわれます。</p>
-
-<pre><code class="language-cs">public void SetLoggerSilent (bool silent)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetLoggerSilent (<span style="color:#66d9ef">bool</span> silent)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -266,7 +242,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">silent</td>
@@ -274,26 +249,14 @@
 </tr>
 </tbody>
 </table>
-
-<h2 id="ハンドラ">ハンドラ</h2>
-
-<h3 id="処理をしないハンドラ">処理をしないハンドラ</h3>
-
-<pre><code class="language-cs">IntentHandler.GetInstance ().AddNoopIntentHandler ();
-</code></pre>
-
-<h3 id="ブラウザを開くハンドラ">ブラウザを開くハンドラ</h3>
-
-<pre><code class="language-cs">IntentHandler.GetInstance ().AddUrlIntentHandler ();
-</code></pre>
-
-<h3 id="カスタムハンドラ">カスタムハンドラ</h3>
-
-<pre><code class="language-cs">IntentHandler.GetInstance ().AddCustomIntentHandler (&quot;GameObjectName&quot;, &quot;MethodName&quot;);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h2 id="heading-4">ハンドラ</h2>
+<h3 id="heading-5">処理をしないハンドラ</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs">IntentHandler.GetInstance ().AddNoopIntentHandler ();
+</code></pre></div><h3 id="heading-6">ブラウザを開くハンドラ</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs">IntentHandler.GetInstance ().AddUrlIntentHandler ();
+</code></pre></div><h3 id="heading-7">カスタムハンドラ</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs">IntentHandler.GetInstance ().AddCustomIntentHandler (<span style="color:#e6db74">&#34;GameObjectName&#34;</span>, <span style="color:#e6db74">&#34;MethodName&#34;</span>);
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -301,53 +264,39 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">GameObjectName</td>
 <td align="left">コールバックをするメソッドが存在するゲームオブジェクト</td>
 </tr>
-
 <tr>
 <td align="left">MethodName</td>
 <td align="left">コールバックをするメソッド</td>
 </tr>
 </tbody>
 </table>
-
 <p>例.)</p>
-
-<pre><code class="language-cs">public class GrowthbeatComponent : MonoBehaviour
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GrowthbeatComponent</span> : MonoBehaviour
 {
 
-    void Awake ()
+    <span style="color:#66d9ef">void</span> Awake ()
     {
-        IntentHandler.GetInstance ().AddCustomIntentHandler (&quot;GrowthbeatComponent&quot;, &quot;HandleCustomIntent&quot;);
+        IntentHandler.GetInstance ().AddCustomIntentHandler (<span style="color:#e6db74">&#34;GrowthbeatComponent&#34;</span>, <span style="color:#e6db74">&#34;HandleCustomIntent&#34;</span>);
     }
 
-    void HandleCustomIntent(string extra) {
-        Debug.Log(&quot;Enter HandleCustomIntent&quot;);
+    <span style="color:#66d9ef">void</span> HandleCustomIntent(<span style="color:#66d9ef">string</span> extra) {
+        Debug.Log(<span style="color:#e6db74">&#34;Enter HandleCustomIntent&#34;</span>);
         Debug.Log(extra);
     }
 
 }
-</code></pre>
-
-<p>extraはJSON型の文字列が戻ってきます。</p>
-
+</code></pre></div><p>extraはJSON型の文字列が戻ってきます。</p>
 <h1 id="growth-analytics-api">Growth Analytics API</h1>
-
-<h2 id="growth-analytics-インスタンスの取得">Growth Analytics インスタンスの取得</h2>
-
+<h2 id="growth-analytics-">Growth Analytics インスタンスの取得</h2>
 <p>Growth Analytics インスタンスを取得します。</p>
-
-<pre><code class="language-cs">public static GrowthAnalytics GetInstance ()
-</code></pre>
-
-<h2 id="基本タグの送信">基本タグの送信</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> GrowthAnalytics GetInstance ()
+</code></pre></div><h2 id="heading-8">基本タグの送信</h2>
 <p>端末の基本情報を送信します。基本情報には以下が含まれます。</p>
-
 <ul>
 <li>デバイスモデル</li>
 <li>OS</li>
@@ -358,35 +307,18 @@
 <li>広告ID（Android:AdvertisingId, iOS:IDFA）</li>
 <li>広告利用可否</li>
 </ul>
-
-<pre><code class="language-cs">public void SetBasicTags ()
-</code></pre>
-
-<h2 id="特定のイベントを送信">特定のイベントを送信</h2>
-
-<h3 id="起動イベント">起動イベント</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetBasicTags ()
+</code></pre></div><h2 id="heading-9">特定のイベントを送信</h2>
+<h3 id="heading-10">起動イベント</h3>
 <p>ユーザーの起動イベントを送信します。セッション時間の計測を開始するために必要なメソッドです。</p>
-
-<pre><code class="language-cs">public void Open ()
-</code></pre>
-
-<h3 id="終了イベント">終了イベント</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Open ()
+</code></pre></div><h3 id="heading-11">終了イベント</h3>
 <p>アプリの終了イベントを送信します。セッション時間の計測を停止します。</p>
-
-<pre><code class="language-cs">public void Close ()
-</code></pre>
-
-<h3 id="購入イベント">購入イベント</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Close ()
+</code></pre></div><h3 id="heading-12">購入イベント</h3>
 <p>課金時にメソッドを呼び、課金額、アイテムのカテゴリなどを送信することができます。</p>
-
-<pre><code class="language-cs">public void Purchase (int price, string category, string product)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Purchase (<span style="color:#66d9ef">int</span> price, <span style="color:#66d9ef">string</span> category, <span style="color:#66d9ef">string</span> product)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -394,36 +326,26 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">price</td>
 <td align="left">価格</td>
 </tr>
-
 <tr>
 <td align="left">category</td>
 <td align="left">任意のカテゴリ</td>
 </tr>
-
 <tr>
 <td align="left">product</td>
 <td align="left">任意のアイテム名</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="特定のタグを送信">特定のタグを送信</h2>
-
-<h3 id="ユーザーidタグ">ユーザーIDタグ</h3>
-
+<h2 id="heading-13">特定のタグを送信</h2>
+<h3 id="id">ユーザーIDタグ</h3>
 <p>アプリのユニークなユーザーIDを送信します。</p>
-
-<pre><code class="language-cs">public void SetUserId (string userId)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetUserId (<span style="color:#66d9ef">string</span> userId)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -431,7 +353,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">userId</td>
@@ -439,16 +360,10 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="名前タグ">名前タグ</h3>
-
+<h3 id="heading-14">名前タグ</h3>
 <p>アプリのユーザー名を送信します。</p>
-
-<pre><code class="language-cs">public void SetName (string name)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetName (<span style="color:#66d9ef">string</span> name)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -456,7 +371,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
@@ -464,16 +378,10 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="年齢タグ">年齢タグ</h3>
-
+<h3 id="heading-15">年齢タグ</h3>
 <p>アプリのユーザーの年齢を送信します。</p>
-
-<pre><code class="language-cs">public void SetAge (int age)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetAge (<span style="color:#66d9ef">int</span> age)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -481,7 +389,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">age</td>
@@ -489,16 +396,10 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="性別タグ">性別タグ</h3>
-
+<h3 id="heading-16">性別タグ</h3>
 <p>変数は、Genderを用いてどちらか性別を送信してください。</p>
-
-<pre><code class="language-cs">public void SetGender(Gender gender)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetGender(Gender gender)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -506,7 +407,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">gender</td>
@@ -514,16 +414,10 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="レベルタグ">レベルタグ</h3>
-
+<h3 id="heading-17">レベルタグ</h3>
 <p>アプリのユーザーのレベルを送信します。</p>
-
-<pre><code class="language-cs">public void SetLevel (int level)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetLevel (<span style="color:#66d9ef">int</span> level)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -531,7 +425,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">level</td>
@@ -539,16 +432,10 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="開発用タグ">開発用タグ</h3>
-
+<h3 id="heading-18">開発用タグ</h3>
 <p>開発用のフラグををつけます。</p>
-
-<pre><code class="language-cs">public void SetDevelopment (bool development)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetDevelopment (<span style="color:#66d9ef">bool</span> development)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -556,7 +443,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">development</td>
@@ -564,23 +450,13 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="乱数タグ">乱数タグ</h3>
-
+<h3 id="heading-19">乱数タグ</h3>
 <p>乱数を端末の情報として紐付けます。</p>
-
-<pre><code class="language-cs">public void SetRandom ()
-</code></pre>
-
-<h2 id="カスタムイベント送信">カスタムイベント送信</h2>
-
-<h3 id="イベントの送信">イベントの送信</h3>
-
-<pre><code class="language-cs">public void Track (string name)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetRandom ()
+</code></pre></div><h2 id="heading-20">カスタムイベント送信</h2>
+<h3 id="heading-21">イベントの送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Track (<span style="color:#66d9ef">string</span> name)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -588,22 +464,16 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
-<td align="left">フォーマット:<code>Event:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;CUSTOM_EVENT_ID&gt;</code> <br/> <code>YOUR_APPLICATION_ID</code>: ApplicationID <br/> <code>CUSTOM_EVENT_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
+<td align="left">フォーマット:<code>Event:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;CUSTOM_EVENT_ID&gt;</code> <!-- raw HTML omitted --> <code>YOUR_APPLICATION_ID</code>: ApplicationID <!-- raw HTML omitted --> <code>CUSTOM_EVENT_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
 </tr>
 </tbody>
 </table>
-
-<h3 id="イベント名と任意のmapの送信">イベント名と任意のMapの送信</h3>
-
-<pre><code class="language-cs">public void Track (string name, Dictionary&lt;string, string&gt; properties)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h3 id="map">イベント名と任意のMapの送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Track (<span style="color:#66d9ef">string</span> name, Dictionary&lt;<span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">string</span>&gt; properties)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -611,27 +481,20 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
-<td align="left">フォーマット:<code>Event:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;CUSTOM_EVENT_ID&gt;</code> <br/> <code>YOUR_APPLICATION_ID</code>: ApplicationID <br/> <code>CUSTOM_EVENT_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
+<td align="left">フォーマット:<code>Event:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;CUSTOM_EVENT_ID&gt;</code> <!-- raw HTML omitted --> <code>YOUR_APPLICATION_ID</code>: ApplicationID <!-- raw HTML omitted --> <code>CUSTOM_EVENT_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
 </tr>
-
 <tr>
 <td align="left">properties</td>
 <td align="left">カスタムイベントに持たせる任意のMap</td>
 </tr>
 </tbody>
 </table>
-
-<h3 id="イベント名とイベント取得回数オプションの送信">イベント名とイベント取得回数オプションの送信</h3>
-
-<pre><code class="language-cs">public void Track (string name, TrackOption option)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h3 id="heading-22">イベント名とイベント取得回数オプションの送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Track (<span style="color:#66d9ef">string</span> name, TrackOption option)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -639,22 +502,18 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
-<td align="left">フォーマット:<code>Event:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;CUSTOM_EVENT_ID&gt;</code> <br/> <code>YOUR_APPLICATION_ID</code>: ApplicationID <br/> <code>CUSTOM_EVENT_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
+<td align="left">フォーマット:<code>Event:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;CUSTOM_EVENT_ID&gt;</code> <!-- raw HTML omitted --> <code>YOUR_APPLICATION_ID</code>: ApplicationID <!-- raw HTML omitted --> <code>CUSTOM_EVENT_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
 </tr>
-
 <tr>
 <td align="left">option</td>
 <td align="left">GATrackOptionDefault, GATrackOptionOnce, GATrackOptionCounterのいずれかを指定します。</td>
 </tr>
 </tbody>
 </table>
-
 <p><strong>option</strong></p>
-
 <table>
 <thead>
 <tr>
@@ -662,32 +521,24 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">GATrackOptionDefault</td>
 <td align="left">デフォルト値。特に何もしません。</td>
 </tr>
-
 <tr>
 <td align="left">GATrackOptionOnce</td>
 <td align="left">このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）</td>
 </tr>
-
 <tr>
 <td align="left">GATrackOptionCounter</td>
 <td align="left">このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。</td>
 </tr>
 </tbody>
 </table>
-
-<h3 id="イベント名と任意のmapの送信とイベント取得回数オプションの送信">イベント名と任意のMapの送信とイベント取得回数オプションの送信</h3>
-
-<pre><code class="language-cs">public void Track (string name, Dictionary&lt;string, string&gt; properties, TrackOption option)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h3 id="map-1">イベント名と任意のMapの送信とイベント取得回数オプションの送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Track (<span style="color:#66d9ef">string</span> name, Dictionary&lt;<span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">string</span>&gt; properties, TrackOption option)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -695,27 +546,22 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
-<td align="left">フォーマット:<code>Event:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;CUSTOM_EVENT_ID&gt;</code> <br/> <code>YOUR_APPLICATION_ID</code>: ApplicationID <br/> <code>CUSTOM_EVENT_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
+<td align="left">フォーマット:<code>Event:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;CUSTOM_EVENT_ID&gt;</code> <!-- raw HTML omitted --> <code>YOUR_APPLICATION_ID</code>: ApplicationID <!-- raw HTML omitted --> <code>CUSTOM_EVENT_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
 </tr>
-
 <tr>
 <td align="left">properties</td>
 <td align="left">カスタムイベントに持たせる任意のMap</td>
 </tr>
-
 <tr>
 <td align="left">option</td>
 <td align="left">GATrackOptionDefault, GATrackOptionOnce, GATrackOptionCounterのいずれかを指定します。</td>
 </tr>
 </tbody>
 </table>
-
 <p><strong>option</strong></p>
-
 <table>
 <thead>
 <tr>
@@ -723,34 +569,25 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">GATrackOptionDefault</td>
 <td align="left">デフォルト値。特に何もしません。</td>
 </tr>
-
 <tr>
 <td align="left">GATrackOptionOnce</td>
 <td align="left">このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）</td>
 </tr>
-
 <tr>
 <td align="left">GATrackOptionCounter</td>
 <td align="left">このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="カスタムタグ送信">カスタムタグ送信</h2>
-
-<h3 id="タグの送信">タグの送信</h3>
-
-<pre><code class="language-cs">public void Tag (string name)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h2 id="heading-23">カスタムタグ送信</h2>
+<h3 id="heading-24">タグの送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Tag (<span style="color:#66d9ef">string</span> name)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -758,22 +595,16 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
-<td align="left">フォーマット:<code>Tag:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;LAST_ID&gt;</code> <br/> <code>YOUR_APPLICATION_ID</code>: ApplicationID<br/>  <code>LAST_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
+<td align="left">フォーマット:<code>Tag:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;LAST_ID&gt;</code> <!-- raw HTML omitted --> <code>YOUR_APPLICATION_ID</code>: ApplicationID<!-- raw HTML omitted -->  <code>LAST_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
 </tr>
 </tbody>
 </table>
-
-<h3 id="タグと任意の値を送信">タグと任意の値を送信</h3>
-
-<pre><code class="language-cs">public void Tag (string name, string value)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h3 id="heading-25">タグと任意の値を送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Tag (<span style="color:#66d9ef">string</span> name, <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">value</span>)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -781,29 +612,21 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
-<td align="left">フォーマット:<code>Tag:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;LAST_ID&gt;</code> <br/> <code>YOUR_APPLICATION_ID</code>: ApplicationID<br/>  <code>LAST_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
+<td align="left">フォーマット:<code>Tag:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;LAST_ID&gt;</code> <!-- raw HTML omitted --> <code>YOUR_APPLICATION_ID</code>: ApplicationID<!-- raw HTML omitted -->  <code>LAST_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
 </tr>
-
 <tr>
 <td align="left">value</td>
 <td align="left">カスタムタグに持たせる任意のValue</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="フルカスタマイズなイベントの送信">フルカスタマイズなイベントの送信</h2>
-
+<h2 id="heading-26">フルカスタマイズなイベントの送信</h2>
 <p>特定のネームスペース、イベントIDを設定していただくことが可能です。</p>
-
-<pre><code class="language-cs">public void Track (string _namespace, string name, Dictionary&lt;string, string&gt; properties, TrackOption option)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Track (<span style="color:#66d9ef">string</span> _namespace, <span style="color:#66d9ef">string</span> name, Dictionary&lt;<span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">string</span>&gt; properties, TrackOption option)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -811,37 +634,30 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">_namespace</td>
 <td align="left">ネームスペース</td>
 </tr>
-
 <tr>
 <td align="left">name</td>
-<td align="left">フォーマット:<code>Event:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;CUSTOM_EVENT_ID&gt;</code> <br/> <code>YOUR_APPLICATION_ID</code>: ApplicationID <br/> <code>CUSTOM_EVENT_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
+<td align="left">フォーマット:<code>Event:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;CUSTOM_EVENT_ID&gt;</code> <!-- raw HTML omitted --> <code>YOUR_APPLICATION_ID</code>: ApplicationID <!-- raw HTML omitted --> <code>CUSTOM_EVENT_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
 </tr>
-
 <tr>
 <td align="left">properties</td>
 <td align="left">イベントに持たせる任意のMap</td>
 </tr>
-
 <tr>
 <td align="left">option</td>
 <td align="left">GATrackOptionDefault, GATrackOptionOnce, GATrackOptionCounterのいずれかを指定します。</td>
 </tr>
-
 <tr>
 <td align="left">completion</td>
 <td align="left">イベント作成後のコールバック</td>
 </tr>
 </tbody>
 </table>
-
 <p><strong>option</strong></p>
-
 <table>
 <thead>
 <tr>
@@ -849,34 +665,25 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">GATrackOptionDefault</td>
 <td align="left">デフォルト値。特に何もしません。</td>
 </tr>
-
 <tr>
 <td align="left">GATrackOptionOnce</td>
 <td align="left">このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）</td>
 </tr>
-
 <tr>
 <td align="left">GATrackOptionCounter</td>
 <td align="left">このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="フルカスタマイズなタグの送信">フルカスタマイズなタグの送信</h2>
-
+<h2 id="heading-27">フルカスタマイズなタグの送信</h2>
 <p>特定のネームスペース、タグIDを設定していただくことが可能です。</p>
-
-<pre><code class="language-cs">public void Tag (string _namespace, string name, string value)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Tag (<span style="color:#66d9ef">string</span> _namespace, <span style="color:#66d9ef">string</span> name, <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">value</span>)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -884,93 +691,61 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">_namespace</td>
 <td align="left">ネームスペース</td>
 </tr>
-
 <tr>
 <td align="left">name</td>
-<td align="left">フォーマット:<code>Tag:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;LAST_ID&gt;</code> <br/> <code>YOUR_APPLICATION_ID</code>: ApplicationID<br/>  <code>LAST_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
+<td align="left">フォーマット:<code>Tag:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;LAST_ID&gt;</code> <!-- raw HTML omitted --> <code>YOUR_APPLICATION_ID</code>: ApplicationID<!-- raw HTML omitted -->  <code>LAST_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
 </tr>
-
 <tr>
 <td align="left">value</td>
 <td align="left">タグに持たせる任意のValue</td>
 </tr>
-
 <tr>
 <td align="left">completion</td>
 <td align="left">タグ作成後のコールバック</td>
 </tr>
 </tbody>
 </table>
-
 <h1 id="growth-push-api">Growth Push API</h1>
-
-<h2 id="growth-pushインスタンスの取得">Growth Pushインスタンスの取得</h2>
-
+<h2 id="growth-push">Growth Pushインスタンスの取得</h2>
 <p>Growth Pushインスタンスを取得します。</p>
-
-<pre><code class="language-cs">public static GrowthPush GetInstance ()
-</code></pre>
-
-<h2 id="デバイストークンの取得-送信">デバイストークンの取得・送信</h2>
-
-<h3 id="デバイストークンの取得">デバイストークンの取得</h3>
-
-<pre><code class="language-cs">public void RequestDeviceToken (string senderId, Environment environment)
-</code></pre>
-
-<table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> GrowthPush GetInstance ()
+</code></pre></div><h2 id="heading-28">デバイストークンの取得・送信</h2>
+<h3 id="heading-29">デバイストークンの取得</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> RequestDeviceToken (<span style="color:#66d9ef">string</span> senderId, Environment environment)
+</code></pre></div><table>
 <thead>
 <tr>
 <th align="left">項目名</th>
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">senderId</td>
 <td align="left">Android の SenderId</td>
 </tr>
-
 <tr>
 <td align="left">environment</td>
-<td align="left">開発用: <code>Environment.development</code> 本番用: <code>Environment.production</code></td>
+<td align="left">開発用: <code>Environment.development</code> 本番用: <code>Environment.production</code>|</td>
 </tr>
 </tbody>
 </table>
-
-<h3 id="デバイストークンの送信">デバイストークンの送信</h3>
-
-<pre><code class="language-cs">public void SetDeviceToken (string deviceToken)
-</code></pre>
-
-<h3 id="android-デバイストークン取得">Android デバイストークン取得</h3>
-
-<pre><code class="language-cs">public string GetDeviceToken ()
-</code></pre>
-
-<h2 id="基本タグの送信-1">基本タグの送信</h2>
-
+<h3 id="heading-30">デバイストークンの送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetDeviceToken (<span style="color:#66d9ef">string</span> deviceToken)
+</code></pre></div><h3 id="android-">Android デバイストークン取得</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> GetDeviceToken ()
+</code></pre></div><h2 id="heading-31">基本タグの送信</h2>
 <p>Device, OS, Language, Time Zone, Version, Buildが含まれます。</p>
-
-<pre><code class="language-cs">public void SetDeviceTags();
-</code></pre>
-
-<h2 id="イベントの送信-push専用">イベントの送信（Push専用）</h2>
-
-<h3 id="イベントの送信-push専用-1">イベントの送信（Push専用）</h3>
-
-<pre><code class="language-cs">public void TrackEvent(string name)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetDeviceTags();
+</code></pre></div><h2 id="push">イベントの送信（Push専用）</h2>
+<h3 id="push-1">イベントの送信（Push専用）</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> TrackEvent(<span style="color:#66d9ef">string</span> name)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -978,7 +753,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
@@ -986,14 +760,9 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="イベントと任意の値の送信-push専用">イベントと任意の値の送信（Push専用）</h3>
-
-<pre><code class="language-cs">public void TrackEvent (string name, string value)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h3 id="push-2">イベントと任意の値の送信（Push専用）</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> TrackEvent (<span style="color:#66d9ef">string</span> name, <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">value</span>)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -1001,29 +770,21 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
 <td align="left">イベント名</td>
 </tr>
-
 <tr>
 <td align="left">value</td>
 <td align="left">イベントに持たせる値</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="タグの送信-push専用">タグの送信（Push専用）</h2>
-
-<h3 id="タグの送信-push専用-1">タグの送信（Push専用）</h3>
-
-<pre><code class="language-cs">public void SetTag (string name)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h2 id="push-3">タグの送信（Push専用）</h2>
+<h3 id="push-4">タグの送信（Push専用）</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetTag (<span style="color:#66d9ef">string</span> name)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -1031,7 +792,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
@@ -1039,14 +799,9 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="タグと任意の値の送信-push専用">タグと任意の値の送信（Push専用）</h3>
-
-<pre><code class="language-cs">public void SetTag (string name, string value)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h3 id="push-5">タグと任意の値の送信（Push専用）</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetTag (<span style="color:#66d9ef">string</span> name, <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">value</span>)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -1054,50 +809,31 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
 <td align="left">タグ名</td>
 </tr>
-
 <tr>
 <td align="left">value</td>
 <td align="left">タグに持たせる値</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="バッチクリア">バッチクリア</h2>
-
+<h2 id="heading-32">バッチクリア</h2>
 <p>配信時に、バッチにチェックマークを付けた場合、バッチをクリアするためのメソッドです。
 iOSのみ利用できます。</p>
-
-<pre><code class="language-cs">public void ClearBadge ();
-</code></pre>
-
-<h1 id="growth-message-api">Growth Message API</h1>
-
-<h2 id="growthmessageインスタンスの取得">GrowthMessageインスタンスの取得</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> ClearBadge ();
+</code></pre></div><h1 id="growth-message-api">Growth Message API</h1>
+<h2 id="growthmessage">GrowthMessageインスタンスの取得</h2>
 <p>GrowthMessageインスタンスを取得します。</p>
-
-<pre><code class="language-cs">public static GrowthMessage GetInstance ()
-</code></pre>
-
-<h1 id="growth-link-api">Growth Link API</h1>
-
-<h2 id="growth-link初期化">Growth Link初期化</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> GrowthMessage GetInstance ()
+</code></pre></div><h1 id="growth-link-api">Growth Link API</h1>
+<h2 id="growth-link">Growth Link初期化</h2>
 <p>Growth Linkを初期化します。</p>
-
 <p>applicationId, credentialIdは、Growthbeatの初期化時に利用したものと同じものを利用してください。</p>
-
-<pre><code class="language-cs">GrowthLink.GetInstance().Initialize (applicationId, credentialId);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs">GrowthLink.GetInstance().Initialize (applicationId, credentialId);
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -1105,13 +841,11 @@ iOSのみ利用できます。</p>
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">applicationId</td>
 <td align="left">アプリケーションID</td>
 </tr>
-
 <tr>
 <td align="left">credentialId</td>
 <td align="left">クリデンシャルID</td>
@@ -1136,7 +870,7 @@ iOSのみ利用できます。</p>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-<script src="http://support.growthbeat.com/js/sirok-scrollspy.js"></script>
+<script src="https://support.growthbeat.com/js/sirok-scrollspy.js"></script>
 <script>
 $(function() {
   $('pre code, code').each(function(i, block) {

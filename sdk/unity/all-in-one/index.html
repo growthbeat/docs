@@ -10,7 +10,7 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="Growthbeat Unity SDK | 全機能利用ガイド | Growthbeatドキュメント |">
-  <meta property="og:url" content="http://support.growthbeat.com/sdk/unity/all-in-one/">
+  <meta property="og:url" content="https://support.growthbeat.com/sdk/unity/all-in-one/">
   <meta property="og:description" content="Growthbeat SDK for Unity の導入方法について説明します">
   
   <meta property="article:author" content="" />
@@ -26,7 +26,7 @@
   
   <link rel="shortcut icon" href="/favicon.ico">
 
-  <link rel="stylesheet" href="http://support.growthbeat.com/css/main.css" />
+  <link rel="stylesheet" href="https://support.growthbeat.com/css/main.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
 </head>
 
@@ -51,7 +51,7 @@
     <nav class="header-nav">
       <h1 class="logo">
         <a class="link"href="https://growthbeat.com/">
-          <img src="http://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
+          <img src="https://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
         </a>
       </h1>
 
@@ -72,10 +72,10 @@
   <div class="container">
     <ul class="breadcrumb">
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/">サポートページ</a>
+        <a class="link" href="https://support.growthbeat.com/">サポートページ</a>
       </li>
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/sdk/">SDKドキュメント</a>
+        <a class="link" href="https://support.growthbeat.com/sdk/">SDKドキュメント</a>
       </li>
       
       
@@ -107,99 +107,66 @@
 <section class="row markdown">
     <div class="column column-sidebar">
       <nav id="TableOfContents">
-<ul>
-<li><a href="#growthbeat利用ガイド">Growthbeat利用ガイド</a></li>
-<li><a href="#1-growth-pushを利用">1. Growth Pushを利用</a></li>
-<li><a href="#2-growth-messageを利用">2. Growth Messageを利用</a>
-<ul>
-<li><a href="#実装コード">実装コード</a></li>
-<li><a href="#androidmanifest-xml-の設定">AndroidManifest.xml の設定</a></li>
-<li><a href="#管理画面設定方法">管理画面設定方法</a></li>
-</ul></li>
-<li><a href="#備考">備考</a>
-<ul>
-<li><a href="#最新版のsdkへの乗り換え方法">最新版のSDKへの乗り換え方法</a></li>
-<li><a href="#サンプルについて">サンプルについて</a></li>
-</ul></li>
-<li><a href="#お問い合わせ">お問い合わせ</a></li>
-</ul>
+  <ul>
+    <li><a href="#heading">実装コード</a></li>
+    <li><a href="#androidmanifestxml-">AndroidManifest.xml の設定</a></li>
+    <li><a href="#heading-1">管理画面設定方法</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#sdk">最新版のSDKへの乗り換え方法</a></li>
+    <li><a href="#heading-3">サンプルについて</a></li>
+  </ul>
 </nav>
     </div>
     <div class="column column-main">
       <div class="typeset">
-        
-
-<h1 id="growthbeat利用ガイド">Growthbeat利用ガイド</h1>
-
-<h1 id="1-growth-pushを利用">1. Growth Pushを利用</h1>
-
+        <h1 id="growthbeat">Growthbeat利用ガイド</h1>
+<h1 id="1-growth-push">1. Growth Pushを利用</h1>
 <p>Growth Pushのみを利用する<a href="/sdk/unity/guide">導入方法</a>をご覧ください。</p>
-
-<h1 id="2-growth-messageを利用">2. Growth Messageを利用</h1>
-
-<p>Growth Message を用いてポップアップを任意のタイミングで表示させるには、「<a href="http://support.growthbeat.com/manual/growthmessage/#配信トリガー">配信トリガー</a>」 を設定します。「<a href="http://support.growthbeat.com/manual/growthmessage/#配信トリガー">配信トリガー</a>」 は作成したカスタムイベントの中から選ぶ必要がございます。</p>
-
-<h2 id="実装コード">実装コード</h2>
-
+<h1 id="2-growth-message">2. Growth Messageを利用</h1>
+<p>Growth Message を用いてポップアップを任意のタイミングで表示させるには、「<a href="https://support.growthbeat.com/manual/growthmessage/#%E9%85%8D%E4%BF%A1%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC">配信トリガー</a>」 を設定します。「<a href="https://support.growthbeat.com/manual/growthmessage/#%E9%85%8D%E4%BF%A1%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC">配信トリガー</a>」 は作成したカスタムイベントの中から選ぶ必要がございます。</p>
+<h2 id="heading">実装コード</h2>
 <p>メッセージを表示させるのに必要なハンドラを設定します。</p>
-
-<pre><code class="language-c#">void Awake ()
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#"><span style="color:#66d9ef">void</span> Awake ()
 {
-  GrowthPush.GetInstance().Initialize(&quot;YOUR_APPLICATION_ID&quot;, &quot;YOUR_CREDENTIAL_ID&quot;, Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
+  GrowthPush.GetInstance().Initialize(<span style="color:#e6db74">&#34;YOUR_APPLICATION_ID&#34;</span>, <span style="color:#e6db74">&#34;YOUR_CREDENTIAL_ID&#34;</span>, Debug.isDebugBuild ? GrowthPush.Environment.Development : GrowthPush.Environment.Production);
 
   IntentHandler.GetInstance ().AddNoopIntentHandler ();
   IntentHandler.GetInstance ().AddUrlIntentHandler ();
-  IntentHandler.GetInstance ().AddCustomIntentHandler (&quot;GrowthbeatComponent&quot;, &quot;HandleCustomIntent&quot;);
+  IntentHandler.GetInstance ().AddCustomIntentHandler (<span style="color:#e6db74">&#34;GrowthbeatComponent&#34;</span>, <span style="color:#e6db74">&#34;HandleCustomIntent&#34;</span>);
 
-  // Android のデバイストークン取得（必ず initialize 後に呼び出してください）
-  GrowthPush.GetInstance ().RequestDeviceToken (&quot;Y0UR_SENDER_ID&quot;);
+  <span style="color:#75715e">// Android のデバイストークン取得（必ず initialize 後に呼び出してください）
+</span><span style="color:#75715e"></span>  GrowthPush.GetInstance ().RequestDeviceToken (<span style="color:#e6db74">&#34;Y0UR_SENDER_ID&#34;</span>);
 } 
-</code></pre>
-
-<p>配信トリガーとなるカスタムイベントを作成するには、ポップアップメッセージを表示させたい任意の場所に下記のようなイベントを送信するメソッドを記述してください。</p>
-
-<pre><code class="language-c#">public class GrowthbeatComponent : MonoBehaviour {
-    void Awake () {
-        GrowthPush.getInstance().TrackEvent(&quot;Launch&quot;,&quot;&quot;,&quot;GrowthbeatComponent&quot;,&quot;ShowMessage&quot;);
+</code></pre></div><p>配信トリガーとなるカスタムイベントを作成するには、ポップアップメッセージを表示させたい任意の場所に下記のようなイベントを送信するメソッドを記述してください。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GrowthbeatComponent</span> : MonoBehaviour {
+    <span style="color:#66d9ef">void</span> Awake () {
+        GrowthPush.getInstance().TrackEvent(<span style="color:#e6db74">&#34;Launch&#34;</span>,<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#e6db74">&#34;GrowthbeatComponent&#34;</span>,<span style="color:#e6db74">&#34;ShowMessage&#34;</span>);
     }
-    void ShowMessage (string uuid) {
-        // wait frame
-        GrowthPush.GetInstance ().RenderMessage (uuid);
+    <span style="color:#66d9ef">void</span> ShowMessage (<span style="color:#66d9ef">string</span> uuid) {
+        <span style="color:#75715e">// wait frame
+</span><span style="color:#75715e"></span>        GrowthPush.GetInstance ().RenderMessage (uuid);
     }
 }
-</code></pre>
-
-<h2 id="androidmanifest-xml-の設定">AndroidManifest.xml の設定</h2>
-
+</code></pre></div><h2 id="androidmanifestxml-">AndroidManifest.xml の設定</h2>
 <p>AndroidManifest.xml にGrowth Message表示用のActivityを追加します。</p>
-
-<pre><code class="language-xml">&lt;application&gt;
-    &lt;!-- ... --&gt;
-    &lt;activity
-        android:name=&quot;com.growthbeat.message.view.MessageActivity&quot;
-        android:theme=&quot;@android:style/Theme.Translucent&quot; /&gt;
-&lt;/application&gt;
-</code></pre>
-
-<h2 id="管理画面設定方法">管理画面設定方法</h2>
-
-<p>「<a href="http://support.growthbeat.com/manual/growthmessage/#配信トリガー">配信トリガー</a>」 で先程実装したイベント（今回の場合は OpenActivity）を選択すると、指定のイベントが発火したタイミングでメッセージが表示されます。</p>
-
-<p>詳しいメッセージの作成方法は <a href="http://support.growthbeat.com/manual/growthmessage/#配信作成">配信作成</a> を参照してください。</p>
-
-<h1 id="備考">備考</h1>
-
-<h2 id="最新版のsdkへの乗り換え方法">最新版のSDKへの乗り換え方法</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;application</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> ... </span><span style="color:#75715e">--&gt;</span>
+    <span style="color:#f92672">&lt;activity</span>
+        <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthbeat.message.view.MessageActivity&#34;</span>
+        <span style="color:#a6e22e">android:theme=</span><span style="color:#e6db74">&#34;@android:style/Theme.Translucent&#34;</span> <span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;/application&gt;</span>
+</code></pre></div><h2 id="heading-1">管理画面設定方法</h2>
+<p>「<a href="https://support.growthbeat.com/manual/growthmessage/#%E9%85%8D%E4%BF%A1%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC">配信トリガー</a>」 で先程実装したイベント（今回の場合は OpenActivity）を選択すると、指定のイベントが発火したタイミングでメッセージが表示されます。</p>
+<p>詳しいメッセージの作成方法は <a href="https://support.growthbeat.com/manual/growthmessage/#%E9%85%8D%E4%BF%A1%E4%BD%9C%E6%88%90">配信作成</a> を参照してください。</p>
+<h1 id="heading-2">備考</h1>
+<h2 id="sdk">最新版のSDKへの乗り換え方法</h2>
 <p>Growth Push SDKからGrowthbeat 2.x SDK への乗り換えまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへの乗り換えをされる方は
 <a href="/sdk/unity/upgrade">SDKの移行ガイド</a>をご参照ください。</p>
-
-<h2 id="サンプルについて">サンプルについて</h2>
-
+<h2 id="heading-3">サンプルについて</h2>
 <p>実装サンプルは、<a href="https://github.com/growthbeat/growthbeat-unity">Githubレポジトリ</a>を参考にしてください。</p>
-
-<h1 id="お問い合わせ">お問い合わせ</h1>
-
+<h1 id="heading-4">お問い合わせ</h1>
 <p>ご不明な点などございます場合は、<a href="http://faq.growthbeat.com/">ヘルプページ</a>を閲覧してください。</p>
 
       </div>
@@ -219,7 +186,7 @@
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-<script src="http://support.growthbeat.com/js/sirok-scrollspy.js"></script>
+<script src="https://support.growthbeat.com/js/sirok-scrollspy.js"></script>
 <script>
 $(function() {
   $('pre code, code').each(function(i, block) {

@@ -10,7 +10,7 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="リリースノート | Growthbeatドキュメント |">
-  <meta property="og:url" content="http://support.growthbeat.com/sdk/ios/release/">
+  <meta property="og:url" content="https://support.growthbeat.com/sdk/ios/release/">
   <meta property="og:description" content="Growthbeat iOS のリリースノート">
   
   <meta property="article:author" content="" />
@@ -26,7 +26,7 @@
   
   <link rel="shortcut icon" href="/favicon.ico">
 
-  <link rel="stylesheet" href="http://support.growthbeat.com/css/main.css" />
+  <link rel="stylesheet" href="https://support.growthbeat.com/css/main.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
 </head>
 
@@ -51,7 +51,7 @@
     <nav class="header-nav">
       <h1 class="logo">
         <a class="link"href="https://growthbeat.com/">
-          <img src="http://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
+          <img src="https://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
         </a>
       </h1>
 
@@ -72,10 +72,10 @@
   <div class="container">
     <ul class="breadcrumb">
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/">サポートページ</a>
+        <a class="link" href="https://support.growthbeat.com/">サポートページ</a>
       </li>
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/sdk/">SDKドキュメント</a>
+        <a class="link" href="https://support.growthbeat.com/sdk/">SDKドキュメント</a>
       </li>
       
       
@@ -107,382 +107,283 @@
 <section class="row markdown">
     <div class="column column-sidebar">
       <nav id="TableOfContents">
-<ul>
-<li><a href="#バージョン-2-0-8">バージョン 2.0.8</a>
-<ul>
-<li><a href="#変更点">変更点</a></li>
-</ul></li>
-<li><a href="#バージョン-2-0-7">バージョン 2.0.7</a>
-<ul>
-<li><a href="#変更点-1">変更点</a></li>
-</ul></li>
-<li><a href="#バージョン-2-0-6">バージョン 2.0.6</a>
-<ul>
-<li><a href="#変更点-2">変更点</a></li>
-</ul></li>
-<li><a href="#バージョン-2-0-5">バージョン 2.0.5</a>
-<ul>
-<li><a href="#変更点-3">変更点</a></li>
-<li><a href="#バグ">バグ</a></li>
-</ul></li>
-<li><a href="#バージョン-2-0-4">バージョン 2.0.4</a>
-<ul>
-<li><a href="#変更点-4">変更点</a></li>
-</ul></li>
-<li><a href="#バージョン-2-0-3">バージョン 2.0.3</a>
-<ul>
-<li><a href="#変更点-5">変更点</a></li>
-</ul></li>
-<li><a href="#バージョン-2-0-2">バージョン 2.0.2</a>
-<ul>
-<li><a href="#変更点-6">変更点</a></li>
-<li><a href="#バグ-1">バグ</a></li>
-</ul></li>
-<li><a href="#バージョン-2-0-1">バージョン 2.0.1</a>
-<ul>
-<li><a href="#変更点-7">変更点</a></li>
-<li><a href="#バグ-2">バグ</a></li>
-</ul></li>
-<li><a href="#バージョン-2-0-0">バージョン 2.0.0</a>
-<ul>
-<li><a href="#変更点-8">変更点</a></li>
-<li><a href="#バグ-3">バグ</a></li>
-</ul></li>
-<li><a href="#バージョン-1-2-7">バージョン 1.2.7</a>
-<ul>
-<li><a href="#変更点-9">変更点</a></li>
-<li><a href="#ドキュメント">ドキュメント</a></li>
-<li><a href="#バグ-4">バグ</a></li>
-</ul></li>
-<li><a href="#バージョン-1-2-6">バージョン 1.2.6</a>
-<ul>
-<li><a href="#変更点-10">変更点</a></li>
-<li><a href="#ドキュメント-1">ドキュメント</a></li>
-<li><a href="#バグ-5">バグ</a></li>
-</ul></li>
-<li><a href="#バージョン-1-2-5">バージョン 1.2.5</a>
-<ul>
-<li><a href="#新機能">新機能</a></li>
-<li><a href="#変更点-11">変更点</a></li>
-</ul></li>
-<li><a href="#バージョン-1-2-4">バージョン 1.2.4</a>
-<ul>
-<li><a href="#新機能-1">新機能</a></li>
-</ul></li>
-<li><a href="#バージョン-1-2-3">バージョン 1.2.3</a>
-<ul>
-<li><a href="#新機能-2">新機能</a></li>
-<li><a href="#ドキュメント-2">ドキュメント</a></li>
-</ul></li>
-<li><a href="#バージョン-1-2-2">バージョン 1.2.2</a>
-<ul>
-<li><a href="#新機能-3">新機能</a></li>
-</ul></li>
-<li><a href="#バージョン-1-2-1">バージョン 1.2.1</a>
-<ul>
-<li><a href="#新機能-4">新機能</a></li>
-<li><a href="#ドキュメント-3">ドキュメント</a></li>
-</ul></li>
-<li><a href="#バージョン-1-2-0">バージョン 1.2.0</a>
-<ul>
-<li><a href="#新機能-5">新機能</a></li>
-<li><a href="#ドキュメント-4">ドキュメント</a></li>
-</ul></li>
-<li><a href="#バージョン-1-1-2">バージョン 1.1.2</a>
-<ul>
-<li><a href="#バグフィックス">バグフィックス</a></li>
-</ul></li>
-<li><a href="#バージョン-1-1-1">バージョン 1.1.1</a>
-<ul>
-<li><a href="#変更点-12">変更点</a></li>
-</ul></li>
-<li><a href="#バージョン-1-1-0">バージョン 1.1.0</a>
-<ul>
-<li><a href="#新機能-6">新機能</a></li>
-<li><a href="#変更点-13">変更点</a></li>
-<li><a href="#ドキュメント-5">ドキュメント</a></li>
-</ul></li>
-<li><a href="#バージョン-1-0-1">バージョン 1.0.1</a>
-<ul>
-<li><a href="#新機能-7">新機能</a></li>
-</ul></li>
-<li><a href="#バージョン-1-0">バージョン 1.0</a>
-<ul>
-<li><a href="#ドキュメント-6">ドキュメント</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#heading">変更点</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-1">変更点</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-2">変更点</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-3">変更点</a></li>
+    <li><a href="#heading-4">バグ</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-5">変更点</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-6">変更点</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-7">変更点</a></li>
+    <li><a href="#heading-8">バグ</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-9">変更点</a></li>
+    <li><a href="#heading-10">バグ</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-11">変更点</a></li>
+    <li><a href="#heading-12">バグ</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-13">変更点</a></li>
+    <li><a href="#heading-14">ドキュメント</a></li>
+    <li><a href="#heading-15">バグ</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-16">変更点</a></li>
+    <li><a href="#heading-17">ドキュメント</a></li>
+    <li><a href="#heading-18">バグ</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-19">新機能</a></li>
+    <li><a href="#heading-20">変更点</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-21">新機能</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-22">新機能</a></li>
+    <li><a href="#heading-23">ドキュメント</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-24">新機能</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-25">新機能</a></li>
+    <li><a href="#heading-26">ドキュメント</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-27">新機能</a></li>
+    <li><a href="#heading-28">ドキュメント</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-29">バグフィックス</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-30">変更点</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-31">新機能</a></li>
+    <li><a href="#heading-32">変更点</a></li>
+    <li><a href="#heading-33">ドキュメント</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-34">新機能</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-35">ドキュメント</a></li>
+  </ul>
 </nav>
     </div>
     <div class="column column-main">
       <div class="typeset">
-        
-
-<h1 id="バージョン-2-0-8">バージョン 2.0.8</h1>
-
-<h2 id="変更点">変更点</h2>
-
+        <h1 id="-208">バージョン 2.0.8</h1>
+<h2 id="heading">変更点</h2>
 <ul>
 <li>Advertising ID, TrackingEnable flag 取得処理を削除しました。</li>
 </ul>
-
-<h1 id="バージョン-2-0-7">バージョン 2.0.7</h1>
-
-<h2 id="変更点-1">変更点</h2>
-
+<h1 id="-207">バージョン 2.0.7</h1>
+<h2 id="heading-1">変更点</h2>
 <ul>
 <li>UIWebViewを利用していた処理を削除しました。</li>
 <li>GrowthLink提供停止のため機能を削除しました。</li>
 </ul>
-
-<h1 id="バージョン-2-0-6">バージョン 2.0.6</h1>
-
-<h2 id="変更点-2">変更点</h2>
-
+<h1 id="-206">バージョン 2.0.6</h1>
+<h2 id="heading-2">変更点</h2>
 <ul>
 <li>iOS 13でデバイストークンが取得出来ない場合がある問題を修正しました。</li>
 </ul>
-
-<h1 id="バージョン-2-0-5">バージョン 2.0.5</h1>
-
-<h2 id="変更点-3">変更点</h2>
-
+<h1 id="-205">バージョン 2.0.5</h1>
+<h2 id="heading-3">変更点</h2>
 <ul>
 <li>初期化前に、タグ/イベントの送信を大量に行うと、アプリが固まってしまう問題を修正しました。</li>
 <li>通信時のエラーコードを表示するように変更しました。</li>
 </ul>
-
-<h2 id="バグ">バグ</h2>
-
+<h2 id="heading-4">バグ</h2>
 <ul>
 <li>Growth Messageのタグの種類送信方法を修正しました。</li>
 </ul>
-
-<h1 id="バージョン-2-0-4">バージョン 2.0.4</h1>
-
-<h2 id="変更点-4">変更点</h2>
-
+<h1 id="-204">バージョン 2.0.4</h1>
+<h2 id="heading-5">変更点</h2>
 <ul>
 <li>サンプルアプリを変更いたしました。</li>
 </ul>
-
-<h1 id="バージョン-2-0-3">バージョン 2.0.3</h1>
-
-<h2 id="変更点-5">変更点</h2>
-
+<h1 id="-203">バージョン 2.0.3</h1>
+<h2 id="heading-6">変更点</h2>
 <ul>
 <li>CocoaPodsにて、frameworkの提供を終了し、ソースコードの提供に変更いたしました。</li>
 </ul>
-
-<h1 id="バージョン-2-0-2">バージョン 2.0.2</h1>
-
-<h2 id="変更点-6">変更点</h2>
-
+<h1 id="-202">バージョン 2.0.2</h1>
+<h2 id="heading-7">変更点</h2>
 <ul>
 <li>Client APIの変更がありました。</li>
 </ul>
-
-<h2 id="バグ-1">バグ</h2>
-
+<h2 id="heading-8">バグ</h2>
 <ul>
 <li>Growthbeat 1.xから乗り換え時に、特定の条件で情報が引き継げない不具合を修正しました。</li>
 </ul>
-
-<h1 id="バージョン-2-0-1">バージョン 2.0.1</h1>
-
-<h2 id="変更点-7">変更点</h2>
-
+<h1 id="-201">バージョン 2.0.1</h1>
+<h2 id="heading-9">変更点</h2>
 <ul>
 <li>Handlerを使ったメッセージ表示方法を変更しました。</li>
 </ul>
-
-<h2 id="バグ-2">バグ</h2>
-
+<h2 id="heading-10">バグ</h2>
 <ul>
 <li>ウォークスルー表示で、回転を行ったときに1ページ目に戻ってしまうバグを修正しました。</li>
 </ul>
-
-<h1 id="バージョン-2-0-0">バージョン 2.0.0</h1>
-
-<h2 id="変更点-8">変更点</h2>
-
+<h1 id="-200">バージョン 2.0.0</h1>
+<h2 id="heading-11">変更点</h2>
 <ul>
 <li>Growthbeatのインターフェースを変更しました。</li>
 <li>Growth Analyticsの機能が無くなりました。</li>
 <li>Growth Messageの表示機能が改善いたしました。</li>
 </ul>
-
-<h2 id="バグ-3">バグ</h2>
-
+<h2 id="heading-12">バグ</h2>
 <ul>
 <li>バージョン1.2.7で対応を行った、Growth Pushのbundleとversionタグの登録情報に誤りがあったため修正いたしました。</li>
 </ul>
-
-<h1 id="バージョン-1-2-7">バージョン 1.2.7</h1>
-
-<h2 id="変更点-9">変更点</h2>
-
+<h1 id="-127">バージョン 1.2.7</h1>
+<h2 id="heading-13">変更点</h2>
 <ul>
 <li>bitcodeに対応いたしました。</li>
 <li>Growth LinkのUniversal Links経由のアプリ遷移を最適化いたしました。</li>
 <li>導入時にdSYM 関連のwarningが出る問題を修正いたしました。</li>
 </ul>
-
-<h2 id="ドキュメント">ドキュメント</h2>
-
+<h2 id="heading-14">ドキュメント</h2>
 <ul>
 <li>Growth Push導入に関する実装方法に詳細説明を加えました。</li>
 </ul>
-
-<h2 id="バグ-4">バグ</h2>
-
+<h2 id="heading-15">バグ</h2>
 <ul>
 <li>Growth Pushのbundleとversionタグの登録情報に誤りがあったため修正いたしました。</li>
 </ul>
-
-<h1 id="バージョン-1-2-6">バージョン 1.2.6</h1>
-
-<h2 id="変更点-10">変更点</h2>
-
+<h1 id="-126">バージョン 1.2.6</h1>
+<h2 id="heading-16">変更点</h2>
 <ul>
 <li>Growth Pushデバイストークンのパース方法が32bitに依存していたため、パース方法を修正いたしました。</li>
 </ul>
-
-<h2 id="ドキュメント-1">ドキュメント</h2>
-
+<h2 id="heading-17">ドキュメント</h2>
 <ul>
 <li>Growth Push導入に関する実装方法に詳細説明を加えました。</li>
 </ul>
-
-<h2 id="バグ-5">バグ</h2>
-
+<h2 id="heading-18">バグ</h2>
 <ul>
 <li>ネットワーク通信が走らないときに、Growth Push初期化で処理が止まってしまう不具合を修正しました。</li>
 </ul>
-
-<h1 id="バージョン-1-2-5">バージョン 1.2.5</h1>
-
-<h2 id="新機能">新機能</h2>
-
+<h1 id="-125">バージョン 1.2.5</h1>
+<h2 id="heading-19">新機能</h2>
 <ul>
 <li>Growthbeatのクライアントを取得するAPIを追加しました。</li>
 <li>広告情報の送信をオプション化しました。</li>
 </ul>
-
-<h2 id="変更点-11">変更点</h2>
-
+<h2 id="heading-20">変更点</h2>
 <ul>
 <li>Installイベントを起動時からGrowthbeatの初期化内に移動しました。</li>
 </ul>
-
-<h1 id="バージョン-1-2-4">バージョン 1.2.4</h1>
-
-<h2 id="新機能-1">新機能</h2>
-
+<h1 id="-124">バージョン 1.2.4</h1>
+<h2 id="heading-21">新機能</h2>
 <ul>
 <li>Growth LinkのSFSafariViewController対応をしました。</li>
 </ul>
-
-<h1 id="バージョン-1-2-3">バージョン 1.2.3</h1>
-
-<h2 id="新機能-2">新機能</h2>
-
+<h1 id="-123">バージョン 1.2.3</h1>
+<h2 id="heading-22">新機能</h2>
 <ul>
 <li>Growth Link デバイスフィンガープリントに対応いたしました。</li>
 </ul>
-
-<h2 id="ドキュメント-2">ドキュメント</h2>
-
+<h2 id="heading-23">ドキュメント</h2>
 <ul>
 <li>Growth Push SDKからの乗り換え方法を追加しました。</li>
 </ul>
-
-<h1 id="バージョン-1-2-2">バージョン 1.2.2</h1>
-
-<h2 id="新機能-3">新機能</h2>
-
+<h1 id="-122">バージョン 1.2.2</h1>
+<h2 id="heading-24">新機能</h2>
 <ul>
 <li>Growth Messageの配信パターン、バナーをサポートしました。</li>
 </ul>
-
-<h1 id="バージョン-1-2-1">バージョン 1.2.1</h1>
-
-<h2 id="新機能-4">新機能</h2>
-
+<h1 id="-121">バージョン 1.2.1</h1>
+<h2 id="heading-25">新機能</h2>
 <ul>
 <li>Growth Messageの配信パターン、ウォークスルーをサポートしました。</li>
 </ul>
-
-<h2 id="ドキュメント-3">ドキュメント</h2>
-
+<h2 id="heading-26">ドキュメント</h2>
 <ul>
 <li>iOSのみの実装方法の記載となります。</li>
 </ul>
-
-<h1 id="バージョン-1-2-0">バージョン 1.2.0</h1>
-
-<h2 id="新機能-5">新機能</h2>
-
+<h1 id="-120">バージョン 1.2.0</h1>
+<h2 id="heading-27">新機能</h2>
 <ul>
 <li>Growth Link追加いたしました。</li>
 </ul>
-
-<h2 id="ドキュメント-4">ドキュメント</h2>
-
+<h2 id="heading-28">ドキュメント</h2>
 <ul>
 <li>Growth Link導入方法を追加</li>
 </ul>
-
-<h1 id="バージョン-1-1-2">バージョン 1.1.2</h1>
-
-<h2 id="バグフィックス">バグフィックス</h2>
-
+<h1 id="-112">バージョン 1.1.2</h1>
+<h2 id="heading-29">バグフィックス</h2>
 <ul>
 <li>Growth Pushデバイストークン送信方法を変更いたしました。</li>
 </ul>
-
-<h1 id="バージョン-1-1-1">バージョン 1.1.1</h1>
-
-<h2 id="変更点-12">変更点</h2>
-
+<h1 id="-111">バージョン 1.1.1</h1>
+<h2 id="heading-30">変更点</h2>
 <ul>
 <li>Growth Push一部メソッドを変更</li>
 </ul>
-
-<h1 id="バージョン-1-1-0">バージョン 1.1.0</h1>
-
-<h2 id="新機能-6">新機能</h2>
-
+<h1 id="-110">バージョン 1.1.0</h1>
+<h2 id="heading-31">新機能</h2>
 <ul>
 <li>Growth Push導入方法追加いたしました。</li>
 </ul>
-
-<h2 id="変更点-13">変更点</h2>
-
+<h2 id="heading-32">変更点</h2>
 <ul>
 <li>Growthbeat, Growth Analytics一部メソッド変更を修正</li>
 </ul>
-
-<h2 id="ドキュメント-5">ドキュメント</h2>
-
+<h2 id="heading-33">ドキュメント</h2>
 <ul>
 <li>Growth Push導入方法を追加いたしました。</li>
 <li>Growthbeat, Growth Analyticsのメソッド変更点を修正いたしました。</li>
 </ul>
-
-<h1 id="バージョン-1-0-1">バージョン 1.0.1</h1>
-
-<h2 id="新機能-7">新機能</h2>
-
+<h1 id="-101">バージョン 1.0.1</h1>
+<h2 id="heading-34">新機能</h2>
 <ul>
 <li>Growth Analyticsカスタムタグ・イベントについて追加いたしました。</li>
 </ul>
-
-<h1 id="バージョン-1-0">バージョン 1.0</h1>
-
+<h1 id="-10">バージョン 1.0</h1>
 <p>Growthbeat メジャーバージョンSDKリリースいたしました。</p>
-
-<h2 id="ドキュメント-6">ドキュメント</h2>
-
+<h2 id="heading-35">ドキュメント</h2>
 <ul>
 <li>Growthbeat, Growth Analytics, Growth Messageの導入方法を記載</li>
 </ul>
@@ -504,7 +405,7 @@
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-<script src="http://support.growthbeat.com/js/sirok-scrollspy.js"></script>
+<script src="https://support.growthbeat.com/js/sirok-scrollspy.js"></script>
 <script>
 $(function() {
   $('pre code, code').each(function(i, block) {

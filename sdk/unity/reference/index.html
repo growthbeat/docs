@@ -10,7 +10,7 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="Growthbeat Unity API | Growthbeatドキュメント |">
-  <meta property="og:url" content="http://support.growthbeat.com/sdk/unity/reference/">
+  <meta property="og:url" content="https://support.growthbeat.com/sdk/unity/reference/">
   <meta property="og:description" content="Growthbeat Unity の API について説明します">
   
   <meta property="article:author" content="" />
@@ -26,7 +26,7 @@
   
   <link rel="shortcut icon" href="/favicon.ico">
 
-  <link rel="stylesheet" href="http://support.growthbeat.com/css/main.css" />
+  <link rel="stylesheet" href="https://support.growthbeat.com/css/main.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
 </head>
 
@@ -51,7 +51,7 @@
     <nav class="header-nav">
       <h1 class="logo">
         <a class="link"href="https://growthbeat.com/">
-          <img src="http://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
+          <img src="https://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
         </a>
       </h1>
 
@@ -72,10 +72,10 @@
   <div class="container">
     <ul class="breadcrumb">
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/">サポートページ</a>
+        <a class="link" href="https://support.growthbeat.com/">サポートページ</a>
       </li>
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/sdk/">SDKドキュメント</a>
+        <a class="link" href="https://support.growthbeat.com/sdk/">SDKドキュメント</a>
       </li>
       
         <li class="item"><a class="link">APIリファレンス</a></li>
@@ -107,77 +107,66 @@
 <section class="row markdown">
     <div class="column column-sidebar">
       <nav id="TableOfContents">
-<ul>
-<li><a href="#growthbeat-api">Growthbeat API</a>
-<ul>
-<li><a href="#growthbeatインスタンスの取得">Growthbeatインスタンスの取得</a></li>
-<li><a href="#ログの停止">ログの停止</a></li>
-</ul></li>
-<li><a href="#intenthandler-api">IntentHandler API</a>
-<ul>
-<li><a href="#ハンドラ">ハンドラ</a>
-<ul>
-<li><a href="#処理をしないハンドラ">処理をしないハンドラ</a></li>
-<li><a href="#ブラウザを開くハンドラ">ブラウザを開くハンドラ</a></li>
-<li><a href="#カスタムハンドラ">カスタムハンドラ</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#growth-push-api">Growth Push API</a>
-<ul>
-<li><a href="#growth-pushインスタンスの取得">Growth Pushインスタンスの取得</a></li>
-<li><a href="#初期化">初期化</a></li>
-<li><a href="#デバイストークンの取得-送信">デバイストークンの取得・送信</a>
-<ul>
-<li><a href="#デバイストークンの取得">デバイストークンの取得</a></li>
-<li><a href="#デバイストークンの送信-iosのみ">デバイストークンの送信 (iOSのみ)</a></li>
-<li><a href="#デバイストークン取得-androidのみ">デバイストークン取得 (Androidのみ)</a></li>
-</ul></li>
-<li><a href="#イベントの送信">イベントの送信</a>
-<ul>
-<li><a href="#イベントの送信-1">イベントの送信</a></li>
-<li><a href="#イベントと任意の値の送信">イベントと任意の値の送信</a></li>
-<li><a href="#イベントと任意の値の送信-1">イベントと任意の値の送信</a></li>
-<li><a href="#ポップアップメッセージ表示">ポップアップメッセージ表示</a></li>
-</ul></li>
-<li><a href="#タグの送信">タグの送信</a>
-<ul>
-<li><a href="#タグの送信-1">タグの送信</a></li>
-<li><a href="#タグと任意の値の送信">タグと任意の値の送信</a></li>
-</ul></li>
-<li><a href="#バッチクリア-iosのみ">バッチクリア (iOSのみ)</a>
-<ul>
-<li><a href="#チャンネルidをセット">チャンネルIDをセット</a></li>
-<li><a href="#デフォルト通知チャンネルの削除">デフォルト通知チャンネルの削除</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#growthbeat">Growthbeatインスタンスの取得</a></li>
+    <li><a href="#heading">ログの停止</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-1">ハンドラ</a>
+      <ul>
+        <li><a href="#heading-2">処理をしないハンドラ</a></li>
+        <li><a href="#heading-3">ブラウザを開くハンドラ</a></li>
+        <li><a href="#heading-4">カスタムハンドラ</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#growth-push">Growth Pushインスタンスの取得</a></li>
+    <li><a href="#heading-5">初期化</a></li>
+    <li><a href="#heading-6">デバイストークンの取得・送信</a>
+      <ul>
+        <li><a href="#heading-7">デバイストークンの取得</a></li>
+        <li><a href="#-ios">デバイストークンの送信 (iOSのみ)</a></li>
+        <li><a href="#-android">デバイストークン取得 (Androidのみ)</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-8">イベントの送信</a>
+      <ul>
+        <li><a href="#heading-9">イベントの送信</a></li>
+        <li><a href="#heading-10">イベントと任意の値の送信</a></li>
+        <li><a href="#heading-11">イベントと任意の値の送信</a></li>
+        <li><a href="#heading-12">ポップアップメッセージ表示</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-13">タグの送信</a>
+      <ul>
+        <li><a href="#heading-14">タグの送信</a></li>
+        <li><a href="#heading-15">タグと任意の値の送信</a></li>
+      </ul>
+    </li>
+    <li><a href="#-ios-1">バッチクリア (iOSのみ)</a>
+      <ul>
+        <li><a href="#id">チャンネルIDをセット</a></li>
+        <li><a href="#heading-16">デフォルト通知チャンネルの削除</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
     </div>
     <div class="column column-main">
       <div class="typeset">
-        
-
-<p>Version 2.0.9</p>
-
+        <p>Version 2.0.9</p>
 <h1 id="growthbeat-api">Growthbeat API</h1>
-
-<h2 id="growthbeatインスタンスの取得">Growthbeatインスタンスの取得</h2>
-
+<h2 id="growthbeat">Growthbeatインスタンスの取得</h2>
 <p>Growthbeatインスタンスを取得します。</p>
-
-<pre><code class="language-cs">public static Growthbeat GetInstance ();
-</code></pre>
-
-<h2 id="ログの停止">ログの停止</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> Growthbeat GetInstance ();
+</code></pre></div><h2 id="heading">ログの停止</h2>
 <p>Growthbeat SDKからのログ出力を全て停止します。
 デフォルトでは、ログ出力がおこなわれます。</p>
-
-<pre><code class="language-cs">public void SetLoggerSilent (bool silent);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetLoggerSilent (<span style="color:#66d9ef">bool</span> silent);
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -185,7 +174,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">silent</td>
@@ -193,31 +181,16 @@
 </tr>
 </tbody>
 </table>
-
 <h1 id="intenthandler-api">IntentHandler API</h1>
-
-<h2 id="ハンドラ">ハンドラ</h2>
-
-<pre><code class="language-cs">public static IntentHander GetInstance ();
-</code></pre>
-
-<h3 id="処理をしないハンドラ">処理をしないハンドラ</h3>
-
-<pre><code class="language-cs">public void AddNoopIntentHandler ();
-</code></pre>
-
-<h3 id="ブラウザを開くハンドラ">ブラウザを開くハンドラ</h3>
-
-<pre><code class="language-cs">public void AddUrlIntentHandler ();
-</code></pre>
-
-<h3 id="カスタムハンドラ">カスタムハンドラ</h3>
-
-<pre><code class="language-cs">public void  AddCustomIntentHandler (string gameObjectName, string methodName);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h2 id="heading-1">ハンドラ</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IntentHander GetInstance ();
+</code></pre></div><h3 id="heading-2">処理をしないハンドラ</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> AddNoopIntentHandler ();
+</code></pre></div><h3 id="heading-3">ブラウザを開くハンドラ</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> AddUrlIntentHandler ();
+</code></pre></div><h3 id="heading-4">カスタムハンドラ</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span>  AddCustomIntentHandler (<span style="color:#66d9ef">string</span> gameObjectName, <span style="color:#66d9ef">string</span> methodName);
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -225,69 +198,48 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">gameObjectName</td>
 <td align="left">コールバックをするメソッドが存在するゲームオブジェクト</td>
 </tr>
-
 <tr>
 <td align="left">methodName</td>
 <td align="left">コールバックをするメソッド</td>
 </tr>
 </tbody>
 </table>
-
 <p>例.)</p>
-
-<pre><code class="language-cs">public class GrowthbeatComponent : MonoBehaviour
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GrowthbeatComponent</span> : MonoBehaviour
 {
 
-    void Awake ()
+    <span style="color:#66d9ef">void</span> Awake ()
     {
-        IntentHandler.GetInstance ().AddCustomIntentHandler (&quot;GrowthbeatComponent&quot;, &quot;HandleCustomIntent&quot;);
+        IntentHandler.GetInstance ().AddCustomIntentHandler (<span style="color:#e6db74">&#34;GrowthbeatComponent&#34;</span>, <span style="color:#e6db74">&#34;HandleCustomIntent&#34;</span>);
     }
 
-    void HandleCustomIntent(string extra) {
-        Debug.Log(&quot;Enter HandleCustomIntent&quot;);
+    <span style="color:#66d9ef">void</span> HandleCustomIntent(<span style="color:#66d9ef">string</span> extra) {
+        Debug.Log(<span style="color:#e6db74">&#34;Enter HandleCustomIntent&#34;</span>);
         Debug.Log(extra);
     }
 
 }
-</code></pre>
-
-<p>extraはJSON型の文字列が戻ってきます。</p>
-
+</code></pre></div><p>extraはJSON型の文字列が戻ってきます。</p>
 <h1 id="growth-push-api">Growth Push API</h1>
-
-<h2 id="growth-pushインスタンスの取得">Growth Pushインスタンスの取得</h2>
-
+<h2 id="growth-push">Growth Pushインスタンスの取得</h2>
 <p>Growth Pushインスタンスを取得します。</p>
-
-<pre><code class="language-cs">public static GrowthPush GetInstance ();
-</code></pre>
-
-<h2 id="初期化">初期化</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> GrowthPush GetInstance ();
+</code></pre></div><h2 id="heading-5">初期化</h2>
 <p>GrowthbeatおよびGrowth Pushの初期化を行います。初期化では以下の処理が行われます。</p>
-
 <ul>
 <li>デバイス登録、認証</li>
 <li>Growth Pushの初期化</li>
 <li>基本情報の送信</li>
 </ul>
-
-<pre><code class="language-cs">public void Initialize (string applicationId, string credentialId, Environment environment);
-</code></pre>
-
-<p>広告情報を保持しない場合</p>
-
-<pre><code class="language-cs">public void Initialize (string applicationId, string credentialId, Environment environment, bool adInfoEnable);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Initialize (<span style="color:#66d9ef">string</span> applicationId, <span style="color:#66d9ef">string</span> credentialId, Environment environment);
+</code></pre></div><p>広告情報を保持しない場合</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Initialize (<span style="color:#66d9ef">string</span> applicationId, <span style="color:#66d9ef">string</span> credentialId, Environment environment, <span style="color:#66d9ef">bool</span> adInfoEnable);
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -295,45 +247,35 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">applicationId</td>
 <td align="left">アプリケーションID</td>
 </tr>
-
 <tr>
 <td align="left">credentialId</td>
 <td align="left">クレデンシャルキー</td>
 </tr>
-
 <tr>
 <td align="left">environment</td>
 <td align="left">開発用: <code>Environment.development</code> 本番用: <code>Environment.production</code>　</td>
 </tr>
-
 <tr>
 <td align="left">adInfoEnabled</td>
 <td align="left">広告情報の送信設定。<code>true</code>: 送信する <code>false</code>:送信しない</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="デバイストークンの取得-送信">デバイストークンの取得・送信</h2>
-
-<h3 id="デバイストークンの取得">デバイストークンの取得</h3>
-
-<pre><code class="language-cs">public void RequestDeviceToken (string senderId);
-</code></pre>
-
-<table>
+<h2 id="heading-6">デバイストークンの取得・送信</h2>
+<h3 id="heading-7">デバイストークンの取得</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> RequestDeviceToken (<span style="color:#66d9ef">string</span> senderId);
+</code></pre></div><table>
 <thead>
 <tr>
 <th align="left">項目名</th>
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">senderId</td>
@@ -341,26 +283,14 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="デバイストークンの送信-iosのみ">デバイストークンの送信 (iOSのみ)</h3>
-
-<pre><code class="language-cs">public void SetDeviceToken (string deviceToken);
-</code></pre>
-
-<h3 id="デバイストークン取得-androidのみ">デバイストークン取得 (Androidのみ)</h3>
-
-<pre><code class="language-cs">public string GetDeviceToken ();
-</code></pre>
-
-<h2 id="イベントの送信">イベントの送信</h2>
-
-<h3 id="イベントの送信-1">イベントの送信</h3>
-
-<pre><code class="language-cs">public void TrackEvent(string name);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h3 id="-ios">デバイストークンの送信 (iOSのみ)</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetDeviceToken (<span style="color:#66d9ef">string</span> deviceToken);
+</code></pre></div><h3 id="-android">デバイストークン取得 (Androidのみ)</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> GetDeviceToken ();
+</code></pre></div><h2 id="heading-8">イベントの送信</h2>
+<h3 id="heading-9">イベントの送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> TrackEvent(<span style="color:#66d9ef">string</span> name);
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -368,7 +298,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
@@ -376,14 +305,9 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="イベントと任意の値の送信">イベントと任意の値の送信</h3>
-
-<pre><code class="language-cs">public void TrackEvent (string name, string value);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h3 id="heading-10">イベントと任意の値の送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> TrackEvent (<span style="color:#66d9ef">string</span> name, <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">value</span>);
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -391,30 +315,22 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
 <td align="left">イベント名</td>
 </tr>
-
 <tr>
 <td align="left">value</td>
 <td align="left">イベントに持たせる値</td>
 </tr>
 </tbody>
 </table>
-
-<h3 id="イベントと任意の値の送信-1">イベントと任意の値の送信</h3>
-
+<h3 id="heading-11">イベントと任意の値の送信</h3>
 <p>メッセージ表示のコールバックを、ゲームオブジェクトの指定メソッドへ戻します。
 コールバックには、uuid の文字列が返ります。</p>
-
-<pre><code class="language-cs">public void TrackEvent (string name, string value, string gameObjectName, string methodName);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> TrackEvent (<span style="color:#66d9ef">string</span> name, <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">value</span>, <span style="color:#66d9ef">string</span> gameObjectName, <span style="color:#66d9ef">string</span> methodName);
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -422,43 +338,34 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
 <td align="left">イベント名</td>
 </tr>
-
 <tr>
 <td align="left">value</td>
 <td align="left">イベントに持たせる値</td>
 </tr>
-
 <tr>
 <td align="left">gameObjectName</td>
 <td align="left">コールバックするゲームオブジェクト</td>
 </tr>
-
 <tr>
 <td align="left">methodName</td>
 <td align="left">コールバックするメソッド名</td>
 </tr>
 </tbody>
 </table>
-
-<h3 id="ポップアップメッセージ表示">ポップアップメッセージ表示</h3>
-
-<pre><code class="language-cs">public void RenderMessage (string uuid);
-</code></pre>
-
-<table>
+<h3 id="heading-12">ポップアップメッセージ表示</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> RenderMessage (<span style="color:#66d9ef">string</span> uuid);
+</code></pre></div><table>
 <thead>
 <tr>
 <th align="left">項目名</th>
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">uuid</td>
@@ -466,16 +373,10 @@
 </tr>
 </tbody>
 </table>
-
-<h2 id="タグの送信">タグの送信</h2>
-
-<h3 id="タグの送信-1">タグの送信</h3>
-
-<pre><code class="language-cs">public void SetTag (string name);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h2 id="heading-13">タグの送信</h2>
+<h3 id="heading-14">タグの送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetTag (<span style="color:#66d9ef">string</span> name);
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -483,7 +384,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
@@ -491,14 +391,9 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="タグと任意の値の送信">タグと任意の値の送信</h3>
-
-<pre><code class="language-cs">public void SetTag (string name, string value);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h3 id="heading-15">タグと任意の値の送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetTag (<span style="color:#66d9ef">string</span> name, <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">value</span>);
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -506,70 +401,36 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
 <td align="left">タグ名</td>
 </tr>
-
 <tr>
 <td align="left">value</td>
 <td align="left">タグに持たせる値</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="バッチクリア-iosのみ">バッチクリア (iOSのみ)</h2>
-
+<h2 id="-ios-1">バッチクリア (iOSのみ)</h2>
 <p>配信時に、バッチにチェックマークを付けた場合、バッチをクリアするためのメソッドです。
 iOSのみ利用できます。</p>
-
-<pre><code class="language-cs">public void ClearBadge ();
-</code></pre>
-
-<h3 id="チャンネルidをセット">チャンネルIDをセット</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> ClearBadge ();
+</code></pre></div><h3 id="id">チャンネルIDをセット</h3>
 <p>Android 8.0以上のみ。
 任意の通知チャンネルで、通知を受け取れるように変更します。</p>
-
-<pre><code class="language-csharp">public void SetChannelId(string channelId);
-</code></pre>
-
-<p><strong>パラメーター</strong>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetChannelId(<span style="color:#66d9ef">string</span> channelId);
+</code></pre></div><p><strong>パラメーター</strong>
 |項目名|詳細|
 |:&ndash;|:&ndash;|
 |channelId|チャンネルID|</p>
-
-<h3 id="デフォルト通知チャンネルの削除">デフォルト通知チャンネルの削除</h3>
-
+<h3 id="heading-16">デフォルト通知チャンネルの削除</h3>
 <p>Android 8.0以上のみ。
 SDKのデフォルトの通知チャンネルを削除します。
 ※ Growth Push初期化時に、channel_idがセットされていない場合、再度作成されます。</p>
-
-<pre><code class="language-csharp">public void DeleteDefaultNotificationChannel();
-</code></pre>
-
-<!--
-# Growth Link API
-
-## Growth Link初期化
-
-Growth Linkを初期化します。
-
-applicationId, credentialIdは、Growthbeatの初期化時に利用したものと同じものを利用してください。
-
-```cs
-GrowthLink.GetInstance().Initialize (applicationId, credentialId);
-```
-
-**パラメータ**
-
-|項目名|詳細|
-|:--|:--|
-|applicationId|アプリケーションID|
-|credentialId|クリデンシャルID|
--->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> DeleteDefaultNotificationChannel();
+</code></pre></div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 
       </div>
     </div>
@@ -588,7 +449,7 @@ GrowthLink.GetInstance().Initialize (applicationId, credentialId);
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-<script src="http://support.growthbeat.com/js/sirok-scrollspy.js"></script>
+<script src="https://support.growthbeat.com/js/sirok-scrollspy.js"></script>
 <script>
 $(function() {
   $('pre code, code').each(function(i, block) {

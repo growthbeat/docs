@@ -10,7 +10,7 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="Growthbeat Web API | Growthbeatドキュメント |">
-  <meta property="og:url" content="http://support.growthbeat.com/sdk/web/reference/">
+  <meta property="og:url" content="https://support.growthbeat.com/sdk/web/reference/">
   <meta property="og:description" content="Growthbeat Web の API について説明します">
   
   <meta property="article:author" content="" />
@@ -26,7 +26,7 @@
   
   <link rel="shortcut icon" href="/favicon.ico">
 
-  <link rel="stylesheet" href="http://support.growthbeat.com/css/main.css" />
+  <link rel="stylesheet" href="https://support.growthbeat.com/css/main.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
 </head>
 
@@ -51,7 +51,7 @@
     <nav class="header-nav">
       <h1 class="logo">
         <a class="link"href="https://growthbeat.com/">
-          <img src="http://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
+          <img src="https://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
         </a>
       </h1>
 
@@ -72,10 +72,10 @@
   <div class="container">
     <ul class="breadcrumb">
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/">サポートページ</a>
+        <a class="link" href="https://support.growthbeat.com/">サポートページ</a>
       </li>
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/sdk/">SDKドキュメント</a>
+        <a class="link" href="https://support.growthbeat.com/sdk/">SDKドキュメント</a>
       </li>
       
         <li class="item"><a class="link">APIリファレンス</a></li>
@@ -107,40 +107,29 @@
 <section class="row markdown">
     <div class="column column-sidebar">
       <nav id="TableOfContents">
-<ul>
-<li><a href="#growth-push-api">Growth Push API</a>
-<ul>
-<li><a href="#初期化">初期化</a></li>
-<li><a href="#registrationidの取得-送信">RegistrationIdの取得・送信</a></li>
-<li><a href="#イベントインターフェイス">イベントインターフェイス</a>
-<ul>
-<li><a href="#イベント購読">イベント購読</a></li>
-<li><a href="#イベント購読をやめる">イベント購読をやめる</a></li>
-</ul></li>
-<li><a href="#push許可状態の取得">Push許可状態の取得</a></li>
-<li><a href="#イベントの送信">イベントの送信</a></li>
-<li><a href="#タグの送信">タグの送信</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#heading">初期化</a></li>
+    <li><a href="#registrationid">RegistrationIdの取得・送信</a></li>
+    <li><a href="#heading-1">イベントインターフェイス</a>
+      <ul>
+        <li><a href="#heading-2">イベント購読</a></li>
+        <li><a href="#heading-3">イベント購読をやめる</a></li>
+      </ul>
+    </li>
+    <li><a href="#push">Push許可状態の取得</a></li>
+    <li><a href="#heading-4">イベントの送信</a></li>
+    <li><a href="#heading-5">タグの送信</a></li>
+  </ul>
 </nav>
     </div>
     <div class="column column-main">
       <div class="typeset">
-        
-
-<p>Version 1.1.4</p>
-
+        <p>Version 1.1.4</p>
 <h1 id="growth-push-api">Growth Push API</h1>
-
-<h2 id="初期化">初期化</h2>
-
+<h2 id="heading">初期化</h2>
 <p>Growth Pushの初期化を行います。</p>
-
-<pre><code class="language-javascript">init(params:Params):void
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">init</span>(<span style="color:#a6e22e">params</span><span style="color:#f92672">:</span><span style="color:#a6e22e">Params</span>)<span style="color:#f92672">:</span><span style="color:#66d9ef">void</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -148,7 +137,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">params</td>
@@ -156,169 +144,125 @@
 </tr>
 </tbody>
 </table>
-
 <p>Paramsオブジェクト</p>
-
-<pre><code class="language-javascript">interface Params {
-  applicationId:number;
-  credentialId:string;
-  environment?:string;
-  receiver:string;
-  appName:string;
-  icon:string;
-  clickEventName:string;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Params</span> {
+  <span style="color:#a6e22e">applicationId</span><span style="color:#f92672">:</span><span style="color:#a6e22e">number</span>;
+  <span style="color:#a6e22e">credentialId</span><span style="color:#f92672">:</span><span style="color:#a6e22e">string</span>;
+  <span style="color:#a6e22e">environment</span><span style="color:#f92672">?</span><span style="color:#f92672">:</span><span style="color:#a6e22e">string</span>;
+  <span style="color:#a6e22e">receiver</span><span style="color:#f92672">:</span><span style="color:#a6e22e">string</span>;
+  <span style="color:#a6e22e">appName</span><span style="color:#f92672">:</span><span style="color:#a6e22e">string</span>;
+  <span style="color:#a6e22e">icon</span><span style="color:#f92672">:</span><span style="color:#a6e22e">string</span>;
+  <span style="color:#a6e22e">clickEventName</span><span style="color:#f92672">:</span><span style="color:#a6e22e">string</span>;
 }
-</code></pre>
-
-<table>
+</code></pre></div><table>
 <thead>
 <tr>
 <th align="left">項目名</th>
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">applicationId</td>
 <td align="left">Growth Push管理画面のアプリID</td>
 </tr>
-
 <tr>
 <td align="left">credentialId</td>
 <td align="left">Growth Push管理画面のシークレットキー</td>
 </tr>
-
 <tr>
 <td align="left">environment</td>
 <td align="left">本番環境: <code>production</code> 開発環境: <code>development</code></td>
 </tr>
-
 <tr>
 <td align="left">receiver</td>
 <td align="left">本番環境: <code>/growthpush-sw.min.js</code> 開発環境: <code>/growthpush-sw.js</code></td>
 </tr>
-
 <tr>
 <td align="left">appName</td>
 <td align="left">アプリ名。通知のタイトルで表示されます。</td>
 </tr>
-
 <tr>
 <td align="left">icon</td>
 <td align="left">アイコン画像。通知のアイコンで表示されます。</td>
 </tr>
-
 <tr>
 <td align="left">clickEventName</td>
 <td align="left">通知クリックのイベント。例: NotificationClick</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="registrationidの取得-送信">RegistrationIdの取得・送信</h2>
-
-<pre><code class="language-javascript">register():void
-</code></pre>
-
-<h2 id="イベントインターフェイス">イベントインターフェイス</h2>
-
-<h3 id="イベント購読">イベント購読</h3>
-
+<h2 id="registrationid">RegistrationIdの取得・送信</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">register</span>()<span style="color:#f92672">:</span><span style="color:#66d9ef">void</span>
+</code></pre></div><h2 id="heading-1">イベントインターフェイス</h2>
+<h3 id="heading-2">イベント購読</h3>
 <p>イベントを購読します。</p>
-
-<pre><code class="language-javascript">on(event:string, fn:Function)
-</code></pre>
-
-<table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">on</span>(<span style="color:#a6e22e">event</span><span style="color:#f92672">:</span><span style="color:#a6e22e">string</span>, <span style="color:#a6e22e">fn</span><span style="color:#f92672">:</span>Function)
+</code></pre></div><table>
 <thead>
 <tr>
 <th align="left">項目名</th>
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">event</td>
 <td align="left">イベント名</td>
 </tr>
-
 <tr>
 <td align="left">fn</td>
 <td align="left">コールバック関数</td>
 </tr>
 </tbody>
 </table>
-
 <p>イベントを一度だけ購読します。</p>
-
-<pre><code class="language-javascript">once(event:string, fn:Function)
-</code></pre>
-
-<table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">once</span>(<span style="color:#a6e22e">event</span><span style="color:#f92672">:</span><span style="color:#a6e22e">string</span>, <span style="color:#a6e22e">fn</span><span style="color:#f92672">:</span>Function)
+</code></pre></div><table>
 <thead>
 <tr>
 <th align="left">項目名</th>
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">event</td>
 <td align="left">イベント名</td>
 </tr>
-
 <tr>
 <td align="left">fn</td>
 <td align="left">コールバック関数</td>
 </tr>
 </tbody>
 </table>
-
-<h3 id="イベント購読をやめる">イベント購読をやめる</h3>
-
+<h3 id="heading-3">イベント購読をやめる</h3>
 <p>イベント購読をやめます。</p>
-
-<pre><code class="language-javascript">off(event:string, fn?:Function)
-</code></pre>
-
-<table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">off</span>(<span style="color:#a6e22e">event</span><span style="color:#f92672">:</span><span style="color:#a6e22e">string</span>, <span style="color:#a6e22e">fn</span><span style="color:#f92672">?</span><span style="color:#f92672">:</span>Function)
+</code></pre></div><table>
 <thead>
 <tr>
 <th align="left">項目名</th>
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">event</td>
 <td align="left">イベント名</td>
 </tr>
-
 <tr>
 <td align="left">fn</td>
 <td align="left">コールバック関数</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="push許可状態の取得">Push許可状態の取得</h2>
-
+<h2 id="push">Push許可状態の取得</h2>
 <p>許可済みの場合は<code>true</code>、非対応または未許可の場合は<code>false</code>が返ります。</p>
-
-<pre><code class="language-javascript">permitted():boolean
-</code></pre>
-
-<h2 id="イベントの送信">イベントの送信</h2>
-
-<pre><code class="language-javascript">track(name:string)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">permitted</span>()<span style="color:#f92672">:</span><span style="color:#66d9ef">boolean</span>
+</code></pre></div><h2 id="heading-4">イベントの送信</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span><span style="color:#a6e22e">string</span>)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -326,7 +270,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
@@ -334,14 +277,9 @@
 </tr>
 </tbody>
 </table>
-
-<h2 id="タグの送信">タグの送信</h2>
-
-<pre><code class="language-javascript">tag(name:string, value?:string)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h2 id="heading-5">タグの送信</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">tag</span>(<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span><span style="color:#a6e22e">string</span>, <span style="color:#a6e22e">value</span><span style="color:#f92672">?</span><span style="color:#f92672">:</span><span style="color:#a6e22e">string</span>)
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -349,13 +287,11 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
 <td align="left">タグ名</td>
 </tr>
-
 <tr>
 <td align="left">value</td>
 <td align="left">タグに持たせる値</td>
@@ -380,7 +316,7 @@
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-<script src="http://support.growthbeat.com/js/sirok-scrollspy.js"></script>
+<script src="https://support.growthbeat.com/js/sirok-scrollspy.js"></script>
 <script>
 $(function() {
   $('pre code, code').each(function(i, block) {

@@ -10,7 +10,7 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="Growthbeat Android SDK | 基本導入ガイド | Growthbeatドキュメント |">
-  <meta property="og:url" content="http://support.growthbeat.com/sdk/android/guide/">
+  <meta property="og:url" content="https://support.growthbeat.com/sdk/android/guide/">
   <meta property="og:description" content="Growthbeat Android の導入方法について説明します">
   
   <meta property="article:author" content="" />
@@ -26,7 +26,7 @@
   
   <link rel="shortcut icon" href="/favicon.ico">
 
-  <link rel="stylesheet" href="http://support.growthbeat.com/css/main.css" />
+  <link rel="stylesheet" href="https://support.growthbeat.com/css/main.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
 </head>
 
@@ -51,7 +51,7 @@
     <nav class="header-nav">
       <h1 class="logo">
         <a class="link"href="https://growthbeat.com/">
-          <img src="http://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
+          <img src="https://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
         </a>
       </h1>
 
@@ -72,10 +72,10 @@
   <div class="container">
     <ul class="breadcrumb">
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/">サポートページ</a>
+        <a class="link" href="https://support.growthbeat.com/">サポートページ</a>
       </li>
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/sdk/">SDKドキュメント</a>
+        <a class="link" href="https://support.growthbeat.com/sdk/">SDKドキュメント</a>
       </li>
       
       
@@ -107,236 +107,173 @@
 <section class="row markdown">
     <div class="column column-sidebar">
       <nav id="TableOfContents">
-<ul>
-<li><a href="#sdk概要">SDK概要</a>
-<ul>
-<li><a href="#動作環境">動作環境</a></li>
-</ul></li>
-<li><a href="#1-プロジェクトの設定">1. プロジェクトの設定</a>
-<ul>
-<li><a href="#google-services-jsonのインポート">google-services.jsonのインポート</a></li>
-<li><a href="#gradleの設定">Gradleの設定</a></li>
-</ul></li>
-<li><a href="#2-実装コード">2. 実装コード</a>
-<ul>
-<li><a href="#javaの実装">Javaの実装</a>
-<ul>
-<li><a href="#初期化">初期化</a></li>
-<li><a href="#タグ送信">タグ送信</a></li>
-<li><a href="#イベント送信">イベント送信</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#3-androidmanifest-xmlの設定">3.AndroidManifest.xmlの設定</a>
-<ul>
-<li><a href="#必要な記述">必要な記述</a></li>
-</ul></li>
-<li><a href="#その他設定について">その他設定について</a>
-<ul>
-<li><a href="#senderid-ap-keyの取得について">SenderId、AP Keyの取得について</a></li>
-<li><a href="#管理画面設定">管理画面設定</a>
-<ul>
-<li><a href="#apiキーの登録">APIキーの登録</a></li>
-<li><a href="#プッシュ通知の作成">プッシュ通知の作成</a></li>
-<li><a href="#セグメントについて">セグメントについて</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#備考">備考</a>
-<ul>
-<li><a href="#全機能を利用する方法">全機能を利用する方法</a></li>
-<li><a href="#最新版のsdkへのアップグレード方法">最新版のSDKへのアップグレード方法</a></li>
-<li><a href="#サンプルコード">サンプルコード</a></li>
-</ul></li>
-<li><a href="#お問い合わせ">お問い合わせ</a></li>
-</ul>
+  <ul>
+    <li><a href="#heading">動作環境</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#google-servicesjson">google-services.jsonのインポート</a></li>
+    <li><a href="#gradle">Gradleの設定</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#java">Javaの実装</a>
+      <ul>
+        <li><a href="#heading-1">初期化</a></li>
+        <li><a href="#heading-2">タグ送信</a></li>
+        <li><a href="#heading-3">イベント送信</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-4">必要な記述</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#senderidap-key">SenderId、AP Keyの取得について</a></li>
+    <li><a href="#heading-6">管理画面設定</a>
+      <ul>
+        <li><a href="#api">APIキーの登録</a></li>
+        <li><a href="#heading-7">プッシュ通知の作成</a></li>
+        <li><a href="#heading-8">セグメントについて</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-10">全機能を利用する方法</a></li>
+    <li><a href="#sdk-1">最新版のSDKへのアップグレード方法</a></li>
+    <li><a href="#heading-11">サンプルコード</a></li>
+  </ul>
 </nav>
     </div>
     <div class="column column-main">
       <div class="typeset">
-        
-
-<p>Version 3.0.1</p>
-
-<h1 id="sdk概要">SDK概要</h1>
-
-<p>Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。<br />
+        <p>Version 3.0.1</p>
+<h1 id="sdk">SDK概要</h1>
+<p>Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。<br>
 (※ Eclipseの導入は非推奨となっております。導入については、<a href="http://faq.growthbeat.com/article/211-eclipse">Eclipse環境での導入手順について</a> をご参照ください。)</p>
-
-<h2 id="動作環境">動作環境</h2>
-
+<h2 id="heading">動作環境</h2>
 <p>最低動作保証環境: Android 4.1以上
 動作推奨環境: Android 4.4以上</p>
-
-<h1 id="1-プロジェクトの設定">1. プロジェクトの設定</h1>
-
-<p>Growthbeat 2.0.8以下からアップデートする方は、<a href="https://faq.growthbeat.com/article/226-gcmtofcm">FCM移行ガイド</a>を参照ください<br />
+<h1 id="1-">1. プロジェクトの設定</h1>
+<p>Growthbeat 2.0.8以下からアップデートする方は、<a href="https://faq.growthbeat.com/article/226-gcmtofcm">FCM移行ガイド</a>を参照ください<br>
 アプリ側でSupport Library（appcompat-v7など）をご利用の場合は、Growthbeat SDK v2.0.12をご利用ください。</p>
-
-<h2 id="google-services-jsonのインポート">google-services.jsonのインポート</h2>
-
-<p>Firebaseのコンソールから、ダウンロードした、google-services.jsonをプロジェクトルートにインポートしてください。<br />
+<h2 id="google-servicesjson">google-services.jsonのインポート</h2>
+<p>Firebaseのコンソールから、ダウンロードした、google-services.jsonをプロジェクトルートにインポートしてください。<br>
 インポートができていないと、デバイストークンの取得に失敗いたします。</p>
-
-<h2 id="gradleの設定">Gradleの設定</h2>
-
+<h2 id="gradle">Gradleの設定</h2>
 <p>build.gradle(Module:app)に下記を追加してください。</p>
-
-<pre><code class="language-sh">dependencies {
-    implementation 'com.growthbeat:growthbeat-android:3.0.1@aar'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.firebase:firebase-messaging:18.0.0'
-}
-apply plugin: 'com.google.gms.google-services'
-</code></pre>
-
-<p>アプリがAndroidXに対応していない場合は、Growthbeat Android SDK v2.0.12、dependencies は以下をご利用ください。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">dependencies <span style="color:#f92672">{</span>
+    implementation <span style="color:#e6db74">&#39;com.growthbeat:growthbeat-android:3.0.1@aar&#39;</span>
+    implementation <span style="color:#e6db74">&#39;androidx.appcompat:appcompat:1.1.0&#39;</span>
+    implementation <span style="color:#e6db74">&#39;com.google.firebase:firebase-messaging:18.0.0&#39;</span>
+<span style="color:#f92672">}</span>
+apply plugin: <span style="color:#e6db74">&#39;com.google.gms.google-services&#39;</span>
+</code></pre></div><p>アプリがAndroidXに対応していない場合は、Growthbeat Android SDK v2.0.12、dependencies は以下をご利用ください。</p>
 <pre><code>dependencies {
     implementation 'com.growthbeat:growthbeat-android:2.0.11@aar'
     implementation 'com.android.support:appcompat-v7:28.0.+'
     implementation 'com.google.firebase:firebase-messaging:18.0.+'
 }
 apply plugin: 'com.google.gms.google-services'
-</code></pre>
-
-<p>Growthbeat SDKを利用するには、依存ライブラリが必要となります。</p>
-
+</code></pre><p>Growthbeat SDKを利用するには、依存ライブラリが必要となります。</p>
 <ul>
 <li>AndroidX</li>
 <li>firebase-messagaging</li>
 <li>アプリがAndroidXに対応していない場合は appcompat-v7もしくはandroid-support-v4</li>
 </ul>
-
 <p>依存ライブラリの対応バージョンは <a href="http://faq.growthbeat.com/article/201-android">Androidビルドに必要なライブラリ</a> をご参照ください</p>
-
-<h1 id="2-実装コード">2. 実装コード</h1>
-
-<h2 id="javaの実装">Javaの実装</h2>
-
-<h3 id="初期化">初期化</h3>
-
-<p>GrowthPushの初期化を行います。初期化の中で、端末の基本情報の送信、広告IDの取得が行われます。<br />
+<h1 id="2-">2. 実装コード</h1>
+<h2 id="java">Javaの実装</h2>
+<h3 id="heading-1">初期化</h3>
+<p>GrowthPushの初期化を行います。初期化の中で、端末の基本情報の送信、広告IDの取得が行われます。<br>
 requestRegistrationId で、デバイストークンの取得を行います。必ずinitialize後に呼び出してください。</p>
-
 <p>YOUR_APPLICATION_ID, YOUR_CREDENTIAL_IDは、Growth Push管理画面から確認することができます。</p>
-
 <p>各種IDの取得方法は <a href="http://faq.growthbeat.com/article/130-growthbeat-id">Growthbeatで使用するID、キーまとめ</a> をご参照ください。</p>
-
 <p>Growth Pushの管理画面の操作、Google API Consoleの操作については、後述します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyActivity</span> <span style="color:#66d9ef">extends</span> Activity <span style="color:#f92672">{</span>
 
-<pre><code class="language-java">class MyActivity extends Activity {
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCreate</span><span style="color:#f92672">(</span>Bundle savedInstanceState<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">super</span><span style="color:#f92672">.</span><span style="color:#a6e22e">onCreate</span><span style="color:#f92672">(</span>savedInstanceState<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        GrowthPush<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">initialize</span><span style="color:#f92672">(</span>getApplicationContext<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;YOUR_APPLICATION_ID&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;YOUR_CREDENTIAL_ID&#34;</span><span style="color:#f92672">,</span> BuildConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">DEBUG</span> <span style="color:#f92672">?</span> Environment<span style="color:#f92672">.</span><span style="color:#a6e22e">development</span> <span style="color:#f92672">:</span> Environment<span style="color:#f92672">.</span><span style="color:#a6e22e">production</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        GrowthPush.getInstance().initialize(getApplicationContext(), &quot;YOUR_APPLICATION_ID&quot;, &quot;YOUR_CREDENTIAL_ID&quot;, BuildConfig.DEBUG ? Environment.development : Environment.production);
-
-        // 以下は、必ずinitialize後に呼び出してください
-        GrowthPush.getInstance().requestRegistrationId();
-    }
-}
-</code></pre>
-
-<h3 id="タグ送信">タグ送信</h3>
-
+        <span style="color:#75715e">// 以下は、必ずinitialize後に呼び出してください
+</span><span style="color:#75715e"></span>        GrowthPush<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">requestRegistrationId</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="heading-2">タグ送信</h3>
 <p>セグメントを設定するために、任意のタグを埋め込んでください。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyActivity</span> <span style="color:#66d9ef">extends</span> Activity <span style="color:#f92672">{</span>
 
-<pre><code class="language-java">class MyActivity extends Activity {
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //...
-
-        //開発者のタグ付け
-        GrowthPush.getInstance().setTag(&quot;Development&quot;, &quot;true&quot;);
-    }
-}
-</code></pre>
-
-<h3 id="イベント送信">イベント送信</h3>
-
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCreate</span><span style="color:#f92672">(</span>Bundle savedInstanceState<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">super</span><span style="color:#f92672">.</span><span style="color:#a6e22e">onCreate</span><span style="color:#f92672">(</span>savedInstanceState<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#75715e">//...
+</span><span style="color:#75715e"></span>
+        <span style="color:#75715e">//開発者のタグ付け
+</span><span style="color:#75715e"></span>        GrowthPush<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">setTag</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Development&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="heading-3">イベント送信</h3>
 <p>セグメントを設定するために、任意のイベントを埋め込んでください。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyActivity</span> <span style="color:#66d9ef">extends</span> Activity <span style="color:#f92672">{</span>
 
-<pre><code class="language-java">class MyActivity extends Activity {
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //...
-
-        //アプリ起動イベントとする
-        GrowthPush.getInstance().trackEvent(&quot;Launch&quot;);
-    }
-}
-</code></pre>
-
-<h1 id="3-androidmanifest-xmlの設定">3.AndroidManifest.xmlの設定</h1>
-
-<h2 id="必要な記述">必要な記述</h2>
-
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCreate</span><span style="color:#f92672">(</span>Bundle savedInstanceState<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">super</span><span style="color:#f92672">.</span><span style="color:#a6e22e">onCreate</span><span style="color:#f92672">(</span>savedInstanceState<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#75715e">//...
+</span><span style="color:#75715e"></span>
+        <span style="color:#75715e">//アプリ起動イベントとする
+</span><span style="color:#75715e"></span>        GrowthPush<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">trackEvent</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Launch&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h1 id="3androidmanifestxml">3.AndroidManifest.xmlの設定</h1>
+<h2 id="heading-4">必要な記述</h2>
 <p>レジストレーションIDを取得するため、またプッシュ通知を受信するためにAndroidManifest.xmlに必要なクラスを記述します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;uses-permission</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;android.permission.INTERNET&#34;</span> <span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;uses-permission</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;android.permission.VIBRATE&#34;</span> <span style="color:#f92672">/&gt;</span>
 
-<pre><code class="language-xml">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
-&lt;uses-permission android:name=&quot;android.permission.VIBRATE&quot; /&gt;
+<span style="color:#f92672">&lt;application</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> ... </span><span style="color:#75715e">--&gt;</span>
 
-&lt;application&gt;
-    &lt;!-- ... --&gt;
+    <span style="color:#f92672">&lt;activity</span>
+        <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthpush.view.AlertActivity&#34;</span>
+        <span style="color:#a6e22e">android:configChanges=</span><span style="color:#e6db74">&#34;orientation|keyboardHidden&#34;</span>
+        <span style="color:#a6e22e">android:launchMode=</span><span style="color:#e6db74">&#34;singleInstance&#34;</span>
+        <span style="color:#a6e22e">android:theme=</span><span style="color:#e6db74">&#34;@android:style/Theme.Translucent&#34;</span> <span style="color:#f92672">/&gt;</span>
 
-    &lt;activity
-        android:name=&quot;com.growthpush.view.AlertActivity&quot;
-        android:configChanges=&quot;orientation|keyboardHidden&quot;
-        android:launchMode=&quot;singleInstance&quot;
-        android:theme=&quot;@android:style/Theme.Translucent&quot; /&gt;
+    <span style="color:#f92672">&lt;service</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthpush.ReceiverService&#34;</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;intent-filter</span><span style="color:#f92672">&gt;</span>
+            <span style="color:#f92672">&lt;action</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.google.firebase.MESSAGING_EVENT&#34;</span> <span style="color:#f92672">/&gt;</span>
+        <span style="color:#f92672">&lt;/intent-filter&gt;</span>
+    <span style="color:#f92672">&lt;/service&gt;</span>
 
-    &lt;service android:name=&quot;com.growthpush.ReceiverService&quot;&gt;
-        &lt;intent-filter&gt;
-            &lt;action android:name=&quot;com.google.firebase.MESSAGING_EVENT&quot; /&gt;
-        &lt;/intent-filter&gt;
-    &lt;/service&gt;
-
-&lt;/application&gt;
-</code></pre>
-
-<h1 id="その他設定について">その他設定について</h1>
-
-<h2 id="senderid-ap-keyの取得について">SenderId、AP Keyの取得について</h2>
-
-<p>SenderIdは、requestRegistrationIdを実行するために必要となります。APIキーは、管理画面にて、プッシュ通知を送信するための証明書として必要になります。<br />
+<span style="color:#f92672">&lt;/application&gt;</span>
+</code></pre></div><h1 id="heading-5">その他設定について</h1>
+<h2 id="senderidap-key">SenderId、AP Keyの取得について</h2>
+<p>SenderIdは、requestRegistrationIdを実行するために必要となります。APIキーは、管理画面にて、プッシュ通知を送信するための証明書として必要になります。<br>
 <a href="http://growthbeat.helpscoutdocs.com/article/23-gcm-api">Android SenderId, APIキー取得方法</a></p>
-
-<h2 id="管理画面設定">管理画面設定</h2>
-
-<h3 id="apiキーの登録">APIキーの登録</h3>
-
+<h2 id="heading-6">管理画面設定</h2>
+<h3 id="api">APIキーの登録</h3>
 <p>Growth Push管理画面の証明書設定ページにて、APIキーの登録を行ってください。  </p>
-
-<h3 id="プッシュ通知の作成">プッシュ通知の作成</h3>
-
-<p><a href="/manual/growthpush/#配信作成">配信作成</a>を参考に、プッシュ通知が届くかを確認します。</p>
-
-<h3 id="セグメントについて">セグメントについて</h3>
-
-<p>セグメント配信を利用する際に、実装が必要となります。<br />
-<a href="/manual/growthpush/#セグメントの作成">配信したいセグメント</a>に沿って、タグやイベントの紐付けを行ってください。</p>
-
-<h1 id="備考">備考</h1>
-
-<h2 id="全機能を利用する方法">全機能を利用する方法</h2>
-
-<p>Growthbeatは、プッシュ通知以外に、ポップアップメッセージ機能を用意しております。追加の実装を行うことで機能を利用することができます。<br />
+<h3 id="heading-7">プッシュ通知の作成</h3>
+<p><a href="/manual/growthpush/#%E9%85%8D%E4%BF%A1%E4%BD%9C%E6%88%90">配信作成</a>を参考に、プッシュ通知が届くかを確認します。</p>
+<h3 id="heading-8">セグメントについて</h3>
+<p>セグメント配信を利用する際に、実装が必要となります。<br>
+<a href="/manual/growthpush/#%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90">配信したいセグメント</a>に沿って、タグやイベントの紐付けを行ってください。</p>
+<h1 id="heading-9">備考</h1>
+<h2 id="heading-10">全機能を利用する方法</h2>
+<p>Growthbeatは、プッシュ通知以外に、ポップアップメッセージ機能を用意しております。追加の実装を行うことで機能を利用することができます。<br>
 詳しくは、<a href="/sdk/android/all-in-one">全機能導入ガイド</a>をご覧ください。</p>
-
-<h2 id="最新版のsdkへのアップグレード方法">最新版のSDKへのアップグレード方法</h2>
-
-<p>Growth Push SDKからGrowthbeat 2.x SDK へまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへのアップグレードをされる方は<br />
+<h2 id="sdk-1">最新版のSDKへのアップグレード方法</h2>
+<p>Growth Push SDKからGrowthbeat 2.x SDK へまたは、Growthbeat 1.x SDKからGrowthbeat 2.x SDKへのアップグレードをされる方は<br>
 <a href="/sdk/android/upgrade">SDKのアップグレードガイド</a>をご参照ください。</p>
-
-<h2 id="サンプルコード">サンプルコード</h2>
-
+<h2 id="heading-11">サンプルコード</h2>
 <p>実装サンプルは、<a href="https://github.com/growthbeat/growthbeat-android">Githubレポジトリ</a>を参考にしてください。</p>
-
-<h1 id="お問い合わせ">お問い合わせ</h1>
-
+<h1 id="heading-12">お問い合わせ</h1>
 <p>ご不明な点などございます場合は、<a href="http://faq.growthbeat.com/">ヘルプページ</a>を閲覧してください。</p>
 
       </div>
@@ -356,7 +293,7 @@ requestRegistrationId で、デバイストークンの取得を行います。�
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-<script src="http://support.growthbeat.com/js/sirok-scrollspy.js"></script>
+<script src="https://support.growthbeat.com/js/sirok-scrollspy.js"></script>
 <script>
 $(function() {
   $('pre code, code').each(function(i, block) {

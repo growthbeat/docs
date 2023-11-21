@@ -10,7 +10,7 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="Growthbeat Android API | Growthbeatドキュメント |">
-  <meta property="og:url" content="http://support.growthbeat.com/sdk/android/reference-1.2.7/">
+  <meta property="og:url" content="https://support.growthbeat.com/sdk/android/reference-1.2.7/">
   <meta property="og:description" content="Growthbeat Android の API について説明します">
   
   <meta property="article:author" content="" />
@@ -26,7 +26,7 @@
   
   <link rel="shortcut icon" href="/favicon.ico">
 
-  <link rel="stylesheet" href="http://support.growthbeat.com/css/main.css" />
+  <link rel="stylesheet" href="https://support.growthbeat.com/css/main.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
 </head>
 
@@ -51,7 +51,7 @@
     <nav class="header-nav">
       <h1 class="logo">
         <a class="link"href="https://growthbeat.com/">
-          <img src="http://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
+          <img src="https://support.growthbeat.com/img/lp_growthbeat_logo_big.png" alt="Growthbeat logo">
         </a>
       </h1>
 
@@ -72,10 +72,10 @@
   <div class="container">
     <ul class="breadcrumb">
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/">サポートページ</a>
+        <a class="link" href="https://support.growthbeat.com/">サポートページ</a>
       </li>
       <li class="item">
-        <a class="link" href="http://support.growthbeat.com/sdk/">SDKドキュメント</a>
+        <a class="link" href="https://support.growthbeat.com/sdk/">SDKドキュメント</a>
       </li>
       
         <li class="item"><a class="link">APIリファレンス</a></li>
@@ -107,121 +107,111 @@
 <section class="row markdown">
     <div class="column column-sidebar">
       <nav id="TableOfContents">
-<ul>
-<li><a href="#growthbeat-api">Growthbeat API</a>
-<ul>
-<li><a href="#growthbeatインスタンスの取得">Growthbeatインスタンスの取得</a></li>
-<li><a href="#初期化">初期化</a></li>
-<li><a href="#起動イベントの送信">起動イベントの送信</a></li>
-<li><a href="#終了イベントの送信">終了イベントの送信</a></li>
-<li><a href="#ログの停止">ログの停止</a></li>
-<li><a href="#growthbeatユニークidを取得する">GrowthbeatユニークIDを取得する</a></li>
-</ul></li>
-<li><a href="#growth-analytics-api">Growth Analytics API</a>
-<ul>
-<li><a href="#growth-analyticsインスタンスの取得">Growth Analyticsインスタンスの取得</a></li>
-<li><a href="#基本情報の送信">基本情報の送信</a></li>
-<li><a href="#特定のイベントを送信">特定のイベントを送信</a>
-<ul>
-<li><a href="#起動イベント">起動イベント</a></li>
-<li><a href="#終了イベント">終了イベント</a></li>
-<li><a href="#購入イベント">購入イベント</a></li>
-</ul></li>
-<li><a href="#特定のタグを送信">特定のタグを送信</a>
-<ul>
-<li><a href="#ユーザーidタグ">ユーザーIDタグ</a></li>
-<li><a href="#名前タグ">名前タグ</a></li>
-<li><a href="#年齢タグ">年齢タグ</a></li>
-<li><a href="#性別タグ">性別タグ</a></li>
-<li><a href="#レベルタグ">レベルタグ</a></li>
-<li><a href="#開発用タグ">開発用タグ</a></li>
-<li><a href="#乱数タグ">乱数タグ</a></li>
-</ul></li>
-<li><a href="#カスタムイベント送信">カスタムイベント送信</a>
-<ul>
-<li><a href="#イベントの送信">イベントの送信</a></li>
-<li><a href="#イベント名と任意のmapの送信">イベント名と任意のMapの送信</a></li>
-<li><a href="#イベント名とイベント取得回数オプションの送信">イベント名とイベント取得回数オプションの送信</a></li>
-</ul></li>
-<li><a href="#イベント名と任意のmapの送信とイベント取得回数オプションの送信">イベント名と任意のMapの送信とイベント取得回数オプションの送信</a></li>
-<li><a href="#カスタムタグ送信">カスタムタグ送信</a>
-<ul>
-<li><a href="#タグの送信">タグの送信</a></li>
-<li><a href="#タグと任意の値を送信">タグと任意の値を送信</a></li>
-</ul></li>
-<li><a href="#フルカスタマイズなイベントの送信">フルカスタマイズなイベントの送信</a></li>
-<li><a href="#フルカスタマイズなタグの送信">フルカスタマイズなタグの送信</a></li>
-</ul></li>
-<li><a href="#growth-push-api">Growth Push API</a>
-<ul>
-<li><a href="#growthpushインスタンスを取得">GrowthPushインスタンスを取得</a></li>
-<li><a href="#registrationidの取得-送信">RegistrationIdの取得・送信</a>
-<ul>
-<li><a href="#デバイストークン送信">デバイストークン送信</a></li>
-<li><a href="#デバイストークン取得">デバイストークン取得</a></li>
-</ul></li>
-<li><a href="#基本タグの送信">基本タグの送信</a></li>
-<li><a href="#イベントの送信-push専用">イベントの送信（Push専用）</a>
-<ul>
-<li><a href="#イベントの送信-push専用-1">イベントの送信（Push専用）</a></li>
-<li><a href="#イベントと任意の値の送信-push専用">イベントと任意の値の送信（Push専用）</a></li>
-</ul></li>
-<li><a href="#タグの送信-push専用">タグの送信（Push専用）</a>
-<ul>
-<li><a href="#タグの送信-push専用-1">タグの送信（Push専用）</a></li>
-<li><a href="#タグと任意の値の送信-push専用">タグと任意の値の送信（Push専用）</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#growth-message-api">Growth Message API</a>
-<ul>
-<li><a href="#growthmessageインスタンスの取得">GrowthMessageインスタンスの取得</a></li>
-</ul></li>
-<li><a href="#growth-link-api">Growth Link API</a>
-<ul>
-<li><a href="#growthlinkインスタンスを取得">GrowthLinkインスタンスを取得</a></li>
-<li><a href="#growth-linkの初期化">Growth Linkの初期化</a></li>
-<li><a href="#リンクデータを引き渡し">リンクデータを引き渡し</a></li>
-</ul></li>
-<li><a href="#androidmanifest-xml">AndroidManifest.xml</a>
-<ul>
-<li><a href="#パーミッション設定">パーミッション設定</a></li>
-<li><a href="#growth-push設定">Growth Push設定</a></li>
-<li><a href="#growth-message設定">Growth Message設定</a></li>
-<li><a href="#growth-link設定">Growth Link設定</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#growthbeat">Growthbeatインスタンスの取得</a></li>
+    <li><a href="#heading">初期化</a></li>
+    <li><a href="#heading-1">起動イベントの送信</a></li>
+    <li><a href="#heading-2">終了イベントの送信</a></li>
+    <li><a href="#heading-3">ログの停止</a></li>
+    <li><a href="#growthbeatid">GrowthbeatユニークIDを取得する</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#growth-analytics">Growth Analyticsインスタンスの取得</a></li>
+    <li><a href="#heading-4">基本情報の送信</a></li>
+    <li><a href="#heading-5">特定のイベントを送信</a>
+      <ul>
+        <li><a href="#heading-6">起動イベント</a></li>
+        <li><a href="#heading-7">終了イベント</a></li>
+        <li><a href="#heading-8">購入イベント</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-9">特定のタグを送信</a>
+      <ul>
+        <li><a href="#id">ユーザーIDタグ</a></li>
+        <li><a href="#heading-10">名前タグ</a></li>
+        <li><a href="#heading-11">年齢タグ</a></li>
+        <li><a href="#heading-12">性別タグ</a></li>
+        <li><a href="#heading-13">レベルタグ</a></li>
+        <li><a href="#heading-14">開発用タグ</a></li>
+        <li><a href="#heading-15">乱数タグ</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-16">カスタムイベント送信</a>
+      <ul>
+        <li><a href="#heading-17">イベントの送信</a></li>
+        <li><a href="#map">イベント名と任意のMapの送信</a></li>
+        <li><a href="#heading-18">イベント名とイベント取得回数オプションの送信</a></li>
+      </ul>
+    </li>
+    <li><a href="#map-1">イベント名と任意のMapの送信とイベント取得回数オプションの送信</a></li>
+    <li><a href="#heading-19">カスタムタグ送信</a>
+      <ul>
+        <li><a href="#heading-20">タグの送信</a></li>
+        <li><a href="#heading-21">タグと任意の値を送信</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-22">フルカスタマイズなイベントの送信</a></li>
+    <li><a href="#heading-23">フルカスタマイズなタグの送信</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#growthpush">GrowthPushインスタンスを取得</a></li>
+    <li><a href="#registrationid">RegistrationIdの取得・送信</a>
+      <ul>
+        <li><a href="#heading-24">デバイストークン送信</a></li>
+        <li><a href="#heading-25">デバイストークン取得</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-26">基本タグの送信</a></li>
+    <li><a href="#push">イベントの送信（Push専用）</a>
+      <ul>
+        <li><a href="#push-1">イベントの送信（Push専用）</a></li>
+        <li><a href="#push-2">イベントと任意の値の送信（Push専用）</a></li>
+      </ul>
+    </li>
+    <li><a href="#push-3">タグの送信（Push専用）</a>
+      <ul>
+        <li><a href="#push-4">タグの送信（Push専用）</a></li>
+        <li><a href="#push-5">タグと任意の値の送信（Push専用）</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#growthmessage">GrowthMessageインスタンスの取得</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#growthlink">GrowthLinkインスタンスを取得</a></li>
+    <li><a href="#growth-link">Growth Linkの初期化</a></li>
+    <li><a href="#heading-27">リンクデータを引き渡し</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-28">パーミッション設定</a></li>
+    <li><a href="#growth-push">Growth Push設定</a></li>
+    <li><a href="#growth-message">Growth Message設定</a></li>
+    <li><a href="#growth-link-1">Growth Link設定</a></li>
+  </ul>
 </nav>
     </div>
     <div class="column column-main">
       <div class="typeset">
-        
-
-<p>Version 1.2.7</p>
-
+        <p>Version 1.2.7</p>
 <h1 id="growthbeat-api">Growthbeat API</h1>
-
-<h2 id="growthbeatインスタンスの取得">Growthbeatインスタンスの取得</h2>
-
+<h2 id="growthbeat">Growthbeatインスタンスの取得</h2>
 <p>Growthbeatインスタンスを取得します。</p>
-
-<pre><code class="language-java">public static Growthbeat getInstance()
-</code></pre>
-
-<h2 id="初期化">初期化</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> Growthbeat <span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+</code></pre></div><h2 id="heading">初期化</h2>
 <p>Growthbeatの初期化を行います。初期化では以下の処理が行われます。</p>
-
 <ul>
 <li>デバイス登録、認証</li>
 <li>Growth Push、Growth Analytics、Growth Messageの初期化（Growth Linkは別途初期化が必要）</li>
 <li>基本情報の送信</li>
 </ul>
-
-<pre><code class="language-java">public void initialize(Context context, String applicationId, String credentialId)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initialize</span><span style="color:#f92672">(</span>Context context<span style="color:#f92672">,</span> String applicationId<span style="color:#f92672">,</span> String credentialId<span style="color:#f92672">)</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -229,25 +219,19 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">applicationId</td>
 <td align="left">アプリケーションID</td>
 </tr>
-
 <tr>
 <td align="left">credentialId</td>
 <td align="left">クレデンシャルキー</td>
 </tr>
 </tbody>
 </table>
-
-<pre><code class="language-java">public void initialize(Context context, String applicationId, String credentialId, boolean adInfoEnabled)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initialize</span><span style="color:#f92672">(</span>Context context<span style="color:#f92672">,</span> String applicationId<span style="color:#f92672">,</span> String credentialId<span style="color:#f92672">,</span> <span style="color:#66d9ef">boolean</span> adInfoEnabled<span style="color:#f92672">)</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -255,49 +239,32 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">applicationId</td>
 <td align="left">アプリケーションID</td>
 </tr>
-
 <tr>
 <td align="left">credentialId</td>
 <td align="left">クレデンシャルキー</td>
 </tr>
-
 <tr>
 <td align="left">adInfoEnabled</td>
 <td align="left">広告情報の送信設定。<code>true</code>: 送信する <code>false</code>:送信しない</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="起動イベントの送信">起動イベントの送信</h2>
-
+<h2 id="heading-1">起動イベントの送信</h2>
 <p>アプリケーションの起動イベントを送信します。</p>
-
-<pre><code class="language-java">public void start()
-</code></pre>
-
-<h2 id="終了イベントの送信">終了イベントの送信</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+</code></pre></div><h2 id="heading-2">終了イベントの送信</h2>
 <p>アプリケーションの終了イベントを送信します。</p>
-
-<pre><code class="language-java">public void stop()
-</code></pre>
-
-<h2 id="ログの停止">ログの停止</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">stop</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+</code></pre></div><h2 id="heading-3">ログの停止</h2>
 <p>Growthbeat SDKからのログ出力を全て停止します。
 デフォルトでは、ログ出力がおこなわれます。</p>
-
-<pre><code class="language-java">public void setLoggerSilent(boolean silent)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setLoggerSilent</span><span style="color:#f92672">(</span><span style="color:#66d9ef">boolean</span> silent<span style="color:#f92672">)</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -305,7 +272,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">silent</td>
@@ -313,27 +279,15 @@
 </tr>
 </tbody>
 </table>
-
-<h2 id="growthbeatユニークidを取得する">GrowthbeatユニークIDを取得する</h2>
-
+<h2 id="growthbeatid">GrowthbeatユニークIDを取得する</h2>
 <p>SDK初期化時に作成される、GrowthbeatのユニークIDを取得できます。</p>
-
-<pre><code class="language-java">public void getClient(final ClientCallback clientCallback)
-</code></pre>
-
-<h1 id="growth-analytics-api">Growth Analytics API</h1>
-
-<h2 id="growth-analyticsインスタンスの取得">Growth Analyticsインスタンスの取得</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">getClient</span><span style="color:#f92672">(</span><span style="color:#66d9ef">final</span> ClientCallback clientCallback<span style="color:#f92672">)</span>
+</code></pre></div><h1 id="growth-analytics-api">Growth Analytics API</h1>
+<h2 id="growth-analytics">Growth Analyticsインスタンスの取得</h2>
 <p>GrowthAnalyticsインスタンスを取得します。</p>
-
-<pre><code class="language-java">public static GrowthAnalytics getInstance()
-</code></pre>
-
-<h2 id="基本情報の送信">基本情報の送信</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> GrowthAnalytics <span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+</code></pre></div><h2 id="heading-4">基本情報の送信</h2>
 <p>端末の基本情報を送信します。基本情報には以下が含まれます。</p>
-
 <ul>
 <li>デバイスモデル</li>
 <li>OS</li>
@@ -344,35 +298,18 @@
 <li>広告ID（Android:AdvertisingId, iOS:IDFA）</li>
 <li>広告利用可否</li>
 </ul>
-
-<pre><code class="language-java">public void setBasicTags()
-</code></pre>
-
-<h2 id="特定のイベントを送信">特定のイベントを送信</h2>
-
-<h3 id="起動イベント">起動イベント</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setBasicTags</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+</code></pre></div><h2 id="heading-5">特定のイベントを送信</h2>
+<h3 id="heading-6">起動イベント</h3>
 <p>ユーザーの起動イベントを送信します。セッション時間の計測を開始するために必要なメソッドです。起動後に開かれるActivityのonStartに以下を実装してください。</p>
-
-<pre><code class="language-java">public void open()
-</code></pre>
-
-<h3 id="終了イベント">終了イベント</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">open</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+</code></pre></div><h3 id="heading-7">終了イベント</h3>
 <p>アプリの終了イベントを送信します。セッション時間の計測を停止します。Activityが閉じプロセスが終了する場所に実装してください。</p>
-
-<pre><code class="language-java">public void close()
-</code></pre>
-
-<h3 id="購入イベント">購入イベント</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">close</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+</code></pre></div><h3 id="heading-8">購入イベント</h3>
 <p>課金時にメソッドを呼び、課金額、アイテムのカテゴリなどを送信することができます。</p>
-
-<pre><code class="language-java">public void purchase(int price, String category, String product)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">purchase</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> price<span style="color:#f92672">,</span> String category<span style="color:#f92672">,</span> String product<span style="color:#f92672">)</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -380,36 +317,26 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">price</td>
 <td align="left">価格</td>
 </tr>
-
 <tr>
 <td align="left">category</td>
 <td align="left">任意のカテゴリ</td>
 </tr>
-
 <tr>
 <td align="left">product</td>
 <td align="left">任意のアイテム名</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="特定のタグを送信">特定のタグを送信</h2>
-
-<h3 id="ユーザーidタグ">ユーザーIDタグ</h3>
-
+<h2 id="heading-9">特定のタグを送信</h2>
+<h3 id="id">ユーザーIDタグ</h3>
 <p>アプリのユニークなユーザーIDを送信します。</p>
-
-<pre><code class="language-java">public void setUserId(String userId)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setUserId</span><span style="color:#f92672">(</span>String userId<span style="color:#f92672">)</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -417,7 +344,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">userId</td>
@@ -425,16 +351,10 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="名前タグ">名前タグ</h3>
-
+<h3 id="heading-10">名前タグ</h3>
 <p>アプリのユーザー名を送信します。</p>
-
-<pre><code class="language-java">public void setName(String name)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setName</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">)</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -442,7 +362,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
@@ -450,14 +369,9 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="年齢タグ">年齢タグ</h3>
-
-<pre><code class="language-java">public void setAge(int age)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h3 id="heading-11">年齢タグ</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setAge</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> age<span style="color:#f92672">)</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -465,7 +379,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">age</td>
@@ -473,16 +386,10 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="性別タグ">性別タグ</h3>
-
+<h3 id="heading-12">性別タグ</h3>
 <p>変数は、Genderのenumを用いてどちらか性別を送信してください</p>
-
-<pre><code class="language-java">public void setGender(Gender gender)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setGender</span><span style="color:#f92672">(</span>Gender gender<span style="color:#f92672">)</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -490,7 +397,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">gender</td>
@@ -498,16 +404,10 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="レベルタグ">レベルタグ</h3>
-
+<h3 id="heading-13">レベルタグ</h3>
 <p>アプリのユーザーのレベルを送信します。</p>
-
-<pre><code class="language-java">public void setLevel(int level)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setLevel</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> level<span style="color:#f92672">)</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -515,7 +415,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">level</td>
@@ -523,16 +422,10 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="開発用タグ">開発用タグ</h3>
-
+<h3 id="heading-14">開発用タグ</h3>
 <p>開発用のフラグをつける</p>
-
-<pre><code class="language-java">public void setDevelopment(boolean development)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setDevelopment</span><span style="color:#f92672">(</span><span style="color:#66d9ef">boolean</span> development<span style="color:#f92672">)</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -540,7 +433,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">development</td>
@@ -548,23 +440,13 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="乱数タグ">乱数タグ</h3>
-
+<h3 id="heading-15">乱数タグ</h3>
 <p>乱数を端末の情報として紐付けます。</p>
-
-<pre><code class="language-java">public void setRandom()
-</code></pre>
-
-<h2 id="カスタムイベント送信">カスタムイベント送信</h2>
-
-<h3 id="イベントの送信">イベントの送信</h3>
-
-<pre><code class="language-java">public void track(final String name);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setRandom</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+</code></pre></div><h2 id="heading-16">カスタムイベント送信</h2>
+<h3 id="heading-17">イベントの送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">track</span><span style="color:#f92672">(</span><span style="color:#66d9ef">final</span> String name<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -572,22 +454,16 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
-<td align="left">フォーマット:<code>Event:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;CUSTOM_EVENT_ID&gt;</code> <br/> <code>YOUR_APPLICATION_ID</code>: ApplicationID <br/> <code>CUSTOM_EVENT_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
+<td align="left">フォーマット:<code>Event:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;CUSTOM_EVENT_ID&gt;</code> <!-- raw HTML omitted --> <code>YOUR_APPLICATION_ID</code>: ApplicationID <!-- raw HTML omitted --> <code>CUSTOM_EVENT_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
 </tr>
 </tbody>
 </table>
-
-<h3 id="イベント名と任意のmapの送信">イベント名と任意のMapの送信</h3>
-
-<pre><code class="language-java">public void track(final String name, final Map&lt;String, String&gt; properties);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h3 id="map">イベント名と任意のMapの送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">track</span><span style="color:#f92672">(</span><span style="color:#66d9ef">final</span> String name<span style="color:#f92672">,</span> <span style="color:#66d9ef">final</span> Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> properties<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -595,27 +471,20 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
-<td align="left">フォーマット:<code>Event:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;CUSTOM_EVENT_ID&gt;</code> <br/> <code>YOUR_APPLICATION_ID</code>: ApplicationID <br/> <code>CUSTOM_EVENT_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
+<td align="left">フォーマット:<code>Event:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;CUSTOM_EVENT_ID&gt;</code> <!-- raw HTML omitted --> <code>YOUR_APPLICATION_ID</code>: ApplicationID <!-- raw HTML omitted --> <code>CUSTOM_EVENT_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
 </tr>
-
 <tr>
 <td align="left">properties</td>
 <td align="left">カスタムイベントに持たせる任意のMap</td>
 </tr>
 </tbody>
 </table>
-
-<h3 id="イベント名とイベント取得回数オプションの送信">イベント名とイベント取得回数オプションの送信</h3>
-
-<pre><code class="language-java">public void track(final String name, final TrackOption option);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h3 id="heading-18">イベント名とイベント取得回数オプションの送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">track</span><span style="color:#f92672">(</span><span style="color:#66d9ef">final</span> String name<span style="color:#f92672">,</span> <span style="color:#66d9ef">final</span> TrackOption option<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -623,27 +492,22 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
-<td align="left">フォーマット:<code>Event:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;CUSTOM_EVENT_ID&gt;</code> <br/> <code>YOUR_APPLICATION_ID</code>: ApplicationID <br/> <code>CUSTOM_EVENT_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
+<td align="left">フォーマット:<code>Event:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;CUSTOM_EVENT_ID&gt;</code> <!-- raw HTML omitted --> <code>YOUR_APPLICATION_ID</code>: ApplicationID <!-- raw HTML omitted --> <code>CUSTOM_EVENT_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
 </tr>
-
 <tr>
 <td align="left">properties</td>
 <td align="left">カスタムイベントに持たせる任意のMap</td>
 </tr>
-
 <tr>
 <td align="left">option</td>
 <td align="left">任意のパラメータ。ONCE, COUNTERのいずれかを指定します。</td>
 </tr>
 </tbody>
 </table>
-
 <p><strong>option</strong></p>
-
 <table>
 <thead>
 <tr>
@@ -651,27 +515,20 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">ONCE</td>
 <td align="left">このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）</td>
 </tr>
-
 <tr>
 <td align="left">COUNTER</td>
 <td align="left">このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="イベント名と任意のmapの送信とイベント取得回数オプションの送信">イベント名と任意のMapの送信とイベント取得回数オプションの送信</h2>
-
-<pre><code class="language-java">public void track(final String name, final Map&lt;String, String&gt; properties, final TrackOption option);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h2 id="map-1">イベント名と任意のMapの送信とイベント取得回数オプションの送信</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">track</span><span style="color:#f92672">(</span><span style="color:#66d9ef">final</span> String name<span style="color:#f92672">,</span> <span style="color:#66d9ef">final</span> Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> properties<span style="color:#f92672">,</span> <span style="color:#66d9ef">final</span> TrackOption option<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -679,27 +536,22 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
 <td align="left">カスタムイベントID</td>
 </tr>
-
 <tr>
 <td align="left">properties</td>
 <td align="left">カスタムイベントに持たせる任意のMap</td>
 </tr>
-
 <tr>
 <td align="left">option</td>
 <td align="left">任意のパラメータ。ONCE, COUNTERのいずれかを指定します。</td>
 </tr>
 </tbody>
 </table>
-
 <p><strong>option</strong></p>
-
 <table>
 <thead>
 <tr>
@@ -707,29 +559,21 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">ONCE</td>
 <td align="left">このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）</td>
 </tr>
-
 <tr>
 <td align="left">COUNTER</td>
 <td align="left">このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="カスタムタグ送信">カスタムタグ送信</h2>
-
-<h3 id="タグの送信">タグの送信</h3>
-
-<pre><code class="language-java">public void tag(final String name);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h2 id="heading-19">カスタムタグ送信</h2>
+<h3 id="heading-20">タグの送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">tag</span><span style="color:#f92672">(</span><span style="color:#66d9ef">final</span> String name<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -737,22 +581,16 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
-<td align="left">フォーマット:<code>Tag:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;LAST_ID&gt;</code> <br/> <code>YOUR_APPLICATION_ID</code>: ApplicationID<br/>  <code>LAST_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
+<td align="left">フォーマット:<code>Tag:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;LAST_ID&gt;</code> <!-- raw HTML omitted --> <code>YOUR_APPLICATION_ID</code>: ApplicationID<!-- raw HTML omitted -->  <code>LAST_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
 </tr>
 </tbody>
 </table>
-
-<h3 id="タグと任意の値を送信">タグと任意の値を送信</h3>
-
-<pre><code class="language-java">public void tag(final String name, final String value);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h3 id="heading-21">タグと任意の値を送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">tag</span><span style="color:#f92672">(</span><span style="color:#66d9ef">final</span> String name<span style="color:#f92672">,</span> <span style="color:#66d9ef">final</span> String value<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -760,29 +598,21 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
-<td align="left">フォーマット:<code>Tag:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;LAST_ID&gt;</code> <br/> <code>YOUR_APPLICATION_ID</code>: ApplicationID<br/>  <code>LAST_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
+<td align="left">フォーマット:<code>Tag:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;LAST_ID&gt;</code> <!-- raw HTML omitted --> <code>YOUR_APPLICATION_ID</code>: ApplicationID<!-- raw HTML omitted -->  <code>LAST_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
 </tr>
-
 <tr>
 <td align="left">value</td>
 <td align="left">カスタムタグに持たせる任意のValue</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="フルカスタマイズなイベントの送信">フルカスタマイズなイベントの送信</h2>
-
+<h2 id="heading-22">フルカスタマイズなイベントの送信</h2>
 <p>特定のネームスペース、イベントIDを設定していただくことが可能です。</p>
-
-<pre><code class="language-java">public void track(final String namespace, final String name, final Map&lt;String, String&gt; properties, final TrackOption option);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">track</span><span style="color:#f92672">(</span><span style="color:#66d9ef">final</span> String namespace<span style="color:#f92672">,</span> <span style="color:#66d9ef">final</span> String name<span style="color:#f92672">,</span> <span style="color:#66d9ef">final</span> Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> properties<span style="color:#f92672">,</span> <span style="color:#66d9ef">final</span> TrackOption option<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -790,32 +620,26 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">namespace</td>
 <td align="left">ネームスペース</td>
 </tr>
-
 <tr>
 <td align="left">name</td>
-<td align="left">フォーマット:<code>Tag:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;LAST_ID&gt;</code> <br/> <code>YOUR_APPLICATION_ID</code>: ApplicationID<br/>  <code>LAST_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
+<td align="left">フォーマット:<code>Tag:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;LAST_ID&gt;</code> <!-- raw HTML omitted --> <code>YOUR_APPLICATION_ID</code>: ApplicationID<!-- raw HTML omitted -->  <code>LAST_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
 </tr>
-
 <tr>
 <td align="left">properties</td>
 <td align="left">イベントに持たせる任意のMap</td>
 </tr>
-
 <tr>
 <td align="left">option</td>
 <td align="left">任意のパラメータ。ONCE, COUNTERのいずれかを指定します。</td>
 </tr>
 </tbody>
 </table>
-
 <p><strong>option</strong></p>
-
 <table>
 <thead>
 <tr>
@@ -823,29 +647,21 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">ONCE</td>
 <td align="left">このオプションを指定した場合、このイベントは最初の1度しか取得されません。（例えば、インストールイベントなどで使用します。）</td>
 </tr>
-
 <tr>
 <td align="left">COUNTER</td>
 <td align="left">このオプションを指定した場合、自動でcounterといプロパティが付与され、イベントを呼び出した回数をインクリメントして保持していきます。</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="フルカスタマイズなタグの送信">フルカスタマイズなタグの送信</h2>
-
+<h2 id="heading-23">フルカスタマイズなタグの送信</h2>
 <p>特定のネームスペース、タグIDを設定していただくことが可能です。</p>
-
-<pre><code class="language-java">public void tag(final String namespace, final String name, final String value)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">tag</span><span style="color:#f92672">(</span><span style="color:#66d9ef">final</span> String namespace<span style="color:#f92672">,</span> <span style="color:#66d9ef">final</span> String name<span style="color:#f92672">,</span> <span style="color:#66d9ef">final</span> String value<span style="color:#f92672">)</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -853,43 +669,29 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">namespace</td>
 <td align="left">ネームスペース</td>
 </tr>
-
 <tr>
 <td align="left">name</td>
-<td align="left">フォーマット:<code>Tag:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;LAST_ID&gt;</code> <br/> <code>YOUR_APPLICATION_ID</code>: ApplicationID<br/>  <code>LAST_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
+<td align="left">フォーマット:<code>Tag:&lt;YOUR_APPLICATION_ID&gt;:Custom:&lt;LAST_ID&gt;</code> <!-- raw HTML omitted --> <code>YOUR_APPLICATION_ID</code>: ApplicationID<!-- raw HTML omitted -->  <code>LAST_ID</code>: 英数字[a-zA-Z0-9]で任意の識別子を指定してください</td>
 </tr>
-
 <tr>
 <td align="left">value</td>
 <td align="left">タグに持たせる任意のValue</td>
 </tr>
 </tbody>
 </table>
-
 <h1 id="growth-push-api">Growth Push API</h1>
-
-<h2 id="growthpushインスタンスを取得">GrowthPushインスタンスを取得</h2>
-
+<h2 id="growthpush">GrowthPushインスタンスを取得</h2>
 <p>GrowthPushインスタンスを取得します。</p>
-
-<pre><code class="language-java">public static GrowthPush getInstance()
-</code></pre>
-
-<h2 id="registrationidの取得-送信">RegistrationIdの取得・送信</h2>
-
-<h3 id="デバイストークン送信">デバイストークン送信</h3>
-
-<pre><code class="language-java">public void requestRegistrationId(final String senderId, final Environment environment)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> GrowthPush <span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+</code></pre></div><h2 id="registrationid">RegistrationIdの取得・送信</h2>
+<h3 id="heading-24">デバイストークン送信</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">requestRegistrationId</span><span style="color:#f92672">(</span><span style="color:#66d9ef">final</span> String senderId<span style="color:#f92672">,</span> <span style="color:#66d9ef">final</span> Environment environment<span style="color:#f92672">)</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -897,31 +699,22 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">senderId</td>
 <td align="left">AndroidのSenderId</td>
 </tr>
-
 <tr>
 <td align="left">environment</td>
 <td align="left">開発用: <code>Environment.development</code> 本番用: <code>Environment.production</code>　</td>
 </tr>
 </tbody>
 </table>
-
-<h3 id="デバイストークン取得">デバイストークン取得</h3>
-
+<h3 id="heading-25">デバイストークン取得</h3>
 <p>必ず初期化のあとに実行してください。</p>
-
 <p>タイミングによっては、取得できない可能性もありますので、 <code>Thread</code> を利用して処理を遅らせて利用するのを推奨いたします。</p>
-
-<pre><code class="language-java">public string registerGCM(Context context)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> string <span style="color:#a6e22e">registerGCM</span><span style="color:#f92672">(</span>Context context<span style="color:#f92672">)</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -929,7 +722,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">context</td>
@@ -937,23 +729,13 @@
 </tr>
 </tbody>
 </table>
-
-<h2 id="基本タグの送信">基本タグの送信</h2>
-
+<h2 id="heading-26">基本タグの送信</h2>
 <p>Device, OS, Language, Time Zone, Version, Buildが含まれます。</p>
-
-<pre><code class="language-java">public void setDeviceTags();
-</code></pre>
-
-<h2 id="イベントの送信-push専用">イベントの送信（Push専用）</h2>
-
-<h3 id="イベントの送信-push専用-1">イベントの送信（Push専用）</h3>
-
-<pre><code class="language-java">public void trackEvent(final String name);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setDeviceTags</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><h2 id="push">イベントの送信（Push専用）</h2>
+<h3 id="push-1">イベントの送信（Push専用）</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">trackEvent</span><span style="color:#f92672">(</span><span style="color:#66d9ef">final</span> String name<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -961,7 +743,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
@@ -969,14 +750,9 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="イベントと任意の値の送信-push専用">イベントと任意の値の送信（Push専用）</h3>
-
-<pre><code class="language-java">public void trackEvent(final String name, final String value);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h3 id="push-2">イベントと任意の値の送信（Push専用）</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">trackEvent</span><span style="color:#f92672">(</span><span style="color:#66d9ef">final</span> String name<span style="color:#f92672">,</span> <span style="color:#66d9ef">final</span> String value<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -984,29 +760,21 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
 <td align="left">イベント名</td>
 </tr>
-
 <tr>
 <td align="left">value</td>
 <td align="left">イベントに持たせる値</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="タグの送信-push専用">タグの送信（Push専用）</h2>
-
-<h3 id="タグの送信-push専用-1">タグの送信（Push専用）</h3>
-
-<pre><code class="language-java">public void setTag(final String name);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h2 id="push-3">タグの送信（Push専用）</h2>
+<h3 id="push-4">タグの送信（Push専用）</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setTag</span><span style="color:#f92672">(</span><span style="color:#66d9ef">final</span> String name<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -1014,7 +782,6 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
@@ -1022,14 +789,9 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="タグと任意の値の送信-push専用">タグと任意の値の送信（Push専用）</h3>
-
-<pre><code class="language-java">public void setTag(final String name, final String value);
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<h3 id="push-5">タグと任意の値の送信（Push専用）</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setTag</span><span style="color:#f92672">(</span><span style="color:#66d9ef">final</span> String name<span style="color:#f92672">,</span> <span style="color:#66d9ef">final</span> String value<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -1037,45 +799,28 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">name</td>
 <td align="left">タグ名</td>
 </tr>
-
 <tr>
 <td align="left">value</td>
 <td align="left">タグに持たせる値</td>
 </tr>
 </tbody>
 </table>
-
 <h1 id="growth-message-api">Growth Message API</h1>
-
-<h2 id="growthmessageインスタンスの取得">GrowthMessageインスタンスの取得</h2>
-
+<h2 id="growthmessage">GrowthMessageインスタンスの取得</h2>
 <p>GrowthMessageインスタンスを取得します。</p>
-
-<pre><code class="language-java">public static GrowthMessage getInstance()
-</code></pre>
-
-<h1 id="growth-link-api">Growth Link API</h1>
-
-<h2 id="growthlinkインスタンスを取得">GrowthLinkインスタンスを取得</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> GrowthMessage <span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+</code></pre></div><h1 id="growth-link-api">Growth Link API</h1>
+<h2 id="growthlink">GrowthLinkインスタンスを取得</h2>
 <p>GrowthLinkインスタンスを取得します。</p>
-
-<pre><code class="language-java">public static GrowthLink getInstance()
-</code></pre>
-
-<h2 id="growth-linkの初期化">Growth Linkの初期化</h2>
-
-<pre><code class="language-java">public void initialize(Context context, String applicationId, String credentialId)
-</code></pre>
-
-<p><strong>パラメータ</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> GrowthLink <span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+</code></pre></div><h2 id="growth-link">Growth Linkの初期化</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initialize</span><span style="color:#f92672">(</span>Context context<span style="color:#f92672">,</span> String applicationId<span style="color:#f92672">,</span> String credentialId<span style="color:#f92672">)</span>
+</code></pre></div><p><strong>パラメータ</strong></p>
 <table>
 <thead>
 <tr>
@@ -1083,142 +828,100 @@
 <th align="left">詳細</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="left">applicationId</td>
 <td align="left">アプリケーションID</td>
 </tr>
-
 <tr>
 <td align="left">credentialId</td>
 <td align="left">クレデンシャルキー</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="リンクデータを引き渡し">リンクデータを引き渡し</h2>
-
+<h2 id="heading-27">リンクデータを引き渡し</h2>
 <p>カスタムURLスキームを受け取るActivityで下記を実装します。</p>
-
-<pre><code class="language-java">GrowthLink.getInstance().handleOpenUrl(getIntent().getData());
-</code></pre>
-
-<h1 id="androidmanifest-xml">AndroidManifest.xml</h1>
-
-<h2 id="パーミッション設定">パーミッション設定</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">GrowthLink<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">handleOpenUrl</span><span style="color:#f92672">(</span>getIntent<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getData</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><h1 id="androidmanifestxml">AndroidManifest.xml</h1>
+<h2 id="heading-28">パーミッション設定</h2>
 <p>インターネット設定。通信をするために必要となります。</p>
-
-<pre><code class="language-xml">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
-</code></pre>
-
-<p>プッシュ通知を受け取るために必要となります。YOUR_PACKAGE_NAMEは、アプリのPackageIDに変更してください。</p>
-
-<pre><code class="language-xml">&lt;uses-permission android:name=&quot;com.google.android.c2dm.permission.RECEIVE&quot; /&gt;
-&lt;uses-permission android:name=&quot;YOUR_PACKAGE_NAME.permission.C2D_MESSAGE&quot; /&gt;
-&lt;permission
-    android:name=&quot;YOUR_PACKAGE_NAME.permission.C2D_MESSAGE&quot;
-    android:protectionLevel=&quot;signature&quot; /&gt;
-</code></pre>
-
-<p>プッシュ通知受け取り時に、バイブレーションを鳴らすときに設定します。</p>
-
-<pre><code class="language-xml">&lt;uses-permission android:name=&quot;android.permission.VIBRATE&quot; /&gt;
-</code></pre>
-
-<p>Growth Pushダイアログプッシュ通知を表示するときに必要となります。</p>
-
-<pre><code class="language-xml">&lt;uses-permission android:name=&quot;android.permission.WAKE_LOCK&quot; /&gt;
-</code></pre>
-
-<p>GrowthMessageバナー型表示に必要となります。</p>
-
-<pre><code class="language-xml">&lt;uses-permission android:name=&quot;android.permission.SYSTEM_ALERT_WINDOW&quot; /&gt;
-</code></pre>
-
-<p>(<code>*</code>オプション) Googleアカウントを設定します。APIレベル15以下の場合は設定します。</p>
-
-<pre><code class="language-xml">&lt;uses-permission android:name=&quot;android.permission.GET_ACCOUNTS&quot; /&gt;
-</code></pre>
-
-<h2 id="growth-push設定">Growth Push設定</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;uses-permission</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;android.permission.INTERNET&#34;</span> <span style="color:#f92672">/&gt;</span>
+</code></pre></div><p>プッシュ通知を受け取るために必要となります。YOUR_PACKAGE_NAMEは、アプリのPackageIDに変更してください。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;uses-permission</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.google.android.c2dm.permission.RECEIVE&#34;</span> <span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;uses-permission</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;YOUR_PACKAGE_NAME.permission.C2D_MESSAGE&#34;</span> <span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;permission</span>
+    <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;YOUR_PACKAGE_NAME.permission.C2D_MESSAGE&#34;</span>
+    <span style="color:#a6e22e">android:protectionLevel=</span><span style="color:#e6db74">&#34;signature&#34;</span> <span style="color:#f92672">/&gt;</span>
+</code></pre></div><p>プッシュ通知受け取り時に、バイブレーションを鳴らすときに設定します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;uses-permission</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;android.permission.VIBRATE&#34;</span> <span style="color:#f92672">/&gt;</span>
+</code></pre></div><p>Growth Pushダイアログプッシュ通知を表示するときに必要となります。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;uses-permission</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;android.permission.WAKE_LOCK&#34;</span> <span style="color:#f92672">/&gt;</span>
+</code></pre></div><p>GrowthMessageバナー型表示に必要となります。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;uses-permission</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;android.permission.SYSTEM_ALERT_WINDOW&#34;</span> <span style="color:#f92672">/&gt;</span>
+</code></pre></div><p>(<code>*</code>オプション) Googleアカウントを設定します。APIレベル15以下の場合は設定します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;uses-permission</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;android.permission.GET_ACCOUNTS&#34;</span> <span style="color:#f92672">/&gt;</span>
+</code></pre></div><h2 id="growth-push">Growth Push設定</h2>
 <p>デバイストークン取得・更新やプッシュ通知を受け取る実装となります。YOUR_PACKAGE_NAMEは、アプリのPackageIDに変更してください。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">
+<span style="color:#f92672">&lt;activity</span>
+    <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthpush.view.AlertActivity&#34;</span>
+    <span style="color:#a6e22e">android:configChanges=</span><span style="color:#e6db74">&#34;orientation|keyboardHidden&#34;</span>
+    <span style="color:#a6e22e">android:launchMode=</span><span style="color:#e6db74">&#34;singleInstance&#34;</span>
+    <span style="color:#a6e22e">android:theme=</span><span style="color:#e6db74">&#34;@android:style/Theme.Translucent&#34;</span> <span style="color:#f92672">/&gt;</span>
 
-<pre><code class="language-xml">
-&lt;activity
-    android:name=&quot;com.growthpush.view.AlertActivity&quot;
-    android:configChanges=&quot;orientation|keyboardHidden&quot;
-    android:launchMode=&quot;singleInstance&quot;
-    android:theme=&quot;@android:style/Theme.Translucent&quot; /&gt;
+<span style="color:#f92672">&lt;service</span>
+    <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthpush.TokenRefreshService&#34;</span>
+    <span style="color:#a6e22e">android:exported=</span><span style="color:#e6db74">&#34;false&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;intent-filter</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;action</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.google.android.gms.iid.InstanceID&#34;</span><span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;/intent-filter&gt;</span>
+<span style="color:#f92672">&lt;/service&gt;</span>
+<span style="color:#f92672">&lt;service</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthpush.RegistrationIntentService&#34;</span><span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;service</span>
+    <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthpush.ReceiverService&#34;</span>
+    <span style="color:#a6e22e">android:exported=</span><span style="color:#e6db74">&#34;false&#34;</span> <span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;intent-filter</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;action</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.google.android.c2dm.intent.RECEIVE&#34;</span> <span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;/intent-filter&gt;</span>
+<span style="color:#f92672">&lt;/service&gt;</span>
+<span style="color:#f92672">&lt;receiver</span>
+    <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.google.android.gms.gcm.GcmReceiver&#34;</span>
+    <span style="color:#a6e22e">android:exported=</span><span style="color:#e6db74">&#34;true&#34;</span>
+    <span style="color:#a6e22e">android:permission=</span><span style="color:#e6db74">&#34;com.google.android.c2dm.permission.SEND&#34;</span> <span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;intent-filter</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;action</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.google.android.c2dm.intent.RECEIVE&#34;</span> <span style="color:#f92672">/&gt;</span>
+        <span style="color:#f92672">&lt;category</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;YOUR_PACKAGE_NAME&#34;</span> <span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;/intent-filter&gt;</span>
+    <span style="color:#f92672">&lt;intent-filter</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;action</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.google.android.c2dm.intent.REGISTRATION&#34;</span> <span style="color:#f92672">/&gt;</span>
+        <span style="color:#f92672">&lt;category</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;YOUR_PACKAGE_NAME&#34;</span> <span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;/intent-filter&gt;</span>
+<span style="color:#f92672">&lt;/receiver&gt;</span>
+</code></pre></div><p>(<code>*</code>オプション) アイコンや背景色をカスタムすることができます。リソースIDを指定してください。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> 通知バーのアイコンをカスタマイズすることができます。 </span><span style="color:#75715e">--&gt;</span>
+<span style="color:#f92672">&lt;meta-data</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthpush.notification.icon&#34;</span> <span style="color:#a6e22e">android:resource=</span><span style="color:#e6db74">&#34;@drawable/sample_notification_icon&#34;</span> <span style="color:#f92672">/&gt;</span>
 
-&lt;service
-    android:name=&quot;com.growthpush.TokenRefreshService&quot;
-    android:exported=&quot;false&quot;&gt;
-    &lt;intent-filter&gt;
-        &lt;action android:name=&quot;com.google.android.gms.iid.InstanceID&quot;/&gt;
-    &lt;/intent-filter&gt;
-&lt;/service&gt;
-&lt;service android:name=&quot;com.growthpush.RegistrationIntentService&quot;/&gt;
-&lt;service
-    android:name=&quot;com.growthpush.ReceiverService&quot;
-    android:exported=&quot;false&quot; &gt;
-    &lt;intent-filter&gt;
-        &lt;action android:name=&quot;com.google.android.c2dm.intent.RECEIVE&quot; /&gt;
-    &lt;/intent-filter&gt;
-&lt;/service&gt;
-&lt;receiver
-    android:name=&quot;com.google.android.gms.gcm.GcmReceiver&quot;
-    android:exported=&quot;true&quot;
-    android:permission=&quot;com.google.android.c2dm.permission.SEND&quot; &gt;
-    &lt;intent-filter&gt;
-        &lt;action android:name=&quot;com.google.android.c2dm.intent.RECEIVE&quot; /&gt;
-        &lt;category android:name=&quot;YOUR_PACKAGE_NAME&quot; /&gt;
-    &lt;/intent-filter&gt;
-    &lt;intent-filter&gt;
-        &lt;action android:name=&quot;com.google.android.c2dm.intent.REGISTRATION&quot; /&gt;
-        &lt;category android:name=&quot;YOUR_PACKAGE_NAME&quot; /&gt;
-    &lt;/intent-filter&gt;
-&lt;/receiver&gt;
-</code></pre>
+<span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> 通知バーのアイコンの背景色をカスタマイズすることができます。 </span><span style="color:#75715e">--&gt;</span>
+<span style="color:#f92672">&lt;meta-data</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthpush.notification.icon.background.color&#34;</span> <span style="color:#a6e22e">android:resource=</span><span style="color:#e6db74">&#34;@android:color/white&#34;</span> <span style="color:#f92672">/&gt;</span>
 
-<p>(<code>*</code>オプション) アイコンや背景色をカスタムすることができます。リソースIDを指定してください。</p>
-
-<pre><code class="language-xml">&lt;!-- 通知バーのアイコンをカスタマイズすることができます。 --&gt;
-&lt;meta-data android:name=&quot;com.growthpush.notification.icon&quot; android:resource=&quot;@drawable/sample_notification_icon&quot; /&gt;
-
-&lt;!-- 通知バーのアイコンの背景色をカスタマイズすることができます。 --&gt;
-&lt;meta-data android:name=&quot;com.growthpush.notification.icon.background.color&quot; android:resource=&quot;@android:color/white&quot; /&gt;
-
-&lt;!-- ダイアログプッシュ通知のアイコンを変更できます。 --&gt;
-&lt;meta-data android:name=&quot;com.growthpush.dialog.icon&quot; android:resource=&quot;@drawable/sample_notification_icon&quot; /&gt;
-</code></pre>
-
-<h2 id="growth-message設定">Growth Message設定</h2>
-
+<span style="color:#75715e">&lt;!--</span><span style="color:#75715e"> ダイアログプッシュ通知のアイコンを変更できます。 </span><span style="color:#75715e">--&gt;</span>
+<span style="color:#f92672">&lt;meta-data</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthpush.dialog.icon&#34;</span> <span style="color:#a6e22e">android:resource=</span><span style="color:#e6db74">&#34;@drawable/sample_notification_icon&#34;</span> <span style="color:#f92672">/&gt;</span>
+</code></pre></div><h2 id="growth-message">Growth Message設定</h2>
 <p>ポップアップメッセージを表示するために必要となります。</p>
-
-<pre><code class="language-xml">&lt;activity
-    android:name=&quot;com.growthbeat.message.view.MessageActivity&quot;
-    android:theme=&quot;@android:style/Theme.Translucent&quot; /&gt;
-</code></pre>
-
-<h2 id="growth-link設定">Growth Link設定</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;activity</span>
+    <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthbeat.message.view.MessageActivity&#34;</span>
+    <span style="color:#a6e22e">android:theme=</span><span style="color:#e6db74">&#34;@android:style/Theme.Translucent&#34;</span> <span style="color:#f92672">/&gt;</span>
+</code></pre></div><h2 id="growth-link-1">Growth Link設定</h2>
 <p>インストール・起動時にデータを受け取るために必要になります。</p>
-
-<pre><code class="language-xml">&lt;receiver
-    android:name=&quot;com.growthbeat.link.InstallReferrerReceiver&quot;
-    android:enabled=&quot;true&quot;
-    android:exported=&quot;true&quot; &gt;
-    &lt;intent-filter&gt;
-        &lt;action android:name=&quot;com.android.vending.INSTALL_REFERRER&quot; /&gt;
-    &lt;/intent-filter&gt;
-&lt;/receiver&gt;
-</code></pre>
-
-<p>AndroidManifest.xmlのサンプルは、<a href="https://github.com/growthbeat/growthbeat-android/blob/master/sample/src/main/AndroidManifest.xml">こちら</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;receiver</span>
+    <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.growthbeat.link.InstallReferrerReceiver&#34;</span>
+    <span style="color:#a6e22e">android:enabled=</span><span style="color:#e6db74">&#34;true&#34;</span>
+    <span style="color:#a6e22e">android:exported=</span><span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;intent-filter</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;action</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.android.vending.INSTALL_REFERRER&#34;</span> <span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;/intent-filter&gt;</span>
+<span style="color:#f92672">&lt;/receiver&gt;</span>
+</code></pre></div><p>AndroidManifest.xmlのサンプルは、<a href="https://github.com/growthbeat/growthbeat-android/blob/master/sample/src/main/AndroidManifest.xml">こちら</a></p>
 
       </div>
     </div>
@@ -1237,7 +940,7 @@
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-<script src="http://support.growthbeat.com/js/sirok-scrollspy.js"></script>
+<script src="https://support.growthbeat.com/js/sirok-scrollspy.js"></script>
 <script>
 $(function() {
   $('pre code, code').each(function(i, block) {
