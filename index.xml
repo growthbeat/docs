@@ -32,7 +32,7 @@ public void initialize(Context context, String applicationId, String credentialI
       <pubDate>Tue, 07 Apr 2020 17:00:00 +0900</pubDate>
       
       <guid>https://support.growthbeat.com/sdk/android/guide/</guid>
-      <description>Version 3.0.1
+      <description>Version 3.1.1
 SDK概要 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。
 (※ Eclipseの導入は非推奨となっております。導入については、Eclipse環境での導入手順について をご参照ください。)
 動作環境 最低動作保証環境: Android 4.1以上 動作推奨環境: Android 4.4以上
@@ -41,7 +41,7 @@ SDK概要 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用�
 google-services.jsonのインポート Firebaseのコンソールから、ダウンロードした、google-services.jsonをプロジェクトルートにインポートしてください。
 インポートができていないと、デバイストークンの取得に失敗いたします。
 Gradleの設定 build.gradle(Module:app)に下記を追加してください。
-dependencies { implementation &amp;#39;com.growthbeat:growthbeat-android:3.0.1@aar&amp;#39; implementation &amp;#39;androidx.appcompat:appcompat:1.1.0&amp;#39; implementation &amp;#39;com.google.firebase:firebase-messaging:18.0.0&amp;#39; } apply plugin: &amp;#39;com.google.gms.google-services&amp;#39; アプリがAndroidXに対応していない場合は、Growthbeat Android SDK v2.0.12、dependencies は以下をご利用ください。
+dependencies { implementation &amp;#39;com.growthbeat:growthbeat-android:3.1.1@aar&amp;#39; implementation &amp;#39;androidx.appcompat:appcompat:1.6.1&amp;#39; implementation &amp;#39;com.google.firebase:firebase-messaging:23.1.2&amp;#39; } apply plugin: &amp;#39;com.google.gms.google-services&amp;#39; アプリがAndroidXに対応していない場合は、Growthbeat Android SDK v2.0.12、dependencies は以下をご利用ください。
 dependencies { implementation &#39;com.growthbeat:growthbeat-android:2.0.11@aar&#39; implementation &#39;com.android.support:appcompat-v7:28.0.+&#39; implementation &#39;com.google.firebase:firebase-messaging:18.0.+&#39; } apply plugin: &#39;com.google.gms.google-services&#39; Growthbeat SDKを利用するには、依存ライブラリが必要となります。
  AndroidX firebase-messagaging アプリがAndroidXに対応していない場合は appcompat-v7もしくはandroid-support-v4  依存ライブラリの対応バージョンは Androidビルドに必要なライブラリ をご参照ください
 2. 実装コード Javaの実装 初期化 GrowthPushの初期化を行います。初期化の中で、端末の基本情報の送信、広告IDの取得が行われます。</description>
@@ -53,7 +53,7 @@ dependencies { implementation &#39;com.growthbeat:growthbeat-android:2.0.11@aar&
       <pubDate>Tue, 07 Apr 2020 17:00:00 +0900</pubDate>
       
       <guid>https://support.growthbeat.com/sdk/android/release/</guid>
-      <description>バージョン 3.0.1 変更点  Gradleタスクに不具合があったため、Gradleのバージョンを5.4.2に変更しました。  バージョン 3.0.0 変更点  サポートライブラリからAndroidXに移行しました。  バージョン 2.0.12 変更点  GrowthLink提供停止のため機能を削除しました。  バージョン 2.0.11 変更点  targetSdkVersion 28 に対応しました。 ドキュメントを更新しました。  バージョン 2.0.10 バグ  GrowthMessageの画像タップ時にアプリがクラッシュする場合があるバグを修正しました。  バージョン 2.0.9 変更点  GCM廃止に伴い、Firebaseへ移行実装いたしました。アップデートガイド  バージョン 2.0.8 バグ  Android 8.1等の一部端末で、タグ、イベント登録が失敗する挙動を修正しました。  バージョン 2.0.7 変更点  Android 8.0以上をターゲットとした場合に、通知が受け取れるように対応 BigTextStyleに対応  バージョン 2.0.6 バグ  通知一覧に複数通知がある場合に、アプリに遷移しない問題を修正しました。  バージョン 2.0.5 変更点  通知のカスタマイズをしやすいように変更しました。 通信エラー時に、エラーコードを表示するように変更しました。 通知一覧で、複数表示の対応をいたしました。  バグ  Growth Messageを閉じるときに、確率的にクラッシュする問題を修正しました。 Libraryプロジェクトのマニフェストに、application の記述を削除しました。  バージョン 2.</description>
+      <description>バージョン 3.1.1 変更点  targetSdkVersion 31 に対応しました。 Maven Central へ移行しました。  バージョン 3.1.0 変更点  minSdkVersion を 16 から 19 に変更しました。 Firebase Messaging v22 で削除されたクラスを利用しないよう修正しました。 GrowthMessage および Growthbeat AlertActivity Service内の setTheme() を削除しました。 サンプルアプリに style を追加しました。  バージョン 3.0.1 変更点  Gradleタスクに不具合があったため、Gradleのバージョンを5.4.2に変更しました。  バージョン 3.0.0 変更点  サポートライブラリからAndroidXに移行しました。  バージョン 2.0.12 変更点  GrowthLink提供停止のため機能を削除しました。  バージョン 2.0.11 変更点  targetSdkVersion 28 に対応しました。 ドキュメントを更新しました。  バージョン 2.0.10 バグ  GrowthMessageの画像タップ時にアプリがクラッシュする場合があるバグを修正しました。  バージョン 2.</description>
     </item>
     
     <item>
