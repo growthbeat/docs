@@ -6,6 +6,20 @@ draft: false
 title: リリースノート
 ---
 
+# バージョン 3.1.1
+
+## 変更点
+- targetSdkVersion 31 に対応しました。
+- Maven Central へ移行しました。
+
+# バージョン 3.1.0
+
+## 変更点
+- minSdkVersion を 16 から 19 に変更しました。
+- Firebase Messaging v22 で削除されたクラスを利用しないよう修正しました。
+- GrowthMessage および Growthbeat AlertActivity Service内の setTheme() を削除しました。
+- サンプルアプリに style を追加しました。
+
 # バージョン 3.0.1
 
 ## 変更点
