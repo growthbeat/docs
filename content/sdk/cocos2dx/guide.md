@@ -31,11 +31,7 @@ Growthbeat.xcframeworkは、下記Frameworkが必須となります。Xcodeプ�
 
 - Foundation.framework
 - UIKit.framework
-- CoreGraphics.framework
-- Security.framework
 - SystemConfiguration.framework
-- AdSupport.framework
-- CFNetwork.framework
 
 ### Androidの初期設定  
 `source/proj.android/src` の中身を、プロジェクトの `/path/to/your_project/proj.android/src` 配下にコピーしてください。  

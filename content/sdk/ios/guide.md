@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat iOS SDK | 基本導入ガイド
 ---
 
-Version 2.0.8
+Version 2.1.0
 # SDK概要  
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。Objective-Cでの導入方法について記載しております。  
 ## 環境  

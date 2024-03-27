@@ -21,11 +21,7 @@ Growthbeat.xcframework は、下記 Framework が必須となります。
 
 - Foundation.framework
 - UIKit.framework
-- CoreGraphics.framework
 - SystemConfiguration.framework
-- AdSupport.framework
-- CFNetwork.framework
-
 # 3. Android の初期設定
 Growthbeat SDKを利用するには、依存ライブラリが必要となります。
 
