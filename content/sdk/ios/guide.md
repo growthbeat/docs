@@ -26,21 +26,18 @@ end
 ## Frameworkをプロジェクトに導入する場合  
 <a href="/sdk">最新版iOS SDK ダウンロードページ</a>
 
-ダウンロードしたファイルを解凍し、そのフォルダの中の **Growthbeat.framework** をプロジェクトへ組み込みます。
-任意のXcodeプロジェクトを開き Growthbeat.framework をインポートしてください。  
-Growthbeat.framework のインポートの方法は以下の２つです  
+ダウンロードしたファイルを解凍し、そのフォルダの中の **Growthbeat.xcframework** をプロジェクトへ組み込みます。
+任意のXcodeプロジェクトを開き Growthbeat.xcframework をインポートしてください。  
+Growthbeat.xcframework のインポートの方法は以下の２つです  
 
-1. Xcodeプロジェクトに Growthbeat.framework をドラッグアンドドロップする
-2. Bulid Phases -> Link Binary With Libraries の + ボタンを押し、Add Other...からGrowthbeat.frameworkを選択する
+1. Xcodeプロジェクトに Growthbeat.xcframework をドラッグアンドドロップする
+2. Bulid Phases -> Link Binary With Libraries の + ボタンを押し、Add Other...からGrowthbeat.xcframeworkを選択する
 
-Growthbeat.framework は、下記 Framework が必須となります
+Growthbeat.xcframework は、下記 Framework が必須となります
 
 - Foundation.framework
 - UIKit.framework
-- CoreGraphics.framework
 - SystemConfiguration.framework
-- AdSupport.framework
-- CFNetwork.framework
 
 # 2. プロジェクトのPush Notificationを有効にする  
 Capabilities にて、Push Notifications を ON にします。  

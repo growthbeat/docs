@@ -17,7 +17,7 @@ Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できま�
 ダウンロードしたファイルを解凍し、そのフォルダの中の **growthbeat.unitypackage** をプロジェクトへ組み込みます。
 メニューから、`Assets -> Import Package -> Custom Package...` を選択し、でダウンロードした UnityPackge をインポートしてください。
 # 2. iOS の初期設定
-Growthbeat.framework は、下記 Framework が必須となります。
+Growthbeat.xcframework は、下記 Framework が必須となります。
 
 - Foundation.framework
 - UIKit.framework
