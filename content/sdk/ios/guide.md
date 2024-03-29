@@ -6,7 +6,7 @@ draft: false
 title: Growthbeat iOS SDK | 基本導入ガイド
 ---
 
-Version 2.0.8
+Version 2.1.0
 # SDK概要  
 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。Objective-Cでの導入方法について記載しております。  
 ## 環境  
@@ -26,21 +26,18 @@ end
 ## Frameworkをプロジェクトに導入する場合  
 <a href="/sdk">最新版iOS SDK ダウンロードページ</a>
 
-ダウンロードしたファイルを解凍し、そのフォルダの中の **Growthbeat.framework** をプロジェクトへ組み込みます。
-任意のXcodeプロジェクトを開き Growthbeat.framework をインポートしてください。  
-Growthbeat.framework のインポートの方法は以下の２つです  
+ダウンロードしたファイルを解凍し、そのフォルダの中の **Growthbeat.xcframework** をプロジェクトへ組み込みます。
+任意のXcodeプロジェクトを開き Growthbeat.xcframework をインポートしてください。  
+Growthbeat.xcframework のインポートの方法は以下の２つです  
 
-1. Xcodeプロジェクトに Growthbeat.framework をドラッグアンドドロップする
-2. Bulid Phases -> Link Binary With Libraries の + ボタンを押し、Add Other...からGrowthbeat.frameworkを選択する
+1. Xcodeプロジェクトに Growthbeat.xcframework をドラッグアンドドロップする
+2. Bulid Phases -> Link Binary With Libraries の + ボタンを押し、Add Other...からGrowthbeat.xcframeworkを選択する
 
-Growthbeat.framework は、下記 Framework が必須となります
+Growthbeat.xcframework は、下記 Framework が必須となります
 
 - Foundation.framework
 - UIKit.framework
-- CoreGraphics.framework
 - SystemConfiguration.framework
-- AdSupport.framework
-- CFNetwork.framework
 
 # 2. プロジェクトのPush Notificationを有効にする  
 Capabilities にて、Push Notifications を ON にします。  

@@ -26,16 +26,12 @@ git submodule update --init --recursive
 `source/Classes` ディレクトリの中身、Grothbeat, GrowthPush, GrowthLink 3つのフォルダーを `/path/to/your_project/Classes/` 配下にコピーしてください。  
 
 ### iOSの初期設定  
-Xcodeにて、Classesにコピーしたフォルダを、インポートしてください。選択肢にて、 `Create groups` にチェックし、ターゲットを任意のビルドスキームにチェックしてください。`growthbeat-ios/Growthbeat.framework` をコピーして、`/path/to/your_project/proj.ios/Frameworks/` 配下にコピーしてください。  
-Growthbeat.frameworkは、下記Frameworkが必須となります。Xcodeプロジェクトに、依存するFrameworkを追加してください。  
+Xcodeにて、Classesにコピーしたフォルダを、インポートしてください。選択肢にて、 `Create groups` にチェックし、ターゲットを任意のビルドスキームにチェックしてください。`growthbeat-ios/Growthbeat.xcframework` をコピーして、`/path/to/your_project/proj.ios/Frameworks/` 配下にコピーしてください。  
+Growthbeat.xcframeworkは、下記Frameworkが必須となります。Xcodeプロジェクトに、依存するFrameworkを追加してください。  
 
 - Foundation.framework
 - UIKit.framework
-- CoreGraphics.framework
-- Security.framework
 - SystemConfiguration.framework
-- AdSupport.framework
-- CFNetwork.framework
 
 ### Androidの初期設定  
 `source/proj.android/src` の中身を、プロジェクトの `/path/to/your_project/proj.android/src` 配下にコピーしてください。  

@@ -5,6 +5,13 @@ description: 'Growthbeat iOS のリリースノート'
 draft: false
 title: リリースノート
 ---
+# バージョン 2.1.0
+
+## 変更点
+- Privacy Manifestを追加しました。
+- xcframeworkに移行しました。
+- コード署名を追加しました。
+
 # バージョン 2.0.8
 
 ## 変更点
