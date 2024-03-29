@@ -80,7 +80,7 @@ class MainActivity extends Activity { @Override public void onCreate(Bundle save
       <pubDate>Tue, 04 Feb 2020 17:00:00 +0900</pubDate>
       
       <guid>https://support.growthbeat.com/sdk/ios/reference/</guid>
-      <description>Version 2.0.8
+      <description>Version 2.1.0
 iOS SDK 1.2.7以下のリファレンスはこちら
 Growthbeat API Growthbeatインスタンスの取得 Growthbeatインスタンスを取得します。
 + (instancetype)sharedInstance; ログの停止 Growthbeat SDKからのログ出力を全て停止します。 デフォルトでは、ログ出力がおこなわれます。
@@ -113,17 +113,17 @@ Growthbeat利用ガイド 1. Growth Pushを利用 Growth Pushのみを利用す�
       <pubDate>Tue, 04 Feb 2020 17:00:00 +0900</pubDate>
       
       <guid>https://support.growthbeat.com/sdk/ios/guide/</guid>
-      <description>Version 2.0.8
+      <description>Version 2.1.0
 SDK概要 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。Objective-Cでの導入方法について記載しております。
 環境 最低動作保証環境: iOS 8.0以上
 動作推奨環境：iOS 8.0以上
 1. プロジェクト設定 CocoaPodsの導入方法 Podfile に下記を記述し pod install を実行してください。
 CocoaPodsで、導入する場合は、自動的に依存が解決されます。
 ※ProjectNameは、アプリのプロジェクト名となります。
-target &#39;ProjectName&#39; do pod &#39;Growthbeat&#39; end Frameworkをプロジェクトに導入する場合 最新版iOS SDK ダウンロードページダウンロードしたファイルを解凍し、そのフォルダの中の Growthbeat.framework をプロジェクトへ組み込みます。 任意のXcodeプロジェクトを開き Growthbeat.framework をインポートしてください。
-Growthbeat.framework のインポートの方法は以下の２つです
- Xcodeプロジェクトに Growthbeat.framework をドラッグアンドドロップする Bulid Phases -&amp;gt; Link Binary With Libraries の + ボタンを押し、Add Other&amp;hellip;からGrowthbeat.frameworkを選択する  Growthbeat.framework は、下記 Framework が必須となります
- Foundation.framework UIKit.framework CoreGraphics.framework SystemConfiguration.framework AdSupport.framework CFNetwork.framework  2. プロジェクトのPush Notificationを有効にする Capabilities にて、Push Notifications を ON にします。</description>
+target &#39;ProjectName&#39; do pod &#39;Growthbeat&#39; end Frameworkをプロジェクトに導入する場合 最新版iOS SDK ダウンロードページダウンロードしたファイルを解凍し、そのフォルダの中の Growthbeat.xcframework をプロジェクトへ組み込みます。 任意のXcodeプロジェクトを開き Growthbeat.xcframework をインポートしてください。
+Growthbeat.xcframework のインポートの方法は以下の２つです
+ Xcodeプロジェクトに Growthbeat.xcframework をドラッグアンドドロップする Bulid Phases -&amp;gt; Link Binary With Libraries の + ボタンを押し、Add Other&amp;hellip;からGrowthbeat.xcframeworkを選択する  Growthbeat.xcframework は、下記 Framework が必須となります
+ Foundation.framework UIKit.framework SystemConfiguration.framework  2. プロジェクトのPush Notificationを有効にする Capabilities にて、Push Notifications を ON にします。</description>
     </item>
     
     <item>
@@ -132,7 +132,7 @@ Growthbeat.framework のインポートの方法は以下の２つです
       <pubDate>Tue, 04 Feb 2020 17:00:00 +0900</pubDate>
       
       <guid>https://support.growthbeat.com/sdk/ios/release/</guid>
-      <description>バージョン 2.0.8 変更点  Advertising ID, TrackingEnable flag 取得処理を削除しました。  バージョン 2.0.7 変更点  UIWebViewを利用していた処理を削除しました。 GrowthLink提供停止のため機能を削除しました。  バージョン 2.0.6 変更点  iOS 13でデバイストークンが取得出来ない場合がある問題を修正しました。  バージョン 2.0.5 変更点  初期化前に、タグ/イベントの送信を大量に行うと、アプリが固まってしまう問題を修正しました。 通信時のエラーコードを表示するように変更しました。  バグ  Growth Messageのタグの種類送信方法を修正しました。  バージョン 2.0.4 変更点  サンプルアプリを変更いたしました。  バージョン 2.0.3 変更点  CocoaPodsにて、frameworkの提供を終了し、ソースコードの提供に変更いたしました。  バージョン 2.0.2 変更点  Client APIの変更がありました。  バグ  Growthbeat 1.xから乗り換え時に、特定の条件で情報が引き継げない不具合を修正しました。  バージョン 2.0.1 変更点  Handlerを使ったメッセージ表示方法を変更しました。  バグ  ウォークスルー表示で、回転を行ったときに1ページ目に戻ってしまうバグを修正しました。  バージョン 2.</description>
+      <description>バージョン 2.1.0 変更点  Privacy Manifestを追加しました。 xcframeworkに移行しました。 コード署名を追加しました。  バージョン 2.0.8 変更点  Advertising ID, TrackingEnable flag 取得処理を削除しました。  バージョン 2.0.7 変更点  UIWebViewを利用していた処理を削除しました。 GrowthLink提供停止のため機能を削除しました。  バージョン 2.0.6 変更点  iOS 13でデバイストークンが取得出来ない場合がある問題を修正しました。  バージョン 2.0.5 変更点  初期化前に、タグ/イベントの送信を大量に行うと、アプリが固まってしまう問題を修正しました。 通信時のエラーコードを表示するように変更しました。  バグ  Growth Messageのタグの種類送信方法を修正しました。  バージョン 2.0.4 変更点  サンプルアプリを変更いたしました。  バージョン 2.0.3 変更点  CocoaPodsにて、frameworkの提供を終了し、ソースコードの提供に変更いたしました。  バージョン 2.0.2 変更点  Client APIの変更がありました。  バグ  Growthbeat 1.xから乗り換え時に、特定の条件で情報が引き継げない不具合を修正しました。  バージョン 2.</description>
     </item>
     
     <item>
@@ -162,12 +162,12 @@ manifest.json の例 YOUR_SENDER_ID には、Firebase Cloud Messaging で取得�
 1. SDK導入 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。
 Cocos2d-x SDK をインポートする GitHubからSDKをcloneし、submoduleをupdateしてください。
 git clone https://github.com/SIROK/growthbeat-cocos2dx.git cd ./growthbeat-cocos2dx git submodule update --init --recursive source/Classes ディレクトリの中身、Grothbeat, GrowthPush, GrowthLink 3つのフォルダーを /path/to/your_project/Classes/ 配下にコピーしてください。
-iOSの初期設定 Xcodeにて、Classesにコピーしたフォルダを、インポートしてください。選択肢にて、 Create groups にチェックし、ターゲットを任意のビルドスキームにチェックしてください。growthbeat-ios/Growthbeat.framework をコピーして、/path/to/your_project/proj.ios/Frameworks/ 配下にコピーしてください。
-Growthbeat.frameworkは、下記Frameworkが必須となります。Xcodeプロジェクトに、依存するFrameworkを追加してください。
- Foundation.framework UIKit.framework CoreGraphics.framework Security.framework SystemConfiguration.framework AdSupport.framework CFNetwork.framework  Androidの初期設定 source/proj.android/src の中身を、プロジェクトの /path/to/your_project/proj.android/src 配下にコピーしてください。
+iOSの初期設定 Xcodeにて、Classesにコピーしたフォルダを、インポートしてください。選択肢にて、 Create groups にチェックし、ターゲットを任意のビルドスキームにチェックしてください。growthbeat-ios/Growthbeat.xcframework をコピーして、/path/to/your_project/proj.ios/Frameworks/ 配下にコピーしてください。
+Growthbeat.xcframeworkは、下記Frameworkが必須となります。Xcodeプロジェクトに、依存するFrameworkを追加してください。
+ Foundation.framework UIKit.framework SystemConfiguration.framework  Androidの初期設定 source/proj.android/src の中身を、プロジェクトの /path/to/your_project/proj.android/src 配下にコピーしてください。
 Android Studio導入方法
 build.gradleに下記の設定をしてください。
-dependencies { // Androidのライブラリです。growthbeatのライブラリの機能に依存します。 compile &amp;#34;com.android.support:appcompat-v7:23.3.0&amp;#34; compile &amp;#39;com.google.android.gms:play-services-gcm:9.2.1&amp;#39; compile &amp;#39;com.google.android.gms:play-services-ads:9.2.1&amp;#39; // Growthbeat SDK Android compile &amp;#39;com.</description>
+dependencies { // Androidのライブラリです。growthbeatのライブラリの機能に依存します。 compile &amp;#34;com.android.support:appcompat-v7:23.3.0&amp;#34; compile &amp;#39;com.google.android.gms:play-services-gcm:9.2.1&amp;#39; compile &amp;#39;com.google.android.gms:play-services-ads:9.2.1&amp;#39; // Growthbeat SDK Android compile &amp;#39;com.growthbeat:growthbeat-android:2.0.5@aar&amp;#39; } Growthbeat SDKを利用するには、依存ライブラリが必要となります。</description>
     </item>
     
     <item>
@@ -207,8 +207,8 @@ public class GrowthbeatComponent : MonoBehaviour { void Awake () { GrowthPush.ge
 SDK概要 Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。
 動作環境 動作推奨環境: Unity 5以上 ※ Unityプラットフォームがサポートしていないバージョンについては、本SDKもサポート対象外となります。
 1. プロジェクト設定 最新版Unity SDK ダウンロードページダウンロードしたファイルを解凍し、そのフォルダの中の growthbeat.unitypackage をプロジェクトへ組み込みます。 メニューから、Assets -&amp;gt; Import Package -&amp;gt; Custom Package... を選択し、でダウンロードした UnityPackge をインポートしてください。
-2. iOS の初期設定 Growthbeat.framework は、下記 Framework が必須となります。
- Foundation.framework UIKit.framework CoreGraphics.framework SystemConfiguration.framework AdSupport.framework CFNetwork.framework  3. Android の初期設定 Growthbeat SDKを利用するには、依存ライブラリが必要となります。
+2. iOS の初期設定 Growthbeat.xcframework は、下記 Framework が必須となります。
+ Foundation.framework UIKit.framework SystemConfiguration.framework  3. Android の初期設定 Growthbeat SDKを利用するには、依存ライブラリが必要となります。
  appcompat-v7もしくはandroid-support-v4 firebase-messagaging  SDKおよびライブラリの導入 growthbeat-x.x.x.jar をインポートする必要がございます。 最新版Android SDK ダウンロードページ 上記ページより最新版SDKをダウンロードし、releaseフォルダ内のgrowthbeat-x.x.x.jar(x.x.xはバージョン番号) を、 Assets/Plugins/Android/ にコピーしてください。
 Growthbeat Android SDKをインポート後、依存ライブラリをGoogle社の提供する
 Firebase Unity SDK を使用して解決します。

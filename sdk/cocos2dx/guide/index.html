@@ -175,16 +175,12 @@ cd ./growthbeat-cocos2dx
 git submodule update --init --recursive
 </code></pre></div><p><code>source/Classes</code> ディレクトリの中身、Grothbeat, GrowthPush, GrowthLink 3つのフォルダーを <code>/path/to/your_project/Classes/</code> 配下にコピーしてください。</p>
 <h3 id="ios">iOSの初期設定</h3>
-<p>Xcodeにて、Classesにコピーしたフォルダを、インポートしてください。選択肢にて、 <code>Create groups</code> にチェックし、ターゲットを任意のビルドスキームにチェックしてください。<code>growthbeat-ios/Growthbeat.framework</code> をコピーして、<code>/path/to/your_project/proj.ios/Frameworks/</code> 配下にコピーしてください。<br>
-Growthbeat.frameworkは、下記Frameworkが必須となります。Xcodeプロジェクトに、依存するFrameworkを追加してください。</p>
+<p>Xcodeにて、Classesにコピーしたフォルダを、インポートしてください。選択肢にて、 <code>Create groups</code> にチェックし、ターゲットを任意のビルドスキームにチェックしてください。<code>growthbeat-ios/Growthbeat.xcframework</code> をコピーして、<code>/path/to/your_project/proj.ios/Frameworks/</code> 配下にコピーしてください。<br>
+Growthbeat.xcframeworkは、下記Frameworkが必須となります。Xcodeプロジェクトに、依存するFrameworkを追加してください。</p>
 <ul>
 <li>Foundation.framework</li>
 <li>UIKit.framework</li>
-<li>CoreGraphics.framework</li>
-<li>Security.framework</li>
 <li>SystemConfiguration.framework</li>
-<li>AdSupport.framework</li>
-<li>CFNetwork.framework</li>
 </ul>
 <h3 id="android">Androidの初期設定</h3>
 <p><code>source/proj.android/src</code> の中身を、プロジェクトの <code>/path/to/your_project/proj.android/src</code> 配下にコピーしてください。</p>

@@ -142,7 +142,7 @@
     </div>
     <div class="column column-main">
       <div class="typeset">
-        <p>Version 2.0.8</p>
+        <p>Version 2.1.0</p>
 <h1 id="sdk">SDK概要</h1>
 <p>Growthbeat SDKで、Growthbeat全てのサービスの機能が利用できます。本ガイドでは、Push通知機能のみを利用する場合の導入方法についてご紹介します。Objective-Cでの導入方法について記載しております。</p>
 <h2 id="heading">環境</h2>
@@ -158,21 +158,18 @@ CocoaPodsで、導入する場合は、自動的に依存が解決されます�
 end
 </code></pre><h2 id="framework">Frameworkをプロジェクトに導入する場合</h2>
 <p><!-- raw HTML omitted -->最新版iOS SDK ダウンロードページ<!-- raw HTML omitted --></p>
-<p>ダウンロードしたファイルを解凍し、そのフォルダの中の <strong>Growthbeat.framework</strong> をプロジェクトへ組み込みます。
-任意のXcodeプロジェクトを開き Growthbeat.framework をインポートしてください。<br>
-Growthbeat.framework のインポートの方法は以下の２つです</p>
+<p>ダウンロードしたファイルを解凍し、そのフォルダの中の <strong>Growthbeat.xcframework</strong> をプロジェクトへ組み込みます。
+任意のXcodeプロジェクトを開き Growthbeat.xcframework をインポートしてください。<br>
+Growthbeat.xcframework のインポートの方法は以下の２つです</p>
 <ol>
-<li>Xcodeプロジェクトに Growthbeat.framework をドラッグアンドドロップする</li>
-<li>Bulid Phases -&gt; Link Binary With Libraries の + ボタンを押し、Add Other&hellip;からGrowthbeat.frameworkを選択する</li>
+<li>Xcodeプロジェクトに Growthbeat.xcframework をドラッグアンドドロップする</li>
+<li>Bulid Phases -&gt; Link Binary With Libraries の + ボタンを押し、Add Other&hellip;からGrowthbeat.xcframeworkを選択する</li>
 </ol>
-<p>Growthbeat.framework は、下記 Framework が必須となります</p>
+<p>Growthbeat.xcframework は、下記 Framework が必須となります</p>
 <ul>
 <li>Foundation.framework</li>
 <li>UIKit.framework</li>
-<li>CoreGraphics.framework</li>
 <li>SystemConfiguration.framework</li>
-<li>AdSupport.framework</li>
-<li>CFNetwork.framework</li>
 </ul>
 <h1 id="2-push-notification">2. プロジェクトのPush Notificationを有効にする</h1>
 <p>Capabilities にて、Push Notifications を ON にします。<br>
